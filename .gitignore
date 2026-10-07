@@ -1,0 +1,40 @@
+# Environments, credentials and local configuration
+.venv*/
+venv/
+.env
+.env.*
+!.env.example
+
+# Python, notebooks and editor caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.coverage
+htmlcov/
+.DS_Store
+~$*
+
+# Supplied assignment materials: decide sharing separately from source code
+/KEP_2026.json
+/Take-Home_Exercise.docx
+/unpack_data.ipynb
+
+# Historical duplicate notebook and generated HTML export
+/task1_memory.ipynb
+/task2_evaluation.html
+/COMMIT_PLAN.md
+/take-home-exercise.bundle
+
+# Keep generated runs local except for the selected Astra memory and evidence.
+/artifacts/*
+!/artifacts/abstraction-gpt-6-astra/
+/artifacts/abstraction-gpt-6-astra/*
+!/artifacts/abstraction-gpt-6-astra/memory.json
+!/artifacts/abstraction-gpt-6-astra/validation.json
+!/artifacts/abstraction-gpt-6-astra/coverage.json
+!/artifacts/abstraction-gpt-6-astra/inspection_examples.json
+!/artifacts/abstraction-gpt-6-astra/rejected_proposals.json
+!/artifacts/abstraction-gpt-6-astra/recall_comparison.json
+!/artifacts/abstraction-gpt-6-astra/packets.json
