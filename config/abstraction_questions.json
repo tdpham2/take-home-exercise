@@ -1,0 +1,22 @@
+[
+  {
+    "id": "reliability",
+    "question": "What do the records reveal about reliability, detection, response, and their differences across situations?",
+    "cues": ["retry", "failure", "failed", "crash", "crashed", "timeout", "alert", "monitoring", "incident", "recovery", "recovered", "success", "pipeline", "queue", "stuck", "restart"]
+  },
+  {
+    "id": "data_consistency",
+    "question": "How do storage and data consistency behaviors compare across the records, including successful cases?",
+    "cues": ["DocDB", "Elasticsearch", "storage", "consistency", "inconsistent", "mismatch", "discrepancy", "cursor", "sync", "partial", "duplicate"]
+  },
+  {
+    "id": "routines",
+    "question": "What operational routines are described, and what evidence distinguishes prescriptions from reported execution?",
+    "cues": ["routine", "health", "check", "checks", "runbook", "daily", "weekly", "operational", "maintenance", "validation", "deployment"]
+  },
+  {
+    "id": "narrative_pruning",
+    "question": "How does narrative and pruning behavior vary across records, actions, and outcomes?",
+    "cues": ["narrative", "pruning", "prune", "hidden", "visibility", "reappear", "refresh"]
+  }
+]

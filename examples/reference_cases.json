@@ -1,0 +1,322 @@
+{
+  "purpose": "Coding-assistant-authored development examples inspected against the supplied passages. These are not independent human labels or held-out evaluation data and are never used as extraction overrides.",
+  "cases": [
+    {
+      "case_id": "argonaut_episode",
+      "kind": "episode",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "statements": [
+        {
+          "statement": "Updates stopped around April 19, 2026.",
+          "record_id": "KEP-6969",
+          "quote_contains": "stopped generating narrative updates from approximately April 19, 2026",
+          "status": "source_report"
+        },
+        {
+          "statement": "Jobs exceeded the ten-hour threshold and were killed before completion.",
+          "record_id": "KEP-6969",
+          "quote_contains": "being killed by the application before completing",
+          "status": "source_report"
+        },
+        {
+          "statement": "Retries repeated the failure without output.",
+          "record_id": "KEP-6969",
+          "quote_contains": "silent retry loop with no output and no alert",
+          "status": "source_report"
+        },
+        {
+          "statement": "The customer found the issue; alarms subsequently caught it but no action was taken.",
+          "record_id": "KEP-6969",
+          "quote_contains": "our alarms caught it but no action was taken",
+          "status": "source_report"
+        },
+        {
+          "statement": "The processing timeout increased from ten to twelve hours.",
+          "record_id": "KEP-6969",
+          "quote_contains": "the processing timeout was increased from 10 hours to 12 hours",
+          "status": "source_report"
+        }
+      ],
+      "must_not_claim": [
+        "The timeout increase caused the outage.",
+        "Updates definitely resumed on April 29.",
+        "No internal alarm ever fired.",
+        "The change permanently prevented recurrence."
+      ],
+      "unknowns": [
+        "Recovery after the intervention",
+        "Why the workload needed more than ten hours",
+        "Whether detection and response improved"
+      ]
+    },
+    {
+      "case_id": "collection_outage_episode",
+      "kind": "episode",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "statements": [
+        {
+          "statement": "Collection degraded or failed during approximately April 21–29, 2026.",
+          "record_id": "KEP-6970",
+          "quote_contains": "From approximately April 21 through April 29, 2026",
+          "status": "source_report"
+        },
+        {
+          "statement": "The source attributes the queue backup to jobs failing to close their final steps.",
+          "record_id": "KEP-6970",
+          "quote_contains": "not closing their final steps properly, causing a queue backup",
+          "status": "source_report"
+        },
+        {
+          "statement": "A host PID setting change is reported as applied.",
+          "record_id": "KEP-6970",
+          "quote_contains": "Fix: host PID setting change applied",
+          "status": "source_report"
+        },
+        {
+          "statement": "Backfill was required to restore integrity; this passage does not verify its completion.",
+          "record_id": "KEP-6970",
+          "quote_contains": "Backfill from Apr 21 required to restore full data integrity",
+          "status": "intended"
+        }
+      ],
+      "must_not_claim": [
+        "The backfill is proven to have restored full data integrity.",
+        "The production deployment caused all eight days of missing data."
+      ],
+      "unknowns": [
+        "Verified backfill completion and recovery time"
+      ]
+    },
+    {
+      "case_id": "postman_routine",
+      "kind": "documented_routine",
+      "record_ids": [
+        "KT-267",
+        "KT-334",
+        "KT-292"
+      ],
+      "statements": [
+        {
+          "statement": "The documented monitoring frequency is twice daily.",
+          "record_id": "KT-267",
+          "quote_contains": "Frequency: Twice Daily (Morning and Evening)",
+          "status": "requirement"
+        },
+        {
+          "statement": "The procedure calls for logging anomalies and escalating consistent failures.",
+          "record_id": "KT-334",
+          "quote_contains": "Notify the QA group or developer in Slack if consistent failures are observed.",
+          "status": "requirement"
+        }
+      ],
+      "must_not_claim": [
+        "Monitoring actually ran twice every day.",
+        "Three records prove three independent executions."
+      ],
+      "unknowns": [
+        "Actual execution frequency and effectiveness"
+      ]
+    },
+    {
+      "case_id": "processing_detection_pattern",
+      "kind": "pattern",
+      "record_ids": [
+        "KEP-6969",
+        "KEP-6970"
+      ],
+      "statement": "Two distinct incidents suggest a pattern of prolonged processing failures with detection or response gaps.",
+      "support_cases": [
+        "argonaut_episode",
+        "collection_outage_episode"
+      ],
+      "must_not_claim": [
+        "The incidents have one identical technical root cause.",
+        "All incidents in the organization go undetected."
+      ],
+      "confidence": "low",
+      "unknowns": [
+        "Prevalence beyond these examples",
+        "Whether monitoring practices improved afterward"
+      ]
+    },
+    {
+      "case_id": "tiktok_key_distribution",
+      "kind": "episode",
+      "record_ids": [
+        "KEP-6922",
+        "KEP-7004"
+      ],
+      "statements": [
+        {
+          "statement": "The context reports random key selection across eight workers.",
+          "record_id": "KEP-7004",
+          "quote_contains": "uses random key selection across the 8-worker Celery pool",
+          "status": "source_report"
+        },
+        {
+          "statement": "Deterministic sharding is a proposed change, not verified deployment.",
+          "record_id": "KEP-7004",
+          "quote_contains": "Replace random selection with a deterministic sharding strategy",
+          "status": "intended"
+        },
+        {
+          "statement": "Even request distribution and no new quota breaches are acceptance requirements.",
+          "record_id": "KEP-7004",
+          "quote_contains": "Monitoring confirms even request distribution across both keys",
+          "status": "requirement"
+        }
+      ],
+      "must_not_claim": [
+        "Done proves the deterministic strategy was deployed successfully.",
+        "Random and deterministic selection prove separate independent incidents."
+      ],
+      "inspection_note": "The dependency joins related work. The offline classifier treats the imperative under a heading as a source report; a hosted review should separate the reported random selection from proposed replacement and acceptance criteria.",
+      "unknowns": [
+        "Actual deployed key mapping",
+        "Measured post-deployment behavior"
+      ]
+    },
+    {
+      "case_id": "brightdata_integration",
+      "kind": "episode",
+      "record_ids": [
+        "KEP-6661",
+        "KEP-6542",
+        "KEP-6780"
+      ],
+      "statements": [
+        {
+          "statement": "The source reports current serp API use and cost limitations.",
+          "record_id": "KEP-6661",
+          "quote_contains": "We are currently using the serp API for account generation",
+          "status": "source_report"
+        },
+        {
+          "statement": "The same excerpt describes a necessary migration, not a completed migration.",
+          "record_id": "KEP-6661",
+          "quote_contains": "a migration to the BrightData API is necessary",
+          "status": "intended"
+        },
+        {
+          "statement": "The integration ticket was moved to To Do; integration success is not established.",
+          "record_id": "KEP-6780",
+          "quote_contains": "moving this ticket to the To Do state",
+          "status": "administrative"
+        }
+      ],
+      "must_not_claim": [
+        "The integration was deployed and verified.",
+        "All BrightData work concerns one incident."
+      ],
+      "inspection_note": "Shared event/dependency connections justify joint boundary review. The mixed current-state and migration-intention excerpt is one source report under offline rules; the administrative move to To Do is also classified as a source report. Related POC work can still need a separate episode.",
+      "unknowns": [
+        "Verified integration outcome",
+        "Whether the POC and migration constitute one occurrence"
+      ]
+    },
+    {
+      "case_id": "popup_fix_retest",
+      "kind": "episode",
+      "record_ids": [
+        "KEP-6430"
+      ],
+      "statements": [
+        {
+          "statement": "The source reports an overlapping popup and Sources preview panel.",
+          "record_id": "KEP-6430",
+          "quote_contains": "Add Account popup overlaps with the Sources preview panel",
+          "status": "source_report"
+        },
+        {
+          "statement": "Retesting is requested; this does not prove a successful test.",
+          "record_id": "KEP-6430",
+          "quote_contains": "RETESTING -",
+          "status": "intended"
+        },
+        {
+          "statement": "Test Pass is part of the expected result, not an observed pass.",
+          "record_id": "KEP-6430",
+          "quote_contains": "Expected Result: Test Pass",
+          "status": "requirement"
+        }
+      ],
+      "must_not_claim": [
+        "The popup fix passed retesting.",
+        "Fix and retest count as two independent failures."
+      ],
+      "inspection_note": "The two decisions share extracted event/dependency evidence. The expected result should stay a requirement even though it contains Test Pass. Offline verification_request and hosted intended use different vocabularies; that disagreement is terminological.",
+      "unknowns": [
+        "Actual retest result",
+        "Verified recovery"
+      ]
+    }
+  ],
+  "sample_inspections": {
+    "seed": "review-before-retention-v1",
+    "count": 8,
+    "selection": "Sort extracted nonempty evidence by stable_id(\"sample\", [seed, evidence_id]); take first count.",
+    "notes": [
+      {
+        "evidence_id": "ev_c6e1a22dce94c2e8",
+        "expected_statuses": [
+          "source_report",
+          "intended"
+        ],
+        "note": "Mixed excerpt reports two weeks of failing YouTube downloads and calls for an alternative. Offline intended classification loses the observation; neither duration nor intent proves recovery."
+      },
+      {
+        "evidence_id": "ev_93862013a6cf5c66",
+        "expected_statuses": [
+          "requirement"
+        ],
+        "note": "Worker separation and operation without browser login are requirements, not deployed-state evidence."
+      },
+      {
+        "evidence_id": "ev_642f5a3e75e12fba",
+        "expected_statuses": [
+          "administrative"
+        ],
+        "note": "Done alone supplies no verification result for the TikTok carousel investigation."
+      },
+      {
+        "evidence_id": "ev_17a98da9da5131a9",
+        "expected_statuses": [
+          "context"
+        ],
+        "note": "A vendor-list fragment is context; it does not establish an observed operational change."
+      },
+      {
+        "evidence_id": "ev_b73c5529d514ebef",
+        "expected_statuses": [
+          "intended"
+        ],
+        "note": "The ticket states an aim for Trend Summary generation and daily statistics; completed implementation is unknown."
+      },
+      {
+        "evidence_id": "ev_fd5555bb1e93c735",
+        "expected_statuses": [
+          "administrative"
+        ],
+        "note": "Resolution Done is administrative closure and cannot establish operational recovery."
+      },
+      {
+        "evidence_id": "ev_bd64aa411e98ca38",
+        "expected_statuses": [
+          "administrative"
+        ],
+        "note": "Status Done lacks outcome evidence; success remains unverified."
+      },
+      {
+        "evidence_id": "ev_ba626aa7f4f5e2c3",
+        "expected_statuses": [
+          "context"
+        ],
+        "note": "Weibo Worker Details is a heading with no stated observation. Offline source_report overstates the fragment as substantive support."
+      }
+    ]
+  }
+}
