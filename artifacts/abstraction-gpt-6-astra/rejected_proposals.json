@@ -1,0 +1,830 @@
+[
+  {
+    "packet_id": "packet_1eeaad0b85f114d5",
+    "proposal": {
+      "statement": "Queue and worker separation recurs as a reported engineering response, but the records demonstrate configuration changes more clearly than reliability improvements.",
+      "kind": "reported_recurrence",
+      "support": [
+        {
+          "passage_id": "passage_18165b04e88fab3a",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_8d55f50db1a9d3d8",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_478aec49772377f6",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_86eac468cc0117ce",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_a8a034ed23c62089",
+          "basis": "prescription"
+        }
+      ],
+      "comparison_insight": "The stats-service record reports adding a queue and changing load-sharing logic, while the seed-scraping record reports introducing a dedicated queue and routing a task to it. These are concrete structural responses, unlike the separate requirement that seed workers operate without browser login.",
+      "differences_counterevidence": "Load sharing and seed-task routing address different concerns. Proxy authentication errors and intermittent vendor API errors represent other failure classes; these excerpts do not show queue separation fixing them. No measured before-and-after improvement is supplied.",
+      "counterevidence_ids": [
+        "passage_7cbfc0992d637f64",
+        "passage_a2b438ae215af9f3"
+      ],
+      "uncertainty": "Reported changes are not independent proof of deployment correctness or effectiveness. The browser-login requirement does not establish implementation, and shared or merged excerpts should not be counted as additional independent successes.",
+      "usefulness": "Helps separate implementation completion from outcome validation: request queue latency, throughput, and failure-rate evidence, while tracking external dependency failures separately."
+    },
+    "reason": "Reported recurrence requires reported occurrences"
+  },
+  {
+    "packet_id": "packet_c1b79c0df962ddce",
+    "proposal": {
+      "statement": "Reported cache failures affect both response freshness and operating cost, requiring different recovery signals.",
+      "kind": "reported_recurrence",
+      "support": [
+        {
+          "passage_id": "passage_b3c5c4870d29e9fe",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_e3a1ad88692b74e9",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_9a0581ccdd8b9792",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_160dc54e24a00115",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_5f7a8832098af6ac",
+          "basis": "prescription"
+        }
+      ],
+      "comparison_insight": "One record describes cached responses remaining unchanged until TTL expiry; another reports NER entities not being cached, alongside elevated extraction cost. The former calls for event-driven invalidation, while the latter reports a deployed fix and subsequently lower daily cost. Cache reliability cannot be assessed through availability alone.",
+      "differences_counterevidence": "These are opposite failure modes: retained stale values versus missing cache persistence. Lower post-fix NE cost is a reported improvement, not proof of full recovery or isolated causality. Reset-related stale data is related context, not necessarily an independent incident.",
+      "counterevidence_ids": [
+        "passage_160dc54e24a00115",
+        "passage_4d1c20a4e75eedd5"
+      ],
+      "uncertainty": "The packet does not establish current cache behavior, event-invalidation deployment, or how much cost reduction the fix caused. No unaffected-cache counterexample is supplied; prevalence cannot be inferred.",
+      "usefulness": "Suggests separate acceptance checks for freshness after mutations, successful cache writes, and extraction cost rather than one generic cache-health indicator."
+    },
+    "reason": "Reported recurrence requires reported occurrences"
+  },
+  {
+    "packet_id": "packet_6fe444f51d687b7c",
+    "proposal": {
+      "statement": "Background-job failures repeatedly prevented useful progress, but restoring processing and repairing missing output were distinct recovery concerns.",
+      "kind": "reported_recurrence",
+      "support": [
+        {
+          "passage_id": "passage_3161ac0612930ea0",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_d97eed4d3724c305",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_fc8506f1e5b856ad",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_e324d86f5c231a3a",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_2c013aadeb8a977f",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_79f36a7a7d61560d",
+          "basis": "prescription"
+        }
+      ],
+      "comparison_insight": "Narrative jobs repeatedly exceeded a timeout and restarted without output; video jobs failed to close final steps and blocked new work. Responses targeted different controls—timeout extension versus a host PID change—and the collection incident additionally required backfill and callback-cron coordination.",
+      "differences_counterevidence": "Not every backlog was diagnosed: the summarization-volume investigation left legitimate incoming volume, duplicate processing, retries, and replay effects as alternatives. It cannot be counted as another confirmed instance of either mechanism.",
+      "counterevidence_ids": [
+        "passage_fdb77b03c4be1e05",
+        "passage_9fa3fb25468deed3"
+      ],
+      "uncertainty": "Root causes and changes are source-reported, not independently verified. Backfill requirements do not prove completion, and the timeout change alone does not establish restored narrative output.",
+      "usefulness": "Track completed useful output and queue progress, and require separate evidence for service recovery and historical data completeness."
+    },
+    "reason": "Reported recurrence requires reported occurrences"
+  },
+  {
+    "packet_id": "packet_55c0040422e6c345",
+    "proposal": {
+      "statement": "Cross-view statistics disagree in multiple records, but explicit matching-count checks show that agreement is achievable and more informative than deployment or closure alone.",
+      "kind": "reported_recurrence",
+      "support": [
+        {
+          "passage_id": "passage_ed9ec74abf7b3103",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_02e385854700c20e",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_49f6aaca926433f1",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_73b76352131b438e",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_d3ea4ba9cf6d0791",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_610ea56d930d968a",
+          "basis": "prescription"
+        }
+      ],
+      "comparison_insight": "Overview/detail counts, theme counts, and narrative views show repeated disagreement across surfaces. Separate requirements favor a single source of truth, while one QA report explicitly confirms matching views and comments rather than merely reporting changes pushed to staging.",
+      "differences_counterevidence": "The matching-count report is a successful case, not proof that other records were resolved. A separate UI issue initially displayed correct metrics before scrolling hid them (passage_e1c24c97cf90836e); its linked duplicate was reported working on staging (passage_5231a5800c0e69f7). Thus missing display values need not indicate storage or aggregation inconsistency.",
+      "counterevidence_ids": [
+        "passage_73b76352131b438e",
+        "passage_e1c24c97cf90836e",
+        "passage_5231a5800c0e69f7"
+      ],
+      "uncertainty": "Single-source requirements do not establish execution. Success reports are scoped observations, not current guarantees. Selected passages and potentially imperfect episode boundaries cannot establish prevalence or a complete resolution history.",
+      "usefulness": "Use cross-endpoint count reconciliation and separate UI visibility tests as acceptance criteria; distinguish verified agreement from deployment, design completion, or ticket status."
+    },
+    "reason": "Reported recurrence requires reported occurrences"
+  },
+  {
+    "packet_id": "packet_8279d7eb0fbc5677",
+    "proposal": {
+      "statement": "Development and staging storage upgrades share a targeted configuration-change prescription, while the reported production scale-up was explicitly temporary.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_805d5a3becda2ac7",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_7aef634ac34129b2",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_a4baacb0bd7d4ebe",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_55dbd1526ee887ce",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_9452bfa8daa219d7",
+          "basis": "prescription"
+        }
+      ],
+      "comparison_insight": "Development and staging both request Graviton instances and I/O-Optimized storage. Production instead reports an r5.4xlarge-to-r5.8xlarge upgrade, accompanied by a requirement to optimize code and database calls rather than rely indefinitely on added capacity.",
+      "differences_counterevidence": "Production provides a reported completed infrastructure change, unlike the development and staging prescriptions. The instruction to preserve other cluster configuration is sourced to the development record, not independently established for staging. No passage demonstrates improved performance or preserved data integrity after these changes.",
+      "counterevidence_ids": [
+        "passage_55dbd1526ee887ce",
+        "passage_9452bfa8daa219d7",
+        "passage_a4baacb0bd7d4ebe"
+      ],
+      "uncertainty": "The selected records cannot establish rollout completion, benchmark results, prevalence, or absence of migration regressions.",
+      "usefulness": "Separate infrastructure rollout evidence from performance and consistency acceptance criteria; do not treat capacity increases as proof that database-call inefficiencies were resolved."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_8279d7eb0fbc5677",
+    "proposal": {
+      "statement": "Duplicate post identities recur across records and are reported to interfere with callbacks on both successful and failed processing paths.",
+      "kind": "reported_recurrence",
+      "support": [
+        {
+          "passage_id": "passage_9766a888e108c132",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_b13ad156d62f0991",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_c4c831fc3bb525b9",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_c4fe1e1e0987bc0d",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_e3438c8b2aae6510",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_91a16d8ba9c0fd76",
+          "basis": "reported_occurrence"
+        }
+      ],
+      "comparison_insight": "Two records attribute duplicate IDs to the same post appearing under username, hashtag, and cashtag associations. One additionally reports callback issues on success and failure, showing that successful task processing need not imply clean downstream completion handling.",
+      "differences_counterevidence": "Video-Summary separately reports missing failure callbacks and null batch IDs, without attributing them to duplicate posts. The deduplication requirement is explicitly limited to Seed Data calls. No verified successful deduplication or callback repair is supplied.",
+      "counterevidence_ids": [
+        "passage_e3438c8b2aae6510",
+        "passage_91a16d8ba9c0fd76",
+        "passage_c4fe1e1e0987bc0d"
+      ],
+      "uncertainty": "Distinct records may revisit the same underlying defect rather than document independent incidents. Their causal descriptions are source reports, not independently verified mechanisms; prevalence is unknown.",
+      "usefulness": "Test identity uniqueness and callback correlation on both outcome paths, while keeping failure-callback coverage and batch-ID completeness as separate checks."
+    },
+    "reason": "Reported recurrence requires reported occurrences"
+  },
+  {
+    "packet_id": "packet_4dbbd3491722467c",
+    "proposal": {
+      "statement": "Monitoring combines prescribed dashboard checks and escalation rules with separately reported network-decline findings; the findings do not establish compliance with the prescribed cadence.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_a0929d37cc4fcf71",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_68d7ddbf8811c91a",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_cd6f71131f713436",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_58ab330ead64fe9b",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_857c1a994395f601",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_83690d924077fac6",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_ce7a4a00fb7ab804",
+          "basis": "reported_occurrence"
+        }
+      ],
+      "comparison_insight": "Two monitoring records require twice-daily checks. Rules identify consecutive platform declines and zero values for Slack escalation, while separate records name networks found to be declining. These are different evidence layers: instructions specify the routine; concrete findings report some monitoring activity.",
+      "differences_counterevidence": "Platform-level consecutive declines and zero-value alerts differ from network-level trend findings. The stated lack of a consistent mechanism for capturing daily Trend Summary changes qualifies any inference of complete monitoring history. No supplied counterexample establishes that twice-daily checks were missed.",
+      "counterevidence_ids": [
+        "passage_bab58a78a87b8220"
+      ],
+      "uncertainty": "The findings do not demonstrate dashboard usage, threshold calculations, Slack delivery, or twice-daily execution. Repeated wording may be templated; selected passages cannot establish prevalence or complete coverage.",
+      "usefulness": "Helps an engineering lead separate monitoring policy from auditable evidence and request timestamped checks, calculations, and alert records where needed."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_4dbbd3491722467c",
+    "proposal": {
+      "statement": "Release and migration QA prescribe environment-specific workflow and regression checks; completion statements and concrete testing findings provide stronger execution evidence than scope lists or deployment confirmations.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_1bc911696bd9512e",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_557047acd0bd1d02",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_0277694903b251d2",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_44a54ae51723dc37",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_87730a894dbca637",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_300efd54b190fba8",
+          "basis": "reported_occurrence"
+        }
+      ],
+      "comparison_insight": "Production release validation, staging migration testing, and hotfix QA share an expectation to check intended functionality and avoid regressions. Production QA explicitly reports completed validation, whereas the migration summary reports issues identified during testing. Both report activity, but only the former claims completion.",
+      "differences_counterevidence": "Migration testing identified critical issues rather than demonstrating a clean pass. Release 19.2.0 confirms staging and production deployment, not QA completion; the staging reference explicitly frames validation as work before production.",
+      "counterevidence_ids": [
+        "passage_300efd54b190fba8",
+        "passage_30aafad0785391cc",
+        "passage_ec050a51ae3e17e3",
+        "passage_3fc7279f1e9a14a2"
+      ],
+      "uncertainty": "The migration summary is truncated, and the production completion excerpt does not enumerate all results. Scope statements remain prescriptions regardless of their fact annotations. No complete execution logs or independently verified outcomes are supplied.",
+      "usefulness": "Prevents deployment status or a QA ticket's existence from being mistaken for a passed release gate."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_8574d7766be05640",
+    "proposal": {
+      "statement": "Scheduled health checks combine cadence, validation, and escalation; recorded results show individual checks, not adherence to the full schedule.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_a80698ee83ca7bba",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_94e229d8d58762c8",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_652a51f8dc7a256a",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_8383fb326b241e71",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_f6e4692412641294",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_ea77b7bfb383aba6",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_23e804abe61322ac",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_16a095591af11a71",
+          "basis": "reported_occurrence"
+        }
+      ],
+      "comparison_insight": "API checks prescribe twice-daily Postman runs and failure tracking; network-stat checks prescribe daily freshness checks and Slack alerts. Pass/fail counts are stronger evidence of particular checks than imperative checklist language.",
+      "differences_counterevidence": "API results range from 56/57 passing to 57/57 failing with an expired token. Network monitoring reports no logs that day, which does not establish whether the underlying job or the checking routine failed.",
+      "counterevidence_ids": [
+        "passage_16a095591af11a71",
+        "passage_c558297c26ce820a"
+      ],
+      "uncertainty": "These excerpts do not establish sustained cadence, completed tracking sheets, or sent alerts. Repeated text and overlapping bundles are not independent executions.",
+      "usefulness": "Separate evidence of a check occurring from evidence of schedule compliance and completed escalation."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_8574d7766be05640",
+    "proposal": {
+      "statement": "Post-deployment monitoring and functional verification have reported execution in separate records, unlike restart validation that appears only as an instruction.",
+      "kind": "reported_recurrence",
+      "support": [
+        {
+          "passage_id": "passage_0ca3ea59d49df43f",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_532d2acd49141d38",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_b9d1e7ce793668d9",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_b0d65757716ecc06",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_a723da2de8d1650a",
+          "basis": "prescription"
+        }
+      ],
+      "comparison_insight": "Background-service monitoring and report-generation verification each pair requested checks with retrospective observations. The ES restart passage specifies end-to-end validation but supplies no corresponding result.",
+      "differences_counterevidence": "Continuous performance-stat checking differs from observing recent report executions. Separately, staging checks report influence-task failures caused by missing S3 output, so validation should not be equated with a healthy outcome.",
+      "counterevidence_ids": [
+        "passage_4a3f374932466771"
+      ],
+      "uncertainty": "These are source-reported observations, not independently verified execution traces or proof of current health. The excerpts do not establish complete test coverage.",
+      "usefulness": "Require change-closeout evidence appropriate to the check: monitored metrics, functional results, and unresolved failures rather than a checklist alone."
+    },
+    "reason": "Reported recurrence requires reported occurrences"
+  },
+  {
+    "packet_id": "packet_8574d7766be05640",
+    "proposal": {
+      "statement": "Cost-monitoring requests recur across NE and GPU operations, but observed cost improvement does not establish that dashboards or alerts were implemented.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_43efd1f26f1824be",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_4cb25c714996ed3f",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_56775d517dfd308d",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_a6f0aee25b2dbe2f",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_160dc54e24a00115",
+          "basis": "reported_occurrence"
+        }
+      ],
+      "comparison_insight": "Both records request ongoing cost visibility and threshold alerts. Only the NE excerpt reports a production fix and a subsequent cost measurement; that evidence concerns remediation and observation, not alert deployment.",
+      "differences_counterevidence": "NE alerts use a daily-cost threshold left unspecified here; GPU alerts specify greater than 20% week-over-week growth. NE also requests cache-usage monitoring. No explicit counterexample to the shared prescription is supplied.",
+      "counterevidence_ids": [],
+      "uncertainty": "The selected packet establishes neither implementation nor nonimplementation of these controls, their effectiveness, or prevalence elsewhere.",
+      "usefulness": "Track remediation completion separately from observability delivery, and require explicit alert thresholds and implementation evidence."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_4b0c826527d6cfde",
+    "proposal": {
+      "statement": "Maintenance controls are documented and reported implemented, but incident recovery does not establish that the documented toggle procedure was followed.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_eecf86537ab0b8f8",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_da2022e6d10b05cf",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_6096228db050978c",
+          "basis": "reported_occurrence"
+        }
+      ],
+      "comparison_insight": "The Helm procedure specifies updating environment values, waiting for Flux configuration updates, and restarting webui pods. A separate implementation report describes runtime env.js flag reading; the incident report establishes manual page removal and an ES reboot halt, not execution of those specific configuration steps.",
+      "differences_counterevidence": "The incident restored customer access while remaining key rotation and ES reboots were deferred. Recovery therefore did not mean completion of maintenance.",
+      "counterevidence_ids": [
+        "passage_f65538ec7202eb4a"
+      ],
+      "uncertainty": "The passages do not establish how the Helm and runtime flag mechanisms connect or which mechanism the responder used. Selected reports cannot establish routine adherence.",
+      "usefulness": "Separate control implementation, runbook adherence, customer recovery, and outstanding maintenance in operational reviews."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_4b0c826527d6cfde",
+    "proposal": {
+      "statement": "Monitoring prescriptions and an alert implementation report do not establish effective detection across pipelines.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_21ca0e6e9855254c",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_8a2c6dba7e3a275a",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_f68bf6c3e4dba7e7",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_02f4a2792cce4f1a",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_ae0d8c51dfc2be95",
+          "basis": "reported_occurrence"
+        }
+      ],
+      "comparison_insight": "The comments-pipeline material calls for queue, missed-run, and availability monitoring, with a narrower report that long-waiting S3 batch alerts were implemented. The separate collection outage reports eight days without an automated alarm, distinguishing intended coverage and implementation from observed detection.",
+      "differences_counterevidence": "The no-alarm outage involved video-vision jobs failing to close final steps, whereas the comments incident reported Dagster availability problems. This is not proof that the implemented S3-wait alert failed or that the same monitoring configuration applied.",
+      "counterevidence_ids": [
+        "passage_5dce23526478ec1d",
+        "passage_fc8506f1e5b856ad",
+        "passage_c15494082e645301"
+      ],
+      "uncertainty": "Deployment scope, alert activation dates, and actual alert delivery are not supplied. Repeated excerpts of one incident are not independent occurrences.",
+      "usefulness": "Require pipeline-specific detection tests and alert-delivery evidence rather than treating an implementation ticket as proof of operational coverage."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_4b0c826527d6cfde",
+    "proposal": {
+      "statement": "Backfill evidence distinguishes completed automatic recovery from an ordered recovery workflow with prerequisites.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_810301b02e585c48",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_76705d33d5fa73fd",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_634424c7fe00d96a",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_79f36a7a7d61560d",
+          "basis": "prescription"
+        }
+      ],
+      "comparison_insight": "The comments incident explicitly reports pending-job completion, successful automatic backfill, and no data loss. The separate multi-platform outage records a backfill order from April 21 and a requirement to disable failure-callback cron before triggering it; neither establishes backfill completion.",
+      "differences_counterevidence": "A host PID fix is reported applied in the multi-platform outage, but fixing the processing fault is distinct from restoring missing historical data. Automatic recovery in the comments incident cannot be generalized to the other outage.",
+      "counterevidence_ids": [
+        "passage_e7f47fb4dc23db4d",
+        "passage_2c013aadeb8a977f"
+      ],
+      "uncertainty": "No completion or integrity-verification result is supplied for the ordered backfill. Its absence from this packet does not show it never occurred.",
+      "usefulness": "Track fault remediation, replay prerequisites, replay completion, and data-integrity validation as separate recovery milestones."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_35b0950138bacd63",
+    "proposal": {
+      "statement": "Daily model refresh is described as both a boundary for applying edits and a boundary relevant to historical-data availability.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_54b645cfc0ce296a",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_e116b26e293d9498",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_15c63892ad324af5",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_12865f6d6dac5ea1",
+          "basis": "reported_occurrence"
+        }
+      ],
+      "comparison_insight": "The editing specification defers rename, merge, and split instructions to the next daily run and preserves undo until refresh. Independently, the chat-history issue describes daily regeneration and potentially missing older narrative/theme data. Together they expose two lifecycle concerns around refresh: pending changes and historical references.",
+      "differences_counterevidence": "Hide is explicitly UI-only, so not every edit participates in model refresh. The history issue is reported resolved, limiting any claim that broken navigation persists. Neither passage demonstrates that the two features use the same job.",
+      "counterevidence_ids": [
+        "passage_76f88d6fca1d4fb5",
+        "passage_bb422c902bfd0978"
+      ],
+      "uncertainty": "The edit behavior appears in feature requirements, whereas daily regeneration is described as existing behavior in an incident. There are no run logs proving cadence or establishing regeneration as the cause of missing data. Extraction and episode boundaries may obscure context.",
+      "usefulness": "An engineering lead can review pending-state semantics and historical-reference handling together while keeping specified refresh behavior distinct from observed execution."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_9aa5e40cbab6da47",
+    "proposal": {
+      "statement": "Vendor monitoring combines a repeated scheduled checklist with concrete observations, but those observations do not establish completion of the full routine.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_dc6ee3623b494bee",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_f55b4a8646969574",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_5e8b8851237f6b57",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_41b0703b01931f30",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_985813f15dc9d204",
+          "basis": "reported_occurrence"
+        }
+      ],
+      "comparison_insight": "Across distinct records, the routine requires collecting billing and usage statistics, reviewing domains and download patterns, identifying anomalies, escalating deviations, and recording observations; several records specify Monday and Thursday. Separate quantitative traffic observations and a wallet balance provide evidence of reported findings, rather than merely repeated checklist text.",
+      "differences_counterevidence": "The traffic reports describe different magnitudes of decline; the wallet observation concerns available funds rather than traffic. Unchecked checklist items do not establish either completion or noncompletion. A separate report of service disruption and failed payment qualifies any inference that monitoring ensured uninterrupted service.",
+      "counterevidence_ids": [
+        "passage_fe4ff528d08a263c"
+      ],
+      "uncertainty": "No supplied evidence confirms schedule adherence, completion of every check, or escalation of each finding. Reused checklist text and overlapping extracted passages are not independent executions; selected records cannot establish prevalence.",
+      "usefulness": "Separate monitoring requirements from dated observations and completion evidence when auditing coverage or assigning follow-up."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_9aa5e40cbab6da47",
+    "proposal": {
+      "statement": "Validation is described both as a required release gate and as performed work; execution claims remain specific to the workflow and environment named.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_d20ce92cc17147a7",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_67864466ba4967b9",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_aca40321c3c10500",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_7acd9b592540136e",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_768b532e67272bbe",
+          "basis": "reported_occurrence"
+        }
+      ],
+      "comparison_insight": "Dagster instructions require parity confirmation before production promotion, whereas Video Vision explicitly reports completed QA validation. Azure migration testing reports discovered response differences. Together these distinguish a planned gate, a completion report, and testing that exposed remaining work.",
+      "differences_counterevidence": "Dagster completion is explicitly limited to development, not production. Azure testing required code adjustments, so conducting tests does not imply passing validation. Video Vision's completion report cannot establish that another workflow satisfied its gate.",
+      "counterevidence_ids": [
+        "passage_aca40321c3c10500",
+        "passage_768b532e67272bbe"
+      ],
+      "uncertainty": "These excerpts provide no test artifacts or independent verification. The fragment about replacing SageMaker and the request to evaluate Dagster/SQS should not be treated as completed migration merely because their annotations call them historical statements.",
+      "usefulness": "Track development completion, test execution, validation results, and production promotion as separate release milestones."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_9aa5e40cbab6da47",
+    "proposal": {
+      "statement": "Operational checks use different time horizons and purposes: periodic spending review, running-job polling, and rolling reliability measurement are not interchangeable evidence of execution.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_4b5dde5c6f9e2282",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_2e15aad7ddea8af9",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_5f472a2882ef96c1",
+          "basis": "uncertain"
+        }
+      ],
+      "comparison_insight": "Vendor review specifies Monday and Thursday; running jobs require checking MLE output every two hours. The report-success passage specifies a 60-day rolling measure excluding user-terminated reports, but supplies no measured result. Comparing them separates scheduled activities from outcome criteria.",
+      "differences_counterevidence": "The reliability wording could describe a target rather than an achieved result; reported quota failures without retry/backoff and timeouts without fallback do not establish that the success threshold was met or missed. No explicit execution report for two-hour polling is supplied.",
+      "counterevidence_ids": [
+        "passage_1ddc20d62894b7d8",
+        "passage_b3d0355cff70ed0e"
+      ],
+      "uncertainty": "The success-rate excerpt lacks enough context to determine its status confidently, despite its historical annotation. Missing execution evidence is not evidence that checks were omitted, and packet selection cannot establish absence of counterexamples.",
+      "usefulness": "Require check logs for cadence compliance and measured aggregates for reliability claims rather than treating requirements as operational results."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_d94a113f6239a07a",
+    "proposal": {
+      "statement": "Token-related pruning restrictions recur, but differ by action: Hide/Flag and rule deletion can be blocked while rule creation succeeds.",
+      "kind": "reported_recurrence",
+      "support": [
+        {
+          "passage_id": "passage_e3f46ab098dc11f5",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_79e2c5715702a55a",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_16efc08fee8d9add",
+          "basis": "prescription"
+        }
+      ],
+      "comparison_insight": "Comparing direct narrative actions with rule management reveals action-specific enforcement rather than a uniform no-token prohibition. The stated permission-only requirement contrasts with both blocking reports.",
+      "differences_counterevidence": "Successful token-free creation and pruning contradict a blanket restriction. Another passage reports removal of token checks from update/delete APIs, but does not report verification of Hide/Flag behavior.",
+      "counterevidence_ids": [
+        "passage_79e2c5715702a55a",
+        "passage_5d61fb62700bd420"
+      ],
+      "uncertainty": "These are source reports, not execution evidence or current-state verification. The excerpts do not establish a shared cause or deployment chronology.",
+      "usefulness": "Test permissions and token availability separately across Hide/Flag and rule create/update/delete; do not treat one API correction as coverage of all pruning."
+    },
+    "reason": "Reported recurrence requires reported occurrences"
+  },
+  {
+    "packet_id": "packet_d94a113f6239a07a",
+    "proposal": {
+      "statement": "Narrative statistics discrepancies recur across page combinations, while reported reconciliation is narrower than the overall problem space.",
+      "kind": "reported_recurrence",
+      "support": [
+        {
+          "passage_id": "passage_49f6aaca926433f1",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_ed9ec74abf7b3103",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_1220f584d66ec599",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_d3ea4ba9cf6d0791",
+          "basis": "prescription"
+        }
+      ],
+      "comparison_insight": "The reports span summary/list/feed versus detail and overview versus detail, suggesting cross-surface consistency deserves its own acceptance criteria. The single-source-of-truth refactor is a prescribed response, not evidence that discrepancies were eliminated.",
+      "differences_counterevidence": "One record reports matching views and comments counts after staging changes. Separately, missing statistics on feed/dashboard represent absence rather than disagreement between displayed values.",
+      "counterevidence_ids": [
+        "passage_73b76352131b438e",
+        "passage_21cb701363bc1635",
+        "passage_e94b3893316dcddd"
+      ],
+      "uncertainty": "Different-source fetching is offered as a possible explanation in passage_bde020b5e227f09a, not an established cause for every mismatch. Selected reports cannot establish prevalence, chronology, or a global fix.",
+      "usefulness": "Maintain a page-by-metric reconciliation matrix and distinguish missing values, mismatched values, staging delivery, and reported validation."
+    },
+    "reason": "Reported recurrence requires reported occurrences"
+  },
+  {
+    "packet_id": "packet_d94a113f6239a07a",
+    "proposal": {
+      "statement": "Recency-oriented ordering is prescribed at both post and narrative levels, but narrative date labels serve a separate lifespan function.",
+      "kind": "prescribed_routine",
+      "support": [
+        {
+          "passage_id": "passage_ac1a502b3f61c311",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_36e4884dcb117dc2",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_317fab0f014063a7",
+          "basis": "reported_occurrence"
+        }
+      ],
+      "comparison_insight": "Latest posts within a narrative and narratives ranked by recent post activity are distinct ordering requirements. Comparing them with the lifespan-label proposal separates content freshness from the age of the narrative itself.",
+      "differences_counterevidence": "An explanation identifies the existing label as first-post/start date rather than creation date. The post-ordering record reports staging delivery and completion; the lifespan-label prescription contains no comparable implementation outcome.",
+      "counterevidence_ids": [
+        "passage_a3431ddaa15da8d4",
+        "passage_da9cd39c4887eea8"
+      ],
+      "uncertainty": "The creation-date interpretation is disputed within the supplied record. Requirements do not establish execution, and staging completion does not establish production behavior.",
+      "usefulness": "Specify and test post order, narrative order, and displayed date range independently, especially for continuously updated narratives."
+    },
+    "reason": "Prescribed routines must be labelled prescriptions"
+  },
+  {
+    "packet_id": "packet_691f36a0133a08d0",
+    "proposal": {
+      "statement": "Pruning-related failures occur at distinct visibility stages: availability of the hidden view, timely appearance of pruned narratives, and search within that view.",
+      "kind": "reported_recurrence",
+      "support": [
+        {
+          "passage_id": "passage_0269b2f053cecd32",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_38962a93a52c9487",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_4cb450e03a484076",
+          "basis": "reported_occurrence"
+        },
+        {
+          "passage_id": "passage_320f4ef7e845bf82",
+          "basis": "prescription"
+        },
+        {
+          "passage_id": "passage_0693ead49843ff62",
+          "basis": "prescription"
+        }
+      ],
+      "comparison_insight": "These records distinguish pruning from subsequent discovery and management; a missing narrative does not by itself establish that pruning failed.",
+      "differences_counterevidence": "The unavailable-section report differs from the search report, which presupposes a Hidden Narratives view. They cannot be treated as one simultaneous product state. No successful pruning verification is supplied.",
+      "counterevidence_ids": [
+        "passage_0269b2f053cecd32",
+        "passage_4cb450e03a484076"
+      ],
+      "uncertainty": "Versions, environments, and chronology are unspecified. Requirements do not establish execution, and this selected packet cannot establish prevalence.",
+      "usefulness": "Test pruning persistence, hidden-view availability, refresh latency, and search independently rather than using one end-to-end visibility assertion."
+    },
+    "reason": "Reported recurrence requires reported occurrences"
+  }
+]

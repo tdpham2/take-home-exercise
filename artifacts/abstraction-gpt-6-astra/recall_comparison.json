@@ -1,0 +1,3173 @@
+{
+  "questions_fingerprint": "recall_questions_4b558a23a7337faa",
+  "results": [
+    {
+      "question": "What evidence would help an engineering lead assess whether a completed step delivered the expected user result?",
+      "without_abstractions": {
+        "cue": "What evidence would help an engineering lead assess whether a completed step delivered the expected user result?",
+        "results": [
+          {
+            "item_id": "fact_1ee51f8c77182072",
+            "type": "fact",
+            "title": "Step 2 — QA Validation Research and engineering confirm parity between Dagster builds and current production behavior before promotion",
+            "summary": "Step 2 — QA Validation Research and engineering confirm parity between Dagster builds and current production behavior before promotion",
+            "score": 0.01393443,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-7029"
+            ],
+            "evidence_ids": [
+              "ev_6357785a10dde2d0"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 15.170511798923172,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_58a173474247768d",
+            "type": "fact",
+            "title": "Expected Result : Test Pass The Add Account panel should open from the side panel",
+            "summary": "Expected Result : Test Pass The Add Account panel should open from the side panel",
+            "score": 0.01370968,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6428"
+            ],
+            "evidence_ids": [
+              "ev_2b40c6a5e2b2698f"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 12.790992515105987,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_0d096ed53c443971",
+            "type": "fact",
+            "title": "Expected Result: Test Pass The Add Account popup should open independently and should not overlap with the Sources preview panel.",
+            "summary": "Expected Result: Test Pass The Add Account popup should open independently and should not overlap with the Sources preview panel.",
+            "score": 0.01357548,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6430"
+            ],
+            "evidence_ids": [
+              "ev_ec9707f5c320fc90"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_8ef001bfba85dd5b",
+                "episode_31eb2e10d337d1c0",
+                "fact_0d096ed53c443971"
+              ],
+              "reasons": [
+                "shares scoped entity Add Account popup (resource_236d69ec)",
+                "shares scoped entity Sources preview panel (resource_26aafbfb)"
+              ],
+              "score": 0.00029423076923076923
+            },
+            "lexical_score": 11.623888260676868,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; shares scoped entity Add Account popup (resource_236d69ec) → shares scoped entity Sources preview panel (resource_26aafbfb)"
+          },
+          {
+            "item_id": "fact_b920dca543479ad3",
+            "type": "fact",
+            "title": "Expected Result: Accounts/sources from chat history should: Either only be added to the original network where the chat was generated",
+            "summary": "Expected Result: Accounts/sources from chat history should: Either only be added to the original network where the chat was generated",
+            "score": 0.01349206,
+            "confidence": "medium",
+            "record_ids": [
+              "Community_1737"
+            ],
+            "evidence_ids": [
+              "ev_99d1574bc50a6ae0",
+              "ev_bad8dd8fc100670c"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 11.839953751757417,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_8ef001bfba85dd5b",
+            "type": "fact",
+            "title": "Expected Result: Test Pass The Add Account popup should open independently and should not overlap with the Sources preview panel.",
+            "summary": "Expected Result: Test Pass The Add Account popup should open independently and should not overlap with the Sources preview panel.",
+            "score": 0.01337575,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6430"
+            ],
+            "evidence_ids": [
+              "ev_9a7356064ae27b44"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_0d096ed53c443971",
+                "episode_31eb2e10d337d1c0",
+                "fact_8ef001bfba85dd5b"
+              ],
+              "reasons": [
+                "shares scoped entity Sources preview panel (resource_26aafbfb)",
+                "shares scoped entity Add Account popup (resource_236d69ec)"
+              ],
+              "score": 0.000298828125
+            },
+            "lexical_score": 11.623888260676868,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; shares scoped entity Sources preview panel (resource_26aafbfb) → shares scoped entity Add Account popup (resource_236d69ec)"
+          },
+          {
+            "item_id": "fact_43ee2e95e0b973bc",
+            "type": "fact",
+            "title": "Fields are marked with error styling even when the user has not yet attempted to advance past that step.",
+            "summary": "Fields are marked with error styling even when the user has not yet attempted to advance past that step.",
+            "score": 0.01287879,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6519"
+            ],
+            "evidence_ids": [
+              "ev_03e3c1d0292f81db"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 10.440423552176721,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "episode_a33c212c5e639eee",
+            "type": "episode",
+            "title": "Design archive strategy for Elasticsearch data to S3",
+            "summary": "We want a design to archive data from elastic search to S3. This will help to maintain db cleanliness and also help in performance\nparent_key: KEP-6929",
+            "score": 0.01282683,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6845"
+            ],
+            "evidence_ids": [
+              "ev_0549a6ed56e05eb0",
+              "ev_2e67d6a081f9de16",
+              "ev_58f0b89f35d5b361"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_181606a3d495ddd5",
+                "episode_a33c212c5e639eee"
+              ],
+              "reasons": [
+                "shares scoped entity Elasticsearch cluster (resource_0d6fdb66)"
+              ],
+              "score": 0.0011829932879464827
+            },
+            "lexical_score": 9.232533103980614,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; shares scoped entity Elasticsearch cluster (resource_0d6fdb66)"
+          },
+          {
+            "item_id": "fact_f300e3bf5d3f59e3",
+            "type": "fact",
+            "title": "Comment narratives must never be blank. If the translation model fails, comments must be rerouted and delivered without translation rather than dropped entirely",
+            "summary": "Comment narratives must never be blank. If the translation model fails, comments must be rerouted and delivered without translation rather than dropped entirely",
+            "score": 0.01268657,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-7092"
+            ],
+            "evidence_ids": [
+              "ev_bbfa2d6f49897146"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.755579996210658,
+            "similarity": 0.0,
+            "why": "lexical"
+          }
+        ],
+        "trace": {
+          "mode": "BM25 only",
+          "anchor_nodes": [],
+          "seed_item_ids": [
+            "fact_1ee51f8c77182072",
+            "fact_58a173474247768d",
+            "fact_b920dca543479ad3",
+            "fact_0d096ed53c443971",
+            "fact_8ef001bfba85dd5b",
+            "fact_43ee2e95e0b973bc",
+            "fact_f300e3bf5d3f59e3",
+            "fact_181606a3d495ddd5"
+          ],
+          "discarded": [
+            {
+              "item_id": "fact_181606a3d495ddd5",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_b23da22c039e963e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_caee95b64acf7541",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_a798e6357a3a1bd3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_361cef6198765aec",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_37f88308edd1ec6c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_94c523fff15bb4ac",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ac640527abf24834",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_c6d76923c10a0279",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_e5af7a425117b356",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_419d0b923d5813eb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_14f26219aef1d91e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_4a45370b2dcb48d2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6bf400988f77056e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3202fde4184b41af",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_d0cc8b849a39158e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_71ab5a4e8a1d312b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5bda28e4dd431567",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_2b3dccaa2e4712f3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_51e0d26f3b43543e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_0fd6d749d6453248",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_53bab5f9d25cbc11",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_e94e7b558fa3474f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_065b80442432a941",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_0b370ec7eb7d3999",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6b40cd34fdb5a137",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_7ad07af26985b813",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_c028f2bc004d5600",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1f20b75ce50d78ba",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f25cdefce0578665",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_438639ab5fdd232c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_abeceaa3115ab5b7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_31eb2e10d337d1c0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1b0de5756e390d4c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_3ee2decaaa60c0ec",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_681773976443a718",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_965f78e3e0e9603e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_a1188121e0c8ef3d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_03386e48d485a17d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_4afa41c4adeeb74f",
+              "reason": "outside result budget"
+            }
+          ],
+          "max_hops": 2,
+          "score_note": "RRF k=60; support multipliers 1/.85/.65; association decay .6 per hop. Heuristics, not probabilities."
+        }
+      },
+      "with_abstractions": {
+        "cue": "What evidence would help an engineering lead assess whether a completed step delivered the expected user result?",
+        "results": [
+          {
+            "item_id": "fact_1ee51f8c77182072",
+            "type": "fact",
+            "title": "Step 2 — QA Validation Research and engineering confirm parity between Dagster builds and current production behavior before promotion",
+            "summary": "Step 2 — QA Validation Research and engineering confirm parity between Dagster builds and current production behavior before promotion",
+            "score": 0.01393443,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-7029"
+            ],
+            "evidence_ids": [
+              "ev_6357785a10dde2d0"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 14.416014257799738,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_58a173474247768d",
+            "type": "fact",
+            "title": "Expected Result : Test Pass The Add Account panel should open from the side panel",
+            "summary": "Expected Result : Test Pass The Add Account panel should open from the side panel",
+            "score": 0.01370968,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6428"
+            ],
+            "evidence_ids": [
+              "ev_2b40c6a5e2b2698f"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 12.670713433774516,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_0d096ed53c443971",
+            "type": "fact",
+            "title": "Expected Result: Test Pass The Add Account popup should open independently and should not overlap with the Sources preview panel.",
+            "summary": "Expected Result: Test Pass The Add Account popup should open independently and should not overlap with the Sources preview panel.",
+            "score": 0.01357548,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6430"
+            ],
+            "evidence_ids": [
+              "ev_ec9707f5c320fc90"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_8ef001bfba85dd5b",
+                "episode_31eb2e10d337d1c0",
+                "fact_0d096ed53c443971"
+              ],
+              "reasons": [
+                "shares scoped entity Add Account popup (resource_236d69ec)",
+                "shares scoped entity Sources preview panel (resource_26aafbfb)"
+              ],
+              "score": 0.00029423076923076923
+            },
+            "lexical_score": 11.54039018439207,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; shares scoped entity Add Account popup (resource_236d69ec) → shares scoped entity Sources preview panel (resource_26aafbfb)"
+          },
+          {
+            "item_id": "fact_b920dca543479ad3",
+            "type": "fact",
+            "title": "Expected Result: Accounts/sources from chat history should: Either only be added to the original network where the chat was generated",
+            "summary": "Expected Result: Accounts/sources from chat history should: Either only be added to the original network where the chat was generated",
+            "score": 0.01349206,
+            "confidence": "medium",
+            "record_ids": [
+              "Community_1737"
+            ],
+            "evidence_ids": [
+              "ev_99d1574bc50a6ae0",
+              "ev_bad8dd8fc100670c"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 11.75002842423121,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_8ef001bfba85dd5b",
+            "type": "fact",
+            "title": "Expected Result: Test Pass The Add Account popup should open independently and should not overlap with the Sources preview panel.",
+            "summary": "Expected Result: Test Pass The Add Account popup should open independently and should not overlap with the Sources preview panel.",
+            "score": 0.01337575,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6430"
+            ],
+            "evidence_ids": [
+              "ev_9a7356064ae27b44"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_0d096ed53c443971",
+                "episode_31eb2e10d337d1c0",
+                "fact_8ef001bfba85dd5b"
+              ],
+              "reasons": [
+                "shares scoped entity Sources preview panel (resource_26aafbfb)",
+                "shares scoped entity Add Account popup (resource_236d69ec)"
+              ],
+              "score": 0.000298828125
+            },
+            "lexical_score": 11.54039018439207,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; shares scoped entity Sources preview panel (resource_26aafbfb) → shares scoped entity Add Account popup (resource_236d69ec)"
+          },
+          {
+            "item_id": "episode_a33c212c5e639eee",
+            "type": "episode",
+            "title": "Design archive strategy for Elasticsearch data to S3",
+            "summary": "We want a design to archive data from elastic search to S3. This will help to maintain db cleanliness and also help in performance\nparent_key: KEP-6929",
+            "score": 0.01298855,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6845"
+            ],
+            "evidence_ids": [
+              "ev_0549a6ed56e05eb0",
+              "ev_2e67d6a081f9de16",
+              "ev_58f0b89f35d5b361"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_181606a3d495ddd5",
+                "episode_a33c212c5e639eee"
+              ],
+              "reasons": [
+                "shares scoped entity Elasticsearch cluster (resource_0d6fdb66)"
+              ],
+              "score": 0.0011829932879464827
+            },
+            "lexical_score": 9.379675923516828,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; shares scoped entity Elasticsearch cluster (resource_0d6fdb66)"
+          },
+          {
+            "item_id": "fact_43ee2e95e0b973bc",
+            "type": "fact",
+            "title": "Fields are marked with error styling even when the user has not yet attempted to advance past that step.",
+            "summary": "Fields are marked with error styling even when the user has not yet attempted to advance past that step.",
+            "score": 0.01287879,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6519"
+            ],
+            "evidence_ids": [
+              "ev_03e3c1d0292f81db"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 10.569002557458575,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_181606a3d495ddd5",
+            "type": "fact",
+            "title": "We want a design to archive data from elastic search to S3. This will help to maintain db cleanliness and also help in performance",
+            "summary": "We want a design to archive data from elastic search to S3. This will help to maintain db cleanliness and also help in performance",
+            "score": 0.0125,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6845"
+            ],
+            "evidence_ids": [
+              "ev_2e67d6a081f9de16"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.852074399145511,
+            "similarity": 0.0,
+            "why": "lexical"
+          }
+        ],
+        "trace": {
+          "mode": "BM25 only",
+          "anchor_nodes": [],
+          "seed_item_ids": [
+            "fact_1ee51f8c77182072",
+            "fact_58a173474247768d",
+            "fact_b920dca543479ad3",
+            "fact_0d096ed53c443971",
+            "fact_8ef001bfba85dd5b",
+            "fact_43ee2e95e0b973bc",
+            "fact_181606a3d495ddd5",
+            "fact_b23da22c039e963e"
+          ],
+          "discarded": [
+            {
+              "item_id": "fact_b23da22c039e963e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_caee95b64acf7541",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_361cef6198765aec",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_a798e6357a3a1bd3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_94c523fff15bb4ac",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_f300e3bf5d3f59e3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_c6d76923c10a0279",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_e5af7a425117b356",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ac640527abf24834",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_37f88308edd1ec6c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_14f26219aef1d91e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_d0cc8b849a39158e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_71ab5a4e8a1d312b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5bda28e4dd431567",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_4a45370b2dcb48d2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_2b3dccaa2e4712f3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_0c87fa5f643ee1fd",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_51e0d26f3b43543e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_e94e7b558fa3474f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_419d0b923d5813eb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_53bab5f9d25cbc11",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_065b80442432a941",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6bf400988f77056e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_0b370ec7eb7d3999",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_7ad07af26985b813",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6b40cd34fdb5a137",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_13ac0a6e56f67675",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_0fd6d749d6453248",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1f20b75ce50d78ba",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_d941d5617fb08695",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_93da330a4952ff51",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_28be11f2e286d530",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_31eb2e10d337d1c0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_cc0d4bf8b5fb8c23",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3202fde4184b41af",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1b0de5756e390d4c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_3ee2decaaa60c0ec",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_5b00447aca4e767b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_681773976443a718",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_965f78e3e0e9603e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_a1188121e0c8ef3d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_03386e48d485a17d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_4afa41c4adeeb74f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0e9c369dbf01c1a7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_101c6c15e1ded334",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_e1df026e607f0fc0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_03d2745d31e30cee",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1e51a626f6205229",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_fbd043cf7cde1b05",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_fc22eed65f0ccd71",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_166aba7c2d8e9a06",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_9c5eab9039e06b6b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_f76fe7c463ff3742",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_d173fc800e025f02",
+              "reason": "outside result budget"
+            }
+          ],
+          "max_hops": 2,
+          "score_note": "RRF k=60; support multipliers 1/.85/.65; association decay .6 per hop. Heuristics, not probabilities."
+        }
+      },
+      "returned_pattern_checks": []
+    },
+    {
+      "question": "Where should we investigate if different representations of the same information disagree?",
+      "without_abstractions": {
+        "cue": "Where should we investigate if different representations of the same information disagree?",
+        "results": [
+          {
+            "item_id": "episode_109ebc96e2b8610b",
+            "type": "episode",
+            "title": "Investigate comment narratives algorithm failure and missing SQS notification callbacks",
+            "summary": "Investigate the failure of the comment narratives (Algorithm Error)\nInvestigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state\nInvestigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state (i.e. RUNNING) Investigate the failure of the comment narratives (Algorithm Error)\nresolution: Done",
+            "score": 0.01393443,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-3912",
+              "KEP-5913"
+            ],
+            "evidence_ids": [
+              "ev_1c6c160336424c90",
+              "ev_8377265b8fad614c",
+              "ev_996046a98ac70ec7",
+              "ev_d9db300b6974ef3b",
+              "ev_fa57b164693a11ba"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 13.319421798365521,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_da114c5210ae48dc",
+            "type": "fact",
+            "title": "As per expected behavior, custom prompts should be scoped to a specific network and should not be accessible or visible across different networks.",
+            "summary": "As per expected behavior, custom prompts should be scoped to a specific network and should not be accessible or visible across different networks.",
+            "score": 0.01370968,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6963"
+            ],
+            "evidence_ids": [
+              "ev_7d34b51d9ae1b96f"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 10.724223979030386,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_9698aa7bc1b8073f",
+            "type": "fact",
+            "title": "we found same issue in Staging",
+            "summary": "we found same issue in Staging",
+            "score": 0.01349206,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6543"
+            ],
+            "evidence_ids": [
+              "ev_9e52380f56a156f3"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 10.458943998900153,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_34dd60e52eb979d0",
+            "type": "fact",
+            "title": "Ideally the logic should be same so that the source of truth is singular",
+            "summary": "Ideally the logic should be same so that the source of truth is singular",
+            "score": 0.01328125,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-5665"
+            ],
+            "evidence_ids": [
+              "ev_02f622f41fa2ae6b"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.772929715525489,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_7f4fe8f14cabff72",
+            "type": "fact",
+            "title": "The API should accept the same value for start and end dates.",
+            "summary": "The API should accept the same value for start and end dates.",
+            "score": 0.01307692,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6879"
+            ],
+            "evidence_ids": [
+              "ev_f8640436be52488a"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.772929715525489,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "episode_37e3b7dbf62fbdd1",
+            "type": "episode",
+            "title": "Conduct proof of concept using agent over Tikhub MCP for Weibo account discovery",
+            "summary": "Acceptance criteria Conduct a proof of concept (POC) using an agent over the MCP. The agent should decide which Tikhub MCP tool to call. Eliminate the need for developers to call MCP tools individually.\nI played around with Bright Data's SERP API and didn't get any super promising results\nIf fetching post pages isn't feasible, we probably need a different mechanism for Weibo entirely.\nRight now we're only getting 2 or 3 accounts even on broad keywords, and I think it's because Weibo works differently enough from other platorms that it needs a different approach.\nparent_key: KEP-6542 | epic_link_key: KEP-6542\nresolution: Done | status: Done",
+            "score": 0.01287879,
+            "confidence": "medium",
+            "record_ids": [
+              "Community_551",
+              "KEP-6661",
+              "KEP-6732",
+              "KEP-6780"
+            ],
+            "evidence_ids": [
+              "ev_1b3ee882b03a47ba",
+              "ev_2930b2f626839d0f",
+              "ev_736a54e672f8e905",
+              "ev_85395422bb4dcc92",
+              "ev_b42692bdeacea87c",
+              "ev_cd68a8398eab548a",
+              "ev_efcada4ad7c2ef71",
+              "ev_f3183b1d051edcce"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.320092111316407,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "episode_790d1b7c7b47a79c",
+            "type": "episode",
+            "title": "Fix agent inconsistent results for same query on Fiji–MCC deal",
+            "summary": "A user asked the agent about commenter sentiment on the Fiji–MCC deal twice. The agent produced contradictory results.\nFirst response: Agent finds 1 Facebook post discussing the MCC deal and provides a sentiment breakdown of the 50 comments. Second response: Agent says no retrievable/classified comments are available for stance analysis.\nThis kind of inconsistency undermines trust in the agent if the same question produces different data retrieval results.\nstatus: Done",
+            "score": 0.01268657,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6491"
+            ],
+            "evidence_ids": [
+              "ev_374d5f48beacc22b",
+              "ev_37a3adf500903368",
+              "ev_526c4d68ba557265",
+              "ev_88f58ba681576a72",
+              "ev_ba855ec995cc64f4",
+              "ev_c941fd4591a9ea66",
+              "ev_f267ba73c3292f54"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.299420641257647,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "episode_3ab565ebcb34ff31",
+            "type": "episode",
+            "title": "Investigate mismatched stats between Network Overview and Narrative Detail pages",
+            "summary": "Mismatched Stats Between Network Overview and Narrative Detail Pages\nOverview page gets data from narrative_data which is aggregated from ES\nQA : Mismatch stats between network overview and Narrative Details pages\nSince we are fetching it from two different sources, there can be discrepancies\nstatus: Done",
+            "score": 0.0125,
+            "confidence": "medium",
+            "record_ids": [
+              "Community_923",
+              "KEP-2122",
+              "KEP-3920",
+              "KEP-6113"
+            ],
+            "evidence_ids": [
+              "ev_19a6155e89ebd9d8",
+              "ev_547f8229023980b4",
+              "ev_54a9bd9ac71455dd",
+              "ev_54aeee845e629ffd",
+              "ev_b3ba9356a7d45b2b",
+              "ev_b3c441fd398894d0",
+              "ev_d852f16830dabe29",
+              "ev_e0f22f7a9c8feb8b",
+              "ev_e55063d112ac50e9"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.241352044328817,
+            "similarity": 0.0,
+            "why": "lexical"
+          }
+        ],
+        "trace": {
+          "mode": "BM25 only",
+          "anchor_nodes": [],
+          "seed_item_ids": [
+            "episode_109ebc96e2b8610b",
+            "fact_da114c5210ae48dc",
+            "fact_9698aa7bc1b8073f",
+            "fact_34dd60e52eb979d0",
+            "fact_7f4fe8f14cabff72",
+            "episode_37e3b7dbf62fbdd1",
+            "episode_790d1b7c7b47a79c",
+            "episode_3ab565ebcb34ff31"
+          ],
+          "discarded": [
+            {
+              "item_id": "episode_068c6b9396dbe8c0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_908dbb4150d6c5f1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_da59841849cc463c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_4e66450acccd6bf2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_08653fb88745b0d8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_97d84e957eebb81c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_a36c369ed948eb43",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ec417b8844cf0d0e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_139c0931832cbe8a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_58713a63b2b97d39",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_101263b415747b58",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_65a642aa620f3213",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0b5eac8998a40268",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_b920dca543479ad3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_c7107106d3f7f064",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_4201f8415bd2892c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_91912f1cfa8c203f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_2c7bf78d435d739b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1f56ac8435bf4451",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_36cac01b814bf0e2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_535ad492c5929232",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_d189be7dccb54161",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_2629da1b65974f73",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_aca48479c8f28a02",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_7513f8ebee6a171b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_689e9f629c6fb0aa",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_421a40c2897b761a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_5090ebfe28b77fcb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_db4ece1cd3ee9cb3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_cd204b9814434f70",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_706b8c2ec3445650",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_a7dfa6168a96f1ab",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_46c92f1664b2bc49",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_c44b06ce8e372ae6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_9b058e1f19f06cf4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_f0b2237ab5b215ce",
+              "reason": "outside result budget"
+            }
+          ],
+          "max_hops": 2,
+          "score_note": "RRF k=60; support multipliers 1/.85/.65; association decay .6 per hop. Heuristics, not probabilities."
+        }
+      },
+      "with_abstractions": {
+        "cue": "Where should we investigate if different representations of the same information disagree?",
+        "results": [
+          {
+            "item_id": "episode_068c6b9396dbe8c0",
+            "type": "episode",
+            "title": "Unify application logic for /network-summary and /macro-narratives/list endpoints",
+            "summary": "Ideally the logic should be same so that the source of truth is singular\nThere is a mismatch in the Themes count displayed on the Network Summary header and the Themes count shown inside the Narratives section\nTwo different application logic is currently implemented for /network-summary and /macro-narratives/list",
+            "score": 0.01546719,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-5665"
+            ],
+            "evidence_ids": [
+              "ev_02f622f41fa2ae6b",
+              "ev_cbec50f63c58f7bc",
+              "ev_e4c5f59a1fd75b13",
+              "ev_f240d64e1cad285e"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_34dd60e52eb979d0",
+                "pattern_97f176ebd803488b",
+                "episode_068c6b9396dbe8c0"
+              ],
+              "reasons": [
+                "supports this cross-record pattern",
+                "episode supplies evidence for this pattern"
+              ],
+              "score": 0.004707692307692308
+            },
+            "lexical_score": 8.832501294919847,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; supports this cross-record pattern → episode supplies evidence for this pattern"
+          },
+          {
+            "item_id": "episode_109ebc96e2b8610b",
+            "type": "episode",
+            "title": "Investigate comment narratives algorithm failure and missing SQS notification callbacks",
+            "summary": "Investigate the failure of the comment narratives (Algorithm Error)\nInvestigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state\nInvestigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state (i.e. RUNNING) Investigate the failure of the comment narratives (Algorithm Error)\nresolution: Done",
+            "score": 0.01393443,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-3912",
+              "KEP-5913"
+            ],
+            "evidence_ids": [
+              "ev_1c6c160336424c90",
+              "ev_8377265b8fad614c",
+              "ev_996046a98ac70ec7",
+              "ev_d9db300b6974ef3b",
+              "ev_fa57b164693a11ba"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 13.503526992425003,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_9698aa7bc1b8073f",
+            "type": "fact",
+            "title": "we found same issue in Staging",
+            "summary": "we found same issue in Staging",
+            "score": 0.01349206,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6543"
+            ],
+            "evidence_ids": [
+              "ev_9e52380f56a156f3"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 10.539568687476057,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_da114c5210ae48dc",
+            "type": "fact",
+            "title": "As per expected behavior, custom prompts should be scoped to a specific network and should not be accessible or visible across different networks.",
+            "summary": "As per expected behavior, custom prompts should be scoped to a specific network and should not be accessible or visible across different networks.",
+            "score": 0.01328125,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6963"
+            ],
+            "evidence_ids": [
+              "ev_7d34b51d9ae1b96f"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.971535078996386,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_34dd60e52eb979d0",
+            "type": "fact",
+            "title": "Ideally the logic should be same so that the source of truth is singular",
+            "summary": "Ideally the logic should be same so that the source of truth is singular",
+            "score": 0.01307692,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-5665"
+            ],
+            "evidence_ids": [
+              "ev_02f622f41fa2ae6b"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.82251695398043,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_7f4fe8f14cabff72",
+            "type": "fact",
+            "title": "The API should accept the same value for start and end dates.",
+            "summary": "The API should accept the same value for start and end dates.",
+            "score": 0.01287879,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6879"
+            ],
+            "evidence_ids": [
+              "ev_f8640436be52488a"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.82251695398043,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_908dbb4150d6c5f1",
+            "type": "fact",
+            "title": "The system should read the available platforms from the same API used to fetch available commands.",
+            "summary": "The system should read the available platforms from the same API used to fetch available commands.",
+            "score": 0.01268657,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-2848"
+            ],
+            "evidence_ids": [
+              "ev_4e42726aa292a9ee"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.245277236615248,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_da59841849cc463c",
+            "type": "fact",
+            "title": "Each narrative should have a populated source array containing the platform(s) where the narrative exists",
+            "summary": "Each narrative should have a populated source array containing the platform(s) where the narrative exists",
+            "score": 0.0125,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-5643"
+            ],
+            "evidence_ids": [
+              "ev_537cba56ab270f5a"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.245277236615248,
+            "similarity": 0.0,
+            "why": "lexical"
+          }
+        ],
+        "trace": {
+          "mode": "BM25 only",
+          "anchor_nodes": [],
+          "seed_item_ids": [
+            "episode_109ebc96e2b8610b",
+            "fact_9698aa7bc1b8073f",
+            "fact_da114c5210ae48dc",
+            "fact_34dd60e52eb979d0",
+            "fact_7f4fe8f14cabff72",
+            "fact_908dbb4150d6c5f1",
+            "fact_da59841849cc463c",
+            "fact_4e66450acccd6bf2"
+          ],
+          "discarded": [
+            {
+              "item_id": "fact_4e66450acccd6bf2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_08653fb88745b0d8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_97d84e957eebb81c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_a36c369ed948eb43",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_790d1b7c7b47a79c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_37e3b7dbf62fbdd1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ec417b8844cf0d0e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_58713a63b2b97d39",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3ab565ebcb34ff31",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_101263b415747b58",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_65a642aa620f3213",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0b5eac8998a40268",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_44862aa23232d02a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_c7107106d3f7f064",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_b920dca543479ad3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_2c7bf78d435d739b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_4201f8415bd2892c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_91912f1cfa8c203f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_139c0931832cbe8a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1f56ac8435bf4451",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_36cac01b814bf0e2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_d189be7dccb54161",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_2629da1b65974f73",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_aca48479c8f28a02",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_7513f8ebee6a171b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_689e9f629c6fb0aa",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_5090ebfe28b77fcb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_535ad492c5929232",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_cd204b9814434f70",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_a7dfa6168a96f1ab",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f8b710f4b0900b0d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_1d294c1112fd96a3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_97f176ebd803488b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_65f5050eefa5c83c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1ea30293295511cc",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_86cd645fe9e45cf5",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_8b020eed3b9168c2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_cb2696360a767098",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_e0591524e42cbe28",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_6300382a12daa96a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_823cb0b02dc44b50",
+              "reason": "outside result budget"
+            }
+          ],
+          "max_hops": 2,
+          "score_note": "RRF k=60; support multipliers 1/.85/.65; association decay .6 per hop. Heuristics, not probabilities."
+        }
+      },
+      "returned_pattern_checks": []
+    },
+    {
+      "question": "Which operational activities were requested, and which were actually reported as performed?",
+      "without_abstractions": {
+        "cue": "Which operational activities were requested, and which were actually reported as performed?",
+        "results": [
+          {
+            "item_id": "fact_b2178cd73e757d3e",
+            "type": "fact",
+            "title": "The Hidden tab should only contain narratives that are actually hidden.",
+            "summary": "The Hidden tab should only contain narratives that are actually hidden.",
+            "score": 0.01393443,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6460"
+            ],
+            "evidence_ids": [
+              "ev_c0433f80384278e7",
+              "ev_c5172ab0c904f0d4"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.810147525126043,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_d3cb096b9560e79c",
+            "type": "fact",
+            "title": "Trend analysis is performed on a regular basis to monitor network health and identify critical declines.",
+            "summary": "Trend analysis is performed on a regular basis to monitor network health and identify critical declines.",
+            "score": 0.01370968,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-4119",
+              "KEP-4883",
+              "KEP-4913",
+              "KEP-5056",
+              "KT-377"
+            ],
+            "evidence_ids": [
+              "ev_0fb05ff1366c34b2",
+              "ev_16b164319a351c59",
+              "ev_29899d1caaacc422",
+              "ev_30fb007f99bababe",
+              "ev_501bb5b0dbd98f1d"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 8.859718960163633,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "episode_ef0650685a35d87d",
+            "type": "episode",
+            "title": "enforce date-range filtering in get-api to return only posts within requested window",
+            "summary": "Because these posts do not exist in the corresponding Elasticsearch indices for that date range, downstream processing fails\nFix or enforce date-range filtering logic at the get-api layer so that only posts within the requested window are returned.\nProblem Statement We are continuously getting the error \"post not available in ES\" for data coming from multiple get-api sources. In the first iteration of analysis, we found that: get-api is returning posts that are outside the relevant requested date range\nparent_key: KEP-6267\nstatus: Done",
+            "score": 0.01370854,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-5415",
+              "KEP-5582"
+            ],
+            "evidence_ids": [
+              "ev_3c27cd715f7d1b54",
+              "ev_4b4877ee9d6ab0e5",
+              "ev_a517b26b41c82e75",
+              "ev_b42d024a27d21faa",
+              "ev_b9081dcdc406a856",
+              "ev_cd82949318d4632d",
+              "ev_e07ca8f43d2a740a",
+              "ev_f0934188bb74f0ee"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_e3907bdc176eb22a",
+                "episode_ef0650685a35d87d"
+              ],
+              "reasons": [
+                "shares scoped entity get-api (resource_02657e7a)"
+              ],
+              "score": 0.0019029850746268655
+            },
+            "lexical_score": 6.895874317405249,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; shares scoped entity get-api (resource_02657e7a)"
+          },
+          {
+            "item_id": "fact_069ce50d68ac91a5",
+            "type": "fact",
+            "title": "This activity should be performed twice a day to ensure continuous monitoring of data consistency, completeness, and anomaly detection",
+            "summary": "This activity should be performed twice a day to ensure continuous monitoring of data consistency, completeness, and anomaly detection",
+            "score": 0.01349206,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6559"
+            ],
+            "evidence_ids": [
+              "ev_9f543bc4c976ff23"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 8.520902128366204,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_688b31ef528a4cf1",
+            "type": "fact",
+            "title": "For hashtag queries: Every collected post must contain the requested hashtag in the tweet text, case-insensitive.",
+            "summary": "For hashtag queries: Every collected post must contain the requested hashtag in the tweet text, case-insensitive.",
+            "score": 0.01328125,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-4064"
+            ],
+            "evidence_ids": [
+              "ev_3c2ccc1219709e80"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 8.380406527687047,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_1b3031612e51bee7",
+            "type": "fact",
+            "title": "the Reported Network: QA Automation - [Do not Stop] (Network ID: 918aab26-1fd2-5fe6-a0f8-15b76bc6c2bd)",
+            "summary": "the Reported Network: QA Automation - [Do not Stop] (Network ID: 918aab26-1fd2-5fe6-a0f8-15b76bc6c2bd)",
+            "score": 0.01307692,
+            "confidence": "medium",
+            "record_ids": [
+              "Community_225"
+            ],
+            "evidence_ids": [
+              "ev_0ad5e595e575671a",
+              "ev_6c417e545952139a"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 8.221680652607256,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_35298352c0761f31",
+            "type": "fact",
+            "title": "The reported issue appears to be intermittent and non-deterministic in nature, as multiple attempts to reproduce it under similar conditions have been unsuccessful.",
+            "summary": "The reported issue appears to be intermittent and non-deterministic in nature, as multiple attempts to reproduce it under similar conditions have been unsuccessful.",
+            "score": 0.01287879,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6668"
+            ],
+            "evidence_ids": [
+              "ev_8e62458b0e5f6103"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 8.144551278008118,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_e3907bdc176eb22a",
+            "type": "fact",
+            "title": "Fix or enforce date-range filtering logic at the get-api layer so that only posts within the requested window are returned.",
+            "summary": "Fix or enforce date-range filtering logic at the get-api layer so that only posts within the requested window are returned.",
+            "score": 0.01268657,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-5582"
+            ],
+            "evidence_ids": [
+              "ev_b9081dcdc406a856"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 7.921608286623669,
+            "similarity": 0.0,
+            "why": "lexical"
+          }
+        ],
+        "trace": {
+          "mode": "BM25 only",
+          "anchor_nodes": [],
+          "seed_item_ids": [
+            "fact_b2178cd73e757d3e",
+            "fact_d3cb096b9560e79c",
+            "fact_069ce50d68ac91a5",
+            "fact_688b31ef528a4cf1",
+            "fact_1b3031612e51bee7",
+            "fact_35298352c0761f31",
+            "fact_e3907bdc176eb22a",
+            "fact_5b6f0d8a7778d393"
+          ],
+          "discarded": [
+            {
+              "item_id": "episode_8ce3a9dc4475169b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5b6f0d8a7778d393",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_ed09eb9074737f89",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_40bdc4a2e39337bb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_db587beee0f9cabb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_9d97e1e77fd5660c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6b40cd34fdb5a137",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f66de0aee65fb29a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ca7c2acbe249ff89",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3373209036c8924e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_78fb26f3118b8218",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_329da5a04477b1e1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_72418a3f03298d34",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_2f8954314713917d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_784154b5299e7f2f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_fc00e2d6d08f50b8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_12aca30a062c1376",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_38226d89a51c9d28",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_6395772bf46a4a7d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_7708ea0e26691b54",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ce25d02f4079037a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3c44e67d3a8c1c5e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_7ad07af26985b813",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_975ed0ea6015d0f2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_bef649d275f769b6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1e22970d70f77ce8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_1d894e4669d92cdd",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_41d5f9b7dd2a6d27",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_972daf174d782f19",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_244338a8d24071a7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6c76b3dec7a8600d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_bdac3eaf7754d690",
+              "reason": "outside result budget"
+            }
+          ],
+          "max_hops": 2,
+          "score_note": "RRF k=60; support multipliers 1/.85/.65; association decay .6 per hop. Heuristics, not probabilities."
+        }
+      },
+      "with_abstractions": {
+        "cue": "Which operational activities were requested, and which were actually reported as performed?",
+        "results": [
+          {
+            "item_id": "pattern_ccb30a1503af8aa3",
+            "type": "pattern",
+            "title": "Coarse completion flags and ambiguous zero values suggest a shared observability risk: operational failure can be difficult to distinguish from legitimate incomplete or empty results.",
+            "summary": "Coarse completion flags and ambiguous zero values suggest a shared observability risk: operational failure can be difficult to distinguish from legitimate incomplete or empty results.\nComment-state records describe limited failure localization, while display requirements distinguish real zero activity from failed processing. Together they motivate preserving processing state separately from business values.\nHelps align pipeline status models, diagnostic queries, and UI behavior so missing computation is not presented as valid data.",
+            "score": 0.01502381,
+            "confidence": "low",
+            "record_ids": [
+              "Community_534",
+              "KEP-6744",
+              "KEP-7092"
+            ],
+            "evidence_ids": [
+              "ev_144f1b3260d98c40",
+              "ev_329a4f6d8a923841",
+              "ev_49dfbaf7a812db8a",
+              "ev_4d544d50145a71df",
+              "ev_5628e258f0fa5113",
+              "ev_66fe2871abcba084",
+              "ev_7e6a0999718c7c0b",
+              "ev_82013ddbc488dff0",
+              "ev_8d3e18c5a20665fb",
+              "ev_8df0cf00bef19d93",
+              "ev_baa38cc68cf0038f",
+              "ev_bbce7f1d5b4e34b5",
+              "ev_bc39750e90a716c1",
+              "ev_d133aea1f206fea6",
+              "ev_e7177cb6ed2a777b",
+              "ev_e9597659c02ba232"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_ed09eb9074737f89",
+                "pattern_ccb30a1503af8aa3"
+              ],
+              "reasons": [
+                "supports this cross-record pattern"
+              ],
+              "score": 0.007285714285714285
+            },
+            "lexical_score": 5.283202509705317,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; supports this cross-record pattern"
+          },
+          {
+            "item_id": "episode_fc00e2d6d08f50b8",
+            "type": "episode",
+            "title": "Perform data validation checks across multiple tenants using Network Summary V1 and ES Data Collection Stats dashboards",
+            "summary": "Platforms with 2+ consecutive days of decline (day-over-day drop > 5%)\nThis activity should be performed twice a day to ensure continuous monitoring\nalert in #kepler-data-validation (Slack)\nstatus: Done\nusing Network Summary V1 and ES Data Collection Stats V1 dashboards",
+            "score": 0.01384748,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6736",
+              "KEP-6798"
+            ],
+            "evidence_ids": [
+              "ev_346a1ac90f1d5648",
+              "ev_448724bd8986b893",
+              "ev_4d8b66397755aa2d",
+              "ev_dafbb62dc31a2722",
+              "ev_fd56f8eec9a2178f"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_069ce50d68ac91a5",
+                "pattern_f4d689e47e00fa12",
+                "episode_fc00e2d6d08f50b8"
+              ],
+              "reasons": [
+                "supports this cross-record pattern",
+                "episode supplies evidence for this pattern"
+              ],
+              "score": 0.004707692307692308
+            },
+            "lexical_score": 4.607457636288665,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; supports this cross-record pattern → episode supplies evidence for this pattern"
+          },
+          {
+            "item_id": "fact_b2178cd73e757d3e",
+            "type": "fact",
+            "title": "The Hidden tab should only contain narratives that are actually hidden.",
+            "summary": "The Hidden tab should only contain narratives that are actually hidden.",
+            "score": 0.01370968,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6460"
+            ],
+            "evidence_ids": [
+              "ev_c0433f80384278e7",
+              "ev_c5172ab0c904f0d4"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.625470225697246,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_d3cb096b9560e79c",
+            "type": "fact",
+            "title": "Trend analysis is performed on a regular basis to monitor network health and identify critical declines.",
+            "summary": "Trend analysis is performed on a regular basis to monitor network health and identify critical declines.",
+            "score": 0.01328125,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-4119",
+              "KEP-4883",
+              "KEP-4913",
+              "KEP-5056",
+              "KT-377"
+            ],
+            "evidence_ids": [
+              "ev_0fb05ff1366c34b2",
+              "ev_16b164319a351c59",
+              "ev_29899d1caaacc422",
+              "ev_30fb007f99bababe",
+              "ev_501bb5b0dbd98f1d"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 8.740800654980033,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "episode_ef0650685a35d87d",
+            "type": "episode",
+            "title": "enforce date-range filtering in get-api to return only posts within requested window",
+            "summary": "Because these posts do not exist in the corresponding Elasticsearch indices for that date range, downstream processing fails\nFix or enforce date-range filtering logic at the get-api layer so that only posts within the requested window are returned.\nProblem Statement We are continuously getting the error \"post not available in ES\" for data coming from multiple get-api sources. In the first iteration of analysis, we found that: get-api is returning posts that are outside the relevant requested date range\nparent_key: KEP-6267\nstatus: Done",
+            "score": 0.01323632,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-5415",
+              "KEP-5582"
+            ],
+            "evidence_ids": [
+              "ev_3c27cd715f7d1b54",
+              "ev_4b4877ee9d6ab0e5",
+              "ev_a517b26b41c82e75",
+              "ev_b42d024a27d21faa",
+              "ev_b9081dcdc406a856",
+              "ev_cd82949318d4632d",
+              "ev_e07ca8f43d2a740a",
+              "ev_f0934188bb74f0ee"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_e3907bdc176eb22a",
+                "episode_ef0650685a35d87d"
+              ],
+              "reasons": [
+                "shares scoped entity get-api (resource_02657e7a)"
+              ],
+              "score": 0.0019029850746268655
+            },
+            "lexical_score": 6.470659966761261,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; shares scoped entity get-api (resource_02657e7a)"
+          },
+          {
+            "item_id": "fact_069ce50d68ac91a5",
+            "type": "fact",
+            "title": "This activity should be performed twice a day to ensure continuous monitoring of data consistency, completeness, and anomaly detection",
+            "summary": "This activity should be performed twice a day to ensure continuous monitoring of data consistency, completeness, and anomaly detection",
+            "score": 0.01307692,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6559"
+            ],
+            "evidence_ids": [
+              "ev_9f543bc4c976ff23"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 8.414341180703843,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "episode_12aca30a062c1376",
+            "type": "episode",
+            "title": "Implement granular comments download status enum for Reddit",
+            "summary": "Introduce / Reuse status enum Use the existing generic process/download status enum pattern (as in Weibo's ProcessStatus or DownloadStatus): NOT_STARTED PENDING / IN_PROGRESS (choose one naming convention and use consistently) COMPLETED / DONE FAILED\nIt is hard to query for stuck/errored comment collections per post Operational monitoring and debugging are harder (no way to see where comment pipelines are failing or stuck)\nToday, comment download completion is tracked only as a boolean flag at the post level (comments_downloaded: bool) in both: CommonPostMetadata (ElasticSearch) RedditPostMetadata (Mongo)\nstatus: Done",
+            "score": 0.01295729,
+            "confidence": "medium",
+            "record_ids": [
+              "Community_534",
+              "KEP-3961",
+              "KEP-6744"
+            ],
+            "evidence_ids": [
+              "ev_66fe2871abcba084",
+              "ev_82013ddbc488dff0",
+              "ev_9af8da11382aa82a",
+              "ev_e86cc86d15dd205e"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_ed09eb9074737f89",
+                "pattern_ccb30a1503af8aa3",
+                "episode_12aca30a062c1376"
+              ],
+              "reasons": [
+                "supports this cross-record pattern",
+                "episode supplies evidence for this pattern"
+              ],
+              "score": 0.004371428571428571
+            },
+            "lexical_score": 3.3522770395399637,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; supports this cross-record pattern → episode supplies evidence for this pattern"
+          },
+          {
+            "item_id": "fact_688b31ef528a4cf1",
+            "type": "fact",
+            "title": "For hashtag queries: Every collected post must contain the requested hashtag in the tweet text, case-insensitive.",
+            "summary": "For hashtag queries: Every collected post must contain the requested hashtag in the tweet text, case-insensitive.",
+            "score": 0.01287879,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-4064"
+            ],
+            "evidence_ids": [
+              "ev_3c2ccc1219709e80"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 7.822769432455314,
+            "similarity": 0.0,
+            "why": "lexical"
+          }
+        ],
+        "trace": {
+          "mode": "BM25 only",
+          "anchor_nodes": [],
+          "seed_item_ids": [
+            "fact_b2178cd73e757d3e",
+            "fact_d3cb096b9560e79c",
+            "fact_069ce50d68ac91a5",
+            "fact_688b31ef528a4cf1",
+            "fact_e3907bdc176eb22a",
+            "episode_9d97e1e77fd5660c",
+            "fact_5b6f0d8a7778d393",
+            "fact_ed09eb9074737f89"
+          ],
+          "discarded": [
+            {
+              "item_id": "episode_38226d89a51c9d28",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_e3907bdc176eb22a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_9d97e1e77fd5660c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5b6f0d8a7778d393",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_ed09eb9074737f89",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_db587beee0f9cabb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6b40cd34fdb5a137",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f66de0aee65fb29a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_8ce3a9dc4475169b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1b3031612e51bee7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_35298352c0761f31",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_a4fd45fb1a52498e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_78fb26f3118b8218",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_fffb236ec6a52b6f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_2f8954314713917d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_d9f69afbd7e10429",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ca7c2acbe249ff89",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_58a2e1d22c555eac",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_329da5a04477b1e1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_72418a3f03298d34",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_784154b5299e7f2f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_780a6edcbfcaacb4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_8af495de8d8dd82f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_f0b4b3e8998d28f0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_f4d689e47e00fa12",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_851b247e1405491f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_e2c47cdde4e5a8c5",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_823cb0b02dc44b50",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_fc22eed65f0ccd71",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_c8cdadfb6200876b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_cf905b1d38d750ad",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_62ee60cab3141aa7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_d941d5617fb08695",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_a1665b6ced1f35a6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3c44e67d3a8c1c5e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_bdeefecdf5b84986",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_6395772bf46a4a7d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_7708ea0e26691b54",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_7ad07af26985b813",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ce25d02f4079037a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_147b783b363a4e49",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_31bf6864f22fa4d1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6c425a3958ec13a7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_b9958a293551b1c6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_c95bb61f7157f093",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_e8f23ac553969e01",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3373209036c8924e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1ae4978257b1e62e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_be58e44f0207fc54",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_1f200b86b6240fbc",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_e75dad7dd0a5b107",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_acb139a189dcc5a2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_bef649d275f769b6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1e22970d70f77ce8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_1d894e4669d92cdd",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_41d5f9b7dd2a6d27",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_972daf174d782f19",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_244338a8d24071a7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6c76b3dec7a8600d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_bdac3eaf7754d690",
+              "reason": "outside result budget"
+            }
+          ],
+          "max_hops": 2,
+          "score_note": "RRF k=60; support multipliers 1/.85/.65; association decay .6 per hop. Heuristics, not probabilities."
+        }
+      },
+      "returned_pattern_checks": [
+        {
+          "pattern_id": "pattern_ccb30a1503af8aa3",
+          "statement": "Coarse completion flags and ambiguous zero values suggest a shared observability risk: operational failure can be difficult to distinguish from legitimate incomplete or empty results.",
+          "supporting_episode_ids": [
+            "episode_12aca30a062c1376",
+            "episode_38226d89a51c9d28",
+            "episode_6395772bf46a4a7d",
+            "episode_7708ea0e26691b54",
+            "episode_ce25d02f4079037a"
+          ],
+          "retrieved_supporting_episode_ids": [
+            "episode_12aca30a062c1376"
+          ],
+          "retrieved_supporting_fact_ids": [],
+          "semantic_inspection": "pending human/agent inspection of cited passages"
+        }
+      ]
+    },
+    {
+      "question": "What should be checked when a user action fails to change the visible state?",
+      "without_abstractions": {
+        "cue": "What should be checked when a user action fails to change the visible state?",
+        "results": [
+          {
+            "item_id": "fact_7a9b3166400891a4",
+            "type": "fact",
+            "title": "Prompt generation fails and gets stuck in loading state",
+            "summary": "Prompt generation fails and gets stuck in loading state",
+            "score": 0.01599088,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6528"
+            ],
+            "evidence_ids": [
+              "ev_83a2d50ad8ce398c"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_62ade84aa7ddae3e",
+                "fact_7a9b3166400891a4"
+              ],
+              "reasons": [
+                "shares scoped entity Network Builder Prompt Setup (resource_6f63d6df)"
+              ],
+              "score": 0.0020564516129032255
+            },
+            "lexical_score": 14.260270977625392,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; shares scoped entity Network Builder Prompt Setup (resource_6f63d6df)"
+          },
+          {
+            "item_id": "episode_62ade84aa7ddae3e",
+            "type": "episode",
+            "title": "Resolve Network Builder prompt generation loading state issue",
+            "summary": "Prompt generation fails and gets stuck in loading state\nThis issue has been resolved",
+            "score": 0.01579984,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6528"
+            ],
+            "evidence_ids": [
+              "ev_14394e13f0173641",
+              "ev_83a2d50ad8ce398c",
+              "ev_8dbefba93926cffd"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_7a9b3166400891a4",
+                "episode_62ade84aa7ddae3e"
+              ],
+              "reasons": [
+                "shares scoped entity Network Builder Prompt Setup (resource_6f63d6df)"
+              ],
+              "score": 0.0020901639344262295
+            },
+            "lexical_score": 11.866762314393153,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; shares scoped entity Network Builder Prompt Setup (resource_6f63d6df)"
+          },
+          {
+            "item_id": "fact_dce774a308e86025",
+            "type": "fact",
+            "title": "The hover card should remain visible and stable while the user's cursor is anywhere within the card bounds, including when moving toward the arrow icon.",
+            "summary": "The hover card should remain visible and stable while the user's cursor is anywhere within the card bounds, including when moving toward the arrow icon.",
+            "score": 0.01349206,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6516"
+            ],
+            "evidence_ids": [
+              "ev_0846d8ea937562ae",
+              "ev_65b376187c70e695"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 11.582273897973275,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_8b465cd7133d7dd6",
+            "type": "fact",
+            "title": "For user-entered short phrases (e.g. 'climate change policy'): Acceptance: tweet must contain all keywords (climate, change, policy) somewhere in the text, not necessarily in order.",
+            "summary": "For user-entered short phrases (e.g. 'climate change policy'): Acceptance: tweet must contain all keywords (climate, change, policy) somewhere in the text, not necessarily in order.",
+            "score": 0.01328125,
+            "confidence": "medium",
+            "record_ids": [
+              "Community_1297"
+            ],
+            "evidence_ids": [
+              "ev_3cb7d7e94f553444"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 10.416382285846005,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_8c68701278478701",
+            "type": "fact",
+            "title": "The narrative panels must never display zero narratives for a network that has sufficient posts — if the narrative engine fails mid-run, the previous successful run's data must remain visible until new data is ready",
+            "summary": "The narrative panels must never display zero narratives for a network that has sufficient posts — if the narrative engine fails mid-run, the previous successful run's data must remain visible until new data is ready",
+            "score": 0.01307692,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-7092"
+            ],
+            "evidence_ids": [
+              "ev_78db1faed2c404ce"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.807704552805063,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_ea008dc6a6125961",
+            "type": "fact",
+            "title": "System blocks pruning when no active token is available. User cannot proceed with Hide / Flag action due to token restriction.",
+            "summary": "System blocks pruning when no active token is available. User cannot proceed with Hide / Flag action due to token restriction.",
+            "score": 0.01287879,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-5759"
+            ],
+            "evidence_ids": [
+              "ev_1ad128968e343ee3"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.761969004509847,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_8e2b4ceb5cd93811",
+            "type": "fact",
+            "title": "Given a chat with more than 10 qualifying exchanges, When the user triggers the quick chat report, Then no quick report is saved for that action.",
+            "summary": "Given a chat with more than 10 qualifying exchanges, When the user triggers the quick chat report, Then no quick report is saved for that action.",
+            "score": 0.01268657,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-7036"
+            ],
+            "evidence_ids": [
+              "ev_d769d4454e8fd4d8"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.674493006654023,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_0117169dc8ad83b8",
+            "type": "fact",
+            "title": "Chat history associate with other network should not be visible under other networks.",
+            "summary": "Chat history associate with other network should not be visible under other networks.",
+            "score": 0.0125,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6425"
+            ],
+            "evidence_ids": [
+              "ev_e6867343ad7c870d"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.625388552371703,
+            "similarity": 0.0,
+            "why": "lexical"
+          }
+        ],
+        "trace": {
+          "mode": "BM25 only",
+          "anchor_nodes": [],
+          "seed_item_ids": [
+            "fact_7a9b3166400891a4",
+            "episode_62ade84aa7ddae3e",
+            "fact_dce774a308e86025",
+            "fact_8b465cd7133d7dd6",
+            "fact_8c68701278478701",
+            "fact_ea008dc6a6125961",
+            "fact_8e2b4ceb5cd93811",
+            "fact_0117169dc8ad83b8"
+          ],
+          "discarded": [
+            {
+              "item_id": "fact_da114c5210ae48dc",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f29466c0d5922fd0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_2ea95543a318e7be",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_70118cb83adb3db5",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_fec01a8c98f882fd",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_50672a8f9c1a48c5",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_5b78bb345ab1622c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5bda28e4dd431567",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_1ef4bc3ccb19d28e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6a429b7e2233373c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_faf8b54d42981767",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_58105ba8481b9ae1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5ab25eb61d703896",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_cc6ed8bb011ff18f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_a55a2411b9278f4a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_0d7b9b9f286090fc",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5eb2650846f66cbd",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_27a085c800d79ef4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_afb15dcd54befff0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_46402a6f53cb477e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_b64b5e2618910baf",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_97ecd80688d92bc6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_cc6624f404ad7154",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_b421fb1c76fe5cf0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6b40cd34fdb5a137",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_70553bb7ab2d3b26",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_8d0215a2d748d065",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_4f3ab8082910fb2c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_237f50a7814bbace",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1e22970d70f77ce8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_8dbaf2cf42ac6ea8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5213aa52b52404bb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_c77657b02277f920",
+              "reason": "outside result budget"
+            }
+          ],
+          "max_hops": 2,
+          "score_note": "RRF k=60; support multipliers 1/.85/.65; association decay .6 per hop. Heuristics, not probabilities."
+        }
+      },
+      "with_abstractions": {
+        "cue": "What should be checked when a user action fails to change the visible state?",
+        "results": [
+          {
+            "item_id": "fact_7a9b3166400891a4",
+            "type": "fact",
+            "title": "Prompt generation fails and gets stuck in loading state",
+            "summary": "Prompt generation fails and gets stuck in loading state",
+            "score": 0.01595824,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6528"
+            ],
+            "evidence_ids": [
+              "ev_83a2d50ad8ce398c"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_62ade84aa7ddae3e",
+                "fact_7a9b3166400891a4"
+              ],
+              "reasons": [
+                "shares scoped entity Network Builder Prompt Setup (resource_6f63d6df)"
+              ],
+              "score": 0.0020238095238095236
+            },
+            "lexical_score": 13.796332217849375,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; shares scoped entity Network Builder Prompt Setup (resource_6f63d6df)"
+          },
+          {
+            "item_id": "episode_62ade84aa7ddae3e",
+            "type": "episode",
+            "title": "Resolve Network Builder prompt generation loading state issue",
+            "summary": "Prompt generation fails and gets stuck in loading state\nThis issue has been resolved",
+            "score": 0.01558223,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6528"
+            ],
+            "evidence_ids": [
+              "ev_14394e13f0173641",
+              "ev_83a2d50ad8ce398c",
+              "ev_8dbefba93926cffd"
+            ],
+            "routes": [
+              "lexical",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_7a9b3166400891a4",
+                "episode_62ade84aa7ddae3e"
+              ],
+              "reasons": [
+                "shares scoped entity Network Builder Prompt Setup (resource_6f63d6df)"
+              ],
+              "score": 0.0020901639344262295
+            },
+            "lexical_score": 11.450026651469688,
+            "similarity": 0.0,
+            "why": "lexical; memory_association; shares scoped entity Network Builder Prompt Setup (resource_6f63d6df)"
+          },
+          {
+            "item_id": "fact_dce774a308e86025",
+            "type": "fact",
+            "title": "The hover card should remain visible and stable while the user's cursor is anywhere within the card bounds, including when moving toward the arrow icon.",
+            "summary": "The hover card should remain visible and stable while the user's cursor is anywhere within the card bounds, including when moving toward the arrow icon.",
+            "score": 0.01370968,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6516"
+            ],
+            "evidence_ids": [
+              "ev_0846d8ea937562ae",
+              "ev_65b376187c70e695"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 11.555356066170528,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_8b465cd7133d7dd6",
+            "type": "fact",
+            "title": "For user-entered short phrases (e.g. 'climate change policy'): Acceptance: tweet must contain all keywords (climate, change, policy) somewhere in the text, not necessarily in order.",
+            "summary": "For user-entered short phrases (e.g. 'climate change policy'): Acceptance: tweet must contain all keywords (climate, change, policy) somewhere in the text, not necessarily in order.",
+            "score": 0.01328125,
+            "confidence": "medium",
+            "record_ids": [
+              "Community_1297"
+            ],
+            "evidence_ids": [
+              "ev_3cb7d7e94f553444"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 10.214775696594865,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_8c68701278478701",
+            "type": "fact",
+            "title": "The narrative panels must never display zero narratives for a network that has sufficient posts — if the narrative engine fails mid-run, the previous successful run's data must remain visible until new data is ready",
+            "summary": "The narrative panels must never display zero narratives for a network that has sufficient posts — if the narrative engine fails mid-run, the previous successful run's data must remain visible until new data is ready",
+            "score": 0.01307692,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-7092"
+            ],
+            "evidence_ids": [
+              "ev_78db1faed2c404ce"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.78392045150566,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_ea008dc6a6125961",
+            "type": "fact",
+            "title": "System blocks pruning when no active token is available. User cannot proceed with Hide / Flag action due to token restriction.",
+            "summary": "System blocks pruning when no active token is available. User cannot proceed with Hide / Flag action due to token restriction.",
+            "score": 0.01287879,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-5759"
+            ],
+            "evidence_ids": [
+              "ev_1ad128968e343ee3"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.61070637235902,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_da114c5210ae48dc",
+            "type": "fact",
+            "title": "As per expected behavior, custom prompts should be scoped to a specific network and should not be accessible or visible across different networks.",
+            "summary": "As per expected behavior, custom prompts should be scoped to a specific network and should not be accessible or visible across different networks.",
+            "score": 0.01268657,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6963"
+            ],
+            "evidence_ids": [
+              "ev_7d34b51d9ae1b96f"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.53896032071414,
+            "similarity": 0.0,
+            "why": "lexical"
+          },
+          {
+            "item_id": "fact_0117169dc8ad83b8",
+            "type": "fact",
+            "title": "Chat history associate with other network should not be visible under other networks.",
+            "summary": "Chat history associate with other network should not be visible under other networks.",
+            "score": 0.0125,
+            "confidence": "medium",
+            "record_ids": [
+              "KEP-6425"
+            ],
+            "evidence_ids": [
+              "ev_e6867343ad7c870d"
+            ],
+            "routes": [
+              "lexical"
+            ],
+            "association": null,
+            "lexical_score": 9.528274126118434,
+            "similarity": 0.0,
+            "why": "lexical"
+          }
+        ],
+        "trace": {
+          "mode": "BM25 only",
+          "anchor_nodes": [],
+          "seed_item_ids": [
+            "fact_7a9b3166400891a4",
+            "fact_dce774a308e86025",
+            "episode_62ade84aa7ddae3e",
+            "fact_8b465cd7133d7dd6",
+            "fact_8c68701278478701",
+            "fact_ea008dc6a6125961",
+            "fact_da114c5210ae48dc",
+            "fact_0117169dc8ad83b8"
+          ],
+          "discarded": [
+            {
+              "item_id": "fact_8e2b4ceb5cd93811",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f29466c0d5922fd0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_2ea95543a318e7be",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_50672a8f9c1a48c5",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_70118cb83adb3db5",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_fec01a8c98f882fd",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_1ef4bc3ccb19d28e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5bda28e4dd431567",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_faf8b54d42981767",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6a429b7e2233373c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_5b78bb345ab1622c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_58105ba8481b9ae1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_cc6ed8bb011ff18f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5ab25eb61d703896",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_27a085c800d79ef4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_a55a2411b9278f4a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_46402a6f53cb477e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_0d7b9b9f286090fc",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_b64b5e2618910baf",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_97ecd80688d92bc6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_5b00447aca4e767b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5eb2650846f66cbd",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_afb15dcd54befff0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6b40cd34fdb5a137",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_70553bb7ab2d3b26",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_4f3ab8082910fb2c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_8d0215a2d748d065",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_237f50a7814bbace",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1e22970d70f77ce8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_a4fd45fb1a52498e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_69398db3485f4bd4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_cf905b1d38d750ad",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_c77657b02277f920",
+              "reason": "outside result budget"
+            }
+          ],
+          "max_hops": 2,
+          "score_note": "RRF k=60; support multipliers 1/.85/.65; association decay .6 per hop. Heuristics, not probabilities."
+        }
+      },
+      "returned_pattern_checks": []
+    }
+  ],
+  "limitation": "Additional inspection questions, not labeled ground truth. Retrieval changes alone do not establish helpfulness or correctness.",
+  "execution_scope": "production",
+  "preview_notice": null
+}

@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "errors": [],
+  "items_checked": 1785,
+  "evidence_checked": 4051,
+  "limitation": "Structural validation cannot establish semantic entailment or real-world truth."
+}
