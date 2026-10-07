@@ -1,0 +1,1392 @@
+{
+  "question": "What does the history say teams should routinely do for monitoring and QA, and what establishes actual execution or effectiveness?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "QA should check that chat history remains specific to the selected network, including after a meta-agent query.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_15bdf5a436847088",
+          "quote": "As a QA tester, when I test the chat history management, I want to ensure that network A cannot see network B's history so that data privacy is maintained.",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_2108cead365df520",
+          "quote": "As a QA tester, when I access chat history from the dashboard, I want to confirm the history remains network-specific after a query triggers from the meta agent.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passages explicitly state QA checks.",
+      "verification_note": "These are test intentions, not proof that the checks ran.",
+      "id": "C1",
+      "record_ids": [
+        "KEP-6579"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "QA should also test cross-network actions from chat history: a production QA report says accounts or sources could be added to the currently open network rather than the network where the chat originated.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_02824c23f9963f4f",
+          "quote": "RETESTING - 🪲QA: prod : Accounts/Sources from Chat History get added to the wrong network",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_9472a4c8aa1f432d",
+          "quote": "The account/source gets added to the currently open network (Network B) instead of the original network (Network A) where the chat was generated",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The reported defect directly supports this QA focus, but the routine recommendation is a synthesis.",
+      "verification_note": "The report does not measure customer impact or establish whether the defect persisted after retesting.",
+      "id": "C2",
+      "record_ids": [
+        "KEP-6429"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "QA should test that switching chat histories clears stale Add Account suggestions.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_c392133930f7643c",
+          "quote": "The Add Account panel should only display account suggestions related to the currently opened chat history , and any previous history data should be cleared when switching histories.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The expected behavior is stated directly.",
+      "verification_note": "This passage states an expectation, not a verified fix.",
+      "id": "C3",
+      "record_ids": [
+        "KEP-6432"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "For privacy-sensitive monitoring, the record identifies verbose observability and logging as an exposure concern, particularly detailed CA execution context.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_7778294f2b79271d",
+          "quote": "observability/logging is currently the largest exposure path",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_bf0b962c02eb9f84",
+          "quote": "CA is the primary concern: logging is very verbose and includes detailed execution context",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The concern is explicitly reported.",
+      "verification_note": "The passages do not show that logging was changed or that exposure was measured.",
+      "id": "C4",
+      "record_ids": [
+        "KEP-6793"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The moderation record calls for evaluating the OpenAI Moderation API's effectiveness and performance in detecting unsafe content.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_2d07c3633d4fdf58",
+          "quote": "We need to evaluate the effectiveness and performance of the OpenAI Moderation API for detecting unsafe content",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The evaluation need is explicit.",
+      "verification_note": "No evaluation result is supplied.",
+      "id": "C5",
+      "record_ids": [
+        "KEP-6733"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The production QA API-suite summary reports an execution on 2026-05-13: 215 tests, 208 passed, and 7 failed.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_4a2fbd0945ff738e",
+          "quote": "Prod API Suite Execution Result: QA-API-Suite — Production Execution Summary (2026-05-13) Total Tests: 215 | ✅ Passed: 208 | ❌ Failed: 7",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "A dated execution summary supplies counts and environment.",
+      "verification_note": "It establishes a reported run, not the suite's coverage, failure resolution, or sustained effectiveness.",
+      "id": "C6",
+      "record_ids": [
+        "KEP-7078"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "A QA note reports seeing network-specific chat history and says new network chat history was working, while also reporting a PDF-download bug.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_4a6e925afa46e1d6",
+          "quote": "I can see chat history specific to networks now.",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_97ba21303787884b",
+          "quote": "New chat history for networks is working. Raised bug for pdf download -",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "These are direct QA observations with a stated remaining bug.",
+      "verification_note": "They support limited observed behavior, not comprehensive isolation or PDF quality.",
+      "id": "C7",
+      "record_ids": [
+        "KEP-6579"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "A staging-environment QA note reports that a Narrative image was working there after a broken-image report.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_4487f5d076bd9041",
+          "quote": "A broken image icon is displayed in the Narrative section instead of the actual image.",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_a6bcd74ea646c69c",
+          "quote": "It's working on staging env now.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passages directly report the defect and a staging observation.",
+      "verification_note": "The staging observation does not establish production recovery.",
+      "id": "C8",
+      "record_ids": [
+        "KEP-5451"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "A ticket marked Done is not, by itself, evidence that the reported cross-network account/source issue was fixed or that retesting passed.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_2509c7cf9fccbd58",
+          "quote": "resolution: Done | status: Done",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_02824c23f9963f4f",
+          "quote": "RETESTING - 🪲QA: prod : Accounts/Sources from Chat History get added to the wrong network",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The supplied status and retesting label do not include a passing result.",
+      "verification_note": "A post-fix test result would be needed to establish recovery.",
+      "id": "C9",
+      "record_ids": [
+        "KEP-6429"
+      ],
+      "source_mode": "text"
+    }
+  ],
+  "unanswered": [
+    "The passages do not specify a monitoring or QA cadence, named owners, alert thresholds, or a comprehensive routine checklist.",
+    "No supplied result establishes the effectiveness of the OpenAI Moderation API evaluation.",
+    "The supplied passages do not establish resolution of the seven failed production API-suite tests or sustained production effectiveness."
+  ],
+  "limitations": [
+    "Expected results and test intentions are not evidence of execution.",
+    "The records cover distinct systems and environments; staging observations and AIR issues should not be treated as Kepler production outcomes.",
+    "BM25 over extracted record text; exact citations do not establish semantic correctness."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "execution_scope": "source_only"
+    },
+    {
+      "sequence": 2,
+      "kind": "tool",
+      "name": "retrieve_text",
+      "arguments": {
+        "query": "What does the history say teams should routinely do for monitoring and QA, and what establishes actual execution or effectiveness?",
+        "top_k": 20
+      },
+      "call_id": "text_1",
+      "result": {
+        "records": [
+          {
+            "record_id": "KEP-6425",
+            "passages": [
+              {
+                "evidence_id": "ev_1661126f5472a640",
+                "record_id": "KEP-6425",
+                "quote": "If a chat ID is used across multiple networks, it should be categorized as a dashboard chat.",
+                "start": 0,
+                "end": 92
+              },
+              {
+                "evidence_id": "ev_301c66873cceab2e",
+                "record_id": "KEP-6425",
+                "quote": "The dashboard page should still display all the chat history.",
+                "start": 0,
+                "end": 61
+              },
+              {
+                "evidence_id": "ev_4198785c055a7d27",
+                "record_id": "KEP-6425",
+                "quote": "The current implementation does not link agent history with network IDs. This leads to visibility issues where chat histories can appear under incorrect networks. The goal is to update the codebase to ensure proper association of chat histories with their respective networks.",
+                "start": 0,
+                "end": 276
+              },
+              {
+                "evidence_id": "ev_4f543d247cdd3eaf",
+                "record_id": "KEP-6425",
+                "quote": "New threads created within a network should have their chat history linked to the corresponding network ID.",
+                "start": 0,
+                "end": 107
+              },
+              {
+                "evidence_id": "ev_cbcfad6275ebecd4",
+                "record_id": "KEP-6425",
+                "quote": "A script to be made to update the old history If a chat ID is associated with only one network, update the chat head with that network ID.",
+                "start": 0,
+                "end": 138
+              },
+              {
+                "evidence_id": "ev_e6867343ad7c870d",
+                "record_id": "KEP-6425",
+                "quote": "Chat history associate with other network should not be visible under other networks.",
+                "start": 0,
+                "end": 85
+              }
+            ],
+            "score": 10.667131216544176
+          },
+          {
+            "record_id": "KEP-6579",
+            "passages": [
+              {
+                "evidence_id": "ev_15bdf5a436847088",
+                "record_id": "KEP-6579",
+                "quote": "As a QA tester, when I test the chat history management, I want to ensure that network A cannot see network B's history so that data privacy is maintained.",
+                "start": 0,
+                "end": 155
+              },
+              {
+                "evidence_id": "ev_2108cead365df520",
+                "record_id": "KEP-6579",
+                "quote": "As a QA tester, when I access chat history from the dashboard, I want to confirm the history remains network-specific after a query triggers from the meta agent.",
+                "start": 0,
+                "end": 161
+              },
+              {
+                "evidence_id": "ev_4a6e925afa46e1d6",
+                "record_id": "KEP-6579",
+                "quote": "I can see chat history specific to networks now.",
+                "start": 0,
+                "end": 48
+              },
+              {
+                "evidence_id": "ev_97ba21303787884b",
+                "record_id": "KEP-6579",
+                "quote": "New chat history for networks is working. Raised bug for pdf download -",
+                "start": 0,
+                "end": 71
+              },
+              {
+                "evidence_id": "ev_e1e0ee46279dc9b5",
+                "record_id": "KEP-6579",
+                "quote": "As a QA tester, when I generate a PDF of the chat, I want to verify that the output is improved for all old and new chats so that the quality of documentation is enhanced.",
+                "start": 0,
+                "end": 171
+              }
+            ],
+            "score": 10.413633711035331
+          },
+          {
+            "record_id": "KEP-7078",
+            "passages": [
+              {
+                "evidence_id": "ev_4a2fbd0945ff738e",
+                "record_id": "KEP-7078",
+                "quote": "Prod API Suite Execution Result: QA-API-Suite — Production Execution Summary (2026-05-13) Total Tests: 215 | ✅ Passed: 208 | ❌ Failed: 7",
+                "start": 0,
+                "end": 136
+              },
+              {
+                "evidence_id": "ev_59722d42e9c7827f",
+                "record_id": "KEP-7078",
+                "quote": "QA: PROD : Sanity Testing 19.3.0",
+                "start": 0,
+                "end": 32
+              }
+            ],
+            "score": 10.317319262863023
+          },
+          {
+            "record_id": "KEP-6426",
+            "passages": [
+              {
+                "evidence_id": "ev_a2c9640e32601d1d",
+                "record_id": "KEP-6426",
+                "quote": "As a user, when I access the chat history, I want to see history specific to my network so that I can easily find relevant conversations.",
+                "start": 0,
+                "end": 137
+              },
+              {
+                "evidence_id": "ev_d2a08c9f6b1c6542",
+                "record_id": "KEP-6426",
+                "quote": "The current chat history API does not include a query parameter for network ID. This update aims to enhance the functionality by allowing network-specific history retrieval.",
+                "start": 0,
+                "end": 173
+              },
+              {
+                "evidence_id": "ev_eb3facf41a054cce",
+                "record_id": "KEP-6426",
+                "quote": "The chat history API must accept a query parameter for network ID.",
+                "start": 0,
+                "end": 66
+              }
+            ],
+            "score": 10.2118701950964
+          },
+          {
+            "record_id": "KEP-6432",
+            "passages": [
+              {
+                "evidence_id": "ev_ad19e76cb0c16784",
+                "record_id": "KEP-6432",
+                "quote": "While testing the fix for the Add Account panel opening from the right-side drawer , another issue was identified related to chat history behavior",
+                "start": 0,
+                "end": 146
+              },
+              {
+                "evidence_id": "ev_c392133930f7643c",
+                "record_id": "KEP-6432",
+                "quote": "The Add Account panel should only display account suggestions related to the currently opened chat history , and any previous history data should be cleared when switching histories.",
+                "start": 0,
+                "end": 182
+              },
+              {
+                "evidence_id": "ev_cdd53e776e115e82",
+                "record_id": "KEP-6432",
+                "quote": "When a user opens a previous chat history and clicks on an Add Account suggestion , the account data gets loaded in the background. If the user then switches to another chat history , the accounts from the previously opened history remain visible in the Add Account panel.",
+                "start": 0,
+                "end": 272
+              }
+            ],
+            "score": 9.368652322424374
+          },
+          {
+            "record_id": "KEP-6429",
+            "passages": [
+              {
+                "evidence_id": "ev_02824c23f9963f4f",
+                "record_id": "KEP-6429",
+                "quote": "RETESTING - 🪲QA: prod : Accounts/Sources from Chat History get added to the wrong network",
+                "start": 0,
+                "end": 89
+              },
+              {
+                "evidence_id": "ev_0f14aca16e1083b0",
+                "record_id": "KEP-6429",
+                "quote": "This creates a cross-network connection issue , where accounts belonging to one network can mistakenly be added to another network through the history feature",
+                "start": 0,
+                "end": 158
+              },
+              {
+                "evidence_id": "ev_2509c7cf9fccbd58",
+                "record_id": "KEP-6429",
+                "quote": "resolution: Done | status: Done",
+                "start": 0,
+                "end": 31
+              },
+              {
+                "evidence_id": "ev_4629f48f92650941",
+                "record_id": "KEP-6429",
+                "quote": "While validating the Agent Chat History feature , an issue was observed when accessing history from a different network",
+                "start": 0,
+                "end": 119
+              },
+              {
+                "evidence_id": "ev_9472a4c8aa1f432d",
+                "record_id": "KEP-6429",
+                "quote": "The account/source gets added to the currently open network (Network B) instead of the original network (Network A) where the chat was generated",
+                "start": 0,
+                "end": 144
+              },
+              {
+                "evidence_id": "ev_cb96b5bbad005ca5",
+                "record_id": "KEP-6429",
+                "quote": "If a user opens chat history from another network and the history contains suggested sources/accounts , adding those accounts results in them being added to the currently open network instead of the original network",
+                "start": 0,
+                "end": 215
+              },
+              {
+                "evidence_id": "ev_f0ce012902c611bb",
+                "record_id": "KEP-6429",
+                "quote": "Accounts/sources from chat history should: Either only be added to the original network where the chat was generated",
+                "start": 0,
+                "end": 116
+              }
+            ],
+            "score": 9.095923393212868
+          },
+          {
+            "record_id": "KEP-5789",
+            "passages": [
+              {
+                "evidence_id": "ev_69c4f0d0d6850bdb",
+                "record_id": "KEP-5789",
+                "quote": "This is an issue for AIR, not Kepler",
+                "start": 0,
+                "end": 36
+              },
+              {
+                "evidence_id": "ev_985833f6921c63e9",
+                "record_id": "KEP-5789",
+                "quote": "The facial recognition model is incorrectly identifying multiple individuals as 'Melissa Ann Atwal', leading to significant misrepresentation.",
+                "start": 0,
+                "end": 142
+              },
+              {
+                "evidence_id": "ev_a75d27a5ed95c6a8",
+                "record_id": "KEP-5789",
+                "quote": "The facial recognition model should accurately identify individuals based on their actual appearance.",
+                "start": 0,
+                "end": 101
+              },
+              {
+                "evidence_id": "ev_bae21b25bc1641ce",
+                "record_id": "KEP-5789",
+                "quote": "the search functionality is returning posts that do not contain the keyword 'Melissa' in the caption or video summary, causing confusion for users.",
+                "start": 0,
+                "end": 147
+              },
+              {
+                "evidence_id": "ev_da32365ce405180a",
+                "record_id": "KEP-5789",
+                "quote": "The search functionality should only return posts that contain the keyword 'Melissa' in either the caption or video description.",
+                "start": 0,
+                "end": 128
+              },
+              {
+                "evidence_id": "ev_f41229fcbd2a7452",
+                "record_id": "KEP-5789",
+                "quote": "the search functionality is returning posts that do not contain the keyword 'Melissa' in the caption or video summary",
+                "start": 0,
+                "end": 117
+              }
+            ],
+            "score": 8.974544910116553
+          },
+          {
+            "record_id": "KEP-6733",
+            "passages": [
+              {
+                "evidence_id": "ev_2d07c3633d4fdf58",
+                "record_id": "KEP-6733",
+                "quote": "We need to evaluate the effectiveness and performance of the OpenAI Moderation API for detecting unsafe content",
+                "start": 0,
+                "end": 111
+              }
+            ],
+            "score": 8.621233302692845
+          },
+          {
+            "record_id": "Community_1737",
+            "passages": [
+              {
+                "evidence_id": "ev_99d1574bc50a6ae0",
+                "record_id": "Community_1737",
+                "quote": "Expected Result: Accounts/sources from chat history should: Either only be added to the original network where the chat was generated",
+                "start": 0,
+                "end": 133
+              }
+            ],
+            "score": 8.016859486586926
+          },
+          {
+            "record_id": "KEP-5588",
+            "passages": [
+              {
+                "evidence_id": "ev_615c89da13c2fed2",
+                "record_id": "KEP-5588",
+                "quote": "Some comments stance tasks do not receive a service callback even after task execution.",
+                "start": 0,
+                "end": 87
+              },
+              {
+                "evidence_id": "ev_86dc5507c10f56a9",
+                "record_id": "KEP-5588",
+                "quote": "JSON schema validation before upload",
+                "start": 0,
+                "end": 36
+              },
+              {
+                "evidence_id": "ev_c963b8af2b86f38e",
+                "record_id": "KEP-5588",
+                "quote": "Empty or invalid JSON files are being uploaded to the S3 bucket during comments stance processing.",
+                "start": 0,
+                "end": 98
+              }
+            ],
+            "score": 7.95934808137283
+          },
+          {
+            "record_id": "KEP-5451",
+            "passages": [
+              {
+                "evidence_id": "ev_4487f5d076bd9041",
+                "record_id": "KEP-5451",
+                "quote": "A broken image icon is displayed in the Narrative section instead of the actual image.",
+                "start": 0,
+                "end": 86
+              },
+              {
+                "evidence_id": "ev_502d29b9b4836fbc",
+                "record_id": "KEP-5451",
+                "quote": "parent_key: KEP-6278",
+                "start": 0,
+                "end": 20
+              },
+              {
+                "evidence_id": "ev_a6bcd74ea646c69c",
+                "record_id": "KEP-5451",
+                "quote": "It's working on staging env now.",
+                "start": 0,
+                "end": 32
+              },
+              {
+                "evidence_id": "ev_c4cf1f8837923ff0",
+                "record_id": "KEP-5451",
+                "quote": "🐞QA: Broken image displayed in Narrative section",
+                "start": 0,
+                "end": 48
+              }
+            ],
+            "score": 7.933978534882647
+          },
+          {
+            "record_id": "KEP-5737",
+            "passages": [
+              {
+                "evidence_id": "ev_bec8c98e350b5bab",
+                "record_id": "KEP-5737",
+                "quote": "Retesting - QA: Deleted Pruning Rule Does Not Sync Immediately on UI",
+                "start": 0,
+                "end": 68
+              }
+            ],
+            "score": 7.932998357385726
+          },
+          {
+            "record_id": "KEP-3232",
+            "passages": [
+              {
+                "evidence_id": "ev_4d7e39d3b34c5d2f",
+                "record_id": "KEP-3232",
+                "quote": "Deploy NH Pipeline 2.0 services in the QA namespace",
+                "start": 0,
+                "end": 51
+              },
+              {
+                "evidence_id": "ev_dece1a003e8ee2db",
+                "record_id": "KEP-3232",
+                "quote": "NH Pipeline 2.0 is deployed successfully in the QA environment",
+                "start": 0,
+                "end": 62
+              },
+              {
+                "evidence_id": "ev_ef617e27f9961ad7",
+                "record_id": "KEP-3232",
+                "quote": "was trying the nh pipeline on QA env ( staging ac) but the QA: acc-ue2-dev-kepler-narr-hier-qa-batch-job-payload is showing as \"does not exists\"",
+                "start": 0,
+                "end": 144
+              }
+            ],
+            "score": 7.688882908282258
+          },
+          {
+            "record_id": "KEP-6521",
+            "passages": [
+              {
+                "evidence_id": "ev_8e2e7899f5d2ae26",
+                "record_id": "KEP-6521",
+                "quote": "In the agent creation prompt page, the gray text needs updating. Can you make it say, \"I want to look for indications of political parties or local organizations in videos and images.\"?",
+                "start": 0,
+                "end": 185
+              }
+            ],
+            "score": 7.4359861518927435
+          },
+          {
+            "record_id": "KEP-6793",
+            "passages": [
+              {
+                "evidence_id": "ev_0f4af50cadd81e32",
+                "record_id": "KEP-6793",
+                "quote": "A very important customer is onboarding and requires that their activity in the platform is not visible to other customers or internal engineers.",
+                "start": 0,
+                "end": 145
+              },
+              {
+                "evidence_id": "ev_7778294f2b79271d",
+                "record_id": "KEP-6793",
+                "quote": "observability/logging is currently the largest exposure path",
+                "start": 0,
+                "end": 60
+              },
+              {
+                "evidence_id": "ev_b0d8ea60bc630cf2",
+                "record_id": "KEP-6793",
+                "quote": "do not store anything that gives an indication of a user's intent and their interaction with the system",
+                "start": 0,
+                "end": 103
+              },
+              {
+                "evidence_id": "ev_bf0b962c02eb9f84",
+                "record_id": "KEP-6793",
+                "quote": "CA is the primary concern: logging is very verbose and includes detailed execution context",
+                "start": 0,
+                "end": 90
+              }
+            ],
+            "score": 7.04319673197859
+          },
+          {
+            "record_id": "KEP-2955",
+            "passages": [
+              {
+                "evidence_id": "ev_1917b10b90aba998",
+                "record_id": "KEP-2955",
+                "quote": "While using Kepler in the staging environment, an issue is observed in the QA Automation Network where file upload–related commands do not work",
+                "start": 0,
+                "end": 143
+              },
+              {
+                "evidence_id": "ev_b160fc2892b59c01",
+                "record_id": "KEP-2955",
+                "quote": "This is working and hence closing now",
+                "start": 0,
+                "end": 37
+              }
+            ],
+            "score": 6.84961107594914
+          },
+          {
+            "record_id": "KEP-2849",
+            "passages": [
+              {
+                "evidence_id": "ev_a2785de74e25ac55",
+                "record_id": "KEP-2849",
+                "quote": "The API should take token as an input to fetch user details.",
+                "start": 0,
+                "end": 60
+              },
+              {
+                "evidence_id": "ev_c50d676806fd23ad",
+                "record_id": "KEP-2849",
+                "quote": "KEPLER BE: Build a API to Create Custom Agent Styles",
+                "start": 0,
+                "end": 52
+              },
+              {
+                "evidence_id": "ev_c8db5ffba0fafff0",
+                "record_id": "KEP-2849",
+                "quote": "The API should return an error message if the provided styles do not meet validation criteria.",
+                "start": 0,
+                "end": 94
+              }
+            ],
+            "score": 6.794146974908516
+          },
+          {
+            "record_id": "KEP-5389",
+            "passages": [
+              {
+                "evidence_id": "ev_7e4519c3675b92f7",
+                "record_id": "KEP-5389",
+                "quote": "When a pruning rule is deleted, the UI does not refresh automatically",
+                "start": 0,
+                "end": 69
+              },
+              {
+                "evidence_id": "ev_fed8eeb168f5a736",
+                "record_id": "KEP-5389",
+                "quote": "Deleted rule should disappear immediately from: All filter",
+                "start": 0,
+                "end": 58
+              }
+            ],
+            "score": 6.7500535035747955
+          },
+          {
+            "record_id": "Community_1986",
+            "passages": [
+              {
+                "evidence_id": "ev_ccb5f8faa32cbad9",
+                "record_id": "Community_1986",
+                "quote": "Now that we have the Okta IDs coming through in Pendo - we now need a way for the government teams to decrpyt the Okta IDs that are getting passed.",
+                "start": 0,
+                "end": 147
+              }
+            ],
+            "score": 6.564208857147633
+          },
+          {
+            "record_id": "KEP-5333",
+            "passages": [
+              {
+                "evidence_id": "ev_04b13872289e40cb",
+                "record_id": "KEP-5333",
+                "quote": "Permanently remove all instances of the exposed API keys from the Git repository history using tools such as git filter-branch or BFG Repo-Cleaner.",
+                "start": 0,
+                "end": 147
+              },
+              {
+                "evidence_id": "ev_3975811a11f80f20",
+                "record_id": "KEP-5333",
+                "quote": "Permanently remove all instances of the exposed API keys from the Git repository history",
+                "start": 0,
+                "end": 88
+              },
+              {
+                "evidence_id": "ev_937fc189fa5360b3",
+                "record_id": "KEP-5333",
+                "quote": "Delete sensitive API keys from Git history",
+                "start": 0,
+                "end": 42
+              },
+              {
+                "evidence_id": "ev_dcb621ba71329bd8",
+                "record_id": "KEP-5333",
+                "quote": "parent_key: KEP-4964",
+                "start": 0,
+                "end": 20
+              }
+            ],
+            "score": 6.561563856266477
+          }
+        ],
+        "omitted_record_ids": []
+      },
+      "latency_seconds": 0.003025083977263421,
+      "error": false,
+      "new_ids": [
+        "ev_02824c23f9963f4f",
+        "ev_04b13872289e40cb",
+        "ev_0f14aca16e1083b0",
+        "ev_0f4af50cadd81e32",
+        "ev_15bdf5a436847088",
+        "ev_1661126f5472a640",
+        "ev_1917b10b90aba998",
+        "ev_2108cead365df520",
+        "ev_2509c7cf9fccbd58",
+        "ev_2d07c3633d4fdf58",
+        "ev_301c66873cceab2e",
+        "ev_3975811a11f80f20",
+        "ev_4198785c055a7d27",
+        "ev_4487f5d076bd9041",
+        "ev_4629f48f92650941",
+        "ev_4a2fbd0945ff738e",
+        "ev_4a6e925afa46e1d6",
+        "ev_4d7e39d3b34c5d2f",
+        "ev_4f543d247cdd3eaf",
+        "ev_502d29b9b4836fbc",
+        "ev_59722d42e9c7827f",
+        "ev_615c89da13c2fed2",
+        "ev_69c4f0d0d6850bdb",
+        "ev_7778294f2b79271d",
+        "ev_7e4519c3675b92f7",
+        "ev_86dc5507c10f56a9",
+        "ev_8e2e7899f5d2ae26",
+        "ev_937fc189fa5360b3",
+        "ev_9472a4c8aa1f432d",
+        "ev_97ba21303787884b",
+        "ev_985833f6921c63e9",
+        "ev_99d1574bc50a6ae0",
+        "ev_a2785de74e25ac55",
+        "ev_a2c9640e32601d1d",
+        "ev_a6bcd74ea646c69c",
+        "ev_a75d27a5ed95c6a8",
+        "ev_ad19e76cb0c16784",
+        "ev_b0d8ea60bc630cf2",
+        "ev_b160fc2892b59c01",
+        "ev_bae21b25bc1641ce",
+        "ev_bec8c98e350b5bab",
+        "ev_bf0b962c02eb9f84",
+        "ev_c392133930f7643c",
+        "ev_c4cf1f8837923ff0",
+        "ev_c50d676806fd23ad",
+        "ev_c8db5ffba0fafff0",
+        "ev_c963b8af2b86f38e",
+        "ev_cb96b5bbad005ca5",
+        "ev_cbcfad6275ebecd4",
+        "ev_ccb5f8faa32cbad9",
+        "ev_cdd53e776e115e82",
+        "ev_d2a08c9f6b1c6542",
+        "ev_da32365ce405180a",
+        "ev_dcb621ba71329bd8",
+        "ev_dece1a003e8ee2db",
+        "ev_e1e0ee46279dc9b5",
+        "ev_e6867343ad7c870d",
+        "ev_eb3facf41a054cce",
+        "ev_ef617e27f9961ad7",
+        "ev_f0ce012902c611bb",
+        "ev_f41229fcbd2a7452",
+        "ev_fed8eeb168f5a736",
+        "span:ev_02824c23f9963f4f:0:89",
+        "span:ev_04b13872289e40cb:0:147",
+        "span:ev_0f14aca16e1083b0:0:158",
+        "span:ev_0f4af50cadd81e32:0:145",
+        "span:ev_15bdf5a436847088:0:155",
+        "span:ev_1661126f5472a640:0:92",
+        "span:ev_1917b10b90aba998:0:143",
+        "span:ev_2108cead365df520:0:161",
+        "span:ev_2509c7cf9fccbd58:0:31",
+        "span:ev_2d07c3633d4fdf58:0:111",
+        "span:ev_301c66873cceab2e:0:61",
+        "span:ev_3975811a11f80f20:0:88",
+        "span:ev_4198785c055a7d27:0:276",
+        "span:ev_4487f5d076bd9041:0:86",
+        "span:ev_4629f48f92650941:0:119",
+        "span:ev_4a2fbd0945ff738e:0:136",
+        "span:ev_4a6e925afa46e1d6:0:48",
+        "span:ev_4d7e39d3b34c5d2f:0:51",
+        "span:ev_4f543d247cdd3eaf:0:107",
+        "span:ev_502d29b9b4836fbc:0:20",
+        "span:ev_59722d42e9c7827f:0:32",
+        "span:ev_615c89da13c2fed2:0:87",
+        "span:ev_69c4f0d0d6850bdb:0:36",
+        "span:ev_7778294f2b79271d:0:60",
+        "span:ev_7e4519c3675b92f7:0:69",
+        "span:ev_86dc5507c10f56a9:0:36",
+        "span:ev_8e2e7899f5d2ae26:0:185",
+        "span:ev_937fc189fa5360b3:0:42",
+        "span:ev_9472a4c8aa1f432d:0:144",
+        "span:ev_97ba21303787884b:0:71",
+        "span:ev_985833f6921c63e9:0:142",
+        "span:ev_99d1574bc50a6ae0:0:133",
+        "span:ev_a2785de74e25ac55:0:60",
+        "span:ev_a2c9640e32601d1d:0:137",
+        "span:ev_a6bcd74ea646c69c:0:32",
+        "span:ev_a75d27a5ed95c6a8:0:101",
+        "span:ev_ad19e76cb0c16784:0:146",
+        "span:ev_b0d8ea60bc630cf2:0:103",
+        "span:ev_b160fc2892b59c01:0:37",
+        "span:ev_bae21b25bc1641ce:0:147",
+        "span:ev_bec8c98e350b5bab:0:68",
+        "span:ev_bf0b962c02eb9f84:0:90",
+        "span:ev_c392133930f7643c:0:182",
+        "span:ev_c4cf1f8837923ff0:0:48",
+        "span:ev_c50d676806fd23ad:0:52",
+        "span:ev_c8db5ffba0fafff0:0:94",
+        "span:ev_c963b8af2b86f38e:0:98",
+        "span:ev_cb96b5bbad005ca5:0:215",
+        "span:ev_cbcfad6275ebecd4:0:138",
+        "span:ev_ccb5f8faa32cbad9:0:147",
+        "span:ev_cdd53e776e115e82:0:272",
+        "span:ev_d2a08c9f6b1c6542:0:173",
+        "span:ev_da32365ce405180a:0:128",
+        "span:ev_dcb621ba71329bd8:0:20",
+        "span:ev_dece1a003e8ee2db:0:62",
+        "span:ev_e1e0ee46279dc9b5:0:171",
+        "span:ev_e6867343ad7c870d:0:85",
+        "span:ev_eb3facf41a054cce:0:66",
+        "span:ev_ef617e27f9961ad7:0:144",
+        "span:ev_f0ce012902c611bb:0:116",
+        "span:ev_f41229fcbd2a7452:0:117",
+        "span:ev_fed8eeb168f5a736:0:58"
+      ]
+    },
+    {
+      "sequence": 3,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 17155,
+      "visible_evidence_ids": [
+        "ev_02824c23f9963f4f",
+        "ev_04b13872289e40cb",
+        "ev_0f14aca16e1083b0",
+        "ev_0f4af50cadd81e32",
+        "ev_15bdf5a436847088",
+        "ev_1661126f5472a640",
+        "ev_1917b10b90aba998",
+        "ev_2108cead365df520",
+        "ev_2509c7cf9fccbd58",
+        "ev_2d07c3633d4fdf58",
+        "ev_301c66873cceab2e",
+        "ev_3975811a11f80f20",
+        "ev_4198785c055a7d27",
+        "ev_4487f5d076bd9041",
+        "ev_4629f48f92650941",
+        "ev_4a2fbd0945ff738e",
+        "ev_4a6e925afa46e1d6",
+        "ev_4d7e39d3b34c5d2f",
+        "ev_4f543d247cdd3eaf",
+        "ev_502d29b9b4836fbc",
+        "ev_59722d42e9c7827f",
+        "ev_615c89da13c2fed2",
+        "ev_69c4f0d0d6850bdb",
+        "ev_7778294f2b79271d",
+        "ev_7e4519c3675b92f7",
+        "ev_86dc5507c10f56a9",
+        "ev_8e2e7899f5d2ae26",
+        "ev_937fc189fa5360b3",
+        "ev_9472a4c8aa1f432d",
+        "ev_97ba21303787884b",
+        "ev_985833f6921c63e9",
+        "ev_99d1574bc50a6ae0",
+        "ev_a2785de74e25ac55",
+        "ev_a2c9640e32601d1d",
+        "ev_a6bcd74ea646c69c",
+        "ev_a75d27a5ed95c6a8",
+        "ev_ad19e76cb0c16784",
+        "ev_b0d8ea60bc630cf2",
+        "ev_b160fc2892b59c01",
+        "ev_bae21b25bc1641ce",
+        "ev_bec8c98e350b5bab",
+        "ev_bf0b962c02eb9f84",
+        "ev_c392133930f7643c",
+        "ev_c4cf1f8837923ff0",
+        "ev_c50d676806fd23ad",
+        "ev_c8db5ffba0fafff0",
+        "ev_c963b8af2b86f38e",
+        "ev_cb96b5bbad005ca5",
+        "ev_cbcfad6275ebecd4",
+        "ev_ccb5f8faa32cbad9",
+        "ev_cdd53e776e115e82",
+        "ev_d2a08c9f6b1c6542",
+        "ev_da32365ce405180a",
+        "ev_dcb621ba71329bd8",
+        "ev_dece1a003e8ee2db",
+        "ev_e1e0ee46279dc9b5",
+        "ev_e6867343ad7c870d",
+        "ev_eb3facf41a054cce",
+        "ev_ef617e27f9961ad7",
+        "ev_f0ce012902c611bb",
+        "ev_f41229fcbd2a7452",
+        "ev_fed8eeb168f5a736"
+      ],
+      "included_tool_call_ids": [
+        "text_1"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "started"
+    },
+    {
+      "sequence": 5,
+      "kind": "model",
+      "call_number": 1,
+      "status": "complete",
+      "request_id": "request_7a9e0eb5515e6b8e",
+      "draft": {
+        "claims": [
+          {
+            "statement": "QA should check that chat history remains specific to the selected network, including after a meta-agent query.",
+            "kind": "prescription",
+            "citations": [
+              {
+                "evidence_id": "ev_15bdf5a436847088",
+                "quote": "As a QA tester, when I test the chat history management, I want to ensure that network A cannot see network B's history so that data privacy is maintained.",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_2108cead365df520",
+                "quote": "As a QA tester, when I access chat history from the dashboard, I want to confirm the history remains network-specific after a query triggers from the meta agent.",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The passages explicitly state QA checks.",
+            "verification_note": "These are test intentions, not proof that the checks ran."
+          },
+          {
+            "statement": "QA should also test cross-network actions from chat history: a production QA report says accounts or sources could be added to the currently open network rather than the network where the chat originated.",
+            "kind": "synthesis",
+            "citations": [
+              {
+                "evidence_id": "ev_02824c23f9963f4f",
+                "quote": "RETESTING - 🪲QA: prod : Accounts/Sources from Chat History get added to the wrong network",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_9472a4c8aa1f432d",
+                "quote": "The account/source gets added to the currently open network (Network B) instead of the original network (Network A) where the chat was generated",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "medium",
+            "confidence_reason": "The reported defect directly supports this QA focus, but the routine recommendation is a synthesis.",
+            "verification_note": "The report does not measure customer impact or establish whether the defect persisted after retesting."
+          },
+          {
+            "statement": "QA should test that switching chat histories clears stale Add Account suggestions.",
+            "kind": "prescription",
+            "citations": [
+              {
+                "evidence_id": "ev_c392133930f7643c",
+                "quote": "The Add Account panel should only display account suggestions related to the currently opened chat history , and any previous history data should be cleared when switching histories.",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The expected behavior is stated directly.",
+            "verification_note": "This passage states an expectation, not a verified fix."
+          },
+          {
+            "statement": "For privacy-sensitive monitoring, the record identifies verbose observability and logging as an exposure concern, particularly detailed CA execution context.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_7778294f2b79271d",
+                "quote": "observability/logging is currently the largest exposure path",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_bf0b962c02eb9f84",
+                "quote": "CA is the primary concern: logging is very verbose and includes detailed execution context",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The concern is explicitly reported.",
+            "verification_note": "The passages do not show that logging was changed or that exposure was measured."
+          },
+          {
+            "statement": "The moderation record calls for evaluating the OpenAI Moderation API's effectiveness and performance in detecting unsafe content.",
+            "kind": "prescription",
+            "citations": [
+              {
+                "evidence_id": "ev_2d07c3633d4fdf58",
+                "quote": "We need to evaluate the effectiveness and performance of the OpenAI Moderation API for detecting unsafe content",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The evaluation need is explicit.",
+            "verification_note": "No evaluation result is supplied."
+          },
+          {
+            "statement": "The production QA API-suite summary reports an execution on 2026-05-13: 215 tests, 208 passed, and 7 failed.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_4a2fbd0945ff738e",
+                "quote": "Prod API Suite Execution Result: QA-API-Suite — Production Execution Summary (2026-05-13) Total Tests: 215 | ✅ Passed: 208 | ❌ Failed: 7",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "A dated execution summary supplies counts and environment.",
+            "verification_note": "It establishes a reported run, not the suite's coverage, failure resolution, or sustained effectiveness."
+          },
+          {
+            "statement": "A QA note reports seeing network-specific chat history and says new network chat history was working, while also reporting a PDF-download bug.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_4a6e925afa46e1d6",
+                "quote": "I can see chat history specific to networks now.",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_97ba21303787884b",
+                "quote": "New chat history for networks is working. Raised bug for pdf download -",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "These are direct QA observations with a stated remaining bug.",
+            "verification_note": "They support limited observed behavior, not comprehensive isolation or PDF quality."
+          },
+          {
+            "statement": "A staging-environment QA note reports that a Narrative image was working there after a broken-image report.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_4487f5d076bd9041",
+                "quote": "A broken image icon is displayed in the Narrative section instead of the actual image.",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_a6bcd74ea646c69c",
+                "quote": "It's working on staging env now.",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The passages directly report the defect and a staging observation.",
+            "verification_note": "The staging observation does not establish production recovery."
+          },
+          {
+            "statement": "A ticket marked Done is not, by itself, evidence that the reported cross-network account/source issue was fixed or that retesting passed.",
+            "kind": "synthesis",
+            "citations": [
+              {
+                "evidence_id": "ev_2509c7cf9fccbd58",
+                "quote": "resolution: Done | status: Done",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_02824c23f9963f4f",
+                "quote": "RETESTING - 🪲QA: prod : Accounts/Sources from Chat History get added to the wrong network",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "medium",
+            "confidence_reason": "The supplied status and retesting label do not include a passing result.",
+            "verification_note": "A post-fix test result would be needed to establish recovery."
+          }
+        ],
+        "unanswered": [
+          "The passages do not specify a monitoring or QA cadence, named owners, alert thresholds, or a comprehensive routine checklist.",
+          "No supplied result establishes the effectiveness of the OpenAI Moderation API evaluation.",
+          "The supplied passages do not establish resolution of the seven failed production API-suite tests or sustained production effectiveness."
+        ],
+        "limitations": [
+          "Expected results and test intentions are not evidence of execution.",
+          "The records cover distinct systems and environments; staging observations and AIR issues should not be treated as Kepler production outcomes."
+        ]
+      },
+      "latency_seconds": 22.306860915996367,
+      "provider": {
+        "request_id": "request_7a9e0eb5515e6b8e",
+        "purpose": "evaluation_text_rag",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/routines__paraphrase__text_rag/cache/codex/request_7a9e0eb5515e6b8e.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 0,
+          "input_tokens": 8275,
+          "output_tokens": 1964,
+          "reasoning_output_tokens": 111,
+          "total_tokens": 10239
+        },
+        "thread_id": "01a114b3-a061-76c3-88ef-1b1b782abe5d",
+        "turn_id": "01a114b3-a088-7d31-bdee-3a06c98c9db2",
+        "status": "completed",
+        "latency_seconds": 22.2894
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "KEP-6579"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_15bdf5a436847088",
+        "ev_2108cead365df520"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 7,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "KEP-6429"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_02824c23f9963f4f",
+        "ev_9472a4c8aa1f432d"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 8,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "KEP-6432"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_c392133930f7643c"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 9,
+      "kind": "claim_support",
+      "claim_id": "C4",
+      "record_ids": [
+        "KEP-6793"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_7778294f2b79271d",
+        "ev_bf0b962c02eb9f84"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 10,
+      "kind": "claim_support",
+      "claim_id": "C5",
+      "record_ids": [
+        "KEP-6733"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_2d07c3633d4fdf58"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 11,
+      "kind": "claim_support",
+      "claim_id": "C6",
+      "record_ids": [
+        "KEP-7078"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_4a2fbd0945ff738e"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 12,
+      "kind": "claim_support",
+      "claim_id": "C7",
+      "record_ids": [
+        "KEP-6579"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_4a6e925afa46e1d6",
+        "ev_97ba21303787884b"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 13,
+      "kind": "claim_support",
+      "claim_id": "C8",
+      "record_ids": [
+        "KEP-5451"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_4487f5d076bd9041",
+        "ev_a6bcd74ea646c69c"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 14,
+      "kind": "claim_support",
+      "claim_id": "C9",
+      "record_ids": [
+        "KEP-6429"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_2509c7cf9fccbd58",
+        "ev_02824c23f9963f4f"
+      ],
+      "source_mode": "text"
+    }
+  ],
+  "usage": {
+    "model_calls": 1,
+    "data_tool_calls": 1,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 8275,
+      "output_tokens": 1964,
+      "cached_input_tokens": 0,
+      "reasoning_output_tokens": 111
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 22.306860915996367,
+    "provider_elapsed_seconds": 22.2894,
+    "tool_elapsed_seconds": 0.003025083977263421,
+    "total_elapsed_seconds": 22.323108792013954,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "graph_hash": "graph_461ec66cd6c65256",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "execution_scope": "source_only",
+    "approach": "text_rag",
+    "top_k": 20,
+    "corpus_fingerprint": "sha_a36c560065c5dd52",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/routines__paraphrase__text_rag/cache",
+      "timeout": 300.0
+    },
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "routines__paraphrase__text_rag",
+      "question_id": "routines",
+      "variant": "paraphrase",
+      "approach": "text_rag",
+      "question": "What does the history say teams should routinely do for monitoring and QA, and what establishes actual execution or effectiveness?"
+    }
+  }
+}

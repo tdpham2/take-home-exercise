@@ -1,0 +1,46 @@
+{
+  "agent_version": "task2-agent-v1",
+  "graph_hash": "graph_461ec66cd6c65256",
+  "memory_fingerprint": "memory_e4d06d4e2b5f1072",
+  "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+  "schema_version": "3.1",
+  "abstraction_run_id": "abstraction_b28471cf51a91b7f",
+  "execution_scope": "production",
+  "preview_notice": null,
+  "coverage": {
+    "base_status": "complete",
+    "reviewed_candidates": 816,
+    "selected_candidates": 816,
+    "processed_abstraction_packets": 23,
+    "planned_abstraction_packets": 23
+  },
+  "tool_profile": "full",
+  "configuration": {
+    "provider": "codex",
+    "model": "gpt-6-sol",
+    "reasoning_effort": "medium",
+    "max_model_calls": 12,
+    "max_tool_calls": 10,
+    "max_request_chars": 200000,
+    "no_gain_limit": 3,
+    "cache_dir": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__memory_graph/cache",
+    "timeout": 300.0
+  },
+  "created_at": "2026-10-07T04:54:14.960042+00:00",
+  "dependencies": {
+    "langchain": "1.4.0",
+    "langchain-core": "1.6.1",
+    "langgraph": "1.2.11",
+    "pydantic": "2.13.5"
+  },
+  "client_injected": true,
+  "context_policy": "200000 canonical serialized application characters; exact excerpts, pinned evidence, whole-exchange eviction; fresh state per question",
+  "evaluation_fingerprint": "sha_e28d543ed0614083",
+  "run": {
+    "run_id": "pruning__paraphrase__memory_graph",
+    "question_id": "pruning",
+    "variant": "paraphrase",
+    "approach": "memory_graph",
+    "question": "Which pruning behaviors and follow-up actions are reported, and what evidence supports their temporal order?"
+  }
+}

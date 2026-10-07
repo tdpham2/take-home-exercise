@@ -1,0 +1,35 @@
+{
+  "agent_version": "task2-agent-v1",
+  "graph_hash": "graph_461ec66cd6c65256",
+  "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+  "execution_scope": "source_only",
+  "tool_profile": "graph_only",
+  "configuration": {
+    "provider": "codex",
+    "model": "gpt-6-sol",
+    "reasoning_effort": "medium",
+    "max_model_calls": 12,
+    "max_tool_calls": 10,
+    "max_request_chars": 200000,
+    "no_gain_limit": 3,
+    "cache_dir": "artifacts/evaluation/final-sol-v2/runs/pruning__original__graph_only/cache",
+    "timeout": 300.0
+  },
+  "created_at": "2026-10-07T04:18:19.888392+00:00",
+  "dependencies": {
+    "langchain": "1.4.0",
+    "langchain-core": "1.6.1",
+    "langgraph": "1.2.11",
+    "pydantic": "2.13.5"
+  },
+  "client_injected": true,
+  "context_policy": "200000 canonical serialized application characters; exact excerpts, pinned evidence, whole-exchange eviction; fresh state per question",
+  "evaluation_fingerprint": "sha_e28d543ed0614083",
+  "run": {
+    "run_id": "pruning__original__graph_only",
+    "question_id": "pruning",
+    "variant": "original",
+    "approach": "graph_only",
+    "question": "What changes in narrative pruning behavior and remediation are documented, and how confidently can they be ordered?"
+  }
+}

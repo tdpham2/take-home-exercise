@@ -27,7 +27,7 @@ htmlcov/
 /COMMIT_PLAN.md
 /take-home-exercise.bundle
 
-# Keep generated runs local except for the selected memory and pattern evidence.
+# Keep generated runs local except for the selected memory and final evaluation.
 /artifacts/*
 !/artifacts/memory/
 /artifacts/memory/*
@@ -38,3 +38,48 @@ htmlcov/
 !/artifacts/memory/rejected_proposals.json
 !/artifacts/memory/recall_comparison.json
 !/artifacts/memory/packets.json
+
+# Frozen benchmark and final automated evaluation; provider caches stay local.
+!/artifacts/evaluation/
+/artifacts/evaluation/*
+!/artifacts/evaluation/benchmark/
+/artifacts/evaluation/benchmark/*
+!/artifacts/evaluation/benchmark/benchmark.frozen.json
+!/artifacts/evaluation/benchmark/benchmark.assumption.json
+!/artifacts/evaluation/benchmark/benchmark.review.html
+!/artifacts/evaluation/final-sol-v2/
+/artifacts/evaluation/final-sol-v2/*
+!/artifacts/evaluation/final-sol-v2/answer_calls.json
+!/artifacts/evaluation/final-sol-v2/judge_calls.json
+!/artifacts/evaluation/final-sol-v2/judge_manifest.json
+!/artifacts/evaluation/final-sol-v2/judging_progress.json
+!/artifacts/evaluation/final-sol-v2/manifest.json
+!/artifacts/evaluation/final-sol-v2/progress.json
+!/artifacts/evaluation/final-sol-v2/setup.json
+!/artifacts/evaluation/final-sol-v2/inputs/
+/artifacts/evaluation/final-sol-v2/inputs/*
+!/artifacts/evaluation/final-sol-v2/inputs/graph.json
+!/artifacts/evaluation/final-sol-v2/inputs/memory.json
+!/artifacts/evaluation/final-sol-v2/inputs/benchmark.json
+!/artifacts/evaluation/final-sol-v2/judgments/
+/artifacts/evaluation/final-sol-v2/judgments/*
+!/artifacts/evaluation/final-sol-v2/judgments/*.json
+!/artifacts/evaluation/final-sol-v2/consistency/
+/artifacts/evaluation/final-sol-v2/consistency/*
+!/artifacts/evaluation/final-sol-v2/consistency/*.json
+!/artifacts/evaluation/final-sol-v2/report/
+/artifacts/evaluation/final-sol-v2/report/*
+!/artifacts/evaluation/final-sol-v2/report/report.html
+!/artifacts/evaluation/final-sol-v2/report/report.json
+!/artifacts/evaluation/final-sol-v2/report/quality.png
+!/artifacts/evaluation/final-sol-v2/report/cost.png
+!/artifacts/evaluation/final-sol-v2/report/runs.csv
+!/artifacts/evaluation/final-sol-v2/report/paired_differences.csv
+!/artifacts/evaluation/final-sol-v2/report/consistency.csv
+!/artifacts/evaluation/final-sol-v2/runs/
+/artifacts/evaluation/final-sol-v2/runs/*/*
+!/artifacts/evaluation/final-sol-v2/runs/*/answer.json
+!/artifacts/evaluation/final-sol-v2/runs/*/answer.md
+!/artifacts/evaluation/final-sol-v2/runs/*/manifest.json
+!/artifacts/evaluation/final-sol-v2/runs/*/receipt.json
+!/artifacts/evaluation/final-sol-v2/runs/*/trace.jsonl

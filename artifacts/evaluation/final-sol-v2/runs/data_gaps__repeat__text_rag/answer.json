@@ -1,0 +1,1263 @@
+{
+  "question": "What explanations do the records support for DocDB/Elasticsearch data gaps, and what remains unresolved?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "A record reports major data gaps and inconsistencies between DocDB and Elasticsearch.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_6c9707c22f4b3e34",
+          "quote": "Major data gaps and inconsistencies between DocDB and Elasticsearch",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The record states the problem directly.",
+      "verification_note": "The passage gives no scope, counts, or cause.",
+      "id": "C1",
+      "record_ids": [
+        "Community_141"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "Other records separately report that data is not being ingested into DocDB/ES and that data stored in DocDB is uneven or incomplete.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_08a24f67b8645adb",
+          "quote": "data is not being ingested into docDb/ES",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_d12f9a9f4427477b",
+          "quote": "Data stored in DocDB is uneven/incomplete",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "Both are direct reports.",
+      "verification_note": "The passages do not establish that they describe the same incident or its root cause.",
+      "id": "C2",
+      "record_ids": [
+        "KEP-6611",
+        "gdrive:1mXMcKxPJDNpoazNcmy5zt3j_2Sg9S258XJt_xwrq5xg"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "An initial analysis attributed recurring “post not available in ES” errors to get-api returning posts outside the requested date range; it reported that those posts were absent from the corresponding Elasticsearch indices.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_4b4877ee9d6ab0e5",
+          "quote": "Problem Statement We are continuously getting the error \"post not available in ES\" for data coming from multiple get-api sources. In the first iteration of analysis, we found that: get-api is returning posts that are outside the relevant requested date range",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_cd82949318d4632d",
+          "quote": "Because these posts do not exist in the corresponding Elasticsearch indices for that date range, downstream processing fails",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The record explicitly gives this explanation for the errors.",
+      "verification_note": "This explains a reported lookup failure, not necessarily the broader DocDB/Elasticsearch gaps.",
+      "id": "C3",
+      "record_ids": [
+        "KEP-5582"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The proposed response to those out-of-range posts was to enforce date-range filtering at the get-api layer.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_b9081dcdc406a856",
+          "quote": "Fix or enforce date-range filtering logic at the get-api layer so that only posts within the requested window are returned.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passage explicitly states the proposed fix.",
+      "verification_note": "It does not establish implementation or success.",
+      "id": "C4",
+      "record_ids": [
+        "KEP-5582"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "A separate issue attributes wrong Elasticsearch media data to deduplication logic that does not check downloaded-media fields against existing records.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_50e6ee2c28410911",
+          "quote": "Issue: Incorrect media deduplication causing wrong data in ES. The current media deduplication logic only skips the download when the following conditions are met... However, there is no actual deduplication of: downloaded_media_s3_path is_media_downloaded against existing records.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The issue states both the defect and its reported effect.",
+      "verification_note": "It concerns wrong media data in ES, not a demonstrated cause of all data gaps.",
+      "id": "C5",
+      "record_ids": [
+        "KEP-5358"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "A record reports Elasticsearch requests exceeding the configured read window under load, causing failures in ES-dependent code paths.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_93bb7a65168ad9a7",
+          "quote": "We're currently querying ~1,000 posts per request over a 6‑month lookback. The expectation is a <30s response, but under current Elasticsearch load we're exceeding that threshold",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_c1c1bf0abb13b4f9",
+          "quote": "Requests to Elasticsearch do not complete within the configured read window, causing failures in any code path that depends on ES",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The record directly reports the timeout mechanism and failures.",
+      "verification_note": "It does not show that timeouts caused missing stored records.",
+      "id": "C6",
+      "record_ids": [
+        "KEP-6815"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "Investigators observed more than 25 Elasticsearch search tasks running for multiple days.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_152fb586fbeffd19",
+          "quote": "Observed 25+ search tasks ( indices:data/read/search ) running in Elasticsearch for multiple days",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The observation is explicit.",
+      "verification_note": "The passage does not link these tasks causally to the reported data gaps.",
+      "id": "C7",
+      "record_ids": [
+        "KEP-6844"
+      ],
+      "source_mode": "text"
+    }
+  ],
+  "unanswered": [
+    "What is the scope and root cause of the reported DocDB/Elasticsearch inconsistencies, and are the separate ingestion and incomplete-DocDB reports part of the same incident?",
+    "Were the proposed date-filter fix, media-deduplication changes, or DocDB upgrades deployed, and did any verified reconciliation or recovery follow?",
+    "Did Elasticsearch timeouts or long-running searches cause missing records, or only retrieval and processing failures?"
+  ],
+  "limitations": [
+    "The supplied passages contain reports, an initial analysis, and proposed work, but no record-level comparison or verified end-to-end outcome.",
+    "BM25 over extracted record text; exact citations do not establish semantic correctness."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "execution_scope": "source_only"
+    },
+    {
+      "sequence": 2,
+      "kind": "tool",
+      "name": "retrieve_text",
+      "arguments": {
+        "query": "What explanations do the records support for DocDB/Elasticsearch data gaps, and what remains unresolved?",
+        "top_k": 20
+      },
+      "call_id": "text_1",
+      "result": {
+        "records": [
+          {
+            "record_id": "Community_141",
+            "passages": [
+              {
+                "evidence_id": "ev_327810f5b874fd50",
+                "record_id": "Community_141",
+                "quote": "Task status incorrectly marked as \"Created\"",
+                "start": 0,
+                "end": 43
+              },
+              {
+                "evidence_id": "ev_6c9707c22f4b3e34",
+                "record_id": "Community_141",
+                "quote": "Major data gaps and inconsistencies between DocDB and Elasticsearch",
+                "start": 0,
+                "end": 67
+              }
+            ],
+            "score": 22.19467197121049
+          },
+          {
+            "record_id": "KEP-4237",
+            "passages": [
+              {
+                "evidence_id": "ev_14484c6d555db75f",
+                "record_id": "KEP-4237",
+                "quote": "post_type will be determined based on the first successfully downloaded media",
+                "start": 0,
+                "end": 77
+              },
+              {
+                "evidence_id": "ev_4302592aeb2aa2dc",
+                "record_id": "KEP-4237",
+                "quote": "Store downloaded S3 URLs in existing field string (comma-separated) in both DocDB and Elasticsearch",
+                "start": 0,
+                "end": 99
+              },
+              {
+                "evidence_id": "ev_59c42b0c8a58fc02",
+                "record_id": "KEP-4237",
+                "quote": "Store all media_urls associated with an post in DocDB",
+                "start": 0,
+                "end": 53
+              }
+            ],
+            "score": 10.223696737826504
+          },
+          {
+            "record_id": "KEP-6844",
+            "passages": [
+              {
+                "evidence_id": "ev_152fb586fbeffd19",
+                "record_id": "KEP-6844",
+                "quote": "Observed 25+ search tasks ( indices:data/read/search ) running in Elasticsearch for multiple days",
+                "start": 0,
+                "end": 97
+              },
+              {
+                "evidence_id": "ev_45b390cde46ac4ba",
+                "record_id": "KEP-6844",
+                "quote": "Elasticsearch Long-Running Search Tasks – Investigation Summary",
+                "start": 0,
+                "end": 63
+              }
+            ],
+            "score": 9.329891349746656
+          },
+          {
+            "record_id": "KEP-6611",
+            "passages": [
+              {
+                "evidence_id": "ev_d12f9a9f4427477b",
+                "record_id": "KEP-6611",
+                "quote": "Data stored in DocDB is uneven/incomplete",
+                "start": 0,
+                "end": 41
+              }
+            ],
+            "score": 9.10442616181238
+          },
+          {
+            "record_id": "Community_465",
+            "passages": [
+              {
+                "evidence_id": "ev_2f1a50513438fa45",
+                "record_id": "Community_465",
+                "quote": "Storage of irrelevant posts, Increased noise in downstream processing, Unnecessary ES/DocDB writes",
+                "start": 0,
+                "end": 98
+              },
+              {
+                "evidence_id": "ev_2f3f2efb113d326f",
+                "record_id": "Community_465",
+                "quote": "Upgrade DocDB version in TikTok service from 3.6 to 5.0",
+                "start": 0,
+                "end": 55
+              },
+              {
+                "evidence_id": "ev_317e602a008f4331",
+                "record_id": "Community_465",
+                "quote": "Upgrade DocDB version handling in Get-Data-API service from 3.6 to 5.0",
+                "start": 0,
+                "end": 70
+              },
+              {
+                "evidence_id": "ev_3618aba27ba320a7",
+                "record_id": "Community_465",
+                "quote": "Upgrade DocDB version handling in Youtube Service from 3.6 to 5.0",
+                "start": 0,
+                "end": 65
+              },
+              {
+                "evidence_id": "ev_786299dd8bdfd518",
+                "record_id": "Community_465",
+                "quote": "Upgrade DocDB version handling in Video-Summary Service from 3.6 to 5.0",
+                "start": 0,
+                "end": 71
+              },
+              {
+                "evidence_id": "ev_a8db2a98d43a39bf",
+                "record_id": "Community_465",
+                "quote": "Upgrade DocDB version handling in Telegram Service from 3.6 to 5.0",
+                "start": 0,
+                "end": 66
+              },
+              {
+                "evidence_id": "ev_ad47918d4fb451d5",
+                "record_id": "Community_465",
+                "quote": "Add exception handling to TikTok Export Comments API V3",
+                "start": 0,
+                "end": 55
+              },
+              {
+                "evidence_id": "ev_bc95d0874a7f7e51",
+                "record_id": "Community_465",
+                "quote": "Upgrade DocDB version handling in Comment Stance Service from 3.6 to 5.0",
+                "start": 0,
+                "end": 72
+              },
+              {
+                "evidence_id": "ev_c33228c2143a6e68",
+                "record_id": "Community_465",
+                "quote": "Upgrade DocDB version handling in Facebook Service from 3.6 to 5.0",
+                "start": 0,
+                "end": 66
+              },
+              {
+                "evidence_id": "ev_c65083c83172bb4d",
+                "record_id": "Community_465",
+                "quote": "Upgrade DocumentDB cluster in DEV environment from 3.6 to 5.0",
+                "start": 0,
+                "end": 61
+              },
+              {
+                "evidence_id": "ev_f0ec828ba4c3f12d",
+                "record_id": "Community_465",
+                "quote": "Upgrade DocDB version in Twitter service from 3.6 to 5.0",
+                "start": 0,
+                "end": 56
+              },
+              {
+                "evidence_id": "ev_fd776b44a8ed836a",
+                "record_id": "Community_465",
+                "quote": "Upgrade DocDB version handling in Instagram from 3.6 to 5.0",
+                "start": 0,
+                "end": 59
+              }
+            ],
+            "score": 8.596802116621014
+          },
+          {
+            "record_id": "KEP-3961",
+            "passages": [
+              {
+                "evidence_id": "ev_080dd1ee2e966c94",
+                "record_id": "KEP-3961",
+                "quote": "status: Done",
+                "start": 0,
+                "end": 12
+              },
+              {
+                "evidence_id": "ev_1e4e4837a4464ffd",
+                "record_id": "KEP-3961",
+                "quote": "Messages are visually distinct from final stance results and cannot be mistaken for errors",
+                "start": 0,
+                "end": 90
+              },
+              {
+                "evidence_id": "ev_282991c7e2a12a28",
+                "record_id": "KEP-3961",
+                "quote": "When comments or stance results are not visible, users currently cannot tell why. This creates confusion that the product is broken and lacks explanations between \"no data,\" \"data still loading,\" and \"data cannot be collected.\"",
+                "start": 0,
+                "end": 227
+              },
+              {
+                "evidence_id": "ev_3b41f38b13d6b84c",
+                "record_id": "KEP-3961",
+                "quote": "These messages should appear anywhere comment stance results would normally appear and should be mutually exclusive (only one shown at a time)",
+                "start": 0,
+                "end": 142
+              },
+              {
+                "evidence_id": "ev_81daa3fbcd9e6257",
+                "record_id": "KEP-3961",
+                "quote": "When stance results are fully available, no placeholder or status message remains visible",
+                "start": 0,
+                "end": 89
+              },
+              {
+                "evidence_id": "ev_bd9b34b4c8f6301e",
+                "record_id": "KEP-3961",
+                "quote": "Message copy matches exactly as written above (wording, tense, and tone)",
+                "start": 0,
+                "end": 72
+              },
+              {
+                "evidence_id": "ev_e46b6a831747a0c2",
+                "record_id": "KEP-3961",
+                "quote": "Implement explicit, user-facing status messages that clearly explain what is happening with comments and stance processing",
+                "start": 0,
+                "end": 122
+              }
+            ],
+            "score": 8.51338121899117
+          },
+          {
+            "record_id": "gdrive:1mXMcKxPJDNpoazNcmy5zt3j_2Sg9S258XJt_xwrq5xg",
+            "passages": [
+              {
+                "evidence_id": "ev_08a24f67b8645adb",
+                "record_id": "gdrive:1mXMcKxPJDNpoazNcmy5zt3j_2Sg9S258XJt_xwrq5xg",
+                "quote": "data is not being ingested into docDb/ES",
+                "start": 0,
+                "end": 40
+              }
+            ],
+            "score": 8.348719765588092
+          },
+          {
+            "record_id": "KEP-6815",
+            "passages": [
+              {
+                "evidence_id": "ev_88f8c130b3fbc69f",
+                "record_id": "KEP-6815",
+                "quote": "the client timeout is set from config key es_connection_timeout (default 30)",
+                "start": 0,
+                "end": 76
+              },
+              {
+                "evidence_id": "ev_93bb7a65168ad9a7",
+                "record_id": "KEP-6815",
+                "quote": "We're currently querying ~1,000 posts per request over a 6‑month lookback. The expectation is a <30s response, but under current Elasticsearch load we're exceeding that threshold",
+                "start": 0,
+                "end": 178
+              },
+              {
+                "evidence_id": "ev_c1c1bf0abb13b4f9",
+                "record_id": "KEP-6815",
+                "quote": "Requests to Elasticsearch do not complete within the configured read window, causing failures in any code path that depends on ES",
+                "start": 0,
+                "end": 129
+              }
+            ],
+            "score": 8.13440987744694
+          },
+          {
+            "record_id": "KEP-5692",
+            "passages": [
+              {
+                "evidence_id": "ev_6baef348c36528be",
+                "record_id": "KEP-5692",
+                "quote": "Previous Query \"Sources\" tab remains open after triggering a new query",
+                "start": 0,
+                "end": 70
+              },
+              {
+                "evidence_id": "ev_7119218b0584cfab",
+                "record_id": "KEP-5692",
+                "quote": "After triggering a new query, the \"Sources\" tab from the previous query remains open, instead of resetting or refreshing to reflect the newly triggered query",
+                "start": 0,
+                "end": 157
+              }
+            ],
+            "score": 7.154833682294663
+          },
+          {
+            "record_id": "KEP-5358",
+            "passages": [
+              {
+                "evidence_id": "ev_337ff6932926e78f",
+                "record_id": "KEP-5358",
+                "quote": "The current media deduplication logic only skips the download when the following conditions are met... However, there is no actual deduplication of: downloaded_media_s3_path is_media_downloaded against existing records.",
+                "start": 0,
+                "end": 219
+              },
+              {
+                "evidence_id": "ev_50e6ee2c28410911",
+                "record_id": "KEP-5358",
+                "quote": "Issue: Incorrect media deduplication causing wrong data in ES. The current media deduplication logic only skips the download when the following conditions are met... However, there is no actual deduplication of: downloaded_media_s3_path is_media_downloaded against existing records.",
+                "start": 0,
+                "end": 282
+              }
+            ],
+            "score": 6.962142080212403
+          },
+          {
+            "record_id": "KEP-5582",
+            "passages": [
+              {
+                "evidence_id": "ev_4b4877ee9d6ab0e5",
+                "record_id": "KEP-5582",
+                "quote": "Problem Statement We are continuously getting the error \"post not available in ES\" for data coming from multiple get-api sources. In the first iteration of analysis, we found that: get-api is returning posts that are outside the relevant requested date range",
+                "start": 0,
+                "end": 258
+              },
+              {
+                "evidence_id": "ev_b9081dcdc406a856",
+                "record_id": "KEP-5582",
+                "quote": "Fix or enforce date-range filtering logic at the get-api layer so that only posts within the requested window are returned.",
+                "start": 0,
+                "end": 123
+              },
+              {
+                "evidence_id": "ev_cd82949318d4632d",
+                "record_id": "KEP-5582",
+                "quote": "Because these posts do not exist in the corresponding Elasticsearch indices for that date range, downstream processing fails",
+                "start": 0,
+                "end": 124
+              }
+            ],
+            "score": 6.9505566501214915
+          },
+          {
+            "record_id": "KEP-6929",
+            "passages": [
+              {
+                "evidence_id": "ev_e9bf7170adc7fe95",
+                "record_id": "KEP-6929",
+                "quote": "Kepler ElasticSearch Maintenance / Optimization / Upgrade Epic",
+                "start": 0,
+                "end": 62
+              }
+            ],
+            "score": 6.663428788348852
+          },
+          {
+            "record_id": "KEP-6571",
+            "passages": [
+              {
+                "evidence_id": "ev_44db35e20feb1752",
+                "record_id": "KEP-6571",
+                "quote": "Even after disabling all themes, the narrative hierarchy graph remains fully visible",
+                "start": 0,
+                "end": 84
+              }
+            ],
+            "score": 6.645715439828344
+          },
+          {
+            "record_id": "Community_534",
+            "passages": [
+              {
+                "evidence_id": "ev_37a3b2aded54e523",
+                "record_id": "Community_534",
+                "quote": "Today, comment download completion is tracked only as a boolean flag at the post level (comments_downloaded: bool) in both: CommonPostMetadata (ElasticSearch) YoutubePostMetadata (Mongo)",
+                "start": 0,
+                "end": 186
+              },
+              {
+                "evidence_id": "ev_55404e0442cc903c",
+                "record_id": "Community_534",
+                "quote": "For Scenario 5 — Stance analysis complete in KEPN-3723, we need a backend data signal in Elasticsearch indicating that stance processing has fully completed for a post's comments",
+                "start": 0,
+                "end": 178
+              },
+              {
+                "evidence_id": "ev_59b3d8bd7251650b",
+                "record_id": "Community_534",
+                "quote": "Today, comment download completion is tracked only as a boolean flag at the post level (comments_downloaded: bool) in both: CommonPostMetadata (ElasticSearch) TwitterPostMetadata (Mongo)",
+                "start": 0,
+                "end": 186
+              },
+              {
+                "evidence_id": "ev_66fe2871abcba084",
+                "record_id": "Community_534",
+                "quote": "Introduce / Reuse status enum Use the existing generic process/download status enum pattern (as in Weibo's ProcessStatus or DownloadStatus): NOT_STARTED PENDING / IN_PROGRESS (choose one naming convention and use consistently) COMPLETED / DONE FAILED",
+                "start": 0,
+                "end": 250
+              },
+              {
+                "evidence_id": "ev_7af9e305c7dea065",
+                "record_id": "Community_534",
+                "quote": "Today, comment download completion is tracked only as a boolean flag at the post level (comments_downloaded: bool) in both: CommonPostMetadata (ElasticSearch) FacebookPostMetadata (Mongo)",
+                "start": 0,
+                "end": 187
+              },
+              {
+                "evidence_id": "ev_8d7030e8531301c4",
+                "record_id": "Community_534",
+                "quote": "Today, comment download completion is tracked only as a boolean flag at the post level (comments_downloaded: bool) in both: CommonPostMetadata (ElasticSearch) TiktokPostMetadata (Mongo)",
+                "start": 0,
+                "end": 185
+              },
+              {
+                "evidence_id": "ev_9af8da11382aa82a",
+                "record_id": "Community_534",
+                "quote": "Today, comment download completion is tracked only as a boolean flag at the post level (comments_downloaded: bool) in both: CommonPostMetadata (ElasticSearch) RedditPostMetadata (Mongo)",
+                "start": 0,
+                "end": 185
+              },
+              {
+                "evidence_id": "ev_e7177cb6ed2a777b",
+                "record_id": "Community_534",
+                "quote": "Today, comment download completion is tracked only as a boolean flag at the post level (comments_downloaded: bool) in both: CommonPostMetadata (ElasticSearch) InstagramPostMetadata (Mongo)",
+                "start": 0,
+                "end": 188
+              }
+            ],
+            "score": 6.591599364312695
+          },
+          {
+            "record_id": "KEP-6551",
+            "passages": [
+              {
+                "evidence_id": "ev_76db2017646469e3",
+                "record_id": "KEP-6551",
+                "quote": "status: Done",
+                "start": 0,
+                "end": 12
+              },
+              {
+                "evidence_id": "ev_7880b0a0c24bfb79",
+                "record_id": "KEP-6551",
+                "quote": "The account recommendation system must generate accounts from the Weibo data source.",
+                "start": 0,
+                "end": 84
+              },
+              {
+                "evidence_id": "ev_8c6fd44f7ddf3273",
+                "record_id": "KEP-6551",
+                "quote": "Commands in the chat for \"web account discovery agent\" should support the Weibo data source.",
+                "start": 0,
+                "end": 92
+              },
+              {
+                "evidence_id": "ev_a2249f7da2fed6fd",
+                "record_id": "KEP-6551",
+                "quote": "All existing tools must return results for the Weibo data source.",
+                "start": 0,
+                "end": 65
+              },
+              {
+                "evidence_id": "ev_cd4c9d887bd36b44",
+                "record_id": "KEP-6551",
+                "quote": "The existing API for network builder must be updated to accommodate Weibo.",
+                "start": 0,
+                "end": 74
+              },
+              {
+                "evidence_id": "ev_e7dc016f4a969a6b",
+                "record_id": "KEP-6551",
+                "quote": "parent_key: KEP-6230",
+                "start": 0,
+                "end": 20
+              }
+            ],
+            "score": 6.192422601462049
+          },
+          {
+            "record_id": "KEP-2222",
+            "passages": [
+              {
+                "evidence_id": "ev_649d4b139b6df125",
+                "record_id": "KEP-2222",
+                "quote": "We need to upgrade the DocDB version from 3.,6 to 5.0",
+                "start": 0,
+                "end": 53
+              }
+            ],
+            "score": 6.122603650682919
+          },
+          {
+            "record_id": "KEP-2402",
+            "passages": [
+              {
+                "evidence_id": "ev_16e516bca640e8a7",
+                "record_id": "KEP-2402",
+                "quote": "Based on your observations, we will discuss, plan, and create an implementation ticket.",
+                "start": 0,
+                "end": 87
+              },
+              {
+                "evidence_id": "ev_18df82ddd4d5e4f2",
+                "record_id": "KEP-2402",
+                "quote": "We want to check how many records exist in the network and how many we send for topic clustering of posts.",
+                "start": 0,
+                "end": 106
+              },
+              {
+                "evidence_id": "ev_96a350290d4b3cee",
+                "record_id": "KEP-2402",
+                "quote": "There seems to be a key mismatch as the field being checked for data while filtering posts is \"ml_narrative_summary\" for posts",
+                "start": 0,
+                "end": 126
+              }
+            ],
+            "score": 6.107313148855064
+          },
+          {
+            "record_id": "KEP-6930",
+            "passages": [
+              {
+                "evidence_id": "ev_0756e96351684862",
+                "record_id": "KEP-6930",
+                "quote": "The migration design has been updated in this ticket . Closing this",
+                "start": 0,
+                "end": 67
+              },
+              {
+                "evidence_id": "ev_9b1ddccd2a944d01",
+                "record_id": "KEP-6930",
+                "quote": "Investigate AWS OpenSearch 1.x & 2.x vs. current Elasticsearch 7.x",
+                "start": 0,
+                "end": 66
+              }
+            ],
+            "score": 5.9996121619606715
+          },
+          {
+            "record_id": "KEP-6825",
+            "passages": [
+              {
+                "evidence_id": "ev_504961929b0e5d6f",
+                "record_id": "KEP-6825",
+                "quote": "Refresh Terraform State for kepler DocDB Cluster",
+                "start": 0,
+                "end": 48
+              }
+            ],
+            "score": 5.987118689642369
+          },
+          {
+            "record_id": "KEP-2320",
+            "passages": [
+              {
+                "evidence_id": "ev_f92868aeca7e192d",
+                "record_id": "KEP-2320",
+                "quote": "Script to fetch the stats from DocDB related to continuous run",
+                "start": 0,
+                "end": 62
+              }
+            ],
+            "score": 5.857500112351569
+          }
+        ],
+        "omitted_record_ids": []
+      },
+      "latency_seconds": 0.003928207996068522,
+      "error": false,
+      "new_ids": [
+        "ev_0756e96351684862",
+        "ev_080dd1ee2e966c94",
+        "ev_08a24f67b8645adb",
+        "ev_14484c6d555db75f",
+        "ev_152fb586fbeffd19",
+        "ev_16e516bca640e8a7",
+        "ev_18df82ddd4d5e4f2",
+        "ev_1e4e4837a4464ffd",
+        "ev_282991c7e2a12a28",
+        "ev_2f1a50513438fa45",
+        "ev_2f3f2efb113d326f",
+        "ev_317e602a008f4331",
+        "ev_327810f5b874fd50",
+        "ev_337ff6932926e78f",
+        "ev_3618aba27ba320a7",
+        "ev_37a3b2aded54e523",
+        "ev_3b41f38b13d6b84c",
+        "ev_4302592aeb2aa2dc",
+        "ev_44db35e20feb1752",
+        "ev_45b390cde46ac4ba",
+        "ev_4b4877ee9d6ab0e5",
+        "ev_504961929b0e5d6f",
+        "ev_50e6ee2c28410911",
+        "ev_55404e0442cc903c",
+        "ev_59b3d8bd7251650b",
+        "ev_59c42b0c8a58fc02",
+        "ev_649d4b139b6df125",
+        "ev_66fe2871abcba084",
+        "ev_6baef348c36528be",
+        "ev_6c9707c22f4b3e34",
+        "ev_7119218b0584cfab",
+        "ev_76db2017646469e3",
+        "ev_786299dd8bdfd518",
+        "ev_7880b0a0c24bfb79",
+        "ev_7af9e305c7dea065",
+        "ev_81daa3fbcd9e6257",
+        "ev_88f8c130b3fbc69f",
+        "ev_8c6fd44f7ddf3273",
+        "ev_8d7030e8531301c4",
+        "ev_93bb7a65168ad9a7",
+        "ev_96a350290d4b3cee",
+        "ev_9af8da11382aa82a",
+        "ev_9b1ddccd2a944d01",
+        "ev_a2249f7da2fed6fd",
+        "ev_a8db2a98d43a39bf",
+        "ev_ad47918d4fb451d5",
+        "ev_b9081dcdc406a856",
+        "ev_bc95d0874a7f7e51",
+        "ev_bd9b34b4c8f6301e",
+        "ev_c1c1bf0abb13b4f9",
+        "ev_c33228c2143a6e68",
+        "ev_c65083c83172bb4d",
+        "ev_cd4c9d887bd36b44",
+        "ev_cd82949318d4632d",
+        "ev_d12f9a9f4427477b",
+        "ev_e46b6a831747a0c2",
+        "ev_e7177cb6ed2a777b",
+        "ev_e7dc016f4a969a6b",
+        "ev_e9bf7170adc7fe95",
+        "ev_f0ec828ba4c3f12d",
+        "ev_f92868aeca7e192d",
+        "ev_fd776b44a8ed836a",
+        "span:ev_0756e96351684862:0:67",
+        "span:ev_080dd1ee2e966c94:0:12",
+        "span:ev_08a24f67b8645adb:0:40",
+        "span:ev_14484c6d555db75f:0:77",
+        "span:ev_152fb586fbeffd19:0:97",
+        "span:ev_16e516bca640e8a7:0:87",
+        "span:ev_18df82ddd4d5e4f2:0:106",
+        "span:ev_1e4e4837a4464ffd:0:90",
+        "span:ev_282991c7e2a12a28:0:227",
+        "span:ev_2f1a50513438fa45:0:98",
+        "span:ev_2f3f2efb113d326f:0:55",
+        "span:ev_317e602a008f4331:0:70",
+        "span:ev_327810f5b874fd50:0:43",
+        "span:ev_337ff6932926e78f:0:219",
+        "span:ev_3618aba27ba320a7:0:65",
+        "span:ev_37a3b2aded54e523:0:186",
+        "span:ev_3b41f38b13d6b84c:0:142",
+        "span:ev_4302592aeb2aa2dc:0:99",
+        "span:ev_44db35e20feb1752:0:84",
+        "span:ev_45b390cde46ac4ba:0:63",
+        "span:ev_4b4877ee9d6ab0e5:0:258",
+        "span:ev_504961929b0e5d6f:0:48",
+        "span:ev_50e6ee2c28410911:0:282",
+        "span:ev_55404e0442cc903c:0:178",
+        "span:ev_59b3d8bd7251650b:0:186",
+        "span:ev_59c42b0c8a58fc02:0:53",
+        "span:ev_649d4b139b6df125:0:53",
+        "span:ev_66fe2871abcba084:0:250",
+        "span:ev_6baef348c36528be:0:70",
+        "span:ev_6c9707c22f4b3e34:0:67",
+        "span:ev_7119218b0584cfab:0:157",
+        "span:ev_76db2017646469e3:0:12",
+        "span:ev_786299dd8bdfd518:0:71",
+        "span:ev_7880b0a0c24bfb79:0:84",
+        "span:ev_7af9e305c7dea065:0:187",
+        "span:ev_81daa3fbcd9e6257:0:89",
+        "span:ev_88f8c130b3fbc69f:0:76",
+        "span:ev_8c6fd44f7ddf3273:0:92",
+        "span:ev_8d7030e8531301c4:0:185",
+        "span:ev_93bb7a65168ad9a7:0:178",
+        "span:ev_96a350290d4b3cee:0:126",
+        "span:ev_9af8da11382aa82a:0:185",
+        "span:ev_9b1ddccd2a944d01:0:66",
+        "span:ev_a2249f7da2fed6fd:0:65",
+        "span:ev_a8db2a98d43a39bf:0:66",
+        "span:ev_ad47918d4fb451d5:0:55",
+        "span:ev_b9081dcdc406a856:0:123",
+        "span:ev_bc95d0874a7f7e51:0:72",
+        "span:ev_bd9b34b4c8f6301e:0:72",
+        "span:ev_c1c1bf0abb13b4f9:0:129",
+        "span:ev_c33228c2143a6e68:0:66",
+        "span:ev_c65083c83172bb4d:0:61",
+        "span:ev_cd4c9d887bd36b44:0:74",
+        "span:ev_cd82949318d4632d:0:124",
+        "span:ev_d12f9a9f4427477b:0:41",
+        "span:ev_e46b6a831747a0c2:0:122",
+        "span:ev_e7177cb6ed2a777b:0:188",
+        "span:ev_e7dc016f4a969a6b:0:20",
+        "span:ev_e9bf7170adc7fe95:0:62",
+        "span:ev_f0ec828ba4c3f12d:0:56",
+        "span:ev_f92868aeca7e192d:0:62",
+        "span:ev_fd776b44a8ed836a:0:59"
+      ]
+    },
+    {
+      "sequence": 3,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 17148,
+      "visible_evidence_ids": [
+        "ev_0756e96351684862",
+        "ev_080dd1ee2e966c94",
+        "ev_08a24f67b8645adb",
+        "ev_14484c6d555db75f",
+        "ev_152fb586fbeffd19",
+        "ev_16e516bca640e8a7",
+        "ev_18df82ddd4d5e4f2",
+        "ev_1e4e4837a4464ffd",
+        "ev_282991c7e2a12a28",
+        "ev_2f1a50513438fa45",
+        "ev_2f3f2efb113d326f",
+        "ev_317e602a008f4331",
+        "ev_327810f5b874fd50",
+        "ev_337ff6932926e78f",
+        "ev_3618aba27ba320a7",
+        "ev_37a3b2aded54e523",
+        "ev_3b41f38b13d6b84c",
+        "ev_4302592aeb2aa2dc",
+        "ev_44db35e20feb1752",
+        "ev_45b390cde46ac4ba",
+        "ev_4b4877ee9d6ab0e5",
+        "ev_504961929b0e5d6f",
+        "ev_50e6ee2c28410911",
+        "ev_55404e0442cc903c",
+        "ev_59b3d8bd7251650b",
+        "ev_59c42b0c8a58fc02",
+        "ev_649d4b139b6df125",
+        "ev_66fe2871abcba084",
+        "ev_6baef348c36528be",
+        "ev_6c9707c22f4b3e34",
+        "ev_7119218b0584cfab",
+        "ev_76db2017646469e3",
+        "ev_786299dd8bdfd518",
+        "ev_7880b0a0c24bfb79",
+        "ev_7af9e305c7dea065",
+        "ev_81daa3fbcd9e6257",
+        "ev_88f8c130b3fbc69f",
+        "ev_8c6fd44f7ddf3273",
+        "ev_8d7030e8531301c4",
+        "ev_93bb7a65168ad9a7",
+        "ev_96a350290d4b3cee",
+        "ev_9af8da11382aa82a",
+        "ev_9b1ddccd2a944d01",
+        "ev_a2249f7da2fed6fd",
+        "ev_a8db2a98d43a39bf",
+        "ev_ad47918d4fb451d5",
+        "ev_b9081dcdc406a856",
+        "ev_bc95d0874a7f7e51",
+        "ev_bd9b34b4c8f6301e",
+        "ev_c1c1bf0abb13b4f9",
+        "ev_c33228c2143a6e68",
+        "ev_c65083c83172bb4d",
+        "ev_cd4c9d887bd36b44",
+        "ev_cd82949318d4632d",
+        "ev_d12f9a9f4427477b",
+        "ev_e46b6a831747a0c2",
+        "ev_e7177cb6ed2a777b",
+        "ev_e7dc016f4a969a6b",
+        "ev_e9bf7170adc7fe95",
+        "ev_f0ec828ba4c3f12d",
+        "ev_f92868aeca7e192d",
+        "ev_fd776b44a8ed836a"
+      ],
+      "included_tool_call_ids": [
+        "text_1"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "started"
+    },
+    {
+      "sequence": 5,
+      "kind": "model",
+      "call_number": 1,
+      "status": "complete",
+      "request_id": "request_c0f5f6fb2ef2ff99",
+      "draft": {
+        "claims": [
+          {
+            "statement": "A record reports major data gaps and inconsistencies between DocDB and Elasticsearch.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_6c9707c22f4b3e34",
+                "quote": "Major data gaps and inconsistencies between DocDB and Elasticsearch",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The record states the problem directly.",
+            "verification_note": "The passage gives no scope, counts, or cause."
+          },
+          {
+            "statement": "Other records separately report that data is not being ingested into DocDB/ES and that data stored in DocDB is uneven or incomplete.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_08a24f67b8645adb",
+                "quote": "data is not being ingested into docDb/ES",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_d12f9a9f4427477b",
+                "quote": "Data stored in DocDB is uneven/incomplete",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "Both are direct reports.",
+            "verification_note": "The passages do not establish that they describe the same incident or its root cause."
+          },
+          {
+            "statement": "An initial analysis attributed recurring “post not available in ES” errors to get-api returning posts outside the requested date range; it reported that those posts were absent from the corresponding Elasticsearch indices.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_4b4877ee9d6ab0e5",
+                "quote": "Problem Statement We are continuously getting the error \"post not available in ES\" for data coming from multiple get-api sources. In the first iteration of analysis, we found that: get-api is returning posts that are outside the relevant requested date range",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_cd82949318d4632d",
+                "quote": "Because these posts do not exist in the corresponding Elasticsearch indices for that date range, downstream processing fails",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The record explicitly gives this explanation for the errors.",
+            "verification_note": "This explains a reported lookup failure, not necessarily the broader DocDB/Elasticsearch gaps."
+          },
+          {
+            "statement": "The proposed response to those out-of-range posts was to enforce date-range filtering at the get-api layer.",
+            "kind": "prescription",
+            "citations": [
+              {
+                "evidence_id": "ev_b9081dcdc406a856",
+                "quote": "Fix or enforce date-range filtering logic at the get-api layer so that only posts within the requested window are returned.",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The passage explicitly states the proposed fix.",
+            "verification_note": "It does not establish implementation or success."
+          },
+          {
+            "statement": "A separate issue attributes wrong Elasticsearch media data to deduplication logic that does not check downloaded-media fields against existing records.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_50e6ee2c28410911",
+                "quote": "Issue: Incorrect media deduplication causing wrong data in ES. The current media deduplication logic only skips the download when the following conditions are met... However, there is no actual deduplication of: downloaded_media_s3_path is_media_downloaded against existing records.",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The issue states both the defect and its reported effect.",
+            "verification_note": "It concerns wrong media data in ES, not a demonstrated cause of all data gaps."
+          },
+          {
+            "statement": "A record reports Elasticsearch requests exceeding the configured read window under load, causing failures in ES-dependent code paths.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_93bb7a65168ad9a7",
+                "quote": "We're currently querying ~1,000 posts per request over a 6‑month lookback. The expectation is a <30s response, but under current Elasticsearch load we're exceeding that threshold",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_c1c1bf0abb13b4f9",
+                "quote": "Requests to Elasticsearch do not complete within the configured read window, causing failures in any code path that depends on ES",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The record directly reports the timeout mechanism and failures.",
+            "verification_note": "It does not show that timeouts caused missing stored records."
+          },
+          {
+            "statement": "Investigators observed more than 25 Elasticsearch search tasks running for multiple days.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_152fb586fbeffd19",
+                "quote": "Observed 25+ search tasks ( indices:data/read/search ) running in Elasticsearch for multiple days",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The observation is explicit.",
+            "verification_note": "The passage does not link these tasks causally to the reported data gaps."
+          }
+        ],
+        "unanswered": [
+          "What is the scope and root cause of the reported DocDB/Elasticsearch inconsistencies, and are the separate ingestion and incomplete-DocDB reports part of the same incident?",
+          "Were the proposed date-filter fix, media-deduplication changes, or DocDB upgrades deployed, and did any verified reconciliation or recovery follow?",
+          "Did Elasticsearch timeouts or long-running searches cause missing records, or only retrieval and processing failures?"
+        ],
+        "limitations": [
+          "The supplied passages contain reports, an initial analysis, and proposed work, but no record-level comparison or verified end-to-end outcome."
+        ]
+      },
+      "latency_seconds": 31.690870042017195,
+      "provider": {
+        "request_id": "request_c0f5f6fb2ef2ff99",
+        "purpose": "evaluation_text_rag",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/data_gaps__repeat__text_rag/cache/codex/request_c0f5f6fb2ef2ff99.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2688,
+          "input_tokens": 8337,
+          "output_tokens": 1603,
+          "reasoning_output_tokens": 171,
+          "total_tokens": 9940
+        },
+        "thread_id": "01a114ad-227e-7712-aaa8-511fd56217a3",
+        "turn_id": "01a114ad-22a9-7612-8bc7-d58e6ed6cf34",
+        "status": "completed",
+        "latency_seconds": 31.6769
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "Community_141"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_6c9707c22f4b3e34"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 7,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "KEP-6611",
+        "gdrive:1mXMcKxPJDNpoazNcmy5zt3j_2Sg9S258XJt_xwrq5xg"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_08a24f67b8645adb",
+        "ev_d12f9a9f4427477b"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 8,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "KEP-5582"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_4b4877ee9d6ab0e5",
+        "ev_cd82949318d4632d"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 9,
+      "kind": "claim_support",
+      "claim_id": "C4",
+      "record_ids": [
+        "KEP-5582"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_b9081dcdc406a856"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 10,
+      "kind": "claim_support",
+      "claim_id": "C5",
+      "record_ids": [
+        "KEP-5358"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_50e6ee2c28410911"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 11,
+      "kind": "claim_support",
+      "claim_id": "C6",
+      "record_ids": [
+        "KEP-6815"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_93bb7a65168ad9a7",
+        "ev_c1c1bf0abb13b4f9"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 12,
+      "kind": "claim_support",
+      "claim_id": "C7",
+      "record_ids": [
+        "KEP-6844"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_152fb586fbeffd19"
+      ],
+      "source_mode": "text"
+    }
+  ],
+  "usage": {
+    "model_calls": 1,
+    "data_tool_calls": 1,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 8337,
+      "output_tokens": 1603,
+      "cached_input_tokens": 2688,
+      "reasoning_output_tokens": 171
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 31.690870042017195,
+    "provider_elapsed_seconds": 31.6769,
+    "tool_elapsed_seconds": 0.003928207996068522,
+    "total_elapsed_seconds": 31.70973162498558,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "graph_hash": "graph_461ec66cd6c65256",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "execution_scope": "source_only",
+    "approach": "text_rag",
+    "top_k": 20,
+    "corpus_fingerprint": "sha_a36c560065c5dd52",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/data_gaps__repeat__text_rag/cache",
+      "timeout": 300.0
+    },
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "data_gaps__repeat__text_rag",
+      "question_id": "data_gaps",
+      "variant": "repeat",
+      "approach": "text_rag",
+      "question": "What explanations do the records support for DocDB/Elasticsearch data gaps, and what remains unresolved?"
+    }
+  }
+}

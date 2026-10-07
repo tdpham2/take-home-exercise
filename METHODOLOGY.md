@@ -1,9 +1,10 @@
 # An Organizational Memory and the Agent That Uses It
 
-Artifact paths below refer to the local evaluation workspace. The selected submission
-memory combines a Luna-built base with an Astra-generated pattern layer, saved
-in `artifacts/memory/`. Historical pilots, comparisons and unfinished evaluation
-outputs are not part of the initial source-code commit.
+The selected submission memory combines a Luna-built base with an Astra-generated
+pattern layer in `artifacts/memory/`. The completed automated evaluation, including
+frozen inputs, answers, judgments and its [HTML report](artifacts/evaluation/final-sol-v2/report/report.html),
+is included under `artifacts/evaluation/final-sol-v2/`. Historical pilots and other
+artifacts explicitly marked local are not included.
 
 Author: Thang Pham.
 
@@ -352,28 +353,29 @@ individual memory components would require further ablations.
 
 The [Task 2 notebook](task2_evaluation.ipynb) runs top to bottom as an artifact reader.
 It imports supporting code, validates frozen inputs, and displays saved outputs; it does
-not execute live experiments. The [README reproduction instructions](README.md#task-2-agent-and-evaluation-submission)
+not execute live experiments. The [README reproduction instructions](README.md#evaluation-and-notebooks)
 and notebook list the separate CLI stages. This allows a reviewer to inspect available
 evidence without provider access or accidental spending, while making the reproduction
 boundary explicit.
 
-| Task 2 requirement | Implementation or evidence | Remaining work |
+| Task 2 requirement | Implementation or evidence | Limitation or follow-up |
 |---|---|---|
-| Agent chooses memory and graph tools | Nine tools and an adaptive action loop; offline contract tests | Observe tool choices in successful live answers. |
-| Explicit working-memory design | Context projection, pins, discards, eviction reasons, and bounded calls | Measure its effect on real questions. |
-| Claims, provenance, trace, and confidence for every answer | Structured answer contract, exact citation checks, and JSONL ledger | Produce real final answers under the selected cap. |
-| At least four questions spanning required capabilities | Six final questions and two separate pilots, frozen with cited facets | Execute six pilot and 54 final answers. |
-| RAG comparison on all five dimensions | Baseline, graph-only ablation, judge, metrics, and reporting code | Complete judgments, 36 consistency comparisons, and human audit. |
-| Runnable code and inline outputs | Supporting modules/CLIs, artifact-only notebook, input tables, and failure trace | Populate real answer tables, quality/cost charts, and case studies. |
-| Reasons for design decisions and final reflection | This methodology and matching notebook prose | Update the empirical reflection after evaluating real answers. |
+| Agent chooses memory and graph tools | Nine tools, an adaptive action loop and saved live traces | Three runs finalized without retrieving evidence. |
+| Explicit working-memory design | Context projection, pins, discards, eviction reasons and bounded calls | Isolate its effects with further ablations. |
+| Claims, provenance, trace, and confidence for every answer | 54 saved answers with citation checks and JSONL traces | All answers are partial; three contain no claims. |
+| At least four questions spanning required capabilities | Six final questions × three systems × three variants = 54 answers | Development exposure; the revised pilot was skipped. |
+| RAG comparison on all five dimensions | 54 automated judgments, 36 consistency comparisons and quality/cost reports | Complete an attributable human answer audit. |
+| Runnable code and inline outputs | Executed artifact-only notebook and frozen evaluation inputs | Provider access is required to repeat live experiments. |
+| Reasons for design decisions and final reflection | This methodology and the notebook's measured trade-offs | Test generalization and individual memory components. |
 
 The terminal answering check (`artifacts/task2/sol-pilot-check-v2/answer.json`, local artifact) returned
 a cited partial answer and the judge probe (`artifacts/evaluation/preflight-sol-v2/preflight.json`, local artifact)
 succeeded. The original pilot (`artifacts/evaluation/pilot-sol-v1/progress.json`, local artifact) finished
 six attempts and judging, with one graph-only failure under the old context cap.
 Earlier sandbox startup failures (`artifacts/evaluation/preflight-sol-v1/runtime_diagnostic.json`, local artifact)
-remain historical diagnostics. The revised pilot, final comparison, and memory benefit
-are still pending. Offline tests verify contracts and reporting behavior with scripted
+remain historical diagnostics. The revised pilot was skipped; the final automated
+comparison is complete under the 200,000-character cap. Human answer review remains
+pending. Offline tests verify contracts and reporting behavior with scripted
 responses; the submission never substitutes their synthetic scores for measurements.
 
 ## Final reflection
@@ -381,8 +383,11 @@ responses; the submission never substitutes their synthetic scores for measureme
 **What worked.** Preserving exact quotations and recording separate decisions made
 mistakes inspectable. The Task 1 batch-1 pilot distinguished closure from observed
 improvement in the inspected cases, and the Task 2 contract checks reject unseen or
-altered citations. This is evidence of auditability and application behavior, not yet
-evidence of reliable live answers.
+altered citations. On the six-question final benchmark, automated coverage was 68.9%
+for memory+graph versus 58.9% for text RAG and 53.4% for graph-only. Memory+graph had
+lower groundedness than text RAG (93.0% versus 95.7%) and higher mean latency (66.1
+versus 26.2 seconds). These trade-offs do not establish general reliability; all 54
+answers were partial, and the automated judgments have not been human-audited.
 
 **What surprised me about the data.** Records are not independent incidents. Shared
 decision nodes, repeated excerpts, and Community summaries can make one observation
@@ -395,7 +400,7 @@ episode context, and preserved uncertainty earned their place in inspection beca
 they make claims challengeable. Administrative closure and duplicate associations add
 little useful history and are guarded or de-emphasized. Patterns are more than labels
 when they preserve a supported comparison and counterevidence, but their downstream
-value remains unmeasured. Numeric impact scores, confidence weights, and association
+value has not been isolated from the memory package. Numeric impact scores, confidence weights, and association
 paths could still be decoration if they do not improve answers relative to their cost;
 being stored or retrieved does not demonstrate that improvement.
 
@@ -404,9 +409,9 @@ different occurrences. The judge can reject a candidate but cannot repair its bo
 That can distort both what is recalled and how many independent occurrences support a
 pattern, even when every quotation is correct.
 
-**What I would do next.** Establish a working provider runtime, inspect the six pilot
-answers, freeze settings, and execute the final comparison and judgment audit. I would
-then examine misses in a small independent source sample, including rejected memory,
+**What I would do next.** Audit the automated judgments against source evidence and
+inspect the early-finalization failures. I would then examine misses in a small
+independent source sample, including rejected memory,
 before changing boundaries or ranking. Component ablations and new questions would test
 whether patterns, aliases, and outcome scores justify their complexity. I would not
 tune those components against the final answers and present the same set as held out.

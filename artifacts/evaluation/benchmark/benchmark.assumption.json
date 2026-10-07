@@ -1,0 +1,48 @@
+{
+  "benchmark_fingerprint": "sha_308306c9597aa6a2",
+  "reviewer": "User instruction in this conversation; no source review attested",
+  "review_basis": "user_assumption",
+  "authorization": "Let's assume they are correct",
+  "questions": [
+    {
+      "id": "patterns",
+      "approved": true,
+      "notes": "Accepted under the explicit user assumption. Exact source quotations and offsets validated programmatically; semantic correctness and reference completeness have not been human-reviewed."
+    },
+    {
+      "id": "government",
+      "approved": true,
+      "notes": "Accepted under the explicit user assumption. Exact source quotations and offsets validated programmatically; semantic correctness and reference completeness have not been human-reviewed."
+    },
+    {
+      "id": "data_gaps",
+      "approved": true,
+      "notes": "Accepted under the explicit user assumption. Exact source quotations and offsets validated programmatically; semantic correctness and reference completeness have not been human-reviewed."
+    },
+    {
+      "id": "collection_timeline",
+      "approved": true,
+      "notes": "Accepted under the explicit user assumption. Exact source quotations and offsets validated programmatically; semantic correctness and reference completeness have not been human-reviewed."
+    },
+    {
+      "id": "routines",
+      "approved": true,
+      "notes": "Accepted under the explicit user assumption. Exact source quotations and offsets validated programmatically; semantic correctness and reference completeness have not been human-reviewed."
+    },
+    {
+      "id": "pruning",
+      "approved": true,
+      "notes": "Accepted under the explicit user assumption. Exact source quotations and offsets validated programmatically; semantic correctness and reference completeness have not been human-reviewed."
+    },
+    {
+      "id": "pilot_weibo",
+      "approved": true,
+      "notes": "Accepted under the explicit user assumption. Exact source quotations and offsets validated programmatically; semantic correctness and reference completeness have not been human-reviewed."
+    },
+    {
+      "id": "pilot_brightdata",
+      "approved": true,
+      "notes": "Accepted under the explicit user assumption. Exact source quotations and offsets validated programmatically; semantic correctness and reference completeness have not been human-reviewed."
+    }
+  ]
+}

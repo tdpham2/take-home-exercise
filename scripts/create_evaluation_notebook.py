@@ -27,12 +27,17 @@ def build_notebook():
         with repeats and paraphrases. The full [methodology](METHODOLOGY.md#task-2-agent-methodology)
         connects these choices to Task 1.
 
-        **Current conclusion:** the agent and evaluation implementation are complete. The first
-        real pilot finished six attempts and judging; its BrightData graph-only answer exceeded
-        the original 48,000-character cap. That run remains under `pilot-sol-v1`. The selected
-        cap is now **200,000 characters** for all three systems, with new `pilot-sol-v2` and
-        `final-sol-v2` directories. The larger-context pilot and final scores are pending; no
-        final comparative benefit from organizational memory is established.
+        **Current conclusion:** the final experiment in `final-sol-v2` has **54 saved answers,
+        54 answer judgments and 36 consistency comparisons**, using a **200,000-character**
+        cap for all three systems. Automated scoring finds higher coverage for memory+graph
+        (68.9%) than text RAG (58.9%) or graph-only (53.4%). Memory+graph has lower groundedness
+        than text RAG (93.0% versus 95.7%) and higher mean answer latency (66.1 versus 26.2 seconds).
+        These are measured trade-offs on six development-exposed questions, not a general win.
+        The report is `automated_only`; no human answer audit has been imported.
+
+        The first pilot remains local under `pilot-sol-v1`: six attempts and judging, with one
+        BrightData graph-only failure at the original 48,000-character cap. The proposed
+        `pilot-sol-v2` rerun was not performed before the final experiment.
 
         **Execution is artifact-only:** no model calls, memory construction, report generation,
         or synthetic fallback occurs when running these cells. Missing answers and scores stay
@@ -59,11 +64,11 @@ def build_notebook():
         from org_eval.notebook import claim_rows, trace_rows, ranking_exclusions, load_saved_results
         from org_eval.runner import preflight, read_answer
 
-        GRAPH = Path('KEP_2026.json')
+        RESULTS = Path('artifacts/evaluation/final-sol-v2')
+        GRAPH = RESULTS / 'inputs' / 'graph.json'
         MEMORY = Path('artifacts/memory/memory.json')
         BENCHMARK_DIR = Path('artifacts/evaluation/benchmark')
         BENCHMARK = BENCHMARK_DIR / 'benchmark.frozen.json'
-        RESULTS = Path('artifacts/evaluation/final-sol-v2')
         PILOT = Path('artifacts/evaluation/pilot-sol-v2')
         LIVE_CHECK = Path('artifacts/task2/sol-pilot-check-v2')
         PREFLIGHT = Path('artifacts/evaluation/preflight-sol-v2')
@@ -116,7 +121,7 @@ def build_notebook():
         in response to final scores. All 816 eligible base candidates and 23 abstraction packets
         were processed; this does not mean every candidate was accepted or every outcome observed.
         I selected the unchanged Astra pattern layer over the Luna-built base after the
-        [qualitative comparison](artifacts/reviews/abstraction-model-comparison.json) favored its
+        local qualitative comparison (`artifacts/reviews/abstraction-model-comparison.json`) favored its
         distinctions and counterevidence while recording overstatements. That inspection assessed
         abstractions, not downstream QA performance.
         """),
@@ -135,12 +140,12 @@ def build_notebook():
         live = read_json(LIVE_CHECK / 'answer.json') if (LIVE_CHECK / 'answer.json').exists() else None
         probe = read_json(PREFLIGHT / 'preflight.json') if (PREFLIGHT / 'preflight.json').exists() else None
         show_table([
-            {'stage': 'Standalone live answering check', 'status': live['status'] if live else 'not_run',
+            {'stage': 'Standalone live answering check', 'status': live['status'] if live else 'not_bundled',
              'detail': live.get('stop_reason') if live else None},
-            {'stage': 'Judge provider check', 'status': (probe or {}).get('provider_probe', {}).get('status', 'not_run'),
+            {'stage': 'Judge provider check', 'status': (probe or {}).get('provider_probe', {}).get('status', 'not_bundled'),
              'detail': (probe or {}).get('provider_error')},
-            {'stage': 'Pilot matrix', 'status': read_json(PILOT / 'progress.json')['status'] if (PILOT / 'progress.json').exists() else 'not_run',
-             'detail': 'Two pilot questions × three systems = six answers'},
+            {'stage': 'Pilot rerun at 200,000 characters', 'status': read_json(PILOT / 'progress.json')['status'] if (PILOT / 'progress.json').exists() else 'not_run',
+             'detail': 'The original 48,000-character pilot remains in pilot-sol-v1; the proposed rerun was skipped'},
             {'stage': 'Final comparison', 'status': evaluation['status'] if evaluation else 'not_scored' if manifest else 'not_run',
              'detail': 'Six questions × three systems × three variants = 54 answers'},
         ])
@@ -150,22 +155,22 @@ def build_notebook():
         md("""
         ## Task 2 requirements and available evidence
 
-        This table records the reviewed submission state. The live status tables above and saved
-        results below show any later execution. The separate CLI workflow reproduces experiments;
+        This table records the completed automated experiment and its remaining limitations.
+        The saved status tables and results below provide the measurements. The CLI workflow reproduces experiments;
         running this notebook alone reads and validates artifacts rather than creating answers.
 
-        | Requirement | Implemented or available | Remaining evidence |
+        | Requirement | Implemented or available | Limitation or follow-up |
         |---|---|---|
-        | Agent chooses graph and memory tools | Nine tools and an adaptive action loop | Successful live tool-selection traces |
-        | Explicit working memory | Pins, relevance discards, whole-exchange eviction, and budgets | Effects on real answers |
-        | Claims, provenance, trace, and confidence | Structured contract, source-access checks, and streamed JSONL | Real canonical final answers under the selected cap |
-        | At least four questions across required capabilities | Six final questions plus two separate pilots | Six pilot and 54 final answers |
-        | RAG comparison on coverage, groundedness, specificity, consistency, and cost | Three systems, scoring code, judge and audit workflow | Real judgments, 36 consistency comparisons, and human audit |
-        | Runnable code and inline outputs | Supporting modules/CLIs, source tables and saved integration trace | Final answer tables, quality/cost charts and case studies |
-        | Design rationale and final reflection | Methodology and notebook explanations | Empirical reflection after the live comparison |
+        | Agent chooses graph and memory tools | Nine tools, an adaptive action loop and saved live traces | Three runs finalized without retrieving evidence |
+        | Explicit working memory | 200,000-character projection, pins, discards, eviction reasons and budgets | One run exhausted its data-tool allowance |
+        | Claims, provenance, trace, and confidence | 369 claims across 54 answers; exact citations and JSONL traces | All answers are partial; three contain no claims |
+        | At least four questions across required capabilities | Six final questions, three systems and three variants: 54 answers | Development exposure; the revised pilot was skipped |
+        | RAG comparison on coverage, groundedness, specificity, consistency, and cost | 54 automated judgments and 36 consistency comparisons | Human answer audit remains outstanding |
+        | Runnable code and inline outputs | Executed artifact readers, final answer tables, quality/cost charts and traces | Model/provider access is needed only to repeat the live experiment |
+        | Design rationale and final reflection | Measured gains, regressions and cost trade-offs below | Individual memory components have not been isolated by ablations |
 
-        Missing results remain missing. Synthetic pipeline tests are useful implementation checks
-        and cannot satisfy the assignment's requirement to demonstrate memory value on real answers.
+        Missing results remain missing. Synthetic pipeline tests verify implementation behavior;
+        the measurements displayed here come from the saved real experiment.
         """),
         md("""
         ## Agent design and working memory
@@ -329,7 +334,7 @@ def build_notebook():
         Memory+graph versus graph-only measures the memory package, including vocabulary expansion
         and changed tool/prompt affordances. It cannot isolate the contribution of patterns, facts,
         impact scores or any single recall mechanism. The text-RAG comparison measures the combined
-        approach, and neither comparison establishes memory value before real results exist.
+        approach. The observed differences below apply to this benchmark and configuration.
 
         Seed **20261006** varies question and system order within each variant block. Each answer
         starts with fresh conversation state and has its own response cache; the identical repeat
@@ -361,24 +366,26 @@ def build_notebook():
         the matrix. Historical startup failures remain under `artifacts/task2/sol-pilot-check`.
         Use a fresh smoke output path and cache for each retry.
 
-        The commands below use new experiment directories because the context cap changed from
-        48,000 to 200,000 characters. Keep the original `pilot-sol-v1` artifacts unchanged and
-        rerun all six pilots with the new cap. Already running processes keep their original limit.
+        The saved final experiment used `final-sol-v2`. The commands below use fresh
+        `reproduction-*` directories and the same 200,000-character cap. The bundled manifests
+        retain the original code fingerprint; they must not be edited to resume with changed
+        code. Recomputing the saved report is supported without rerunning providers.
 
         ```bash
+        cp artifacts/evaluation/final-sol-v2/inputs/graph.json KEP_2026.json
         python run_task2.py \\
           --graph KEP_2026.json --memory artifacts/memory/memory.json \\
           --model gpt-6-sol --question "What do the Weibo hashtag validation and retest records establish about the defect and its resolution?" \\
-          --output artifacts/task2/sol-pilot-check-v2 --cache-dir artifacts/task2/sol-pilot-check-v2/cache
+          --output artifacts/task2/reproduction-check --cache-dir artifacts/task2/reproduction-check/cache
         python run_evaluation.py preflight \\
           --memory artifacts/memory/memory.json --check-provider \\
-          --judge-model gpt-6.1-sol --output artifacts/evaluation/preflight-sol-v2
+          --judge-model gpt-6.1-sol --output artifacts/evaluation/reproduction-preflight
         python run_evaluation.py run --split pilot \\
           --memory artifacts/memory/memory.json --model gpt-6-sol --max-request-chars 200000 \\
-          --output artifacts/evaluation/pilot-sol-v2 --max-calls 100
+          --output artifacts/evaluation/reproduction-pilot --max-calls 100
         python run_evaluation.py judge --judge-model gpt-6.1-sol \\
-          --output artifacts/evaluation/pilot-sol-v2 --max-calls 30
-        python run_evaluation.py report --output artifacts/evaluation/pilot-sol-v2
+          --output artifacts/evaluation/reproduction-pilot --max-calls 30
+        python run_evaluation.py report --output artifacts/evaluation/reproduction-pilot
         ```
 
         Inspect the six pilots, then freeze implementation and settings. Do not tune against final
@@ -387,11 +394,11 @@ def build_notebook():
         ```bash
         python run_evaluation.py run \\
           --memory artifacts/memory/memory.json --model gpt-6-sol --max-request-chars 200000 \\
-          --output artifacts/evaluation/final-sol-v2 --max-calls 600
+          --output artifacts/evaluation/reproduction-final --max-calls 600
         python run_evaluation.py judge --judge-model gpt-6.1-sol \\
-          --output artifacts/evaluation/final-sol-v2 --max-calls 200
-        python run_evaluation.py audit-export --output artifacts/evaluation/final-sol-v2
-        python run_evaluation.py report --output artifacts/evaluation/final-sol-v2
+          --output artifacts/evaluation/reproduction-final --max-calls 200
+        python run_evaluation.py audit-export --output artifacts/evaluation/reproduction-final
+        python run_evaluation.py report --output artifacts/evaluation/reproduction-final
         ```
 
         Call caps are cumulative per stage, including failed attempts and cache lookups. Rerun
@@ -510,6 +517,8 @@ def build_notebook():
         Pilots are used for runtime and protocol calibration, not pooled into final scores. A
         standalone live check is also not a comparative result. Its trace is useful even when
         provider startup fails before any source retrieval or answer.
+        Historical pilots and integration checks remain local and are not bundled with the
+        final evaluation; missing local files do not imply those checks never ran.
         """),
         code(r"""
         if live:
@@ -583,23 +592,36 @@ def build_notebook():
         configuration, not all possible RAG systems. Missing build/provider usage stays unknown.
 
         **Available artifacts:** this executed notebook, frozen memory and reference criteria,
-        input/status tables, and the saved provider failure trace. **Pending artifacts:** real
-        per-answer Markdown/JSON and JSONL traces, answer judgments, comparative CSV/JSON scores
-        and PNG charts, and an attributable human audit. The display cells load these only when
-        they exist under the selected experiment. Keep `.env` and provider caches out of any
-        public submission; the input graph and memory remain local project data.
+        54 per-answer Markdown/JSON files and JSONL traces, 54 answer judgments, 36 consistency
+        comparisons, comparative CSV/JSON scores and PNG charts. **Outstanding:** an attributable
+        human answer audit. The display cells read the selected experiment's saved artifacts.
+        Frozen graph, memory and benchmark inputs are included under the final experiment's
+        `inputs/` directory so this notebook runs from a fresh checkout. `.env`, provider caches
+        and historical pilots remain local.
         """),
         md("""
         ## Final reflection
 
-        This reflection uses the existing data inspections and implementation checks. The live
-        comparison is pending, so it does not claim observed answer-quality or speed gains.
+        This reflection combines the data inspections with the completed automated comparison.
+        Reference criteria were accepted by user assumption, and the answer judgments have not
+        been human-audited. Results describe six development-exposed questions.
 
         **What worked.** Exact quotations and separate memory judgments made errors inspectable.
         In the Task 1 batch-1 pilot, the judge distinguished closure from observed improvement in
         the inspected cases. Task 2 contract checks reject unseen or altered citations and preserve
-        failed-run traces. These are achievements in auditability and application behavior, not
-        demonstrations of reliable live answers.
+        failed-run traces. In the final experiment, memory+graph covered 68.9% of reference
+        facets, compared with 58.9% for text RAG and 53.4% for graph-only. The memory package
+        improved measured coverage, but the experiment does not establish general reliability.
+
+        **What underperformed.** Memory+graph's groundedness was 93.0%, compared with 95.7%
+        for text RAG, and its specificity was 3.72/4 versus 3.83/4. Its mean input usage was
+        119,674 tokens across model calls per answer, compared with 8,807 for text RAG; latency
+        was 66.1 versus 26.2 seconds. Groundedness is undefined for empty answers and excluded
+        from that mean: one memory+graph and two graph-only runs returned no claims after
+        choosing to finalize without retrieval. All 54 answers were partial, with no exact
+        citation-validation errors; one graph-only run exhausted its tool allowance. The 36
+        consistency comparisons found no contradictions, which does not establish correctness
+        or equal coverage across variants.
 
         **What surprised me about the data.** A record is not an independent incident. Shared
         decision nodes, repeated passages and Community summaries can make one event look like
@@ -612,8 +634,9 @@ def build_notebook():
         context and explicit uncertainty earned their place in inspection by making claims
         challengeable. Administrative closure and duplicate associations contribute little useful
         history and are guarded or de-emphasized. Patterns preserve comparisons worth investigating,
-        but their downstream value remains unmeasured. Impact scores, confidence weights and
-        association paths could still be decoration unless they improve answers relative to their
+        but this experiment measures the memory package as a whole. It cannot assign the
+        coverage gain to patterns, impact scores, confidence weights or association paths
+        individually. Component ablations would establish whether those features justify their
         cost. Retrieval or citation of an item alone does not establish usefulness.
 
         **The single biggest flaw in the memory.** Episode boundaries are fixed before semantic
@@ -621,12 +644,12 @@ def build_notebook():
         reject but cannot repair them. This can distort both retrieval and the number of independent
         occurrences supporting a pattern even when every quotation is exact.
 
-        **What I would do next.** Establish a working provider runtime, inspect the six pilots,
-        freeze settings, and run the final comparison and judgment audit. Then inspect misses in
-        a small independent source sample, including rejected memory, before changing grouping or
-        ranking. Component ablations and new questions would test whether patterns, aliases and
-        outcome scores justify their complexity. I would not tune on the final answers and then
-        present the same set as held out.
+        **What I would do next.** Audit the automated judgments against source evidence, inspect
+        the early-finalization failures, and test a retrieval-before-abstention rule on new
+        questions. Then inspect misses in an independent source sample, including rejected
+        memory, before changing grouping or ranking. Component ablations and a smaller context
+        budget would test whether coverage gains can be retained at lower cost. The current
+        run remains unchanged; a revised agent needs a new experiment and new questions.
 
         **Likely first error.** “If the team asked this agent a question tomorrow, the first wrong
         thing it would tell them is that a defect affected customers when the evidence only

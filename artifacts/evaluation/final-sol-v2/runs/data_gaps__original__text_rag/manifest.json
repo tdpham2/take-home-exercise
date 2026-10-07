@@ -1,0 +1,27 @@
+{
+  "graph_hash": "graph_461ec66cd6c65256",
+  "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+  "execution_scope": "source_only",
+  "approach": "text_rag",
+  "top_k": 20,
+  "corpus_fingerprint": "sha_a36c560065c5dd52",
+  "configuration": {
+    "provider": "codex",
+    "model": "gpt-6-sol",
+    "reasoning_effort": "medium",
+    "max_model_calls": 12,
+    "max_tool_calls": 10,
+    "max_request_chars": 200000,
+    "no_gain_limit": 3,
+    "cache_dir": "artifacts/evaluation/final-sol-v2/runs/data_gaps__original__text_rag/cache",
+    "timeout": 300.0
+  },
+  "evaluation_fingerprint": "sha_e28d543ed0614083",
+  "run": {
+    "run_id": "data_gaps__original__text_rag",
+    "question_id": "data_gaps",
+    "variant": "original",
+    "approach": "text_rag",
+    "question": "What explanations do the records support for DocDB/Elasticsearch data gaps, and what remains unresolved?"
+  }
+}

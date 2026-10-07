@@ -42,10 +42,11 @@ python scripts/smoke_agent.py
 python scripts/smoke_evaluation.py
 ```
 
-To use the assignment data, place the supplied **`KEP_2026.json`** at the repository
-root. It is required for the full test suite and real-data commands:
+The final evaluation includes a frozen copy of the assignment graph. To use commands
+and tests that default to **`KEP_2026.json`**, copy it to the repository root once:
 
 ```bash
+cp artifacts/evaluation/final-sol-v2/inputs/graph.json KEP_2026.json
 python -m pytest -q
 python run_task1.py --mode offline
 python scripts/audit_data_understanding.py
@@ -72,11 +73,10 @@ already in `memory.json["patterns"]`. The enriched memory preserves source evide
 and the original base judgments. Both build stages
 are complete; structural validation does not establish semantic correctness.
 
-The repository includes the selected memory and its inspection reports. The
-raw `KEP_2026.json` dataset and all other generated runs remain outside Git; obtain
-the supplied graph separately for real-data commands and the full test suite. The
-memory includes source quotations. Historical runs and provider caches are not
-needed to use it.
+The repository includes the selected memory, its inspection reports, and the final
+evaluation with frozen graph, memory and benchmark inputs. These artifacts include
+source quotations. The root `KEP_2026.json` copy, historical runs and provider caches
+remain outside Git.
 
 Validate the selected memory against the graph without contacting a provider:
 
@@ -146,29 +146,48 @@ see its `--help` for usage.
 six questions × three systems × original/repeat/paraphrase, or **54 answers**, with
 `gpt-6-sol` answering and a separate `gpt-6.1-sol` judge.
 
-The final evaluation is **incomplete**. No final comparative benefit is established.
+The final experiment in `artifacts/evaluation/final-sol-v2` is complete: **54 answers,
+54 answer judgments and 36 consistency comparisons**. Its report is `automated_only`;
+all 54 answers have `partial` status, and no human answer audit has been imported.
+Memory+graph achieved higher automated coverage
+than text RAG (68.9% versus 58.9%), with lower groundedness (93.0% versus 95.7%) and
+higher mean latency (66.1 versus 26.2 seconds). These results describe this small benchmark.
 The eight-question reference checklist (two pilot, six final) was accepted by explicit
 user assumption; exact citations were checked, but no human semantic review is claimed.
-Keep partial runs separate from completed submission results.
+Completion here means the scheduled experiment finished, not that every answer fully
+answered its question.
 
-With the graph, selected memory and frozen benchmark bundle available:
+Open the [final HTML report](artifacts/evaluation/final-sol-v2/report/report.html)
+locally in a browser, or read [task2_evaluation.ipynb](task2_evaluation.ipynb) on GitHub.
+The report folder contains quality/cost charts, JSON results and CSV comparisons.
+The evaluation also includes all 54 answers with traces, manifests and receipts,
+54 answer judgments, 36 consistency judgments, usage ledgers and frozen inputs.
+The frozen benchmark and its acceptance record are in `artifacts/evaluation/benchmark/`.
+
+Regenerate the report or validate the inputs without model calls or credentials:
 
 ```bash
+python run_evaluation.py report --output artifacts/evaluation/final-sol-v2
+
 python run_evaluation.py preflight \
+  --graph artifacts/evaluation/final-sol-v2/inputs/graph.json \
   --memory artifacts/memory/memory.json \
   --output artifacts/evaluation/preflight
 ```
 
 This command makes no provider calls unless `--check-provider` is added. Use
 `python run_evaluation.py --help` for the prepare, draft, freeze, run, judge, audit
-and report stages. See the Task 2 notebook for complete experiment commands.
+and report stages. See the Task 2 notebook for complete experiment commands. Live
+reruns must use new output directories: the bundled manifests preserve the original
+code fingerprint, while saved-result inspection and report regeneration work with
+the current code.
 
 | Notebook | Purpose | Requirements |
 | --- | --- | --- |
 | [task1_results.ipynb](task1_results.ipynb) | Main Task 1 submission: inspect completed memory, patterns, retention and recall | Included memory; no graph file, credentials or model calls |
 | `task1_hosted.ipynb` | Optional hosted construction pilot | Graph and provider access; executing it makes live calls |
 | `task1_offline.ipynb` | Optional locally generated baseline walkthrough | Graph; regenerate the legacy local notebook before running |
-| `task2_evaluation.ipynb` | Local Task 2 reader; generate its source with the command below | Graph, selected memory and benchmark; no provider calls |
+| [task2_evaluation.ipynb](task2_evaluation.ipynb) | Main Task 2 submission: completed comparison, claims, provenance and tool traces | Included frozen inputs and evaluation artifacts; no provider calls |
 
 The results notebooks read saved artifacts. The Task 2 notebook leaves missing results
 missing. To regenerate notebook source (clearing that notebook's outputs):
@@ -180,11 +199,16 @@ python scripts/create_notebook.py --mode offline --output task1_offline.ipynb
 python scripts/create_evaluation_notebook.py
 ```
 
-Execute the main Task 1 notebook without rebuilding memory:
+Execute the two submission notebooks from the project root without rebuilding memory
+or making model calls:
 
 ```bash
 python scripts/execute_notebook.py --notebook task1_results.ipynb --in-process
+python scripts/execute_notebook.py --notebook task2_evaluation.ipynb --in-process
 ```
+
+The included [evaluation HTML report](artifacts/evaluation/final-sol-v2/report/report.html)
+can be viewed without running a notebook. Generated notebook HTML exports remain local.
 
 ## Repository layout
 
@@ -199,4 +223,6 @@ python scripts/execute_notebook.py --notebook task1_results.ipynb --in-process
 | `scripts/` | Notebook generation/execution, data audit and smoke checks |
 | `tests/` | Regression tests, including tests against the supplied graph |
 | `artifacts/memory/` | Selected memory: Luna-built base and Astra-generated patterns |
+| `artifacts/evaluation/benchmark/` | Frozen questions, acceptance record and source checklist |
+| `artifacts/evaluation/final-sol-v2/` | Final automated evaluation, report, answers, judgments and frozen inputs |
 | `artifacts/` | Other generated runs and caches remain local |

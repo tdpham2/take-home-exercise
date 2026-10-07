@@ -1,0 +1,3145 @@
+{
+  "question": "Which processing failure modes recur across narrative generation and collection, and where do the mechanisms differ?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "Long-running narrative-generation jobs were repeatedly killed after exceeding a 10-hour processing SLA; the record attributes this to large network data volumes.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_f3dba2eba43e2de5",
+          "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_5f2b2e2ded8842f5",
+          "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The source directly reports the failure and its attributed mechanism.",
+      "verification_note": "",
+      "id": "C1",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "Another narrative-side report combines missing SQS notifications, tasks left RUNNING, and comment-narrative algorithm errors; it does not establish that the algorithm errors caused the missing notifications.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_d9db300b6974ef3b",
+          "quote": "Investigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state (i.e. RUNNING) Investigate the failure of the comment narratives (Algorithm Error)",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "Both observations are directly stated, while their causal relationship is not.",
+      "verification_note": "",
+      "id": "C2",
+      "record_ids": [
+        "KEP-3912"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "Collection likewise has lost completion or failure signals: Weibo processing is reported with missing service callbacks, and failed Video-Summary tasks are reported not to trigger callbacks.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_adb482ae008cdf13",
+          "quote": "Critical Weibo Processing Failures: Missing Service Callbacks",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_90b8b0d6052b3676",
+          "quote": "Callbacks missing for failure cases Callbacks are not being triggered when Video-Summary tasks fail.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "Two source reports support a recurring signal-loss pattern, but concern distinct workflows.",
+      "verification_note": "",
+      "id": "C3",
+      "record_ids": [
+        "KEP-2175",
+        "KEP-6650"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "A collection-specific failure occurred before BrightData jobs could be created: calls to its batching service sometimes received connection-refused errors, with no retry mechanism reported for those network failures.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_3d5d2f47d4a972e3",
+          "quote": "While creating BrightData batching jobs, the system occasionally fails with a connection error when calling the BrightData batching service: HTTPConnectionPool(host='brightdata-batching-service.kepler.svc.cluster.local', port=12000): Max retries exceeded with url: /brightdata-batching/jobs/create (Caused by NewConnectionError: Failed to establish a new connection: [Errno 111] Connection refused)",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_91a620eacb16c78c",
+          "quote": "BrightData batching service may be temporarily unavailable (pod restart, rollout, scaling). No retry mechanism exists for connection refused / network-level failures . Causes: Unnecessary task failures Missed BrightData job creation Inconsistent ingestion behavior",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The source directly identifies the connection error and reported retry gap; possible service-unavailability causes remain qualified.",
+      "verification_note": "",
+      "id": "C4",
+      "record_ids": [
+        "KEP-5076"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "Another collection-specific mechanism was upstream access failure: YouTube YTDLP downloads reportedly hit high rates of 403 errors when SmartProxy blocked requests, degrading collection.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_c7511760bf9c6367",
+          "quote": "YouTube video download jobs using the YTDLP library were failing with high rates of 403 errors due to SmartProxy (SPA) blocking requests. This degraded YouTube data collection over approximately the same window as the broader FB/IG/TikTok outage (from ~Apr 21), and was confirmed separately by Austin Noronha on April 28. The fix was to migrate YouTube downloads from SmartProxy to Brightdata",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The source reports the failure and attributed access mechanism; it does not verify recovery after migration.",
+      "verification_note": "",
+      "id": "C5",
+      "record_ids": [
+        "KEP-6971"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "BrightData collection also had a batch-lifecycle risk distinct from narrative compute timeout: the proposed safeguards call for reconciling batches stuck in sent status and making callback or retry updates idempotent.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_5735a7f1cf387d96",
+          "quote": "Inconsistent batch_id presence In some failure scenarios, batch_id is null",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_6be1916061f01606",
+          "quote": "Correct Batch Lifecycle Handling Ensure robust status transitions from sent → completed (and any other relevant states), including: Handling of retries / callbacks from Bright Data. Idempotent updates to avoid inconsistent states. Stale Batch Detection & Recovery Add logic to detect batches stuck in sent beyond a configurable time window.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The null batch ID is reported, but the lifecycle controls are prescribed rather than verified as implemented.",
+      "verification_note": "",
+      "id": "C6",
+      "record_ids": [
+        "KEP-2175",
+        "KEP-5668"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "Thus the recurring pattern is interrupted or unacknowledged asynchronous processing, but the documented mechanisms differ: narrative work can exceed an application SLA or fail algorithmically, whereas collection can fail at external access, service connection, callback, or batch-state boundaries.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_f3dba2eba43e2de5",
+          "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_d9db300b6974ef3b",
+          "quote": "Investigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state (i.e. RUNNING) Investigate the failure of the comment narratives (Algorithm Error)",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_c7511760bf9c6367",
+          "quote": "YouTube video download jobs using the YTDLP library were failing with high rates of 403 errors due to SmartProxy (SPA) blocking requests.",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_3d5d2f47d4a972e3",
+          "quote": "While creating BrightData batching jobs, the system occasionally fails with a connection error when calling the BrightData batching service:",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_adb482ae008cdf13",
+          "quote": "Critical Weibo Processing Failures: Missing Service Callbacks",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "This is a cross-record comparison, not a claim that all systems share one root cause.",
+      "verification_note": "",
+      "id": "C7",
+      "record_ids": [
+        "KEP-3912",
+        "KEP-5076",
+        "KEP-6650",
+        "KEP-6969",
+        "KEP-6971"
+      ],
+      "source_mode": "graph"
+    }
+  ],
+  "unanswered": [
+    "Whether the proposed batch-lifecycle controls were deployed and effective.",
+    "Whether the reported collection and narrative failures produced measured customer impact or share any single root cause."
+  ],
+  "limitations": [
+    "The cited records cover distinct systems and workflows; recurrence means analogous failure modes in this selected evidence, not measured prevalence.",
+    "Reported fixes and prescriptions do not by themselves verify recovery or deployment.",
+    "Citation validation checks source access and exact provenance, not semantic entailment or real-world truth."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "execution_scope": "source_only"
+    },
+    {
+      "sequence": 2,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 6415,
+      "message_count": 2,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [],
+      "included_tool_call_ids": []
+    },
+    {
+      "sequence": 3,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "pending",
+      "serialized_chars": 6415,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model",
+      "call_number": 1,
+      "status": "completed",
+      "serialized_chars": 6415,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_5b88e23596cfd0f9",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"narrative generation collection processing failure modes\",\"mode\":\"records\",\"limit\":10}",
+        "purpose": "Find original records describing processing failures in narrative generation and collection.",
+        "discarded_items": [],
+        "pin_evidence_ids": []
+      },
+      "latency_seconds": 5.06865316699259,
+      "provider": {
+        "request_id": "request_5b88e23596cfd0f9",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/patterns__original__graph_only/cache/codex/request_5b88e23596cfd0f9.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 4542,
+          "output_tokens": 88,
+          "reasoning_output_tokens": 20,
+          "total_tokens": 4630
+        },
+        "thread_id": "01a1149f-249a-7dd2-9582-f22b4b86a47b",
+        "turn_id": "01a1149f-24c4-7ed2-9be7-7eed90a73ef9",
+        "status": "completed",
+        "latency_seconds": 5.0581
+      }
+    },
+    {
+      "sequence": 5,
+      "kind": "tool_started",
+      "call_id": "action_1_request_5b88e23596cfd0f9",
+      "name": "search_graph",
+      "arguments": {
+        "query": "narrative generation collection processing failure modes",
+        "mode": "records",
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "narrative generation collection processing failure modes",
+        "mode": "records",
+        "limit": 10
+      },
+      "call_id": "action_1_request_5b88e23596cfd0f9",
+      "result": {
+        "expanded_query": "narrative generation collection processing failure modes",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_adb482ae008cdf13",
+              "record_id": "KEP-6650",
+              "provenance_kind": "extracted",
+              "source_id": "decision_9e1c6efc",
+              "target_id": "resource_553d7d37",
+              "relation": "AFFECTS",
+              "quote": "Critical Weibo Processing Failures: Missing Service Callbacks",
+              "start": 0,
+              "end": 61,
+              "total_chars": 61,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0fe87992ee3f2c04",
+              "record_id": "KEP-7025",
+              "provenance_kind": "extracted",
+              "source_id": "decision_19b27f70",
+              "target_id": "resource_bd309b19",
+              "relation": "AFFECTS",
+              "quote": "Implement Centralized BrightData Batch Processing Service for Multi-Platform Data Collection",
+              "start": 0,
+              "end": 92,
+              "total_chars": 92,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_b57a2a006f994089",
+              "record_id": "KEP-4182",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7f810582",
+              "target_id": "rule_c392c39e",
+              "relation": "REFERENCES",
+              "quote": "Narrative-level statistics → narrative_stats collection (MongoDB)",
+              "start": 0,
+              "end": 65,
+              "total_chars": 65,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1ac3a7fb42bdf536",
+              "record_id": "KEP-6923",
+              "provenance_kind": "extracted",
+              "source_id": "decision_85535542",
+              "target_id": "risk_3123131b",
+              "relation": "REFERENCES",
+              "quote": "Report‑generation failures (no regular QA run).",
+              "start": 0,
+              "end": 47,
+              "total_chars": 47,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f3dba2eba43e2de5",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "resource_2a19226a",
+              "relation": "AFFECTS",
+              "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+              "start": 0,
+              "end": 180,
+              "total_chars": 180,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_857bba204521b877",
+              "record_id": "KEP-4243",
+              "provenance_kind": "extracted",
+              "source_id": "decision_adff1dcd",
+              "target_id": "event_ad65a164",
+              "relation": "REFERENCES",
+              "quote": "Records with macro_ids exist in the Network Trigrams collection but are missing from the Macro Narratives collection",
+              "start": 0,
+              "end": 116,
+              "total_chars": 116,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5f2b2e2ded8842f5",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "risk_c09e361e",
+              "relation": "REFERENCES",
+              "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+              "start": 0,
+              "end": 196,
+              "total_chars": 196,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f19d74f6ba596733",
+              "record_id": "KEP-4366",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ce5aa830",
+              "target_id": "resource_95a53de6",
+              "relation": "AFFECTS",
+              "quote": "Build Crud Operations for narrative pruning in application backend Collection Name: narrative_pruning_rules",
+              "start": 0,
+              "end": 107,
+              "total_chars": 107,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_8db0a55ebf084039",
+              "record_id": "KEP-2669",
+              "provenance_kind": "extracted",
+              "source_id": "decision_983ff358",
+              "target_id": "resource_0160c40f",
+              "relation": "AFFECTS",
+              "quote": "Update the API logic - to get the values for a Narrative Stats Collection",
+              "start": 0,
+              "end": 73,
+              "total_chars": 73,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_996046a98ac70ec7",
+              "record_id": "KEP-3912",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ac194980",
+              "target_id": "resource_ab1a7f89",
+              "relation": "AFFECTS",
+              "quote": "Investigate the failure of the comment narratives (Algorithm Error)",
+              "start": 0,
+              "end": 67,
+              "total_chars": 67,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 597,
+          "next_offset": 10
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.01948241700301878,
+      "error": false,
+      "new_ids": [
+        "ev_0fe87992ee3f2c04",
+        "ev_1ac3a7fb42bdf536",
+        "ev_5f2b2e2ded8842f5",
+        "ev_857bba204521b877",
+        "ev_8db0a55ebf084039",
+        "ev_996046a98ac70ec7",
+        "ev_adb482ae008cdf13",
+        "ev_b57a2a006f994089",
+        "ev_f19d74f6ba596733",
+        "ev_f3dba2eba43e2de5",
+        "span:ev_0fe87992ee3f2c04:0:92",
+        "span:ev_1ac3a7fb42bdf536:0:47",
+        "span:ev_5f2b2e2ded8842f5:0:196",
+        "span:ev_857bba204521b877:0:116",
+        "span:ev_8db0a55ebf084039:0:73",
+        "span:ev_996046a98ac70ec7:0:67",
+        "span:ev_adb482ae008cdf13:0:61",
+        "span:ev_b57a2a006f994089:0:65",
+        "span:ev_f19d74f6ba596733:0:107",
+        "span:ev_f3dba2eba43e2de5:0:180"
+      ]
+    },
+    {
+      "sequence": 7,
+      "kind": "context",
+      "model_call": 2,
+      "serialized_chars": 12273,
+      "message_count": 4,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_0fe87992ee3f2c04",
+        "ev_1ac3a7fb42bdf536",
+        "ev_5f2b2e2ded8842f5",
+        "ev_857bba204521b877",
+        "ev_8db0a55ebf084039",
+        "ev_996046a98ac70ec7",
+        "ev_adb482ae008cdf13",
+        "ev_b57a2a006f994089",
+        "ev_f19d74f6ba596733",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_5b88e23596cfd0f9"
+      ]
+    },
+    {
+      "sequence": 8,
+      "kind": "model_started",
+      "call_number": 2,
+      "status": "pending",
+      "serialized_chars": 12273,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 9,
+      "kind": "model",
+      "call_number": 2,
+      "status": "completed",
+      "serialized_chars": 12273,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_7229cef92288c2d9",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"data collection processing failures callbacks retries timeout\",\"mode\":\"records\",\"limit\":20}",
+        "purpose": "Find original collection-failure records to compare with narrative-generation timeouts.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_f3dba2eba43e2de5",
+          "ev_5f2b2e2ded8842f5"
+        ]
+      },
+      "latency_seconds": 4.15880925001693,
+      "provider": {
+        "request_id": "request_7229cef92288c2d9",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/patterns__original__graph_only/cache/codex/request_7229cef92288c2d9.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 5969,
+          "output_tokens": 128,
+          "reasoning_output_tokens": 31,
+          "total_tokens": 6097
+        },
+        "thread_id": "01a1149f-371d-7501-b835-9b879ef52042",
+        "turn_id": "01a1149f-3743-7ca3-a9c2-d70176c0f368",
+        "status": "completed",
+        "latency_seconds": 4.1441
+      }
+    },
+    {
+      "sequence": 10,
+      "kind": "tool_started",
+      "call_id": "action_2_request_7229cef92288c2d9",
+      "name": "search_graph",
+      "arguments": {
+        "query": "data collection processing failures callbacks retries timeout",
+        "mode": "records",
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 11,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "data collection processing failures callbacks retries timeout",
+        "mode": "records",
+        "limit": 20
+      },
+      "call_id": "action_2_request_7229cef92288c2d9",
+      "result": {
+        "expanded_query": "data collection processing failures callbacks retries timeout",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_adb482ae008cdf13",
+              "record_id": "KEP-6650",
+              "provenance_kind": "extracted",
+              "source_id": "decision_9e1c6efc",
+              "target_id": "resource_553d7d37",
+              "relation": "AFFECTS",
+              "quote": "Critical Weibo Processing Failures: Missing Service Callbacks",
+              "start": 0,
+              "end": 61,
+              "total_chars": 61,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_febc7228b799bf00",
+              "record_id": "Community_413",
+              "provenance_kind": "extracted",
+              "source_id": "decision_10df7c5d",
+              "target_id": "resource_60b2c23b",
+              "relation": "AFFECTS",
+              "quote": "Implement a new task for retrying comments stance callbacks",
+              "start": 0,
+              "end": 59,
+              "total_chars": 59,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0fe87992ee3f2c04",
+              "record_id": "KEP-7025",
+              "provenance_kind": "extracted",
+              "source_id": "decision_19b27f70",
+              "target_id": "resource_bd309b19",
+              "relation": "AFFECTS",
+              "quote": "Implement Centralized BrightData Batch Processing Service for Multi-Platform Data Collection",
+              "start": 0,
+              "end": 92,
+              "total_chars": 92,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ad26bffaa983949e",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "resource_c0cb2fb8",
+              "relation": "AFFECTS",
+              "quote": "the processing timeout was increased from 10 hours to 12 hours",
+              "start": 0,
+              "end": 62,
+              "total_chars": 62,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_90b8b0d6052b3676",
+              "record_id": "KEP-2175",
+              "provenance_kind": "extracted",
+              "source_id": "decision_068a3e0b",
+              "target_id": "risk_7524b819",
+              "relation": "REFERENCES",
+              "quote": "Callbacks missing for failure cases Callbacks are not being triggered when Video-Summary tasks fail.",
+              "start": 0,
+              "end": 100,
+              "total_chars": 100,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_26f7a4cf725a63f0",
+              "record_id": "KEP-5668",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7347f335",
+              "target_id": "event_c74999f5",
+              "relation": "REFERENCES",
+              "quote": "Correct Batch Lifecycle Handling Ensure robust status transitions from sent → completed (and any other relevant states), including: Handling of retries / callbacks from Bright Data.",
+              "start": 0,
+              "end": 181,
+              "total_chars": 181,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_d4ef4c60618521b3",
+              "record_id": "KEP-6812",
+              "provenance_kind": "extracted",
+              "source_id": "decision_df9176e6",
+              "target_id": "risk_ee4117dd",
+              "relation": "REFERENCES",
+              "quote": "DocumentDB connection failure (1): No retry/reconnect config for transient replica failures.",
+              "start": 0,
+              "end": 92,
+              "total_chars": 92,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f3dba2eba43e2de5",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "resource_2a19226a",
+              "relation": "AFFECTS",
+              "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+              "start": 0,
+              "end": 180,
+              "total_chars": 180,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_3cfa93665e6f3e6d",
+              "record_id": "KEP-6688",
+              "provenance_kind": "extracted",
+              "source_id": "decision_73903d82",
+              "target_id": "rule_9faebb62",
+              "relation": "REFERENCES",
+              "quote": "Alert on run failures / retries / long-running runs (stuck > SLA)",
+              "start": 0,
+              "end": 65,
+              "total_chars": 65,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f81061213ead746d",
+              "record_id": "KEP-6014",
+              "provenance_kind": "extracted",
+              "source_id": "decision_b94d1c0b",
+              "target_id": "event_e81e96fd",
+              "relation": "REFERENCES",
+              "quote": "Due to SPA API Sync call seed data call taking time also in case api failure 3 retries happening causing further delay",
+              "start": 0,
+              "end": 118,
+              "total_chars": 118,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_22227799224618c2",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_ad1f628a",
+              "target_id": "decision_9e1c6efc",
+              "relation": "DEPENDS_ON",
+              "quote": "Fixing incorrect task status marking (decision_ad1f628a) depends on resolving critical Weibo processing failures with missing service callbacks (decision_9e1c6efc). The task status marking issue is a symptom of the missing service callbacks; the root cause (missing callbacks) must be resolved before the status marking fix can be effective. Both decisions share Weibo workers as a target resource and Kevin Shah and Gaurav Kapdekar as participants.",
+              "start": 0,
+              "end": 449,
+              "total_chars": 449,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4b81221829f2a41c",
+              "record_id": "KEP-5829",
+              "provenance_kind": "extracted",
+              "source_id": "decision_edfbbcc9",
+              "target_id": "event_6190c8a1",
+              "relation": "REFERENCES",
+              "quote": "Need to investigate missing callbacks for comment seed data",
+              "start": 0,
+              "end": 59,
+              "total_chars": 59,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_c2120be5c598d246",
+              "record_id": "KEP-5829",
+              "provenance_kind": "extracted",
+              "source_id": "decision_edfbbcc9",
+              "target_id": "resource_9da73540",
+              "relation": "AFFECTS",
+              "quote": "Bug: Youtube missing Comment seed data callbacks",
+              "start": 0,
+              "end": 48,
+              "total_chars": 48,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_798015aecf48cc37",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_69fb7d3f",
+              "target_id": "resource_77b58f7b",
+              "relation": "AFFECTS",
+              "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered",
+              "start": 0,
+              "end": 100,
+              "total_chars": 100,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1a08736541cf5cb5",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_ad1f628a",
+              "target_id": "decision_9e1c6efc",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "Both decisions address Weibo worker processing failures. decision_ad1f628a (Fix incorrect task status marking) addresses a specific symptom (tasks marked as Created instead of Error), while decision_9e1c6efc (Resolve critical Weibo processing failures with missing service callbacks) addresses the root cause of processing failures. The later decision (9e1c6efc, 2026-03-31T03:11:36) supersedes the earlier one (ad1f628a, 2026-03-31T03:48:35) by providing a more fundamental resolution. Both share the same initiative, affected resource (Weibo workers), and participant (Gaurav Kapdekar).",
+              "start": 0,
+              "end": 588,
+              "total_chars": 588,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4989871d48de03d1",
+              "record_id": "KEP-7018",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7fc40ea0",
+              "target_id": "risk_a8815fe9",
+              "relation": "REFERENCES",
+              "quote": "The increase in processing and MLE-side queue backlog aligns with an actual increase in incoming social media data volume from the application side OR whether there is an unintended issue such as: Duplicate processing Excessive retries Queueing bug Incorrect trigger conditions Backfill replay side effects Misconfigured ingestion or summarization logic",
+              "start": 0,
+              "end": 353,
+              "total_chars": 353,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0c852a6941b0f4d8",
+              "record_id": "KEP-6923",
+              "provenance_kind": "extracted",
+              "source_id": "decision_85535542",
+              "target_id": "risk_5aa9b96c",
+              "relation": "REFERENCES",
+              "quote": "Funding / quota exhaustion stops data collection.",
+              "start": 0,
+              "end": 49,
+              "total_chars": 49,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ae8831731edc8c8f",
+              "record_id": "KEP-2189",
+              "provenance_kind": "extracted",
+              "source_id": "decision_af745f75",
+              "target_id": "event_007d6345",
+              "relation": "REFERENCES",
+              "quote": "Data collection is completed for all active networks in staging.",
+              "start": 0,
+              "end": 64,
+              "total_chars": 64,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_6dafe86d4d0302e6",
+              "record_id": "KEP-3600",
+              "provenance_kind": "extracted",
+              "source_id": "decision_a591194a",
+              "target_id": "resource_6dddf80e",
+              "relation": "AFFECTS",
+              "quote": "AGENT BUILDER UI CHANGE: Pg 5 - Historical data collection",
+              "start": 0,
+              "end": 58,
+              "total_chars": 58,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_966dbf6e0186fd0b",
+              "record_id": "KEP-6971",
+              "provenance_kind": "extracted",
+              "source_id": "decision_8b4344da",
+              "target_id": "resource_c86f3e72",
+              "relation": "AFFECTS",
+              "quote": "YouTube data collection degraded for ~8 days (Apr 21–29)",
+              "start": 0,
+              "end": 56,
+              "total_chars": 56,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 21–29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_966dbf6e0186fd0b",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 530,
+          "next_offset": 20
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.011260875005973503,
+      "error": false,
+      "new_ids": [
+        "ev_0c852a6941b0f4d8",
+        "ev_1a08736541cf5cb5",
+        "ev_22227799224618c2",
+        "ev_26f7a4cf725a63f0",
+        "ev_3cfa93665e6f3e6d",
+        "ev_4989871d48de03d1",
+        "ev_4b81221829f2a41c",
+        "ev_6dafe86d4d0302e6",
+        "ev_798015aecf48cc37",
+        "ev_90b8b0d6052b3676",
+        "ev_966dbf6e0186fd0b",
+        "ev_ad26bffaa983949e",
+        "ev_ae8831731edc8c8f",
+        "ev_c2120be5c598d246",
+        "ev_d4ef4c60618521b3",
+        "ev_f81061213ead746d",
+        "ev_febc7228b799bf00",
+        "span:ev_0c852a6941b0f4d8:0:49",
+        "span:ev_1a08736541cf5cb5:0:588",
+        "span:ev_22227799224618c2:0:449",
+        "span:ev_26f7a4cf725a63f0:0:181",
+        "span:ev_3cfa93665e6f3e6d:0:65",
+        "span:ev_4989871d48de03d1:0:353",
+        "span:ev_4b81221829f2a41c:0:59",
+        "span:ev_6dafe86d4d0302e6:0:58",
+        "span:ev_798015aecf48cc37:0:100",
+        "span:ev_90b8b0d6052b3676:0:100",
+        "span:ev_966dbf6e0186fd0b:0:56",
+        "span:ev_ad26bffaa983949e:0:62",
+        "span:ev_ae8831731edc8c8f:0:64",
+        "span:ev_c2120be5c598d246:0:48",
+        "span:ev_d4ef4c60618521b3:0:92",
+        "span:ev_f81061213ead746d:0:118",
+        "span:ev_febc7228b799bf00:0:59"
+      ]
+    },
+    {
+      "sequence": 12,
+      "kind": "context",
+      "model_call": 3,
+      "serialized_chars": 24428,
+      "message_count": 6,
+      "pinned_evidence_ids": [
+        "ev_5f2b2e2ded8842f5",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_0c852a6941b0f4d8",
+        "ev_0fe87992ee3f2c04",
+        "ev_1a08736541cf5cb5",
+        "ev_1ac3a7fb42bdf536",
+        "ev_22227799224618c2",
+        "ev_26f7a4cf725a63f0",
+        "ev_3cfa93665e6f3e6d",
+        "ev_4989871d48de03d1",
+        "ev_4b81221829f2a41c",
+        "ev_5f2b2e2ded8842f5",
+        "ev_6dafe86d4d0302e6",
+        "ev_798015aecf48cc37",
+        "ev_857bba204521b877",
+        "ev_8db0a55ebf084039",
+        "ev_90b8b0d6052b3676",
+        "ev_966dbf6e0186fd0b",
+        "ev_996046a98ac70ec7",
+        "ev_ad26bffaa983949e",
+        "ev_adb482ae008cdf13",
+        "ev_ae8831731edc8c8f",
+        "ev_b57a2a006f994089",
+        "ev_c2120be5c598d246",
+        "ev_d4ef4c60618521b3",
+        "ev_f19d74f6ba596733",
+        "ev_f3dba2eba43e2de5",
+        "ev_f81061213ead746d",
+        "ev_febc7228b799bf00"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_5b88e23596cfd0f9",
+        "action_2_request_7229cef92288c2d9"
+      ]
+    },
+    {
+      "sequence": 13,
+      "kind": "model_started",
+      "call_number": 3,
+      "status": "pending",
+      "serialized_chars": 24428,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 14,
+      "kind": "invalid_selection",
+      "item_id": "ev_22227799224618c2",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 15,
+      "kind": "invalid_selection",
+      "item_id": "ev_1a08736541cf5cb5",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 16,
+      "kind": "model",
+      "call_number": 3,
+      "status": "completed",
+      "serialized_chars": 24428,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_ed210b40f7a4c9ae",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"narrative generation failure collection ingestion stalled backlog processing errors\",\"mode\":\"records\",\"limit\":20}",
+        "purpose": "Find additional original reports of failures in both processing paths.",
+        "discarded_items": [
+          {
+            "item_id": "ev_22227799224618c2",
+            "reason": "Inferred dependency rationale, not original source testimony."
+          },
+          {
+            "item_id": "ev_1a08736541cf5cb5",
+            "reason": "Inferred supersession and root-cause narrative, not original source testimony."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_f3dba2eba43e2de5",
+          "ev_5f2b2e2ded8842f5",
+          "ev_adb482ae008cdf13",
+          "ev_d4ef4c60618521b3",
+          "ev_966dbf6e0186fd0b"
+        ]
+      },
+      "latency_seconds": 6.16704399997252,
+      "provider": {
+        "request_id": "request_ed210b40f7a4c9ae",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/patterns__original__graph_only/cache/codex/request_ed210b40f7a4c9ae.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 8948,
+          "output_tokens": 220,
+          "reasoning_output_tokens": 28,
+          "total_tokens": 9168
+        },
+        "thread_id": "01a1149f-476c-73d3-9919-42216f81ec1c",
+        "turn_id": "01a1149f-478d-7823-b2e2-8bf3c0df0589",
+        "status": "completed",
+        "latency_seconds": 6.1512
+      }
+    },
+    {
+      "sequence": 17,
+      "kind": "tool_started",
+      "call_id": "action_3_request_ed210b40f7a4c9ae",
+      "name": "search_graph",
+      "arguments": {
+        "query": "narrative generation failure collection ingestion stalled backlog processing errors",
+        "mode": "records",
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 18,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "narrative generation failure collection ingestion stalled backlog processing errors",
+        "mode": "records",
+        "limit": 20
+      },
+      "call_id": "action_3_request_ed210b40f7a4c9ae",
+      "result": {
+        "expanded_query": "narrative generation failure collection ingestion stalled backlog processing errors",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_4989871d48de03d1",
+              "record_id": "KEP-7018",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7fc40ea0",
+              "target_id": "risk_a8815fe9",
+              "relation": "REFERENCES",
+              "quote": "The increase in processing and MLE-side queue backlog aligns with an actual increase in incoming social media data volume from the application side OR whether there is an unintended issue such as: Duplicate processing Excessive retries Queueing bug Incorrect trigger conditions Backfill replay side effects Misconfigured ingestion or summarization logic",
+              "start": 0,
+              "end": 353,
+              "total_chars": 353,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_33bf30d8dce60597",
+              "record_id": "KEP-6890",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ae7b2727",
+              "target_id": "risk_1ade2728",
+              "relation": "REFERENCES",
+              "quote": "This issue is impacting the ingestion/processing pipeline and needs to be investigated and verified",
+              "start": 0,
+              "end": 99,
+              "total_chars": 99,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_6359d5526745b9a6",
+              "record_id": "KEP-5190",
+              "provenance_kind": "extracted",
+              "source_id": "decision_54815a58",
+              "target_id": "risk_e1b8677b",
+              "relation": "REFERENCES",
+              "quote": "Current workaround uses invalid placeholder accounts (e.g., \"-\", \"/\") which trigger backend errors and unnecessary processing.",
+              "start": 0,
+              "end": 126,
+              "total_chars": 126,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_adb482ae008cdf13",
+              "record_id": "KEP-6650",
+              "provenance_kind": "extracted",
+              "source_id": "decision_9e1c6efc",
+              "target_id": "resource_553d7d37",
+              "relation": "AFFECTS",
+              "quote": "Critical Weibo Processing Failures: Missing Service Callbacks",
+              "start": 0,
+              "end": 61,
+              "total_chars": 61,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0fe87992ee3f2c04",
+              "record_id": "KEP-7025",
+              "provenance_kind": "extracted",
+              "source_id": "decision_19b27f70",
+              "target_id": "resource_bd309b19",
+              "relation": "AFFECTS",
+              "quote": "Implement Centralized BrightData Batch Processing Service for Multi-Platform Data Collection",
+              "start": 0,
+              "end": 92,
+              "total_chars": 92,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_b57a2a006f994089",
+              "record_id": "KEP-4182",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7f810582",
+              "target_id": "rule_c392c39e",
+              "relation": "REFERENCES",
+              "quote": "Narrative-level statistics → narrative_stats collection (MongoDB)",
+              "start": 0,
+              "end": 65,
+              "total_chars": 65,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1ac3a7fb42bdf536",
+              "record_id": "KEP-6923",
+              "provenance_kind": "extracted",
+              "source_id": "decision_85535542",
+              "target_id": "risk_3123131b",
+              "relation": "REFERENCES",
+              "quote": "Report‑generation failures (no regular QA run).",
+              "start": 0,
+              "end": 47,
+              "total_chars": 47,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f3dba2eba43e2de5",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "resource_2a19226a",
+              "relation": "AFFECTS",
+              "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+              "start": 0,
+              "end": 180,
+              "total_chars": 180,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_857bba204521b877",
+              "record_id": "KEP-4243",
+              "provenance_kind": "extracted",
+              "source_id": "decision_adff1dcd",
+              "target_id": "event_ad65a164",
+              "relation": "REFERENCES",
+              "quote": "Records with macro_ids exist in the Network Trigrams collection but are missing from the Macro Narratives collection",
+              "start": 0,
+              "end": 116,
+              "total_chars": 116,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5f2b2e2ded8842f5",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "risk_c09e361e",
+              "relation": "REFERENCES",
+              "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+              "start": 0,
+              "end": 196,
+              "total_chars": 196,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1c518266822509e0",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_80b5b8e1",
+              "target_id": "decision_02d55676",
+              "relation": "DEPENDS_ON",
+              "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on fixing inconsistent DocDB storage due to incorrect cursor handling (decision_02d55676). The cursor handling issue directly impacts data ingestion; the ingestion failure cannot be properly diagnosed without first resolving the cursor inconsistency. Both decisions share DocDB as a target resource and the same participants.",
+              "start": 0,
+              "end": 386,
+              "total_chars": 386,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_7f41a9736d508cfc",
+              "record_id": "KEP-6741",
+              "provenance_kind": "extracted",
+              "source_id": "decision_3b584a6f",
+              "target_id": "resource_d5b36e5a",
+              "relation": "AFFECTS",
+              "quote": "when testing the report generation flow in staging, I want to verify that reports are running and the final report is generated with no errors",
+              "start": 0,
+              "end": 142,
+              "total_chars": 142,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4073b31643ace022",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_80b5b8e1",
+              "target_id": "decision_a9fe511c",
+              "relation": "DEPENDS_ON",
+              "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on fixing DocDB and Elasticsearch drift from partial de-duplication updates (decision_a9fe511c). Both decisions share 2 common targets (DocDB and Elasticsearch). The drift issue must be resolved before the ingestion failure can be fully addressed, as the drift contributes to the data gaps.",
+              "start": 0,
+              "end": 351,
+              "total_chars": 351,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_526c4d68ba557265",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_f1f3c25a",
+              "target_id": "decision_4146afd4",
+              "relation": "DEPENDS_ON",
+              "quote": "Both decisions address Big agent query processing failures. decision_f1f3c25a fixes inconsistent results for specific queries (Fiji–MCC deal), while decision_4146afd4 fixes multiple queries returning errors. Resolving the broader error-handling issue (decision_4146afd4) is a prerequisite for addressing specific query inconsistencies. Signals: shared_target:1 (Big agent query processing resource); shared_initiative.",
+              "start": 0,
+              "end": 418,
+              "total_chars": 418,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f19d74f6ba596733",
+              "record_id": "KEP-4366",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ce5aa830",
+              "target_id": "resource_95a53de6",
+              "relation": "AFFECTS",
+              "quote": "Build Crud Operations for narrative pruning in application backend Collection Name: narrative_pruning_rules",
+              "start": 0,
+              "end": 107,
+              "total_chars": 107,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_8db0a55ebf084039",
+              "record_id": "KEP-2669",
+              "provenance_kind": "extracted",
+              "source_id": "decision_983ff358",
+              "target_id": "resource_0160c40f",
+              "relation": "AFFECTS",
+              "quote": "Update the API logic - to get the values for a Narrative Stats Collection",
+              "start": 0,
+              "end": 73,
+              "total_chars": 73,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_996046a98ac70ec7",
+              "record_id": "KEP-3912",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ac194980",
+              "target_id": "resource_ab1a7f89",
+              "relation": "AFFECTS",
+              "quote": "Investigate the failure of the comment narratives (Algorithm Error)",
+              "start": 0,
+              "end": 67,
+              "total_chars": 67,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_a416d792fd3aadb3",
+              "record_id": "KEP-379",
+              "provenance_kind": "extracted",
+              "source_id": "decision_73d895fb",
+              "target_id": "resource_ef052f76",
+              "relation": "AFFECTS",
+              "quote": "Update the API logic - to get the values for a Comment Narrative Stats Collection",
+              "start": 0,
+              "end": 81,
+              "total_chars": 81,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_b030da0465566489",
+              "record_id": "KEP-6890",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ae7b2727",
+              "target_id": "event_ff1b3588",
+              "relation": "REFERENCES",
+              "quote": "We are encountering a proxy authentication error while using yt-dlp for YouTube data extraction. This issue is impacting the ingestion/processing pipeline and needs to be investigated and verified",
+              "start": 0,
+              "end": 196,
+              "total_chars": 196,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f8ee94f9d64ea930",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_80b5b8e1",
+              "target_id": "decision_4593fbfe",
+              "relation": "DEPENDS_ON",
+              "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on resolving major data gaps and inconsistencies between DocDB and Elasticsearch (decision_4593fbfe). Both decisions share 2 common targets (DocDB and Elasticsearch resources) and 2 common sources (Rohit Kumar and Gaurav Kapdekar). The data gaps identified in decision_4593fbfe are prerequisites to understanding and fixing the ingestion failure in decision_80b5b8e1.",
+              "start": 0,
+              "end": 428,
+              "total_chars": 428,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 639,
+          "next_offset": 20
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.01637529200525023,
+      "error": false,
+      "new_ids": [
+        "ev_1c518266822509e0",
+        "ev_33bf30d8dce60597",
+        "ev_4073b31643ace022",
+        "ev_526c4d68ba557265",
+        "ev_6359d5526745b9a6",
+        "ev_7f41a9736d508cfc",
+        "ev_a416d792fd3aadb3",
+        "ev_b030da0465566489",
+        "ev_f8ee94f9d64ea930",
+        "span:ev_1c518266822509e0:0:386",
+        "span:ev_33bf30d8dce60597:0:99",
+        "span:ev_4073b31643ace022:0:351",
+        "span:ev_526c4d68ba557265:0:418",
+        "span:ev_6359d5526745b9a6:0:126",
+        "span:ev_7f41a9736d508cfc:0:142",
+        "span:ev_a416d792fd3aadb3:0:81",
+        "span:ev_b030da0465566489:0:196",
+        "span:ev_f8ee94f9d64ea930:0:428"
+      ]
+    },
+    {
+      "sequence": 19,
+      "kind": "context",
+      "model_call": 4,
+      "serialized_chars": 37118,
+      "message_count": 8,
+      "pinned_evidence_ids": [
+        "ev_5f2b2e2ded8842f5",
+        "ev_966dbf6e0186fd0b",
+        "ev_adb482ae008cdf13",
+        "ev_d4ef4c60618521b3",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_0c852a6941b0f4d8",
+        "ev_0fe87992ee3f2c04",
+        "ev_1a08736541cf5cb5",
+        "ev_1ac3a7fb42bdf536",
+        "ev_1c518266822509e0",
+        "ev_22227799224618c2",
+        "ev_26f7a4cf725a63f0",
+        "ev_33bf30d8dce60597",
+        "ev_3cfa93665e6f3e6d",
+        "ev_4073b31643ace022",
+        "ev_4989871d48de03d1",
+        "ev_4b81221829f2a41c",
+        "ev_526c4d68ba557265",
+        "ev_5f2b2e2ded8842f5",
+        "ev_6359d5526745b9a6",
+        "ev_6dafe86d4d0302e6",
+        "ev_798015aecf48cc37",
+        "ev_7f41a9736d508cfc",
+        "ev_857bba204521b877",
+        "ev_8db0a55ebf084039",
+        "ev_90b8b0d6052b3676",
+        "ev_966dbf6e0186fd0b",
+        "ev_996046a98ac70ec7",
+        "ev_a416d792fd3aadb3",
+        "ev_ad26bffaa983949e",
+        "ev_adb482ae008cdf13",
+        "ev_ae8831731edc8c8f",
+        "ev_b030da0465566489",
+        "ev_b57a2a006f994089",
+        "ev_c2120be5c598d246",
+        "ev_d4ef4c60618521b3",
+        "ev_f19d74f6ba596733",
+        "ev_f3dba2eba43e2de5",
+        "ev_f81061213ead746d",
+        "ev_f8ee94f9d64ea930",
+        "ev_febc7228b799bf00"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_5b88e23596cfd0f9",
+        "action_2_request_7229cef92288c2d9",
+        "action_3_request_ed210b40f7a4c9ae"
+      ]
+    },
+    {
+      "sequence": 20,
+      "kind": "model_started",
+      "call_number": 4,
+      "status": "pending",
+      "serialized_chars": 37118,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 21,
+      "kind": "invalid_selection",
+      "item_id": "ev_22227799224618c2",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 22,
+      "kind": "invalid_selection",
+      "item_id": "ev_1a08736541cf5cb5",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 23,
+      "kind": "invalid_selection",
+      "item_id": "ev_4989871d48de03d1",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 24,
+      "kind": "model",
+      "call_number": 4,
+      "status": "completed",
+      "serialized_chars": 37118,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_9515d08723a52407",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"narrative generation failed timeout queue job collection YouTube BrightData batch failure\",\"mode\":\"records\",\"limit\":30}",
+        "purpose": "Find original reports of generation and collection failures for a mechanism-level comparison.",
+        "discarded_items": [
+          {
+            "item_id": "ev_22227799224618c2",
+            "reason": "Inferred link, not original testimony."
+          },
+          {
+            "item_id": "ev_1a08736541cf5cb5",
+            "reason": "Inferred supersession claim, not original testimony."
+          },
+          {
+            "item_id": "ev_4989871d48de03d1",
+            "reason": "Lists competing backlog hypotheses, not established causes."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_5f2b2e2ded8842f5",
+          "ev_adb482ae008cdf13",
+          "ev_966dbf6e0186fd0b",
+          "ev_b030da0465566489"
+        ]
+      },
+      "latency_seconds": 5.3542569169949275,
+      "provider": {
+        "request_id": "request_9515d08723a52407",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/patterns__original__graph_only/cache/codex/request_9515d08723a52407.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 11966,
+          "output_tokens": 252,
+          "reasoning_output_tokens": 49,
+          "total_tokens": 12218
+        },
+        "thread_id": "01a1149f-5f9d-7042-932b-b3d3d32211dc",
+        "turn_id": "01a1149f-5fc0-74f0-b310-48e5b0a896a0",
+        "status": "completed",
+        "latency_seconds": 5.3409
+      }
+    },
+    {
+      "sequence": 25,
+      "kind": "tool_started",
+      "call_id": "action_4_request_9515d08723a52407",
+      "name": "search_graph",
+      "arguments": {
+        "query": "narrative generation failed timeout queue job collection YouTube BrightData batch failure",
+        "mode": "records",
+        "limit": 30
+      }
+    },
+    {
+      "sequence": 26,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "narrative generation failed timeout queue job collection YouTube BrightData batch failure",
+        "mode": "records",
+        "limit": 30
+      },
+      "call_id": "action_4_request_9515d08723a52407",
+      "result": {
+        "error": "ValueError",
+        "message": "offset must be nonnegative; limit must be 1..20"
+      },
+      "latency_seconds": 0.016141916014021263,
+      "error": true,
+      "new_ids": []
+    },
+    {
+      "sequence": 27,
+      "kind": "context",
+      "model_call": 5,
+      "serialized_chars": 37666,
+      "message_count": 10,
+      "pinned_evidence_ids": [
+        "ev_5f2b2e2ded8842f5",
+        "ev_966dbf6e0186fd0b",
+        "ev_adb482ae008cdf13",
+        "ev_b030da0465566489",
+        "ev_d4ef4c60618521b3",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_0c852a6941b0f4d8",
+        "ev_0fe87992ee3f2c04",
+        "ev_1a08736541cf5cb5",
+        "ev_1ac3a7fb42bdf536",
+        "ev_1c518266822509e0",
+        "ev_22227799224618c2",
+        "ev_26f7a4cf725a63f0",
+        "ev_33bf30d8dce60597",
+        "ev_3cfa93665e6f3e6d",
+        "ev_4073b31643ace022",
+        "ev_4989871d48de03d1",
+        "ev_4b81221829f2a41c",
+        "ev_526c4d68ba557265",
+        "ev_5f2b2e2ded8842f5",
+        "ev_6359d5526745b9a6",
+        "ev_6dafe86d4d0302e6",
+        "ev_798015aecf48cc37",
+        "ev_7f41a9736d508cfc",
+        "ev_857bba204521b877",
+        "ev_8db0a55ebf084039",
+        "ev_90b8b0d6052b3676",
+        "ev_966dbf6e0186fd0b",
+        "ev_996046a98ac70ec7",
+        "ev_a416d792fd3aadb3",
+        "ev_ad26bffaa983949e",
+        "ev_adb482ae008cdf13",
+        "ev_ae8831731edc8c8f",
+        "ev_b030da0465566489",
+        "ev_b57a2a006f994089",
+        "ev_c2120be5c598d246",
+        "ev_d4ef4c60618521b3",
+        "ev_f19d74f6ba596733",
+        "ev_f3dba2eba43e2de5",
+        "ev_f81061213ead746d",
+        "ev_f8ee94f9d64ea930",
+        "ev_febc7228b799bf00"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_5b88e23596cfd0f9",
+        "action_2_request_7229cef92288c2d9",
+        "action_3_request_ed210b40f7a4c9ae",
+        "action_4_request_9515d08723a52407"
+      ]
+    },
+    {
+      "sequence": 28,
+      "kind": "model_started",
+      "call_number": 5,
+      "status": "pending",
+      "serialized_chars": 37666,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 29,
+      "kind": "invalid_selection",
+      "item_id": "ev_22227799224618c2",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 30,
+      "kind": "invalid_selection",
+      "item_id": "ev_1a08736541cf5cb5",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 31,
+      "kind": "invalid_selection",
+      "item_id": "ev_4989871d48de03d1",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 32,
+      "kind": "model",
+      "call_number": 5,
+      "status": "completed",
+      "serialized_chars": 37666,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_bd833b72034ed4dd",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"narrative generation failed timeout queue job collection YouTube BrightData batch failure\",\"mode\":\"records\",\"limit\":20}",
+        "purpose": "Find original failure reports for a mechanism-level comparison of narrative generation and collection.",
+        "discarded_items": [
+          {
+            "item_id": "ev_22227799224618c2",
+            "reason": "Inferred dependency, not original evidence."
+          },
+          {
+            "item_id": "ev_1a08736541cf5cb5",
+            "reason": "Inferred supersession and causality, not original evidence."
+          },
+          {
+            "item_id": "ev_4989871d48de03d1",
+            "reason": "Lists possible backlog causes rather than confirmed mechanisms."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_f3dba2eba43e2de5",
+          "ev_5f2b2e2ded8842f5",
+          "ev_adb482ae008cdf13",
+          "ev_d4ef4c60618521b3",
+          "ev_966dbf6e0186fd0b",
+          "ev_b030da0465566489"
+        ]
+      },
+      "latency_seconds": 7.220174624992069,
+      "provider": {
+        "request_id": "request_bd833b72034ed4dd",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/patterns__original__graph_only/cache/codex/request_bd833b72034ed4dd.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 12121,
+          "output_tokens": 286,
+          "reasoning_output_tokens": 55,
+          "total_tokens": 12407
+        },
+        "thread_id": "01a1149f-749f-7d10-a1f6-deff0075c7bb",
+        "turn_id": "01a1149f-74c0-7980-a2d3-d1b0f562c901",
+        "status": "completed",
+        "latency_seconds": 7.2048
+      }
+    },
+    {
+      "sequence": 33,
+      "kind": "tool_started",
+      "call_id": "action_5_request_bd833b72034ed4dd",
+      "name": "search_graph",
+      "arguments": {
+        "query": "narrative generation failed timeout queue job collection YouTube BrightData batch failure",
+        "mode": "records",
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 34,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "narrative generation failed timeout queue job collection YouTube BrightData batch failure",
+        "mode": "records",
+        "limit": 20
+      },
+      "call_id": "action_5_request_bd833b72034ed4dd",
+      "result": {
+        "expanded_query": "narrative generation failed timeout queue job collection YouTube BrightData batch failure",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_6e367ae3d3818ef3",
+              "record_id": "KEP-6632",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7347f335",
+              "target_id": "resource_c80fde63",
+              "relation": "AFFECTS",
+              "quote": "Remote Job Cancellation on Local Failure When we mark a Bright Data batch/job as failed or cancelled from our side (e.g., due to timeouts, manual cancellation, or unrecoverable errors), we must also invoke the Bright Data API to cancel/stop the corresponding remote job/batch.",
+              "start": 0,
+              "end": 276,
+              "total_chars": 276,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_8679be4366f9d955",
+              "record_id": "KEP-6632",
+              "provenance_kind": "extracted",
+              "source_id": "decision_c8c80ee9",
+              "target_id": "resource_c80fde63",
+              "relation": "AFFECTS",
+              "quote": "Remote Job Cancellation on Local Failure When we mark a Bright Data batch/job as failed or cancelled from our side (e.g., due to timeouts, manual cancellation, or unrecoverable errors), we must also invoke the Bright Data API to cancel/stop the corresponding remote job/batch.",
+              "start": 0,
+              "end": 276,
+              "total_chars": 276,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0fe87992ee3f2c04",
+              "record_id": "KEP-7025",
+              "provenance_kind": "extracted",
+              "source_id": "decision_19b27f70",
+              "target_id": "resource_bd309b19",
+              "relation": "AFFECTS",
+              "quote": "Implement Centralized BrightData Batch Processing Service for Multi-Platform Data Collection",
+              "start": 0,
+              "end": 92,
+              "total_chars": 92,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f3dba2eba43e2de5",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "resource_2a19226a",
+              "relation": "AFFECTS",
+              "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+              "start": 0,
+              "end": 180,
+              "total_chars": 180,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_2a4c7be7d3adc963",
+              "record_id": "KEP-5050",
+              "provenance_kind": "extracted",
+              "source_id": "decision_52c95f80",
+              "target_id": "resource_9069110f",
+              "relation": "AFFECTS",
+              "quote": "Remove documents older than 10 days from the {source}_brightdata_jobs/task_metadata collection",
+              "start": 0,
+              "end": 94,
+              "total_chars": 94,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_c7511760bf9c6367",
+              "record_id": "KEP-6971",
+              "provenance_kind": "extracted",
+              "source_id": "event_39de98e9",
+              "target_id": "decision_8b4344da",
+              "relation": "CAUSES",
+              "quote": "YouTube video download jobs using the YTDLP library were failing with high rates of 403 errors due to SmartProxy (SPA) blocking requests. This degraded YouTube data collection over approximately the same window as the broader FB/IG/TikTok outage (from ~Apr 21), and was confirmed separately by Austin Noronha on April 28. The fix was to migrate YouTube downloads from SmartProxy to Brightdata",
+              "start": 0,
+              "end": 392,
+              "total_chars": 392,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_c7511760bf9c6367",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 28",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_c7511760bf9c6367",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_3d5d2f47d4a972e3",
+              "record_id": "KEP-5076",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7d5bb1b2",
+              "target_id": "event_3378bd28",
+              "relation": "REFERENCES",
+              "quote": "While creating BrightData batching jobs, the system occasionally fails with a connection error when calling the BrightData batching service: HTTPConnectionPool(host='brightdata-batching-service.kepler.svc.cluster.local', port=12000): Max retries exceeded with url: /brightdata-batching/jobs/create (Caused by NewConnectionError: Failed to establish a new connection: [Errno 111] Connection refused)",
+              "start": 0,
+              "end": 398,
+              "total_chars": 398,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1a105ce0683db415",
+              "record_id": "KEP-6971",
+              "provenance_kind": "extracted",
+              "source_id": "decision_8b4344da",
+              "target_id": "resource_cd730e91",
+              "relation": "AFFECTS",
+              "quote": "Migrated YouTube download proxy from SmartProxy to Brightdata",
+              "start": 0,
+              "end": 61,
+              "total_chars": 61,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_3fc2c6b07d21b82b",
+              "record_id": "KEP-6971",
+              "provenance_kind": "extracted",
+              "source_id": "decision_8b4344da",
+              "target_id": "resource_5fdd06ec",
+              "relation": "AFFECTS",
+              "quote": "Migrated YouTube download proxy from SmartProxy to Brightdata",
+              "start": 0,
+              "end": 61,
+              "total_chars": 61,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_57dddc6defb35e98",
+              "record_id": "KEP-6971",
+              "provenance_kind": "extracted",
+              "source_id": "decision_8b4344da",
+              "target_id": "resource_c3a89ab0",
+              "relation": "AFFECTS",
+              "quote": "Migrated YouTube download proxy from SmartProxy to Brightdata",
+              "start": 0,
+              "end": 61,
+              "total_chars": 61,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5a02e820993bc41a",
+              "record_id": "KEP-7027",
+              "provenance_kind": "extracted",
+              "source_id": "decision_9ca98105",
+              "target_id": "resource_b01d35ac",
+              "relation": "AFFECTS",
+              "quote": "Implement the BrightData YouTube media download integration",
+              "start": 0,
+              "end": 59,
+              "total_chars": 59,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_91a620eacb16c78c",
+              "record_id": "KEP-5076",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7d5bb1b2",
+              "target_id": "risk_d71ca5c8",
+              "relation": "REFERENCES",
+              "quote": "BrightData batching service may be temporarily unavailable (pod restart, rollout, scaling). No retry mechanism exists for connection refused / network-level failures . Causes: Unnecessary task failures Missed BrightData job creation Inconsistent ingestion behavior",
+              "start": 0,
+              "end": 264,
+              "total_chars": 264,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5735a7f1cf387d96",
+              "record_id": "KEP-2175",
+              "provenance_kind": "extracted",
+              "source_id": "decision_068a3e0b",
+              "target_id": "risk_e5db171f",
+              "relation": "REFERENCES",
+              "quote": "Inconsistent batch_id presence In some failure scenarios, batch_id is null",
+              "start": 0,
+              "end": 74,
+              "total_chars": 74,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_6be1916061f01606",
+              "record_id": "KEP-5668",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7347f335",
+              "target_id": "decision_c8c80ee9",
+              "relation": "DECOMPOSES_TO",
+              "quote": "Correct Batch Lifecycle Handling Ensure robust status transitions from sent → completed (and any other relevant states), including: Handling of retries / callbacks from Bright Data. Idempotent updates to avoid inconsistent states. Stale Batch Detection & Recovery Add logic to detect batches stuck in sent beyond a configurable time window. Implement automated remediation (e.g., reconcile state with Bright Data API, or safely mark as completed/failed). Active Batch Limit Safeguards Add guardrails and logging when the active batch count approaches 70 (e.g., at 60, 65, 70). Integrate with monitoring/alerting (e.g., Datadog) so on‑call engineers are notified before ingestion is impacted. Observability & Dashboards Expose metrics such as: Number of active batches Count of batches per status ( se",
+              "start": 0,
+              "end": 800,
+              "total_chars": 1367,
+              "next_start": 800,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_966dbf6e0186fd0b",
+              "record_id": "KEP-6971",
+              "provenance_kind": "extracted",
+              "source_id": "decision_8b4344da",
+              "target_id": "resource_c86f3e72",
+              "relation": "AFFECTS",
+              "quote": "YouTube data collection degraded for ~8 days (Apr 21–29)",
+              "start": 0,
+              "end": 56,
+              "total_chars": 56,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 21–29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_966dbf6e0186fd0b",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_54047816c163e60c",
+              "record_id": "KEP-6972",
+              "provenance_kind": "extracted",
+              "source_id": "decision_15ffb0bf",
+              "target_id": "resource_b01d35ac",
+              "relation": "AFFECTS",
+              "quote": "Evaluate the Solution for YouTube Media Downloading via BrightData API",
+              "start": 0,
+              "end": 70,
+              "total_chars": 70,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4a1a65241ba0008a",
+              "record_id": "KEP-6973",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d37d88b7",
+              "target_id": "event_397f3b56",
+              "relation": "REFERENCES",
+              "quote": "BrightData API - 57/57 Failed (Issue - Token expired)",
+              "start": 0,
+              "end": 53,
+              "total_chars": 53,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_30f88ccc80c81338",
+              "record_id": "KEP-7025",
+              "provenance_kind": "extracted",
+              "source_id": "decision_19b27f70",
+              "target_id": "decision_74449949",
+              "relation": "DECOMPOSES_TO",
+              "quote": "Building a dedicated service to handle BrightData batch requests across multiple platforms",
+              "start": 0,
+              "end": 90,
+              "total_chars": 90,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_59b44c9c5c22ea16",
+              "record_id": "KEP-7025",
+              "provenance_kind": "extracted",
+              "source_id": "decision_19b27f70",
+              "target_id": "decision_9ca98105",
+              "relation": "DECOMPOSES_TO",
+              "quote": "This Epic aims to introduce a centralized batch processing service for BrightData API requests",
+              "start": 0,
+              "end": 94,
+              "total_chars": 94,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_3d362baeabd2f5ac",
+              "record_id": "KEP-7027",
+              "provenance_kind": "extracted",
+              "source_id": "decision_9ca98105",
+              "target_id": "decision_15ffb0bf",
+              "relation": "REFERENCES",
+              "quote": "Implement the BrightData YouTube media download integration within the existing orchestration and ingestion framework",
+              "start": 0,
+              "end": 117,
+              "total_chars": 117,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 763,
+          "next_offset": 20
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.016243458027020097,
+      "error": false,
+      "new_ids": [
+        "ev_1a105ce0683db415",
+        "ev_2a4c7be7d3adc963",
+        "ev_30f88ccc80c81338",
+        "ev_3d362baeabd2f5ac",
+        "ev_3d5d2f47d4a972e3",
+        "ev_3fc2c6b07d21b82b",
+        "ev_4a1a65241ba0008a",
+        "ev_54047816c163e60c",
+        "ev_5735a7f1cf387d96",
+        "ev_57dddc6defb35e98",
+        "ev_59b44c9c5c22ea16",
+        "ev_5a02e820993bc41a",
+        "ev_6be1916061f01606",
+        "ev_6e367ae3d3818ef3",
+        "ev_8679be4366f9d955",
+        "ev_91a620eacb16c78c",
+        "ev_c7511760bf9c6367",
+        "span:ev_1a105ce0683db415:0:61",
+        "span:ev_2a4c7be7d3adc963:0:94",
+        "span:ev_30f88ccc80c81338:0:90",
+        "span:ev_3d362baeabd2f5ac:0:117",
+        "span:ev_3d5d2f47d4a972e3:0:398",
+        "span:ev_3fc2c6b07d21b82b:0:61",
+        "span:ev_4a1a65241ba0008a:0:53",
+        "span:ev_54047816c163e60c:0:70",
+        "span:ev_5735a7f1cf387d96:0:74",
+        "span:ev_57dddc6defb35e98:0:61",
+        "span:ev_59b44c9c5c22ea16:0:94",
+        "span:ev_5a02e820993bc41a:0:59",
+        "span:ev_6be1916061f01606:0:800",
+        "span:ev_6e367ae3d3818ef3:0:276",
+        "span:ev_8679be4366f9d955:0:276",
+        "span:ev_91a620eacb16c78c:0:264",
+        "span:ev_c7511760bf9c6367:0:392"
+      ]
+    },
+    {
+      "sequence": 35,
+      "kind": "context",
+      "model_call": 6,
+      "serialized_chars": 51109,
+      "message_count": 12,
+      "pinned_evidence_ids": [
+        "ev_5f2b2e2ded8842f5",
+        "ev_966dbf6e0186fd0b",
+        "ev_adb482ae008cdf13",
+        "ev_b030da0465566489",
+        "ev_d4ef4c60618521b3",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_0c852a6941b0f4d8",
+        "ev_0fe87992ee3f2c04",
+        "ev_1a08736541cf5cb5",
+        "ev_1a105ce0683db415",
+        "ev_1ac3a7fb42bdf536",
+        "ev_1c518266822509e0",
+        "ev_22227799224618c2",
+        "ev_26f7a4cf725a63f0",
+        "ev_2a4c7be7d3adc963",
+        "ev_30f88ccc80c81338",
+        "ev_33bf30d8dce60597",
+        "ev_3cfa93665e6f3e6d",
+        "ev_3d362baeabd2f5ac",
+        "ev_3d5d2f47d4a972e3",
+        "ev_3fc2c6b07d21b82b",
+        "ev_4073b31643ace022",
+        "ev_4989871d48de03d1",
+        "ev_4a1a65241ba0008a",
+        "ev_4b81221829f2a41c",
+        "ev_526c4d68ba557265",
+        "ev_54047816c163e60c",
+        "ev_5735a7f1cf387d96",
+        "ev_57dddc6defb35e98",
+        "ev_59b44c9c5c22ea16",
+        "ev_5a02e820993bc41a",
+        "ev_5f2b2e2ded8842f5",
+        "ev_6359d5526745b9a6",
+        "ev_6be1916061f01606",
+        "ev_6dafe86d4d0302e6",
+        "ev_6e367ae3d3818ef3",
+        "ev_798015aecf48cc37",
+        "ev_7f41a9736d508cfc",
+        "ev_857bba204521b877",
+        "ev_8679be4366f9d955",
+        "ev_8db0a55ebf084039",
+        "ev_90b8b0d6052b3676",
+        "ev_91a620eacb16c78c",
+        "ev_966dbf6e0186fd0b",
+        "ev_996046a98ac70ec7",
+        "ev_a416d792fd3aadb3",
+        "ev_ad26bffaa983949e",
+        "ev_adb482ae008cdf13",
+        "ev_ae8831731edc8c8f",
+        "ev_b030da0465566489",
+        "ev_b57a2a006f994089",
+        "ev_c2120be5c598d246",
+        "ev_c7511760bf9c6367",
+        "ev_d4ef4c60618521b3",
+        "ev_f19d74f6ba596733",
+        "ev_f3dba2eba43e2de5",
+        "ev_f81061213ead746d",
+        "ev_f8ee94f9d64ea930",
+        "ev_febc7228b799bf00"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_5b88e23596cfd0f9",
+        "action_2_request_7229cef92288c2d9",
+        "action_3_request_ed210b40f7a4c9ae",
+        "action_4_request_9515d08723a52407",
+        "action_5_request_bd833b72034ed4dd"
+      ]
+    },
+    {
+      "sequence": 36,
+      "kind": "model_started",
+      "call_number": 6,
+      "status": "pending",
+      "serialized_chars": 51109,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 37,
+      "kind": "invalid_selection",
+      "item_id": "ev_22227799224618c2",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 38,
+      "kind": "invalid_selection",
+      "item_id": "ev_1a08736541cf5cb5",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 39,
+      "kind": "model",
+      "call_number": 6,
+      "status": "completed",
+      "serialized_chars": 51109,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_2c40913a5e62d525",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"narrative generation failure algorithm error missing narratives processing timeout backlog\",\"mode\":\"records\",\"limit\":20}",
+        "purpose": "Find original narrative-generation failure reports to compare their mechanisms with collection failures.",
+        "discarded_items": [
+          {
+            "item_id": "ev_22227799224618c2",
+            "reason": "Inferred dependency, not original evidence of causation."
+          },
+          {
+            "item_id": "ev_1a08736541cf5cb5",
+            "reason": "Inferred relationship, not an independent failure report."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_f3dba2eba43e2de5",
+          "ev_5f2b2e2ded8842f5",
+          "ev_adb482ae008cdf13",
+          "ev_c7511760bf9c6367",
+          "ev_3d5d2f47d4a972e3",
+          "ev_91a620eacb16c78c",
+          "ev_4a1a65241ba0008a"
+        ]
+      },
+      "latency_seconds": 7.058266459003789,
+      "provider": {
+        "request_id": "request_2c40913a5e62d525",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/patterns__original__graph_only/cache/codex/request_2c40913a5e62d525.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 15393,
+          "output_tokens": 249,
+          "reasoning_output_tokens": 29,
+          "total_tokens": 15642
+        },
+        "thread_id": "01a1149f-90ea-74c0-84fc-1df07bdbf955",
+        "turn_id": "01a1149f-910e-7681-8f38-38ba672c1f14",
+        "status": "completed",
+        "latency_seconds": 7.0437
+      }
+    },
+    {
+      "sequence": 40,
+      "kind": "tool_started",
+      "call_id": "action_6_request_2c40913a5e62d525",
+      "name": "search_graph",
+      "arguments": {
+        "query": "narrative generation failure algorithm error missing narratives processing timeout backlog",
+        "mode": "records",
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 41,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "narrative generation failure algorithm error missing narratives processing timeout backlog",
+        "mode": "records",
+        "limit": 20
+      },
+      "call_id": "action_6_request_2c40913a5e62d525",
+      "result": {
+        "expanded_query": "narrative generation failure algorithm error missing narratives processing timeout backlog",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_996046a98ac70ec7",
+              "record_id": "KEP-3912",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ac194980",
+              "target_id": "resource_ab1a7f89",
+              "relation": "AFFECTS",
+              "quote": "Investigate the failure of the comment narratives (Algorithm Error)",
+              "start": 0,
+              "end": 67,
+              "total_chars": 67,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_adb482ae008cdf13",
+              "record_id": "KEP-6650",
+              "provenance_kind": "extracted",
+              "source_id": "decision_9e1c6efc",
+              "target_id": "resource_553d7d37",
+              "relation": "AFFECTS",
+              "quote": "Critical Weibo Processing Failures: Missing Service Callbacks",
+              "start": 0,
+              "end": 61,
+              "total_chars": 61,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_d9db300b6974ef3b",
+              "record_id": "KEP-3912",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ac194980",
+              "target_id": "event_bfc424bc",
+              "relation": "REFERENCES",
+              "quote": "Investigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state (i.e. RUNNING) Investigate the failure of the comment narratives (Algorithm Error)",
+              "start": 0,
+              "end": 183,
+              "total_chars": 183,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f3dba2eba43e2de5",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "resource_2a19226a",
+              "relation": "AFFECTS",
+              "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+              "start": 0,
+              "end": 180,
+              "total_chars": 180,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5a57e73b353bac90",
+              "record_id": "KEP-4243",
+              "provenance_kind": "extracted",
+              "source_id": "decision_adff1dcd",
+              "target_id": "resource_3b2bc1bb",
+              "relation": "AFFECTS",
+              "quote": "If a macro_id is missing from Macro Narratives, it should be ignored during Narrative Graph backend API processing",
+              "start": 0,
+              "end": 114,
+              "total_chars": 114,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ad26bffaa983949e",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "resource_c0cb2fb8",
+              "relation": "AFFECTS",
+              "quote": "the processing timeout was increased from 10 hours to 12 hours",
+              "start": 0,
+              "end": 62,
+              "total_chars": 62,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_a5bb0c881bd41204",
+              "record_id": "KEP-6475",
+              "provenance_kind": "extracted",
+              "source_id": "decision_e5810b46",
+              "target_id": "event_00a0a107",
+              "relation": "REFERENCES",
+              "quote": "when narrative or theme data is missing for older chats, it returns a structured response instead of a 500 error",
+              "start": 0,
+              "end": 112,
+              "total_chars": 112,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_03b6897ac3e47a32",
+              "record_id": "KEP-4243",
+              "provenance_kind": "extracted",
+              "source_id": "decision_adff1dcd",
+              "target_id": "resource_024d08a5",
+              "relation": "AFFECTS",
+              "quote": "The backend should handle this scenario. If a macro_id is missing from Macro Narratives, it should be ignored during Narrative Graph backend API processing",
+              "start": 0,
+              "end": 155,
+              "total_chars": 155,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1a08736541cf5cb5",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_ad1f628a",
+              "target_id": "decision_9e1c6efc",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "Both decisions address Weibo worker processing failures. decision_ad1f628a (Fix incorrect task status marking) addresses a specific symptom (tasks marked as Created instead of Error), while decision_9e1c6efc (Resolve critical Weibo processing failures with missing service callbacks) addresses the root cause of processing failures. The later decision (9e1c6efc, 2026-03-31T03:11:36) supersedes the earlier one (ad1f628a, 2026-03-31T03:48:35) by providing a more fundamental resolution. Both share the same initiative, affected resource (Weibo workers), and participant (Gaurav Kapdekar).",
+              "start": 0,
+              "end": 588,
+              "total_chars": 588,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_55072d8eb14344fd",
+              "record_id": "KEP-3866",
+              "provenance_kind": "extracted",
+              "source_id": "decision_9c780cba",
+              "target_id": "event_3cd63382",
+              "relation": "REFERENCES",
+              "quote": "The Kepler API currently closes after 60 seconds due to a timeout error.",
+              "start": 0,
+              "end": 72,
+              "total_chars": 72,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_8d8764ca7499911a",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_ad6f824c",
+              "target_id": "decision_050e74c7",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "decision_ad6f824c (2026-02-17) fixes STATS service API failures, superseding decision_050e74c7 (2026-02-06) to generate missing stats. The failure fix addresses the underlying issue preventing stats generation, making it a replacement approach.",
+              "start": 0,
+              "end": 244,
+              "total_chars": 244,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-02-17",
+                  "date": "2026-02-17",
+                  "evidence_id": "ev_8d8764ca7499911a",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-02-06",
+                  "date": "2026-02-06",
+                  "evidence_id": "ev_8d8764ca7499911a",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_2eb86c7e8cf122b5",
+              "record_id": "KEP-6533",
+              "provenance_kind": "extracted",
+              "source_id": "decision_618cdffb",
+              "target_id": "resource_d42bd7d6",
+              "relation": "AFFECTS",
+              "quote": "Report generation fails with system delay error",
+              "start": 0,
+              "end": 47,
+              "total_chars": 47,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1ac3a7fb42bdf536",
+              "record_id": "KEP-6923",
+              "provenance_kind": "extracted",
+              "source_id": "decision_85535542",
+              "target_id": "risk_3123131b",
+              "relation": "REFERENCES",
+              "quote": "Report‑generation failures (no regular QA run).",
+              "start": 0,
+              "end": 47,
+              "total_chars": 47,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4989871d48de03d1",
+              "record_id": "KEP-7018",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7fc40ea0",
+              "target_id": "risk_a8815fe9",
+              "relation": "REFERENCES",
+              "quote": "The increase in processing and MLE-side queue backlog aligns with an actual increase in incoming social media data volume from the application side OR whether there is an unintended issue such as: Duplicate processing Excessive retries Queueing bug Incorrect trigger conditions Backfill replay side effects Misconfigured ingestion or summarization logic",
+              "start": 0,
+              "end": 353,
+              "total_chars": 353,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5f2b2e2ded8842f5",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "risk_c09e361e",
+              "relation": "REFERENCES",
+              "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+              "start": 0,
+              "end": 196,
+              "total_chars": 196,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_dcd6b5f9b30344e7",
+              "record_id": "KEP-2189",
+              "provenance_kind": "extracted",
+              "source_id": "decision_af745f75",
+              "target_id": "event_2f3562de",
+              "relation": "REFERENCES",
+              "quote": "There a re failures in the topic clustering with algorithmic error for 18 jobs out of",
+              "start": 0,
+              "end": 85,
+              "total_chars": 85,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_22227799224618c2",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_ad1f628a",
+              "target_id": "decision_9e1c6efc",
+              "relation": "DEPENDS_ON",
+              "quote": "Fixing incorrect task status marking (decision_ad1f628a) depends on resolving critical Weibo processing failures with missing service callbacks (decision_9e1c6efc). The task status marking issue is a symptom of the missing service callbacks; the root cause (missing callbacks) must be resolved before the status marking fix can be effective. Both decisions share Weibo workers as a target resource and Kevin Shah and Gaurav Kapdekar as participants.",
+              "start": 0,
+              "end": 449,
+              "total_chars": 449,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_90b8b0d6052b3676",
+              "record_id": "KEP-2175",
+              "provenance_kind": "extracted",
+              "source_id": "decision_068a3e0b",
+              "target_id": "risk_7524b819",
+              "relation": "REFERENCES",
+              "quote": "Callbacks missing for failure cases Callbacks are not being triggered when Video-Summary tasks fail.",
+              "start": 0,
+              "end": 100,
+              "total_chars": 100,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_59f08c1317795829",
+              "record_id": "KEP-6538",
+              "provenance_kind": "extracted",
+              "source_id": "decision_a06be4b1",
+              "target_id": "rule_fcc494d6",
+              "relation": "REFERENCES",
+              "quote": "Validation: Hashtag must include # prefix — show red inline error text if missing",
+              "start": 0,
+              "end": 81,
+              "total_chars": 81,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_6d036e9b8156b10d",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "event_81a76815",
+              "target_id": "decision_eb9b6e87",
+              "relation": "CAUSES",
+              "quote": "Direct causal signal: event_81a76815 'Twitter networks missing task generation for January 14' (occurred_at: 2026-01-22) directly triggered decision_eb9b6e87 'Generate missing task generation for Twitter networks on January 14' (decided_at: 2026-01-23). The decision's title explicitly names the missing task generation as the problem being solved. The event precedes the decision temporally. The REFERENCES edge confirms the causal link.",
+              "start": 0,
+              "end": 438,
+              "total_chars": 438,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-01-22",
+                  "date": "2026-01-22",
+                  "evidence_id": "ev_6d036e9b8156b10d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-01-23",
+                  "date": "2026-01-23",
+                  "evidence_id": "ev_6d036e9b8156b10d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "January 14",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_6d036e9b8156b10d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "January 14",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_6d036e9b8156b10d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 701,
+          "next_offset": 20
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.015337624994572252,
+      "error": false,
+      "new_ids": [
+        "ev_03b6897ac3e47a32",
+        "ev_2eb86c7e8cf122b5",
+        "ev_55072d8eb14344fd",
+        "ev_59f08c1317795829",
+        "ev_5a57e73b353bac90",
+        "ev_6d036e9b8156b10d",
+        "ev_8d8764ca7499911a",
+        "ev_a5bb0c881bd41204",
+        "ev_d9db300b6974ef3b",
+        "ev_dcd6b5f9b30344e7",
+        "span:ev_03b6897ac3e47a32:0:155",
+        "span:ev_2eb86c7e8cf122b5:0:47",
+        "span:ev_55072d8eb14344fd:0:72",
+        "span:ev_59f08c1317795829:0:81",
+        "span:ev_5a57e73b353bac90:0:114",
+        "span:ev_6d036e9b8156b10d:0:438",
+        "span:ev_8d8764ca7499911a:0:244",
+        "span:ev_a5bb0c881bd41204:0:112",
+        "span:ev_d9db300b6974ef3b:0:183",
+        "span:ev_dcd6b5f9b30344e7:0:85"
+      ]
+    },
+    {
+      "sequence": 42,
+      "kind": "context",
+      "model_call": 7,
+      "serialized_chars": 65274,
+      "message_count": 14,
+      "pinned_evidence_ids": [
+        "ev_3d5d2f47d4a972e3",
+        "ev_4a1a65241ba0008a",
+        "ev_5f2b2e2ded8842f5",
+        "ev_91a620eacb16c78c",
+        "ev_966dbf6e0186fd0b",
+        "ev_adb482ae008cdf13",
+        "ev_b030da0465566489",
+        "ev_c7511760bf9c6367",
+        "ev_d4ef4c60618521b3",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_03b6897ac3e47a32",
+        "ev_0c852a6941b0f4d8",
+        "ev_0fe87992ee3f2c04",
+        "ev_1a08736541cf5cb5",
+        "ev_1a105ce0683db415",
+        "ev_1ac3a7fb42bdf536",
+        "ev_1c518266822509e0",
+        "ev_22227799224618c2",
+        "ev_26f7a4cf725a63f0",
+        "ev_2a4c7be7d3adc963",
+        "ev_2eb86c7e8cf122b5",
+        "ev_30f88ccc80c81338",
+        "ev_33bf30d8dce60597",
+        "ev_3cfa93665e6f3e6d",
+        "ev_3d362baeabd2f5ac",
+        "ev_3d5d2f47d4a972e3",
+        "ev_3fc2c6b07d21b82b",
+        "ev_4073b31643ace022",
+        "ev_4989871d48de03d1",
+        "ev_4a1a65241ba0008a",
+        "ev_4b81221829f2a41c",
+        "ev_526c4d68ba557265",
+        "ev_54047816c163e60c",
+        "ev_55072d8eb14344fd",
+        "ev_5735a7f1cf387d96",
+        "ev_57dddc6defb35e98",
+        "ev_59b44c9c5c22ea16",
+        "ev_59f08c1317795829",
+        "ev_5a02e820993bc41a",
+        "ev_5a57e73b353bac90",
+        "ev_5f2b2e2ded8842f5",
+        "ev_6359d5526745b9a6",
+        "ev_6be1916061f01606",
+        "ev_6d036e9b8156b10d",
+        "ev_6dafe86d4d0302e6",
+        "ev_6e367ae3d3818ef3",
+        "ev_798015aecf48cc37",
+        "ev_7f41a9736d508cfc",
+        "ev_857bba204521b877",
+        "ev_8679be4366f9d955",
+        "ev_8d8764ca7499911a",
+        "ev_8db0a55ebf084039",
+        "ev_90b8b0d6052b3676",
+        "ev_91a620eacb16c78c",
+        "ev_966dbf6e0186fd0b",
+        "ev_996046a98ac70ec7",
+        "ev_a416d792fd3aadb3",
+        "ev_a5bb0c881bd41204",
+        "ev_ad26bffaa983949e",
+        "ev_adb482ae008cdf13",
+        "ev_ae8831731edc8c8f",
+        "ev_b030da0465566489",
+        "ev_b57a2a006f994089",
+        "ev_c2120be5c598d246",
+        "ev_c7511760bf9c6367",
+        "ev_d4ef4c60618521b3",
+        "ev_d9db300b6974ef3b",
+        "ev_dcd6b5f9b30344e7",
+        "ev_f19d74f6ba596733",
+        "ev_f3dba2eba43e2de5",
+        "ev_f81061213ead746d",
+        "ev_f8ee94f9d64ea930",
+        "ev_febc7228b799bf00"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_5b88e23596cfd0f9",
+        "action_2_request_7229cef92288c2d9",
+        "action_3_request_ed210b40f7a4c9ae",
+        "action_4_request_9515d08723a52407",
+        "action_5_request_bd833b72034ed4dd",
+        "action_6_request_2c40913a5e62d525"
+      ]
+    },
+    {
+      "sequence": 43,
+      "kind": "model_started",
+      "call_number": 7,
+      "status": "pending",
+      "serialized_chars": 65274,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 44,
+      "kind": "invalid_selection",
+      "item_id": "ev_22227799224618c2",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 45,
+      "kind": "invalid_selection",
+      "item_id": "ev_1a08736541cf5cb5",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 46,
+      "kind": "invalid_selection",
+      "item_id": "ev_4989871d48de03d1",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 47,
+      "kind": "model",
+      "call_number": 7,
+      "status": "completed",
+      "serialized_chars": 65274,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_6340d9ca73978d9c",
+      "action": {
+        "tool_name": "DraftAnswer",
+        "arguments_json": "{\"claims\":[{\"statement\":\"Long-running narrative-generation jobs were repeatedly killed after exceeding a 10-hour processing SLA; the record attributes this to large network data volumes.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_f3dba2eba43e2de5\",\"quote\":\"Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)\",\"start\":0},{\"evidence_id\":\"ev_5f2b2e2ded8842f5\",\"quote\":\"Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The source directly reports the failure and its attributed mechanism.\"},{\"statement\":\"Another narrative-side report combines missing SQS notifications, tasks left RUNNING, and comment-narrative algorithm errors; it does not establish that the algorithm errors caused the missing notifications.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_d9db300b6974ef3b\",\"quote\":\"Investigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state (i.e. RUNNING) Investigate the failure of the comment narratives (Algorithm Error)\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"Both observations are directly stated, while their causal relationship is not.\"},{\"statement\":\"Collection likewise has lost completion or failure signals: Weibo processing is reported with missing service callbacks, and failed Video-Summary tasks are reported not to trigger callbacks.\",\"kind\":\"synthesis\",\"citations\":[{\"evidence_id\":\"ev_adb482ae008cdf13\",\"quote\":\"Critical Weibo Processing Failures: Missing Service Callbacks\",\"start\":0},{\"evidence_id\":\"ev_90b8b0d6052b3676\",\"quote\":\"Callbacks missing for failure cases Callbacks are not being triggered when Video-Summary tasks fail.\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"medium\",\"confidence_reason\":\"Two source reports support a recurring signal-loss pattern, but concern distinct workflows.\"},{\"statement\":\"A collection-specific failure occurred before BrightData jobs could be created: calls to its batching service sometimes received connection-refused errors, with no retry mechanism reported for those network failures.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_3d5d2f47d4a972e3\",\"quote\":\"While creating BrightData batching jobs, the system occasionally fails with a connection error when calling the BrightData batching service: HTTPConnectionPool(host='brightdata-batching-service.kepler.svc.cluster.local', port=12000): Max retries exceeded with url: /brightdata-batching/jobs/create (Caused by NewConnectionError: Failed to establish a new connection: [Errno 111] Connection refused)\",\"start\":0},{\"evidence_id\":\"ev_91a620eacb16c78c\",\"quote\":\"BrightData batching service may be temporarily unavailable (pod restart, rollout, scaling). No retry mechanism exists for connection refused / network-level failures . Causes: Unnecessary task failures Missed BrightData job creation Inconsistent ingestion behavior\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The source directly identifies the connection error and reported retry gap; possible service-unavailability causes remain qualified.\"},{\"statement\":\"Another collection-specific mechanism was upstream access failure: YouTube YTDLP downloads reportedly hit high rates of 403 errors when SmartProxy blocked requests, degrading collection.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_c7511760bf9c6367\",\"quote\":\"YouTube video download jobs using the YTDLP library were failing with high rates of 403 errors due to SmartProxy (SPA) blocking requests. This degraded YouTube data collection over approximately the same window as the broader FB/IG/TikTok outage (from ~Apr 21), and was confirmed separately by Austin Noronha on April 28. The fix was to migrate YouTube downloads from SmartProxy to Brightdata\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The source reports the failure and attributed access mechanism; it does not verify recovery after migration.\"},{\"statement\":\"BrightData collection also had a batch-lifecycle risk distinct from narrative compute timeout: the proposed safeguards call for reconciling batches stuck in sent status and making callback or retry updates idempotent.\",\"kind\":\"prescription\",\"citations\":[{\"evidence_id\":\"ev_5735a7f1cf387d96\",\"quote\":\"Inconsistent batch_id presence In some failure scenarios, batch_id is null\",\"start\":0},{\"evidence_id\":\"ev_6be1916061f01606\",\"quote\":\"Correct Batch Lifecycle Handling Ensure robust status transitions from sent → completed (and any other relevant states), including: Handling of retries / callbacks from Bright Data. Idempotent updates to avoid inconsistent states. Stale Batch Detection & Recovery Add logic to detect batches stuck in sent beyond a configurable time window.\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"medium\",\"confidence_reason\":\"The null batch ID is reported, but the lifecycle controls are prescribed rather than verified as implemented.\"},{\"statement\":\"Thus the recurring pattern is interrupted or unacknowledged asynchronous processing, but the documented mechanisms differ: narrative work can exceed an application SLA or fail algorithmically, whereas collection can fail at external access, service connection, callback, or batch-state boundaries.\",\"kind\":\"synthesis\",\"citations\":[{\"evidence_id\":\"ev_f3dba2eba43e2de5\",\"quote\":\"Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)\",\"start\":0},{\"evidence_id\":\"ev_d9db300b6974ef3b\",\"quote\":\"Investigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state (i.e. RUNNING) Investigate the failure of the comment narratives (Algorithm Error)\",\"start\":0},{\"evidence_id\":\"ev_c7511760bf9c6367\",\"quote\":\"YouTube video download jobs using the YTDLP library were failing with high rates of 403 errors due to SmartProxy (SPA) blocking requests.\",\"start\":0},{\"evidence_id\":\"ev_3d5d2f47d4a972e3\",\"quote\":\"While creating BrightData batching jobs, the system occasionally fails with a connection error when calling the BrightData batching service:\",\"start\":0},{\"evidence_id\":\"ev_adb482ae008cdf13\",\"quote\":\"Critical Weibo Processing Failures: Missing Service Callbacks\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"medium\",\"confidence_reason\":\"This is a cross-record comparison, not a claim that all systems share one root cause.\"}],\"unanswered\":[\"Whether the proposed batch-lifecycle controls were deployed and effective.\",\"Whether the reported collection and narrative failures produced measured customer impact or share any single root cause.\"],\"limitations\":[\"The cited records cover distinct systems and workflows; recurrence means analogous failure modes in this selected evidence, not measured prevalence.\",\"Reported fixes and prescriptions do not by themselves verify recovery or deployment.\"]}",
+        "purpose": "Synthesize cited recurring processing failure modes and distinguish narrative-generation mechanisms from collection mechanisms.",
+        "discarded_items": [
+          {
+            "item_id": "ev_22227799224618c2",
+            "reason": "Inferred dependency rationale, not original evidence of causality."
+          },
+          {
+            "item_id": "ev_1a08736541cf5cb5",
+            "reason": "Inferred supersession rationale, not an independent failure report."
+          },
+          {
+            "item_id": "ev_4989871d48de03d1",
+            "reason": "Lists competing backlog hypotheses without resolving the mechanism."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_f3dba2eba43e2de5",
+          "ev_5f2b2e2ded8842f5",
+          "ev_d9db300b6974ef3b",
+          "ev_adb482ae008cdf13",
+          "ev_90b8b0d6052b3676",
+          "ev_3d5d2f47d4a972e3",
+          "ev_91a620eacb16c78c",
+          "ev_c7511760bf9c6367",
+          "ev_5735a7f1cf387d96",
+          "ev_6be1916061f01606"
+        ]
+      },
+      "latency_seconds": 38.204551500006346,
+      "provider": {
+        "request_id": "request_6340d9ca73978d9c",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/patterns__original__graph_only/cache/codex/request_6340d9ca73978d9c.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 18880,
+          "output_tokens": 2002,
+          "reasoning_output_tokens": 163,
+          "total_tokens": 20882
+        },
+        "thread_id": "01a1149f-ac96-7d40-9499-662cc4e69d61",
+        "turn_id": "01a1149f-acb7-7f42-ac18-edab684e6dad",
+        "status": "completed",
+        "latency_seconds": 38.1924
+      }
+    },
+    {
+      "sequence": 48,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_f3dba2eba43e2de5",
+        "ev_5f2b2e2ded8842f5"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 49,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "KEP-3912"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_d9db300b6974ef3b"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 50,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "KEP-2175",
+        "KEP-6650"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_adb482ae008cdf13",
+        "ev_90b8b0d6052b3676"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 51,
+      "kind": "claim_support",
+      "claim_id": "C4",
+      "record_ids": [
+        "KEP-5076"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_3d5d2f47d4a972e3",
+        "ev_91a620eacb16c78c"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 52,
+      "kind": "claim_support",
+      "claim_id": "C5",
+      "record_ids": [
+        "KEP-6971"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_c7511760bf9c6367"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 53,
+      "kind": "claim_support",
+      "claim_id": "C6",
+      "record_ids": [
+        "KEP-2175",
+        "KEP-5668"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_5735a7f1cf387d96",
+        "ev_6be1916061f01606"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 54,
+      "kind": "claim_support",
+      "claim_id": "C7",
+      "record_ids": [
+        "KEP-3912",
+        "KEP-5076",
+        "KEP-6650",
+        "KEP-6969",
+        "KEP-6971"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_f3dba2eba43e2de5",
+        "ev_d9db300b6974ef3b",
+        "ev_c7511760bf9c6367",
+        "ev_3d5d2f47d4a972e3",
+        "ev_adb482ae008cdf13"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    }
+  ],
+  "usage": {
+    "model_calls": 7,
+    "data_tool_calls": 6,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 77819,
+      "output_tokens": 3225,
+      "cached_input_tokens": 17920,
+      "reasoning_output_tokens": 375
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 73.23175591797917,
+    "provider_elapsed_seconds": 73.1352,
+    "tool_elapsed_seconds": 0.09484158304985613,
+    "total_elapsed_seconds": 73.4124943339848,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "agent_version": "task2-agent-v1",
+    "graph_hash": "graph_461ec66cd6c65256",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "execution_scope": "source_only",
+    "tool_profile": "graph_only",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/patterns__original__graph_only/cache",
+      "timeout": 300.0
+    },
+    "created_at": "2026-10-07T04:30:09.378377+00:00",
+    "dependencies": {
+      "langchain": "1.4.0",
+      "langchain-core": "1.6.1",
+      "langgraph": "1.2.11",
+      "pydantic": "2.13.5"
+    },
+    "client_injected": true,
+    "context_policy": "200000 canonical serialized application characters; exact excerpts, pinned evidence, whole-exchange eviction; fresh state per question",
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "patterns__original__graph_only",
+      "question_id": "patterns",
+      "variant": "original",
+      "approach": "graph_only",
+      "question": "Which processing failure modes recur across narrative generation and collection, and where do the mechanisms differ?"
+    }
+  }
+}

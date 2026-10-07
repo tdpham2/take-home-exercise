@@ -1,0 +1,5770 @@
+{
+  "status": "automated_only",
+  "synthetic": false,
+  "manifest_fingerprint": "sha_e28d543ed0614083",
+  "benchmark_review_basis": "user_assumption",
+  "rows": [
+    {
+      "run_id": "pruning__original__graph_only",
+      "question_id": "pruning",
+      "approach": "graph_only",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.6,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 33910,
+      "output_tokens": 2522,
+      "model_calls": 4,
+      "tool_calls": 3,
+      "latency_seconds": 40.66600779199507,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "pruning__original__text_rag",
+      "question_id": "pruning",
+      "approach": "text_rag",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.6,
+      "groundedness": 0.9565217391304348,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 8189,
+      "output_tokens": 2428,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 27.807015665981453,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "pruning__original__memory_graph",
+      "question_id": "pruning",
+      "approach": "memory_graph",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.5,
+      "groundedness": 0.8518518518518519,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 1,
+      "input_tokens": 136986,
+      "output_tokens": 4152,
+      "model_calls": 9,
+      "tool_calls": 8,
+      "latency_seconds": 77.2542912499921,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "routines__original__graph_only",
+      "question_id": "routines",
+      "approach": "graph_only",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.2,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 89385,
+      "output_tokens": 2656,
+      "model_calls": 7,
+      "tool_calls": 6,
+      "latency_seconds": 52.116809750004904,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "routines__original__text_rag",
+      "question_id": "routines",
+      "approach": "text_rag",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.1,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 7729,
+      "output_tokens": 2043,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 39.29895699999179,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "routines__original__memory_graph",
+      "question_id": "routines",
+      "approach": "memory_graph",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 1.0,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 121304,
+      "output_tokens": 3736,
+      "model_calls": 8,
+      "tool_calls": 7,
+      "latency_seconds": 67.04186141700484,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "government__original__graph_only",
+      "question_id": "government",
+      "approach": "graph_only",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.8333333333333334,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 58920,
+      "output_tokens": 2346,
+      "model_calls": 6,
+      "tool_calls": 4,
+      "latency_seconds": 54.91916862499784,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "government__original__memory_graph",
+      "question_id": "government",
+      "approach": "memory_graph",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 1.0,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 35264,
+      "output_tokens": 1848,
+      "model_calls": 4,
+      "tool_calls": 3,
+      "latency_seconds": 27.447303166991333,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "government__original__text_rag",
+      "question_id": "government",
+      "approach": "text_rag",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.75,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 8934,
+      "output_tokens": 1007,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 21.390567666996503,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "data_gaps__original__graph_only",
+      "question_id": "data_gaps",
+      "approach": "graph_only",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.9,
+      "groundedness": 0.8333333333333334,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 155346,
+      "output_tokens": 3816,
+      "model_calls": 10,
+      "tool_calls": 8,
+      "latency_seconds": 80.15587445898564,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "data_gaps__original__memory_graph",
+      "question_id": "data_gaps",
+      "approach": "memory_graph",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.9,
+      "groundedness": 0.8461538461538461,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 139590,
+      "output_tokens": 4105,
+      "model_calls": 9,
+      "tool_calls": 7,
+      "latency_seconds": 80.19800704202498,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "data_gaps__original__text_rag",
+      "question_id": "data_gaps",
+      "approach": "text_rag",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.6,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 8335,
+      "output_tokens": 1704,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 20.190603917028056,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "patterns__original__memory_graph",
+      "question_id": "patterns",
+      "approach": "memory_graph",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.8,
+      "groundedness": 0.9333333333333333,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 153804,
+      "output_tokens": 4774,
+      "model_calls": 9,
+      "tool_calls": 7,
+      "latency_seconds": 88.11382691600011,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "patterns__original__graph_only",
+      "question_id": "patterns",
+      "approach": "graph_only",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.4,
+      "groundedness": 0.8333333333333334,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 77819,
+      "output_tokens": 3225,
+      "model_calls": 7,
+      "tool_calls": 6,
+      "latency_seconds": 73.4124943339848,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "patterns__original__text_rag",
+      "question_id": "patterns",
+      "approach": "text_rag",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.4,
+      "groundedness": 0.9310344827586207,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 8719,
+      "output_tokens": 2820,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 28.264628791977884,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "collection_timeline__original__text_rag",
+      "question_id": "collection_timeline",
+      "approach": "text_rag",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.9285714285714286,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 11017,
+      "output_tokens": 2065,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 23.389509291009745,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "collection_timeline__original__memory_graph",
+      "question_id": "collection_timeline",
+      "approach": "memory_graph",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.7142857142857143,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 90184,
+      "output_tokens": 2603,
+      "model_calls": 6,
+      "tool_calls": 5,
+      "latency_seconds": 60.78712616697885,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "collection_timeline__original__graph_only",
+      "question_id": "collection_timeline",
+      "approach": "graph_only",
+      "variant": "original",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.0,
+      "groundedness": null,
+      "specificity": 0,
+      "citation_validity": null,
+      "internal_contradictions": 0,
+      "input_tokens": 4546,
+      "output_tokens": 147,
+      "model_calls": 1,
+      "tool_calls": 0,
+      "latency_seconds": 5.034970000007888,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "routines__repeat__memory_graph",
+      "question_id": "routines",
+      "approach": "memory_graph",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.8,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 132427,
+      "output_tokens": 3314,
+      "model_calls": 8,
+      "tool_calls": 7,
+      "latency_seconds": 63.11341037499369,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "routines__repeat__text_rag",
+      "question_id": "routines",
+      "approach": "text_rag",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.1,
+      "groundedness": 0.9,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 7731,
+      "output_tokens": 2237,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 25.685127208998892,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "routines__repeat__graph_only",
+      "question_id": "routines",
+      "approach": "graph_only",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.6,
+      "groundedness": 0.9696969696969697,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 47579,
+      "output_tokens": 2422,
+      "model_calls": 5,
+      "tool_calls": 4,
+      "latency_seconds": 55.40413045900641,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "pruning__repeat__graph_only",
+      "question_id": "pruning",
+      "approach": "graph_only",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.8,
+      "groundedness": 0.9545454545454546,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 56742,
+      "output_tokens": 2829,
+      "model_calls": 6,
+      "tool_calls": 5,
+      "latency_seconds": 63.41040537497611,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "pruning__repeat__memory_graph",
+      "question_id": "pruning",
+      "approach": "memory_graph",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.6,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 156641,
+      "output_tokens": 5428,
+      "model_calls": 9,
+      "tool_calls": 7,
+      "latency_seconds": 87.79401749998215,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "pruning__repeat__text_rag",
+      "question_id": "pruning",
+      "approach": "text_rag",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.6,
+      "groundedness": 0.9583333333333334,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 8189,
+      "output_tokens": 2508,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 48.02779049999663,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "collection_timeline__repeat__memory_graph",
+      "question_id": "collection_timeline",
+      "approach": "memory_graph",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.7142857142857143,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 86544,
+      "output_tokens": 2517,
+      "model_calls": 6,
+      "tool_calls": 5,
+      "latency_seconds": 57.80688270798419,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "collection_timeline__repeat__graph_only",
+      "question_id": "collection_timeline",
+      "approach": "graph_only",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.7857142857142857,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 192801,
+      "output_tokens": 3949,
+      "model_calls": 10,
+      "tool_calls": 9,
+      "latency_seconds": 99.73424650001107,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "collection_timeline__repeat__text_rag",
+      "question_id": "collection_timeline",
+      "approach": "text_rag",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 1.0,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 11017,
+      "output_tokens": 2129,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 21.52478333300678,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "patterns__repeat__graph_only",
+      "question_id": "patterns",
+      "approach": "graph_only",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.4,
+      "groundedness": 0.8,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 75622,
+      "output_tokens": 2581,
+      "model_calls": 7,
+      "tool_calls": 6,
+      "latency_seconds": 48.98495745801483,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "patterns__repeat__memory_graph",
+      "question_id": "patterns",
+      "approach": "memory_graph",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.5,
+      "groundedness": 0.68,
+      "specificity": 3,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 129494,
+      "output_tokens": 3479,
+      "model_calls": 8,
+      "tool_calls": 7,
+      "latency_seconds": 65.5795735839929,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "patterns__repeat__text_rag",
+      "question_id": "patterns",
+      "approach": "text_rag",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.4,
+      "groundedness": 0.8518518518518519,
+      "specificity": 3,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 8719,
+      "output_tokens": 2981,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 33.91206304199295,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "government__repeat__graph_only",
+      "question_id": "government",
+      "approach": "graph_only",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.8333333333333334,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 65822,
+      "output_tokens": 1806,
+      "model_calls": 6,
+      "tool_calls": 5,
+      "latency_seconds": 36.47674058401026,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "government__repeat__text_rag",
+      "question_id": "government",
+      "approach": "text_rag",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.75,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 8934,
+      "output_tokens": 904,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 12.069849666993832,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "government__repeat__memory_graph",
+      "question_id": "government",
+      "approach": "memory_graph",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.0,
+      "groundedness": null,
+      "specificity": 0,
+      "citation_validity": null,
+      "internal_contradictions": 0,
+      "input_tokens": 5648,
+      "output_tokens": 151,
+      "model_calls": 1,
+      "tool_calls": 0,
+      "latency_seconds": 6.380227000016021,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "data_gaps__repeat__text_rag",
+      "question_id": "data_gaps",
+      "approach": "text_rag",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.6,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 8337,
+      "output_tokens": 1603,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 31.70973162498558,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "data_gaps__repeat__graph_only",
+      "question_id": "data_gaps",
+      "approach": "graph_only",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.6,
+      "groundedness": 1.0,
+      "specificity": 3,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 105258,
+      "output_tokens": 2944,
+      "model_calls": 8,
+      "tool_calls": 7,
+      "latency_seconds": 54.52599162500701,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "data_gaps__repeat__memory_graph",
+      "question_id": "data_gaps",
+      "approach": "memory_graph",
+      "variant": "repeat",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.9,
+      "groundedness": 0.8571428571428571,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 123895,
+      "output_tokens": 3233,
+      "model_calls": 9,
+      "tool_calls": 7,
+      "latency_seconds": 78.11297600000398,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "collection_timeline__paraphrase__memory_graph",
+      "question_id": "collection_timeline",
+      "approach": "memory_graph",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.9285714285714286,
+      "groundedness": 0.9565217391304348,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 171534,
+      "output_tokens": 3774,
+      "model_calls": 8,
+      "tool_calls": 7,
+      "latency_seconds": 85.78136841699597,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "collection_timeline__paraphrase__text_rag",
+      "question_id": "collection_timeline",
+      "approach": "text_rag",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.9285714285714286,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 9821,
+      "output_tokens": 1622,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 32.178749250015244,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "collection_timeline__paraphrase__graph_only",
+      "question_id": "collection_timeline",
+      "approach": "graph_only",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.7142857142857143,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 97083,
+      "output_tokens": 2274,
+      "model_calls": 7,
+      "tool_calls": 6,
+      "latency_seconds": 43.79634895801428,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "routines__paraphrase__memory_graph",
+      "question_id": "routines",
+      "approach": "memory_graph",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.6,
+      "groundedness": 0.9583333333333334,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 120003,
+      "output_tokens": 3182,
+      "model_calls": 7,
+      "tool_calls": 6,
+      "latency_seconds": 56.92441870801849,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "routines__paraphrase__graph_only",
+      "question_id": "routines",
+      "approach": "graph_only",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.3,
+      "groundedness": 0.9230769230769231,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 42322,
+      "output_tokens": 1772,
+      "model_calls": 5,
+      "tool_calls": 4,
+      "latency_seconds": 42.309989166999,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "routines__paraphrase__text_rag",
+      "question_id": "routines",
+      "approach": "text_rag",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.2,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 8275,
+      "output_tokens": 1964,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 22.323108792013954,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "pruning__paraphrase__graph_only",
+      "question_id": "pruning",
+      "approach": "graph_only",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.6,
+      "groundedness": 0.9230769230769231,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 155863,
+      "output_tokens": 4097,
+      "model_calls": 11,
+      "tool_calls": 10,
+      "latency_seconds": 84.66317254101159,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "pruning__paraphrase__memory_graph",
+      "question_id": "pruning",
+      "approach": "memory_graph",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.4,
+      "groundedness": 0.8888888888888888,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 104400,
+      "output_tokens": 2758,
+      "model_calls": 7,
+      "tool_calls": 6,
+      "latency_seconds": 69.5929342500167,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "pruning__paraphrase__text_rag",
+      "question_id": "pruning",
+      "approach": "text_rag",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.4,
+      "groundedness": 0.8,
+      "specificity": 3,
+      "citation_validity": 1.0,
+      "internal_contradictions": 1,
+      "input_tokens": 7587,
+      "output_tokens": 2217,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 27.146729500003858,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "data_gaps__paraphrase__text_rag",
+      "question_id": "data_gaps",
+      "approach": "text_rag",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.6,
+      "groundedness": 1.0,
+      "specificity": 3,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 8143,
+      "output_tokens": 1039,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 12.828555917018093,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "data_gaps__paraphrase__graph_only",
+      "question_id": "data_gaps",
+      "approach": "graph_only",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.0,
+      "groundedness": null,
+      "specificity": 0,
+      "citation_validity": null,
+      "internal_contradictions": 0,
+      "input_tokens": 4544,
+      "output_tokens": 149,
+      "model_calls": 1,
+      "tool_calls": 0,
+      "latency_seconds": 5.812946582998848,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "data_gaps__paraphrase__memory_graph",
+      "question_id": "data_gaps",
+      "approach": "memory_graph",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.9,
+      "groundedness": 0.8888888888888888,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 179235,
+      "output_tokens": 4005,
+      "model_calls": 11,
+      "tool_calls": 9,
+      "latency_seconds": 82.286590083997,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "government__paraphrase__graph_only",
+      "question_id": "government",
+      "approach": "graph_only",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.75,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 156701,
+      "output_tokens": 1950,
+      "model_calls": 9,
+      "tool_calls": 8,
+      "latency_seconds": 56.67418058300973,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "government__paraphrase__memory_graph",
+      "question_id": "government",
+      "approach": "memory_graph",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.75,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 116533,
+      "output_tokens": 2185,
+      "model_calls": 8,
+      "tool_calls": 7,
+      "latency_seconds": 48.789893082983326,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "government__paraphrase__text_rag",
+      "question_id": "government",
+      "approach": "text_rag",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.75,
+      "groundedness": 1.0,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 9145,
+      "output_tokens": 695,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 15.759642459015595,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "patterns__paraphrase__graph_only",
+      "question_id": "patterns",
+      "approach": "graph_only",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.3,
+      "groundedness": 0.9,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 48696,
+      "output_tokens": 2385,
+      "model_calls": 5,
+      "tool_calls": 4,
+      "latency_seconds": 39.94120991698583,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "patterns__paraphrase__text_rag",
+      "question_id": "patterns",
+      "approach": "text_rag",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.9,
+      "groundedness": 0.8260869565217391,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 9707,
+      "output_tokens": 2622,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 28.755153250007425,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    },
+    {
+      "run_id": "patterns__paraphrase__memory_graph",
+      "question_id": "patterns",
+      "approach": "memory_graph",
+      "variant": "paraphrase",
+      "status": "partial",
+      "judged": true,
+      "human_audited": false,
+      "coverage": 0.4,
+      "groundedness": 0.88,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "internal_contradictions": 0,
+      "input_tokens": 150646,
+      "output_tokens": 4214,
+      "model_calls": 9,
+      "tool_calls": 8,
+      "latency_seconds": 87.18373537500156,
+      "cache_replays": 0,
+      "fresh_measurement": true
+    }
+  ],
+  "aggregates": [
+    {
+      "approach": "text_rag",
+      "questions": 6,
+      "scheduled_runs": 18,
+      "finished_runs": 18,
+      "failed_runs": 0,
+      "judged_runs": 18,
+      "fresh_cost_runs": 18,
+      "answers_with_grounding_score": 18,
+      "coverage": 0.5892857142857143,
+      "groundedness": 0.9568793535331099,
+      "specificity": 3.833333333333333,
+      "input_tokens": 8807.111111111111,
+      "output_tokens": 1921.5555555555557,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "latency_seconds": 26.23680927094635
+    },
+    {
+      "approach": "graph_only",
+      "questions": 6,
+      "scheduled_runs": 18,
+      "finished_runs": 18,
+      "failed_runs": 0,
+      "judged_runs": 18,
+      "fresh_cost_runs": 18,
+      "answers_with_grounding_score": 16,
+      "coverage": 0.5342592592592592,
+      "groundedness": 0.9474294224294224,
+      "specificity": 3.5,
+      "input_tokens": 81608.83333333333,
+      "output_tokens": 2437.222222222222,
+      "model_calls": 6.388888888888889,
+      "tool_calls": 5.277777777777778,
+      "latency_seconds": 52.11331359500117
+    },
+    {
+      "approach": "memory_graph",
+      "questions": 6,
+      "scheduled_runs": 18,
+      "finished_runs": 18,
+      "failed_runs": 0,
+      "judged_runs": 18,
+      "fresh_cost_runs": 18,
+      "answers_with_grounding_score": 17,
+      "coverage": 0.6892857142857143,
+      "groundedness": 0.9300619299290797,
+      "specificity": 3.7222222222222223,
+      "input_tokens": 119674.0,
+      "output_tokens": 3303.222222222222,
+      "model_calls": 7.555555555555555,
+      "tool_calls": 6.277777777777778,
+      "latency_seconds": 66.12158016905434
+    }
+  ],
+  "paired_differences": [
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - text_rag",
+      "metric": "coverage",
+      "difference": -0.033333333333333326
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - text_rag",
+      "metric": "groundedness",
+      "difference": 0.008628556092324158
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - text_rag",
+      "metric": "specificity",
+      "difference": 0.3333333333333335
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - text_rag",
+      "metric": "input_tokens",
+      "difference": 124687.33333333333
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - text_rag",
+      "metric": "output_tokens",
+      "difference": 1728.3333333333335
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - text_rag",
+      "metric": "model_calls",
+      "difference": 7.333333333333334
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - text_rag",
+      "metric": "tool_calls",
+      "difference": 6
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - text_rag",
+      "metric": "latency_seconds",
+      "difference": 43.886569111336335
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - graph_only",
+      "metric": "coverage",
+      "difference": -0.16666666666666663
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - graph_only",
+      "metric": "groundedness",
+      "difference": -0.045627212293879005
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - graph_only",
+      "metric": "specificity",
+      "difference": 0
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - graph_only",
+      "metric": "input_tokens",
+      "difference": 50503.999999999985
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - graph_only",
+      "metric": "output_tokens",
+      "difference": 963.3333333333335
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - graph_only",
+      "metric": "model_calls",
+      "difference": 1.333333333333334
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - graph_only",
+      "metric": "tool_calls",
+      "difference": 1
+    },
+    {
+      "question_id": "pruning",
+      "comparison": "memory_graph - graph_only",
+      "metric": "latency_seconds",
+      "difference": 15.300552430669391
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - text_rag",
+      "metric": "coverage",
+      "difference": 0.6666666666666667
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - text_rag",
+      "metric": "groundedness",
+      "difference": 0.019444444444444486
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - text_rag",
+      "metric": "specificity",
+      "difference": 0
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - text_rag",
+      "metric": "input_tokens",
+      "difference": 116666.33333333333
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - text_rag",
+      "metric": "output_tokens",
+      "difference": 1329.333333333333
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - text_rag",
+      "metric": "model_calls",
+      "difference": 6.666666666666667
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - text_rag",
+      "metric": "tool_calls",
+      "difference": 5.666666666666667
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - text_rag",
+      "metric": "latency_seconds",
+      "difference": 33.25749916633747
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - graph_only",
+      "metric": "coverage",
+      "difference": 0.4333333333333334
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - graph_only",
+      "metric": "groundedness",
+      "difference": 0.021853146853146876
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - graph_only",
+      "metric": "specificity",
+      "difference": 0
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - graph_only",
+      "metric": "input_tokens",
+      "difference": 64816
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - graph_only",
+      "metric": "output_tokens",
+      "difference": 1127.333333333333
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - graph_only",
+      "metric": "model_calls",
+      "difference": 2.0
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - graph_only",
+      "metric": "tool_calls",
+      "difference": 2.0
+    },
+    {
+      "question_id": "routines",
+      "comparison": "memory_graph - graph_only",
+      "metric": "latency_seconds",
+      "difference": 12.416253708002237
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - text_rag",
+      "metric": "coverage",
+      "difference": -0.16666666666666663
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - text_rag",
+      "metric": "groundedness",
+      "difference": 0.0
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - text_rag",
+      "metric": "specificity",
+      "difference": -1.3333333333333335
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - text_rag",
+      "metric": "input_tokens",
+      "difference": 43477.33333333333
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - text_rag",
+      "metric": "output_tokens",
+      "difference": 526.0000000000001
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - text_rag",
+      "metric": "model_calls",
+      "difference": 3.333333333333333
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - text_rag",
+      "metric": "tool_calls",
+      "difference": 2.3333333333333335
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - text_rag",
+      "metric": "latency_seconds",
+      "difference": 11.132454485661583
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - graph_only",
+      "metric": "coverage",
+      "difference": -0.2222222222222222
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - graph_only",
+      "metric": "groundedness",
+      "difference": 0.0
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - graph_only",
+      "metric": "specificity",
+      "difference": -1.3333333333333335
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - graph_only",
+      "metric": "input_tokens",
+      "difference": -41332.666666666664
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - graph_only",
+      "metric": "output_tokens",
+      "difference": -639.3333333333333
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - graph_only",
+      "metric": "model_calls",
+      "difference": -2.666666666666667
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - graph_only",
+      "metric": "tool_calls",
+      "difference": -2.3333333333333335
+    },
+    {
+      "question_id": "government",
+      "comparison": "memory_graph - graph_only",
+      "metric": "latency_seconds",
+      "difference": -21.817555514009047
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - text_rag",
+      "metric": "coverage",
+      "difference": 0.30000000000000004
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - text_rag",
+      "metric": "groundedness",
+      "difference": -0.13593813593813597
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - text_rag",
+      "metric": "specificity",
+      "difference": 0.3333333333333335
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - text_rag",
+      "metric": "input_tokens",
+      "difference": 139301.6666666667
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - text_rag",
+      "metric": "output_tokens",
+      "difference": 2332.333333333333
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - text_rag",
+      "metric": "model_calls",
+      "difference": 8.666666666666666
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - text_rag",
+      "metric": "tool_calls",
+      "difference": 6.666666666666667
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - text_rag",
+      "metric": "latency_seconds",
+      "difference": 58.62289388899808
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - graph_only",
+      "metric": "coverage",
+      "difference": 0.4
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - graph_only",
+      "metric": "groundedness",
+      "difference": -0.052604802604802714
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - graph_only",
+      "metric": "specificity",
+      "difference": 1.6666666666666665
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - graph_only",
+      "metric": "input_tokens",
+      "difference": 59190.66666666667
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - graph_only",
+      "metric": "output_tokens",
+      "difference": 1478
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - graph_only",
+      "metric": "model_calls",
+      "difference": 3.333333333333333
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - graph_only",
+      "metric": "tool_calls",
+      "difference": 2.666666666666667
+    },
+    {
+      "question_id": "data_gaps",
+      "comparison": "memory_graph - graph_only",
+      "metric": "latency_seconds",
+      "difference": 33.36758681967815
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - text_rag",
+      "metric": "coverage",
+      "difference": 0.0
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - text_rag",
+      "metric": "groundedness",
+      "difference": -0.038546652599626086
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - text_rag",
+      "metric": "specificity",
+      "difference": 0.0
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - text_rag",
+      "metric": "input_tokens",
+      "difference": 135599.66666666666
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - text_rag",
+      "metric": "output_tokens",
+      "difference": 1348.0000000000005
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - text_rag",
+      "metric": "model_calls",
+      "difference": 7.666666666666666
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - text_rag",
+      "metric": "tool_calls",
+      "difference": 6.333333333333333
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - text_rag",
+      "metric": "latency_seconds",
+      "difference": 49.98176359700544
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - graph_only",
+      "metric": "coverage",
+      "difference": 0.19999999999999996
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - graph_only",
+      "metric": "groundedness",
+      "difference": -0.013333333333333308
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - graph_only",
+      "metric": "specificity",
+      "difference": -0.3333333333333335
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - graph_only",
+      "metric": "input_tokens",
+      "difference": 77269
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - graph_only",
+      "metric": "output_tokens",
+      "difference": 1425.3333333333335
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - graph_only",
+      "metric": "model_calls",
+      "difference": 2.333333333333333
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - graph_only",
+      "metric": "tool_calls",
+      "difference": 2.0
+    },
+    {
+      "question_id": "patterns",
+      "comparison": "memory_graph - graph_only",
+      "metric": "latency_seconds",
+      "difference": 26.17949138866971
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - text_rag",
+      "metric": "coverage",
+      "difference": -0.16666666666666674
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - text_rag",
+      "metric": "groundedness",
+      "difference": -0.01449275362318836
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - text_rag",
+      "metric": "specificity",
+      "difference": 0
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - text_rag",
+      "metric": "input_tokens",
+      "difference": 105469.0
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - text_rag",
+      "metric": "output_tokens",
+      "difference": 1025.9999999999998
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - text_rag",
+      "metric": "model_calls",
+      "difference": 5.666666666666667
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - text_rag",
+      "metric": "tool_calls",
+      "difference": 4.666666666666667
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - text_rag",
+      "metric": "latency_seconds",
+      "difference": 42.42744513930907
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - graph_only",
+      "metric": "coverage",
+      "difference": 0.2857142857142857
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - graph_only",
+      "metric": "groundedness",
+      "difference": -0.01449275362318836
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - graph_only",
+      "metric": "specificity",
+      "difference": 1.3333333333333335
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - graph_only",
+      "metric": "input_tokens",
+      "difference": 17944.0
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - graph_only",
+      "metric": "output_tokens",
+      "difference": 841.333333333333
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - graph_only",
+      "metric": "model_calls",
+      "difference": 0.666666666666667
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - graph_only",
+      "metric": "tool_calls",
+      "difference": 0.666666666666667
+    },
+    {
+      "question_id": "collection_timeline",
+      "comparison": "memory_graph - graph_only",
+      "metric": "latency_seconds",
+      "difference": 18.603270611308588
+    }
+  ],
+  "consistency": [
+    {
+      "question_id": "routines",
+      "approach": "memory_graph",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 0.6,
+      "comparable_pairs": 6,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "routines",
+      "approach": "text_rag",
+      "comparison": "repeat",
+      "supported_facet_jaccard": null,
+      "comparable_pairs": 11,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "routines",
+      "approach": "graph_only",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 0.0,
+      "comparable_pairs": 7,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Left C4 describes a separate Trend Summary tracking gap; its relationship to the network-health trend-analysis practice is unspecified, so it does not establish a contradiction with right C5.",
+        "Right C1's twice-daily Postman routine is distinct from left C1's data-validation routine; matching cadence alone does not make them comparable."
+      ]
+    },
+    {
+      "question_id": "pruning",
+      "approach": "graph_only",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 1.0,
+      "comparable_pairs": 9,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Right C8's 'partial order' is ambiguous: identifying workflow stages does not itself establish their chronological order. Its explicit chronology caveat is consistent with left C9."
+      ]
+    },
+    {
+      "question_id": "pruning",
+      "approach": "memory_graph",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 0.3333333333333333,
+      "comparable_pairs": 7,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "pruning",
+      "approach": "text_rag",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 1.0,
+      "comparable_pairs": 11,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Left C9 and right C7 describe potentially different tokenless workflows or report times; successful rule creation versus blocked Hide/Flag is not an established contradiction.",
+        "Right C12 agrees with the left answer's unnumbered chronology limitations, but those limitations have no supplied claim ID for pairing."
+      ]
+    },
+    {
+      "question_id": "collection_timeline",
+      "approach": "memory_graph",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 0.8,
+      "comparable_pairs": 8,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "collection_timeline",
+      "approach": "graph_only",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 0.0,
+      "comparable_pairs": 0,
+      "contradictions": 0,
+      "contradiction_rate": null,
+      "review_flags": [
+        "The left answer supplies no claim IDs or substantive incident claims, so no cross-answer propositions can be compared. Its lack of evidence is not a contradiction of the right answer; the empty pair list does not establish consistency."
+      ]
+    },
+    {
+      "question_id": "collection_timeline",
+      "approach": "text_rag",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 0.8571428571428571,
+      "comparable_pairs": 11,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "patterns",
+      "approach": "graph_only",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 1.0,
+      "comparable_pairs": 5,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "The C2–C6 comparison has different evidentiary modalities: an observed BrightData status-transition bug versus prescribed lifecycle controls.",
+        "Left C3's callback type mismatch and right C3's missing callbacks concern different mechanisms and are not established as the same incident.",
+        "Left C6's Weibo collection-trigger failure and right C4's BrightData connection failure are different events, despite both occurring before processing.",
+        "Different examples and omissions do not establish contradictions; no directly incompatible propositions were identified."
+      ]
+    },
+    {
+      "question_id": "patterns",
+      "approach": "memory_graph",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 0.25,
+      "comparable_pairs": 4,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "The C3–C2 agreement concerns observed staging/production differences and lateness; production scale causing the delay is not established.",
+        "The C7 comparisons cover only its corresponding narrative subclaims, not its entire synthesis.",
+        "Left C4 and right C5 describe Weibo initiation and callback failures respectively; a shared platform does not establish the same incident or mechanism.",
+        "Other collection mechanisms and narrative incidents are different examples, not contradictions. The omitted narrative-statistics claim is not a denial."
+      ]
+    },
+    {
+      "question_id": "patterns",
+      "approach": "text_rag",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 1.0,
+      "comparable_pairs": 12,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "government",
+      "approach": "graph_only",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 0.6666666666666666,
+      "comparable_pairs": 3,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "government",
+      "approach": "text_rag",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 1.0,
+      "comparable_pairs": 4,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "government",
+      "approach": "memory_graph",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 0.0,
+      "comparable_pairs": 0,
+      "contradictions": 0,
+      "contradiction_rate": null,
+      "review_flags": [
+        "The right answer supplies no claims to compare with C1–C4. Its unanswered questions and evidence limitation are not contradictions; the empty pair list does not establish consistency."
+      ]
+    },
+    {
+      "question_id": "data_gaps",
+      "approach": "text_rag",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 1.0,
+      "comparable_pairs": 7,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "data_gaps",
+      "approach": "graph_only",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 0.5,
+      "comparable_pairs": 3,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Left C2 and right C1 agree on upstream responses, but right C1 additionally reports downstream non-ingestion; left C2 does not deny that report.",
+        "Left C1's broader gap report has no directly equivalent right-side claim; the incident-specific claims should not be assumed to describe the same event."
+      ]
+    },
+    {
+      "question_id": "data_gaps",
+      "approach": "memory_graph",
+      "comparison": "repeat",
+      "supported_facet_jaccard": 1.0,
+      "comparable_pairs": 4,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Left C4 has no corresponding right-side claim: the right discusses unresolved cursor causality only in its unanswered questions. This is not a contradiction."
+      ]
+    },
+    {
+      "question_id": "collection_timeline",
+      "approach": "memory_graph",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.6666666666666666,
+      "comparable_pairs": 7,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "collection_timeline",
+      "approach": "text_rag",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 1.0,
+      "comparable_pairs": 9,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Right C10 agrees with the left answer's unnumbered recovery limitations, but those limitations have no claim IDs and cannot form a claim pair."
+      ]
+    },
+    {
+      "question_id": "collection_timeline",
+      "approach": "graph_only",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.0,
+      "comparable_pairs": 0,
+      "contradictions": 0,
+      "contradiction_rate": null,
+      "review_flags": [
+        "The right answer supplies no claim IDs or substantive incident claims, so no cross-answer propositions can be compared. Its lack-of-evidence statement does not contradict the left answer's reported timeline; an empty comparison list does not establish consistency."
+      ]
+    },
+    {
+      "question_id": "routines",
+      "approach": "memory_graph",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.2,
+      "comparable_pairs": 6,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Right C7's statement that routine-cadence evidence is absent is potentially ambiguous against left C2's individual vendor-API run. One recorded run does not establish consistent cadence compliance or sustained effectiveness, so this is not a clear contradiction.",
+        "The other execution examples concern distinct workflows, environments, or events and should not be equated solely because they describe QA or monitoring."
+      ]
+    },
+    {
+      "question_id": "routines",
+      "approach": "graph_only",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.0,
+      "comparable_pairs": 3,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "The monitoring cadences concern differently scoped activities; the supplied evidence does not establish that twice-daily Kepler validation and daily Active Network Stats validation are the same check.",
+        "The staging reports with different totals concern different dates, not conflicting accounts of one run."
+      ]
+    },
+    {
+      "question_id": "routines",
+      "approach": "text_rag",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": null,
+      "comparable_pairs": 0,
+      "contradictions": 0,
+      "contradiction_rate": null,
+      "review_flags": [
+        "The answers cover distinct monitoring and QA activities; no claims express the same scoped proposition or directly incompatible propositions.",
+        "Left C7 and right C9 both distinguish Done status from test evidence, but concern different tickets and outcomes.",
+        "Left C8 and right C8 concern different Narrative defects; the staging image improvement does not contradict the tooltip discrepancy.",
+        "The differing statements about available cadence and effectiveness evidence refer to different supplied records, not necessarily conflicting histories."
+      ]
+    },
+    {
+      "question_id": "pruning",
+      "approach": "graph_only",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.6666666666666666,
+      "comparable_pairs": 7,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Right C9's overall chronology qualification has no directly equivalent left claim; the left's broader chronology qualifications appear in limitations rather than numbered claims.",
+        "Right C3 describes expected restoration, whereas left C3 describes observed failure; these are not contradictory propositions."
+      ]
+    },
+    {
+      "question_id": "pruning",
+      "approach": "memory_graph",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.5,
+      "comparable_pairs": 6,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Right C3 calls the implementation statement 'later' without an explicit chronological anchor; this is ambiguous, not a direct contradiction.",
+        "Left C5 concerns a hover-text retest, whereas right C3 and C4 concern restoration and UI-sync retests; these are different checks.",
+        "Right C8 agrees with the left answer's chronology limitations, but those limitations have no supplied claim IDs for pairing."
+      ]
+    },
+    {
+      "question_id": "pruning",
+      "approach": "text_rag",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.3333333333333333,
+      "comparable_pairs": 5,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Right C7 says local testing was reported after code completion, but acknowledges that the passages do not establish sequencing. Left C2 makes no ordering claim; this is an ambiguous temporal addition, not a direct contradiction.",
+        "Left C5 reports failed restoration after rule deletion, whereas right C9 states expected restoration. Observed behavior and a requirement are not contradictory propositions.",
+        "The answers' chronology limitations agree broadly, but the left limitations have no supplied claim IDs and therefore cannot be paired with right C11."
+      ]
+    },
+    {
+      "question_id": "data_gaps",
+      "approach": "text_rag",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.3333333333333333,
+      "comparable_pairs": 3,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Left C3 and right C6 both concern deduplication defects, but partial updates causing cross-store drift and absent media-field deduplication causing wrong ES data are not established as the same defect or incident.",
+        "The answers' additional explanations and omissions do not establish contradictions; the supplied excerpts do not establish that all reports concern the same incident."
+      ]
+    },
+    {
+      "question_id": "data_gaps",
+      "approach": "graph_only",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.0,
+      "comparable_pairs": 0,
+      "contradictions": 0,
+      "contradiction_rate": null,
+      "review_flags": [
+        "The left answer supplies no claim IDs, so no claim pairs can be formed.",
+        "The left reports unavailable source evidence, while the right cites excerpts. This evidence-availability difference cannot establish a contradiction between substantive claims; an empty pair list does not imply perfect consistency."
+      ]
+    },
+    {
+      "question_id": "data_gaps",
+      "approach": "memory_graph",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 1.0,
+      "comparable_pairs": 4,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "government",
+      "approach": "graph_only",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.8,
+      "comparable_pairs": 3,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "government",
+      "approach": "memory_graph",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.6666666666666666,
+      "comparable_pairs": 3,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "government",
+      "approach": "text_rag",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 1.0,
+      "comparable_pairs": 4,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": []
+    },
+    {
+      "question_id": "patterns",
+      "approach": "graph_only",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 1.0,
+      "comparable_pairs": 6,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Left C2 and right C2 disclaim opposite causal directions; their agreement concerns separate observations and an unestablished causal relationship, not identical directional claims.",
+        "Right C4 qualifies temporary service unavailability as possible; this does not contradict left C4's reported connection failures.",
+        "The additional access, batch-lifecycle, duplicate-ID, record-mismatch, statistics, and backlog examples concern distinct mechanisms or events; their omission from the other answer is not a contradiction."
+      ]
+    },
+    {
+      "question_id": "patterns",
+      "approach": "text_rag",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.25,
+      "comparable_pairs": 7,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "Claim IDs repeat across sides; pair fields identify the left and right namespaces.",
+        "Duplicate-post-ID callback issues, missing Weibo callbacks, and missing SQS notifications cannot be equated solely from similar coordination symptoms.",
+        "Collection queue blockage from unfinished video-vision steps is not established as the same mechanism as narrative timeout retries or hanging SQS tasks.",
+        "Staging topic-clustering errors and separately reported comment-narrative Algorithm Errors lack a demonstrated shared event or cause.",
+        "The Argonaut report's later alarms do not contradict the absence of alerts during the initially silent retry loop."
+      ]
+    },
+    {
+      "question_id": "patterns",
+      "approach": "memory_graph",
+      "comparison": "paraphrase",
+      "supported_facet_jaccard": 0.0,
+      "comparable_pairs": 2,
+      "contradictions": 0,
+      "contradiction_rate": 0.0,
+      "review_flags": [
+        "The timeout reports use different scope descriptions; their shared timeout mechanism agrees, but identical incident identity is not established.",
+        "Other claims concern different incidents or mechanisms, not incompatible accounts of the same event.",
+        "The left's omission of narrative-statistics evidence does not contradict the right's claim C7; it states an evidence limitation rather than denying missing statistics."
+      ]
+    }
+  ],
+  "details": {
+    "pruning__original__graph_only": {
+      "coverage": 0.6,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 23
+      },
+      "atomic_claims": 23,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 33910,
+        "output_tokens": 2522,
+        "reported_input_tokens_lower_bound": 33910,
+        "reported_output_tokens_lower_bound": 2522,
+        "cached_input_tokens_subset": 7680,
+        "reasoning_output_tokens_subset": 269,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 4,
+        "tool_calls": 3,
+        "latency_seconds": 40.66600779199507,
+        "estimated_cost_usd": null
+      }
+    },
+    "pruning__original__text_rag": {
+      "coverage": 0.6,
+      "groundedness": 0.9565217391304348,
+      "grounding_counts": {
+        "supported": 22,
+        "unsupported": 1
+      },
+      "atomic_claims": 23,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 8189,
+        "output_tokens": 2428,
+        "reported_input_tokens_lower_bound": 8189,
+        "reported_output_tokens_lower_bound": 2428,
+        "cached_input_tokens_subset": 2688,
+        "reasoning_output_tokens_subset": 238,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 27.807015665981453,
+        "estimated_cost_usd": null
+      }
+    },
+    "pruning__original__memory_graph": {
+      "coverage": 0.5,
+      "groundedness": 0.8518518518518519,
+      "grounding_counts": {
+        "supported": 23,
+        "partial": 2,
+        "unsupported": 2
+      },
+      "atomic_claims": 27,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 1,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 136986,
+        "output_tokens": 4152,
+        "reported_input_tokens_lower_bound": 136986,
+        "reported_output_tokens_lower_bound": 4152,
+        "cached_input_tokens_subset": 20480,
+        "reasoning_output_tokens_subset": 698,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 9,
+        "tool_calls": 8,
+        "latency_seconds": 77.2542912499921,
+        "estimated_cost_usd": null
+      }
+    },
+    "routines__original__graph_only": {
+      "coverage": 0.2,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 23
+      },
+      "atomic_claims": 23,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 89385,
+        "output_tokens": 2656,
+        "reported_input_tokens_lower_bound": 89385,
+        "reported_output_tokens_lower_bound": 2656,
+        "cached_input_tokens_subset": 12800,
+        "reasoning_output_tokens_subset": 359,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 7,
+        "tool_calls": 6,
+        "latency_seconds": 52.116809750004904,
+        "estimated_cost_usd": null
+      }
+    },
+    "routines__original__text_rag": {
+      "coverage": 0.1,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 21
+      },
+      "atomic_claims": 21,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 7729,
+        "output_tokens": 2043,
+        "reported_input_tokens_lower_bound": 7729,
+        "reported_output_tokens_lower_bound": 2043,
+        "cached_input_tokens_subset": 0,
+        "reasoning_output_tokens_subset": 300,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 39.29895699999179,
+        "estimated_cost_usd": null
+      }
+    },
+    "routines__original__memory_graph": {
+      "coverage": 1.0,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 34
+      },
+      "atomic_claims": 34,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 121304,
+        "output_tokens": 3736,
+        "reported_input_tokens_lower_bound": 121304,
+        "reported_output_tokens_lower_bound": 3736,
+        "cached_input_tokens_subset": 15360,
+        "reasoning_output_tokens_subset": 443,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 8,
+        "tool_calls": 7,
+        "latency_seconds": 67.04186141700484,
+        "estimated_cost_usd": null
+      }
+    },
+    "government__original__graph_only": {
+      "coverage": 0.8333333333333334,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 10
+      },
+      "atomic_claims": 10,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 0,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 58920,
+        "output_tokens": 2346,
+        "reported_input_tokens_lower_bound": 58920,
+        "reported_output_tokens_lower_bound": 2346,
+        "cached_input_tokens_subset": 5120,
+        "reasoning_output_tokens_subset": 320,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 6,
+        "tool_calls": 4,
+        "latency_seconds": 54.91916862499784,
+        "estimated_cost_usd": null
+      }
+    },
+    "government__original__memory_graph": {
+      "coverage": 1.0,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 11
+      },
+      "atomic_claims": 11,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 35264,
+        "output_tokens": 1848,
+        "reported_input_tokens_lower_bound": 35264,
+        "reported_output_tokens_lower_bound": 1848,
+        "cached_input_tokens_subset": 7680,
+        "reasoning_output_tokens_subset": 169,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 4,
+        "tool_calls": 3,
+        "latency_seconds": 27.447303166991333,
+        "estimated_cost_usd": null
+      }
+    },
+    "government__original__text_rag": {
+      "coverage": 0.75,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 10
+      },
+      "atomic_claims": 10,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 0,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        }
+      ],
+      "cost": {
+        "input_tokens": 8934,
+        "output_tokens": 1007,
+        "reported_input_tokens_lower_bound": 8934,
+        "reported_output_tokens_lower_bound": 1007,
+        "cached_input_tokens_subset": 2688,
+        "reasoning_output_tokens_subset": 135,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 21.390567666996503,
+        "estimated_cost_usd": null
+      }
+    },
+    "data_gaps__original__graph_only": {
+      "coverage": 0.9,
+      "groundedness": 0.8333333333333334,
+      "grounding_counts": {
+        "supported": 5,
+        "partial": 1
+      },
+      "atomic_claims": 6,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        }
+      ],
+      "cost": {
+        "input_tokens": 155346,
+        "output_tokens": 3816,
+        "reported_input_tokens_lower_bound": 155346,
+        "reported_output_tokens_lower_bound": 3816,
+        "cached_input_tokens_subset": 20480,
+        "reasoning_output_tokens_subset": 779,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 10,
+        "tool_calls": 8,
+        "latency_seconds": 80.15587445898564,
+        "estimated_cost_usd": null
+      }
+    },
+    "data_gaps__original__memory_graph": {
+      "coverage": 0.9,
+      "groundedness": 0.8461538461538461,
+      "grounding_counts": {
+        "supported": 11,
+        "partial": 2
+      },
+      "atomic_claims": 13,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        }
+      ],
+      "cost": {
+        "input_tokens": 139590,
+        "output_tokens": 4105,
+        "reported_input_tokens_lower_bound": 139590,
+        "reported_output_tokens_lower_bound": 4105,
+        "cached_input_tokens_subset": 28160,
+        "reasoning_output_tokens_subset": 417,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 9,
+        "tool_calls": 7,
+        "latency_seconds": 80.19800704202498,
+        "estimated_cost_usd": null
+      }
+    },
+    "data_gaps__original__text_rag": {
+      "coverage": 0.6,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 14
+      },
+      "atomic_claims": 14,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 8335,
+        "output_tokens": 1704,
+        "reported_input_tokens_lower_bound": 8335,
+        "reported_output_tokens_lower_bound": 1704,
+        "cached_input_tokens_subset": 0,
+        "reasoning_output_tokens_subset": 295,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 20.190603917028056,
+        "estimated_cost_usd": null
+      }
+    },
+    "patterns__original__memory_graph": {
+      "coverage": 0.8,
+      "groundedness": 0.9333333333333333,
+      "grounding_counts": {
+        "supported": 14,
+        "partial": 1
+      },
+      "atomic_claims": 15,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 153804,
+        "output_tokens": 4774,
+        "reported_input_tokens_lower_bound": 153804,
+        "reported_output_tokens_lower_bound": 4774,
+        "cached_input_tokens_subset": 15360,
+        "reasoning_output_tokens_subset": 743,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 9,
+        "tool_calls": 7,
+        "latency_seconds": 88.11382691600011,
+        "estimated_cost_usd": null
+      }
+    },
+    "patterns__original__graph_only": {
+      "coverage": 0.4,
+      "groundedness": 0.8333333333333334,
+      "grounding_counts": {
+        "supported": 20,
+        "partial": 3,
+        "unsupported": 1
+      },
+      "atomic_claims": 24,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 77819,
+        "output_tokens": 3225,
+        "reported_input_tokens_lower_bound": 77819,
+        "reported_output_tokens_lower_bound": 3225,
+        "cached_input_tokens_subset": 17920,
+        "reasoning_output_tokens_subset": 375,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 7,
+        "tool_calls": 6,
+        "latency_seconds": 73.4124943339848,
+        "estimated_cost_usd": null
+      }
+    },
+    "patterns__original__text_rag": {
+      "coverage": 0.4,
+      "groundedness": 0.9310344827586207,
+      "grounding_counts": {
+        "supported": 27,
+        "partial": 2
+      },
+      "atomic_claims": 29,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 8719,
+        "output_tokens": 2820,
+        "reported_input_tokens_lower_bound": 8719,
+        "reported_output_tokens_lower_bound": 2820,
+        "cached_input_tokens_subset": 2688,
+        "reasoning_output_tokens_subset": 126,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 28.264628791977884,
+        "estimated_cost_usd": null
+      }
+    },
+    "collection_timeline__original__text_rag": {
+      "coverage": 0.9285714285714286,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 20
+      },
+      "atomic_claims": 20,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F7",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 11017,
+        "output_tokens": 2065,
+        "reported_input_tokens_lower_bound": 11017,
+        "reported_output_tokens_lower_bound": 2065,
+        "cached_input_tokens_subset": 0,
+        "reasoning_output_tokens_subset": 154,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 23.389509291009745,
+        "estimated_cost_usd": null
+      }
+    },
+    "collection_timeline__original__memory_graph": {
+      "coverage": 0.7142857142857143,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 17
+      },
+      "atomic_claims": 17,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F7",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 90184,
+        "output_tokens": 2603,
+        "reported_input_tokens_lower_bound": 90184,
+        "reported_output_tokens_lower_bound": 2603,
+        "cached_input_tokens_subset": 15360,
+        "reasoning_output_tokens_subset": 243,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 6,
+        "tool_calls": 5,
+        "latency_seconds": 60.78712616697885,
+        "estimated_cost_usd": null
+      }
+    },
+    "collection_timeline__original__graph_only": {
+      "coverage": 0.0,
+      "groundedness": null,
+      "grounding_counts": {},
+      "atomic_claims": 0,
+      "specificity": 0,
+      "citation_validity": null,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F7",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 4546,
+        "output_tokens": 147,
+        "reported_input_tokens_lower_bound": 4546,
+        "reported_output_tokens_lower_bound": 147,
+        "cached_input_tokens_subset": 2560,
+        "reasoning_output_tokens_subset": 26,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 0,
+        "latency_seconds": 5.034970000007888,
+        "estimated_cost_usd": null
+      }
+    },
+    "routines__repeat__memory_graph": {
+      "coverage": 0.8,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 21
+      },
+      "atomic_claims": 21,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 132427,
+        "output_tokens": 3314,
+        "reported_input_tokens_lower_bound": 132427,
+        "reported_output_tokens_lower_bound": 3314,
+        "cached_input_tokens_subset": 17920,
+        "reasoning_output_tokens_subset": 480,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 8,
+        "tool_calls": 7,
+        "latency_seconds": 63.11341037499369,
+        "estimated_cost_usd": null
+      }
+    },
+    "routines__repeat__text_rag": {
+      "coverage": 0.1,
+      "groundedness": 0.9,
+      "grounding_counts": {
+        "supported": 18,
+        "unsupported": 2
+      },
+      "atomic_claims": 20,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 7731,
+        "output_tokens": 2237,
+        "reported_input_tokens_lower_bound": 7731,
+        "reported_output_tokens_lower_bound": 2237,
+        "cached_input_tokens_subset": 0,
+        "reasoning_output_tokens_subset": 363,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 25.685127208998892,
+        "estimated_cost_usd": null
+      }
+    },
+    "routines__repeat__graph_only": {
+      "coverage": 0.6,
+      "groundedness": 0.9696969696969697,
+      "grounding_counts": {
+        "supported": 32,
+        "partial": 1
+      },
+      "atomic_claims": 33,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 47579,
+        "output_tokens": 2422,
+        "reported_input_tokens_lower_bound": 47579,
+        "reported_output_tokens_lower_bound": 2422,
+        "cached_input_tokens_subset": 10240,
+        "reasoning_output_tokens_subset": 269,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 5,
+        "tool_calls": 4,
+        "latency_seconds": 55.40413045900641,
+        "estimated_cost_usd": null
+      }
+    },
+    "pruning__repeat__graph_only": {
+      "coverage": 0.8,
+      "groundedness": 0.9545454545454546,
+      "grounding_counts": {
+        "supported": 21,
+        "partial": 1
+      },
+      "atomic_claims": 22,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 56742,
+        "output_tokens": 2829,
+        "reported_input_tokens_lower_bound": 56742,
+        "reported_output_tokens_lower_bound": 2829,
+        "cached_input_tokens_subset": 12800,
+        "reasoning_output_tokens_subset": 276,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 6,
+        "tool_calls": 5,
+        "latency_seconds": 63.41040537497611,
+        "estimated_cost_usd": null
+      }
+    },
+    "pruning__repeat__memory_graph": {
+      "coverage": 0.6,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 15
+      },
+      "atomic_claims": 15,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 0,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 156641,
+        "output_tokens": 5428,
+        "reported_input_tokens_lower_bound": 156641,
+        "reported_output_tokens_lower_bound": 5428,
+        "cached_input_tokens_subset": 20480,
+        "reasoning_output_tokens_subset": 828,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 9,
+        "tool_calls": 7,
+        "latency_seconds": 87.79401749998215,
+        "estimated_cost_usd": null
+      }
+    },
+    "pruning__repeat__text_rag": {
+      "coverage": 0.6,
+      "groundedness": 0.9583333333333334,
+      "grounding_counts": {
+        "supported": 23,
+        "unsupported": 1
+      },
+      "atomic_claims": 24,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 8189,
+        "output_tokens": 2508,
+        "reported_input_tokens_lower_bound": 8189,
+        "reported_output_tokens_lower_bound": 2508,
+        "cached_input_tokens_subset": 2688,
+        "reasoning_output_tokens_subset": 250,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 48.02779049999663,
+        "estimated_cost_usd": null
+      }
+    },
+    "collection_timeline__repeat__memory_graph": {
+      "coverage": 0.7142857142857143,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 13
+      },
+      "atomic_claims": 13,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F7",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 86544,
+        "output_tokens": 2517,
+        "reported_input_tokens_lower_bound": 86544,
+        "reported_output_tokens_lower_bound": 2517,
+        "cached_input_tokens_subset": 12800,
+        "reasoning_output_tokens_subset": 295,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 6,
+        "tool_calls": 5,
+        "latency_seconds": 57.80688270798419,
+        "estimated_cost_usd": null
+      }
+    },
+    "collection_timeline__repeat__graph_only": {
+      "coverage": 0.7857142857142857,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 20
+      },
+      "atomic_claims": 20,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F7",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 192801,
+        "output_tokens": 3949,
+        "reported_input_tokens_lower_bound": 192801,
+        "reported_output_tokens_lower_bound": 3949,
+        "cached_input_tokens_subset": 25600,
+        "reasoning_output_tokens_subset": 906,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 10,
+        "tool_calls": 9,
+        "latency_seconds": 99.73424650001107,
+        "estimated_cost_usd": null
+      }
+    },
+    "collection_timeline__repeat__text_rag": {
+      "coverage": 1.0,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 20
+      },
+      "atomic_claims": 20,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F7",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 11017,
+        "output_tokens": 2129,
+        "reported_input_tokens_lower_bound": 11017,
+        "reported_output_tokens_lower_bound": 2129,
+        "cached_input_tokens_subset": 0,
+        "reasoning_output_tokens_subset": 101,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 21.52478333300678,
+        "estimated_cost_usd": null
+      }
+    },
+    "patterns__repeat__graph_only": {
+      "coverage": 0.4,
+      "groundedness": 0.8,
+      "grounding_counts": {
+        "partial": 3,
+        "supported": 12
+      },
+      "atomic_claims": 15,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 75622,
+        "output_tokens": 2581,
+        "reported_input_tokens_lower_bound": 75622,
+        "reported_output_tokens_lower_bound": 2581,
+        "cached_input_tokens_subset": 15360,
+        "reasoning_output_tokens_subset": 350,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 7,
+        "tool_calls": 6,
+        "latency_seconds": 48.98495745801483,
+        "estimated_cost_usd": null
+      }
+    },
+    "patterns__repeat__memory_graph": {
+      "coverage": 0.5,
+      "groundedness": 0.68,
+      "grounding_counts": {
+        "supported": 17,
+        "partial": 7,
+        "unsupported": 1
+      },
+      "atomic_claims": 25,
+      "specificity": 3,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 129494,
+        "output_tokens": 3479,
+        "reported_input_tokens_lower_bound": 129494,
+        "reported_output_tokens_lower_bound": 3479,
+        "cached_input_tokens_subset": 35584,
+        "reasoning_output_tokens_subset": 548,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 8,
+        "tool_calls": 7,
+        "latency_seconds": 65.5795735839929,
+        "estimated_cost_usd": null
+      }
+    },
+    "patterns__repeat__text_rag": {
+      "coverage": 0.4,
+      "groundedness": 0.8518518518518519,
+      "grounding_counts": {
+        "supported": 23,
+        "unsupported": 1,
+        "partial": 3
+      },
+      "atomic_claims": 27,
+      "specificity": 3,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 8719,
+        "output_tokens": 2981,
+        "reported_input_tokens_lower_bound": 8719,
+        "reported_output_tokens_lower_bound": 2981,
+        "cached_input_tokens_subset": 2688,
+        "reasoning_output_tokens_subset": 454,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 33.91206304199295,
+        "estimated_cost_usd": null
+      }
+    },
+    "government__repeat__graph_only": {
+      "coverage": 0.8333333333333334,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 11
+      },
+      "atomic_claims": 11,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 65822,
+        "output_tokens": 1806,
+        "reported_input_tokens_lower_bound": 65822,
+        "reported_output_tokens_lower_bound": 1806,
+        "cached_input_tokens_subset": 15360,
+        "reasoning_output_tokens_subset": 268,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 6,
+        "tool_calls": 5,
+        "latency_seconds": 36.47674058401026,
+        "estimated_cost_usd": null
+      }
+    },
+    "government__repeat__text_rag": {
+      "coverage": 0.75,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 10
+      },
+      "atomic_claims": 10,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 0,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        }
+      ],
+      "cost": {
+        "input_tokens": 8934,
+        "output_tokens": 904,
+        "reported_input_tokens_lower_bound": 8934,
+        "reported_output_tokens_lower_bound": 904,
+        "cached_input_tokens_subset": 2688,
+        "reasoning_output_tokens_subset": 47,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 12.069849666993832,
+        "estimated_cost_usd": null
+      }
+    },
+    "government__repeat__memory_graph": {
+      "coverage": 0.0,
+      "groundedness": null,
+      "grounding_counts": {},
+      "atomic_claims": 0,
+      "specificity": 0,
+      "citation_validity": null,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 5648,
+        "output_tokens": 151,
+        "reported_input_tokens_lower_bound": 5648,
+        "reported_output_tokens_lower_bound": 151,
+        "cached_input_tokens_subset": 2560,
+        "reasoning_output_tokens_subset": 41,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 0,
+        "latency_seconds": 6.380227000016021,
+        "estimated_cost_usd": null
+      }
+    },
+    "data_gaps__repeat__text_rag": {
+      "coverage": 0.6,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 12
+      },
+      "atomic_claims": 12,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 8337,
+        "output_tokens": 1603,
+        "reported_input_tokens_lower_bound": 8337,
+        "reported_output_tokens_lower_bound": 1603,
+        "cached_input_tokens_subset": 2688,
+        "reasoning_output_tokens_subset": 171,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 31.70973162498558,
+        "estimated_cost_usd": null
+      }
+    },
+    "data_gaps__repeat__graph_only": {
+      "coverage": 0.6,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 6
+      },
+      "atomic_claims": 6,
+      "specificity": 3,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        }
+      ],
+      "cost": {
+        "input_tokens": 105258,
+        "output_tokens": 2944,
+        "reported_input_tokens_lower_bound": 105258,
+        "reported_output_tokens_lower_bound": 2944,
+        "cached_input_tokens_subset": 20480,
+        "reasoning_output_tokens_subset": 708,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 8,
+        "tool_calls": 7,
+        "latency_seconds": 54.52599162500701,
+        "estimated_cost_usd": null
+      }
+    },
+    "data_gaps__repeat__memory_graph": {
+      "coverage": 0.9,
+      "groundedness": 0.8571428571428571,
+      "grounding_counts": {
+        "supported": 6,
+        "partial": 1
+      },
+      "atomic_claims": 7,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        }
+      ],
+      "cost": {
+        "input_tokens": 123895,
+        "output_tokens": 3233,
+        "reported_input_tokens_lower_bound": 123895,
+        "reported_output_tokens_lower_bound": 3233,
+        "cached_input_tokens_subset": 20480,
+        "reasoning_output_tokens_subset": 394,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 9,
+        "tool_calls": 7,
+        "latency_seconds": 78.11297600000398,
+        "estimated_cost_usd": null
+      }
+    },
+    "collection_timeline__paraphrase__memory_graph": {
+      "coverage": 0.9285714285714286,
+      "groundedness": 0.9565217391304348,
+      "grounding_counts": {
+        "supported": 22,
+        "partial": 1
+      },
+      "atomic_claims": 23,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F7",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 171534,
+        "output_tokens": 3774,
+        "reported_input_tokens_lower_bound": 171534,
+        "reported_output_tokens_lower_bound": 3774,
+        "cached_input_tokens_subset": 36736,
+        "reasoning_output_tokens_subset": 487,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 8,
+        "tool_calls": 7,
+        "latency_seconds": 85.78136841699597,
+        "estimated_cost_usd": null
+      }
+    },
+    "collection_timeline__paraphrase__text_rag": {
+      "coverage": 0.9285714285714286,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 13
+      },
+      "atomic_claims": 13,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F7",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 9821,
+        "output_tokens": 1622,
+        "reported_input_tokens_lower_bound": 9821,
+        "reported_output_tokens_lower_bound": 1622,
+        "cached_input_tokens_subset": 0,
+        "reasoning_output_tokens_subset": 88,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 32.178749250015244,
+        "estimated_cost_usd": null
+      }
+    },
+    "collection_timeline__paraphrase__graph_only": {
+      "coverage": 0.7142857142857143,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 14
+      },
+      "atomic_claims": 14,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F7",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 97083,
+        "output_tokens": 2274,
+        "reported_input_tokens_lower_bound": 97083,
+        "reported_output_tokens_lower_bound": 2274,
+        "cached_input_tokens_subset": 15360,
+        "reasoning_output_tokens_subset": 242,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 7,
+        "tool_calls": 6,
+        "latency_seconds": 43.79634895801428,
+        "estimated_cost_usd": null
+      }
+    },
+    "routines__paraphrase__memory_graph": {
+      "coverage": 0.6,
+      "groundedness": 0.9583333333333334,
+      "grounding_counts": {
+        "supported": 23,
+        "partial": 1
+      },
+      "atomic_claims": 24,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 120003,
+        "output_tokens": 3182,
+        "reported_input_tokens_lower_bound": 120003,
+        "reported_output_tokens_lower_bound": 3182,
+        "cached_input_tokens_subset": 36864,
+        "reasoning_output_tokens_subset": 344,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 7,
+        "tool_calls": 6,
+        "latency_seconds": 56.92441870801849,
+        "estimated_cost_usd": null
+      }
+    },
+    "routines__paraphrase__graph_only": {
+      "coverage": 0.3,
+      "groundedness": 0.9230769230769231,
+      "grounding_counts": {
+        "supported": 24,
+        "unsupported": 1,
+        "partial": 1
+      },
+      "atomic_claims": 26,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 42322,
+        "output_tokens": 1772,
+        "reported_input_tokens_lower_bound": 42322,
+        "reported_output_tokens_lower_bound": 1772,
+        "cached_input_tokens_subset": 12800,
+        "reasoning_output_tokens_subset": 246,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 5,
+        "tool_calls": 4,
+        "latency_seconds": 42.309989166999,
+        "estimated_cost_usd": null
+      }
+    },
+    "routines__paraphrase__text_rag": {
+      "coverage": 0.2,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 20
+      },
+      "atomic_claims": 20,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 8275,
+        "output_tokens": 1964,
+        "reported_input_tokens_lower_bound": 8275,
+        "reported_output_tokens_lower_bound": 1964,
+        "cached_input_tokens_subset": 0,
+        "reasoning_output_tokens_subset": 111,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 22.323108792013954,
+        "estimated_cost_usd": null
+      }
+    },
+    "pruning__paraphrase__graph_only": {
+      "coverage": 0.6,
+      "groundedness": 0.9230769230769231,
+      "grounding_counts": {
+        "supported": 24,
+        "partial": 1,
+        "unsupported": 1
+      },
+      "atomic_claims": 26,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 0,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 155863,
+        "output_tokens": 4097,
+        "reported_input_tokens_lower_bound": 155863,
+        "reported_output_tokens_lower_bound": 4097,
+        "cached_input_tokens_subset": 23040,
+        "reasoning_output_tokens_subset": 763,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 11,
+        "tool_calls": 10,
+        "latency_seconds": 84.66317254101159,
+        "estimated_cost_usd": null
+      }
+    },
+    "pruning__paraphrase__memory_graph": {
+      "coverage": 0.4,
+      "groundedness": 0.8888888888888888,
+      "grounding_counts": {
+        "supported": 16,
+        "partial": 2
+      },
+      "atomic_claims": 18,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 104400,
+        "output_tokens": 2758,
+        "reported_input_tokens_lower_bound": 104400,
+        "reported_output_tokens_lower_bound": 2758,
+        "cached_input_tokens_subset": 32128,
+        "reasoning_output_tokens_subset": 466,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 7,
+        "tool_calls": 6,
+        "latency_seconds": 69.5929342500167,
+        "estimated_cost_usd": null
+      }
+    },
+    "pruning__paraphrase__text_rag": {
+      "coverage": 0.4,
+      "groundedness": 0.8,
+      "grounding_counts": {
+        "partial": 2,
+        "supported": 16,
+        "unsupported": 2
+      },
+      "atomic_claims": 20,
+      "specificity": 3,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 1,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 7587,
+        "output_tokens": 2217,
+        "reported_input_tokens_lower_bound": 7587,
+        "reported_output_tokens_lower_bound": 2217,
+        "cached_input_tokens_subset": 2688,
+        "reasoning_output_tokens_subset": 156,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 27.146729500003858,
+        "estimated_cost_usd": null
+      }
+    },
+    "data_gaps__paraphrase__text_rag": {
+      "coverage": 0.6,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 8
+      },
+      "atomic_claims": 8,
+      "specificity": 3,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        }
+      ],
+      "cost": {
+        "input_tokens": 8143,
+        "output_tokens": 1039,
+        "reported_input_tokens_lower_bound": 8143,
+        "reported_output_tokens_lower_bound": 1039,
+        "cached_input_tokens_subset": 2688,
+        "reasoning_output_tokens_subset": 115,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 12.828555917018093,
+        "estimated_cost_usd": null
+      }
+    },
+    "data_gaps__paraphrase__graph_only": {
+      "coverage": 0.0,
+      "groundedness": null,
+      "grounding_counts": {},
+      "atomic_claims": 0,
+      "specificity": 0,
+      "citation_validity": null,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        }
+      ],
+      "cost": {
+        "input_tokens": 4544,
+        "output_tokens": 149,
+        "reported_input_tokens_lower_bound": 4544,
+        "reported_output_tokens_lower_bound": 149,
+        "cached_input_tokens_subset": 2560,
+        "reasoning_output_tokens_subset": 41,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 0,
+        "latency_seconds": 5.812946582998848,
+        "estimated_cost_usd": null
+      }
+    },
+    "data_gaps__paraphrase__memory_graph": {
+      "coverage": 0.9,
+      "groundedness": 0.8888888888888888,
+      "grounding_counts": {
+        "supported": 8,
+        "unsupported": 1
+      },
+      "atomic_claims": 9,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        }
+      ],
+      "cost": {
+        "input_tokens": 179235,
+        "output_tokens": 4005,
+        "reported_input_tokens_lower_bound": 179235,
+        "reported_output_tokens_lower_bound": 4005,
+        "cached_input_tokens_subset": 28160,
+        "reasoning_output_tokens_subset": 614,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 11,
+        "tool_calls": 9,
+        "latency_seconds": 82.286590083997,
+        "estimated_cost_usd": null
+      }
+    },
+    "government__paraphrase__graph_only": {
+      "coverage": 0.75,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 6
+      },
+      "atomic_claims": 6,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 0,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        }
+      ],
+      "cost": {
+        "input_tokens": 156701,
+        "output_tokens": 1950,
+        "reported_input_tokens_lower_bound": 156701,
+        "reported_output_tokens_lower_bound": 1950,
+        "cached_input_tokens_subset": 40064,
+        "reasoning_output_tokens_subset": 394,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 9,
+        "tool_calls": 8,
+        "latency_seconds": 56.67418058300973,
+        "estimated_cost_usd": null
+      }
+    },
+    "government__paraphrase__memory_graph": {
+      "coverage": 0.75,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 8
+      },
+      "atomic_claims": 8,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 0,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        }
+      ],
+      "cost": {
+        "input_tokens": 116533,
+        "output_tokens": 2185,
+        "reported_input_tokens_lower_bound": 116533,
+        "reported_output_tokens_lower_bound": 2185,
+        "cached_input_tokens_subset": 33664,
+        "reasoning_output_tokens_subset": 414,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 8,
+        "tool_calls": 7,
+        "latency_seconds": 48.789893082983326,
+        "estimated_cost_usd": null
+      }
+    },
+    "government__paraphrase__text_rag": {
+      "coverage": 0.75,
+      "groundedness": 1.0,
+      "grounding_counts": {
+        "supported": 6
+      },
+      "atomic_claims": 6,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 0,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F6",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        }
+      ],
+      "cost": {
+        "input_tokens": 9145,
+        "output_tokens": 695,
+        "reported_input_tokens_lower_bound": 9145,
+        "reported_output_tokens_lower_bound": 695,
+        "cached_input_tokens_subset": 2688,
+        "reasoning_output_tokens_subset": 78,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 15.759642459015595,
+        "estimated_cost_usd": null
+      }
+    },
+    "patterns__paraphrase__graph_only": {
+      "coverage": 0.3,
+      "groundedness": 0.9,
+      "grounding_counts": {
+        "supported": 18,
+        "partial": 2
+      },
+      "atomic_claims": 20,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 48696,
+        "output_tokens": 2385,
+        "reported_input_tokens_lower_bound": 48696,
+        "reported_output_tokens_lower_bound": 2385,
+        "cached_input_tokens_subset": 10240,
+        "reasoning_output_tokens_subset": 238,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 5,
+        "tool_calls": 4,
+        "latency_seconds": 39.94120991698583,
+        "estimated_cost_usd": null
+      }
+    },
+    "patterns__paraphrase__text_rag": {
+      "coverage": 0.9,
+      "groundedness": 0.8260869565217391,
+      "grounding_counts": {
+        "supported": 19,
+        "partial": 2,
+        "unsupported": 2
+      },
+      "atomic_claims": 23,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": true,
+          "coverage": 0.5,
+          "diagnosis": "available_evidence_not_fully_used"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": true,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 9707,
+        "output_tokens": 2622,
+        "reported_input_tokens_lower_bound": 9707,
+        "reported_output_tokens_lower_bound": 2622,
+        "cached_input_tokens_subset": 2688,
+        "reasoning_output_tokens_subset": 358,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 1,
+        "tool_calls": 1,
+        "latency_seconds": 28.755153250007425,
+        "estimated_cost_usd": null
+      }
+    },
+    "patterns__paraphrase__memory_graph": {
+      "coverage": 0.4,
+      "groundedness": 0.88,
+      "grounding_counts": {
+        "supported": 22,
+        "partial": 3
+      },
+      "atomic_claims": 25,
+      "specificity": 4,
+      "citation_validity": 1.0,
+      "invalid_delivered_citations": 0,
+      "excluded_claim_validation_errors": [],
+      "internal_contradictions": 0,
+      "facet_visibility": [
+        {
+          "facet_id": "F1",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F2",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F3",
+          "evidence_shown": false,
+          "coverage": 0.5,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F4",
+          "evidence_shown": false,
+          "coverage": 0,
+          "diagnosis": "reference_evidence_not_fully_shown"
+        },
+        {
+          "facet_id": "F5",
+          "evidence_shown": false,
+          "coverage": 1,
+          "diagnosis": "covered"
+        }
+      ],
+      "cost": {
+        "input_tokens": 150646,
+        "output_tokens": 4214,
+        "reported_input_tokens_lower_bound": 150646,
+        "reported_output_tokens_lower_bound": 4214,
+        "cached_input_tokens_subset": 20480,
+        "reasoning_output_tokens_subset": 628,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 9,
+        "tool_calls": 8,
+        "latency_seconds": 87.18373537500156,
+        "estimated_cost_usd": null
+      }
+    }
+  },
+  "construction_cost": {
+    "memory": {
+      "usage": {
+        "input_tokens": null,
+        "output_tokens": null,
+        "reported_input_tokens_lower_bound": 3795381,
+        "reported_output_tokens_lower_bound": 488146,
+        "cached_input_tokens_subset": 1872384,
+        "reasoning_output_tokens_subset": 292107,
+        "calls_without_complete_usage": 3,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 838,
+        "tool_calls": 0,
+        "latency_seconds": null,
+        "estimated_cost_usd": null
+      },
+      "reported_summary": {
+        "reported_new_call_tokens": {
+          "input_tokens": 3795381,
+          "output_tokens": 488146,
+          "cached_input_tokens": 1872384
+        },
+        "measured_requests": 838,
+        "elapsed_provider_seconds": 8713.1158,
+        "median_call_seconds": 8.2797,
+        "p95_call_seconds": 23.3877,
+        "estimated_this_run_cost_usd": null,
+        "calls_with_rejected_judgments": 19,
+        "malformed_response_rate": 0.022673031026252982,
+        "failed_requests": 3,
+        "limitation": "Reported token usage only. Failed-call usage can be missing; subscription dollars are unknown."
+      },
+      "elapsed_seconds": 8713.1158
+    },
+    "abstraction": {
+      "usage": {
+        "input_tokens": 300245,
+        "output_tokens": 26978,
+        "reported_input_tokens_lower_bound": 300245,
+        "reported_output_tokens_lower_bound": 26978,
+        "cached_input_tokens_subset": 2560,
+        "reasoning_output_tokens_subset": 1490,
+        "calls_without_complete_usage": 0,
+        "cache_replays": 0,
+        "fresh_measurement": true,
+        "model_calls": 23,
+        "tool_calls": 0,
+        "latency_seconds": null,
+        "estimated_cost_usd": null
+      },
+      "reported_summary": {
+        "reported_new_call_tokens": {
+          "input_tokens": 300245,
+          "output_tokens": 26978,
+          "cached_input_tokens": 2560
+        },
+        "measured_requests": 23,
+        "elapsed_provider_seconds": 744.608,
+        "median_call_seconds": 32.9528,
+        "p95_call_seconds": 37.7786,
+        "estimated_this_run_cost_usd": null,
+        "calls_with_rejected_judgments": 0,
+        "malformed_response_rate": 0.0,
+        "failed_requests": 0,
+        "limitation": "Reported token usage only. Failed-call usage can be missing; subscription dollars are unknown."
+      },
+      "elapsed_seconds": 744.608
+    }
+  },
+  "amortization": [
+    {
+      "questions": 10,
+      "tokens_per_question": null
+    },
+    {
+      "questions": 100,
+      "tokens_per_question": null
+    },
+    {
+      "questions": 1000,
+      "tokens_per_question": null
+    }
+  ],
+  "stage_usage": {
+    "answer": {
+      "input_tokens": 3781619,
+      "output_tokens": 137916,
+      "reported_input_tokens_lower_bound": 3781619,
+      "reported_output_tokens_lower_bound": 137916,
+      "cached_input_tokens_subset": 700288,
+      "reasoning_output_tokens_subset": 18621,
+      "calls_without_complete_usage": 0,
+      "cache_replays": 0,
+      "fresh_measurement": true,
+      "model_calls": 269,
+      "tool_calls": 0,
+      "latency_seconds": null,
+      "estimated_cost_usd": null
+    },
+    "judge": {
+      "input_tokens": 1170324,
+      "output_tokens": 126316,
+      "reported_input_tokens_lower_bound": 1170324,
+      "reported_output_tokens_lower_bound": 126316,
+      "cached_input_tokens_subset": 60928,
+      "reasoning_output_tokens_subset": 8687,
+      "calls_without_complete_usage": 0,
+      "cache_replays": 0,
+      "fresh_measurement": true,
+      "model_calls": 91,
+      "tool_calls": 0,
+      "latency_seconds": null,
+      "estimated_cost_usd": null
+    }
+  },
+  "setup_seconds": 4.437603249010863,
+  "answers_reused_from": null,
+  "audit": null,
+  "limitations": [
+    "Reference criteria were accepted by explicit user assumption; no human source review is attested.",
+    "Six known-corpus final questions; development overlap is disclosed per question.",
+    "Means ignore undefined values; inspect per-run missingness and completion counts before interpreting them.",
+    "Consistency measures stability, not correctness. Identical wrong answers can agree.",
+    "Missing construction or provider usage remains unknown; dollars are not inferred from subscription access.",
+    "Comparisons are against BM25 text RAG and the configured graph-only agent, not all possible retrieval systems.",
+    "Synthetic-provider reports verify plumbing only and do not establish model quality."
+  ]
+}

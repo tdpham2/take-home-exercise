@@ -1,0 +1,1710 @@
+{
+  "question": "Across narrative and collection processing, what reported failure mechanisms recur, and which differences prevent treating them as one cause?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "Narrative Graph backend processing reportedly raised a KeyError when macro_ids existed in Network Trigrams but were missing from Macro Narratives.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_857bba204521b877",
+          "quote": "Records with macro_ids exist in the Network Trigrams collection but are missing from the Macro Narratives collection",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_fe9edd081c5bc41d",
+          "quote": "This mismatch causes an inconsistent data state, resulting in a KeyError exception during processing",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The record directly describes the mismatch and exception.",
+      "verification_note": "Ignoring missing IDs is prescribed, not verified as implemented.",
+      "id": "C1",
+      "record_ids": [
+        "KEP-4243"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "A separate narrative-level stance query reportedly returned zero comments despite 817 comments being indicated at the post level.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_4d8d331637786fe8",
+          "quote": "the agent returns 0 comments across all stance categories (Support, Oppose, Neutral), despite the system indicating that 817 comments exist at the post level",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The conflicting counts are directly reported.",
+      "verification_note": "The passage does not establish the cause of the aggregation mismatch.",
+      "id": "C2",
+      "record_ids": [
+        "KEP-6509"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "Statistics API documentation flags inconsistent data across endpoints and proposes a single-source-of-truth refactor; it does not establish the same missing-record KeyError mechanism.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_5646d4217047176d",
+          "quote": "Inconsistent data across endpoints",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_2c939eb047fbbdc5",
+          "quote": "Refactor statistics APIs to follow a single source of truth pattern",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The inconsistency and proposed refactor are explicit, but their relation to other failures is limited.",
+      "verification_note": "A proposed refactor is not evidence of execution or a common root cause.",
+      "id": "C3",
+      "record_ids": [
+        "KEP-4182"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "An enrichment task failure is attributed in its ticket text to a last-narrative-date issue.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_d4b3ecd34ac362d9",
+          "quote": "Investigate and resolve the enrichment task failure caused by the last narrative date issue",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The attribution is explicit but appears in an investigation request without diagnostic detail.",
+      "verification_note": "No resolution or link to the other narrative failures is shown.",
+      "id": "C4",
+      "record_ids": [
+        "KEP-5586"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "Collection processing reportedly sent duplicate post IDs when one post appeared under a username, hashtag, and cashtag, causing success/failure callback issues for that ID.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_4ae869bc7e9ee1a1",
+          "quote": "duplicate post IDs being sent to them. This is causing callback issues on success and failure for the same post ID. Currently, duplicate IDs are being sent because the same post can appear for a username, hashtag, and cashtag.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passage directly reports the duplication path and callback symptom.",
+      "verification_note": "The Done status does not verify a deployed fix.",
+      "id": "C5",
+      "record_ids": [
+        "KEP-4403"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "A Weibo processing ticket identifies missing service callbacks, but its supplied title alone does not show that duplicate IDs caused them.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_adb482ae008cdf13",
+          "quote": "Critical Weibo Processing Failures: Missing Service Callbacks",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The title identifies the symptom, not its mechanism.",
+      "verification_note": "Do not merge this Weibo failure with the duplicate-post-ID callback issue.",
+      "id": "C6",
+      "record_ids": [
+        "KEP-6650"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "For an Argonaut-tenant government customer network, narrative generation jobs reportedly exceeded a 10-hour processing threshold, were killed, and re-queued into a silent loop without output or an alert.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_5f2b2e2ded8842f5",
+          "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_1b68761b66cc3cc3",
+          "quote": "The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The record directly states the reported timeout and retry mechanism.",
+      "verification_note": "The reported increase to 12 hours does not itself verify sustained recovery.",
+      "id": "C7",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "A separate collection incident attributes a queue backup that prevented new jobs from starting to video-vision jobs failing to close their final steps.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_66f837dba0b6f0bf",
+          "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The record directly gives this reported causal chain.",
+      "verification_note": "This is a queue-completion problem, not evidence of the Argonaut timeout loop; the asserted fix is not independent recovery verification.",
+      "id": "C8",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "Staging topic-clustering work reported algorithmic errors in some jobs after data collection was marked complete.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_ae8831731edc8c8f",
+          "quote": "Data collection is completed for all active networks in staging.",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_dcd6b5f9b30344e7",
+          "quote": "There a re failures in the topic clustering with algorithmic error for 18 jobs out of",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The staging failure is reported, but the job-count passage is truncated.",
+      "verification_note": "Do not infer a failure rate or equate a clustering algorithm error with collection failure.",
+      "id": "C9",
+      "record_ids": [
+        "KEP-2189"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "BrightData batching was proposed to reduce rate-limiting issues, rather than documented here as a verified remedy for any cited outage.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_59b44c9c5c22ea16",
+          "quote": "This Epic aims to introduce a centralized batch processing service for BrightData API requests",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_e5585e8d13c80e28",
+          "quote": "The goal is to reduce rate limiting issues and improve data collection efficiency by grouping requests in batches",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "Both passages explicitly frame batching as an aim or goal.",
+      "verification_note": "Requirements do not prove implementation, rate-limit incidence, or outage recovery.",
+      "id": "C10",
+      "record_ids": [
+        "KEP-7025"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "Detection gaps recur in the reports, but the Argonaut narrative-update failure and the multi-platform collection degradation are distinct incidents.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_9b4317c218937e4f",
+          "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing.",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_75b67275157f9120",
+          "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "Both reports describe missed detection, while identifying different scopes and failure paths.",
+      "verification_note": "An ordered backfill is not proof that data integrity was restored.",
+      "id": "C11",
+      "record_ids": [
+        "KEP-6969",
+        "KEP-6970"
+      ],
+      "source_mode": "text"
+    }
+  ],
+  "unanswered": [
+    "Whether the proposed or reported fixes were deployed and verified to prevent recurrence.",
+    "The diagnostic cause of the narrative-level stance aggregation discrepancy and of the last-narrative-date issue.",
+    "Whether the Weibo missing callbacks share any mechanism with duplicate-post-ID callbacks."
+  ],
+  "limitations": [
+    "The supplied passages are selected records, so they do not establish prevalence.",
+    "Some evidence is a ticket title, requirement, or truncated passage rather than an execution trace.",
+    "BM25 over extracted record text; exact citations do not establish semantic correctness."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "execution_scope": "source_only"
+    },
+    {
+      "sequence": 2,
+      "kind": "tool",
+      "name": "retrieve_text",
+      "arguments": {
+        "query": "Across narrative and collection processing, what reported failure mechanisms recur, and which differences prevent treating them as one cause?",
+        "top_k": 20
+      },
+      "call_id": "text_1",
+      "result": {
+        "records": [
+          {
+            "record_id": "KEP-4243",
+            "passages": [
+              {
+                "evidence_id": "ev_03b6897ac3e47a32",
+                "record_id": "KEP-4243",
+                "quote": "The backend should handle this scenario. If a macro_id is missing from Macro Narratives, it should be ignored during Narrative Graph backend API processing",
+                "start": 0,
+                "end": 155
+              },
+              {
+                "evidence_id": "ev_32773e9dd5e7acd4",
+                "record_id": "KEP-4243",
+                "quote": "status: Done",
+                "start": 0,
+                "end": 12
+              },
+              {
+                "evidence_id": "ev_5a57e73b353bac90",
+                "record_id": "KEP-4243",
+                "quote": "If a macro_id is missing from Macro Narratives, it should be ignored during Narrative Graph backend API processing",
+                "start": 0,
+                "end": 114
+              },
+              {
+                "evidence_id": "ev_857bba204521b877",
+                "record_id": "KEP-4243",
+                "quote": "Records with macro_ids exist in the Network Trigrams collection but are missing from the Macro Narratives collection",
+                "start": 0,
+                "end": 116
+              },
+              {
+                "evidence_id": "ev_fe9edd081c5bc41d",
+                "record_id": "KEP-4243",
+                "quote": "This mismatch causes an inconsistent data state, resulting in a KeyError exception during processing",
+                "start": 0,
+                "end": 100
+              }
+            ],
+            "score": 11.986844349243157
+          },
+          {
+            "record_id": "KEP-5586",
+            "passages": [
+              {
+                "evidence_id": "ev_5f8ea3be1a8d2e1f",
+                "record_id": "KEP-5586",
+                "quote": "Fix the seed data payload to prevent duplicated subtasks in the TWITTER module",
+                "start": 0,
+                "end": 78
+              },
+              {
+                "evidence_id": "ev_d4b3ecd34ac362d9",
+                "record_id": "KEP-5586",
+                "quote": "Investigate and resolve the enrichment task failure caused by the last narrative date issue",
+                "start": 0,
+                "end": 91
+              }
+            ],
+            "score": 11.879779680046372
+          },
+          {
+            "record_id": "KEP-7025",
+            "passages": [
+              {
+                "evidence_id": "ev_0fe87992ee3f2c04",
+                "record_id": "KEP-7025",
+                "quote": "Implement Centralized BrightData Batch Processing Service for Multi-Platform Data Collection",
+                "start": 0,
+                "end": 92
+              },
+              {
+                "evidence_id": "ev_30f88ccc80c81338",
+                "record_id": "KEP-7025",
+                "quote": "Building a dedicated service to handle BrightData batch requests across multiple platforms",
+                "start": 0,
+                "end": 90
+              },
+              {
+                "evidence_id": "ev_59b44c9c5c22ea16",
+                "record_id": "KEP-7025",
+                "quote": "This Epic aims to introduce a centralized batch processing service for BrightData API requests",
+                "start": 0,
+                "end": 94
+              },
+              {
+                "evidence_id": "ev_60fc5c8d570a617f",
+                "record_id": "KEP-7025",
+                "quote": "Technical Requirements Documentation",
+                "start": 0,
+                "end": 36
+              },
+              {
+                "evidence_id": "ev_9337c1379bb2a44f",
+                "record_id": "KEP-7025",
+                "quote": "Backoff logic should not exceed 3 retries within a 24-hour cycle",
+                "start": 0,
+                "end": 64
+              },
+              {
+                "evidence_id": "ev_a7c43f25cd6ac0ad",
+                "record_id": "KEP-7025",
+                "quote": "Should maintain processing speed of at least 5,000 users/hour",
+                "start": 0,
+                "end": 61
+              },
+              {
+                "evidence_id": "ev_e5585e8d13c80e28",
+                "record_id": "KEP-7025",
+                "quote": "The goal is to reduce rate limiting issues and improve data collection efficiency by grouping requests in batches",
+                "start": 0,
+                "end": 113
+              }
+            ],
+            "score": 10.53134480119604
+          },
+          {
+            "record_id": "KEP-4182",
+            "passages": [
+              {
+                "evidence_id": "ev_17c8d0202a97b639",
+                "record_id": "KEP-4182",
+                "quote": "Potential performance issues from redundant queries",
+                "start": 0,
+                "end": 51
+              },
+              {
+                "evidence_id": "ev_2c939eb047fbbdc5",
+                "record_id": "KEP-4182",
+                "quote": "Refactor statistics APIs to follow a single source of truth pattern",
+                "start": 0,
+                "end": 67
+              },
+              {
+                "evidence_id": "ev_389cd415f0107940",
+                "record_id": "KEP-4182",
+                "quote": "Network-level statistics → network_stats collection (MongoDB)",
+                "start": 0,
+                "end": 61
+              },
+              {
+                "evidence_id": "ev_5646d4217047176d",
+                "record_id": "KEP-4182",
+                "quote": "Inconsistent data across endpoints",
+                "start": 0,
+                "end": 34
+              },
+              {
+                "evidence_id": "ev_a344fa5695cb3280",
+                "record_id": "KEP-4182",
+                "quote": "APIs to Update /summary/network-summary",
+                "start": 0,
+                "end": 39
+              },
+              {
+                "evidence_id": "ev_b57a2a006f994089",
+                "record_id": "KEP-4182",
+                "quote": "Narrative-level statistics → narrative_stats collection (MongoDB)",
+                "start": 0,
+                "end": 65
+              }
+            ],
+            "score": 10.464171590042868
+          },
+          {
+            "record_id": "KEP-6650",
+            "passages": [
+              {
+                "evidence_id": "ev_adb482ae008cdf13",
+                "record_id": "KEP-6650",
+                "quote": "Critical Weibo Processing Failures: Missing Service Callbacks",
+                "start": 0,
+                "end": 61
+              }
+            ],
+            "score": 10.12203902778035
+          },
+          {
+            "record_id": "KEP-6969",
+            "passages": [
+              {
+                "evidence_id": "ev_1b68761b66cc3cc3",
+                "record_id": "KEP-6969",
+                "quote": "The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert",
+                "start": 0,
+                "end": 110
+              },
+              {
+                "evidence_id": "ev_1c1739cdda90321d",
+                "record_id": "KEP-6969",
+                "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026",
+                "start": 0,
+                "end": 174
+              },
+              {
+                "evidence_id": "ev_4386d80195ef6b5a",
+                "record_id": "KEP-6969",
+                "quote": "Government customer (Argonaut tenant) went 10+ days (Apr 19–29) without narrative updates for at least one network",
+                "start": 0,
+                "end": 114
+              },
+              {
+                "evidence_id": "ev_5f2b2e2ded8842f5",
+                "record_id": "KEP-6969",
+                "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+                "start": 0,
+                "end": 196
+              },
+              {
+                "evidence_id": "ev_9b4317c218937e4f",
+                "record_id": "KEP-6969",
+                "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing.",
+                "start": 0,
+                "end": 557
+              },
+              {
+                "evidence_id": "ev_ad26bffaa983949e",
+                "record_id": "KEP-6969",
+                "quote": "the processing timeout was increased from 10 hours to 12 hours",
+                "start": 0,
+                "end": 62
+              },
+              {
+                "evidence_id": "ev_f3dba2eba43e2de5",
+                "record_id": "KEP-6969",
+                "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+                "start": 0,
+                "end": 180
+              }
+            ],
+            "score": 9.878612115985723
+          },
+          {
+            "record_id": "KEP-6044",
+            "passages": [
+              {
+                "evidence_id": "ev_5560a50a148eb72a",
+                "record_id": "KEP-6044",
+                "quote": "One thought is that the keywords are being searched without quotations around them, which opens up the amount of results",
+                "start": 0,
+                "end": 120
+              }
+            ],
+            "score": 9.657333372817282
+          },
+          {
+            "record_id": "KEP-2189",
+            "passages": [
+              {
+                "evidence_id": "ev_95c4d769ae116953",
+                "record_id": "KEP-2189",
+                "quote": "Run topic clustering and narrative hierarchy for staging network and investigate the execution",
+                "start": 0,
+                "end": 94
+              },
+              {
+                "evidence_id": "ev_ae8831731edc8c8f",
+                "record_id": "KEP-2189",
+                "quote": "Data collection is completed for all active networks in staging.",
+                "start": 0,
+                "end": 64
+              },
+              {
+                "evidence_id": "ev_dcd6b5f9b30344e7",
+                "record_id": "KEP-2189",
+                "quote": "There a re failures in the topic clustering with algorithmic error for 18 jobs out of",
+                "start": 0,
+                "end": 85
+              }
+            ],
+            "score": 9.257619206634992
+          },
+          {
+            "record_id": "KEP-6435",
+            "passages": [
+              {
+                "evidence_id": "ev_14bd758070f0b2f4",
+                "record_id": "KEP-6435",
+                "quote": "This issue is resolved.",
+                "start": 0,
+                "end": 23
+              },
+              {
+                "evidence_id": "ev_170a27d37e4d8613",
+                "record_id": "KEP-6435",
+                "quote": "UI : Narrative and Comment Conversation Items Remain Expanded Across Themes and Do Not Maintain Proper Collapse Behavior",
+                "start": 0,
+                "end": 120
+              },
+              {
+                "evidence_id": "ev_3b9bfd39e2e9fac1",
+                "record_id": "KEP-6435",
+                "quote": "Only one Narrative should remain expanded at a time within the Narratives section. Only one Comment Conversation should remain expanded at a time within the Comment Conversations section.",
+                "start": 0,
+                "end": 187
+              },
+              {
+                "evidence_id": "ev_5330ecd21cba7785",
+                "record_id": "KEP-6435",
+                "quote": "causing multiple items to remain open simultaneously or previously opened items to automatically reopen when navigating between items",
+                "start": 0,
+                "end": 133
+              },
+              {
+                "evidence_id": "ev_5ac6cad87f297197",
+                "record_id": "KEP-6435",
+                "quote": "a synchronization issue has been observed in the Themes → Narratives and Comment Conversations sections",
+                "start": 0,
+                "end": 103
+              },
+              {
+                "evidence_id": "ev_d6570b3654d799ff",
+                "record_id": "KEP-6435",
+                "quote": "After the recent UI changes related to Narrative Summary expansion and pruning improvements , a synchronization issue has been observed",
+                "start": 0,
+                "end": 135
+              }
+            ],
+            "score": 8.535670089873818
+          },
+          {
+            "record_id": "KEP-4366",
+            "passages": [
+              {
+                "evidence_id": "ev_f19d74f6ba596733",
+                "record_id": "KEP-4366",
+                "quote": "Build Crud Operations for narrative pruning in application backend Collection Name: narrative_pruning_rules",
+                "start": 0,
+                "end": 107
+              }
+            ],
+            "score": 7.969072514592446
+          },
+          {
+            "record_id": "KT-267",
+            "passages": [
+              {
+                "evidence_id": "ev_30f3bf4aa4096099",
+                "record_id": "KT-267",
+                "quote": "Log any failures, delays, or anomalies in the shared tracking sheet",
+                "start": 0,
+                "end": 67
+              },
+              {
+                "evidence_id": "ev_b7d02e50dd8e299e",
+                "record_id": "KT-267",
+                "quote": "Frequency: Twice Daily (Morning and Evening)",
+                "start": 0,
+                "end": 44
+              },
+              {
+                "evidence_id": "ev_ce1968d9e7079c11",
+                "record_id": "KT-267",
+                "quote": "Run the Postman collection from the Desktop app two times a day",
+                "start": 0,
+                "end": 63
+              },
+              {
+                "evidence_id": "ev_fe2d34415231a1e7",
+                "record_id": "KT-267",
+                "quote": "The purpose is to monitor API health, validate responses, and identify any failures early",
+                "start": 0,
+                "end": 89
+              }
+            ],
+            "score": 7.942174991073938
+          },
+          {
+            "record_id": "KEP-2669",
+            "passages": [
+              {
+                "evidence_id": "ev_8db0a55ebf084039",
+                "record_id": "KEP-2669",
+                "quote": "Update the API logic - to get the values for a Narrative Stats Collection",
+                "start": 0,
+                "end": 73
+              }
+            ],
+            "score": 7.739564929564121
+          },
+          {
+            "record_id": "KT-334",
+            "passages": [
+              {
+                "evidence_id": "ev_738c1cf46a0f036a",
+                "record_id": "KT-334",
+                "quote": "resolution: Done | status: Done",
+                "start": 0,
+                "end": 31
+              },
+              {
+                "evidence_id": "ev_916c116ecced7dd4",
+                "record_id": "KT-334",
+                "quote": "Log any failures, delays, or anomalies in the shared tracking sheet.",
+                "start": 0,
+                "end": 68
+              },
+              {
+                "evidence_id": "ev_9acabf9cd741f4d9",
+                "record_id": "KT-334",
+                "quote": "The purpose is to monitor API health, validate responses, and identify any failures early.",
+                "start": 0,
+                "end": 90
+              },
+              {
+                "evidence_id": "ev_d891ec727c04c897",
+                "record_id": "KT-334",
+                "quote": "Frequency: Twice Daily (Morning and Evening)",
+                "start": 0,
+                "end": 44
+              },
+              {
+                "evidence_id": "ev_e6b3b9ea576523ea",
+                "record_id": "KT-334",
+                "quote": "Run the Postman collection from the Desktop app two times a day.",
+                "start": 0,
+                "end": 64
+              },
+              {
+                "evidence_id": "ev_eaf6ee6af9edf403",
+                "record_id": "KT-334",
+                "quote": "Notify the QA group or developer in Slack if consistent failures are observed.",
+                "start": 0,
+                "end": 78
+              }
+            ],
+            "score": 7.73125645678565
+          },
+          {
+            "record_id": "KEP-379",
+            "passages": [
+              {
+                "evidence_id": "ev_a416d792fd3aadb3",
+                "record_id": "KEP-379",
+                "quote": "Update the API logic - to get the values for a Comment Narrative Stats Collection",
+                "start": 0,
+                "end": 81
+              }
+            ],
+            "score": 7.578960663646814
+          },
+          {
+            "record_id": "KEP-4403",
+            "passages": [
+              {
+                "evidence_id": "ev_4ae869bc7e9ee1a1",
+                "record_id": "KEP-4403",
+                "quote": "duplicate post IDs being sent to them. This is causing callback issues on success and failure for the same post ID. Currently, duplicate IDs are being sent because the same post can appear for a username, hashtag, and cashtag.",
+                "start": 0,
+                "end": 226
+              },
+              {
+                "evidence_id": "ev_85912c0f9cd2a869",
+                "record_id": "KEP-4403",
+                "quote": "status: Done",
+                "start": 0,
+                "end": 12
+              }
+            ],
+            "score": 7.565285208424106
+          },
+          {
+            "record_id": "Community_619",
+            "passages": [
+              {
+                "evidence_id": "ev_10287b31997cdf7b",
+                "record_id": "Community_619",
+                "quote": "Fix blank screen issue when using browser back button from narrative view",
+                "start": 0,
+                "end": 73
+              },
+              {
+                "evidence_id": "ev_9f70c1ff5d8ce15b",
+                "record_id": "Community_619",
+                "quote": "Fix narrative search text persisting across networks on Feed page",
+                "start": 0,
+                "end": 65
+              }
+            ],
+            "score": 7.536468883944423
+          },
+          {
+            "record_id": "KEP-6970",
+            "passages": [
+              {
+                "evidence_id": "ev_06eee086b8cf9d93",
+                "record_id": "KEP-6970",
+                "quote": "No automated alarm fired during this period",
+                "start": 0,
+                "end": 43
+              },
+              {
+                "evidence_id": "ev_14acd247410dce00",
+                "record_id": "KEP-6970",
+                "quote": "Apr 30, 7:25 AM EDT — 19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags, with a linked change document",
+                "start": 0,
+                "end": 150
+              },
+              {
+                "evidence_id": "ev_1faf97ee0458fc4b",
+                "record_id": "KEP-6970",
+                "quote": "Host PID fix applied prior to 19.2.0 deployment",
+                "start": 0,
+                "end": 47
+              },
+              {
+                "evidence_id": "ev_2aaa51b05f284118",
+                "record_id": "KEP-6970",
+                "quote": "Apr 30, 7:00 AM EDT — TikTok MR bypass requested in #kepler-dev-all-pods (data-source-tiktok MR 501)",
+                "start": 0,
+                "end": 100
+              },
+              {
+                "evidence_id": "ev_4700e329357c7762",
+                "record_id": "KEP-6970",
+                "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered (per Apr 28 standup: Magna coordinating with Abhik Roy to stop cron before triggering backfill)",
+                "start": 0,
+                "end": 196
+              },
+              {
+                "evidence_id": "ev_477c9de5cda34331",
+                "record_id": "KEP-6970",
+                "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing",
+                "start": 0,
+                "end": 136
+              },
+              {
+                "evidence_id": "ev_48b827cfe137a976",
+                "record_id": "KEP-6970",
+                "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied",
+                "start": 0,
+                "end": 205
+              },
+              {
+                "evidence_id": "ev_66f837dba0b6f0bf",
+                "record_id": "KEP-6970",
+                "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting",
+                "start": 0,
+                "end": 167
+              },
+              {
+                "evidence_id": "ev_75b67275157f9120",
+                "record_id": "KEP-6970",
+                "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.",
+                "start": 0,
+                "end": 324
+              },
+              {
+                "evidence_id": "ev_780b5d8df3586459",
+                "record_id": "KEP-6970",
+                "quote": "TikTok MR bypass requested in #kepler-dev-all-pods (data-source-tiktok MR 501)",
+                "start": 0,
+                "end": 78
+              },
+              {
+                "evidence_id": "ev_798015aecf48cc37",
+                "record_id": "KEP-6970",
+                "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered",
+                "start": 0,
+                "end": 100
+              },
+              {
+                "evidence_id": "ev_840978102672098c",
+                "record_id": "KEP-6970",
+                "quote": "Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April",
+                "start": 0,
+                "end": 77
+              },
+              {
+                "evidence_id": "ev_9488fa8cc6db3d39",
+                "record_id": "KEP-6970",
+                "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied. Apr 29, 6:42 AM EDT — Kiran Sabbani in #kepler-dev-all-pods: \"Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April.\"",
+                "start": 0,
+                "end": 348
+              },
+              {
+                "evidence_id": "ev_97a309f4cce85c3a",
+                "record_id": "KEP-6970",
+                "quote": "Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21",
+                "start": 0,
+                "end": 92
+              },
+              {
+                "evidence_id": "ev_cdf54cd1ff4aa620",
+                "record_id": "KEP-6970",
+                "quote": "Backfill from Apr 21 required to restore full data integrity",
+                "start": 0,
+                "end": 60
+              },
+              {
+                "evidence_id": "ev_d84bc6bf2ffd4954",
+                "record_id": "KEP-6970",
+                "quote": "19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags",
+                "start": 0,
+                "end": 97
+              },
+              {
+                "evidence_id": "ev_f3c24bea244e9385",
+                "record_id": "KEP-6970",
+                "quote": "~8 days (Apr 21–29) of missing or degraded data for Facebook, Instagram, and TikTok across all customer networks",
+                "start": 0,
+                "end": 112
+              }
+            ],
+            "score": 7.470409194026761
+          },
+          {
+            "record_id": "KT-292",
+            "passages": [
+              {
+                "evidence_id": "ev_72bcaf2a50c998b3",
+                "record_id": "KT-292",
+                "quote": "This is a manual QA activity to execute the Postman collection twice daily (morning and evening) throughout the month. The purpose is to monitor API health, validate responses, and identify any failures early.",
+                "start": 0,
+                "end": 209
+              }
+            ],
+            "score": 7.44975211408531
+          },
+          {
+            "record_id": "KEP-6923",
+            "passages": [
+              {
+                "evidence_id": "ev_0c852a6941b0f4d8",
+                "record_id": "KEP-6923",
+                "quote": "Funding / quota exhaustion stops data collection.",
+                "start": 0,
+                "end": 49
+              },
+              {
+                "evidence_id": "ev_1ac3a7fb42bdf536",
+                "record_id": "KEP-6923",
+                "quote": "Report‑generation failures (no regular QA run).",
+                "start": 0,
+                "end": 47
+              },
+              {
+                "evidence_id": "ev_1dba2fdf457f30b3",
+                "record_id": "KEP-6923",
+                "quote": "Vendor / service outage not detected quickly.",
+                "start": 0,
+                "end": 45
+              },
+              {
+                "evidence_id": "ev_3d078a483bf0ab14",
+                "record_id": "KEP-6923",
+                "quote": "Partial network‑level failures (NE, NH, Influence, etc.).",
+                "start": 0,
+                "end": 57
+              },
+              {
+                "evidence_id": "ev_6a7a504ced5e5ddc",
+                "record_id": "KEP-6923",
+                "quote": "Map the full dependency graph for the Kepler data‑pipeline (model → NE → NH → Influence → report generation, plus external vendor/services).",
+                "start": 0,
+                "end": 140
+              },
+              {
+                "evidence_id": "ev_82fb7c9fc0071447",
+                "record_id": "KEP-6923",
+                "quote": "Release‑related regressions (e.g., narrative‑accumulation issue).",
+                "start": 0,
+                "end": 65
+              },
+              {
+                "evidence_id": "ev_a968798c28c0d7d6",
+                "record_id": "KEP-6923",
+                "quote": "Rate‑limit hits.",
+                "start": 0,
+                "end": 16
+              },
+              {
+                "evidence_id": "ev_db0c75ab2fb11e09",
+                "record_id": "KEP-6923",
+                "quote": "Pipeline model crashes → everything downstream breaks.",
+                "start": 0,
+                "end": 54
+              }
+            ],
+            "score": 7.376951946122557
+          },
+          {
+            "record_id": "KEP-6509",
+            "passages": [
+              {
+                "evidence_id": "ev_49a19fe25720279c",
+                "record_id": "KEP-6509",
+                "quote": "This indicates a mismatch between available comment data and stance aggregation at the narrative level.",
+                "start": 0,
+                "end": 103
+              },
+              {
+                "evidence_id": "ev_4d8d331637786fe8",
+                "record_id": "KEP-6509",
+                "quote": "the agent returns 0 comments across all stance categories (Support, Oppose, Neutral), despite the system indicating that 817 comments exist at the post level",
+                "start": 0,
+                "end": 157
+              },
+              {
+                "evidence_id": "ev_ccb0883945cf95f8",
+                "record_id": "KEP-6509",
+                "quote": "When querying for comment stance on a narrative, the agent returns 0 comments across all stance categories",
+                "start": 0,
+                "end": 106
+              }
+            ],
+            "score": 7.373476334781455
+          }
+        ],
+        "omitted_record_ids": []
+      },
+      "latency_seconds": 0.0036921249993611127,
+      "error": false,
+      "new_ids": [
+        "ev_03b6897ac3e47a32",
+        "ev_06eee086b8cf9d93",
+        "ev_0c852a6941b0f4d8",
+        "ev_0fe87992ee3f2c04",
+        "ev_10287b31997cdf7b",
+        "ev_14acd247410dce00",
+        "ev_14bd758070f0b2f4",
+        "ev_170a27d37e4d8613",
+        "ev_17c8d0202a97b639",
+        "ev_1ac3a7fb42bdf536",
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_1dba2fdf457f30b3",
+        "ev_1faf97ee0458fc4b",
+        "ev_2aaa51b05f284118",
+        "ev_2c939eb047fbbdc5",
+        "ev_30f3bf4aa4096099",
+        "ev_30f88ccc80c81338",
+        "ev_32773e9dd5e7acd4",
+        "ev_389cd415f0107940",
+        "ev_3b9bfd39e2e9fac1",
+        "ev_3d078a483bf0ab14",
+        "ev_4386d80195ef6b5a",
+        "ev_4700e329357c7762",
+        "ev_477c9de5cda34331",
+        "ev_48b827cfe137a976",
+        "ev_49a19fe25720279c",
+        "ev_4ae869bc7e9ee1a1",
+        "ev_4d8d331637786fe8",
+        "ev_5330ecd21cba7785",
+        "ev_5560a50a148eb72a",
+        "ev_5646d4217047176d",
+        "ev_59b44c9c5c22ea16",
+        "ev_5a57e73b353bac90",
+        "ev_5ac6cad87f297197",
+        "ev_5f2b2e2ded8842f5",
+        "ev_5f8ea3be1a8d2e1f",
+        "ev_60fc5c8d570a617f",
+        "ev_66f837dba0b6f0bf",
+        "ev_6a7a504ced5e5ddc",
+        "ev_72bcaf2a50c998b3",
+        "ev_738c1cf46a0f036a",
+        "ev_75b67275157f9120",
+        "ev_780b5d8df3586459",
+        "ev_798015aecf48cc37",
+        "ev_82fb7c9fc0071447",
+        "ev_840978102672098c",
+        "ev_857bba204521b877",
+        "ev_85912c0f9cd2a869",
+        "ev_8db0a55ebf084039",
+        "ev_916c116ecced7dd4",
+        "ev_9337c1379bb2a44f",
+        "ev_9488fa8cc6db3d39",
+        "ev_95c4d769ae116953",
+        "ev_97a309f4cce85c3a",
+        "ev_9acabf9cd741f4d9",
+        "ev_9b4317c218937e4f",
+        "ev_9f70c1ff5d8ce15b",
+        "ev_a344fa5695cb3280",
+        "ev_a416d792fd3aadb3",
+        "ev_a7c43f25cd6ac0ad",
+        "ev_a968798c28c0d7d6",
+        "ev_ad26bffaa983949e",
+        "ev_adb482ae008cdf13",
+        "ev_ae8831731edc8c8f",
+        "ev_b57a2a006f994089",
+        "ev_b7d02e50dd8e299e",
+        "ev_ccb0883945cf95f8",
+        "ev_cdf54cd1ff4aa620",
+        "ev_ce1968d9e7079c11",
+        "ev_d4b3ecd34ac362d9",
+        "ev_d6570b3654d799ff",
+        "ev_d84bc6bf2ffd4954",
+        "ev_d891ec727c04c897",
+        "ev_db0c75ab2fb11e09",
+        "ev_dcd6b5f9b30344e7",
+        "ev_e5585e8d13c80e28",
+        "ev_e6b3b9ea576523ea",
+        "ev_eaf6ee6af9edf403",
+        "ev_f19d74f6ba596733",
+        "ev_f3c24bea244e9385",
+        "ev_f3dba2eba43e2de5",
+        "ev_fe2d34415231a1e7",
+        "ev_fe9edd081c5bc41d",
+        "span:ev_03b6897ac3e47a32:0:155",
+        "span:ev_06eee086b8cf9d93:0:43",
+        "span:ev_0c852a6941b0f4d8:0:49",
+        "span:ev_0fe87992ee3f2c04:0:92",
+        "span:ev_10287b31997cdf7b:0:73",
+        "span:ev_14acd247410dce00:0:150",
+        "span:ev_14bd758070f0b2f4:0:23",
+        "span:ev_170a27d37e4d8613:0:120",
+        "span:ev_17c8d0202a97b639:0:51",
+        "span:ev_1ac3a7fb42bdf536:0:47",
+        "span:ev_1b68761b66cc3cc3:0:110",
+        "span:ev_1c1739cdda90321d:0:174",
+        "span:ev_1dba2fdf457f30b3:0:45",
+        "span:ev_1faf97ee0458fc4b:0:47",
+        "span:ev_2aaa51b05f284118:0:100",
+        "span:ev_2c939eb047fbbdc5:0:67",
+        "span:ev_30f3bf4aa4096099:0:67",
+        "span:ev_30f88ccc80c81338:0:90",
+        "span:ev_32773e9dd5e7acd4:0:12",
+        "span:ev_389cd415f0107940:0:61",
+        "span:ev_3b9bfd39e2e9fac1:0:187",
+        "span:ev_3d078a483bf0ab14:0:57",
+        "span:ev_4386d80195ef6b5a:0:114",
+        "span:ev_4700e329357c7762:0:196",
+        "span:ev_477c9de5cda34331:0:136",
+        "span:ev_48b827cfe137a976:0:205",
+        "span:ev_49a19fe25720279c:0:103",
+        "span:ev_4ae869bc7e9ee1a1:0:226",
+        "span:ev_4d8d331637786fe8:0:157",
+        "span:ev_5330ecd21cba7785:0:133",
+        "span:ev_5560a50a148eb72a:0:120",
+        "span:ev_5646d4217047176d:0:34",
+        "span:ev_59b44c9c5c22ea16:0:94",
+        "span:ev_5a57e73b353bac90:0:114",
+        "span:ev_5ac6cad87f297197:0:103",
+        "span:ev_5f2b2e2ded8842f5:0:196",
+        "span:ev_5f8ea3be1a8d2e1f:0:78",
+        "span:ev_60fc5c8d570a617f:0:36",
+        "span:ev_66f837dba0b6f0bf:0:167",
+        "span:ev_6a7a504ced5e5ddc:0:140",
+        "span:ev_72bcaf2a50c998b3:0:209",
+        "span:ev_738c1cf46a0f036a:0:31",
+        "span:ev_75b67275157f9120:0:324",
+        "span:ev_780b5d8df3586459:0:78",
+        "span:ev_798015aecf48cc37:0:100",
+        "span:ev_82fb7c9fc0071447:0:65",
+        "span:ev_840978102672098c:0:77",
+        "span:ev_857bba204521b877:0:116",
+        "span:ev_85912c0f9cd2a869:0:12",
+        "span:ev_8db0a55ebf084039:0:73",
+        "span:ev_916c116ecced7dd4:0:68",
+        "span:ev_9337c1379bb2a44f:0:64",
+        "span:ev_9488fa8cc6db3d39:0:348",
+        "span:ev_95c4d769ae116953:0:94",
+        "span:ev_97a309f4cce85c3a:0:92",
+        "span:ev_9acabf9cd741f4d9:0:90",
+        "span:ev_9b4317c218937e4f:0:557",
+        "span:ev_9f70c1ff5d8ce15b:0:65",
+        "span:ev_a344fa5695cb3280:0:39",
+        "span:ev_a416d792fd3aadb3:0:81",
+        "span:ev_a7c43f25cd6ac0ad:0:61",
+        "span:ev_a968798c28c0d7d6:0:16",
+        "span:ev_ad26bffaa983949e:0:62",
+        "span:ev_adb482ae008cdf13:0:61",
+        "span:ev_ae8831731edc8c8f:0:64",
+        "span:ev_b57a2a006f994089:0:65",
+        "span:ev_b7d02e50dd8e299e:0:44",
+        "span:ev_ccb0883945cf95f8:0:106",
+        "span:ev_cdf54cd1ff4aa620:0:60",
+        "span:ev_ce1968d9e7079c11:0:63",
+        "span:ev_d4b3ecd34ac362d9:0:91",
+        "span:ev_d6570b3654d799ff:0:135",
+        "span:ev_d84bc6bf2ffd4954:0:97",
+        "span:ev_d891ec727c04c897:0:44",
+        "span:ev_db0c75ab2fb11e09:0:54",
+        "span:ev_dcd6b5f9b30344e7:0:85",
+        "span:ev_e5585e8d13c80e28:0:113",
+        "span:ev_e6b3b9ea576523ea:0:64",
+        "span:ev_eaf6ee6af9edf403:0:78",
+        "span:ev_f19d74f6ba596733:0:107",
+        "span:ev_f3c24bea244e9385:0:112",
+        "span:ev_f3dba2eba43e2de5:0:180",
+        "span:ev_fe2d34415231a1e7:0:89",
+        "span:ev_fe9edd081c5bc41d:0:100"
+      ]
+    },
+    {
+      "sequence": 3,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 21268,
+      "visible_evidence_ids": [
+        "ev_03b6897ac3e47a32",
+        "ev_06eee086b8cf9d93",
+        "ev_0c852a6941b0f4d8",
+        "ev_0fe87992ee3f2c04",
+        "ev_10287b31997cdf7b",
+        "ev_14acd247410dce00",
+        "ev_14bd758070f0b2f4",
+        "ev_170a27d37e4d8613",
+        "ev_17c8d0202a97b639",
+        "ev_1ac3a7fb42bdf536",
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_1dba2fdf457f30b3",
+        "ev_1faf97ee0458fc4b",
+        "ev_2aaa51b05f284118",
+        "ev_2c939eb047fbbdc5",
+        "ev_30f3bf4aa4096099",
+        "ev_30f88ccc80c81338",
+        "ev_32773e9dd5e7acd4",
+        "ev_389cd415f0107940",
+        "ev_3b9bfd39e2e9fac1",
+        "ev_3d078a483bf0ab14",
+        "ev_4386d80195ef6b5a",
+        "ev_4700e329357c7762",
+        "ev_477c9de5cda34331",
+        "ev_48b827cfe137a976",
+        "ev_49a19fe25720279c",
+        "ev_4ae869bc7e9ee1a1",
+        "ev_4d8d331637786fe8",
+        "ev_5330ecd21cba7785",
+        "ev_5560a50a148eb72a",
+        "ev_5646d4217047176d",
+        "ev_59b44c9c5c22ea16",
+        "ev_5a57e73b353bac90",
+        "ev_5ac6cad87f297197",
+        "ev_5f2b2e2ded8842f5",
+        "ev_5f8ea3be1a8d2e1f",
+        "ev_60fc5c8d570a617f",
+        "ev_66f837dba0b6f0bf",
+        "ev_6a7a504ced5e5ddc",
+        "ev_72bcaf2a50c998b3",
+        "ev_738c1cf46a0f036a",
+        "ev_75b67275157f9120",
+        "ev_780b5d8df3586459",
+        "ev_798015aecf48cc37",
+        "ev_82fb7c9fc0071447",
+        "ev_840978102672098c",
+        "ev_857bba204521b877",
+        "ev_85912c0f9cd2a869",
+        "ev_8db0a55ebf084039",
+        "ev_916c116ecced7dd4",
+        "ev_9337c1379bb2a44f",
+        "ev_9488fa8cc6db3d39",
+        "ev_95c4d769ae116953",
+        "ev_97a309f4cce85c3a",
+        "ev_9acabf9cd741f4d9",
+        "ev_9b4317c218937e4f",
+        "ev_9f70c1ff5d8ce15b",
+        "ev_a344fa5695cb3280",
+        "ev_a416d792fd3aadb3",
+        "ev_a7c43f25cd6ac0ad",
+        "ev_a968798c28c0d7d6",
+        "ev_ad26bffaa983949e",
+        "ev_adb482ae008cdf13",
+        "ev_ae8831731edc8c8f",
+        "ev_b57a2a006f994089",
+        "ev_b7d02e50dd8e299e",
+        "ev_ccb0883945cf95f8",
+        "ev_cdf54cd1ff4aa620",
+        "ev_ce1968d9e7079c11",
+        "ev_d4b3ecd34ac362d9",
+        "ev_d6570b3654d799ff",
+        "ev_d84bc6bf2ffd4954",
+        "ev_d891ec727c04c897",
+        "ev_db0c75ab2fb11e09",
+        "ev_dcd6b5f9b30344e7",
+        "ev_e5585e8d13c80e28",
+        "ev_e6b3b9ea576523ea",
+        "ev_eaf6ee6af9edf403",
+        "ev_f19d74f6ba596733",
+        "ev_f3c24bea244e9385",
+        "ev_f3dba2eba43e2de5",
+        "ev_fe2d34415231a1e7",
+        "ev_fe9edd081c5bc41d"
+      ],
+      "included_tool_call_ids": [
+        "text_1"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "started"
+    },
+    {
+      "sequence": 5,
+      "kind": "model",
+      "call_number": 1,
+      "status": "complete",
+      "request_id": "request_f6ce20ec3ba89c54",
+      "draft": {
+        "claims": [
+          {
+            "statement": "Narrative Graph backend processing reportedly raised a KeyError when macro_ids existed in Network Trigrams but were missing from Macro Narratives.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_857bba204521b877",
+                "quote": "Records with macro_ids exist in the Network Trigrams collection but are missing from the Macro Narratives collection",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_fe9edd081c5bc41d",
+                "quote": "This mismatch causes an inconsistent data state, resulting in a KeyError exception during processing",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The record directly describes the mismatch and exception.",
+            "verification_note": "Ignoring missing IDs is prescribed, not verified as implemented."
+          },
+          {
+            "statement": "A separate narrative-level stance query reportedly returned zero comments despite 817 comments being indicated at the post level.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_4d8d331637786fe8",
+                "quote": "the agent returns 0 comments across all stance categories (Support, Oppose, Neutral), despite the system indicating that 817 comments exist at the post level",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The conflicting counts are directly reported.",
+            "verification_note": "The passage does not establish the cause of the aggregation mismatch."
+          },
+          {
+            "statement": "Statistics API documentation flags inconsistent data across endpoints and proposes a single-source-of-truth refactor; it does not establish the same missing-record KeyError mechanism.",
+            "kind": "synthesis",
+            "citations": [
+              {
+                "evidence_id": "ev_5646d4217047176d",
+                "quote": "Inconsistent data across endpoints",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_2c939eb047fbbdc5",
+                "quote": "Refactor statistics APIs to follow a single source of truth pattern",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "medium",
+            "confidence_reason": "The inconsistency and proposed refactor are explicit, but their relation to other failures is limited.",
+            "verification_note": "A proposed refactor is not evidence of execution or a common root cause."
+          },
+          {
+            "statement": "An enrichment task failure is attributed in its ticket text to a last-narrative-date issue.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_d4b3ecd34ac362d9",
+                "quote": "Investigate and resolve the enrichment task failure caused by the last narrative date issue",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "medium",
+            "confidence_reason": "The attribution is explicit but appears in an investigation request without diagnostic detail.",
+            "verification_note": "No resolution or link to the other narrative failures is shown."
+          },
+          {
+            "statement": "Collection processing reportedly sent duplicate post IDs when one post appeared under a username, hashtag, and cashtag, causing success/failure callback issues for that ID.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_4ae869bc7e9ee1a1",
+                "quote": "duplicate post IDs being sent to them. This is causing callback issues on success and failure for the same post ID. Currently, duplicate IDs are being sent because the same post can appear for a username, hashtag, and cashtag.",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The passage directly reports the duplication path and callback symptom.",
+            "verification_note": "The Done status does not verify a deployed fix."
+          },
+          {
+            "statement": "A Weibo processing ticket identifies missing service callbacks, but its supplied title alone does not show that duplicate IDs caused them.",
+            "kind": "synthesis",
+            "citations": [
+              {
+                "evidence_id": "ev_adb482ae008cdf13",
+                "quote": "Critical Weibo Processing Failures: Missing Service Callbacks",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "medium",
+            "confidence_reason": "The title identifies the symptom, not its mechanism.",
+            "verification_note": "Do not merge this Weibo failure with the duplicate-post-ID callback issue."
+          },
+          {
+            "statement": "For an Argonaut-tenant government customer network, narrative generation jobs reportedly exceeded a 10-hour processing threshold, were killed, and re-queued into a silent loop without output or an alert.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_5f2b2e2ded8842f5",
+                "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_1b68761b66cc3cc3",
+                "quote": "The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The record directly states the reported timeout and retry mechanism.",
+            "verification_note": "The reported increase to 12 hours does not itself verify sustained recovery."
+          },
+          {
+            "statement": "A separate collection incident attributes a queue backup that prevented new jobs from starting to video-vision jobs failing to close their final steps.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_66f837dba0b6f0bf",
+                "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The record directly gives this reported causal chain.",
+            "verification_note": "This is a queue-completion problem, not evidence of the Argonaut timeout loop; the asserted fix is not independent recovery verification."
+          },
+          {
+            "statement": "Staging topic-clustering work reported algorithmic errors in some jobs after data collection was marked complete.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_ae8831731edc8c8f",
+                "quote": "Data collection is completed for all active networks in staging.",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_dcd6b5f9b30344e7",
+                "quote": "There a re failures in the topic clustering with algorithmic error for 18 jobs out of",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "medium",
+            "confidence_reason": "The staging failure is reported, but the job-count passage is truncated.",
+            "verification_note": "Do not infer a failure rate or equate a clustering algorithm error with collection failure."
+          },
+          {
+            "statement": "BrightData batching was proposed to reduce rate-limiting issues, rather than documented here as a verified remedy for any cited outage.",
+            "kind": "synthesis",
+            "citations": [
+              {
+                "evidence_id": "ev_59b44c9c5c22ea16",
+                "quote": "This Epic aims to introduce a centralized batch processing service for BrightData API requests",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_e5585e8d13c80e28",
+                "quote": "The goal is to reduce rate limiting issues and improve data collection efficiency by grouping requests in batches",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "Both passages explicitly frame batching as an aim or goal.",
+            "verification_note": "Requirements do not prove implementation, rate-limit incidence, or outage recovery."
+          },
+          {
+            "statement": "Detection gaps recur in the reports, but the Argonaut narrative-update failure and the multi-platform collection degradation are distinct incidents.",
+            "kind": "synthesis",
+            "citations": [
+              {
+                "evidence_id": "ev_9b4317c218937e4f",
+                "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing.",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_75b67275157f9120",
+                "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "medium",
+            "confidence_reason": "Both reports describe missed detection, while identifying different scopes and failure paths.",
+            "verification_note": "An ordered backfill is not proof that data integrity was restored."
+          }
+        ],
+        "unanswered": [
+          "Whether the proposed or reported fixes were deployed and verified to prevent recurrence.",
+          "The diagnostic cause of the narrative-level stance aggregation discrepancy and of the last-narrative-date issue.",
+          "Whether the Weibo missing callbacks share any mechanism with duplicate-post-ID callbacks."
+        ],
+        "limitations": [
+          "The supplied passages are selected records, so they do not establish prevalence.",
+          "Some evidence is a ticket title, requirement, or truncated passage rather than an execution trace."
+        ]
+      },
+      "latency_seconds": 28.738576667004963,
+      "provider": {
+        "request_id": "request_f6ce20ec3ba89c54",
+        "purpose": "evaluation_text_rag",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/patterns__paraphrase__text_rag/cache/codex/request_f6ce20ec3ba89c54.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2688,
+          "input_tokens": 9707,
+          "output_tokens": 2622,
+          "reasoning_output_tokens": 358,
+          "total_tokens": 12329
+        },
+        "thread_id": "01a114ba-bc1b-70b0-946b-dd081248843f",
+        "turn_id": "01a114ba-bc40-78f3-9c38-0d3e6cbf5d91",
+        "status": "completed",
+        "latency_seconds": 28.7185
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "KEP-4243"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_857bba204521b877",
+        "ev_fe9edd081c5bc41d"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 7,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "KEP-6509"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_4d8d331637786fe8"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 8,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "KEP-4182"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_5646d4217047176d",
+        "ev_2c939eb047fbbdc5"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 9,
+      "kind": "claim_support",
+      "claim_id": "C4",
+      "record_ids": [
+        "KEP-5586"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_d4b3ecd34ac362d9"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 10,
+      "kind": "claim_support",
+      "claim_id": "C5",
+      "record_ids": [
+        "KEP-4403"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_4ae869bc7e9ee1a1"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 11,
+      "kind": "claim_support",
+      "claim_id": "C6",
+      "record_ids": [
+        "KEP-6650"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_adb482ae008cdf13"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 12,
+      "kind": "claim_support",
+      "claim_id": "C7",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_5f2b2e2ded8842f5",
+        "ev_1b68761b66cc3cc3"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 13,
+      "kind": "claim_support",
+      "claim_id": "C8",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_66f837dba0b6f0bf"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 14,
+      "kind": "claim_support",
+      "claim_id": "C9",
+      "record_ids": [
+        "KEP-2189"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_ae8831731edc8c8f",
+        "ev_dcd6b5f9b30344e7"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 15,
+      "kind": "claim_support",
+      "claim_id": "C10",
+      "record_ids": [
+        "KEP-7025"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_59b44c9c5c22ea16",
+        "ev_e5585e8d13c80e28"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 16,
+      "kind": "claim_support",
+      "claim_id": "C11",
+      "record_ids": [
+        "KEP-6969",
+        "KEP-6970"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_9b4317c218937e4f",
+        "ev_75b67275157f9120"
+      ],
+      "source_mode": "text"
+    }
+  ],
+  "usage": {
+    "model_calls": 1,
+    "data_tool_calls": 1,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 9707,
+      "output_tokens": 2622,
+      "cached_input_tokens": 2688,
+      "reasoning_output_tokens": 358
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 28.738576667004963,
+    "provider_elapsed_seconds": 28.7185,
+    "tool_elapsed_seconds": 0.0036921249993611127,
+    "total_elapsed_seconds": 28.755153250007425,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "graph_hash": "graph_461ec66cd6c65256",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "execution_scope": "source_only",
+    "approach": "text_rag",
+    "top_k": 20,
+    "corpus_fingerprint": "sha_a36c560065c5dd52",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/patterns__paraphrase__text_rag/cache",
+      "timeout": 300.0
+    },
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "patterns__paraphrase__text_rag",
+      "question_id": "patterns",
+      "variant": "paraphrase",
+      "approach": "text_rag",
+      "question": "Across narrative and collection processing, what reported failure mechanisms recur, and which differences prevent treating them as one cause?"
+    }
+  }
+}

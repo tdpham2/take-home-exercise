@@ -1,0 +1,1690 @@
+{
+  "question": "How did the April collection incident progress from reported failures through remediation and backfill, and what recovery is verified?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "KEP-6970 reports severely degraded or failing Facebook, Instagram, and TikTok collection from approximately April 21–29, 2026.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_477c9de5cda34331",
+          "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The record states the affected sources and approximate window directly.",
+      "verification_note": "This is a reported collection condition, not an independently measured customer impact.",
+      "id": "C1",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The incident record says no automated alarm fired during the period.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_06eee086b8cf9d93",
+          "quote": "No automated alarm fired during this period",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "Direct statement in the incident record.",
+      "verification_note": "The supplied passages do not provide alert-system logs.",
+      "id": "C2",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "KEP-6970 attributes a queue backup that prevented new jobs from starting to video-vision jobs not closing their final steps properly.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_66f837dba0b6f0bf",
+          "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The record explicitly reports this causal diagnosis.",
+      "verification_note": "This is the source's reported cause, not independent causal verification.",
+      "id": "C3",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "KEP-6970 reports a host-PID setting fix applied before the 19.2.0 deployment.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_48b827cfe137a976",
+          "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_1faf97ee0458fc4b",
+          "quote": "Host PID fix applied prior to 19.2.0 deployment",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The fix and its order relative to deployment are stated directly.",
+      "verification_note": "Application of a fix does not establish restored collection.",
+      "id": "C4",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "A separate YouTube report attributes high rates of YTDLP download 403 errors to SmartProxy blocking and reports degraded YouTube collection over approximately April 21–29.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_5a437fcbb1decfd2",
+          "quote": "YouTube video download jobs using the YTDLP library were failing with high rates of 403 errors due to SmartProxy (SPA) blocking requests.",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_966dbf6e0186fd0b",
+          "quote": "YouTube data collection degraded for ~8 days (Apr 21–29)",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "KEP-6971 directly describes the YouTube failure and window.",
+      "verification_note": "Do not merge the reported YouTube proxy cause with the video-vision queue cause.",
+      "id": "C5",
+      "record_ids": [
+        "KEP-6971"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "KEP-6971 reports migrating YouTube downloads from SmartProxy to Brightdata as the YouTube remediation.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_1a105ce0683db415",
+          "quote": "Migrated YouTube download proxy from SmartProxy to Brightdata",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The migration is stated directly.",
+      "verification_note": "The passage does not show post-migration success metrics.",
+      "id": "C6",
+      "record_ids": [
+        "KEP-6971"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "An April 28 standup note said the cron job sending failure callbacks needed to be stopped before backfill could be triggered.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_4700e329357c7762",
+          "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered (per Apr 28 standup: Magna coordinating with Abhik Roy to stop cron before triggering backfill)",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passage directly states the prerequisite and coordination.",
+      "verification_note": "It does not confirm that the cron was disabled or the backfill triggered.",
+      "id": "C7",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "Following the reported April 29 deployment of Kepler 19.2.0, Kiran Sabbani ordered backfill from April 21 for TikTok, Instagram, YouTube, and Facebook.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_97a309f4cce85c3a",
+          "quote": "Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_840978102672098c",
+          "quote": "Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The deployment, order, start date, and listed sources are directly reported.",
+      "verification_note": "An order to backfill is not evidence of completed backfill.",
+      "id": "C8",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "On April 30, a TikTok merge-request bypass was requested, and 19.2.1 Brightdata-batching-service and Facebook-source hotfix merge requests were deploying to staging.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_2aaa51b05f284118",
+          "quote": "Apr 30, 7:00 AM EDT — TikTok MR bypass requested in #kepler-dev-all-pods (data-source-tiktok MR 501)",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_14acd247410dce00",
+          "quote": "Apr 30, 7:25 AM EDT — 19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags, with a linked change document",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "Both April 30 actions are explicitly reported.",
+      "verification_note": "A bypass request and staging deployment do not prove production deployment or recovery.",
+      "id": "C9",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The supplied passages verify remediation reports and a backfill order, but do not verify completed backfill, restored collection, or full data integrity.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_97a309f4cce85c3a",
+          "quote": "Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_cdf54cd1ff4aa620",
+          "quote": "Backfill from Apr 21 required to restore full data integrity",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_14acd247410dce00",
+          "quote": "Apr 30, 7:25 AM EDT — 19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags, with a linked change document",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The cited passages describe actions and a requirement, not completed recovery; the conclusion is limited to the supplied record.",
+      "verification_note": "No recovery date or verified post-backfill result is established.",
+      "id": "C10",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "text"
+    }
+  ],
+  "unanswered": [
+    "Was the failure-callback cron actually disabled, and when?",
+    "Was the April 21 backfill run and completed for each listed source, and what validation showed restored data integrity?",
+    "When, if ever, did collection rates recover, and were the April 30 staging hotfixes deployed to production?"
+  ],
+  "limitations": [
+    "The retrieved passages include repeated summaries of KEP-6970; these are not independent incident confirmations.",
+    "The source reports degraded collection but supplies no measured customer-impact assessment or post-remediation recovery metrics.",
+    "BM25 over extracted record text; exact citations do not establish semantic correctness."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "execution_scope": "source_only"
+    },
+    {
+      "sequence": 2,
+      "kind": "tool",
+      "name": "retrieve_text",
+      "arguments": {
+        "query": "How did the April collection incident progress from reported failures through remediation and backfill, and what recovery is verified?",
+        "top_k": 20
+      },
+      "call_id": "text_1",
+      "result": {
+        "records": [
+          {
+            "record_id": "KEP-6970",
+            "passages": [
+              {
+                "evidence_id": "ev_06eee086b8cf9d93",
+                "record_id": "KEP-6970",
+                "quote": "No automated alarm fired during this period",
+                "start": 0,
+                "end": 43
+              },
+              {
+                "evidence_id": "ev_14acd247410dce00",
+                "record_id": "KEP-6970",
+                "quote": "Apr 30, 7:25 AM EDT — 19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags, with a linked change document",
+                "start": 0,
+                "end": 150
+              },
+              {
+                "evidence_id": "ev_1faf97ee0458fc4b",
+                "record_id": "KEP-6970",
+                "quote": "Host PID fix applied prior to 19.2.0 deployment",
+                "start": 0,
+                "end": 47
+              },
+              {
+                "evidence_id": "ev_2aaa51b05f284118",
+                "record_id": "KEP-6970",
+                "quote": "Apr 30, 7:00 AM EDT — TikTok MR bypass requested in #kepler-dev-all-pods (data-source-tiktok MR 501)",
+                "start": 0,
+                "end": 100
+              },
+              {
+                "evidence_id": "ev_4700e329357c7762",
+                "record_id": "KEP-6970",
+                "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered (per Apr 28 standup: Magna coordinating with Abhik Roy to stop cron before triggering backfill)",
+                "start": 0,
+                "end": 196
+              },
+              {
+                "evidence_id": "ev_477c9de5cda34331",
+                "record_id": "KEP-6970",
+                "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing",
+                "start": 0,
+                "end": 136
+              },
+              {
+                "evidence_id": "ev_48b827cfe137a976",
+                "record_id": "KEP-6970",
+                "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied",
+                "start": 0,
+                "end": 205
+              },
+              {
+                "evidence_id": "ev_66f837dba0b6f0bf",
+                "record_id": "KEP-6970",
+                "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting",
+                "start": 0,
+                "end": 167
+              },
+              {
+                "evidence_id": "ev_75b67275157f9120",
+                "record_id": "KEP-6970",
+                "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.",
+                "start": 0,
+                "end": 324
+              },
+              {
+                "evidence_id": "ev_780b5d8df3586459",
+                "record_id": "KEP-6970",
+                "quote": "TikTok MR bypass requested in #kepler-dev-all-pods (data-source-tiktok MR 501)",
+                "start": 0,
+                "end": 78
+              },
+              {
+                "evidence_id": "ev_798015aecf48cc37",
+                "record_id": "KEP-6970",
+                "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered",
+                "start": 0,
+                "end": 100
+              },
+              {
+                "evidence_id": "ev_840978102672098c",
+                "record_id": "KEP-6970",
+                "quote": "Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April",
+                "start": 0,
+                "end": 77
+              },
+              {
+                "evidence_id": "ev_9488fa8cc6db3d39",
+                "record_id": "KEP-6970",
+                "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied. Apr 29, 6:42 AM EDT — Kiran Sabbani in #kepler-dev-all-pods: \"Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April.\"",
+                "start": 0,
+                "end": 348
+              },
+              {
+                "evidence_id": "ev_97a309f4cce85c3a",
+                "record_id": "KEP-6970",
+                "quote": "Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21",
+                "start": 0,
+                "end": 92
+              },
+              {
+                "evidence_id": "ev_cdf54cd1ff4aa620",
+                "record_id": "KEP-6970",
+                "quote": "Backfill from Apr 21 required to restore full data integrity",
+                "start": 0,
+                "end": 60
+              },
+              {
+                "evidence_id": "ev_d84bc6bf2ffd4954",
+                "record_id": "KEP-6970",
+                "quote": "19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags",
+                "start": 0,
+                "end": 97
+              },
+              {
+                "evidence_id": "ev_f3c24bea244e9385",
+                "record_id": "KEP-6970",
+                "quote": "~8 days (Apr 21–29) of missing or degraded data for Facebook, Instagram, and TikTok across all customer networks",
+                "start": 0,
+                "end": 112
+              }
+            ],
+            "score": 15.270184523162268
+          },
+          {
+            "record_id": "KEP-3912",
+            "passages": [
+              {
+                "evidence_id": "ev_8377265b8fad614c",
+                "record_id": "KEP-3912",
+                "quote": "Investigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state",
+                "start": 0,
+                "end": 100
+              },
+              {
+                "evidence_id": "ev_996046a98ac70ec7",
+                "record_id": "KEP-3912",
+                "quote": "Investigate the failure of the comment narratives (Algorithm Error)",
+                "start": 0,
+                "end": 67
+              },
+              {
+                "evidence_id": "ev_d9db300b6974ef3b",
+                "record_id": "KEP-3912",
+                "quote": "Investigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state (i.e. RUNNING) Investigate the failure of the comment narratives (Algorithm Error)",
+                "start": 0,
+                "end": 183
+              }
+            ],
+            "score": 10.311498044250365
+          },
+          {
+            "record_id": "KEP-6484",
+            "passages": [
+              {
+                "evidence_id": "ev_333aa319e2cf0196",
+                "record_id": "KEP-6484",
+                "quote": "parent_key: KEP-6470",
+                "start": 0,
+                "end": 20
+              },
+              {
+                "evidence_id": "ev_b60ca474f25f76ed",
+                "record_id": "KEP-6484",
+                "quote": "Migrate verified cloned networks to Ruby tenant",
+                "start": 0,
+                "end": 47
+              }
+            ],
+            "score": 8.094297338422953
+          },
+          {
+            "record_id": "KT-267",
+            "passages": [
+              {
+                "evidence_id": "ev_30f3bf4aa4096099",
+                "record_id": "KT-267",
+                "quote": "Log any failures, delays, or anomalies in the shared tracking sheet",
+                "start": 0,
+                "end": 67
+              },
+              {
+                "evidence_id": "ev_b7d02e50dd8e299e",
+                "record_id": "KT-267",
+                "quote": "Frequency: Twice Daily (Morning and Evening)",
+                "start": 0,
+                "end": 44
+              },
+              {
+                "evidence_id": "ev_ce1968d9e7079c11",
+                "record_id": "KT-267",
+                "quote": "Run the Postman collection from the Desktop app two times a day",
+                "start": 0,
+                "end": 63
+              },
+              {
+                "evidence_id": "ev_fe2d34415231a1e7",
+                "record_id": "KT-267",
+                "quote": "The purpose is to monitor API health, validate responses, and identify any failures early",
+                "start": 0,
+                "end": 89
+              }
+            ],
+            "score": 7.942174991073938
+          },
+          {
+            "record_id": "KEP-7018",
+            "passages": [
+              {
+                "evidence_id": "ev_3bf237ee6198d488",
+                "record_id": "KEP-7018",
+                "quote": "Possible correlation with Twitter backfill after ~2 weeks of downtime",
+                "start": 0,
+                "end": 69
+              },
+              {
+                "evidence_id": "ev_4989871d48de03d1",
+                "record_id": "KEP-7018",
+                "quote": "The increase in processing and MLE-side queue backlog aligns with an actual increase in incoming social media data volume from the application side OR whether there is an unintended issue such as: Duplicate processing Excessive retries Queueing bug Incorrect trigger conditions Backfill replay side effects Misconfigured ingestion or summarization logic",
+                "start": 0,
+                "end": 353
+              },
+              {
+                "evidence_id": "ev_6cfc853dc555cf13",
+                "record_id": "KEP-7018",
+                "quote": "Image Summarization Runs/Day (S3) A few months ago: ~300/day (baseline) March 6: Brief spike for a couple of days Most of March – Mid-April: Elevated to ~500–1,000/day",
+                "start": 0,
+                "end": 167
+              },
+              {
+                "evidence_id": "ev_c154a46d3b71e4f7",
+                "record_id": "KEP-7018",
+                "quote": "April 13 – Present: Sustained over 1,000/day, frequently ~1,500+",
+                "start": 0,
+                "end": 64
+              },
+              {
+                "evidence_id": "ev_e614d96567f74144",
+                "record_id": "KEP-7018",
+                "quote": "Video Summarization Runs/Day (S3) Pre–March 6: 250–300 runs/day (baseline) March 6 – March 27: Increased to 1,200–1,500/day (~4–5x baseline) and sustained",
+                "start": 0,
+                "end": 154
+              },
+              {
+                "evidence_id": "ev_fba8cfea3c5673b0",
+                "record_id": "KEP-7018",
+                "quote": "Recent observations indicate a significant increase in summarization runs/day across both video and image pipelines",
+                "start": 0,
+                "end": 115
+              }
+            ],
+            "score": 7.739018105773947
+          },
+          {
+            "record_id": "KT-334",
+            "passages": [
+              {
+                "evidence_id": "ev_738c1cf46a0f036a",
+                "record_id": "KT-334",
+                "quote": "resolution: Done | status: Done",
+                "start": 0,
+                "end": 31
+              },
+              {
+                "evidence_id": "ev_916c116ecced7dd4",
+                "record_id": "KT-334",
+                "quote": "Log any failures, delays, or anomalies in the shared tracking sheet.",
+                "start": 0,
+                "end": 68
+              },
+              {
+                "evidence_id": "ev_9acabf9cd741f4d9",
+                "record_id": "KT-334",
+                "quote": "The purpose is to monitor API health, validate responses, and identify any failures early.",
+                "start": 0,
+                "end": 90
+              },
+              {
+                "evidence_id": "ev_d891ec727c04c897",
+                "record_id": "KT-334",
+                "quote": "Frequency: Twice Daily (Morning and Evening)",
+                "start": 0,
+                "end": 44
+              },
+              {
+                "evidence_id": "ev_e6b3b9ea576523ea",
+                "record_id": "KT-334",
+                "quote": "Run the Postman collection from the Desktop app two times a day.",
+                "start": 0,
+                "end": 64
+              },
+              {
+                "evidence_id": "ev_eaf6ee6af9edf403",
+                "record_id": "KT-334",
+                "quote": "Notify the QA group or developer in Slack if consistent failures are observed.",
+                "start": 0,
+                "end": 78
+              }
+            ],
+            "score": 7.73125645678565
+          },
+          {
+            "record_id": "KEP-6890",
+            "passages": [
+              {
+                "evidence_id": "ev_33bf30d8dce60597",
+                "record_id": "KEP-6890",
+                "quote": "This issue is impacting the ingestion/processing pipeline and needs to be investigated and verified",
+                "start": 0,
+                "end": 99
+              },
+              {
+                "evidence_id": "ev_6f62323415d2dbfe",
+                "record_id": "KEP-6890",
+                "quote": "We are encountering a proxy authentication error while using yt-dlp for YouTube data extraction",
+                "start": 0,
+                "end": 95
+              },
+              {
+                "evidence_id": "ev_b030da0465566489",
+                "record_id": "KEP-6890",
+                "quote": "We are encountering a proxy authentication error while using yt-dlp for YouTube data extraction. This issue is impacting the ingestion/processing pipeline and needs to be investigated and verified",
+                "start": 0,
+                "end": 196
+              }
+            ],
+            "score": 7.49565446414319
+          },
+          {
+            "record_id": "Community_1381",
+            "passages": [
+              {
+                "evidence_id": "ev_1f78fadbc7423f73",
+                "record_id": "Community_1381",
+                "quote": "Proposed Fix Fix update query semantics ... Correct seed / backfill logic",
+                "start": 0,
+                "end": 73
+              },
+              {
+                "evidence_id": "ev_63bc9aaca41f3855",
+                "record_id": "Community_1381",
+                "quote": "Proposed Fix Fix update query semantics ... One‑time backfill",
+                "start": 0,
+                "end": 61
+              },
+              {
+                "evidence_id": "ev_96bc9f0a0b685e87",
+                "record_id": "Community_1381",
+                "quote": "Proposed Fix Fix update query semantics ... Validation",
+                "start": 0,
+                "end": 54
+              }
+            ],
+            "score": 7.477334922654714
+          },
+          {
+            "record_id": "KEP-6921",
+            "passages": [
+              {
+                "evidence_id": "ev_aeb2758b6a21a11c",
+                "record_id": "KEP-6921",
+                "quote": "status: In Progress",
+                "start": 0,
+                "end": 19
+              }
+            ],
+            "score": 7.474815020504725
+          },
+          {
+            "record_id": "KT-292",
+            "passages": [
+              {
+                "evidence_id": "ev_72bcaf2a50c998b3",
+                "record_id": "KT-292",
+                "quote": "This is a manual QA activity to execute the Postman collection twice daily (morning and evening) throughout the month. The purpose is to monitor API health, validate responses, and identify any failures early.",
+                "start": 0,
+                "end": 209
+              }
+            ],
+            "score": 7.44975211408531
+          },
+          {
+            "record_id": "KEP-2189",
+            "passages": [
+              {
+                "evidence_id": "ev_95c4d769ae116953",
+                "record_id": "KEP-2189",
+                "quote": "Run topic clustering and narrative hierarchy for staging network and investigate the execution",
+                "start": 0,
+                "end": 94
+              },
+              {
+                "evidence_id": "ev_ae8831731edc8c8f",
+                "record_id": "KEP-2189",
+                "quote": "Data collection is completed for all active networks in staging.",
+                "start": 0,
+                "end": 64
+              },
+              {
+                "evidence_id": "ev_dcd6b5f9b30344e7",
+                "record_id": "KEP-2189",
+                "quote": "There a re failures in the topic clustering with algorithmic error for 18 jobs out of",
+                "start": 0,
+                "end": 85
+              }
+            ],
+            "score": 7.1015801555605425
+          },
+          {
+            "record_id": "KEP-6734",
+            "passages": [
+              {
+                "evidence_id": "ev_29e769731d6f5bdb",
+                "record_id": "KEP-6734",
+                "quote": "Frequency: Twice Daily (Morning and Evening)",
+                "start": 0,
+                "end": 44
+              },
+              {
+                "evidence_id": "ev_73eff0de3125e2e6",
+                "record_id": "KEP-6734",
+                "quote": "The purpose is to monitor API health, validate responses, and identify any failures early.",
+                "start": 0,
+                "end": 90
+              },
+              {
+                "evidence_id": "ev_a33524cd3c13725e",
+                "record_id": "KEP-6734",
+                "quote": "Run the Postman collection from the Desktop app two times a day.",
+                "start": 0,
+                "end": 64
+              },
+              {
+                "evidence_id": "ev_bc2c6112db23bb6e",
+                "record_id": "KEP-6734",
+                "quote": "Vendor API runs (Morning) - BrightData API - 56/57 Passed",
+                "start": 0,
+                "end": 57
+              },
+              {
+                "evidence_id": "ev_bc7d01297224ca42",
+                "record_id": "KEP-6734",
+                "quote": "Insta - Discover by url - Snapshot API monitor - Failed",
+                "start": 0,
+                "end": 55
+              },
+              {
+                "evidence_id": "ev_ee0180a483ae2552",
+                "record_id": "KEP-6734",
+                "quote": "Log any failures, delays, or anomalies in the shared tracking sheet.",
+                "start": 0,
+                "end": 68
+              },
+              {
+                "evidence_id": "ev_f4a9d67680ff4f6d",
+                "record_id": "KEP-6734",
+                "quote": "Notify the QA group or developer in Slack if consistent failures are observed.",
+                "start": 0,
+                "end": 78
+              }
+            ],
+            "score": 6.985237965600868
+          },
+          {
+            "record_id": "KEP-5668",
+            "passages": [
+              {
+                "evidence_id": "ev_0c5b5e94d67db9ec",
+                "record_id": "KEP-5668",
+                "quote": "Observability & Dashboards Expose metrics such as: Number of active batches Count of batches per status ( sent , completed , failed , etc.) Age distribution of sent batches",
+                "start": 0,
+                "end": 172
+              },
+              {
+                "evidence_id": "ev_108b9a5b4127db83",
+                "record_id": "KEP-5668",
+                "quote": "Integrate with monitoring/alerting (e.g., Datadog) so on‑call engineers are notified before ingestion is impacted.",
+                "start": 0,
+                "end": 114
+              },
+              {
+                "evidence_id": "ev_2387deb7a51273b0",
+                "record_id": "KEP-5668",
+                "quote": "Due to a bug, batch statuses are not reliably transitioning from sent → completed after Bright Data finishes processing.",
+                "start": 0,
+                "end": 120
+              },
+              {
+                "evidence_id": "ev_26f7a4cf725a63f0",
+                "record_id": "KEP-5668",
+                "quote": "Correct Batch Lifecycle Handling Ensure robust status transitions from sent → completed (and any other relevant states), including: Handling of retries / callbacks from Bright Data.",
+                "start": 0,
+                "end": 181
+              },
+              {
+                "evidence_id": "ev_63c7dbab27b8a2ed",
+                "record_id": "KEP-5668",
+                "quote": "Stale Batch Detection & Recovery Add logic to detect batches stuck in sent beyond a configurable time window.",
+                "start": 0,
+                "end": 109
+              },
+              {
+                "evidence_id": "ev_69cbdad7d915aa6e",
+                "record_id": "KEP-5668",
+                "quote": "Correct Batch Lifecycle Handling Ensure robust status transitions from sent → completed (and any other relevant states), including: Handling of retries / callbacks from Bright Data. Idempotent updates to avoid inconsistent states. Stale Batch Detection & Recovery Add logic to detect batches stuck in sent beyond a configurable time window.",
+                "start": 0,
+                "end": 340
+              },
+              {
+                "evidence_id": "ev_6a22898e76389cd7",
+                "record_id": "KEP-5668",
+                "quote": "Regression Coverage Add unit/integration tests for the batch lifecycle and active‑limit logic to prevent regressions.",
+                "start": 0,
+                "end": 117
+              },
+              {
+                "evidence_id": "ev_6be1916061f01606",
+                "record_id": "KEP-5668",
+                "quote": "Correct Batch Lifecycle Handling Ensure robust status transitions from sent → completed (and any other relevant states), including: Handling of retries / callbacks from Bright Data. Idempotent updates to avoid inconsistent states. Stale Batch Detection & Recovery Add logic to detect batches stuck in sent beyond a configurable time window. Implement automated remediation (e.g., reconcile state with Bright Data API, or safely mark as completed/failed). Active Batch Limit Safeguards Add guardrails and logging when the active batch count approaches 70 (e.g., at 60, 65, 70). Integrate with monitoring/alerting (e.g., Datadog) so on‑call engineers are notified before ingestion is impacted. Observability & Dashboards Expose metrics such as: Number of active batches Count of batches per status ( sent , completed , failed , etc.) Age distribution of sent batches Create dashboards and alerts based on these metrics. Regression Coverage Add unit/integration tests for the batch lifecycle and active‑limit logic to prevent regressions. Remote Job Cancellation on Local Failure (Enhancement) Remote Job Cancellation on Local Failure When we mark a Bright Data batch/job as failed or cancelled from our side (e.g., due to timeouts, manual cancellation, or unrecoverable errors), we must also invoke the Bright Data API to cancel/stop the corresponding remote job/batch.",
+                "start": 0,
+                "end": 1367
+              },
+              {
+                "evidence_id": "ev_8adb6149a6fd6717",
+                "record_id": "KEP-5668",
+                "quote": "Stale Batch Detection & Recovery Add logic to detect batches stuck in sent beyond a configurable time window. Implement automated remediation (e.g., reconcile state with Bright Data API, or safely mark as completed/failed).",
+                "start": 0,
+                "end": 223
+              },
+              {
+                "evidence_id": "ev_8bfaac8583710aff",
+                "record_id": "KEP-5668",
+                "quote": "Active Batch Limit Safeguards Add guardrails and logging when the active batch count approaches 70 (e.g., at 60, 65, 70).",
+                "start": 0,
+                "end": 121
+              },
+              {
+                "evidence_id": "ev_950b07fa1a233c51",
+                "record_id": "KEP-5668",
+                "quote": "Correct Batch Lifecycle Handling Ensure robust status transitions from sent → completed (and any other relevant states), including: Handling of retries / callbacks from Bright Data. Idempotent updates to avoid inconsistent states. Stale Batch Detection & Recovery Add logic to detect batches stuck in sent beyond a configurable time window. Implement automated remediation (e.g., reconcile state with Bright Data API, or safely mark as completed/failed). Active Batch Limit Safeguards Add guardrails and logging when the active batch count approaches 70 (e.g., at 60, 65, 70). Integrate with monitoring/alerting (e.g., Datadog) so on‑call engineers are notified before ingestion is impacted. Observability & Dashboards Expose metrics such as: Number of active batches Count of batches per status ( sent , completed , failed , etc.) Age distribution of sent batches Create dashboards and alerts based on these metrics. Regression Coverage Add unit/integration tests for the batch lifecycle and active‑limit logic to prevent regressions.",
+                "start": 0,
+                "end": 1035
+              },
+              {
+                "evidence_id": "ev_97519bcbc6a70dac",
+                "record_id": "KEP-5668",
+                "quote": "Once the limit is reached, no new Bright Data batches are created or sent , blocking new ingestion jobs",
+                "start": 0,
+                "end": 103
+              },
+              {
+                "evidence_id": "ev_a8635816c1cfcc45",
+                "record_id": "KEP-5668",
+                "quote": "Correct Batch Lifecycle Handling Ensure robust status transitions from sent → completed (and any other relevant states), including: Handling of retries / callbacks from Bright Data. Idempotent updates to avoid inconsistent states. Stale Batch Detection & Recovery Add logic to detect batches stuck in sent beyond a configurable time window. Implement automated remediation (e.g., reconcile state with Bright Data API, or safely mark as completed/failed). Active Batch Limit Safeguards Add guardrails and logging when the active batch count approaches 70 (e.g., at 60, 65, 70). Integrate with monitoring/alerting (e.g., Datadog) so on‑call engineers are notified before ingestion is impacted. Observability & Dashboards Expose metrics such as: Number of active batches Count of batches per status ( sent , completed , failed , etc.) Age distribution of sent batches Create dashboards and alerts based on these metrics.",
+                "start": 0,
+                "end": 917
+              },
+              {
+                "evidence_id": "ev_a9e7ffc06bff5e30",
+                "record_id": "KEP-5668",
+                "quote": "Correct Batch Lifecycle Handling Ensure robust status transitions from sent → completed (and any other relevant states), including: Handling of retries / callbacks from Bright Data. Idempotent updates to avoid inconsistent states. Stale Batch Detection & Recovery Add logic to detect batches stuck in sent beyond a configurable time window. Implement automated remediation (e.g., reconcile state with Bright Data API, or safely mark as completed/failed). Active Batch Limit Safeguards Add guardrails and logging when the active batch count approaches 70 (e.g., at 60, 65, 70).",
+                "start": 0,
+                "end": 576
+              },
+              {
+                "evidence_id": "ev_d55e5ad81b4d1b98",
+                "record_id": "KEP-5668",
+                "quote": "Observability & Dashboards Expose metrics such as: Number of active batches Count of batches per status ( sent , completed , failed , etc.) Age distribution of sent batches Create dashboards and alerts based on these metrics.",
+                "start": 0,
+                "end": 225
+              },
+              {
+                "evidence_id": "ev_ffa1715171b397f9",
+                "record_id": "KEP-5668",
+                "quote": "Active Batch Limit Safeguards Add guardrails and logging when the active batch count approaches 70 (e.g., at 60, 65, 70). Integrate with monitoring/alerting (e.g., Datadog) so on‑call engineers are notified before ingestion is impacted.",
+                "start": 0,
+                "end": 236
+              }
+            ],
+            "score": 6.704513421941156
+          },
+          {
+            "record_id": "KEP-5663",
+            "passages": [
+              {
+                "evidence_id": "ev_955842f4db8b6aa8",
+                "record_id": "KEP-5663",
+                "quote": "We are currently unable to procure Twitter data through our web scraping agent. The pipeline uses Playwright with our managed scraper setup, routed through Smartproxy. Since Saturday, the scraping jobs have completely stopped working.",
+                "start": 0,
+                "end": 234
+              },
+              {
+                "evidence_id": "ev_e37f5e2dd3bfc630",
+                "record_id": "KEP-5663",
+                "quote": "We are currently unable to procure Twitter data through our web scraping agent. The pipeline uses Playwright with our managed scraper setup, routed through Smartproxy. Since Saturday, the scraping jobs have completely stopped working. This is a significant blocker with direct client impact.",
+                "start": 0,
+                "end": 291
+              }
+            ],
+            "score": 6.506731737671019
+          },
+          {
+            "record_id": "KEP-6668",
+            "passages": [
+              {
+                "evidence_id": "ev_8e62458b0e5f6103",
+                "record_id": "KEP-6668",
+                "quote": "The reported issue appears to be intermittent and non-deterministic in nature, as multiple attempts to reproduce it under similar conditions have been unsuccessful.",
+                "start": 0,
+                "end": 164
+              }
+            ],
+            "score": 6.483257812539565
+          },
+          {
+            "record_id": "KEP-5632",
+            "passages": [
+              {
+                "evidence_id": "ev_44cdea03a3d43e18",
+                "record_id": "KEP-5632",
+                "quote": "No Posts Collected for Client-Owned Account in Network",
+                "start": 0,
+                "end": 54
+              },
+              {
+                "evidence_id": "ev_e5fee8d4ab289338",
+                "record_id": "KEP-5632",
+                "quote": "Client has reported a missing post from this specific account that is seeded in their network.",
+                "start": 0,
+                "end": 94
+              }
+            ],
+            "score": 6.363619059517157
+          },
+          {
+            "record_id": "KEP-6971",
+            "passages": [
+              {
+                "evidence_id": "ev_1a105ce0683db415",
+                "record_id": "KEP-6971",
+                "quote": "Migrated YouTube download proxy from SmartProxy to Brightdata",
+                "start": 0,
+                "end": 61
+              },
+              {
+                "evidence_id": "ev_5a437fcbb1decfd2",
+                "record_id": "KEP-6971",
+                "quote": "YouTube video download jobs using the YTDLP library were failing with high rates of 403 errors due to SmartProxy (SPA) blocking requests.",
+                "start": 0,
+                "end": 137
+              },
+              {
+                "evidence_id": "ev_966dbf6e0186fd0b",
+                "record_id": "KEP-6971",
+                "quote": "YouTube data collection degraded for ~8 days (Apr 21–29)",
+                "start": 0,
+                "end": 56
+              },
+              {
+                "evidence_id": "ev_c7511760bf9c6367",
+                "record_id": "KEP-6971",
+                "quote": "YouTube video download jobs using the YTDLP library were failing with high rates of 403 errors due to SmartProxy (SPA) blocking requests. This degraded YouTube data collection over approximately the same window as the broader FB/IG/TikTok outage (from ~Apr 21), and was confirmed separately by Austin Noronha on April 28. The fix was to migrate YouTube downloads from SmartProxy to Brightdata",
+                "start": 0,
+                "end": 392
+              }
+            ],
+            "score": 6.232035382930627
+          },
+          {
+            "record_id": "KEP-6902",
+            "passages": [
+              {
+                "evidence_id": "ev_097c4fb17f2c1799",
+                "record_id": "KEP-6902",
+                "quote": "KEP-6902 is the in-chat progress + report after Submit on KEP-6901.",
+                "start": 0,
+                "end": 67
+              },
+              {
+                "evidence_id": "ev_63c56f7bea2e96da",
+                "record_id": "KEP-6902",
+                "quote": "Context Design is complete — after the user Submits the Video Analysis flow ( KEP-6901 ), the chat thread must show a persistent \"Analyze Video\" status card with real-time progress driven by API polling or push",
+                "start": 0,
+                "end": 210
+              },
+              {
+                "evidence_id": "ev_7315b02a5e75ca38",
+                "record_id": "KEP-6902",
+                "quote": "Embeddable chat message / widget for long-running video analysis job Collapsible \"Analyze Video\" card with the step list and per-step or aggregate progress as specified.",
+                "start": 0,
+                "end": 169
+              }
+            ],
+            "score": 6.187277679381897
+          },
+          {
+            "record_id": "KEP-6957",
+            "passages": [
+              {
+                "evidence_id": "ev_025fa71658ed5147",
+                "record_id": "KEP-6957",
+                "quote": "When a job is processing (e.g., a video analysis or report generation), an animated status indicator should appear in the Reports section to communicate that a task is in progress.",
+                "start": 0,
+                "end": 180
+              },
+              {
+                "evidence_id": "ev_a9467fc52881e428",
+                "record_id": "KEP-6957",
+                "quote": "Design an animated status indicator (e.g., spinner, pulsing icon, or progress animation) to display within the Reports section while a report/job is being generated.",
+                "start": 0,
+                "end": 165
+              }
+            ],
+            "score": 6.14318875488744
+          },
+          {
+            "record_id": "KEP-6481",
+            "passages": [
+              {
+                "evidence_id": "ev_b890e0d6eaf4269b",
+                "record_id": "KEP-6481",
+                "quote": "For the Twitter comments backfill, we want to get comments stretching back to the original outage (Feb 27th, 2025) for a select set of networks",
+                "start": 0,
+                "end": 143
+              }
+            ],
+            "score": 6.137116583022745
+          }
+        ],
+        "omitted_record_ids": []
+      },
+      "latency_seconds": 0.0033450420014560223,
+      "error": false,
+      "new_ids": [
+        "ev_025fa71658ed5147",
+        "ev_06eee086b8cf9d93",
+        "ev_097c4fb17f2c1799",
+        "ev_0c5b5e94d67db9ec",
+        "ev_108b9a5b4127db83",
+        "ev_14acd247410dce00",
+        "ev_1a105ce0683db415",
+        "ev_1f78fadbc7423f73",
+        "ev_1faf97ee0458fc4b",
+        "ev_2387deb7a51273b0",
+        "ev_26f7a4cf725a63f0",
+        "ev_29e769731d6f5bdb",
+        "ev_2aaa51b05f284118",
+        "ev_30f3bf4aa4096099",
+        "ev_333aa319e2cf0196",
+        "ev_33bf30d8dce60597",
+        "ev_3bf237ee6198d488",
+        "ev_44cdea03a3d43e18",
+        "ev_4700e329357c7762",
+        "ev_477c9de5cda34331",
+        "ev_48b827cfe137a976",
+        "ev_4989871d48de03d1",
+        "ev_5a437fcbb1decfd2",
+        "ev_63bc9aaca41f3855",
+        "ev_63c56f7bea2e96da",
+        "ev_63c7dbab27b8a2ed",
+        "ev_66f837dba0b6f0bf",
+        "ev_69cbdad7d915aa6e",
+        "ev_6a22898e76389cd7",
+        "ev_6be1916061f01606",
+        "ev_6cfc853dc555cf13",
+        "ev_6f62323415d2dbfe",
+        "ev_72bcaf2a50c998b3",
+        "ev_7315b02a5e75ca38",
+        "ev_738c1cf46a0f036a",
+        "ev_73eff0de3125e2e6",
+        "ev_75b67275157f9120",
+        "ev_780b5d8df3586459",
+        "ev_798015aecf48cc37",
+        "ev_8377265b8fad614c",
+        "ev_840978102672098c",
+        "ev_8adb6149a6fd6717",
+        "ev_8bfaac8583710aff",
+        "ev_8e62458b0e5f6103",
+        "ev_916c116ecced7dd4",
+        "ev_9488fa8cc6db3d39",
+        "ev_950b07fa1a233c51",
+        "ev_955842f4db8b6aa8",
+        "ev_95c4d769ae116953",
+        "ev_966dbf6e0186fd0b",
+        "ev_96bc9f0a0b685e87",
+        "ev_97519bcbc6a70dac",
+        "ev_97a309f4cce85c3a",
+        "ev_996046a98ac70ec7",
+        "ev_9acabf9cd741f4d9",
+        "ev_a33524cd3c13725e",
+        "ev_a8635816c1cfcc45",
+        "ev_a9467fc52881e428",
+        "ev_a9e7ffc06bff5e30",
+        "ev_ae8831731edc8c8f",
+        "ev_aeb2758b6a21a11c",
+        "ev_b030da0465566489",
+        "ev_b60ca474f25f76ed",
+        "ev_b7d02e50dd8e299e",
+        "ev_b890e0d6eaf4269b",
+        "ev_bc2c6112db23bb6e",
+        "ev_bc7d01297224ca42",
+        "ev_c154a46d3b71e4f7",
+        "ev_c7511760bf9c6367",
+        "ev_cdf54cd1ff4aa620",
+        "ev_ce1968d9e7079c11",
+        "ev_d55e5ad81b4d1b98",
+        "ev_d84bc6bf2ffd4954",
+        "ev_d891ec727c04c897",
+        "ev_d9db300b6974ef3b",
+        "ev_dcd6b5f9b30344e7",
+        "ev_e37f5e2dd3bfc630",
+        "ev_e5fee8d4ab289338",
+        "ev_e614d96567f74144",
+        "ev_e6b3b9ea576523ea",
+        "ev_eaf6ee6af9edf403",
+        "ev_ee0180a483ae2552",
+        "ev_f3c24bea244e9385",
+        "ev_f4a9d67680ff4f6d",
+        "ev_fba8cfea3c5673b0",
+        "ev_fe2d34415231a1e7",
+        "ev_ffa1715171b397f9",
+        "span:ev_025fa71658ed5147:0:180",
+        "span:ev_06eee086b8cf9d93:0:43",
+        "span:ev_097c4fb17f2c1799:0:67",
+        "span:ev_0c5b5e94d67db9ec:0:172",
+        "span:ev_108b9a5b4127db83:0:114",
+        "span:ev_14acd247410dce00:0:150",
+        "span:ev_1a105ce0683db415:0:61",
+        "span:ev_1f78fadbc7423f73:0:73",
+        "span:ev_1faf97ee0458fc4b:0:47",
+        "span:ev_2387deb7a51273b0:0:120",
+        "span:ev_26f7a4cf725a63f0:0:181",
+        "span:ev_29e769731d6f5bdb:0:44",
+        "span:ev_2aaa51b05f284118:0:100",
+        "span:ev_30f3bf4aa4096099:0:67",
+        "span:ev_333aa319e2cf0196:0:20",
+        "span:ev_33bf30d8dce60597:0:99",
+        "span:ev_3bf237ee6198d488:0:69",
+        "span:ev_44cdea03a3d43e18:0:54",
+        "span:ev_4700e329357c7762:0:196",
+        "span:ev_477c9de5cda34331:0:136",
+        "span:ev_48b827cfe137a976:0:205",
+        "span:ev_4989871d48de03d1:0:353",
+        "span:ev_5a437fcbb1decfd2:0:137",
+        "span:ev_63bc9aaca41f3855:0:61",
+        "span:ev_63c56f7bea2e96da:0:210",
+        "span:ev_63c7dbab27b8a2ed:0:109",
+        "span:ev_66f837dba0b6f0bf:0:167",
+        "span:ev_69cbdad7d915aa6e:0:340",
+        "span:ev_6a22898e76389cd7:0:117",
+        "span:ev_6be1916061f01606:0:1367",
+        "span:ev_6cfc853dc555cf13:0:167",
+        "span:ev_6f62323415d2dbfe:0:95",
+        "span:ev_72bcaf2a50c998b3:0:209",
+        "span:ev_7315b02a5e75ca38:0:169",
+        "span:ev_738c1cf46a0f036a:0:31",
+        "span:ev_73eff0de3125e2e6:0:90",
+        "span:ev_75b67275157f9120:0:324",
+        "span:ev_780b5d8df3586459:0:78",
+        "span:ev_798015aecf48cc37:0:100",
+        "span:ev_8377265b8fad614c:0:100",
+        "span:ev_840978102672098c:0:77",
+        "span:ev_8adb6149a6fd6717:0:223",
+        "span:ev_8bfaac8583710aff:0:121",
+        "span:ev_8e62458b0e5f6103:0:164",
+        "span:ev_916c116ecced7dd4:0:68",
+        "span:ev_9488fa8cc6db3d39:0:348",
+        "span:ev_950b07fa1a233c51:0:1035",
+        "span:ev_955842f4db8b6aa8:0:234",
+        "span:ev_95c4d769ae116953:0:94",
+        "span:ev_966dbf6e0186fd0b:0:56",
+        "span:ev_96bc9f0a0b685e87:0:54",
+        "span:ev_97519bcbc6a70dac:0:103",
+        "span:ev_97a309f4cce85c3a:0:92",
+        "span:ev_996046a98ac70ec7:0:67",
+        "span:ev_9acabf9cd741f4d9:0:90",
+        "span:ev_a33524cd3c13725e:0:64",
+        "span:ev_a8635816c1cfcc45:0:917",
+        "span:ev_a9467fc52881e428:0:165",
+        "span:ev_a9e7ffc06bff5e30:0:576",
+        "span:ev_ae8831731edc8c8f:0:64",
+        "span:ev_aeb2758b6a21a11c:0:19",
+        "span:ev_b030da0465566489:0:196",
+        "span:ev_b60ca474f25f76ed:0:47",
+        "span:ev_b7d02e50dd8e299e:0:44",
+        "span:ev_b890e0d6eaf4269b:0:143",
+        "span:ev_bc2c6112db23bb6e:0:57",
+        "span:ev_bc7d01297224ca42:0:55",
+        "span:ev_c154a46d3b71e4f7:0:64",
+        "span:ev_c7511760bf9c6367:0:392",
+        "span:ev_cdf54cd1ff4aa620:0:60",
+        "span:ev_ce1968d9e7079c11:0:63",
+        "span:ev_d55e5ad81b4d1b98:0:225",
+        "span:ev_d84bc6bf2ffd4954:0:97",
+        "span:ev_d891ec727c04c897:0:44",
+        "span:ev_d9db300b6974ef3b:0:183",
+        "span:ev_dcd6b5f9b30344e7:0:85",
+        "span:ev_e37f5e2dd3bfc630:0:291",
+        "span:ev_e5fee8d4ab289338:0:94",
+        "span:ev_e614d96567f74144:0:154",
+        "span:ev_e6b3b9ea576523ea:0:64",
+        "span:ev_eaf6ee6af9edf403:0:78",
+        "span:ev_ee0180a483ae2552:0:68",
+        "span:ev_f3c24bea244e9385:0:112",
+        "span:ev_f4a9d67680ff4f6d:0:78",
+        "span:ev_fba8cfea3c5673b0:0:115",
+        "span:ev_fe2d34415231a1e7:0:89",
+        "span:ev_ffa1715171b397f9:0:236"
+      ]
+    },
+    {
+      "sequence": 3,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 27040,
+      "visible_evidence_ids": [
+        "ev_025fa71658ed5147",
+        "ev_06eee086b8cf9d93",
+        "ev_097c4fb17f2c1799",
+        "ev_0c5b5e94d67db9ec",
+        "ev_108b9a5b4127db83",
+        "ev_14acd247410dce00",
+        "ev_1a105ce0683db415",
+        "ev_1f78fadbc7423f73",
+        "ev_1faf97ee0458fc4b",
+        "ev_2387deb7a51273b0",
+        "ev_26f7a4cf725a63f0",
+        "ev_29e769731d6f5bdb",
+        "ev_2aaa51b05f284118",
+        "ev_30f3bf4aa4096099",
+        "ev_333aa319e2cf0196",
+        "ev_33bf30d8dce60597",
+        "ev_3bf237ee6198d488",
+        "ev_44cdea03a3d43e18",
+        "ev_4700e329357c7762",
+        "ev_477c9de5cda34331",
+        "ev_48b827cfe137a976",
+        "ev_4989871d48de03d1",
+        "ev_5a437fcbb1decfd2",
+        "ev_63bc9aaca41f3855",
+        "ev_63c56f7bea2e96da",
+        "ev_63c7dbab27b8a2ed",
+        "ev_66f837dba0b6f0bf",
+        "ev_69cbdad7d915aa6e",
+        "ev_6a22898e76389cd7",
+        "ev_6be1916061f01606",
+        "ev_6cfc853dc555cf13",
+        "ev_6f62323415d2dbfe",
+        "ev_72bcaf2a50c998b3",
+        "ev_7315b02a5e75ca38",
+        "ev_738c1cf46a0f036a",
+        "ev_73eff0de3125e2e6",
+        "ev_75b67275157f9120",
+        "ev_780b5d8df3586459",
+        "ev_798015aecf48cc37",
+        "ev_8377265b8fad614c",
+        "ev_840978102672098c",
+        "ev_8adb6149a6fd6717",
+        "ev_8bfaac8583710aff",
+        "ev_8e62458b0e5f6103",
+        "ev_916c116ecced7dd4",
+        "ev_9488fa8cc6db3d39",
+        "ev_950b07fa1a233c51",
+        "ev_955842f4db8b6aa8",
+        "ev_95c4d769ae116953",
+        "ev_966dbf6e0186fd0b",
+        "ev_96bc9f0a0b685e87",
+        "ev_97519bcbc6a70dac",
+        "ev_97a309f4cce85c3a",
+        "ev_996046a98ac70ec7",
+        "ev_9acabf9cd741f4d9",
+        "ev_a33524cd3c13725e",
+        "ev_a8635816c1cfcc45",
+        "ev_a9467fc52881e428",
+        "ev_a9e7ffc06bff5e30",
+        "ev_ae8831731edc8c8f",
+        "ev_aeb2758b6a21a11c",
+        "ev_b030da0465566489",
+        "ev_b60ca474f25f76ed",
+        "ev_b7d02e50dd8e299e",
+        "ev_b890e0d6eaf4269b",
+        "ev_bc2c6112db23bb6e",
+        "ev_bc7d01297224ca42",
+        "ev_c154a46d3b71e4f7",
+        "ev_c7511760bf9c6367",
+        "ev_cdf54cd1ff4aa620",
+        "ev_ce1968d9e7079c11",
+        "ev_d55e5ad81b4d1b98",
+        "ev_d84bc6bf2ffd4954",
+        "ev_d891ec727c04c897",
+        "ev_d9db300b6974ef3b",
+        "ev_dcd6b5f9b30344e7",
+        "ev_e37f5e2dd3bfc630",
+        "ev_e5fee8d4ab289338",
+        "ev_e614d96567f74144",
+        "ev_e6b3b9ea576523ea",
+        "ev_eaf6ee6af9edf403",
+        "ev_ee0180a483ae2552",
+        "ev_f3c24bea244e9385",
+        "ev_f4a9d67680ff4f6d",
+        "ev_fba8cfea3c5673b0",
+        "ev_fe2d34415231a1e7",
+        "ev_ffa1715171b397f9"
+      ],
+      "included_tool_call_ids": [
+        "text_1"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "started"
+    },
+    {
+      "sequence": 5,
+      "kind": "model",
+      "call_number": 1,
+      "status": "complete",
+      "request_id": "request_1876fef8904c5856",
+      "draft": {
+        "claims": [
+          {
+            "statement": "KEP-6970 reports severely degraded or failing Facebook, Instagram, and TikTok collection from approximately April 21–29, 2026.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_477c9de5cda34331",
+                "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The record states the affected sources and approximate window directly.",
+            "verification_note": "This is a reported collection condition, not an independently measured customer impact."
+          },
+          {
+            "statement": "The incident record says no automated alarm fired during the period.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_06eee086b8cf9d93",
+                "quote": "No automated alarm fired during this period",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "Direct statement in the incident record.",
+            "verification_note": "The supplied passages do not provide alert-system logs."
+          },
+          {
+            "statement": "KEP-6970 attributes a queue backup that prevented new jobs from starting to video-vision jobs not closing their final steps properly.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_66f837dba0b6f0bf",
+                "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The record explicitly reports this causal diagnosis.",
+            "verification_note": "This is the source's reported cause, not independent causal verification."
+          },
+          {
+            "statement": "KEP-6970 reports a host-PID setting fix applied before the 19.2.0 deployment.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_48b827cfe137a976",
+                "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_1faf97ee0458fc4b",
+                "quote": "Host PID fix applied prior to 19.2.0 deployment",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The fix and its order relative to deployment are stated directly.",
+            "verification_note": "Application of a fix does not establish restored collection."
+          },
+          {
+            "statement": "A separate YouTube report attributes high rates of YTDLP download 403 errors to SmartProxy blocking and reports degraded YouTube collection over approximately April 21–29.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_5a437fcbb1decfd2",
+                "quote": "YouTube video download jobs using the YTDLP library were failing with high rates of 403 errors due to SmartProxy (SPA) blocking requests.",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_966dbf6e0186fd0b",
+                "quote": "YouTube data collection degraded for ~8 days (Apr 21–29)",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "KEP-6971 directly describes the YouTube failure and window.",
+            "verification_note": "Do not merge the reported YouTube proxy cause with the video-vision queue cause."
+          },
+          {
+            "statement": "KEP-6971 reports migrating YouTube downloads from SmartProxy to Brightdata as the YouTube remediation.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_1a105ce0683db415",
+                "quote": "Migrated YouTube download proxy from SmartProxy to Brightdata",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The migration is stated directly.",
+            "verification_note": "The passage does not show post-migration success metrics."
+          },
+          {
+            "statement": "An April 28 standup note said the cron job sending failure callbacks needed to be stopped before backfill could be triggered.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_4700e329357c7762",
+                "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered (per Apr 28 standup: Magna coordinating with Abhik Roy to stop cron before triggering backfill)",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The passage directly states the prerequisite and coordination.",
+            "verification_note": "It does not confirm that the cron was disabled or the backfill triggered."
+          },
+          {
+            "statement": "Following the reported April 29 deployment of Kepler 19.2.0, Kiran Sabbani ordered backfill from April 21 for TikTok, Instagram, YouTube, and Facebook.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_97a309f4cce85c3a",
+                "quote": "Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_840978102672098c",
+                "quote": "Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The deployment, order, start date, and listed sources are directly reported.",
+            "verification_note": "An order to backfill is not evidence of completed backfill."
+          },
+          {
+            "statement": "On April 30, a TikTok merge-request bypass was requested, and 19.2.1 Brightdata-batching-service and Facebook-source hotfix merge requests were deploying to staging.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_2aaa51b05f284118",
+                "quote": "Apr 30, 7:00 AM EDT — TikTok MR bypass requested in #kepler-dev-all-pods (data-source-tiktok MR 501)",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_14acd247410dce00",
+                "quote": "Apr 30, 7:25 AM EDT — 19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags, with a linked change document",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "Both April 30 actions are explicitly reported.",
+            "verification_note": "A bypass request and staging deployment do not prove production deployment or recovery."
+          },
+          {
+            "statement": "The supplied passages verify remediation reports and a backfill order, but do not verify completed backfill, restored collection, or full data integrity.",
+            "kind": "synthesis",
+            "citations": [
+              {
+                "evidence_id": "ev_97a309f4cce85c3a",
+                "quote": "Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_cdf54cd1ff4aa620",
+                "quote": "Backfill from Apr 21 required to restore full data integrity",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_14acd247410dce00",
+                "quote": "Apr 30, 7:25 AM EDT — 19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags, with a linked change document",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "medium",
+            "confidence_reason": "The cited passages describe actions and a requirement, not completed recovery; the conclusion is limited to the supplied record.",
+            "verification_note": "No recovery date or verified post-backfill result is established."
+          }
+        ],
+        "unanswered": [
+          "Was the failure-callback cron actually disabled, and when?",
+          "Was the April 21 backfill run and completed for each listed source, and what validation showed restored data integrity?",
+          "When, if ever, did collection rates recover, and were the April 30 staging hotfixes deployed to production?"
+        ],
+        "limitations": [
+          "The retrieved passages include repeated summaries of KEP-6970; these are not independent incident confirmations.",
+          "The source reports degraded collection but supplies no measured customer-impact assessment or post-remediation recovery metrics."
+        ]
+      },
+      "latency_seconds": 21.507798416976584,
+      "provider": {
+        "request_id": "request_1876fef8904c5856",
+        "purpose": "evaluation_text_rag",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/collection_timeline__repeat__text_rag/cache/codex/request_1876fef8904c5856.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 0,
+          "input_tokens": 11017,
+          "output_tokens": 2129,
+          "reasoning_output_tokens": 101,
+          "total_tokens": 13146
+        },
+        "thread_id": "01a114a9-b425-71d0-bbbf-3c9118442681",
+        "turn_id": "01a114a9-b44d-7bf0-b0af-06691245a32d",
+        "status": "completed",
+        "latency_seconds": 21.4951
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_477c9de5cda34331"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 7,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_06eee086b8cf9d93"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 8,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_66f837dba0b6f0bf"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 9,
+      "kind": "claim_support",
+      "claim_id": "C4",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_48b827cfe137a976",
+        "ev_1faf97ee0458fc4b"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 10,
+      "kind": "claim_support",
+      "claim_id": "C5",
+      "record_ids": [
+        "KEP-6971"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_5a437fcbb1decfd2",
+        "ev_966dbf6e0186fd0b"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 11,
+      "kind": "claim_support",
+      "claim_id": "C6",
+      "record_ids": [
+        "KEP-6971"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_1a105ce0683db415"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 12,
+      "kind": "claim_support",
+      "claim_id": "C7",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_4700e329357c7762"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 13,
+      "kind": "claim_support",
+      "claim_id": "C8",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_97a309f4cce85c3a",
+        "ev_840978102672098c"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 14,
+      "kind": "claim_support",
+      "claim_id": "C9",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_2aaa51b05f284118",
+        "ev_14acd247410dce00"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 15,
+      "kind": "claim_support",
+      "claim_id": "C10",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_97a309f4cce85c3a",
+        "ev_cdf54cd1ff4aa620",
+        "ev_14acd247410dce00"
+      ],
+      "source_mode": "text"
+    }
+  ],
+  "usage": {
+    "model_calls": 1,
+    "data_tool_calls": 1,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 11017,
+      "output_tokens": 2129,
+      "cached_input_tokens": 0,
+      "reasoning_output_tokens": 101
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 21.507798416976584,
+    "provider_elapsed_seconds": 21.4951,
+    "tool_elapsed_seconds": 0.0033450420014560223,
+    "total_elapsed_seconds": 21.52478333300678,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "graph_hash": "graph_461ec66cd6c65256",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "execution_scope": "source_only",
+    "approach": "text_rag",
+    "top_k": 20,
+    "corpus_fingerprint": "sha_a36c560065c5dd52",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/collection_timeline__repeat__text_rag/cache",
+      "timeout": 300.0
+    },
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "collection_timeline__repeat__text_rag",
+      "question_id": "collection_timeline",
+      "variant": "repeat",
+      "approach": "text_rag",
+      "question": "How did the April collection incident progress from reported failures through remediation and backfill, and what recovery is verified?"
+    }
+  }
+}

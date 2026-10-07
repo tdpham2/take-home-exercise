@@ -1,0 +1,4535 @@
+{
+  "question": "Which pruning behaviors and follow-up actions are reported, and what evidence supports their temporal order?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "In KEP-6419, a newly pruned narrative moved to the hidden tab and initially showed its pruning rule on hover; the reporter said that on returning the next day, the hover showed the narrative title instead.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_df451649650f6041",
+          "quote": "Current behavior: When I add a new pruning rule, the narrative that gets pruned goes to the hidden tab and immediately shows a hover indicating which rule was used. In other words, if I hover over the speech bubble with the three dots of a pruned narrative, it correctly displays the rule that pruned the narrative. However, if I return the next day, the hover no longer shows the pruning rule. Instead, it displays the title of the narrative.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The first-person report explicitly orders the immediate display before the next-day display.",
+      "verification_note": "",
+      "id": "C1",
+      "record_ids": [
+        "KEP-6419"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "A separate KEP-6431 record calls for a retest of the next-day pruning-rule hover text problem; it does not report a retest result.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_82dffd65d16997af",
+          "quote": "RETEST - Pruning Rule Hover Text Shows the Wrong Text The Next Day",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The title directly identifies a retest, but supplies no outcome.",
+      "verification_note": "",
+      "id": "C2",
+      "record_ids": [
+        "KEP-6431"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "In KEP-5342, the reporter said a pruned narrative immediately entered Hidden Narratives but did not return to the main tab after its corresponding rule was deleted.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_1db77eef58ddea9b",
+          "quote": "When I prune a Narrative, it immediately moves to the Hidden Narratives tab. However, when I delete the corresponding pruning rule from the Agent Details page, the Narrative does not reappear in the main Narrative tab",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The report explicitly gives the order: prune, then delete the rule, then observe the failure to restore.",
+      "verification_note": "",
+      "id": "C3",
+      "record_ids": [
+        "Community_1210"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "KEP-4019 reports that a feature reflecting pruning-rule deletion in topic narratives was implemented and its merge request merged in staging; this is not proof that the restoration defect was resolved.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_f2d83729fd1a8334",
+          "quote": "Implemented Feature to reflect narrative pruning rule deletion in topic narratives. MR , we have merged in staging ENV",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The source directly reports implementation and a staging merge, but no verified behavioral outcome.",
+      "verification_note": "",
+      "id": "C4",
+      "record_ids": [
+        "KEP-4019"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "KEP-4050 identifies restoration to the main Narrative tab after rule deletion as a retest, not as a verified result.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_4ed85e54eaab7297",
+          "quote": "Retest - Deleted Pruning Rule should Restore Narrative to Main Narrative Tab",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The record is expressly labeled a retest and uses prescriptive wording.",
+      "verification_note": "",
+      "id": "C5",
+      "record_ids": [
+        "KEP-4050"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "KEP-5389 reports that deleting a pruning rule did not automatically refresh the UI, and KEP-5480 subsequently frames that issue as a retest; the records shown do not establish a passing result.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_7e4519c3675b92f7",
+          "quote": "When a pruning rule is deleted, the UI does not refresh automatically",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_0038d1e815d621c1",
+          "quote": "Retest: Deleted Pruning Rule Does Not Sync Immediately on UI",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The original defect and retest title support a reported follow-up sequence, not completion or success.",
+      "verification_note": "",
+      "id": "C6",
+      "record_ids": [
+        "KEP-5389",
+        "KEP-5480"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "KEP-6460 reports that hiding another narrative correctly moved that narrative to Hidden, but also made several narratives that were not hidden appear there.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_8f9034d5d62be1cd",
+          "quote": "If the UI section for \"hidden narratives\" already contains a hidden narrative (for example, if I created a pruning rule yesterday and the system hid a narrative automatically), and I hide another narrative, the new narrative correctly moves to the Hidden tab. However, several other narratives also appear in the Hidden tab even though they were not hidden.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The report directly describes the prior hidden item, subsequent hide action, and unexpected additional entries.",
+      "verification_note": "",
+      "id": "C7",
+      "record_ids": [
+        "KEP-6460"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "KEP-5759 reports that the system blocked pruning without an active token and states that pruning should instead depend on user permissions.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_1ad128968e343ee3",
+          "quote": "System blocks pruning when no active token is available. User cannot proceed with Hide / Flag action due to token restriction.",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_9decf1cbcbcc7d25",
+          "quote": "pruning capability should be restricted only based on user permissions (Viewer vs Editor) — not based on token availability",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The reported failure and desired rule are directly stated in the same record; the desired rule is not an observed fix.",
+      "verification_note": "",
+      "id": "C8",
+      "record_ids": [
+        "KEP-5759"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "KEP-6413 reports a different token-related sequence: a user without tokens could create a prune rule and prune, but received a no-token error when attempting to delete that rule.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_ace0d087762ec7f6",
+          "quote": "Currently, when a user does not have available tokens , the user is still able to create a Narrative Prune Rule and prune narratives successfully . However, when the same user attempts to delete the created prune rule from the Agent Detail Page → Narrative Pruning section , the system shows an error message stating that the user does not have tokens",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The source explicitly orders creation and pruning before the failed deletion attempt; it should not be collapsed into KEP-5759's reported behavior.",
+      "verification_note": "",
+      "id": "C9",
+      "record_ids": [
+        "KEP-6413"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "The KEP-6413 follow-up says token-check logic remained in the update and delete pruning-rule APIs and was removed; no post-removal test result is shown.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_d42ebd7f985b5490",
+          "quote": "The Token check Logic was kept in updfation and delete pruning rules API's. We have removed it",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The record reports a code change, not a verified user-facing recovery.",
+      "verification_note": "",
+      "id": "C10",
+      "record_ids": [
+        "KEP-6413"
+      ],
+      "source_mode": "graph"
+    }
+  ],
+  "unanswered": [
+    "What were the exact dated chronology and deployment status of the pruning fixes and retests? The cited original snippets lack verified timestamps and passing results.",
+    "Did deletion restore previously hidden narratives, and did hover text remain correct after the next day following the retests?",
+    "Why do KEP-5759 and KEP-6413 describe different no-token behavior? The excerpts do not establish whether their environments, versions, or paths differed.",
+    "Was the KEP-6460 hidden-tab duplication fixed and verified?"
+  ],
+  "limitations": [
+    "Temporal order is strongest within first-person reports and in records expressly labeled retest; ticket numbers and graph edges do not independently prove chronology or causality.",
+    "A staging merge or reported code change is not evidence of production deployment, successful QA, or customer impact.",
+    "The cited reports describe selected cases, not the prevalence of pruning defects.",
+    "Citation validation checks source access and exact provenance, not semantic entailment or real-world truth."
+  ],
+  "validation_errors": [],
+  "stop_reason": "data-tool budget exhausted",
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "execution_scope": "source_only"
+    },
+    {
+      "sequence": 2,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 6407,
+      "message_count": 2,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [],
+      "included_tool_call_ids": []
+    },
+    {
+      "sequence": 3,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "pending",
+      "serialized_chars": 6407,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model",
+      "call_number": 1,
+      "status": "completed",
+      "serialized_chars": 6407,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_a3a5c044d6e43aec",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"pruning\"}",
+        "purpose": "Find original records describing pruning behavior and subsequent actions.",
+        "discarded_items": [],
+        "pin_evidence_ids": []
+      },
+      "latency_seconds": 3.330633916979423,
+      "provider": {
+        "request_id": "request_a3a5c044d6e43aec",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__graph_only/cache/codex/request_a3a5c044d6e43aec.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 0,
+          "input_tokens": 4540,
+          "output_tokens": 67,
+          "reasoning_output_tokens": 14,
+          "total_tokens": 4607
+        },
+        "thread_id": "01a114b3-f79c-7952-ac8a-ba863a526ea7",
+        "turn_id": "01a114b3-f7c4-7ad3-82da-ae87f3c18e42",
+        "status": "completed",
+        "latency_seconds": 3.3118
+      }
+    },
+    {
+      "sequence": 5,
+      "kind": "tool_started",
+      "call_id": "action_1_request_a3a5c044d6e43aec",
+      "name": "search_graph",
+      "arguments": {
+        "query": "pruning"
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "pruning"
+      },
+      "call_id": "action_1_request_a3a5c044d6e43aec",
+      "result": {
+        "expanded_query": "pruning",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_b53b1eef8255dfaf",
+              "record_id": "KEP-4255",
+              "provenance_kind": "extracted",
+              "source_id": "decision_70dd5e49",
+              "target_id": "decision_b7aea09f",
+              "relation": "DEPENDS_ON",
+              "quote": "MLE team will be sending a pruning_flag : true with the pruning_id",
+              "start": 0,
+              "end": 66,
+              "total_chars": 66,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f19d74f6ba596733",
+              "record_id": "KEP-4366",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ce5aa830",
+              "target_id": "resource_95a53de6",
+              "relation": "AFFECTS",
+              "quote": "Build Crud Operations for narrative pruning in application backend Collection Name: narrative_pruning_rules",
+              "start": 0,
+              "end": 107,
+              "total_chars": 107,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_04fcaa0002d7d7b3",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "event_84a24701",
+              "target_id": "decision_cfe6a820",
+              "relation": "CAUSES",
+              "quote": "Narrative Pruning TRD completed",
+              "start": 0,
+              "end": 31,
+              "total_chars": 31,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_bf1bbd5f170a12a9",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "event_f80060c9",
+              "target_id": "decision_b7aea09f",
+              "relation": "CAUSES",
+              "quote": "Local testing completed for narrative pruning",
+              "start": 0,
+              "end": 45,
+              "total_chars": 45,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_d071431bf98c79f3",
+              "record_id": "KEP-4238",
+              "provenance_kind": "extracted",
+              "source_id": "decision_a4a1b47c",
+              "target_id": "resource_191ad1a0",
+              "relation": "AFFECTS",
+              "quote": "API integration for Narrative Pruning has been completed",
+              "start": 0,
+              "end": 56,
+              "total_chars": 56,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5fe9ae2fbae6ba91",
+              "record_id": "KEP-4255",
+              "provenance_kind": "extracted",
+              "source_id": "decision_70dd5e49",
+              "target_id": "resource_95a53de6",
+              "relation": "AFFECTS",
+              "quote": "MLE team will be sending a pruning_flag : true with the pruning_id :'' , we need to update topic_narratives entity with the same details",
+              "start": 0,
+              "end": 136,
+              "total_chars": 136,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_50498cada512ae70",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "event_f5acfbf4",
+              "target_id": "decision_1368c590",
+              "relation": "CAUSES",
+              "quote": "New test network created for pruning testing",
+              "start": 0,
+              "end": 44,
+              "total_chars": 44,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_55541502d6537ae9",
+              "record_id": "KEP-2605",
+              "provenance_kind": "extracted",
+              "source_id": "decision_16d14c8f",
+              "target_id": "resource_e7aa3bd4",
+              "relation": "AFFECTS",
+              "quote": "Create the Narrative Pruning TRD PRD Link",
+              "start": 0,
+              "end": 41,
+              "total_chars": 41,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_95c03985870188db",
+              "record_id": "KEP-4154",
+              "provenance_kind": "extracted",
+              "source_id": "decision_b9f67547",
+              "target_id": "resource_7d059841",
+              "relation": "AFFECTS",
+              "quote": "New API to be added in Documentation for Narrative Pruning Feature.",
+              "start": 0,
+              "end": 67,
+              "total_chars": 67,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_9afafb46664d6701",
+              "record_id": "KEP-5760",
+              "provenance_kind": "extracted",
+              "source_id": "decision_889ab161",
+              "target_id": "event_1048b1e7",
+              "relation": "REFERENCES",
+              "quote": "As part of pruning, I didn't know the narrative summary would be impacted.",
+              "start": 0,
+              "end": 74,
+              "total_chars": 74,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 80,
+          "next_offset": 10
+        },
+        "entities": {
+          "results": [
+            {
+              "id": "resource_a0bea208",
+              "label": "pruning rule",
+              "type": "resource",
+              "community": [
+                1210
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "resource_191ad1a0",
+              "label": "Narrative Pruning API",
+              "type": "resource",
+              "community": [
+                1792
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "resource_35375e85",
+              "label": "Narrative pruning APIs",
+              "type": "resource",
+              "community": [
+                114
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "resource_88240cda",
+              "label": "Narrative pruning capability",
+              "type": "resource",
+              "community": [
+                1266
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "resource_95a53de6",
+              "label": "Pruning rules database",
+              "type": "resource",
+              "community": [
+                114
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "resource_ec6b5f1e",
+              "label": "narrative pruning system",
+              "type": "resource",
+              "community": [
+                114,
+                1397
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "decision_1219a872",
+              "label": "Restrict pruning to Narratives only, remove Comment Narratives pruning capability",
+              "type": "decision",
+              "community": [
+                114
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "event_84a24701",
+              "label": "Narrative Pruning TRD completed",
+              "type": "event",
+              "community": [
+                114
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "resource_659f9c58",
+              "label": "S3 storage for pruning rules",
+              "type": "resource",
+              "community": [
+                114
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "resource_b5eb3588",
+              "label": "Narrative pruning rules API",
+              "type": "resource",
+              "community": [
+                638
+              ],
+              "label_status": "unverified graph label"
+            }
+          ],
+          "total": 80,
+          "next_offset": 10
+        }
+      },
+      "latency_seconds": 0.008345875015947968,
+      "error": false,
+      "new_ids": [
+        "decision_1219a872",
+        "ev_04fcaa0002d7d7b3",
+        "ev_50498cada512ae70",
+        "ev_55541502d6537ae9",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_95c03985870188db",
+        "ev_9afafb46664d6701",
+        "ev_b53b1eef8255dfaf",
+        "ev_bf1bbd5f170a12a9",
+        "ev_d071431bf98c79f3",
+        "ev_f19d74f6ba596733",
+        "event_84a24701",
+        "resource_191ad1a0",
+        "resource_35375e85",
+        "resource_659f9c58",
+        "resource_88240cda",
+        "resource_95a53de6",
+        "resource_a0bea208",
+        "resource_b5eb3588",
+        "resource_ec6b5f1e",
+        "span:ev_04fcaa0002d7d7b3:0:31",
+        "span:ev_50498cada512ae70:0:44",
+        "span:ev_55541502d6537ae9:0:41",
+        "span:ev_5fe9ae2fbae6ba91:0:136",
+        "span:ev_95c03985870188db:0:67",
+        "span:ev_9afafb46664d6701:0:74",
+        "span:ev_b53b1eef8255dfaf:0:66",
+        "span:ev_bf1bbd5f170a12a9:0:45",
+        "span:ev_d071431bf98c79f3:0:56",
+        "span:ev_f19d74f6ba596733:0:107"
+      ]
+    },
+    {
+      "sequence": 7,
+      "kind": "context",
+      "model_call": 2,
+      "serialized_chars": 13403,
+      "message_count": 4,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_04fcaa0002d7d7b3",
+        "ev_50498cada512ae70",
+        "ev_55541502d6537ae9",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_95c03985870188db",
+        "ev_9afafb46664d6701",
+        "ev_b53b1eef8255dfaf",
+        "ev_bf1bbd5f170a12a9",
+        "ev_d071431bf98c79f3",
+        "ev_f19d74f6ba596733"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a3a5c044d6e43aec"
+      ]
+    },
+    {
+      "sequence": 8,
+      "kind": "model_started",
+      "call_number": 2,
+      "status": "pending",
+      "serialized_chars": 13403,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 9,
+      "kind": "model",
+      "call_number": 2,
+      "status": "completed",
+      "serialized_chars": 13403,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_ff3a337fc7deda94",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"KEP-5760\",\"mode\":\"records\",\"limit\":20}",
+        "purpose": "Find original reports of pruning effects and any documented follow-up actions.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_9afafb46664d6701"
+        ]
+      },
+      "latency_seconds": 4.4969204170047306,
+      "provider": {
+        "request_id": "request_ff3a337fc7deda94",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__graph_only/cache/codex/request_ff3a337fc7deda94.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 6279,
+          "output_tokens": 102,
+          "reasoning_output_tokens": 25,
+          "total_tokens": 6381
+        },
+        "thread_id": "01a114b4-033a-7231-ad76-fab87424a40d",
+        "turn_id": "01a114b4-035b-7a91-84f5-f06115a7a926",
+        "status": "completed",
+        "latency_seconds": 4.4777
+      }
+    },
+    {
+      "sequence": 10,
+      "kind": "tool_started",
+      "call_id": "action_2_request_ff3a337fc7deda94",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-5760",
+        "mode": "records",
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 11,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-5760",
+        "mode": "records",
+        "limit": 20
+      },
+      "call_id": "action_2_request_ff3a337fc7deda94",
+      "result": {
+        "expanded_query": "KEP-5760",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_386bd5ae94070a77",
+              "record_id": "KEP-5760",
+              "provenance_kind": "extracted",
+              "source_id": "decision_889ab161",
+              "target_id": "resource_e5948070",
+              "relation": "AFFECTS",
+              "quote": "A clear indicator is pressed to expand the summary The expansion is smooth and all text is revealed",
+              "start": 0,
+              "end": 99,
+              "total_chars": 99,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_895038c167e64ee9",
+              "record_id": "KEP-5760",
+              "provenance_kind": "extracted",
+              "source_id": "decision_889ab161",
+              "target_id": "resource_aa33f10e",
+              "relation": "AFFECTS",
+              "quote": "Bug :Prod: UI: Buggy narrative interface",
+              "start": 0,
+              "end": 40,
+              "total_chars": 40,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_9afafb46664d6701",
+              "record_id": "KEP-5760",
+              "provenance_kind": "extracted",
+              "source_id": "decision_889ab161",
+              "target_id": "event_1048b1e7",
+              "relation": "REFERENCES",
+              "quote": "As part of pruning, I didn't know the narrative summary would be impacted.",
+              "start": 0,
+              "end": 74,
+              "total_chars": 74,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_e6ea3ba8358a1e20",
+              "record_id": "KEP-5760",
+              "provenance_kind": "extracted",
+              "source_id": "decision_889ab161",
+              "target_id": "outcome_413974d0",
+              "relation": "PRODUCES",
+              "quote": "I have made all the fixes and merging to staging.",
+              "start": 0,
+              "end": 49,
+              "total_chars": 49,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_cdb5ddb36299f035",
+              "record_id": "Community_926",
+              "provenance_kind": "extracted",
+              "source_id": "decision_26aef6f2",
+              "target_id": "decision_4657371b",
+              "relation": "DEPENDS_ON",
+              "quote": "parent_key: KEP-6920 for KEP-7076; parent_key: KEP-3472 for KEP-7077; KEP-3472 is the original story with KEP-3624 as sub-task",
+              "start": 0,
+              "end": 126,
+              "total_chars": 126,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_dfc8cf947642369a",
+              "record_id": "Community_1489",
+              "provenance_kind": "extracted",
+              "source_id": "decision_877727f5",
+              "target_id": "decision_83ec2ecf",
+              "relation": "DEPENDS_ON",
+              "quote": "parent_key: KEP-6311 (for KEP-6516); is_root: true (for KEP-6522)",
+              "start": 0,
+              "end": 65,
+              "total_chars": 65,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_7416d2fc71e46d58",
+              "record_id": "Community_1338",
+              "provenance_kind": "extracted",
+              "source_id": "decision_6f6f525d",
+              "target_id": "decision_53d8967c",
+              "relation": "DECOMPOSES_TO",
+              "quote": "KEP-2939 is_root: true; KEP-2933 is_root: false",
+              "start": 0,
+              "end": 47,
+              "total_chars": 47,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_896122b37a549605",
+              "record_id": "Community_1574",
+              "provenance_kind": "extracted",
+              "source_id": "decision_b3e34964",
+              "target_id": "decision_b8824c7b",
+              "relation": "DEPENDS_ON",
+              "quote": "parent_key: KEP-6710 (epic) and parent_key: KEP-6311 (epic) indicate hierarchical relationship; QA ticket KEP-6486 depends on completion of development ticket KEP-3599",
+              "start": 0,
+              "end": 167,
+              "total_chars": 167,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_01b7ef484970869e",
+              "record_id": "Community_58",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d2df7396",
+              "target_id": "decision_2500d821",
+              "relation": "DECOMPOSES_TO",
+              "quote": "epic_link_key: KEP-6311 | parent_key: KEP-6311",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_021e1e631338c835",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "decision_cbb065b3",
+              "target_id": "decision_cfe6a820",
+              "relation": "DECOMPOSES_TO",
+              "quote": "epic_link_key: KEP-6216 | parent_key: KEP-6216",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0348daaa91217689",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "decision_cbb065b3",
+              "target_id": "decision_ce5aa830",
+              "relation": "DECOMPOSES_TO",
+              "quote": "epic_link_key: KEP-6216 | parent_key: KEP-6216",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_097c4fb17f2c1799",
+              "record_id": "KEP-6902",
+              "provenance_kind": "extracted",
+              "source_id": "decision_64706bdc",
+              "target_id": "decision_ab100cab",
+              "relation": "DEPENDS_ON",
+              "quote": "KEP-6902 is the in-chat progress + report after Submit on KEP-6901.",
+              "start": 0,
+              "end": 67,
+              "total_chars": 67,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1999583d0b49daeb",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "decision_cbb065b3",
+              "target_id": "decision_78c94628",
+              "relation": "DECOMPOSES_TO",
+              "quote": "epic_link_key: KEP-6216 | parent_key: KEP-6216",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1f9cde965b9b5a5a",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "decision_cbb065b3",
+              "target_id": "decision_1368c590",
+              "relation": "DECOMPOSES_TO",
+              "quote": "epic_link_key: KEP-6216 | parent_key: KEP-6216",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_21f3b884f7db8510",
+              "record_id": "Community_58",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d2df7396",
+              "target_id": "decision_2ace2477",
+              "relation": "DECOMPOSES_TO",
+              "quote": "epic_link_key: KEP-6311 | parent_key: KEP-6311",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_22bad79397ea1f57",
+              "record_id": "Community_58",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d2df7396",
+              "target_id": "decision_e5085a49",
+              "relation": "DECOMPOSES_TO",
+              "quote": "epic_link_key: KEP-6311 | parent_key: KEP-6311",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_28e138aec1ee4633",
+              "record_id": "Community_58",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d2df7396",
+              "target_id": "decision_b4a6014f",
+              "relation": "DECOMPOSES_TO",
+              "quote": "epic_link_key: KEP-6311 | parent_key: KEP-6311",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_3173fc2323ceb117",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "decision_cbb065b3",
+              "target_id": "decision_70dd5e49",
+              "relation": "DECOMPOSES_TO",
+              "quote": "epic_link_key: KEP-6216 | parent_key: KEP-6216",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4309c1d585bbd573",
+              "record_id": "Community_58",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d2df7396",
+              "target_id": "decision_74e60040",
+              "relation": "DECOMPOSES_TO",
+              "quote": "epic_link_key: KEP-6311 | parent_key: KEP-6311",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_55756b5c76150a5d",
+              "record_id": "Community_1173",
+              "provenance_kind": "extracted",
+              "source_id": "decision_b09b0937",
+              "target_id": "decision_4315be57",
+              "relation": "DEPENDS_ON",
+              "quote": "parent_key: KEP-6348 | epic_link_key: KEP-6348",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 320,
+          "next_offset": 20
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.0063856659980956465,
+      "error": false,
+      "new_ids": [
+        "ev_01b7ef484970869e",
+        "ev_021e1e631338c835",
+        "ev_0348daaa91217689",
+        "ev_097c4fb17f2c1799",
+        "ev_1999583d0b49daeb",
+        "ev_1f9cde965b9b5a5a",
+        "ev_21f3b884f7db8510",
+        "ev_22bad79397ea1f57",
+        "ev_28e138aec1ee4633",
+        "ev_3173fc2323ceb117",
+        "ev_386bd5ae94070a77",
+        "ev_4309c1d585bbd573",
+        "ev_55756b5c76150a5d",
+        "ev_7416d2fc71e46d58",
+        "ev_895038c167e64ee9",
+        "ev_896122b37a549605",
+        "ev_cdb5ddb36299f035",
+        "ev_dfc8cf947642369a",
+        "ev_e6ea3ba8358a1e20",
+        "span:ev_01b7ef484970869e:0:46",
+        "span:ev_021e1e631338c835:0:46",
+        "span:ev_0348daaa91217689:0:46",
+        "span:ev_097c4fb17f2c1799:0:67",
+        "span:ev_1999583d0b49daeb:0:46",
+        "span:ev_1f9cde965b9b5a5a:0:46",
+        "span:ev_21f3b884f7db8510:0:46",
+        "span:ev_22bad79397ea1f57:0:46",
+        "span:ev_28e138aec1ee4633:0:46",
+        "span:ev_3173fc2323ceb117:0:46",
+        "span:ev_386bd5ae94070a77:0:99",
+        "span:ev_4309c1d585bbd573:0:46",
+        "span:ev_55756b5c76150a5d:0:46",
+        "span:ev_7416d2fc71e46d58:0:47",
+        "span:ev_895038c167e64ee9:0:40",
+        "span:ev_896122b37a549605:0:167",
+        "span:ev_cdb5ddb36299f035:0:126",
+        "span:ev_dfc8cf947642369a:0:65",
+        "span:ev_e6ea3ba8358a1e20:0:49"
+      ]
+    },
+    {
+      "sequence": 12,
+      "kind": "context",
+      "model_call": 3,
+      "serialized_chars": 23761,
+      "message_count": 6,
+      "pinned_evidence_ids": [
+        "ev_9afafb46664d6701"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_01b7ef484970869e",
+        "ev_021e1e631338c835",
+        "ev_0348daaa91217689",
+        "ev_04fcaa0002d7d7b3",
+        "ev_097c4fb17f2c1799",
+        "ev_1999583d0b49daeb",
+        "ev_1f9cde965b9b5a5a",
+        "ev_21f3b884f7db8510",
+        "ev_22bad79397ea1f57",
+        "ev_28e138aec1ee4633",
+        "ev_3173fc2323ceb117",
+        "ev_386bd5ae94070a77",
+        "ev_4309c1d585bbd573",
+        "ev_50498cada512ae70",
+        "ev_55541502d6537ae9",
+        "ev_55756b5c76150a5d",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_7416d2fc71e46d58",
+        "ev_895038c167e64ee9",
+        "ev_896122b37a549605",
+        "ev_95c03985870188db",
+        "ev_9afafb46664d6701",
+        "ev_b53b1eef8255dfaf",
+        "ev_bf1bbd5f170a12a9",
+        "ev_cdb5ddb36299f035",
+        "ev_d071431bf98c79f3",
+        "ev_dfc8cf947642369a",
+        "ev_e6ea3ba8358a1e20",
+        "ev_f19d74f6ba596733"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a3a5c044d6e43aec",
+        "action_2_request_ff3a337fc7deda94"
+      ]
+    },
+    {
+      "sequence": 13,
+      "kind": "model_started",
+      "call_number": 3,
+      "status": "pending",
+      "serialized_chars": 23761,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 14,
+      "kind": "model",
+      "call_number": 3,
+      "status": "completed",
+      "serialized_chars": 23761,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_83e60cca1c9d187e",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"pruned\",\"mode\":\"records\",\"limit\":30}",
+        "purpose": "Find original reports of pruning behavior and subsequent actions.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_9afafb46664d6701",
+          "ev_e6ea3ba8358a1e20"
+        ]
+      },
+      "latency_seconds": 4.454750957986107,
+      "provider": {
+        "request_id": "request_83e60cca1c9d187e",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__graph_only/cache/codex/request_83e60cca1c9d187e.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 9023,
+          "output_tokens": 136,
+          "reasoning_output_tokens": 52,
+          "total_tokens": 9159
+        },
+        "thread_id": "01a114b4-14d5-7312-abc0-84267f82ac75",
+        "turn_id": "01a114b4-14f7-7d40-a8fe-3b48add8a852",
+        "status": "completed",
+        "latency_seconds": 4.4351
+      }
+    },
+    {
+      "sequence": 15,
+      "kind": "tool_started",
+      "call_id": "action_3_request_83e60cca1c9d187e",
+      "name": "search_graph",
+      "arguments": {
+        "query": "pruned",
+        "mode": "records",
+        "limit": 30
+      }
+    },
+    {
+      "sequence": 16,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "pruned",
+        "mode": "records",
+        "limit": 30
+      },
+      "call_id": "action_3_request_83e60cca1c9d187e",
+      "result": {
+        "error": "ValueError",
+        "message": "offset must be nonnegative; limit must be 1..20"
+      },
+      "latency_seconds": 0.006892000004881993,
+      "error": true,
+      "new_ids": []
+    },
+    {
+      "sequence": 17,
+      "kind": "context",
+      "model_call": 4,
+      "serialized_chars": 24198,
+      "message_count": 8,
+      "pinned_evidence_ids": [
+        "ev_9afafb46664d6701",
+        "ev_e6ea3ba8358a1e20"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_01b7ef484970869e",
+        "ev_021e1e631338c835",
+        "ev_0348daaa91217689",
+        "ev_04fcaa0002d7d7b3",
+        "ev_097c4fb17f2c1799",
+        "ev_1999583d0b49daeb",
+        "ev_1f9cde965b9b5a5a",
+        "ev_21f3b884f7db8510",
+        "ev_22bad79397ea1f57",
+        "ev_28e138aec1ee4633",
+        "ev_3173fc2323ceb117",
+        "ev_386bd5ae94070a77",
+        "ev_4309c1d585bbd573",
+        "ev_50498cada512ae70",
+        "ev_55541502d6537ae9",
+        "ev_55756b5c76150a5d",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_7416d2fc71e46d58",
+        "ev_895038c167e64ee9",
+        "ev_896122b37a549605",
+        "ev_95c03985870188db",
+        "ev_9afafb46664d6701",
+        "ev_b53b1eef8255dfaf",
+        "ev_bf1bbd5f170a12a9",
+        "ev_cdb5ddb36299f035",
+        "ev_d071431bf98c79f3",
+        "ev_dfc8cf947642369a",
+        "ev_e6ea3ba8358a1e20",
+        "ev_f19d74f6ba596733"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a3a5c044d6e43aec",
+        "action_2_request_ff3a337fc7deda94",
+        "action_3_request_83e60cca1c9d187e"
+      ]
+    },
+    {
+      "sequence": 18,
+      "kind": "model_started",
+      "call_number": 4,
+      "status": "pending",
+      "serialized_chars": 24198,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 19,
+      "kind": "invalid_selection",
+      "item_id": "ev_386bd5ae94070a77",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 20,
+      "kind": "invalid_selection",
+      "item_id": "ev_cdb5ddb36299f035",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 21,
+      "kind": "model",
+      "call_number": 4,
+      "status": "completed",
+      "serialized_chars": 24198,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_8e81d4f54f9c40e8",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"pruned\",\"mode\":\"records\",\"limit\":20}",
+        "purpose": "Find original reports of pruning behavior, follow-up actions, and dates or sequencing evidence.",
+        "discarded_items": [
+          {
+            "item_id": "ev_386bd5ae94070a77",
+            "reason": "Expected UI behavior, not evidence of pruning execution."
+          },
+          {
+            "item_id": "ev_cdb5ddb36299f035",
+            "reason": "Unrelated ticket hierarchy."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_9afafb46664d6701",
+          "ev_e6ea3ba8358a1e20",
+          "ev_895038c167e64ee9"
+        ]
+      },
+      "latency_seconds": 5.96325841700309,
+      "provider": {
+        "request_id": "request_8e81d4f54f9c40e8",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__graph_only/cache/codex/request_8e81d4f54f9c40e8.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 9165,
+          "output_tokens": 193,
+          "reasoning_output_tokens": 42,
+          "total_tokens": 9358
+        },
+        "thread_id": "01a114b4-2647-72f3-a566-c55c24e57e31",
+        "turn_id": "01a114b4-2668-7920-9e7d-45c1f706fcc2",
+        "status": "completed",
+        "latency_seconds": 5.9442
+      }
+    },
+    {
+      "sequence": 22,
+      "kind": "tool_started",
+      "call_id": "action_4_request_8e81d4f54f9c40e8",
+      "name": "search_graph",
+      "arguments": {
+        "query": "pruned",
+        "mode": "records",
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 23,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "pruned",
+        "mode": "records",
+        "limit": 20
+      },
+      "call_id": "action_4_request_8e81d4f54f9c40e8",
+      "result": {
+        "expanded_query": "pruned",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_18d4325b245df765",
+              "record_id": "KEP-6419",
+              "provenance_kind": "extracted",
+              "source_id": "decision_245b960c",
+              "target_id": "event_ba6c25af",
+              "relation": "REFERENCES",
+              "quote": "Any newly pruned narrative correctly shows the rule.",
+              "start": 0,
+              "end": 52,
+              "total_chars": 52,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f13c9d72349b317f",
+              "record_id": "KEP-6419",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ee95ece4",
+              "target_id": "event_ba6c25af",
+              "relation": "REFERENCES",
+              "quote": "Any newly pruned narrative correctly shows the rule.",
+              "start": 0,
+              "end": 52,
+              "total_chars": 52,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0b13bd47eb112f9f",
+              "record_id": "KEP-5872",
+              "provenance_kind": "extracted",
+              "source_id": "decision_702621af",
+              "target_id": "resource_77ec1c61",
+              "relation": "AFFECTS",
+              "quote": "pruned narratives are not reflected in the \"Hidden Narratives\" section in real-time",
+              "start": 0,
+              "end": 83,
+              "total_chars": 83,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_c16cd8a81b99410d",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "decision_702621af",
+              "target_id": "rule_1be514d7",
+              "relation": "REFERENCES",
+              "quote": "Pruned narratives must appear in Hidden Narratives section in real-time",
+              "start": 0,
+              "end": 71,
+              "total_chars": 71,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_cf2741770e934a49",
+              "record_id": "KEP-6460",
+              "provenance_kind": "extracted",
+              "source_id": "decision_12df2abd",
+              "target_id": "resource_ec6b5f1e",
+              "relation": "AFFECTS",
+              "quote": "When Pruning a Narrative, Non-Pruned Narratives Get Duplicated in the Hidden Tab",
+              "start": 0,
+              "end": 80,
+              "total_chars": 80,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ef111a7caae213f0",
+              "record_id": "KEP-6460",
+              "provenance_kind": "extracted",
+              "source_id": "decision_8997113f",
+              "target_id": "resource_ec6b5f1e",
+              "relation": "AFFECTS",
+              "quote": "When Pruning a Narrative, Non-Pruned Narratives Get Duplicated in the Hidden Tab",
+              "start": 0,
+              "end": 80,
+              "total_chars": 80,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_e949045bf5cff4a7",
+              "record_id": "KEP-5870",
+              "provenance_kind": "extracted",
+              "source_id": "decision_0d8eafd0",
+              "target_id": "resource_77ec1c61",
+              "relation": "AFFECTS",
+              "quote": "there is currently no \"Hidden Narratives\" or similar section available to view or manage pruned narratives",
+              "start": 0,
+              "end": 106,
+              "total_chars": 106,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_df451649650f6041",
+              "record_id": "KEP-6419",
+              "provenance_kind": "extracted",
+              "source_id": "decision_245b960c",
+              "target_id": "event_64394a17",
+              "relation": "REFERENCES",
+              "quote": "Current behavior: When I add a new pruning rule, the narrative that gets pruned goes to the hidden tab and immediately shows a hover indicating which rule was used. In other words, if I hover over the speech bubble with the three dots of a pruned narrative, it correctly displays the rule that pruned the narrative. However, if I return the next day, the hover no longer shows the pruning rule. Instead, it displays the title of the narrative.",
+              "start": 0,
+              "end": 443,
+              "total_chars": 443,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 8,
+          "next_offset": null
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.00572179100709036,
+      "error": false,
+      "new_ids": [
+        "ev_0b13bd47eb112f9f",
+        "ev_18d4325b245df765",
+        "ev_c16cd8a81b99410d",
+        "ev_cf2741770e934a49",
+        "ev_df451649650f6041",
+        "ev_e949045bf5cff4a7",
+        "ev_ef111a7caae213f0",
+        "ev_f13c9d72349b317f",
+        "span:ev_0b13bd47eb112f9f:0:83",
+        "span:ev_18d4325b245df765:0:52",
+        "span:ev_c16cd8a81b99410d:0:71",
+        "span:ev_cf2741770e934a49:0:80",
+        "span:ev_df451649650f6041:0:443",
+        "span:ev_e949045bf5cff4a7:0:106",
+        "span:ev_ef111a7caae213f0:0:80",
+        "span:ev_f13c9d72349b317f:0:52"
+      ]
+    },
+    {
+      "sequence": 24,
+      "kind": "context",
+      "model_call": 5,
+      "serialized_chars": 29093,
+      "message_count": 10,
+      "pinned_evidence_ids": [
+        "ev_895038c167e64ee9",
+        "ev_9afafb46664d6701",
+        "ev_e6ea3ba8358a1e20"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_01b7ef484970869e",
+        "ev_021e1e631338c835",
+        "ev_0348daaa91217689",
+        "ev_04fcaa0002d7d7b3",
+        "ev_097c4fb17f2c1799",
+        "ev_0b13bd47eb112f9f",
+        "ev_18d4325b245df765",
+        "ev_1999583d0b49daeb",
+        "ev_1f9cde965b9b5a5a",
+        "ev_21f3b884f7db8510",
+        "ev_22bad79397ea1f57",
+        "ev_28e138aec1ee4633",
+        "ev_3173fc2323ceb117",
+        "ev_386bd5ae94070a77",
+        "ev_4309c1d585bbd573",
+        "ev_50498cada512ae70",
+        "ev_55541502d6537ae9",
+        "ev_55756b5c76150a5d",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_7416d2fc71e46d58",
+        "ev_895038c167e64ee9",
+        "ev_896122b37a549605",
+        "ev_95c03985870188db",
+        "ev_9afafb46664d6701",
+        "ev_b53b1eef8255dfaf",
+        "ev_bf1bbd5f170a12a9",
+        "ev_c16cd8a81b99410d",
+        "ev_cdb5ddb36299f035",
+        "ev_cf2741770e934a49",
+        "ev_d071431bf98c79f3",
+        "ev_df451649650f6041",
+        "ev_dfc8cf947642369a",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7",
+        "ev_ef111a7caae213f0",
+        "ev_f13c9d72349b317f",
+        "ev_f19d74f6ba596733"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a3a5c044d6e43aec",
+        "action_2_request_ff3a337fc7deda94",
+        "action_3_request_83e60cca1c9d187e",
+        "action_4_request_8e81d4f54f9c40e8"
+      ]
+    },
+    {
+      "sequence": 25,
+      "kind": "model_started",
+      "call_number": 5,
+      "status": "pending",
+      "serialized_chars": 29093,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 26,
+      "kind": "model",
+      "call_number": 5,
+      "status": "completed",
+      "serialized_chars": 29093,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_4b6d88c054962643",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"pruning\",\"mode\":\"records\",\"offset\":10,\"limit\":20}",
+        "purpose": "Find additional original pruning reports and follow-up actions.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_0b13bd47eb112f9f",
+          "ev_cf2741770e934a49",
+          "ev_e949045bf5cff4a7",
+          "ev_e6ea3ba8358a1e20"
+        ]
+      },
+      "latency_seconds": 5.3309482500189915,
+      "provider": {
+        "request_id": "request_4b6d88c054962643",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__graph_only/cache/codex/request_4b6d88c054962643.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 10405,
+          "output_tokens": 150,
+          "reasoning_output_tokens": 30,
+          "total_tokens": 10555
+        },
+        "thread_id": "01a114b4-3d9c-7c60-957b-6c5ad0bcbcef",
+        "turn_id": "01a114b4-3dbc-7b73-ab15-ce41102defd6",
+        "status": "completed",
+        "latency_seconds": 5.3108
+      }
+    },
+    {
+      "sequence": 27,
+      "kind": "tool_started",
+      "call_id": "action_5_request_4b6d88c054962643",
+      "name": "search_graph",
+      "arguments": {
+        "query": "pruning",
+        "mode": "records",
+        "offset": 10,
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 28,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "pruning",
+        "mode": "records",
+        "offset": 10,
+        "limit": 20
+      },
+      "call_id": "action_5_request_4b6d88c054962643",
+      "result": {
+        "expanded_query": "pruning",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_0efca8b5653af727",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "event_c37d996b",
+              "target_id": "decision_8b6603a6",
+              "relation": "CAUSES",
+              "quote": "Pruning rules sent from backend service for narrative generation runs",
+              "start": 0,
+              "end": 69,
+              "total_chars": 69,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_152b218ec13d1455",
+              "record_id": "KEP-2302",
+              "provenance_kind": "extracted",
+              "source_id": "decision_cfe6a820",
+              "target_id": "resource_e7aa3bd4",
+              "relation": "AFFECTS",
+              "quote": "Narrative Pruning TRD finalization and coming up with WBS estimates",
+              "start": 0,
+              "end": 67,
+              "total_chars": 67,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_7e4519c3675b92f7",
+              "record_id": "KEP-5389",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7c506018",
+              "target_id": "resource_2e861808",
+              "relation": "AFFECTS",
+              "quote": "When a pruning rule is deleted, the UI does not refresh automatically",
+              "start": 0,
+              "end": 69,
+              "total_chars": 69,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_87879ee4d1969114",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d9eaa008",
+              "target_id": "rule_7d0566eb",
+              "relation": "REFERENCES",
+              "quote": "Pruning should only be applicable to Narratives, not Comment Conversations",
+              "start": 0,
+              "end": 74,
+              "total_chars": 74,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_9972d78a7ed96453",
+              "record_id": "KEP-5757",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d9eaa008",
+              "target_id": "resource_ec6b5f1e",
+              "relation": "AFFECTS",
+              "quote": "pruning should only be applicable to Narratives (formerly Micro Narratives)",
+              "start": 0,
+              "end": 75,
+              "total_chars": 75,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_daf242ee923d0264",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "event_6b190898",
+              "target_id": "decision_b7aea09f",
+              "relation": "CAUSES",
+              "quote": "Code changes completed for narrative pruning input data creation",
+              "start": 0,
+              "end": 64,
+              "total_chars": 64,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_e212576048acabe6",
+              "record_id": "KEP-5757",
+              "provenance_kind": "extracted",
+              "source_id": "decision_1219a872",
+              "target_id": "resource_ec6b5f1e",
+              "relation": "AFFECTS",
+              "quote": "pruning should only be applicable to Narratives (formerly Micro Narratives)",
+              "start": 0,
+              "end": 75,
+              "total_chars": 75,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_e39d1c58cf43cf8a",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "decision_1219a872",
+              "target_id": "rule_7d0566eb",
+              "relation": "REFERENCES",
+              "quote": "Pruning should only be applicable to Narratives, not Comment Conversations",
+              "start": 0,
+              "end": 74,
+              "total_chars": 74,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ea737c5e56f37076",
+              "record_id": "KEP-2302",
+              "provenance_kind": "extracted",
+              "source_id": "decision_cfe6a820",
+              "target_id": "decision_16d14c8f",
+              "relation": "DEPENDS_ON",
+              "quote": "Narrative Pruning TRD finalization and coming up with WBS estimates",
+              "start": 0,
+              "end": 67,
+              "total_chars": 67,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ee7811cbab74e9c6",
+              "record_id": "KEP-6216",
+              "provenance_kind": "extracted",
+              "source_id": "decision_cbb065b3",
+              "target_id": "resource_ec6b5f1e",
+              "relation": "AFFECTS",
+              "quote": "Continuous Narrative Runs with 30-Day Window (Phase 2: Pruning)",
+              "start": 0,
+              "end": 63,
+              "total_chars": 63,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_41c6b4831c6e7549",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_6bd0ff9a",
+              "target_id": "decision_3d4607f7",
+              "relation": "DECOMPOSES_TO",
+              "quote": "decision_6bd0ff9a (operational, Mar 9) decomposes to decision_3d4607f7 (operational, Mar 10). The parent fixes double-spaced text in narrative pruning rules input; the child QA retests text formatting in pruning pop-off. Both affect the Narrative pruning rules input resource and share the initiative. The child operationalizes a related QA retest task for the broader pruning rules fix work. Shared target and shared initiative confirm decomposition.",
+              "start": 0,
+              "end": 451,
+              "total_chars": 451,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Mar 9",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_41c6b4831c6e7549",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "Mar 10",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_41c6b4831c6e7549",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_b8aa4764de89597f",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_6bd0ff9a",
+              "target_id": "decision_90c5217c",
+              "relation": "DECOMPOSES_TO",
+              "quote": "decision_6bd0ff9a (operational, Mar 9) decomposes to decision_90c5217c (operational, Mar 9). The parent fixes double-spaced text in narrative pruning rules input; the child fixes text formatting in pruning pop-off with em dash. Both affect the Narrative pruning rules input resource and share the initiative. The child operationalizes a related formatting fix that is part of the broader narrative pruning rules work. Shared target and shared initiative confirm decomposition.",
+              "start": 0,
+              "end": 476,
+              "total_chars": 476,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Mar 9",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_b8aa4764de89597f",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "Mar 9",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_b8aa4764de89597f",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0038d1e815d621c1",
+              "record_id": "KEP-5480",
+              "provenance_kind": "extracted",
+              "source_id": "decision_63cb9ccf",
+              "target_id": "resource_2e861808",
+              "relation": "AFFECTS",
+              "quote": "Retest: Deleted Pruning Rule Does Not Sync Immediately on UI",
+              "start": 0,
+              "end": 60,
+              "total_chars": 60,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1891e24034dc3a2f",
+              "record_id": "KEP-4238",
+              "provenance_kind": "extracted",
+              "source_id": "decision_a4a1b47c",
+              "target_id": "outcome_40d8587a",
+              "relation": "PRODUCES",
+              "quote": "API integration for Narrative Pruning has been completed. The changes have been deployed to the Dev environment",
+              "start": 0,
+              "end": 111,
+              "total_chars": 111,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_9acb82c64c1792e3",
+              "record_id": "KEP-4019",
+              "provenance_kind": "extracted",
+              "source_id": "decision_983f94bd",
+              "target_id": "resource_afc7a5bf",
+              "relation": "AFFECTS",
+              "quote": "Implemented Feature to reflect narrative pruning rule deletion in topic narratives",
+              "start": 0,
+              "end": 82,
+              "total_chars": 82,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_a32b77a8b393b409",
+              "record_id": "KEP-5480",
+              "provenance_kind": "extracted",
+              "source_id": "decision_63cb9ccf",
+              "target_id": "decision_7c506018",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "Retest: Deleted Pruning Rule Does Not Sync Immediately on UI",
+              "start": 0,
+              "end": 60,
+              "total_chars": 60,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_cf2741770e934a49",
+              "record_id": "KEP-6460",
+              "provenance_kind": "extracted",
+              "source_id": "decision_12df2abd",
+              "target_id": "resource_ec6b5f1e",
+              "relation": "AFFECTS",
+              "quote": "When Pruning a Narrative, Non-Pruned Narratives Get Duplicated in the Hidden Tab",
+              "start": 0,
+              "end": 80,
+              "total_chars": 80,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ef111a7caae213f0",
+              "record_id": "KEP-6460",
+              "provenance_kind": "extracted",
+              "source_id": "decision_8997113f",
+              "target_id": "resource_ec6b5f1e",
+              "relation": "AFFECTS",
+              "quote": "When Pruning a Narrative, Non-Pruned Narratives Get Duplicated in the Hidden Tab",
+              "start": 0,
+              "end": 80,
+              "total_chars": 80,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_fa9d02a4fd1be4da",
+              "record_id": "KEP-4019",
+              "provenance_kind": "extracted",
+              "source_id": "decision_983f94bd",
+              "target_id": "resource_a0bea208",
+              "relation": "AFFECTS",
+              "quote": "Implemented Feature to reflect narrative pruning rule deletion in topic narratives",
+              "start": 0,
+              "end": 82,
+              "total_chars": 82,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4ed85e54eaab7297",
+              "record_id": "KEP-4050",
+              "provenance_kind": "extracted",
+              "source_id": "decision_890415ba",
+              "target_id": "decision_983f94bd",
+              "relation": "DEPENDS_ON",
+              "quote": "Retest - Deleted Pruning Rule should Restore Narrative to Main Narrative Tab",
+              "start": 0,
+              "end": 76,
+              "total_chars": 76,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 80,
+          "next_offset": 30
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.007316458009881899,
+      "error": false,
+      "new_ids": [
+        "ev_0038d1e815d621c1",
+        "ev_0efca8b5653af727",
+        "ev_152b218ec13d1455",
+        "ev_1891e24034dc3a2f",
+        "ev_41c6b4831c6e7549",
+        "ev_4ed85e54eaab7297",
+        "ev_7e4519c3675b92f7",
+        "ev_87879ee4d1969114",
+        "ev_9972d78a7ed96453",
+        "ev_9acb82c64c1792e3",
+        "ev_a32b77a8b393b409",
+        "ev_b8aa4764de89597f",
+        "ev_daf242ee923d0264",
+        "ev_e212576048acabe6",
+        "ev_e39d1c58cf43cf8a",
+        "ev_ea737c5e56f37076",
+        "ev_ee7811cbab74e9c6",
+        "ev_fa9d02a4fd1be4da",
+        "span:ev_0038d1e815d621c1:0:60",
+        "span:ev_0efca8b5653af727:0:69",
+        "span:ev_152b218ec13d1455:0:67",
+        "span:ev_1891e24034dc3a2f:0:111",
+        "span:ev_41c6b4831c6e7549:0:451",
+        "span:ev_4ed85e54eaab7297:0:76",
+        "span:ev_7e4519c3675b92f7:0:69",
+        "span:ev_87879ee4d1969114:0:74",
+        "span:ev_9972d78a7ed96453:0:75",
+        "span:ev_9acb82c64c1792e3:0:82",
+        "span:ev_a32b77a8b393b409:0:60",
+        "span:ev_b8aa4764de89597f:0:476",
+        "span:ev_daf242ee923d0264:0:64",
+        "span:ev_e212576048acabe6:0:75",
+        "span:ev_e39d1c58cf43cf8a:0:74",
+        "span:ev_ea737c5e56f37076:0:67",
+        "span:ev_ee7811cbab74e9c6:0:63",
+        "span:ev_fa9d02a4fd1be4da:0:82"
+      ]
+    },
+    {
+      "sequence": 29,
+      "kind": "context",
+      "model_call": 6,
+      "serialized_chars": 41248,
+      "message_count": 12,
+      "pinned_evidence_ids": [
+        "ev_0b13bd47eb112f9f",
+        "ev_895038c167e64ee9",
+        "ev_9afafb46664d6701",
+        "ev_cf2741770e934a49",
+        "ev_df451649650f6041",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_0038d1e815d621c1",
+        "ev_01b7ef484970869e",
+        "ev_021e1e631338c835",
+        "ev_0348daaa91217689",
+        "ev_04fcaa0002d7d7b3",
+        "ev_097c4fb17f2c1799",
+        "ev_0b13bd47eb112f9f",
+        "ev_0efca8b5653af727",
+        "ev_152b218ec13d1455",
+        "ev_1891e24034dc3a2f",
+        "ev_18d4325b245df765",
+        "ev_1999583d0b49daeb",
+        "ev_1f9cde965b9b5a5a",
+        "ev_21f3b884f7db8510",
+        "ev_22bad79397ea1f57",
+        "ev_28e138aec1ee4633",
+        "ev_3173fc2323ceb117",
+        "ev_386bd5ae94070a77",
+        "ev_41c6b4831c6e7549",
+        "ev_4309c1d585bbd573",
+        "ev_4ed85e54eaab7297",
+        "ev_50498cada512ae70",
+        "ev_55541502d6537ae9",
+        "ev_55756b5c76150a5d",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_7416d2fc71e46d58",
+        "ev_7e4519c3675b92f7",
+        "ev_87879ee4d1969114",
+        "ev_895038c167e64ee9",
+        "ev_896122b37a549605",
+        "ev_95c03985870188db",
+        "ev_9972d78a7ed96453",
+        "ev_9acb82c64c1792e3",
+        "ev_9afafb46664d6701",
+        "ev_a32b77a8b393b409",
+        "ev_b53b1eef8255dfaf",
+        "ev_b8aa4764de89597f",
+        "ev_bf1bbd5f170a12a9",
+        "ev_c16cd8a81b99410d",
+        "ev_cdb5ddb36299f035",
+        "ev_cf2741770e934a49",
+        "ev_d071431bf98c79f3",
+        "ev_daf242ee923d0264",
+        "ev_df451649650f6041",
+        "ev_dfc8cf947642369a",
+        "ev_e212576048acabe6",
+        "ev_e39d1c58cf43cf8a",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7",
+        "ev_ea737c5e56f37076",
+        "ev_ee7811cbab74e9c6",
+        "ev_ef111a7caae213f0",
+        "ev_f13c9d72349b317f",
+        "ev_f19d74f6ba596733",
+        "ev_fa9d02a4fd1be4da"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a3a5c044d6e43aec",
+        "action_2_request_ff3a337fc7deda94",
+        "action_3_request_83e60cca1c9d187e",
+        "action_4_request_8e81d4f54f9c40e8",
+        "action_5_request_4b6d88c054962643"
+      ]
+    },
+    {
+      "sequence": 30,
+      "kind": "model_started",
+      "call_number": 6,
+      "status": "pending",
+      "serialized_chars": 41248,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 31,
+      "kind": "model",
+      "call_number": 6,
+      "status": "completed",
+      "serialized_chars": 41248,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_ac5a190297f54498",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"pruning\",\"mode\":\"records\",\"offset\":30,\"limit\":20}",
+        "purpose": "Find further original pruning reports and follow-up records to assess their sequence.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_0b13bd47eb112f9f",
+          "ev_cf2741770e934a49",
+          "ev_7e4519c3675b92f7",
+          "ev_0038d1e815d621c1",
+          "ev_4ed85e54eaab7297",
+          "ev_e6ea3ba8358a1e20"
+        ]
+      },
+      "latency_seconds": 5.467790499998955,
+      "provider": {
+        "request_id": "request_ac5a190297f54498",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__graph_only/cache/codex/request_ac5a190297f54498.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 13446,
+          "output_tokens": 192,
+          "reasoning_output_tokens": 40,
+          "total_tokens": 13638
+        },
+        "thread_id": "01a114b4-527c-7702-a2cb-c53c6f0ce606",
+        "turn_id": "01a114b4-529c-7d20-a18f-fe29db1c32d7",
+        "status": "completed",
+        "latency_seconds": 5.4488
+      }
+    },
+    {
+      "sequence": 32,
+      "kind": "tool_started",
+      "call_id": "action_6_request_ac5a190297f54498",
+      "name": "search_graph",
+      "arguments": {
+        "query": "pruning",
+        "mode": "records",
+        "offset": 30,
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 33,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "pruning",
+        "mode": "records",
+        "offset": 30,
+        "limit": 20
+      },
+      "call_id": "action_6_request_ac5a190297f54498",
+      "result": {
+        "expanded_query": "pruning",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_577bb22acb2f71ae",
+              "record_id": "KEP-4050",
+              "provenance_kind": "extracted",
+              "source_id": "decision_890415ba",
+              "target_id": "resource_afc7a5bf",
+              "relation": "AFFECTS",
+              "quote": "Retest - Deleted Pruning Rule should Restore Narrative to Main Narrative Tab",
+              "start": 0,
+              "end": 76,
+              "total_chars": 76,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_82dffd65d16997af",
+              "record_id": "KEP-6431",
+              "provenance_kind": "extracted",
+              "source_id": "decision_245b960c",
+              "target_id": "resource_76ee7139",
+              "relation": "AFFECTS",
+              "quote": "RETEST - Pruning Rule Hover Text Shows the Wrong Text The Next Day",
+              "start": 0,
+              "end": 66,
+              "total_chars": 66,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_bec8c98e350b5bab",
+              "record_id": "KEP-5737",
+              "provenance_kind": "extracted",
+              "source_id": "decision_35c1ecfe",
+              "target_id": "resource_2e861808",
+              "relation": "AFFECTS",
+              "quote": "Retesting - QA: Deleted Pruning Rule Does Not Sync Immediately on UI",
+              "start": 0,
+              "end": 68,
+              "total_chars": 68,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_c603df7dbfb1d1d3",
+              "record_id": "KEP-5737",
+              "provenance_kind": "extracted",
+              "source_id": "decision_35c1ecfe",
+              "target_id": "decision_7c506018",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "Retesting - QA: Deleted Pruning Rule Does Not Sync Immediately on UI",
+              "start": 0,
+              "end": 68,
+              "total_chars": 68,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0a9ab2f340184cf3",
+              "record_id": "KEP-6419",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ee95ece4",
+              "target_id": "resource_76ee7139",
+              "relation": "AFFECTS",
+              "quote": "Expected behavior: The hover should always display the pruning rule that was used to prune the narrative.",
+              "start": 0,
+              "end": 105,
+              "total_chars": 105,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_36fc768c9b98cc51",
+              "record_id": "KEP-5759",
+              "provenance_kind": "extracted",
+              "source_id": "decision_2994d6c7",
+              "target_id": "risk_25e8f7b5",
+              "relation": "REFERENCES",
+              "quote": "Currently, the system prevents users from pruning a Narrative if there is no active token available.",
+              "start": 0,
+              "end": 100,
+              "total_chars": 100,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_d42ebd7f985b5490",
+              "record_id": "KEP-6413",
+              "provenance_kind": "extracted",
+              "source_id": "decision_b7533380",
+              "target_id": "resource_b5eb3588",
+              "relation": "AFFECTS",
+              "quote": "The Token check Logic was kept in updfation and delete pruning rules API's. We have removed it",
+              "start": 0,
+              "end": 94,
+              "total_chars": 94,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_8032f99cb1184961",
+              "record_id": "KEP-5757",
+              "provenance_kind": "extracted",
+              "source_id": "decision_1219a872",
+              "target_id": "decision_d9eaa008",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "Retest:🪲QA: Staging : Comment Narratives Are Allowed for Pruning Though PRD Specifies Only Narratives",
+              "start": 0,
+              "end": 101,
+              "total_chars": 101,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_8c6ddb56926d9ecb",
+              "record_id": "KEP-5342",
+              "provenance_kind": "extracted",
+              "source_id": "decision_164e73bc",
+              "target_id": "resource_afc7a5bf",
+              "relation": "AFFECTS",
+              "quote": "🪲QA: Staging : Deleted Pruning Rule Does Not Restore Narrative to Main Narrative Tab",
+              "start": 0,
+              "end": 84,
+              "total_chars": 84,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_d14ee36de4987438",
+              "record_id": "KEP-5342",
+              "provenance_kind": "extracted",
+              "source_id": "decision_164e73bc",
+              "target_id": "resource_a0bea208",
+              "relation": "AFFECTS",
+              "quote": "🪲QA: Staging : Deleted Pruning Rule Does Not Restore Narrative to Main Narrative Tab",
+              "start": 0,
+              "end": 84,
+              "total_chars": 84,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_d6570b3654d799ff",
+              "record_id": "KEP-6435",
+              "provenance_kind": "extracted",
+              "source_id": "decision_52aef85f",
+              "target_id": "event_1048b1e7",
+              "relation": "REFERENCES",
+              "quote": "After the recent UI changes related to Narrative Summary expansion and pruning improvements , a synchronization issue has been observed",
+              "start": 0,
+              "end": 135,
+              "total_chars": 135,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_eb09fc6a6d51504b",
+              "record_id": "KEP-6435",
+              "provenance_kind": "extracted",
+              "source_id": "decision_52aef85f",
+              "target_id": "decision_889ab161",
+              "relation": "DEPENDS_ON",
+              "quote": "After the recent UI changes related to Narrative Summary expansion and pruning improvements , a synchronization issue has been observed",
+              "start": 0,
+              "end": 135,
+              "total_chars": 135,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_cffc01642d022c87",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_cfe6a820",
+              "target_id": "decision_16d14c8f",
+              "relation": "DECOMPOSES_TO",
+              "quote": "decision_cfe6a820 (tactical, Finalize Narrative Pruning TRD and WBS estimates) decomposes to decision_16d14c8f (tactical, Create Narrative Pruning Technical Requirements Document). Extracted edge shows direct_edge_forward. Same-level decomposition. TRD creation is a prerequisite operationalization of TRD finalization.",
+              "start": 0,
+              "end": 319,
+              "total_chars": 319,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_af9910b9b55d512c",
+              "record_id": "KEP-3504",
+              "provenance_kind": "extracted",
+              "source_id": "decision_23d09042",
+              "target_id": "resource_7e6607e4",
+              "relation": "AFFECTS",
+              "quote": "In agent details, the popup to edit your pruning rule has text that is repetitive. You can remove the \"i\" and the hover text all together.",
+              "start": 0,
+              "end": 138,
+              "total_chars": 138,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f2d83729fd1a8334",
+              "record_id": "KEP-4019",
+              "provenance_kind": "extracted",
+              "source_id": "decision_983f94bd",
+              "target_id": "outcome_34c832f8",
+              "relation": "PRODUCES",
+              "quote": "Implemented Feature to reflect narrative pruning rule deletion in topic narratives. MR , we have merged in staging ENV",
+              "start": 0,
+              "end": 118,
+              "total_chars": 118,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_b6ef947d623e7137",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_40ff959d",
+              "target_id": "decision_3d4607f7",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "Both are QA retest decisions on 2026-03-10 for narrative pruning rules formatting. decision_40ff959d retests double-spaced text, while decision_3d4607f7 retests text formatting in pruning pop-off. The later decision supersedes the earlier one as a follow-up validation of the same fixes.",
+              "start": 0,
+              "end": 287,
+              "total_chars": 287,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-03-10",
+                  "date": "2026-03-10",
+                  "evidence_id": "ev_b6ef947d623e7137",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_2c6bc75694fac331",
+              "record_id": "KEP-4019",
+              "provenance_kind": "extracted",
+              "source_id": "decision_890415ba",
+              "target_id": "rule_2cfe93d8",
+              "relation": "REFERENCES",
+              "quote": "When deleting a pruning rule, related narratives which are in hidden must get un-hidden or appear in Main narrative tab again",
+              "start": 0,
+              "end": 125,
+              "total_chars": 125,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_471607d9bdd1abe8",
+              "record_id": "KEP-5816",
+              "provenance_kind": "extracted",
+              "source_id": "decision_8b6603a6",
+              "target_id": "risk_59afea58",
+              "relation": "REFERENCES",
+              "quote": "the pruning rule is either: Not being applied during narrative generation, or Not being enforced correctly at the display layer",
+              "start": 0,
+              "end": 127,
+              "total_chars": 127,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_72945596997f9008",
+              "record_id": "KEP-4019",
+              "provenance_kind": "extracted",
+              "source_id": "decision_983f94bd",
+              "target_id": "rule_2cfe93d8",
+              "relation": "REFERENCES",
+              "quote": "When deleting a pruning rule, related narratives which are in hidden must get un-hidden or appear in Main narrative tab again",
+              "start": 0,
+              "end": 125,
+              "total_chars": 125,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_9ddf675739a4d37a",
+              "record_id": "KEP-4408",
+              "provenance_kind": "extracted",
+              "source_id": "decision_b7aea09f",
+              "target_id": "decision_78c94628",
+              "relation": "DEPENDS_ON",
+              "quote": "Query the new entity Fetch the user reason , pruning id , narrative observation and title to create the networkid_prune.json",
+              "start": 0,
+              "end": 124,
+              "total_chars": 124,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 80,
+          "next_offset": 50
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.007750958000542596,
+      "error": false,
+      "new_ids": [
+        "ev_0a9ab2f340184cf3",
+        "ev_2c6bc75694fac331",
+        "ev_36fc768c9b98cc51",
+        "ev_471607d9bdd1abe8",
+        "ev_577bb22acb2f71ae",
+        "ev_72945596997f9008",
+        "ev_8032f99cb1184961",
+        "ev_82dffd65d16997af",
+        "ev_8c6ddb56926d9ecb",
+        "ev_9ddf675739a4d37a",
+        "ev_af9910b9b55d512c",
+        "ev_b6ef947d623e7137",
+        "ev_bec8c98e350b5bab",
+        "ev_c603df7dbfb1d1d3",
+        "ev_cffc01642d022c87",
+        "ev_d14ee36de4987438",
+        "ev_d42ebd7f985b5490",
+        "ev_d6570b3654d799ff",
+        "ev_eb09fc6a6d51504b",
+        "ev_f2d83729fd1a8334",
+        "span:ev_0a9ab2f340184cf3:0:105",
+        "span:ev_2c6bc75694fac331:0:125",
+        "span:ev_36fc768c9b98cc51:0:100",
+        "span:ev_471607d9bdd1abe8:0:127",
+        "span:ev_577bb22acb2f71ae:0:76",
+        "span:ev_72945596997f9008:0:125",
+        "span:ev_8032f99cb1184961:0:101",
+        "span:ev_82dffd65d16997af:0:66",
+        "span:ev_8c6ddb56926d9ecb:0:84",
+        "span:ev_9ddf675739a4d37a:0:124",
+        "span:ev_af9910b9b55d512c:0:138",
+        "span:ev_b6ef947d623e7137:0:287",
+        "span:ev_bec8c98e350b5bab:0:68",
+        "span:ev_c603df7dbfb1d1d3:0:68",
+        "span:ev_cffc01642d022c87:0:319",
+        "span:ev_d14ee36de4987438:0:84",
+        "span:ev_d42ebd7f985b5490:0:94",
+        "span:ev_d6570b3654d799ff:0:135",
+        "span:ev_eb09fc6a6d51504b:0:135",
+        "span:ev_f2d83729fd1a8334:0:118"
+      ]
+    },
+    {
+      "sequence": 34,
+      "kind": "context",
+      "model_call": 7,
+      "serialized_chars": 52986,
+      "message_count": 14,
+      "pinned_evidence_ids": [
+        "ev_0038d1e815d621c1",
+        "ev_0b13bd47eb112f9f",
+        "ev_4ed85e54eaab7297",
+        "ev_7e4519c3675b92f7",
+        "ev_895038c167e64ee9",
+        "ev_9afafb46664d6701",
+        "ev_cf2741770e934a49",
+        "ev_df451649650f6041",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_0038d1e815d621c1",
+        "ev_01b7ef484970869e",
+        "ev_021e1e631338c835",
+        "ev_0348daaa91217689",
+        "ev_04fcaa0002d7d7b3",
+        "ev_097c4fb17f2c1799",
+        "ev_0a9ab2f340184cf3",
+        "ev_0b13bd47eb112f9f",
+        "ev_0efca8b5653af727",
+        "ev_152b218ec13d1455",
+        "ev_1891e24034dc3a2f",
+        "ev_18d4325b245df765",
+        "ev_1999583d0b49daeb",
+        "ev_1f9cde965b9b5a5a",
+        "ev_21f3b884f7db8510",
+        "ev_22bad79397ea1f57",
+        "ev_28e138aec1ee4633",
+        "ev_2c6bc75694fac331",
+        "ev_3173fc2323ceb117",
+        "ev_36fc768c9b98cc51",
+        "ev_386bd5ae94070a77",
+        "ev_41c6b4831c6e7549",
+        "ev_4309c1d585bbd573",
+        "ev_471607d9bdd1abe8",
+        "ev_4ed85e54eaab7297",
+        "ev_50498cada512ae70",
+        "ev_55541502d6537ae9",
+        "ev_55756b5c76150a5d",
+        "ev_577bb22acb2f71ae",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_72945596997f9008",
+        "ev_7416d2fc71e46d58",
+        "ev_7e4519c3675b92f7",
+        "ev_8032f99cb1184961",
+        "ev_82dffd65d16997af",
+        "ev_87879ee4d1969114",
+        "ev_895038c167e64ee9",
+        "ev_896122b37a549605",
+        "ev_8c6ddb56926d9ecb",
+        "ev_95c03985870188db",
+        "ev_9972d78a7ed96453",
+        "ev_9acb82c64c1792e3",
+        "ev_9afafb46664d6701",
+        "ev_9ddf675739a4d37a",
+        "ev_a32b77a8b393b409",
+        "ev_af9910b9b55d512c",
+        "ev_b53b1eef8255dfaf",
+        "ev_b6ef947d623e7137",
+        "ev_b8aa4764de89597f",
+        "ev_bec8c98e350b5bab",
+        "ev_bf1bbd5f170a12a9",
+        "ev_c16cd8a81b99410d",
+        "ev_c603df7dbfb1d1d3",
+        "ev_cdb5ddb36299f035",
+        "ev_cf2741770e934a49",
+        "ev_cffc01642d022c87",
+        "ev_d071431bf98c79f3",
+        "ev_d14ee36de4987438",
+        "ev_d42ebd7f985b5490",
+        "ev_d6570b3654d799ff",
+        "ev_daf242ee923d0264",
+        "ev_df451649650f6041",
+        "ev_dfc8cf947642369a",
+        "ev_e212576048acabe6",
+        "ev_e39d1c58cf43cf8a",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7",
+        "ev_ea737c5e56f37076",
+        "ev_eb09fc6a6d51504b",
+        "ev_ee7811cbab74e9c6",
+        "ev_ef111a7caae213f0",
+        "ev_f13c9d72349b317f",
+        "ev_f19d74f6ba596733",
+        "ev_f2d83729fd1a8334",
+        "ev_fa9d02a4fd1be4da"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a3a5c044d6e43aec",
+        "action_2_request_ff3a337fc7deda94",
+        "action_3_request_83e60cca1c9d187e",
+        "action_4_request_8e81d4f54f9c40e8",
+        "action_5_request_4b6d88c054962643",
+        "action_6_request_ac5a190297f54498"
+      ]
+    },
+    {
+      "sequence": 35,
+      "kind": "model_started",
+      "call_number": 7,
+      "status": "pending",
+      "serialized_chars": 52986,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 36,
+      "kind": "model",
+      "call_number": 7,
+      "status": "completed",
+      "serialized_chars": 52986,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_1c54b6af0a2c00ac",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"pruning\",\"mode\":\"records\",\"offset\":50,\"limit\":20}",
+        "purpose": "Find remaining pruning reports and follow-up records, including any explicit sequencing evidence.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_7e4519c3675b92f7",
+          "ev_0038d1e815d621c1",
+          "ev_0b13bd47eb112f9f",
+          "ev_cf2741770e934a49",
+          "ev_8c6ddb56926d9ecb",
+          "ev_4ed85e54eaab7297",
+          "ev_fa9d02a4fd1be4da",
+          "ev_577bb22acb2f71ae",
+          "ev_82dffd65d16997af"
+        ]
+      },
+      "latency_seconds": 4.152814000000944,
+      "provider": {
+        "request_id": "request_1c54b6af0a2c00ac",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__graph_only/cache/codex/request_1c54b6af0a2c00ac.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 16352,
+          "output_tokens": 231,
+          "reasoning_output_tokens": 41,
+          "total_tokens": 16583
+        },
+        "thread_id": "01a114b4-67e5-7d10-87f2-b5bd67a5356f",
+        "turn_id": "01a114b4-6804-7901-b5eb-040cb9e0a4ab",
+        "status": "completed",
+        "latency_seconds": 4.1336
+      }
+    },
+    {
+      "sequence": 37,
+      "kind": "tool_started",
+      "call_id": "action_7_request_1c54b6af0a2c00ac",
+      "name": "search_graph",
+      "arguments": {
+        "query": "pruning",
+        "mode": "records",
+        "offset": 50,
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 38,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "pruning",
+        "mode": "records",
+        "offset": 50,
+        "limit": 20
+      },
+      "call_id": "action_7_request_1c54b6af0a2c00ac",
+      "result": {
+        "expanded_query": "pruning",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_9decf1cbcbcc7d25",
+              "record_id": "KEP-5759",
+              "provenance_kind": "extracted",
+              "source_id": "decision_2994d6c7",
+              "target_id": "resource_88240cda",
+              "relation": "AFFECTS",
+              "quote": "pruning capability should be restricted only based on user permissions (Viewer vs Editor) — not based on token availability",
+              "start": 0,
+              "end": 123,
+              "total_chars": 123,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_e0869bf1b5b8417f",
+              "record_id": "KEP-6419",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ee95ece4",
+              "target_id": "event_64394a17",
+              "relation": "REFERENCES",
+              "quote": "However, if I return the next day, the hover no longer shows the pruning rule. Instead, it displays the title of the narrative.",
+              "start": 0,
+              "end": 127,
+              "total_chars": 127,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0bc25055936e1092",
+              "record_id": "KEP-4154",
+              "provenance_kind": "extracted",
+              "source_id": "decision_b9f67547",
+              "target_id": "outcome_83173a94",
+              "relation": "PRODUCES",
+              "quote": "Updated Documentation: 1. Added CRUD for Narrative Pruning Rules. 2. UPdated response for micro-narratives,comment-narratives and narrative detail API.",
+              "start": 0,
+              "end": 151,
+              "total_chars": 151,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1ad128968e343ee3",
+              "record_id": "KEP-5759",
+              "provenance_kind": "extracted",
+              "source_id": "decision_2994d6c7",
+              "target_id": "event_ebbc4385",
+              "relation": "REFERENCES",
+              "quote": "System blocks pruning when no active token is available. User cannot proceed with Hide / Flag action due to token restriction.",
+              "start": 0,
+              "end": 126,
+              "total_chars": 126,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_a1f2f3c68c0f521b",
+              "record_id": "KEP-5342",
+              "provenance_kind": "extracted",
+              "source_id": "decision_164e73bc",
+              "target_id": "event_ed765226",
+              "relation": "REFERENCES",
+              "quote": "When I prune a Narrative, it immediately moves to the Hidden Narratives tab. However, when I delete the corresponding pruning rule from the Agent Details page, the Narrative",
+              "start": 0,
+              "end": 173,
+              "total_chars": 173,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_521322613ce8c085",
+              "record_id": "KEP-5759",
+              "provenance_kind": "extracted",
+              "source_id": "decision_2994d6c7",
+              "target_id": "rule_ef15f86c",
+              "relation": "REFERENCES",
+              "quote": "As per requirement, pruning capability should be restricted only based on user permissions (Viewer vs Editor) — not based on token availability",
+              "start": 0,
+              "end": 143,
+              "total_chars": 143,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_faffa738a6b4eca8",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_6bd0ff9a",
+              "target_id": "decision_40ff959d",
+              "relation": "DECOMPOSES_TO",
+              "quote": "decision_6bd0ff9a (operational, Mar 9) decomposes to decision_40ff959d (operational, Mar 10). The parent fixes double-spaced text in narrative pruning rules input; the child QA retests that fix. The child operationalizes the QA verification phase of the parent's fix work. Shared target (Narrative pruning rules input) and shared initiative confirm decomposition.",
+              "start": 0,
+              "end": 363,
+              "total_chars": 363,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Mar 9",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_faffa738a6b4eca8",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "Mar 10",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_faffa738a6b4eca8",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_6b1271f609ce438e",
+              "record_id": "KEP-5342",
+              "provenance_kind": "extracted",
+              "source_id": "decision_164e73bc",
+              "target_id": "risk_cda89a9d",
+              "relation": "REFERENCES",
+              "quote": "Even after deleting the pruning rule: The Narrative does not reappear in the main Narrative tab. The Narrative remains hidden. Suppression state appears to persist incorrectly.",
+              "start": 0,
+              "end": 176,
+              "total_chars": 176,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_429f110d0f6a7896",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_e502eb7c",
+              "target_id": "decision_c99c6420",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "Both decisions address the same UI sync issue in the Themes and Narratives tabs after pruning actions. decision_e502eb7c (2026-03-12) is later than decision_c99c6420 (2026-03-05) and targets the same resource (Themes and Narratives tabs) and risk (UI state inconsistency after pruning actions). The later decision supersedes the earlier one as a refined or follow-up fix to the same problem.",
+              "start": 0,
+              "end": 391,
+              "total_chars": 391,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-03-12",
+                  "date": "2026-03-12",
+                  "evidence_id": "ev_429f110d0f6a7896",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-03-05",
+                  "date": "2026-03-05",
+                  "evidence_id": "ev_429f110d0f6a7896",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_df451649650f6041",
+              "record_id": "KEP-6419",
+              "provenance_kind": "extracted",
+              "source_id": "decision_245b960c",
+              "target_id": "event_64394a17",
+              "relation": "REFERENCES",
+              "quote": "Current behavior: When I add a new pruning rule, the narrative that gets pruned goes to the hidden tab and immediately shows a hover indicating which rule was used. In other words, if I hover over the speech bubble with the three dots of a pruned narrative, it correctly displays the rule that pruned the narrative. However, if I return the next day, the hover no longer shows the pruning rule. Instead, it displays the title of the narrative.",
+              "start": 0,
+              "end": 443,
+              "total_chars": 443,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1db77eef58ddea9b",
+              "record_id": "Community_1210",
+              "provenance_kind": "extracted",
+              "source_id": "event_ed765226",
+              "target_id": "decision_164e73bc",
+              "relation": "CAUSES",
+              "quote": "When I prune a Narrative, it immediately moves to the Hidden Narratives tab. However, when I delete the corresponding pruning rule from the Agent Details page, the Narrative does not reappear in the main Narrative tab",
+              "start": 0,
+              "end": 217,
+              "total_chars": 217,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_7f6410a5389898a5",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "event_fbb51c30",
+              "target_id": "decision_8997113f",
+              "relation": "CAUSES",
+              "quote": "The event 'narrative duplication in hidden tab when pruning' is the direct trigger for decision_8997113f 'resolve narrative duplication issue in hidden tab (KEP-6460)'. The source passage explicitly describes the bug behavior (duplicates appearing in the hidden tab when pruning), and decision_8997113f is extracted with a REFERENCES edge to this event, indicating the decision was made in direct response to this concrete problem. The event precedes the decision temporally (event is the problem; decision is the response). This is a classic incident → remediation causation pattern.",
+              "start": 0,
+              "end": 584,
+              "total_chars": 584,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1b29a9e055dfc589",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "event_ebbc4385",
+              "target_id": "decision_2994d6c7",
+              "relation": "CAUSES",
+              "quote": "The event 'System blocks pruning when no active token is available' is the direct cause of the decision to 'Fix pruning permission logic to restrict by user role only, not token availability'. The source passages establish explicit causal linkage: the bug report (KEP-5390) documents the actual result ('System blocks pruning when no active token is available') as the problem triggering the fix decision. The decision's expected outcome directly addresses the failure described in the event: 'User with edit permissions should be able to prune a Narrative regardless of token status.' The signal `direct_edge_reverse` confirms the decision references this event. Temporal ordering is valid: the event (the blocking behavior) precedes the decision to fix it (decided_at: 2026-02-27). This is a concre",
+              "start": 0,
+              "end": 800,
+              "total_chars": 874,
+              "next_start": 800,
+              "dates": [
+                {
+                  "raw": "2026-02-27",
+                  "date": "2026-02-27",
+                  "evidence_id": "ev_1b29a9e055dfc589",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_3f5ca4e21553f32e",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "event_64394a17",
+              "target_id": "decision_ee95ece4",
+              "relation": "CAUSES",
+              "quote": "The event 'pruning rule hover text shows narrative title instead of rule name on subsequent days' is the direct trigger for the fix decision. The source passages explicitly describe this as the bug being reported: 'if I return the next day, the hover no longer shows the pruning rule. Instead, it displays the title of the narrative.' This observed problem (the event) directly caused the decision to fix it. The event is referenced by the fix decision, and the temporal ordering is valid: the bug was observed (event) before the fix decision was made. This is a concrete, traceable consequence relationship, not a structural dependency.",
+              "start": 0,
+              "end": 637,
+              "total_chars": 637,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_826da2d2e649b485",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_1368c590",
+              "target_id": "decision_7c506018",
+              "relation": "CAUSES",
+              "quote": "Decision 'Perform comprehensive end-to-end QA testing for Narrative Pruning in staging' (decided_at: 2026-02-27) precedes 'Fix UI synchronization issue where deleted pruning rules do not refresh immediately' (decided_at: 2026-02-27). Both are dated the same day. However, the QA testing would discover the UI synchronization issue, making the testing a direct cause of the fix decision. Temporal ordering is ambiguous (same date), but the causal logic is sound: QA testing identifies the bug, triggering the fix. ACCEPT with caveat on temporal ambiguity.",
+              "start": 0,
+              "end": 554,
+              "total_chars": 554,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-02-27",
+                  "date": "2026-02-27",
+                  "evidence_id": "ev_826da2d2e649b485",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-02-27",
+                  "date": "2026-02-27",
+                  "evidence_id": "ev_826da2d2e649b485",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_aa756e39a46876c0",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_d9eaa008",
+              "target_id": "decision_1219a872",
+              "relation": "DEPENDS_ON",
+              "quote": "Restrict pruning to Narratives only (d9eaa008, 2026-02-27) depends on the revised decision (1219a872, 2026-02-27) being finalized. The later decision supersedes and operationalizes the scope restriction. Direct edge reverse signal and shared target/source support this prerequisite relationship.",
+              "start": 0,
+              "end": 295,
+              "total_chars": 295,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-02-27",
+                  "date": "2026-02-27",
+                  "evidence_id": "ev_aa756e39a46876c0",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-02-27",
+                  "date": "2026-02-27",
+                  "evidence_id": "ev_aa756e39a46876c0",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ace0d087762ec7f6",
+              "record_id": "KEP-6413",
+              "provenance_kind": "extracted",
+              "source_id": "decision_b7533380",
+              "target_id": "event_58015e90",
+              "relation": "REFERENCES",
+              "quote": "Currently, when a user does not have available tokens , the user is still able to create a Narrative Prune Rule and prune narratives successfully . However, when the same user attempts to delete the created prune rule from the Agent Detail Page → Narrative Pruning section , the system shows an error message stating that the user does not have tokens",
+              "start": 0,
+              "end": 351,
+              "total_chars": 351,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ee3d1e95ee7d5130",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_cc3ef189",
+              "target_id": "decision_70dd5e49",
+              "relation": "DEPENDS_ON",
+              "quote": "Integration testing (cc3ef189, 2026-02-26) depends on output data update (70dd5e49, 2026-02-20) being completed. The test must verify that topic_narratives are correctly updated with pruning flags before staging deployment. Shared source (3 actors) and temporal ordering (70dd5e49 precedes cc3ef189) support this prerequisite dependency.",
+              "start": 0,
+              "end": 337,
+              "total_chars": 337,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-02-26",
+                  "date": "2026-02-26",
+                  "evidence_id": "ev_ee3d1e95ee7d5130",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-02-20",
+                  "date": "2026-02-20",
+                  "evidence_id": "ev_ee3d1e95ee7d5130",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_15c31cc784619961",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_164e73bc",
+              "target_id": "decision_983f94bd",
+              "relation": "CAUSES",
+              "quote": "The bug investigation (decision_164e73bc, decided 2026-02-27) directly triggered the feature implementation (decision_983f94bd, decided 2026-03-04). The source passage shows Prasad Gurav discovered the bug on 2026-02-27 ('When I delete the corresponding pruning rule from the Agent Details page, the Narrative [does not restore]'), and Nafis Borkar's comment on 2026-03-04 states 'Implemented Feature to reflect narrative pruning rule deletion in topic narratives.' The investigation outcome ('Bug investigation completed and documented') provided the concrete evidence that caused the implementation decision. Temporal ordering is valid: cause (2026-02-27) precedes effect (2026-03-04). This is a direct causal consequence, not a structural dependency or decomposition.",
+              "start": 0,
+              "end": 770,
+              "total_chars": 770,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-02-27",
+                  "date": "2026-02-27",
+                  "evidence_id": "ev_15c31cc784619961",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-03-04",
+                  "date": "2026-03-04",
+                  "evidence_id": "ev_15c31cc784619961",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-02-27",
+                  "date": "2026-02-27",
+                  "evidence_id": "ev_15c31cc784619961",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-03-04",
+                  "date": "2026-03-04",
+                  "evidence_id": "ev_15c31cc784619961",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-02-27",
+                  "date": "2026-02-27",
+                  "evidence_id": "ev_15c31cc784619961",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-03-04",
+                  "date": "2026-03-04",
+                  "evidence_id": "ev_15c31cc784619961",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_8f9034d5d62be1cd",
+              "record_id": "KEP-6460",
+              "provenance_kind": "extracted",
+              "source_id": "decision_12df2abd",
+              "target_id": "event_fbb51c30",
+              "relation": "REFERENCES",
+              "quote": "If the UI section for \"hidden narratives\" already contains a hidden narrative (for example, if I created a pruning rule yesterday and the system hid a narrative automatically), and I hide another narrative, the new narrative correctly moves to the Hidden tab. However, several other narratives also appear in the Hidden tab even though they were not hidden.",
+              "start": 0,
+              "end": 357,
+              "total_chars": 357,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 80,
+          "next_offset": 70
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.005835624993778765,
+      "error": false,
+      "new_ids": [
+        "ev_0bc25055936e1092",
+        "ev_15c31cc784619961",
+        "ev_1ad128968e343ee3",
+        "ev_1b29a9e055dfc589",
+        "ev_1db77eef58ddea9b",
+        "ev_3f5ca4e21553f32e",
+        "ev_429f110d0f6a7896",
+        "ev_521322613ce8c085",
+        "ev_6b1271f609ce438e",
+        "ev_7f6410a5389898a5",
+        "ev_826da2d2e649b485",
+        "ev_8f9034d5d62be1cd",
+        "ev_9decf1cbcbcc7d25",
+        "ev_a1f2f3c68c0f521b",
+        "ev_aa756e39a46876c0",
+        "ev_ace0d087762ec7f6",
+        "ev_e0869bf1b5b8417f",
+        "ev_ee3d1e95ee7d5130",
+        "ev_faffa738a6b4eca8",
+        "span:ev_0bc25055936e1092:0:151",
+        "span:ev_15c31cc784619961:0:770",
+        "span:ev_1ad128968e343ee3:0:126",
+        "span:ev_1b29a9e055dfc589:0:800",
+        "span:ev_1db77eef58ddea9b:0:217",
+        "span:ev_3f5ca4e21553f32e:0:637",
+        "span:ev_429f110d0f6a7896:0:391",
+        "span:ev_521322613ce8c085:0:143",
+        "span:ev_6b1271f609ce438e:0:176",
+        "span:ev_7f6410a5389898a5:0:584",
+        "span:ev_826da2d2e649b485:0:554",
+        "span:ev_8f9034d5d62be1cd:0:357",
+        "span:ev_9decf1cbcbcc7d25:0:123",
+        "span:ev_a1f2f3c68c0f521b:0:173",
+        "span:ev_aa756e39a46876c0:0:295",
+        "span:ev_ace0d087762ec7f6:0:351",
+        "span:ev_e0869bf1b5b8417f:0:127",
+        "span:ev_ee3d1e95ee7d5130:0:337",
+        "span:ev_faffa738a6b4eca8:0:363"
+      ]
+    },
+    {
+      "sequence": 39,
+      "kind": "context",
+      "model_call": 8,
+      "serialized_chars": 72924,
+      "message_count": 16,
+      "pinned_evidence_ids": [
+        "ev_0038d1e815d621c1",
+        "ev_0b13bd47eb112f9f",
+        "ev_4ed85e54eaab7297",
+        "ev_577bb22acb2f71ae",
+        "ev_7e4519c3675b92f7",
+        "ev_82dffd65d16997af",
+        "ev_895038c167e64ee9",
+        "ev_8c6ddb56926d9ecb",
+        "ev_9afafb46664d6701",
+        "ev_cf2741770e934a49",
+        "ev_df451649650f6041",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7",
+        "ev_fa9d02a4fd1be4da"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_0038d1e815d621c1",
+        "ev_01b7ef484970869e",
+        "ev_021e1e631338c835",
+        "ev_0348daaa91217689",
+        "ev_04fcaa0002d7d7b3",
+        "ev_097c4fb17f2c1799",
+        "ev_0a9ab2f340184cf3",
+        "ev_0b13bd47eb112f9f",
+        "ev_0bc25055936e1092",
+        "ev_0efca8b5653af727",
+        "ev_152b218ec13d1455",
+        "ev_15c31cc784619961",
+        "ev_1891e24034dc3a2f",
+        "ev_18d4325b245df765",
+        "ev_1999583d0b49daeb",
+        "ev_1ad128968e343ee3",
+        "ev_1b29a9e055dfc589",
+        "ev_1db77eef58ddea9b",
+        "ev_1f9cde965b9b5a5a",
+        "ev_21f3b884f7db8510",
+        "ev_22bad79397ea1f57",
+        "ev_28e138aec1ee4633",
+        "ev_2c6bc75694fac331",
+        "ev_3173fc2323ceb117",
+        "ev_36fc768c9b98cc51",
+        "ev_386bd5ae94070a77",
+        "ev_3f5ca4e21553f32e",
+        "ev_41c6b4831c6e7549",
+        "ev_429f110d0f6a7896",
+        "ev_4309c1d585bbd573",
+        "ev_471607d9bdd1abe8",
+        "ev_4ed85e54eaab7297",
+        "ev_50498cada512ae70",
+        "ev_521322613ce8c085",
+        "ev_55541502d6537ae9",
+        "ev_55756b5c76150a5d",
+        "ev_577bb22acb2f71ae",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_6b1271f609ce438e",
+        "ev_72945596997f9008",
+        "ev_7416d2fc71e46d58",
+        "ev_7e4519c3675b92f7",
+        "ev_7f6410a5389898a5",
+        "ev_8032f99cb1184961",
+        "ev_826da2d2e649b485",
+        "ev_82dffd65d16997af",
+        "ev_87879ee4d1969114",
+        "ev_895038c167e64ee9",
+        "ev_896122b37a549605",
+        "ev_8c6ddb56926d9ecb",
+        "ev_8f9034d5d62be1cd",
+        "ev_95c03985870188db",
+        "ev_9972d78a7ed96453",
+        "ev_9acb82c64c1792e3",
+        "ev_9afafb46664d6701",
+        "ev_9ddf675739a4d37a",
+        "ev_9decf1cbcbcc7d25",
+        "ev_a1f2f3c68c0f521b",
+        "ev_a32b77a8b393b409",
+        "ev_aa756e39a46876c0",
+        "ev_ace0d087762ec7f6",
+        "ev_af9910b9b55d512c",
+        "ev_b53b1eef8255dfaf",
+        "ev_b6ef947d623e7137",
+        "ev_b8aa4764de89597f",
+        "ev_bec8c98e350b5bab",
+        "ev_bf1bbd5f170a12a9",
+        "ev_c16cd8a81b99410d",
+        "ev_c603df7dbfb1d1d3",
+        "ev_cdb5ddb36299f035",
+        "ev_cf2741770e934a49",
+        "ev_cffc01642d022c87",
+        "ev_d071431bf98c79f3",
+        "ev_d14ee36de4987438",
+        "ev_d42ebd7f985b5490",
+        "ev_d6570b3654d799ff",
+        "ev_daf242ee923d0264",
+        "ev_df451649650f6041",
+        "ev_dfc8cf947642369a",
+        "ev_e0869bf1b5b8417f",
+        "ev_e212576048acabe6",
+        "ev_e39d1c58cf43cf8a",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7",
+        "ev_ea737c5e56f37076",
+        "ev_eb09fc6a6d51504b",
+        "ev_ee3d1e95ee7d5130",
+        "ev_ee7811cbab74e9c6",
+        "ev_ef111a7caae213f0",
+        "ev_f13c9d72349b317f",
+        "ev_f19d74f6ba596733",
+        "ev_f2d83729fd1a8334",
+        "ev_fa9d02a4fd1be4da",
+        "ev_faffa738a6b4eca8"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a3a5c044d6e43aec",
+        "action_2_request_ff3a337fc7deda94",
+        "action_3_request_83e60cca1c9d187e",
+        "action_4_request_8e81d4f54f9c40e8",
+        "action_5_request_4b6d88c054962643",
+        "action_6_request_ac5a190297f54498",
+        "action_7_request_1c54b6af0a2c00ac"
+      ]
+    },
+    {
+      "sequence": 40,
+      "kind": "model_started",
+      "call_number": 8,
+      "status": "pending",
+      "serialized_chars": 72924,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 41,
+      "kind": "model",
+      "call_number": 8,
+      "status": "completed",
+      "serialized_chars": 72924,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_274b236ffe861845",
+      "action": {
+        "tool_name": "get_evidence",
+        "arguments_json": "{\"evidence_ids\":[\"ev_df451649650f6041\",\"ev_6b1271f609ce438e\",\"ev_8f9034d5d62be1cd\",\"ev_ace0d087762ec7f6\",\"ev_ee3d1e95ee7d5130\",\"ev_118?\"],\"start\":0,\"chars\":4000}",
+        "purpose": "Check original wording and sequencing for reported pruning behaviors and follow-up actions.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_6b1271f609ce438e",
+          "ev_8f9034d5d62be1cd",
+          "ev_ace0d087762ec7f6"
+        ]
+      },
+      "latency_seconds": 12.04935558300349,
+      "provider": {
+        "request_id": "request_274b236ffe861845",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__graph_only/cache/codex/request_274b236ffe861845.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 21224,
+          "output_tokens": 333,
+          "reasoning_output_tokens": 151,
+          "total_tokens": 21557
+        },
+        "thread_id": "01a114b4-782b-7020-89a7-a19ce4547299",
+        "turn_id": "01a114b4-784c-72b2-b45a-76608ee28abd",
+        "status": "completed",
+        "latency_seconds": 12.0301
+      }
+    },
+    {
+      "sequence": 42,
+      "kind": "tool_started",
+      "call_id": "action_8_request_274b236ffe861845",
+      "name": "get_evidence",
+      "arguments": {
+        "evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_6b1271f609ce438e",
+          "ev_8f9034d5d62be1cd",
+          "ev_ace0d087762ec7f6",
+          "ev_ee3d1e95ee7d5130",
+          "ev_118?"
+        ],
+        "start": 0,
+        "chars": 4000
+      }
+    },
+    {
+      "sequence": 43,
+      "kind": "tool",
+      "name": "get_evidence",
+      "arguments": {
+        "evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_6b1271f609ce438e",
+          "ev_8f9034d5d62be1cd",
+          "ev_ace0d087762ec7f6",
+          "ev_ee3d1e95ee7d5130",
+          "ev_118?"
+        ],
+        "start": 0,
+        "chars": 4000
+      },
+      "call_id": "action_8_request_274b236ffe861845",
+      "result": {
+        "error": "KeyError",
+        "message": "'ev_118?'"
+      },
+      "latency_seconds": 0.0008231669780798256,
+      "error": true,
+      "new_ids": []
+    },
+    {
+      "sequence": 44,
+      "kind": "context",
+      "model_call": 9,
+      "serialized_chars": 73462,
+      "message_count": 18,
+      "pinned_evidence_ids": [
+        "ev_0038d1e815d621c1",
+        "ev_0b13bd47eb112f9f",
+        "ev_4ed85e54eaab7297",
+        "ev_577bb22acb2f71ae",
+        "ev_6b1271f609ce438e",
+        "ev_7e4519c3675b92f7",
+        "ev_82dffd65d16997af",
+        "ev_895038c167e64ee9",
+        "ev_8c6ddb56926d9ecb",
+        "ev_8f9034d5d62be1cd",
+        "ev_9afafb46664d6701",
+        "ev_ace0d087762ec7f6",
+        "ev_cf2741770e934a49",
+        "ev_df451649650f6041",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7",
+        "ev_fa9d02a4fd1be4da"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_0038d1e815d621c1",
+        "ev_01b7ef484970869e",
+        "ev_021e1e631338c835",
+        "ev_0348daaa91217689",
+        "ev_04fcaa0002d7d7b3",
+        "ev_097c4fb17f2c1799",
+        "ev_0a9ab2f340184cf3",
+        "ev_0b13bd47eb112f9f",
+        "ev_0bc25055936e1092",
+        "ev_0efca8b5653af727",
+        "ev_152b218ec13d1455",
+        "ev_15c31cc784619961",
+        "ev_1891e24034dc3a2f",
+        "ev_18d4325b245df765",
+        "ev_1999583d0b49daeb",
+        "ev_1ad128968e343ee3",
+        "ev_1b29a9e055dfc589",
+        "ev_1db77eef58ddea9b",
+        "ev_1f9cde965b9b5a5a",
+        "ev_21f3b884f7db8510",
+        "ev_22bad79397ea1f57",
+        "ev_28e138aec1ee4633",
+        "ev_2c6bc75694fac331",
+        "ev_3173fc2323ceb117",
+        "ev_36fc768c9b98cc51",
+        "ev_386bd5ae94070a77",
+        "ev_3f5ca4e21553f32e",
+        "ev_41c6b4831c6e7549",
+        "ev_429f110d0f6a7896",
+        "ev_4309c1d585bbd573",
+        "ev_471607d9bdd1abe8",
+        "ev_4ed85e54eaab7297",
+        "ev_50498cada512ae70",
+        "ev_521322613ce8c085",
+        "ev_55541502d6537ae9",
+        "ev_55756b5c76150a5d",
+        "ev_577bb22acb2f71ae",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_6b1271f609ce438e",
+        "ev_72945596997f9008",
+        "ev_7416d2fc71e46d58",
+        "ev_7e4519c3675b92f7",
+        "ev_7f6410a5389898a5",
+        "ev_8032f99cb1184961",
+        "ev_826da2d2e649b485",
+        "ev_82dffd65d16997af",
+        "ev_87879ee4d1969114",
+        "ev_895038c167e64ee9",
+        "ev_896122b37a549605",
+        "ev_8c6ddb56926d9ecb",
+        "ev_8f9034d5d62be1cd",
+        "ev_95c03985870188db",
+        "ev_9972d78a7ed96453",
+        "ev_9acb82c64c1792e3",
+        "ev_9afafb46664d6701",
+        "ev_9ddf675739a4d37a",
+        "ev_9decf1cbcbcc7d25",
+        "ev_a1f2f3c68c0f521b",
+        "ev_a32b77a8b393b409",
+        "ev_aa756e39a46876c0",
+        "ev_ace0d087762ec7f6",
+        "ev_af9910b9b55d512c",
+        "ev_b53b1eef8255dfaf",
+        "ev_b6ef947d623e7137",
+        "ev_b8aa4764de89597f",
+        "ev_bec8c98e350b5bab",
+        "ev_bf1bbd5f170a12a9",
+        "ev_c16cd8a81b99410d",
+        "ev_c603df7dbfb1d1d3",
+        "ev_cdb5ddb36299f035",
+        "ev_cf2741770e934a49",
+        "ev_cffc01642d022c87",
+        "ev_d071431bf98c79f3",
+        "ev_d14ee36de4987438",
+        "ev_d42ebd7f985b5490",
+        "ev_d6570b3654d799ff",
+        "ev_daf242ee923d0264",
+        "ev_df451649650f6041",
+        "ev_dfc8cf947642369a",
+        "ev_e0869bf1b5b8417f",
+        "ev_e212576048acabe6",
+        "ev_e39d1c58cf43cf8a",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7",
+        "ev_ea737c5e56f37076",
+        "ev_eb09fc6a6d51504b",
+        "ev_ee3d1e95ee7d5130",
+        "ev_ee7811cbab74e9c6",
+        "ev_ef111a7caae213f0",
+        "ev_f13c9d72349b317f",
+        "ev_f19d74f6ba596733",
+        "ev_f2d83729fd1a8334",
+        "ev_fa9d02a4fd1be4da",
+        "ev_faffa738a6b4eca8"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a3a5c044d6e43aec",
+        "action_2_request_ff3a337fc7deda94",
+        "action_3_request_83e60cca1c9d187e",
+        "action_4_request_8e81d4f54f9c40e8",
+        "action_5_request_4b6d88c054962643",
+        "action_6_request_ac5a190297f54498",
+        "action_7_request_1c54b6af0a2c00ac",
+        "action_8_request_274b236ffe861845"
+      ]
+    },
+    {
+      "sequence": 45,
+      "kind": "model_started",
+      "call_number": 9,
+      "status": "pending",
+      "serialized_chars": 73462,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 46,
+      "kind": "model",
+      "call_number": 9,
+      "status": "completed",
+      "serialized_chars": 73462,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_a85f4c0a5bb691bf",
+      "action": {
+        "tool_name": "get_evidence",
+        "arguments_json": "{\"evidence_ids\":[\"ev_df451649650f6041\",\"ev_6b1271f609ce438e\",\"ev_8f9034d5d62be1cd\",\"ev_ace0d087762ec7f6\",\"ev_9decf1cbcbcc7d25\",\"ev_577bb22acb2f71ae\",\"ev_4ed85e54eaab7297\",\"ev_82dffd65d16997af\"],\"start\":0,\"chars\":4000}",
+        "purpose": "Verify original wording and offsets for pruning behaviors, follow-up actions, and their reported sequence.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_6b1271f609ce438e",
+          "ev_8f9034d5d62be1cd",
+          "ev_ace0d087762ec7f6"
+        ]
+      },
+      "latency_seconds": 5.552821084012976,
+      "provider": {
+        "request_id": "request_a85f4c0a5bb691bf",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__graph_only/cache/codex/request_a85f4c0a5bb691bf.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 21427,
+          "output_tokens": 278,
+          "reasoning_output_tokens": 63,
+          "total_tokens": 21705
+        },
+        "thread_id": "01a114b4-a746-7223-b840-76ba74556959",
+        "turn_id": "01a114b4-a767-7420-bd6e-c3dbc5d88a93",
+        "status": "completed",
+        "latency_seconds": 5.5314
+      }
+    },
+    {
+      "sequence": 47,
+      "kind": "tool_started",
+      "call_id": "action_9_request_a85f4c0a5bb691bf",
+      "name": "get_evidence",
+      "arguments": {
+        "evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_6b1271f609ce438e",
+          "ev_8f9034d5d62be1cd",
+          "ev_ace0d087762ec7f6",
+          "ev_9decf1cbcbcc7d25",
+          "ev_577bb22acb2f71ae",
+          "ev_4ed85e54eaab7297",
+          "ev_82dffd65d16997af"
+        ],
+        "start": 0,
+        "chars": 4000
+      }
+    },
+    {
+      "sequence": 48,
+      "kind": "tool",
+      "name": "get_evidence",
+      "arguments": {
+        "evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_6b1271f609ce438e",
+          "ev_8f9034d5d62be1cd",
+          "ev_ace0d087762ec7f6",
+          "ev_9decf1cbcbcc7d25",
+          "ev_577bb22acb2f71ae",
+          "ev_4ed85e54eaab7297",
+          "ev_82dffd65d16997af"
+        ],
+        "start": 0,
+        "chars": 4000
+      },
+      "call_id": "action_9_request_a85f4c0a5bb691bf",
+      "result": {
+        "error": "ValueError",
+        "message": "Request 1..6 evidence IDs"
+      },
+      "latency_seconds": 0.0006832499930169433,
+      "error": true,
+      "new_ids": []
+    },
+    {
+      "sequence": 49,
+      "kind": "context",
+      "model_call": 10,
+      "serialized_chars": 74089,
+      "message_count": 20,
+      "pinned_evidence_ids": [
+        "ev_0038d1e815d621c1",
+        "ev_0b13bd47eb112f9f",
+        "ev_4ed85e54eaab7297",
+        "ev_577bb22acb2f71ae",
+        "ev_6b1271f609ce438e",
+        "ev_7e4519c3675b92f7",
+        "ev_82dffd65d16997af",
+        "ev_895038c167e64ee9",
+        "ev_8c6ddb56926d9ecb",
+        "ev_8f9034d5d62be1cd",
+        "ev_9afafb46664d6701",
+        "ev_ace0d087762ec7f6",
+        "ev_cf2741770e934a49",
+        "ev_df451649650f6041",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7",
+        "ev_fa9d02a4fd1be4da"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_0038d1e815d621c1",
+        "ev_01b7ef484970869e",
+        "ev_021e1e631338c835",
+        "ev_0348daaa91217689",
+        "ev_04fcaa0002d7d7b3",
+        "ev_097c4fb17f2c1799",
+        "ev_0a9ab2f340184cf3",
+        "ev_0b13bd47eb112f9f",
+        "ev_0bc25055936e1092",
+        "ev_0efca8b5653af727",
+        "ev_152b218ec13d1455",
+        "ev_15c31cc784619961",
+        "ev_1891e24034dc3a2f",
+        "ev_18d4325b245df765",
+        "ev_1999583d0b49daeb",
+        "ev_1ad128968e343ee3",
+        "ev_1b29a9e055dfc589",
+        "ev_1db77eef58ddea9b",
+        "ev_1f9cde965b9b5a5a",
+        "ev_21f3b884f7db8510",
+        "ev_22bad79397ea1f57",
+        "ev_28e138aec1ee4633",
+        "ev_2c6bc75694fac331",
+        "ev_3173fc2323ceb117",
+        "ev_36fc768c9b98cc51",
+        "ev_386bd5ae94070a77",
+        "ev_3f5ca4e21553f32e",
+        "ev_41c6b4831c6e7549",
+        "ev_429f110d0f6a7896",
+        "ev_4309c1d585bbd573",
+        "ev_471607d9bdd1abe8",
+        "ev_4ed85e54eaab7297",
+        "ev_50498cada512ae70",
+        "ev_521322613ce8c085",
+        "ev_55541502d6537ae9",
+        "ev_55756b5c76150a5d",
+        "ev_577bb22acb2f71ae",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_6b1271f609ce438e",
+        "ev_72945596997f9008",
+        "ev_7416d2fc71e46d58",
+        "ev_7e4519c3675b92f7",
+        "ev_7f6410a5389898a5",
+        "ev_8032f99cb1184961",
+        "ev_826da2d2e649b485",
+        "ev_82dffd65d16997af",
+        "ev_87879ee4d1969114",
+        "ev_895038c167e64ee9",
+        "ev_896122b37a549605",
+        "ev_8c6ddb56926d9ecb",
+        "ev_8f9034d5d62be1cd",
+        "ev_95c03985870188db",
+        "ev_9972d78a7ed96453",
+        "ev_9acb82c64c1792e3",
+        "ev_9afafb46664d6701",
+        "ev_9ddf675739a4d37a",
+        "ev_9decf1cbcbcc7d25",
+        "ev_a1f2f3c68c0f521b",
+        "ev_a32b77a8b393b409",
+        "ev_aa756e39a46876c0",
+        "ev_ace0d087762ec7f6",
+        "ev_af9910b9b55d512c",
+        "ev_b53b1eef8255dfaf",
+        "ev_b6ef947d623e7137",
+        "ev_b8aa4764de89597f",
+        "ev_bec8c98e350b5bab",
+        "ev_bf1bbd5f170a12a9",
+        "ev_c16cd8a81b99410d",
+        "ev_c603df7dbfb1d1d3",
+        "ev_cdb5ddb36299f035",
+        "ev_cf2741770e934a49",
+        "ev_cffc01642d022c87",
+        "ev_d071431bf98c79f3",
+        "ev_d14ee36de4987438",
+        "ev_d42ebd7f985b5490",
+        "ev_d6570b3654d799ff",
+        "ev_daf242ee923d0264",
+        "ev_df451649650f6041",
+        "ev_dfc8cf947642369a",
+        "ev_e0869bf1b5b8417f",
+        "ev_e212576048acabe6",
+        "ev_e39d1c58cf43cf8a",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7",
+        "ev_ea737c5e56f37076",
+        "ev_eb09fc6a6d51504b",
+        "ev_ee3d1e95ee7d5130",
+        "ev_ee7811cbab74e9c6",
+        "ev_ef111a7caae213f0",
+        "ev_f13c9d72349b317f",
+        "ev_f19d74f6ba596733",
+        "ev_f2d83729fd1a8334",
+        "ev_fa9d02a4fd1be4da",
+        "ev_faffa738a6b4eca8"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a3a5c044d6e43aec",
+        "action_2_request_ff3a337fc7deda94",
+        "action_3_request_83e60cca1c9d187e",
+        "action_4_request_8e81d4f54f9c40e8",
+        "action_5_request_4b6d88c054962643",
+        "action_6_request_ac5a190297f54498",
+        "action_7_request_1c54b6af0a2c00ac",
+        "action_8_request_274b236ffe861845",
+        "action_9_request_a85f4c0a5bb691bf"
+      ]
+    },
+    {
+      "sequence": 50,
+      "kind": "model_started",
+      "call_number": 10,
+      "status": "pending",
+      "serialized_chars": 74089,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 51,
+      "kind": "model",
+      "call_number": 10,
+      "status": "completed",
+      "serialized_chars": 74089,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_cf86ac9b2b3b70fd",
+      "action": {
+        "tool_name": "get_evidence",
+        "arguments_json": "{\"evidence_ids\":[\"ev_df451649650f6041\",\"ev_6b1271f609ce438e\",\"ev_8f9034d5d62be1cd\",\"ev_ace0d087762ec7f6\",\"ev_4ed85e54eaab7297\",\"ev_82dffd65d16997af\"],\"start\":0,\"chars\":4000}",
+        "purpose": "Verify original wording and offsets for reported pruning behaviors, follow-up actions, and their sequence.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_6b1271f609ce438e",
+          "ev_8f9034d5d62be1cd",
+          "ev_ace0d087762ec7f6",
+          "ev_4ed85e54eaab7297",
+          "ev_82dffd65d16997af"
+        ]
+      },
+      "latency_seconds": 6.67731850000564,
+      "provider": {
+        "request_id": "request_cf86ac9b2b3b70fd",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__graph_only/cache/codex/request_cf86ac9b2b3b70fd.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 21675,
+          "output_tokens": 252,
+          "reasoning_output_tokens": 39,
+          "total_tokens": 21927
+        },
+        "thread_id": "01a114b4-bcfe-7631-b190-eed1b4803ecb",
+        "turn_id": "01a114b4-bd1d-7283-b5ed-ccc3fa8eaf8d",
+        "status": "completed",
+        "latency_seconds": 6.6596
+      }
+    },
+    {
+      "sequence": 52,
+      "kind": "tool_started",
+      "call_id": "action_10_request_cf86ac9b2b3b70fd",
+      "name": "get_evidence",
+      "arguments": {
+        "evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_6b1271f609ce438e",
+          "ev_8f9034d5d62be1cd",
+          "ev_ace0d087762ec7f6",
+          "ev_4ed85e54eaab7297",
+          "ev_82dffd65d16997af"
+        ],
+        "start": 0,
+        "chars": 4000
+      }
+    },
+    {
+      "sequence": 53,
+      "kind": "tool",
+      "name": "get_evidence",
+      "arguments": {
+        "evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_6b1271f609ce438e",
+          "ev_8f9034d5d62be1cd",
+          "ev_ace0d087762ec7f6",
+          "ev_4ed85e54eaab7297",
+          "ev_82dffd65d16997af"
+        ],
+        "start": 0,
+        "chars": 4000
+      },
+      "call_id": "action_10_request_cf86ac9b2b3b70fd",
+      "result": {
+        "results": [
+          {
+            "evidence_id": "ev_df451649650f6041",
+            "record_id": "KEP-6419",
+            "provenance_kind": "extracted",
+            "source_id": "decision_245b960c",
+            "target_id": "event_64394a17",
+            "relation": "REFERENCES",
+            "quote": "Current behavior: When I add a new pruning rule, the narrative that gets pruned goes to the hidden tab and immediately shows a hover indicating which rule was used. In other words, if I hover over the speech bubble with the three dots of a pruned narrative, it correctly displays the rule that pruned the narrative. However, if I return the next day, the hover no longer shows the pruning rule. Instead, it displays the title of the narrative.",
+            "start": 0,
+            "end": 443,
+            "total_chars": 443,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_6b1271f609ce438e",
+            "record_id": "KEP-5342",
+            "provenance_kind": "extracted",
+            "source_id": "decision_164e73bc",
+            "target_id": "risk_cda89a9d",
+            "relation": "REFERENCES",
+            "quote": "Even after deleting the pruning rule: The Narrative does not reappear in the main Narrative tab. The Narrative remains hidden. Suppression state appears to persist incorrectly.",
+            "start": 0,
+            "end": 176,
+            "total_chars": 176,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_8f9034d5d62be1cd",
+            "record_id": "KEP-6460",
+            "provenance_kind": "extracted",
+            "source_id": "decision_12df2abd",
+            "target_id": "event_fbb51c30",
+            "relation": "REFERENCES",
+            "quote": "If the UI section for \"hidden narratives\" already contains a hidden narrative (for example, if I created a pruning rule yesterday and the system hid a narrative automatically), and I hide another narrative, the new narrative correctly moves to the Hidden tab. However, several other narratives also appear in the Hidden tab even though they were not hidden.",
+            "start": 0,
+            "end": 357,
+            "total_chars": 357,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_ace0d087762ec7f6",
+            "record_id": "KEP-6413",
+            "provenance_kind": "extracted",
+            "source_id": "decision_b7533380",
+            "target_id": "event_58015e90",
+            "relation": "REFERENCES",
+            "quote": "Currently, when a user does not have available tokens , the user is still able to create a Narrative Prune Rule and prune narratives successfully . However, when the same user attempts to delete the created prune rule from the Agent Detail Page → Narrative Pruning section , the system shows an error message stating that the user does not have tokens",
+            "start": 0,
+            "end": 351,
+            "total_chars": 351,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_4ed85e54eaab7297",
+            "record_id": "KEP-4050",
+            "provenance_kind": "extracted",
+            "source_id": "decision_890415ba",
+            "target_id": "decision_983f94bd",
+            "relation": "DEPENDS_ON",
+            "quote": "Retest - Deleted Pruning Rule should Restore Narrative to Main Narrative Tab",
+            "start": 0,
+            "end": 76,
+            "total_chars": 76,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_82dffd65d16997af",
+            "record_id": "KEP-6431",
+            "provenance_kind": "extracted",
+            "source_id": "decision_245b960c",
+            "target_id": "resource_76ee7139",
+            "relation": "AFFECTS",
+            "quote": "RETEST - Pruning Rule Hover Text Shows the Wrong Text The Next Day",
+            "start": 0,
+            "end": 66,
+            "total_chars": 66,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          }
+        ]
+      },
+      "latency_seconds": 0.0006358750106301159,
+      "error": false,
+      "new_ids": []
+    },
+    {
+      "sequence": 54,
+      "kind": "context",
+      "model_call": 11,
+      "serialized_chars": 76964,
+      "message_count": 23,
+      "pinned_evidence_ids": [
+        "ev_0038d1e815d621c1",
+        "ev_0b13bd47eb112f9f",
+        "ev_4ed85e54eaab7297",
+        "ev_577bb22acb2f71ae",
+        "ev_6b1271f609ce438e",
+        "ev_7e4519c3675b92f7",
+        "ev_82dffd65d16997af",
+        "ev_895038c167e64ee9",
+        "ev_8c6ddb56926d9ecb",
+        "ev_8f9034d5d62be1cd",
+        "ev_9afafb46664d6701",
+        "ev_ace0d087762ec7f6",
+        "ev_cf2741770e934a49",
+        "ev_df451649650f6041",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7",
+        "ev_fa9d02a4fd1be4da"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_0038d1e815d621c1",
+        "ev_01b7ef484970869e",
+        "ev_021e1e631338c835",
+        "ev_0348daaa91217689",
+        "ev_04fcaa0002d7d7b3",
+        "ev_097c4fb17f2c1799",
+        "ev_0a9ab2f340184cf3",
+        "ev_0b13bd47eb112f9f",
+        "ev_0bc25055936e1092",
+        "ev_0efca8b5653af727",
+        "ev_152b218ec13d1455",
+        "ev_15c31cc784619961",
+        "ev_1891e24034dc3a2f",
+        "ev_18d4325b245df765",
+        "ev_1999583d0b49daeb",
+        "ev_1ad128968e343ee3",
+        "ev_1b29a9e055dfc589",
+        "ev_1db77eef58ddea9b",
+        "ev_1f9cde965b9b5a5a",
+        "ev_21f3b884f7db8510",
+        "ev_22bad79397ea1f57",
+        "ev_28e138aec1ee4633",
+        "ev_2c6bc75694fac331",
+        "ev_3173fc2323ceb117",
+        "ev_36fc768c9b98cc51",
+        "ev_386bd5ae94070a77",
+        "ev_3f5ca4e21553f32e",
+        "ev_41c6b4831c6e7549",
+        "ev_429f110d0f6a7896",
+        "ev_4309c1d585bbd573",
+        "ev_471607d9bdd1abe8",
+        "ev_4ed85e54eaab7297",
+        "ev_50498cada512ae70",
+        "ev_521322613ce8c085",
+        "ev_55541502d6537ae9",
+        "ev_55756b5c76150a5d",
+        "ev_577bb22acb2f71ae",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_6b1271f609ce438e",
+        "ev_72945596997f9008",
+        "ev_7416d2fc71e46d58",
+        "ev_7e4519c3675b92f7",
+        "ev_7f6410a5389898a5",
+        "ev_8032f99cb1184961",
+        "ev_826da2d2e649b485",
+        "ev_82dffd65d16997af",
+        "ev_87879ee4d1969114",
+        "ev_895038c167e64ee9",
+        "ev_896122b37a549605",
+        "ev_8c6ddb56926d9ecb",
+        "ev_8f9034d5d62be1cd",
+        "ev_95c03985870188db",
+        "ev_9972d78a7ed96453",
+        "ev_9acb82c64c1792e3",
+        "ev_9afafb46664d6701",
+        "ev_9ddf675739a4d37a",
+        "ev_9decf1cbcbcc7d25",
+        "ev_a1f2f3c68c0f521b",
+        "ev_a32b77a8b393b409",
+        "ev_aa756e39a46876c0",
+        "ev_ace0d087762ec7f6",
+        "ev_af9910b9b55d512c",
+        "ev_b53b1eef8255dfaf",
+        "ev_b6ef947d623e7137",
+        "ev_b8aa4764de89597f",
+        "ev_bec8c98e350b5bab",
+        "ev_bf1bbd5f170a12a9",
+        "ev_c16cd8a81b99410d",
+        "ev_c603df7dbfb1d1d3",
+        "ev_cdb5ddb36299f035",
+        "ev_cf2741770e934a49",
+        "ev_cffc01642d022c87",
+        "ev_d071431bf98c79f3",
+        "ev_d14ee36de4987438",
+        "ev_d42ebd7f985b5490",
+        "ev_d6570b3654d799ff",
+        "ev_daf242ee923d0264",
+        "ev_df451649650f6041",
+        "ev_dfc8cf947642369a",
+        "ev_e0869bf1b5b8417f",
+        "ev_e212576048acabe6",
+        "ev_e39d1c58cf43cf8a",
+        "ev_e6ea3ba8358a1e20",
+        "ev_e949045bf5cff4a7",
+        "ev_ea737c5e56f37076",
+        "ev_eb09fc6a6d51504b",
+        "ev_ee3d1e95ee7d5130",
+        "ev_ee7811cbab74e9c6",
+        "ev_ef111a7caae213f0",
+        "ev_f13c9d72349b317f",
+        "ev_f19d74f6ba596733",
+        "ev_f2d83729fd1a8334",
+        "ev_fa9d02a4fd1be4da",
+        "ev_faffa738a6b4eca8"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a3a5c044d6e43aec",
+        "action_2_request_ff3a337fc7deda94",
+        "action_3_request_83e60cca1c9d187e",
+        "action_4_request_8e81d4f54f9c40e8",
+        "action_5_request_4b6d88c054962643",
+        "action_6_request_ac5a190297f54498",
+        "action_7_request_1c54b6af0a2c00ac",
+        "action_8_request_274b236ffe861845",
+        "action_9_request_a85f4c0a5bb691bf",
+        "action_10_request_cf86ac9b2b3b70fd"
+      ]
+    },
+    {
+      "sequence": 55,
+      "kind": "model_started",
+      "call_number": 11,
+      "status": "pending",
+      "serialized_chars": 76964,
+      "available_tools": [
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 56,
+      "kind": "model",
+      "call_number": 11,
+      "status": "completed",
+      "serialized_chars": 76964,
+      "available_tools": [
+        "DraftAnswer"
+      ],
+      "request_id": "request_00e652e6e9c98570",
+      "action": {
+        "tool_name": "DraftAnswer",
+        "arguments_json": "{\"claims\":[{\"statement\":\"In KEP-6419, a newly pruned narrative moved to the hidden tab and initially showed its pruning rule on hover; the reporter said that on returning the next day, the hover showed the narrative title instead.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_df451649650f6041\",\"quote\":\"Current behavior: When I add a new pruning rule, the narrative that gets pruned goes to the hidden tab and immediately shows a hover indicating which rule was used. In other words, if I hover over the speech bubble with the three dots of a pruned narrative, it correctly displays the rule that pruned the narrative. However, if I return the next day, the hover no longer shows the pruning rule. Instead, it displays the title of the narrative.\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The first-person report explicitly orders the immediate display before the next-day display.\"},{\"statement\":\"A separate KEP-6431 record calls for a retest of the next-day pruning-rule hover text problem; it does not report a retest result.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_82dffd65d16997af\",\"quote\":\"RETEST - Pruning Rule Hover Text Shows the Wrong Text The Next Day\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The title directly identifies a retest, but supplies no outcome.\"},{\"statement\":\"In KEP-5342, the reporter said a pruned narrative immediately entered Hidden Narratives but did not return to the main tab after its corresponding rule was deleted.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_1db77eef58ddea9b\",\"quote\":\"When I prune a Narrative, it immediately moves to the Hidden Narratives tab. However, when I delete the corresponding pruning rule from the Agent Details page, the Narrative does not reappear in the main Narrative tab\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The report explicitly gives the order: prune, then delete the rule, then observe the failure to restore.\"},{\"statement\":\"KEP-4019 reports that a feature reflecting pruning-rule deletion in topic narratives was implemented and its merge request merged in staging; this is not proof that the restoration defect was resolved.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_f2d83729fd1a8334\",\"quote\":\"Implemented Feature to reflect narrative pruning rule deletion in topic narratives. MR , we have merged in staging ENV\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The source directly reports implementation and a staging merge, but no verified behavioral outcome.\"},{\"statement\":\"KEP-4050 identifies restoration to the main Narrative tab after rule deletion as a retest, not as a verified result.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_4ed85e54eaab7297\",\"quote\":\"Retest - Deleted Pruning Rule should Restore Narrative to Main Narrative Tab\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The record is expressly labeled a retest and uses prescriptive wording.\"},{\"statement\":\"KEP-5389 reports that deleting a pruning rule did not automatically refresh the UI, and KEP-5480 subsequently frames that issue as a retest; the records shown do not establish a passing result.\",\"kind\":\"synthesis\",\"citations\":[{\"evidence_id\":\"ev_7e4519c3675b92f7\",\"quote\":\"When a pruning rule is deleted, the UI does not refresh automatically\",\"start\":0},{\"evidence_id\":\"ev_0038d1e815d621c1\",\"quote\":\"Retest: Deleted Pruning Rule Does Not Sync Immediately on UI\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"medium\",\"confidence_reason\":\"The original defect and retest title support a reported follow-up sequence, not completion or success.\"},{\"statement\":\"KEP-6460 reports that hiding another narrative correctly moved that narrative to Hidden, but also made several narratives that were not hidden appear there.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_8f9034d5d62be1cd\",\"quote\":\"If the UI section for \\\"hidden narratives\\\" already contains a hidden narrative (for example, if I created a pruning rule yesterday and the system hid a narrative automatically), and I hide another narrative, the new narrative correctly moves to the Hidden tab. However, several other narratives also appear in the Hidden tab even though they were not hidden.\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The report directly describes the prior hidden item, subsequent hide action, and unexpected additional entries.\"},{\"statement\":\"KEP-5759 reports that the system blocked pruning without an active token and states that pruning should instead depend on user permissions.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_1ad128968e343ee3\",\"quote\":\"System blocks pruning when no active token is available. User cannot proceed with Hide / Flag action due to token restriction.\",\"start\":0},{\"evidence_id\":\"ev_9decf1cbcbcc7d25\",\"quote\":\"pruning capability should be restricted only based on user permissions (Viewer vs Editor) — not based on token availability\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The reported failure and desired rule are directly stated in the same record; the desired rule is not an observed fix.\"},{\"statement\":\"KEP-6413 reports a different token-related sequence: a user without tokens could create a prune rule and prune, but received a no-token error when attempting to delete that rule.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_ace0d087762ec7f6\",\"quote\":\"Currently, when a user does not have available tokens , the user is still able to create a Narrative Prune Rule and prune narratives successfully . However, when the same user attempts to delete the created prune rule from the Agent Detail Page → Narrative Pruning section , the system shows an error message stating that the user does not have tokens\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The source explicitly orders creation and pruning before the failed deletion attempt; it should not be collapsed into KEP-5759's reported behavior.\"},{\"statement\":\"The KEP-6413 follow-up says token-check logic remained in the update and delete pruning-rule APIs and was removed; no post-removal test result is shown.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_d42ebd7f985b5490\",\"quote\":\"The Token check Logic was kept in updfation and delete pruning rules API's. We have removed it\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The record reports a code change, not a verified user-facing recovery.\"}],\"unanswered\":[\"What were the exact dated chronology and deployment status of the pruning fixes and retests? The cited original snippets lack verified timestamps and passing results.\",\"Did deletion restore previously hidden narratives, and did hover text remain correct after the next day following the retests?\",\"Why do KEP-5759 and KEP-6413 describe different no-token behavior? The excerpts do not establish whether their environments, versions, or paths differed.\",\"Was the KEP-6460 hidden-tab duplication fixed and verified?\"],\"limitations\":[\"Temporal order is strongest within first-person reports and in records expressly labeled retest; ticket numbers and graph edges do not independently prove chronology or causality.\",\"A staging merge or reported code change is not evidence of production deployment, successful QA, or customer impact.\",\"The cited reports describe selected cases, not the prevalence of pruning defects.\"]}",
+        "purpose": "Summarize reported pruning behavior, follow-up records, and the limits of their temporal evidence.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_df451649650f6041",
+          "ev_82dffd65d16997af",
+          "ev_1db77eef58ddea9b",
+          "ev_f2d83729fd1a8334",
+          "ev_4ed85e54eaab7297",
+          "ev_7e4519c3675b92f7",
+          "ev_0038d1e815d621c1",
+          "ev_8f9034d5d62be1cd",
+          "ev_1ad128968e343ee3",
+          "ev_9decf1cbcbcc7d25",
+          "ev_ace0d087762ec7f6",
+          "ev_d42ebd7f985b5490"
+        ]
+      },
+      "latency_seconds": 27.05311129099573,
+      "provider": {
+        "request_id": "request_00e652e6e9c98570",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__graph_only/cache/codex/request_00e652e6e9c98570.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 0,
+          "input_tokens": 22327,
+          "output_tokens": 2163,
+          "reasoning_output_tokens": 266,
+          "total_tokens": 24490
+        },
+        "thread_id": "01a114b4-d71d-7d30-8711-fbf5811cc984",
+        "turn_id": "01a114b4-d73f-7453-a9f3-bb6c650a02da",
+        "status": "completed",
+        "latency_seconds": 27.0347
+      }
+    },
+    {
+      "sequence": 57,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "KEP-6419"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_df451649650f6041"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 58,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "KEP-6431"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_82dffd65d16997af"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 59,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "Community_1210"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_1db77eef58ddea9b"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 60,
+      "kind": "claim_support",
+      "claim_id": "C4",
+      "record_ids": [
+        "KEP-4019"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_f2d83729fd1a8334"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 61,
+      "kind": "claim_support",
+      "claim_id": "C5",
+      "record_ids": [
+        "KEP-4050"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_4ed85e54eaab7297"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 62,
+      "kind": "claim_support",
+      "claim_id": "C6",
+      "record_ids": [
+        "KEP-5389",
+        "KEP-5480"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_7e4519c3675b92f7",
+        "ev_0038d1e815d621c1"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 63,
+      "kind": "claim_support",
+      "claim_id": "C7",
+      "record_ids": [
+        "KEP-6460"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_8f9034d5d62be1cd"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 64,
+      "kind": "claim_support",
+      "claim_id": "C8",
+      "record_ids": [
+        "KEP-5759"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_1ad128968e343ee3",
+        "ev_9decf1cbcbcc7d25"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 65,
+      "kind": "claim_support",
+      "claim_id": "C9",
+      "record_ids": [
+        "KEP-6413"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_ace0d087762ec7f6"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 66,
+      "kind": "claim_support",
+      "claim_id": "C10",
+      "record_ids": [
+        "KEP-6413"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_d42ebd7f985b5490"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    }
+  ],
+  "usage": {
+    "model_calls": 11,
+    "data_tool_calls": 10,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 155863,
+      "output_tokens": 4097,
+      "cached_input_tokens": 23040,
+      "reasoning_output_tokens": 763
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 84.52972291701008,
+    "provider_elapsed_seconds": 84.3178,
+    "tool_elapsed_seconds": 0.05039066501194611,
+    "total_elapsed_seconds": 84.66317254101159,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "agent_version": "task2-agent-v1",
+    "graph_hash": "graph_461ec66cd6c65256",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "execution_scope": "source_only",
+    "tool_profile": "graph_only",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__graph_only/cache",
+      "timeout": 300.0
+    },
+    "created_at": "2026-10-07T04:53:05.357420+00:00",
+    "dependencies": {
+      "langchain": "1.4.0",
+      "langchain-core": "1.6.1",
+      "langgraph": "1.2.11",
+      "pydantic": "2.13.5"
+    },
+    "client_injected": true,
+    "context_policy": "200000 canonical serialized application characters; exact excerpts, pinned evidence, whole-exchange eviction; fresh state per question",
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "pruning__paraphrase__graph_only",
+      "question_id": "pruning",
+      "variant": "paraphrase",
+      "approach": "graph_only",
+      "question": "Which pruning behaviors and follow-up actions are reported, and what evidence supports their temporal order?"
+    }
+  }
+}

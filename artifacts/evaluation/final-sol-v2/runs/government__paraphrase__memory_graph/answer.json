@@ -1,0 +1,5033 @@
+{
+  "question": "For the April 2026 government-network narrative outage, what failed and how much of the problem did increasing the timeout resolve?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "The Argonaut government network stopped receiving narrative updates from approximately April 19, 2026.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_1c1739cdda90321d",
+          "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_69c0485386f1acbe"
+      ],
+      "confidence": "high",
+      "confidence_reason": "The outage record states this directly.",
+      "verification_note": "The original KEP-6969 excerpt identifies the affected tenant, network, and approximate start.",
+      "id": "C1",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "source_mode": "memory_confirmed_by_graph"
+    },
+    {
+      "statement": "The reported failure was that narrative-generation jobs exceeded the 10-hour processing threshold and were killed before completion; requeued jobs were killed again, leaving no output.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_5f2b2e2ded8842f5",
+          "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_1b68761b66cc3cc3",
+          "quote": "The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_69c0485386f1acbe"
+      ],
+      "confidence": "high",
+      "confidence_reason": "The record explicitly reports the failure mechanism and retry loop.",
+      "verification_note": "Both cited excerpts are original graph evidence from KEP-6969.",
+      "id": "C2",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "source_mode": "memory_confirmed_by_graph"
+    },
+    {
+      "statement": "The processing timeout was increased from 10 to 12 hours—two additional hours, not a documented percentage of the outage resolved.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_ad26bffaa983949e",
+          "quote": "the processing timeout was increased from 10 hours to 12 hours",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_69c0485386f1acbe"
+      ],
+      "confidence": "high",
+      "confidence_reason": "The configuration change is explicit; the two-hour difference is arithmetic.",
+      "verification_note": "The cited record describes the timeout increase but gives no measured resolution fraction.",
+      "id": "C3",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "source_mode": "memory_confirmed_by_graph"
+    }
+  ],
+  "unanswered": [
+    "The reviewed outage evidence does not establish how much the timeout increase resolved, whether narrative updates resumed, or whether the retry-loop problem was fully fixed."
+  ],
+  "limitations": [
+    "A timeout change alone is not evidence of recovery or a quantified fix.",
+    "Citation validation checks source access and exact provenance, not semantic entailment or real-world truth."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "memory_fingerprint": "memory_e4d06d4e2b5f1072",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "schema_version": "3.1",
+      "abstraction_run_id": "abstraction_b28471cf51a91b7f",
+      "execution_scope": "production",
+      "preview_notice": null,
+      "coverage": {
+        "base_status": "complete",
+        "reviewed_candidates": 816,
+        "selected_candidates": 816,
+        "processed_abstraction_packets": 23,
+        "planned_abstraction_packets": 23
+      }
+    },
+    {
+      "sequence": 2,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 11244,
+      "message_count": 2,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [],
+      "included_tool_call_ids": []
+    },
+    {
+      "sequence": 3,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "pending",
+      "serialized_chars": 11244,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model",
+      "call_number": 1,
+      "status": "completed",
+      "serialized_chars": 11244,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_4abed8c3e42fe11e",
+      "action": {
+        "tool_name": "recall_memory",
+        "arguments_json": "{\"cue\":\"April 2026 government-network narrative outage timeout increase what failed how much resolved\",\"limit\":6}",
+        "purpose": "Find the outage record and its reported timeout outcome.",
+        "discarded_items": [],
+        "pin_evidence_ids": []
+      },
+      "latency_seconds": 5.425746332999552,
+      "provider": {
+        "request_id": "request_4abed8c3e42fe11e",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__paraphrase__memory_graph/cache/codex/request_4abed8c3e42fe11e.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 5647,
+          "output_tokens": 87,
+          "reasoning_output_tokens": 17,
+          "total_tokens": 5734
+        },
+        "thread_id": "01a114b9-241b-7dd1-bf94-fb2c0fd1b621",
+        "turn_id": "01a114b9-243f-7603-a6d2-83b534d9635e",
+        "status": "completed",
+        "latency_seconds": 5.4045
+      }
+    },
+    {
+      "sequence": 5,
+      "kind": "tool_started",
+      "call_id": "action_1_request_4abed8c3e42fe11e",
+      "name": "recall_memory",
+      "arguments": {
+        "cue": "April 2026 government-network narrative outage timeout increase what failed how much resolved",
+        "limit": 6
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "tool",
+      "name": "recall_memory",
+      "arguments": {
+        "cue": "April 2026 government-network narrative outage timeout increase what failed how much resolved",
+        "limit": 6
+      },
+      "call_id": "action_1_request_4abed8c3e42fe11e",
+      "result": {
+        "cue": "April 2026 government-network narrative outage timeout increase what failed how much resolved",
+        "expanded_cue": "April 2026 government-network narrative outage timeout increase what failed how much resolved",
+        "results": [
+          {
+            "id": "pattern_0ea1482690a38207",
+            "type": "pattern",
+            "kind": "reported_recurrence",
+            "retention": "retained",
+            "confidence": "low",
+            "evidence_ids": [
+              "ev_75b67275157f9120",
+              "ev_9b4317c218937e4f"
+            ],
+            "record_ids": [
+              "KEP-6969",
+              "KEP-6970"
+            ],
+            "entity_ids": [],
+            "independent_support_count": 2,
+            "supporting_episode_ids": [
+              "episode_69c0485386f1acbe",
+              "episode_79ef5db564f05930"
+            ],
+            "supporting_fact_ids": [],
+            "item_id": "pattern_0ea1482690a38207",
+            "title": "Detection and response failed at different stages: some prolonged outages produced no alarm, while another eventually alerted without prompting action.",
+            "preview": "Detection and response failed at different stages: some prolonged outages produced no alarm, while another eventually alerted without prompting action.\nThe collection outage reportedly escaped automated detection for eight days; the narrative outage was first discovered by the customer, with later alarms receiving no action. Alert coverage and alert ownership are therefore separate reliability concerns.\nAssess output-freshness monitoring separately from acknowledgement, escalation, and accountable response.",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.03542278,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_69c0485386f1acbe",
+                "pattern_0ea1482690a38207"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern"
+              ],
+              "score": 0.015725806451612902
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-episode pattern"
+          },
+          {
+            "id": "episode_69c0485386f1acbe",
+            "type": "episode",
+            "kind": "fixed_evidence_bundle",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_1b68761b66cc3cc3",
+              "ev_1c1739cdda90321d",
+              "ev_4386d80195ef6b5a",
+              "ev_5f2b2e2ded8842f5",
+              "ev_9b4317c218937e4f",
+              "ev_ad26bffaa983949e",
+              "ev_f3dba2eba43e2de5"
+            ],
+            "record_ids": [
+              "KEP-6969"
+            ],
+            "entity_ids": [
+              "resource_2a19226a",
+              "resource_c0cb2fb8"
+            ],
+            "item_id": "episode_69c0485386f1acbe",
+            "title": "increase processing timeout from 10 to 12 hours",
+            "preview": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026\nA government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing.\nGovernment customer (Argonaut tenant) went 10+ days (Apr 19–29) wit",
+            "preview_truncated": true,
+            "title_origin": "unverified graph decision labels",
+            "score": 0.03480316,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_79ef5db564f05930",
+                "pattern_0ea1482690a38207",
+                "episode_69c0485386f1acbe"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern",
+                "episode supplies evidence for this pattern"
+              ],
+              "score": 0.008593479968578161
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-episode pattern → episode supplies evidence for this pattern"
+          },
+          {
+            "id": "episode_32359916bec8e876",
+            "type": "episode",
+            "kind": "fixed_evidence_bundle",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_0b0616b5f616d98f",
+              "ev_28374c25b7ead4f3",
+              "ev_356e74daad388f22",
+              "ev_41d9d38efa271479",
+              "ev_48a5ba5b1d05e25e",
+              "ev_97e1108c88fc5ff2",
+              "ev_df401db3241cba63",
+              "ev_f89008c1a2802c2c"
+            ],
+            "record_ids": [
+              "KEP-4037",
+              "KEP-4324"
+            ],
+            "entity_ids": [
+              "resource_59d7189d",
+              "resource_bcc0b2af"
+            ],
+            "item_id": "episode_32359916bec8e876",
+            "title": "Test account recommendation using web search agent / Increase ALB timeout to 180 seconds for Kepler Chat API",
+            "preview": "I want to have a timeout of 300 seconds so that long-running requests can complete successfully\nIncreased ALB timeout to 180sec\nIssue related to ALB timeout was resolved.\nQA: Staging: Agent: Account Recommendation Using Web Search\nThe chat API is currently behind the Kepler NGINX, which has a hard timeout of 60 seconds",
+            "preview_truncated": false,
+            "title_origin": "unverified graph decision labels",
+            "score": 0.03425363,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_7a3bcb96603880ec",
+                "pattern_58a2e1d22c555eac",
+                "episode_32359916bec8e876"
+              ],
+              "reasons": [
+                "supports this cross-record pattern",
+                "episode supplies evidence for this pattern"
+              ],
+              "score": 0.008074999999999999
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-record pattern → episode supplies evidence for this pattern"
+          },
+          {
+            "id": "pattern_58a2e1d22c555eac",
+            "type": "pattern",
+            "kind": "reported_recurrence",
+            "retention": "retained",
+            "confidence": "low",
+            "evidence_ids": [
+              "ev_356e74daad388f22",
+              "ev_48a5ba5b1d05e25e",
+              "ev_55072d8eb14344fd",
+              "ev_63e0fb5ca900a930",
+              "ev_b8b2cac18f3f5801"
+            ],
+            "record_ids": [
+              "KEP-3000",
+              "KEP-3866",
+              "KEP-4324"
+            ],
+            "entity_ids": [
+              "resource_12c6704d",
+              "resource_bcc0b2af"
+            ],
+            "independent_support_count": 3,
+            "supporting_episode_ids": [
+              "episode_0b5eac8998a40268",
+              "episode_32359916bec8e876",
+              "episode_3b052dfb1b6b1da1"
+            ],
+            "supporting_fact_ids": [
+              "fact_1fc088ededabc3f8",
+              "fact_7a3bcb96603880ec",
+              "fact_9df556c4c2c40498",
+              "fact_d4be8f30fbe80ecc"
+            ],
+            "item_id": "pattern_58a2e1d22c555eac",
+            "title": "Multiple records report one-minute request termination, but working report streams and differing timeout remedies make this a path-specific reliability problem rather than a universal streaming failure.",
+            "preview": "Multiple records report one-minute request termination, but working report streams and differing timeout remedies make this a path-specific reliability problem rather than a universal streaming failure.\nThe same termination duration appears across records, while responses address different limits: a requested 300 seconds, a reported ALB increase to 180 seconds, and stream-completion requirements. These are not interchangeable acceptance criteria.\nDirects testing toward each request path and timeout layer, with explicit completion semantics rather than a single global timeout fix.",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.03363907,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_32359916bec8e876",
+                "pattern_58a2e1d22c555eac"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern"
+              ],
+              "score": 0.015707178393745556
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-episode pattern"
+          },
+          {
+            "id": "episode_79ef5db564f05930",
+            "type": "episode",
+            "kind": "fixed_evidence_bundle",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_06eee086b8cf9d93",
+              "ev_1faf97ee0458fc4b",
+              "ev_4700e329357c7762",
+              "ev_477c9de5cda34331",
+              "ev_48b827cfe137a976",
+              "ev_5bae6c7471a558ea",
+              "ev_66f837dba0b6f0bf",
+              "ev_75b67275157f9120",
+              "ev_798015aecf48cc37",
+              "ev_840978102672098c",
+              "ev_86db7d7d4c40c62d",
+              "ev_9488fa8cc6db3d39",
+              "ev_97a309f4cce85c3a",
+              "ev_cdf54cd1ff4aa620",
+              "ev_d281345d3aae0fef",
+              "ev_e0f628219171d557",
+              "ev_f3c24bea244e9385"
+            ],
+            "record_ids": [
+              "KEP-6970"
+            ],
+            "entity_ids": [
+              "resource_77b58f7b",
+              "resource_b3eb4b29",
+              "resource_de33c8fa"
+            ],
+            "item_id": "episode_79ef5db564f05930",
+            "title": "disable cron job sending failure callbacks before backfill / order backfill for TikTok, Instagram, YouTube and Facebook from April 21",
+            "preview": "Backfill from Apr 21 required to restore full data integrity\nBackfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April\nFrom approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing\nFrom approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.\nHost PID fix applied prior to 19.2.0 deployment\nNo automated alarm fired during this period\nRoot cause identified and fixed: video vision processing jobs were not closing their final steps properly, ",
+            "preview_truncated": true,
+            "title_origin": "unverified graph decision labels",
+            "score": 0.03330626,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_69c0485386f1acbe",
+                "pattern_0ea1482690a38207",
+                "episode_79ef5db564f05930"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern",
+                "episode supplies evidence for this pattern"
+              ],
+              "score": 0.00943548387096774
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-episode pattern → episode supplies evidence for this pattern"
+          },
+          {
+            "id": "fact_7a3bcb96603880ec",
+            "type": "fact",
+            "kind": "historical_statement",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_48a5ba5b1d05e25e"
+            ],
+            "record_ids": [
+              "KEP-4324"
+            ],
+            "entity_ids": [
+              "outcome_eb884965"
+            ],
+            "item_id": "fact_7a3bcb96603880ec",
+            "title": "Increased ALB timeout to 180sec",
+            "preview": "Increased ALB timeout to 180sec",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.03185486,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_32359916bec8e876",
+                "pattern_58a2e1d22c555eac",
+                "fact_7a3bcb96603880ec"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern",
+                "fact supplies evidence for this pattern"
+              ],
+              "score": 0.009424307036247333
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-episode pattern → fact supplies evidence for this pattern"
+          }
+        ],
+        "trace": {
+          "mode": "offline BM25 + cue-anchored node similarity; not direct semantic query encoding",
+          "anchor_nodes": [
+            {
+              "node_id": "decision_689ff4ca",
+              "label": "increase processing timeout from 10 to 12 hours",
+              "lexical_score": 10.765026545114711
+            },
+            {
+              "node_id": "event_6ec3918b",
+              "label": "Twitter account blockage and cost increase starting February 9 2026",
+              "lexical_score": 10.507406180272334
+            },
+            {
+              "node_id": "event_d5360bd6",
+              "label": "ALB timeout issue resolved",
+              "lexical_score": 10.341287421937151
+            }
+          ],
+          "seed_item_ids": [
+            "fact_63b5b3661229a85b",
+            "fact_1d79bf4d32849728",
+            "episode_69c0485386f1acbe",
+            "episode_32359916bec8e876",
+            "fact_5acca7ca833d4087",
+            "episode_79ef5db564f05930",
+            "fact_f497899a338689f5",
+            "fact_7a3bcb96603880ec"
+          ],
+          "discarded": [
+            {
+              "item_id": "fact_5acca7ca833d4087",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_63b5b3661229a85b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1d79bf4d32849728",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_f497899a338689f5",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_97db9685af5cd155",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6a8a6ac62a266aee",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_16cb5a6921b60828",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_864f92d5f225ebb0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_32c384c9bb4c9bb2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3b052dfb1b6b1da1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_d4be8f30fbe80ecc",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_4eef9123ddbe65db",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_3fa0a9452bdd91df",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_817da17071907823",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_d1a057abeb2936c4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_af9dae0d145fa1c8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_91535f0a442e8459",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1bdacdf79998642d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_b20807d0304dddd1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_17ef17f1e42d664f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_2207530ecf963ee3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0c3b04b9c2dbd355",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_dc97455610588117",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_dd00d42063dcd98e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3c29338ee31eae5c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_3a0372d319646e1f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ddea597564daeb05",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_74cc68cb3cee95e4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_98dfcfa6e2409383",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_c95bb61f7157f093",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_7a17c9a491e97972",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_2ceba8e47b2db45b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5f55e76d674d34de",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_62ade84aa7ddae3e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_0b33a3e79def6bd1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_73564419f2c268f0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_416599dd4c073b2b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_e3bfabdb0f684769",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_e1df026e607f0fc0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_fa784e0859eab52f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_bcb5b989b22df257",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3dbdaf7dd5174618",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_484060f883095c29",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_072441c90b081c74",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_4c95ebe34466af37",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0b5eac8998a40268",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1fc088ededabc3f8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_9df556c4c2c40498",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_e20ef85133bfabd7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1f3d3e269143da83",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_32601d22a1fa22f0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_c916454235aca1b7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_c3b2d677cdc831bf",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f50a8eff900c5f44",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_c702e826c649c231",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_8ca2f6cfde161282",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_0f9a08592619f84c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f0c9a7b540cf8d9c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_1584da97d86e8e76",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_a1665b6ced1f35a6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_af3cb27f18cf7cbf",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_46c92f1664b2bc49",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_ec4a204fcdf6eaae",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_f0b4b3e8998d28f0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_fc22eed65f0ccd71",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_62ee60cab3141aa7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_d173fc800e025f02",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_5b00447aca4e767b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_93da330a4952ff51",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_72943bbeb02af342",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_141ce4ec17f23e0b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_db587beee0f9cabb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_964bb5802e573a01",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_71056a36f9e95a78",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_72c450c2dae3cc22",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_9b30cfc47ff59426",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_08e043ffb73a8109",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6dcaa9d440fd1ec6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_c817b596bb7666ab",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_e37522a93914a80e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_3c42b46ec4137e6c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_954b89f06ceb7465",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_fbe300c8e60a4f05",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0fd10ad5394b8777",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_267960220d41afb8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_97ecd80688d92bc6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_27681f4be0cfbd93",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_4589288308d7fdf3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_81d62d0f402ae53a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_e2ac3267b2f05f29",
+              "reason": "outside result budget"
+            }
+          ],
+          "max_hops": 2,
+          "score_note": "RRF k=60; support multipliers 1/.85/.65; association decay .6 per hop. Heuristics, not probabilities."
+        },
+        "limitation": "Aliases expand vocabulary, not identity. Scores and memory judgments are fallible."
+      },
+      "latency_seconds": 0.0064736250205896795,
+      "error": false,
+      "new_ids": [
+        "episode_32359916bec8e876",
+        "episode_69c0485386f1acbe",
+        "episode_79ef5db564f05930",
+        "fact_7a3bcb96603880ec",
+        "pattern_0ea1482690a38207",
+        "pattern_58a2e1d22c555eac"
+      ]
+    },
+    {
+      "sequence": 7,
+      "kind": "retrieval_discard",
+      "item_id": "fact_5acca7ca833d4087",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 8,
+      "kind": "retrieval_discard",
+      "item_id": "fact_63b5b3661229a85b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 9,
+      "kind": "retrieval_discard",
+      "item_id": "fact_1d79bf4d32849728",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 10,
+      "kind": "retrieval_discard",
+      "item_id": "fact_f497899a338689f5",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 11,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_97db9685af5cd155",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 12,
+      "kind": "retrieval_discard",
+      "item_id": "fact_6a8a6ac62a266aee",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 13,
+      "kind": "retrieval_discard",
+      "item_id": "fact_16cb5a6921b60828",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 14,
+      "kind": "retrieval_discard",
+      "item_id": "episode_864f92d5f225ebb0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 15,
+      "kind": "retrieval_discard",
+      "item_id": "episode_32c384c9bb4c9bb2",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 16,
+      "kind": "retrieval_discard",
+      "item_id": "episode_3b052dfb1b6b1da1",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 17,
+      "kind": "retrieval_discard",
+      "item_id": "fact_d4be8f30fbe80ecc",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 18,
+      "kind": "retrieval_discard",
+      "item_id": "fact_4eef9123ddbe65db",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 19,
+      "kind": "retrieval_discard",
+      "item_id": "fact_3fa0a9452bdd91df",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 20,
+      "kind": "retrieval_discard",
+      "item_id": "fact_817da17071907823",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 21,
+      "kind": "retrieval_discard",
+      "item_id": "episode_d1a057abeb2936c4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 22,
+      "kind": "retrieval_discard",
+      "item_id": "fact_af9dae0d145fa1c8",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 23,
+      "kind": "retrieval_discard",
+      "item_id": "episode_91535f0a442e8459",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 24,
+      "kind": "retrieval_discard",
+      "item_id": "fact_1bdacdf79998642d",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 25,
+      "kind": "retrieval_discard",
+      "item_id": "episode_b20807d0304dddd1",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 26,
+      "kind": "retrieval_discard",
+      "item_id": "fact_17ef17f1e42d664f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 27,
+      "kind": "retrieval_discard",
+      "item_id": "fact_2207530ecf963ee3",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 28,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0c3b04b9c2dbd355",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 29,
+      "kind": "retrieval_discard",
+      "item_id": "episode_dc97455610588117",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 30,
+      "kind": "retrieval_discard",
+      "item_id": "fact_dd00d42063dcd98e",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 31,
+      "kind": "retrieval_discard",
+      "item_id": "episode_3c29338ee31eae5c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 32,
+      "kind": "retrieval_discard",
+      "item_id": "fact_3a0372d319646e1f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 33,
+      "kind": "retrieval_discard",
+      "item_id": "episode_ddea597564daeb05",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 34,
+      "kind": "retrieval_discard",
+      "item_id": "episode_74cc68cb3cee95e4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 35,
+      "kind": "retrieval_discard",
+      "item_id": "episode_98dfcfa6e2409383",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 36,
+      "kind": "retrieval_discard",
+      "item_id": "fact_c95bb61f7157f093",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 37,
+      "kind": "retrieval_discard",
+      "item_id": "episode_7a17c9a491e97972",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 38,
+      "kind": "retrieval_discard",
+      "item_id": "fact_2ceba8e47b2db45b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 39,
+      "kind": "retrieval_discard",
+      "item_id": "fact_5f55e76d674d34de",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 40,
+      "kind": "retrieval_discard",
+      "item_id": "episode_62ade84aa7ddae3e",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 41,
+      "kind": "retrieval_discard",
+      "item_id": "fact_0b33a3e79def6bd1",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 42,
+      "kind": "retrieval_discard",
+      "item_id": "fact_73564419f2c268f0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 43,
+      "kind": "retrieval_discard",
+      "item_id": "episode_416599dd4c073b2b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 44,
+      "kind": "retrieval_discard",
+      "item_id": "fact_e3bfabdb0f684769",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 45,
+      "kind": "retrieval_discard",
+      "item_id": "episode_e1df026e607f0fc0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 46,
+      "kind": "retrieval_discard",
+      "item_id": "fact_fa784e0859eab52f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 47,
+      "kind": "retrieval_discard",
+      "item_id": "episode_bcb5b989b22df257",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 48,
+      "kind": "retrieval_discard",
+      "item_id": "episode_3dbdaf7dd5174618",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 49,
+      "kind": "retrieval_discard",
+      "item_id": "episode_484060f883095c29",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 50,
+      "kind": "retrieval_discard",
+      "item_id": "fact_072441c90b081c74",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 51,
+      "kind": "retrieval_discard",
+      "item_id": "fact_4c95ebe34466af37",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 52,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0b5eac8998a40268",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 53,
+      "kind": "retrieval_discard",
+      "item_id": "fact_1fc088ededabc3f8",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 54,
+      "kind": "retrieval_discard",
+      "item_id": "fact_9df556c4c2c40498",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 55,
+      "kind": "retrieval_discard",
+      "item_id": "episode_e20ef85133bfabd7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 56,
+      "kind": "retrieval_discard",
+      "item_id": "fact_1f3d3e269143da83",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 57,
+      "kind": "retrieval_discard",
+      "item_id": "fact_32601d22a1fa22f0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 58,
+      "kind": "retrieval_discard",
+      "item_id": "fact_c916454235aca1b7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 59,
+      "kind": "retrieval_discard",
+      "item_id": "episode_c3b2d677cdc831bf",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 60,
+      "kind": "retrieval_discard",
+      "item_id": "episode_f50a8eff900c5f44",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 61,
+      "kind": "retrieval_discard",
+      "item_id": "fact_c702e826c649c231",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 62,
+      "kind": "retrieval_discard",
+      "item_id": "episode_8ca2f6cfde161282",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 63,
+      "kind": "retrieval_discard",
+      "item_id": "fact_0f9a08592619f84c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 64,
+      "kind": "retrieval_discard",
+      "item_id": "episode_f0c9a7b540cf8d9c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 65,
+      "kind": "retrieval_discard",
+      "item_id": "episode_1584da97d86e8e76",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 66,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_a1665b6ced1f35a6",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 67,
+      "kind": "retrieval_discard",
+      "item_id": "episode_af3cb27f18cf7cbf",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 68,
+      "kind": "retrieval_discard",
+      "item_id": "episode_46c92f1664b2bc49",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 69,
+      "kind": "retrieval_discard",
+      "item_id": "fact_ec4a204fcdf6eaae",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 70,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_f0b4b3e8998d28f0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 71,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_fc22eed65f0ccd71",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 72,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_62ee60cab3141aa7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 73,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_d173fc800e025f02",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 74,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_5b00447aca4e767b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 75,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_93da330a4952ff51",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 76,
+      "kind": "retrieval_discard",
+      "item_id": "fact_72943bbeb02af342",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 77,
+      "kind": "retrieval_discard",
+      "item_id": "episode_141ce4ec17f23e0b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 78,
+      "kind": "retrieval_discard",
+      "item_id": "episode_db587beee0f9cabb",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 79,
+      "kind": "retrieval_discard",
+      "item_id": "fact_964bb5802e573a01",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 80,
+      "kind": "retrieval_discard",
+      "item_id": "episode_71056a36f9e95a78",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 81,
+      "kind": "retrieval_discard",
+      "item_id": "episode_72c450c2dae3cc22",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 82,
+      "kind": "retrieval_discard",
+      "item_id": "episode_9b30cfc47ff59426",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 83,
+      "kind": "retrieval_discard",
+      "item_id": "fact_08e043ffb73a8109",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 84,
+      "kind": "retrieval_discard",
+      "item_id": "fact_6dcaa9d440fd1ec6",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 85,
+      "kind": "retrieval_discard",
+      "item_id": "fact_c817b596bb7666ab",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 86,
+      "kind": "retrieval_discard",
+      "item_id": "fact_e37522a93914a80e",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 87,
+      "kind": "retrieval_discard",
+      "item_id": "fact_3c42b46ec4137e6c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 88,
+      "kind": "retrieval_discard",
+      "item_id": "fact_954b89f06ceb7465",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 89,
+      "kind": "retrieval_discard",
+      "item_id": "fact_fbe300c8e60a4f05",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 90,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0fd10ad5394b8777",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 91,
+      "kind": "retrieval_discard",
+      "item_id": "episode_267960220d41afb8",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 92,
+      "kind": "retrieval_discard",
+      "item_id": "episode_97ecd80688d92bc6",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 93,
+      "kind": "retrieval_discard",
+      "item_id": "fact_27681f4be0cfbd93",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 94,
+      "kind": "retrieval_discard",
+      "item_id": "fact_4589288308d7fdf3",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 95,
+      "kind": "retrieval_discard",
+      "item_id": "fact_81d62d0f402ae53a",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 96,
+      "kind": "retrieval_discard",
+      "item_id": "fact_e2ac3267b2f05f29",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 97,
+      "kind": "context",
+      "model_call": 2,
+      "serialized_chars": 24668,
+      "message_count": 4,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [
+        "episode_32359916bec8e876",
+        "episode_69c0485386f1acbe",
+        "episode_79ef5db564f05930",
+        "fact_7a3bcb96603880ec",
+        "pattern_0ea1482690a38207",
+        "pattern_58a2e1d22c555eac"
+      ],
+      "visible_evidence_ids": [],
+      "included_tool_call_ids": [
+        "action_1_request_4abed8c3e42fe11e"
+      ]
+    },
+    {
+      "sequence": 98,
+      "kind": "model_started",
+      "call_number": 2,
+      "status": "pending",
+      "serialized_chars": 24668,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 99,
+      "kind": "item_discard",
+      "item_id": "pattern_0ea1482690a38207",
+      "reason": "Detection comparison does not answer the timeout question.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 100,
+      "kind": "item_discard",
+      "item_id": "episode_32359916bec8e876",
+      "reason": "Concerns a different Chat API timeout.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 101,
+      "kind": "item_discard",
+      "item_id": "pattern_58a2e1d22c555eac",
+      "reason": "Concerns request-path timeouts, not this narrative outage.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 102,
+      "kind": "item_discard",
+      "item_id": "episode_79ef5db564f05930",
+      "reason": "Separate social-data collection outage.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 103,
+      "kind": "item_discard",
+      "item_id": "fact_7a3bcb96603880ec",
+      "reason": "ALB timeout change for a different system.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 104,
+      "kind": "invalid_selection",
+      "evidence_id": "ev_1b68761b66cc3cc3",
+      "reason": "Cannot pin unseen evidence"
+    },
+    {
+      "sequence": 105,
+      "kind": "invalid_selection",
+      "evidence_id": "ev_1c1739cdda90321d",
+      "reason": "Cannot pin unseen evidence"
+    },
+    {
+      "sequence": 106,
+      "kind": "invalid_selection",
+      "evidence_id": "ev_4386d80195ef6b5a",
+      "reason": "Cannot pin unseen evidence"
+    },
+    {
+      "sequence": 107,
+      "kind": "invalid_selection",
+      "evidence_id": "ev_5f2b2e2ded8842f5",
+      "reason": "Cannot pin unseen evidence"
+    },
+    {
+      "sequence": 108,
+      "kind": "invalid_selection",
+      "evidence_id": "ev_9b4317c218937e4f",
+      "reason": "Cannot pin unseen evidence"
+    },
+    {
+      "sequence": 109,
+      "kind": "invalid_selection",
+      "evidence_id": "ev_ad26bffaa983949e",
+      "reason": "Cannot pin unseen evidence"
+    },
+    {
+      "sequence": 110,
+      "kind": "invalid_selection",
+      "evidence_id": "ev_f3dba2eba43e2de5",
+      "reason": "Cannot pin unseen evidence"
+    },
+    {
+      "sequence": 111,
+      "kind": "model",
+      "call_number": 2,
+      "status": "completed",
+      "serialized_chars": 24668,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_6d6071a2c3e516c5",
+      "action": {
+        "tool_name": "inspect_memory",
+        "arguments_json": "{\"item_id\":\"episode_69c0485386f1acbe\",\"offset\":0,\"limit\":12}",
+        "purpose": "Inspect the government-network outage evidence and the reported effect of increasing the timeout.",
+        "discarded_items": [
+          {
+            "item_id": "pattern_0ea1482690a38207",
+            "reason": "Detection comparison does not answer the timeout question."
+          },
+          {
+            "item_id": "episode_32359916bec8e876",
+            "reason": "Concerns a different Chat API timeout."
+          },
+          {
+            "item_id": "pattern_58a2e1d22c555eac",
+            "reason": "Concerns request-path timeouts, not this narrative outage."
+          },
+          {
+            "item_id": "episode_79ef5db564f05930",
+            "reason": "Separate social-data collection outage."
+          },
+          {
+            "item_id": "fact_7a3bcb96603880ec",
+            "reason": "ALB timeout change for a different system."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_1b68761b66cc3cc3",
+          "ev_1c1739cdda90321d",
+          "ev_4386d80195ef6b5a",
+          "ev_5f2b2e2ded8842f5",
+          "ev_9b4317c218937e4f",
+          "ev_ad26bffaa983949e",
+          "ev_f3dba2eba43e2de5"
+        ]
+      },
+      "latency_seconds": 7.756683541985694,
+      "provider": {
+        "request_id": "request_6d6071a2c3e516c5",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__paraphrase__memory_graph/cache/codex/request_6d6071a2c3e516c5.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 9418,
+          "output_tokens": 325,
+          "reasoning_output_tokens": 29,
+          "total_tokens": 9743
+        },
+        "thread_id": "01a114b9-37e7-7182-8d58-a72359d934d9",
+        "turn_id": "01a114b9-3807-7e70-868d-4876db2e299b",
+        "status": "completed",
+        "latency_seconds": 7.7341
+      }
+    },
+    {
+      "sequence": 112,
+      "kind": "tool_started",
+      "call_id": "action_2_request_6d6071a2c3e516c5",
+      "name": "inspect_memory",
+      "arguments": {
+        "item_id": "episode_69c0485386f1acbe",
+        "offset": 0,
+        "limit": 12
+      }
+    },
+    {
+      "sequence": 113,
+      "kind": "tool",
+      "name": "inspect_memory",
+      "arguments": {
+        "item_id": "episode_69c0485386f1acbe",
+        "offset": 0,
+        "limit": 12
+      },
+      "call_id": "action_2_request_6d6071a2c3e516c5",
+      "result": {
+        "id": "episode_69c0485386f1acbe",
+        "type": "episode",
+        "kind": "fixed_evidence_bundle",
+        "retention": "retained",
+        "confidence": "medium",
+        "evidence_ids": [
+          "ev_1b68761b66cc3cc3",
+          "ev_1c1739cdda90321d",
+          "ev_4386d80195ef6b5a",
+          "ev_5f2b2e2ded8842f5",
+          "ev_9b4317c218937e4f",
+          "ev_ad26bffaa983949e",
+          "ev_f3dba2eba43e2de5"
+        ],
+        "record_ids": [
+          "KEP-6969"
+        ],
+        "entity_ids": [
+          "resource_2a19226a",
+          "resource_c0cb2fb8"
+        ],
+        "item_id": "episode_69c0485386f1acbe",
+        "title": "increase processing timeout from 10 to 12 hours",
+        "preview": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026\nA government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing.\nGovernment customer (Argonaut tenant) went 10+ days (Apr 19–29) wit",
+        "preview_truncated": true,
+        "title_origin": "unverified graph decision labels",
+        "retention_reason": "Evidence coherently describes one customer outage, its cause, and timeout decision; significant customer impact makes it worth remembering.",
+        "uncertainties": [
+          "Accepted grouping does not verify every excerpt, graph label or causal claim.",
+          "Fixed boundaries can conflate occurrences or omit related context; no automatic repair.",
+          "Compression reduces default recall prominence; all source excerpts remain available."
+        ],
+        "counterevidence_count": 0,
+        "evidence": [
+          {
+            "evidence_id": "ev_1b68761b66cc3cc3",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "risk_02492576",
+            "relation": "REFERENCES",
+            "quote": "The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert",
+            "start": 0,
+            "end": 110,
+            "total_chars": 110,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_1c1739cdda90321d",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "event_0fb2fd55",
+            "relation": "REFERENCES",
+            "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026",
+            "start": 0,
+            "end": 174,
+            "total_chars": 174,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "April 19, 2026",
+                "date": "2026-04-19",
+                "end_date": null,
+                "evidence_id": "ev_1c1739cdda90321d",
+                "status": "explicit_date_mention",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_4386d80195ef6b5a",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "outcome_ab39ce9c",
+            "relation": "PRODUCES",
+            "quote": "Government customer (Argonaut tenant) went 10+ days (Apr 19–29) without narrative updates for at least one network",
+            "start": 0,
+            "end": 114,
+            "total_chars": 114,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "Apr 19–29",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_4386d80195ef6b5a",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_5f2b2e2ded8842f5",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "risk_c09e361e",
+            "relation": "REFERENCES",
+            "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+            "start": 0,
+            "end": 196,
+            "total_chars": 196,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_9b4317c218937e4f",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "event_0fb2fd55",
+            "target_id": "decision_689ff4ca",
+            "relation": "CAUSES",
+            "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing.",
+            "start": 0,
+            "end": 557,
+            "total_chars": 557,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "April 19, 2026",
+                "date": "2026-04-19",
+                "end_date": null,
+                "evidence_id": "ev_9b4317c218937e4f",
+                "status": "explicit_date_mention",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_ad26bffaa983949e",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "resource_c0cb2fb8",
+            "relation": "AFFECTS",
+            "quote": "the processing timeout was increased from 10 hours to 12 hours",
+            "start": 0,
+            "end": 62,
+            "total_chars": 62,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_f3dba2eba43e2de5",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "resource_2a19226a",
+            "relation": "AFFECTS",
+            "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+            "start": 0,
+            "end": 180,
+            "total_chars": 180,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          }
+        ],
+        "next_offset": null,
+        "total_evidence": 7,
+        "limitation": "Grouping and fact classification are Task 1 judgments, not independent verification. Inspect source wording."
+      },
+      "latency_seconds": 0.0008321669884026051,
+      "error": false,
+      "new_ids": [
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_4386d80195ef6b5a",
+        "ev_5f2b2e2ded8842f5",
+        "ev_9b4317c218937e4f",
+        "ev_ad26bffaa983949e",
+        "ev_f3dba2eba43e2de5",
+        "span:ev_1b68761b66cc3cc3:0:110",
+        "span:ev_1c1739cdda90321d:0:174",
+        "span:ev_4386d80195ef6b5a:0:114",
+        "span:ev_5f2b2e2ded8842f5:0:196",
+        "span:ev_9b4317c218937e4f:0:557",
+        "span:ev_ad26bffaa983949e:0:62",
+        "span:ev_f3dba2eba43e2de5:0:180"
+      ]
+    },
+    {
+      "sequence": 114,
+      "kind": "context_item_eviction",
+      "call_id": "action_1_request_4abed8c3e42fe11e",
+      "item_id": "episode_32359916bec8e876",
+      "reason": "Concerns a different Chat API timeout."
+    },
+    {
+      "sequence": 115,
+      "kind": "context_item_eviction",
+      "call_id": "action_1_request_4abed8c3e42fe11e",
+      "item_id": "pattern_0ea1482690a38207",
+      "reason": "Detection comparison does not answer the timeout question."
+    },
+    {
+      "sequence": 116,
+      "kind": "context_item_eviction",
+      "call_id": "action_1_request_4abed8c3e42fe11e",
+      "item_id": "pattern_58a2e1d22c555eac",
+      "reason": "Concerns request-path timeouts, not this narrative outage."
+    },
+    {
+      "sequence": 117,
+      "kind": "context_item_eviction",
+      "call_id": "action_1_request_4abed8c3e42fe11e",
+      "item_id": "fact_7a3bcb96603880ec",
+      "reason": "ALB timeout change for a different system."
+    },
+    {
+      "sequence": 118,
+      "kind": "context_item_eviction",
+      "call_id": "action_1_request_4abed8c3e42fe11e",
+      "item_id": "episode_79ef5db564f05930",
+      "reason": "Separate social-data collection outage."
+    },
+    {
+      "sequence": 119,
+      "kind": "context",
+      "model_call": 3,
+      "serialized_chars": 24447,
+      "message_count": 6,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [
+        "episode_69c0485386f1acbe"
+      ],
+      "visible_evidence_ids": [
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_4386d80195ef6b5a",
+        "ev_5f2b2e2ded8842f5",
+        "ev_9b4317c218937e4f",
+        "ev_ad26bffaa983949e",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_4abed8c3e42fe11e",
+        "action_2_request_6d6071a2c3e516c5"
+      ]
+    },
+    {
+      "sequence": 120,
+      "kind": "model_started",
+      "call_number": 3,
+      "status": "pending",
+      "serialized_chars": 24447,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 121,
+      "kind": "model",
+      "call_number": 3,
+      "status": "completed",
+      "serialized_chars": 24447,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_43a9622705a2dae7",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"KEP-6969 timeout 12 hours partially resolved narrative generation\"}",
+        "purpose": "Find the original outage record’s assessment of how much the timeout increase resolved.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_5f2b2e2ded8842f5",
+          "ev_1b68761b66cc3cc3",
+          "ev_ad26bffaa983949e"
+        ]
+      },
+      "latency_seconds": 3.0379981250152923,
+      "provider": {
+        "request_id": "request_43a9622705a2dae7",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__paraphrase__memory_graph/cache/codex/request_43a9622705a2dae7.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 0,
+          "input_tokens": 9176,
+          "output_tokens": 118,
+          "reasoning_output_tokens": 12,
+          "total_tokens": 9294
+        },
+        "thread_id": "01a114b9-563b-7601-b6d8-ce93a95cd598",
+        "turn_id": "01a114b9-565b-74c2-a0fe-22cf688d3100",
+        "status": "completed",
+        "latency_seconds": 3.0168
+      }
+    },
+    {
+      "sequence": 122,
+      "kind": "tool_started",
+      "call_id": "action_3_request_43a9622705a2dae7",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-6969 timeout 12 hours partially resolved narrative generation"
+      }
+    },
+    {
+      "sequence": 123,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-6969 timeout 12 hours partially resolved narrative generation"
+      },
+      "call_id": "action_3_request_43a9622705a2dae7",
+      "result": {
+        "expanded_query": "KEP-6969 timeout 12 hours partially resolved narrative generation",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_ad26bffaa983949e",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "resource_c0cb2fb8",
+              "relation": "AFFECTS",
+              "quote": "the processing timeout was increased from 10 hours to 12 hours",
+              "start": 0,
+              "end": 62,
+              "total_chars": 62,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f3dba2eba43e2de5",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "resource_2a19226a",
+              "relation": "AFFECTS",
+              "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+              "start": 0,
+              "end": 180,
+              "total_chars": 180,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0b0616b5f616d98f",
+              "record_id": "KEP-4037",
+              "provenance_kind": "extracted",
+              "source_id": "decision_c137d27f",
+              "target_id": "decision_f8da81e0",
+              "relation": "DEPENDS_ON",
+              "quote": "Issue related to ALB timeout was resolved.",
+              "start": 0,
+              "end": 42,
+              "total_chars": 42,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f89008c1a2802c2c",
+              "record_id": "KEP-4037",
+              "provenance_kind": "extracted",
+              "source_id": "decision_c137d27f",
+              "target_id": "event_d5360bd6",
+              "relation": "REFERENCES",
+              "quote": "Issue related to ALB timeout was resolved.",
+              "start": 0,
+              "end": 42,
+              "total_chars": 42,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5f2b2e2ded8842f5",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "risk_c09e361e",
+              "relation": "REFERENCES",
+              "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+              "start": 0,
+              "end": 196,
+              "total_chars": 196,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_78b67c045ef5dda3",
+              "record_id": "KEP-6189",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d1a6cc32",
+              "target_id": "event_85d17d5a",
+              "relation": "REFERENCES",
+              "quote": "UI data for micro‑ and macro‑narratives appears hours late.",
+              "start": 0,
+              "end": 59,
+              "total_chars": 59,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_d752b5edf2b80f5b",
+              "record_id": "KEP-6189",
+              "provenance_kind": "extracted",
+              "source_id": "event_85d17d5a",
+              "target_id": "decision_d1a6cc32",
+              "relation": "CAUSES",
+              "quote": "UI data for micro‑ and macro‑narratives appears hours late.",
+              "start": 0,
+              "end": 59,
+              "total_chars": 59,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_88f8c130b3fbc69f",
+              "record_id": "KEP-6815",
+              "provenance_kind": "extracted",
+              "source_id": "decision_30c0bc39",
+              "target_id": "rule_78b361d9",
+              "relation": "REFERENCES",
+              "quote": "the client timeout is set from config key es_connection_timeout (default 30)",
+              "start": 0,
+              "end": 76,
+              "total_chars": 76,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0efca8b5653af727",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "event_c37d996b",
+              "target_id": "decision_8b6603a6",
+              "relation": "CAUSES",
+              "quote": "Pruning rules sent from backend service for narrative generation runs",
+              "start": 0,
+              "end": 69,
+              "total_chars": 69,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_e6182b83201c1764",
+              "record_id": "KEP-6812",
+              "provenance_kind": "extracted",
+              "source_id": "decision_df9176e6",
+              "target_id": "risk_3f5e8d54",
+              "relation": "REFERENCES",
+              "quote": "Request timeout (9): No explicit timeout set on report reasoning calls; defaults to SDK 600s with no fallback.",
+              "start": 0,
+              "end": 110,
+              "total_chars": 110,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 840,
+          "next_offset": 10
+        },
+        "entities": {
+          "results": [
+            {
+              "id": "decision_689ff4ca",
+              "label": "increase processing timeout from 10 to 12 hours",
+              "type": "decision",
+              "community": [
+                1126
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "outcome_e0370d98",
+              "label": "Narrative statistics generation issue resolved",
+              "type": "outcome",
+              "community": [
+                504
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "event_d5360bd6",
+              "label": "ALB timeout issue resolved",
+              "type": "event",
+              "community": [
+                290
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "event_cf52a044",
+              "label": "Stats generation lag up to 8 hours for comments",
+              "type": "event",
+              "community": [
+                529
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "outcome_dd0d19c5",
+              "label": "Bug KEP-5390 resolved",
+              "type": "outcome",
+              "community": [
+                1266
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "event_85d17d5a",
+              "label": "UI data for narratives appearing hours late",
+              "type": "event",
+              "community": [
+                529
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "outcome_fcc99cc2",
+              "label": "Chat stream API timeout issue resolved",
+              "type": "outcome",
+              "community": [
+                308
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "outcome_f5dd0fee",
+              "label": "KEP-2916 resolved with status Done",
+              "type": "outcome",
+              "community": [
+                1369
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "outcome_01a25f48",
+              "label": "Prompt generation issue resolved",
+              "type": "outcome",
+              "community": [
+                96
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "outcome_ae8b7fd1",
+              "label": "Elasticsearch connection timeout issue resolved for stance queries",
+              "type": "outcome",
+              "community": [
+                430
+              ],
+              "label_status": "unverified graph label"
+            }
+          ],
+          "total": 541,
+          "next_offset": 10
+        }
+      },
+      "latency_seconds": 0.012478291988372803,
+      "error": false,
+      "new_ids": [
+        "decision_689ff4ca",
+        "ev_0b0616b5f616d98f",
+        "ev_0efca8b5653af727",
+        "ev_78b67c045ef5dda3",
+        "ev_88f8c130b3fbc69f",
+        "ev_d752b5edf2b80f5b",
+        "ev_e6182b83201c1764",
+        "ev_f89008c1a2802c2c",
+        "event_85d17d5a",
+        "event_cf52a044",
+        "event_d5360bd6",
+        "outcome_01a25f48",
+        "outcome_ae8b7fd1",
+        "outcome_dd0d19c5",
+        "outcome_e0370d98",
+        "outcome_f5dd0fee",
+        "outcome_fcc99cc2",
+        "span:ev_0b0616b5f616d98f:0:42",
+        "span:ev_0efca8b5653af727:0:69",
+        "span:ev_78b67c045ef5dda3:0:59",
+        "span:ev_88f8c130b3fbc69f:0:76",
+        "span:ev_d752b5edf2b80f5b:0:59",
+        "span:ev_e6182b83201c1764:0:110",
+        "span:ev_f89008c1a2802c2c:0:42"
+      ]
+    },
+    {
+      "sequence": 124,
+      "kind": "context",
+      "model_call": 4,
+      "serialized_chars": 31870,
+      "message_count": 8,
+      "pinned_evidence_ids": [
+        "ev_1b68761b66cc3cc3",
+        "ev_5f2b2e2ded8842f5",
+        "ev_ad26bffaa983949e"
+      ],
+      "visible_item_ids": [
+        "episode_69c0485386f1acbe"
+      ],
+      "visible_evidence_ids": [
+        "ev_0b0616b5f616d98f",
+        "ev_0efca8b5653af727",
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_4386d80195ef6b5a",
+        "ev_5f2b2e2ded8842f5",
+        "ev_78b67c045ef5dda3",
+        "ev_88f8c130b3fbc69f",
+        "ev_9b4317c218937e4f",
+        "ev_ad26bffaa983949e",
+        "ev_d752b5edf2b80f5b",
+        "ev_e6182b83201c1764",
+        "ev_f3dba2eba43e2de5",
+        "ev_f89008c1a2802c2c"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_4abed8c3e42fe11e",
+        "action_2_request_6d6071a2c3e516c5",
+        "action_3_request_43a9622705a2dae7"
+      ]
+    },
+    {
+      "sequence": 125,
+      "kind": "model_started",
+      "call_number": 4,
+      "status": "pending",
+      "serialized_chars": 31870,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 126,
+      "kind": "model",
+      "call_number": 4,
+      "status": "completed",
+      "serialized_chars": 31870,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_c325a223e0a89e25",
+      "action": {
+        "tool_name": "graph_neighborhood",
+        "arguments_json": "{\"node_id\":\"decision_689ff4ca\",\"direction\":\"both\",\"limit\":40}",
+        "purpose": "Find the outage record’s reported outcome after the timeout increase.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_1c1739cdda90321d",
+          "ev_5f2b2e2ded8842f5",
+          "ev_1b68761b66cc3cc3",
+          "ev_ad26bffaa983949e"
+        ]
+      },
+      "latency_seconds": 3.1899217080208473,
+      "provider": {
+        "request_id": "request_c325a223e0a89e25",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__paraphrase__memory_graph/cache/codex/request_c325a223e0a89e25.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 11036,
+          "output_tokens": 132,
+          "reasoning_output_tokens": 15,
+          "total_tokens": 11168
+        },
+        "thread_id": "01a114b9-6229-7a91-bcf3-6b11ec773387",
+        "turn_id": "01a114b9-6249-71f1-9fa3-fce74eb72015",
+        "status": "completed",
+        "latency_seconds": 3.1694
+      }
+    },
+    {
+      "sequence": 127,
+      "kind": "tool_started",
+      "call_id": "action_4_request_c325a223e0a89e25",
+      "name": "graph_neighborhood",
+      "arguments": {
+        "node_id": "decision_689ff4ca",
+        "direction": "both",
+        "limit": 40
+      }
+    },
+    {
+      "sequence": 128,
+      "kind": "tool",
+      "name": "graph_neighborhood",
+      "arguments": {
+        "node_id": "decision_689ff4ca",
+        "direction": "both",
+        "limit": 40
+      },
+      "call_id": "action_4_request_c325a223e0a89e25",
+      "result": {
+        "node": {
+          "id": "decision_689ff4ca",
+          "label": "increase processing timeout from 10 to 12 hours",
+          "type": "decision",
+          "community": [
+            1126
+          ]
+        },
+        "results": [
+          {
+            "evidence_id": "ev_1b68761b66cc3cc3",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "risk_02492576",
+            "relation": "REFERENCES",
+            "quote": "The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert",
+            "start": 0,
+            "end": 110,
+            "total_chars": 110,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_1c1739cdda90321d",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "event_0fb2fd55",
+            "relation": "REFERENCES",
+            "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026",
+            "start": 0,
+            "end": 174,
+            "total_chars": 174,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "April 19, 2026",
+                "date": "2026-04-19",
+                "end_date": null,
+                "evidence_id": "ev_1c1739cdda90321d",
+                "status": "explicit_date_mention",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_4386d80195ef6b5a",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "outcome_ab39ce9c",
+            "relation": "PRODUCES",
+            "quote": "Government customer (Argonaut tenant) went 10+ days (Apr 19–29) without narrative updates for at least one network",
+            "start": 0,
+            "end": 114,
+            "total_chars": 114,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "Apr 19–29",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_4386d80195ef6b5a",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_5f2b2e2ded8842f5",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "risk_c09e361e",
+            "relation": "REFERENCES",
+            "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+            "start": 0,
+            "end": 196,
+            "total_chars": 196,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_9b4317c218937e4f",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "event_0fb2fd55",
+            "target_id": "decision_689ff4ca",
+            "relation": "CAUSES",
+            "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs fo",
+            "start": 0,
+            "end": 400,
+            "total_chars": 557,
+            "next_start": 400,
+            "dates": [
+              {
+                "raw": "April 19, 2026",
+                "date": "2026-04-19",
+                "end_date": null,
+                "evidence_id": "ev_9b4317c218937e4f",
+                "status": "explicit_date_mention",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_ad26bffaa983949e",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "resource_c0cb2fb8",
+            "relation": "AFFECTS",
+            "quote": "the processing timeout was increased from 10 hours to 12 hours",
+            "start": 0,
+            "end": 62,
+            "total_chars": 62,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_f3dba2eba43e2de5",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "resource_2a19226a",
+            "relation": "AFFECTS",
+            "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+            "start": 0,
+            "end": 180,
+            "total_chars": 180,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          }
+        ],
+        "total": 7,
+        "next_offset": null
+      },
+      "latency_seconds": 0.001000457996269688,
+      "error": false,
+      "new_ids": [
+        "span:ev_9b4317c218937e4f:0:400"
+      ]
+    },
+    {
+      "sequence": 129,
+      "kind": "context",
+      "model_call": 5,
+      "serialized_chars": 37369,
+      "message_count": 10,
+      "pinned_evidence_ids": [
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_5f2b2e2ded8842f5",
+        "ev_ad26bffaa983949e"
+      ],
+      "visible_item_ids": [
+        "episode_69c0485386f1acbe"
+      ],
+      "visible_evidence_ids": [
+        "ev_0b0616b5f616d98f",
+        "ev_0efca8b5653af727",
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_4386d80195ef6b5a",
+        "ev_5f2b2e2ded8842f5",
+        "ev_78b67c045ef5dda3",
+        "ev_88f8c130b3fbc69f",
+        "ev_9b4317c218937e4f",
+        "ev_ad26bffaa983949e",
+        "ev_d752b5edf2b80f5b",
+        "ev_e6182b83201c1764",
+        "ev_f3dba2eba43e2de5",
+        "ev_f89008c1a2802c2c"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_4abed8c3e42fe11e",
+        "action_2_request_6d6071a2c3e516c5",
+        "action_3_request_43a9622705a2dae7",
+        "action_4_request_c325a223e0a89e25"
+      ]
+    },
+    {
+      "sequence": 130,
+      "kind": "model_started",
+      "call_number": 5,
+      "status": "pending",
+      "serialized_chars": 37369,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 131,
+      "kind": "model",
+      "call_number": 5,
+      "status": "completed",
+      "serialized_chars": 37369,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_b9ad1a8548a2631a",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"KEP-6969 increase timeout resolved only partially percentage\",\"mode\":\"records\",\"limit\":20}",
+        "purpose": "Find the outage record’s explicit assessment of how much the timeout increase resolved.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_1c1739cdda90321d",
+          "ev_5f2b2e2ded8842f5",
+          "ev_1b68761b66cc3cc3",
+          "ev_ad26bffaa983949e"
+        ]
+      },
+      "latency_seconds": 3.5191828749957494,
+      "provider": {
+        "request_id": "request_b9ad1a8548a2631a",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__paraphrase__memory_graph/cache/codex/request_b9ad1a8548a2631a.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 12446,
+          "output_tokens": 138,
+          "reasoning_output_tokens": 15,
+          "total_tokens": 12584
+        },
+        "thread_id": "01a114b9-6ea7-7d32-bd29-2e7fc0d20ccd",
+        "turn_id": "01a114b9-6ec8-7e12-80b6-2b07ee808378",
+        "status": "completed",
+        "latency_seconds": 3.4965
+      }
+    },
+    {
+      "sequence": 132,
+      "kind": "tool_started",
+      "call_id": "action_5_request_b9ad1a8548a2631a",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-6969 increase timeout resolved only partially percentage",
+        "mode": "records",
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 133,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-6969 increase timeout resolved only partially percentage",
+        "mode": "records",
+        "limit": 20
+      },
+      "call_id": "action_5_request_b9ad1a8548a2631a",
+      "result": {
+        "expanded_query": "KEP-6969 increase timeout resolved only partially percentage",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_0b0616b5f616d98f",
+              "record_id": "KEP-4037",
+              "provenance_kind": "extracted",
+              "source_id": "decision_c137d27f",
+              "target_id": "decision_f8da81e0",
+              "relation": "DEPENDS_ON",
+              "quote": "Issue related to ALB timeout was resolved.",
+              "start": 0,
+              "end": 42,
+              "total_chars": 42,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f89008c1a2802c2c",
+              "record_id": "KEP-4037",
+              "provenance_kind": "extracted",
+              "source_id": "decision_c137d27f",
+              "target_id": "event_d5360bd6",
+              "relation": "REFERENCES",
+              "quote": "Issue related to ALB timeout was resolved.",
+              "start": 0,
+              "end": 42,
+              "total_chars": 42,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_cf5e4d779decaab0",
+              "record_id": "KEP-6800",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7454c31b",
+              "target_id": "event_dc0e55a5",
+              "relation": "REFERENCES",
+              "quote": "After error: Retry via Enter adds phrases partially Only count updates (number increases) Phrases are NOT visible in UI Save button disappears UI becomes blank / stuck state",
+              "start": 0,
+              "end": 173,
+              "total_chars": 173,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_df401db3241cba63",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_29935a4b",
+              "target_id": "decision_f8da81e0",
+              "relation": "CAUSES",
+              "quote": "The deployment of the MCP Tool to staging (decided_at: 2026-03-04, produces outcome_0e0b00d0 'MCP Tool changes deployed to staging environment') directly caused the need to increase the ALB timeout (decided_at: 2026-03-06). The MCP Tool deployment introduced long-running requests that exposed the ALB timeout limitation. Both decisions share the same outcome resource (Account Recommendation tool) and temporal proximity (2 days apart) supports the causal chain: the deployment revealed a performance constraint that required the timeout increase. The temporal_recency signal and shared_source:1 (Rishi Beohar participated in both) corroborate this direct consequence.",
+              "start": 0,
+              "end": 669,
+              "total_chars": 669,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-03-04",
+                  "date": "2026-03-04",
+                  "evidence_id": "ev_df401db3241cba63",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-03-06",
+                  "date": "2026-03-06",
+                  "evidence_id": "ev_df401db3241cba63",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_88f8c130b3fbc69f",
+              "record_id": "KEP-6815",
+              "provenance_kind": "extracted",
+              "source_id": "decision_30c0bc39",
+              "target_id": "rule_78b361d9",
+              "relation": "REFERENCES",
+              "quote": "the client timeout is set from config key es_connection_timeout (default 30)",
+              "start": 0,
+              "end": 76,
+              "total_chars": 76,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_e6182b83201c1764",
+              "record_id": "KEP-6812",
+              "provenance_kind": "extracted",
+              "source_id": "decision_df9176e6",
+              "target_id": "risk_3f5e8d54",
+              "relation": "REFERENCES",
+              "quote": "Request timeout (9): No explicit timeout set on report reasoning calls; defaults to SDK 600s with no fallback.",
+              "start": 0,
+              "end": 110,
+              "total_chars": 110,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_48a5ba5b1d05e25e",
+              "record_id": "KEP-4324",
+              "provenance_kind": "extracted",
+              "source_id": "decision_f8da81e0",
+              "target_id": "outcome_eb884965",
+              "relation": "PRODUCES",
+              "quote": "Increased ALB timeout to 180sec",
+              "start": 0,
+              "end": 31,
+              "total_chars": 31,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_c1def412fc35259e",
+              "record_id": "KEP-4130",
+              "provenance_kind": "extracted",
+              "source_id": "decision_0044002c",
+              "target_id": "event_920e9e0e",
+              "relation": "REFERENCES",
+              "quote": "Current caching relies solely on TTL/timeout with no event-based invalidation. As a result, API responses refresh only after the cache expires rather than when underlying data changes.",
+              "start": 0,
+              "end": 184,
+              "total_chars": 184,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_b9d7ff7539c9310f",
+              "record_id": "KEP-7093",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7bb6c58c",
+              "target_id": "resource_bb55feba",
+              "relation": "AFFECTS",
+              "quote": "To increase the memory allocation for the WebUI pods in the production environment",
+              "start": 0,
+              "end": 82,
+              "total_chars": 82,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ad26bffaa983949e",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "resource_c0cb2fb8",
+              "relation": "AFFECTS",
+              "quote": "the processing timeout was increased from 10 hours to 12 hours",
+              "start": 0,
+              "end": 62,
+              "total_chars": 62,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_84c5dad01abf5e69",
+              "record_id": "KEP-2809",
+              "provenance_kind": "extracted",
+              "source_id": "decision_171897a5",
+              "target_id": "outcome_4fe9060c",
+              "relation": "PRODUCES",
+              "quote": "Sanity Test Results – Big Agent Kepler Staging Environment | 13.01.26 Queries Run: 33 Queries Passed: 24 Queries Failed: 9 Pass Percentage: 72.73%",
+              "start": 0,
+              "end": 146,
+              "total_chars": 146,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_356e74daad388f22",
+              "record_id": "KEP-4324",
+              "provenance_kind": "extracted",
+              "source_id": "decision_f8da81e0",
+              "target_id": "resource_bcc0b2af",
+              "relation": "AFFECTS",
+              "quote": "The chat API is currently behind the Kepler NGINX, which has a hard timeout of 60 seconds",
+              "start": 0,
+              "end": 89,
+              "total_chars": 89,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_41d9d38efa271479",
+              "record_id": "KEP-4324",
+              "provenance_kind": "extracted",
+              "source_id": "decision_f8da81e0",
+              "target_id": "rule_65efffff",
+              "relation": "REFERENCES",
+              "quote": "I want to have a timeout of 300 seconds so that long-running requests can complete successfully",
+              "start": 0,
+              "end": 95,
+              "total_chars": 95,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_55072d8eb14344fd",
+              "record_id": "KEP-3866",
+              "provenance_kind": "extracted",
+              "source_id": "decision_9c780cba",
+              "target_id": "event_3cd63382",
+              "relation": "REFERENCES",
+              "quote": "The Kepler API currently closes after 60 seconds due to a timeout error.",
+              "start": 0,
+              "end": 72,
+              "total_chars": 72,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_97e1108c88fc5ff2",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_68a5b544",
+              "target_id": "decision_f8da81e0",
+              "relation": "CAUSES",
+              "quote": "The deployment of Network Builder tools integration to development (decided_at: 2026-02-27) directly caused the subsequent ALB timeout increase (decided_at: 2026-03-06). The Network Builder tools deployment introduced integration patterns that, when combined with the MCP Tool deployment, exposed ALB timeout constraints under load. Both decisions share the same initiative (Agent-Supported Account Discovery) and Rishi Beohar participated in both. The temporal sequence (2026-02-27 → 2026-03-06) and shared_initiative signal support this causal relationship: the integration work triggered the infrastructure adjustment.",
+              "start": 0,
+              "end": 621,
+              "total_chars": 621,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-02-27",
+                  "date": "2026-02-27",
+                  "evidence_id": "ev_97e1108c88fc5ff2",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-03-06",
+                  "date": "2026-03-06",
+                  "evidence_id": "ev_97e1108c88fc5ff2",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-02-27",
+                  "date": "2026-02-27",
+                  "evidence_id": "ev_97e1108c88fc5ff2",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-03-06",
+                  "date": "2026-03-06",
+                  "evidence_id": "ev_97e1108c88fc5ff2",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ee8cc82b4eb239f5",
+              "record_id": "KEP-7085",
+              "provenance_kind": "extracted",
+              "source_id": "decision_34ca5dfb",
+              "target_id": "rule_240a5434",
+              "relation": "REFERENCES",
+              "quote": "Input format: username/group name only (no numeric group IDs — consistent with UI decision on KEP-6684)",
+              "start": 0,
+              "end": 103,
+              "total_chars": 103,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_14bd758070f0b2f4",
+              "record_id": "KEP-6435",
+              "provenance_kind": "extracted",
+              "source_id": "decision_52aef85f",
+              "target_id": "outcome_912f38ba",
+              "relation": "PRODUCES",
+              "quote": "This issue is resolved.",
+              "start": 0,
+              "end": 23,
+              "total_chars": 23,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_8dbefba93926cffd",
+              "record_id": "KEP-6528",
+              "provenance_kind": "extracted",
+              "source_id": "decision_54aba719",
+              "target_id": "outcome_01a25f48",
+              "relation": "PRODUCES",
+              "quote": "This issue has been resolved",
+              "start": 0,
+              "end": 28,
+              "total_chars": 28,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_dadd703beef1aaba",
+              "record_id": "KEP-2789",
+              "provenance_kind": "extracted",
+              "source_id": "decision_71be2f56",
+              "target_id": "resource_462b55ee",
+              "relation": "AFFECTS",
+              "quote": "Enable scaling of PODS for MCP in production environment Minimum : 2 Maximum : 4 Increase Memory To match with Staging",
+              "start": 0,
+              "end": 118,
+              "total_chars": 118,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_666d3e8a2e634e44",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "event_193b4c05",
+              "target_id": "decision_e0da77cb",
+              "relation": "CAUSES",
+              "quote": "The event 'Twitter text-only posts not generating reply scraper tasks for seed data' (occurred_at: 2026-04-02 per resolved_value) directly causes the decision to fix Twitter reply scraper task generation for text-only posts. The source passage identifies this as the problem: 'Twitter text-only posts not generating reply scraper tasks for seed data.' The event precedes the decision temporally.",
+              "start": 0,
+              "end": 395,
+              "total_chars": 395,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-04-02",
+                  "date": "2026-04-02",
+                  "evidence_id": "ev_666d3e8a2e634e44",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 542,
+          "next_offset": 20
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.007422583003062755,
+      "error": false,
+      "new_ids": [
+        "ev_14bd758070f0b2f4",
+        "ev_356e74daad388f22",
+        "ev_41d9d38efa271479",
+        "ev_48a5ba5b1d05e25e",
+        "ev_55072d8eb14344fd",
+        "ev_666d3e8a2e634e44",
+        "ev_84c5dad01abf5e69",
+        "ev_8dbefba93926cffd",
+        "ev_97e1108c88fc5ff2",
+        "ev_b9d7ff7539c9310f",
+        "ev_c1def412fc35259e",
+        "ev_cf5e4d779decaab0",
+        "ev_dadd703beef1aaba",
+        "ev_df401db3241cba63",
+        "ev_ee8cc82b4eb239f5",
+        "span:ev_14bd758070f0b2f4:0:23",
+        "span:ev_356e74daad388f22:0:89",
+        "span:ev_41d9d38efa271479:0:95",
+        "span:ev_48a5ba5b1d05e25e:0:31",
+        "span:ev_55072d8eb14344fd:0:72",
+        "span:ev_666d3e8a2e634e44:0:395",
+        "span:ev_84c5dad01abf5e69:0:146",
+        "span:ev_8dbefba93926cffd:0:28",
+        "span:ev_97e1108c88fc5ff2:0:621",
+        "span:ev_b9d7ff7539c9310f:0:82",
+        "span:ev_c1def412fc35259e:0:184",
+        "span:ev_cf5e4d779decaab0:0:173",
+        "span:ev_dadd703beef1aaba:0:118",
+        "span:ev_df401db3241cba63:0:669",
+        "span:ev_ee8cc82b4eb239f5:0:103"
+      ]
+    },
+    {
+      "sequence": 134,
+      "kind": "context",
+      "model_call": 6,
+      "serialized_chars": 51172,
+      "message_count": 12,
+      "pinned_evidence_ids": [
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_5f2b2e2ded8842f5",
+        "ev_ad26bffaa983949e"
+      ],
+      "visible_item_ids": [
+        "episode_69c0485386f1acbe"
+      ],
+      "visible_evidence_ids": [
+        "ev_0b0616b5f616d98f",
+        "ev_0efca8b5653af727",
+        "ev_14bd758070f0b2f4",
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_356e74daad388f22",
+        "ev_41d9d38efa271479",
+        "ev_4386d80195ef6b5a",
+        "ev_48a5ba5b1d05e25e",
+        "ev_55072d8eb14344fd",
+        "ev_5f2b2e2ded8842f5",
+        "ev_666d3e8a2e634e44",
+        "ev_78b67c045ef5dda3",
+        "ev_84c5dad01abf5e69",
+        "ev_88f8c130b3fbc69f",
+        "ev_8dbefba93926cffd",
+        "ev_97e1108c88fc5ff2",
+        "ev_9b4317c218937e4f",
+        "ev_ad26bffaa983949e",
+        "ev_b9d7ff7539c9310f",
+        "ev_c1def412fc35259e",
+        "ev_cf5e4d779decaab0",
+        "ev_d752b5edf2b80f5b",
+        "ev_dadd703beef1aaba",
+        "ev_df401db3241cba63",
+        "ev_e6182b83201c1764",
+        "ev_ee8cc82b4eb239f5",
+        "ev_f3dba2eba43e2de5",
+        "ev_f89008c1a2802c2c"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_4abed8c3e42fe11e",
+        "action_2_request_6d6071a2c3e516c5",
+        "action_3_request_43a9622705a2dae7",
+        "action_4_request_c325a223e0a89e25",
+        "action_5_request_b9ad1a8548a2631a"
+      ]
+    },
+    {
+      "sequence": 135,
+      "kind": "model_started",
+      "call_number": 6,
+      "status": "pending",
+      "serialized_chars": 51172,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 136,
+      "kind": "model",
+      "call_number": 6,
+      "status": "completed",
+      "serialized_chars": 51172,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_8c75cb92f5f65b23",
+      "action": {
+        "tool_name": "get_evidence",
+        "arguments_json": "{\"evidence_ids\":[\"ev_9b4317c218937e4f\"],\"start\":400,\"chars\":1000}",
+        "purpose": "Read the rest of the outage source passage for its assessment of the timeout increase.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_1c1739cdda90321d",
+          "ev_5f2b2e2ded8842f5",
+          "ev_1b68761b66cc3cc3",
+          "ev_ad26bffaa983949e",
+          "ev_9b4317c218937e4f"
+        ]
+      },
+      "latency_seconds": 7.073040499992203,
+      "provider": {
+        "request_id": "request_8c75cb92f5f65b23",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__paraphrase__memory_graph/cache/codex/request_8c75cb92f5f65b23.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 18304,
+          "input_tokens": 31899,
+          "output_tokens": 222,
+          "reasoning_output_tokens": 60,
+          "total_tokens": 32121
+        },
+        "thread_id": "01a114b9-7c71-7883-95ac-0aa550bacd86",
+        "turn_id": "01a114b9-7c91-72c2-b600-d147851ff9a9",
+        "status": "completed",
+        "latency_seconds": 7.0445
+      }
+    },
+    {
+      "sequence": 137,
+      "kind": "tool_started",
+      "call_id": "action_6_request_8c75cb92f5f65b23",
+      "name": "get_evidence",
+      "arguments": {
+        "evidence_ids": [
+          "ev_9b4317c218937e4f"
+        ],
+        "start": 400,
+        "chars": 1000
+      }
+    },
+    {
+      "sequence": 138,
+      "kind": "tool",
+      "name": "get_evidence",
+      "arguments": {
+        "evidence_ids": [
+          "ev_9b4317c218937e4f"
+        ],
+        "start": 400,
+        "chars": 1000
+      },
+      "call_id": "action_6_request_8c75cb92f5f65b23",
+      "result": {
+        "results": [
+          {
+            "evidence_id": "ev_9b4317c218937e4f",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "event_0fb2fd55",
+            "target_id": "decision_689ff4ca",
+            "relation": "CAUSES",
+            "quote": "r this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing.",
+            "start": 400,
+            "end": 557,
+            "total_chars": 557,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "April 19, 2026",
+                "date": "2026-04-19",
+                "end_date": null,
+                "evidence_id": "ev_9b4317c218937e4f",
+                "status": "explicit_date_mention",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          }
+        ]
+      },
+      "latency_seconds": 0.0008636249986011535,
+      "error": false,
+      "new_ids": [
+        "span:ev_9b4317c218937e4f:400:557"
+      ]
+    },
+    {
+      "sequence": 139,
+      "kind": "context",
+      "model_call": 7,
+      "serialized_chars": 53947,
+      "message_count": 14,
+      "pinned_evidence_ids": [
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_5f2b2e2ded8842f5",
+        "ev_9b4317c218937e4f",
+        "ev_ad26bffaa983949e"
+      ],
+      "visible_item_ids": [
+        "episode_69c0485386f1acbe",
+        "pattern_0ea1482690a38207"
+      ],
+      "visible_evidence_ids": [
+        "ev_0b0616b5f616d98f",
+        "ev_0efca8b5653af727",
+        "ev_14bd758070f0b2f4",
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_356e74daad388f22",
+        "ev_41d9d38efa271479",
+        "ev_4386d80195ef6b5a",
+        "ev_48a5ba5b1d05e25e",
+        "ev_55072d8eb14344fd",
+        "ev_5f2b2e2ded8842f5",
+        "ev_666d3e8a2e634e44",
+        "ev_78b67c045ef5dda3",
+        "ev_84c5dad01abf5e69",
+        "ev_88f8c130b3fbc69f",
+        "ev_8dbefba93926cffd",
+        "ev_97e1108c88fc5ff2",
+        "ev_9b4317c218937e4f",
+        "ev_ad26bffaa983949e",
+        "ev_b9d7ff7539c9310f",
+        "ev_c1def412fc35259e",
+        "ev_cf5e4d779decaab0",
+        "ev_d752b5edf2b80f5b",
+        "ev_dadd703beef1aaba",
+        "ev_df401db3241cba63",
+        "ev_e6182b83201c1764",
+        "ev_ee8cc82b4eb239f5",
+        "ev_f3dba2eba43e2de5",
+        "ev_f89008c1a2802c2c"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_4abed8c3e42fe11e",
+        "action_2_request_6d6071a2c3e516c5",
+        "action_3_request_43a9622705a2dae7",
+        "action_4_request_c325a223e0a89e25",
+        "action_5_request_b9ad1a8548a2631a",
+        "action_6_request_8c75cb92f5f65b23"
+      ]
+    },
+    {
+      "sequence": 140,
+      "kind": "model_started",
+      "call_number": 7,
+      "status": "pending",
+      "serialized_chars": 53947,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 141,
+      "kind": "item_discard",
+      "item_id": "pattern_0ea1482690a38207",
+      "reason": "Cross-episode alerting comparison does not establish the timeout change’s effect.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 142,
+      "kind": "model",
+      "call_number": 7,
+      "status": "completed",
+      "serialized_chars": 53947,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_49d8fdceb470e57f",
+      "action": {
+        "tool_name": "recall_memory",
+        "arguments_json": "{\"cue\":\"KEP-6969 Argonaut government narrative timeout increase 10 to 12 hours partial resolution remaining issue outcome\",\"limit\":10}",
+        "purpose": "Check whether the outage record reports what remained unresolved after the timeout increase.",
+        "discarded_items": [
+          {
+            "item_id": "pattern_0ea1482690a38207",
+            "reason": "Cross-episode alerting comparison does not establish the timeout change’s effect."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_1c1739cdda90321d",
+          "ev_5f2b2e2ded8842f5",
+          "ev_1b68761b66cc3cc3",
+          "ev_ad26bffaa983949e"
+        ]
+      },
+      "latency_seconds": 6.998808500007726,
+      "provider": {
+        "request_id": "request_49d8fdceb470e57f",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__paraphrase__memory_graph/cache/codex/request_49d8fdceb470e57f.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 16644,
+          "output_tokens": 311,
+          "reasoning_output_tokens": 148,
+          "total_tokens": 16955
+        },
+        "thread_id": "01a114b9-9817-7570-b786-d7ac342bbb5a",
+        "turn_id": "01a114b9-9846-7530-920c-d040ba13f49f",
+        "status": "completed",
+        "latency_seconds": 6.9797
+      }
+    },
+    {
+      "sequence": 143,
+      "kind": "tool_started",
+      "call_id": "action_7_request_49d8fdceb470e57f",
+      "name": "recall_memory",
+      "arguments": {
+        "cue": "KEP-6969 Argonaut government narrative timeout increase 10 to 12 hours partial resolution remaining issue outcome",
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 144,
+      "kind": "tool",
+      "name": "recall_memory",
+      "arguments": {
+        "cue": "KEP-6969 Argonaut government narrative timeout increase 10 to 12 hours partial resolution remaining issue outcome",
+        "limit": 10
+      },
+      "call_id": "action_7_request_49d8fdceb470e57f",
+      "result": {
+        "cue": "KEP-6969 Argonaut government narrative timeout increase 10 to 12 hours partial resolution remaining issue outcome",
+        "expanded_cue": "KEP-6969 Argonaut government narrative timeout increase 10 to 12 hours partial resolution remaining issue outcome",
+        "results": [
+          {
+            "id": "episode_69c0485386f1acbe",
+            "type": "episode",
+            "kind": "fixed_evidence_bundle",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_1b68761b66cc3cc3",
+              "ev_1c1739cdda90321d",
+              "ev_4386d80195ef6b5a",
+              "ev_5f2b2e2ded8842f5",
+              "ev_9b4317c218937e4f",
+              "ev_ad26bffaa983949e",
+              "ev_f3dba2eba43e2de5"
+            ],
+            "record_ids": [
+              "KEP-6969"
+            ],
+            "entity_ids": [
+              "resource_2a19226a",
+              "resource_c0cb2fb8"
+            ],
+            "item_id": "episode_69c0485386f1acbe",
+            "title": "increase processing timeout from 10 to 12 hours",
+            "preview": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026\nA government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing.\nGovernment customer (Argonaut tenant) went 10+ days (Apr 19–29) wit",
+            "preview_truncated": true,
+            "title_origin": "unverified graph decision labels",
+            "score": 0.03105999,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_f497899a338689f5",
+                "episode_69c0485386f1acbe"
+              ],
+              "reasons": [
+                "shares scoped entity processing timeout threshold (resource_c0cb2fb8)"
+              ],
+              "score": 0.0040486391129032255
+            },
+            "why": "lexical; node_association; memory_association; shares scoped entity processing timeout threshold (resource_c0cb2fb8)"
+          },
+          {
+            "id": "fact_f497899a338689f5",
+            "type": "fact",
+            "kind": "historical_statement",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_ad26bffaa983949e"
+            ],
+            "record_ids": [
+              "KEP-6969"
+            ],
+            "entity_ids": [
+              "resource_c0cb2fb8"
+            ],
+            "item_id": "fact_f497899a338689f5",
+            "title": "the processing timeout was increased from 10 hours to 12 hours",
+            "preview": "the processing timeout was increased from 10 hours to 12 hours",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.03104263,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_69c0485386f1acbe",
+                "fact_f497899a338689f5"
+              ],
+              "reasons": [
+                "shares scoped entity processing timeout threshold (resource_c0cb2fb8)"
+              ],
+              "score": 0.0040517023959646915
+            },
+            "why": "lexical; node_association; memory_association; shares scoped entity processing timeout threshold (resource_c0cb2fb8)"
+          },
+          {
+            "id": "fact_5acca7ca833d4087",
+            "type": "fact",
+            "kind": "historical_statement",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_f3dba2eba43e2de5"
+            ],
+            "record_ids": [
+              "KEP-6969"
+            ],
+            "entity_ids": [
+              "resource_2a19226a"
+            ],
+            "item_id": "fact_5acca7ca833d4087",
+            "title": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+            "preview": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.03082502,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_69c0485386f1acbe",
+                "fact_5acca7ca833d4087"
+              ],
+              "reasons": [
+                "shares scoped entity narrative generation jobs (resource_2a19226a)"
+              ],
+              "score": 0.0040517023959646915
+            },
+            "why": "lexical; node_association; memory_association; shares scoped entity narrative generation jobs (resource_2a19226a)"
+          },
+          {
+            "id": "pattern_58a2e1d22c555eac",
+            "type": "pattern",
+            "kind": "reported_recurrence",
+            "retention": "retained",
+            "confidence": "low",
+            "evidence_ids": [
+              "ev_356e74daad388f22",
+              "ev_48a5ba5b1d05e25e",
+              "ev_55072d8eb14344fd",
+              "ev_63e0fb5ca900a930",
+              "ev_b8b2cac18f3f5801"
+            ],
+            "record_ids": [
+              "KEP-3000",
+              "KEP-3866",
+              "KEP-4324"
+            ],
+            "entity_ids": [
+              "resource_12c6704d",
+              "resource_bcc0b2af"
+            ],
+            "independent_support_count": 3,
+            "supporting_episode_ids": [
+              "episode_0b5eac8998a40268",
+              "episode_32359916bec8e876",
+              "episode_3b052dfb1b6b1da1"
+            ],
+            "supporting_fact_ids": [
+              "fact_1fc088ededabc3f8",
+              "fact_7a3bcb96603880ec",
+              "fact_9df556c4c2c40498",
+              "fact_d4be8f30fbe80ecc"
+            ],
+            "item_id": "pattern_58a2e1d22c555eac",
+            "title": "Multiple records report one-minute request termination, but working report streams and differing timeout remedies make this a path-specific reliability problem rather than a universal streaming failure.",
+            "preview": "Multiple records report one-minute request termination, but working report streams and differing timeout remedies make this a path-specific reliability problem rather than a universal streaming failure.\nThe same termination duration appears across records, while responses address different limits: a requested 300 seconds, a reported ALB increase to 180 seconds, and stream-completion requirements. These are not interchangeable acceptance criteria.\nDirects testing toward each request path and timeout layer, with explicit completion semantics rather than a single global timeout fix.",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.02955636,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_32359916bec8e876",
+                "pattern_58a2e1d22c555eac"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern"
+              ],
+              "score": 0.013986940298507462
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-episode pattern"
+          },
+          {
+            "id": "fact_1d79bf4d32849728",
+            "type": "fact",
+            "kind": "historical_statement",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_4386d80195ef6b5a"
+            ],
+            "record_ids": [
+              "KEP-6969"
+            ],
+            "entity_ids": [
+              "outcome_ab39ce9c"
+            ],
+            "item_id": "fact_1d79bf4d32849728",
+            "title": "Government customer (Argonaut tenant) went 10+ days (Apr 19–29) without narrative updates for at least one network",
+            "preview": "Government customer (Argonaut tenant) went 10+ days (Apr 19–29) without narrative updates for at least one network",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.02720174,
+            "routes": [
+              "lexical",
+              "node_association"
+            ],
+            "association": null,
+            "why": "lexical; node_association"
+          },
+          {
+            "id": "fact_63b5b3661229a85b",
+            "type": "fact",
+            "kind": "historical_statement",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_1c1739cdda90321d"
+            ],
+            "record_ids": [
+              "KEP-6969"
+            ],
+            "entity_ids": [
+              "event_0fb2fd55"
+            ],
+            "item_id": "fact_63b5b3661229a85b",
+            "title": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026",
+            "preview": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.02701135,
+            "routes": [
+              "lexical",
+              "node_association"
+            ],
+            "association": null,
+            "why": "lexical; node_association"
+          },
+          {
+            "id": "pattern_0ea1482690a38207",
+            "type": "pattern",
+            "kind": "reported_recurrence",
+            "retention": "retained",
+            "confidence": "low",
+            "evidence_ids": [
+              "ev_75b67275157f9120",
+              "ev_9b4317c218937e4f"
+            ],
+            "record_ids": [
+              "KEP-6969",
+              "KEP-6970"
+            ],
+            "entity_ids": [],
+            "independent_support_count": 2,
+            "supporting_episode_ids": [
+              "episode_69c0485386f1acbe",
+              "episode_79ef5db564f05930"
+            ],
+            "supporting_fact_ids": [],
+            "item_id": "pattern_0ea1482690a38207",
+            "title": "Detection and response failed at different stages: some prolonged outages produced no alarm, while another eventually alerted without prompting action.",
+            "preview": "Detection and response failed at different stages: some prolonged outages produced no alarm, while another eventually alerted without prompting action.\nThe collection outage reportedly escaped automated detection for eight days; the narrative outage was first discovered by the customer, with later alarms receiving no action. Alert coverage and alert ownership are therefore separate reliability concerns.\nAssess output-freshness monitoring separately from acknowledgement, escalation, and accountable response.",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.02605529,
+            "routes": [
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_69c0485386f1acbe",
+                "pattern_0ea1482690a38207"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern"
+              ],
+              "score": 0.016206809583858766
+            },
+            "why": "node_association; memory_association; supports this cross-episode pattern"
+          },
+          {
+            "id": "pattern_97db9685af5cd155",
+            "type": "pattern",
+            "kind": "reported_recurrence",
+            "retention": "retained",
+            "confidence": "low",
+            "evidence_ids": [
+              "ev_1b68761b66cc3cc3",
+              "ev_78b67c045ef5dda3",
+              "ev_d752b5edf2b80f5b",
+              "ev_e069cd9a1a360b09",
+              "ev_e7c56cd73172b966"
+            ],
+            "record_ids": [
+              "KEP-2237",
+              "KEP-6189",
+              "KEP-6688",
+              "KEP-6969"
+            ],
+            "entity_ids": [],
+            "independent_support_count": 4,
+            "supporting_episode_ids": [
+              "episode_3dbdaf7dd5174618",
+              "episode_484060f883095c29",
+              "episode_69c0485386f1acbe",
+              "episode_864f92d5f225ebb0"
+            ],
+            "supporting_fact_ids": [
+              "fact_072441c90b081c74",
+              "fact_4c95ebe34466af37",
+              "fact_6a8a6ac62a266aee"
+            ],
+            "item_id": "pattern_97db9685af5cd155",
+            "title": "Narrative freshness failures recur at different pipeline stages, so successful upstream work does not establish usable downstream output.",
+            "preview": "Narrative freshness failures recur at different pipeline stages, so successful upstream work does not establish usable downstream output.\nSeparate records describe upload without downstream startup, late narrative statistics, statistics missing after a continuous run, and repeated termination/requeue without output. These distinguish orchestration, statistics publication, and generation completion rather than one generic narrative failure.\nTrack end-to-end output freshness alongside upload, run, and queue status; distinguish recoverable backlog from repeated no-output retries before choosing remediation.",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.0256271,
+            "routes": [
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_69c0485386f1acbe",
+                "pattern_97db9685af5cd155"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern"
+              ],
+              "score": 0.016206809583858766
+            },
+            "why": "node_association; memory_association; supports this cross-episode pattern"
+          },
+          {
+            "id": "fact_817da17071907823",
+            "type": "fact",
+            "kind": "historical_statement",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_5f2b2e2ded8842f5"
+            ],
+            "record_ids": [
+              "KEP-6969"
+            ],
+            "entity_ids": [
+              "risk_c09e361e"
+            ],
+            "item_id": "fact_817da17071907823",
+            "title": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+            "preview": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.02556536,
+            "routes": [
+              "lexical",
+              "node_association"
+            ],
+            "association": null,
+            "why": "lexical; node_association"
+          },
+          {
+            "id": "episode_32359916bec8e876",
+            "type": "episode",
+            "kind": "fixed_evidence_bundle",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_0b0616b5f616d98f",
+              "ev_28374c25b7ead4f3",
+              "ev_356e74daad388f22",
+              "ev_41d9d38efa271479",
+              "ev_48a5ba5b1d05e25e",
+              "ev_97e1108c88fc5ff2",
+              "ev_df401db3241cba63",
+              "ev_f89008c1a2802c2c"
+            ],
+            "record_ids": [
+              "KEP-4037",
+              "KEP-4324"
+            ],
+            "entity_ids": [
+              "resource_59d7189d",
+              "resource_bcc0b2af"
+            ],
+            "item_id": "episode_32359916bec8e876",
+            "title": "Test account recommendation using web search agent / Increase ALB timeout to 180 seconds for Kepler Chat API",
+            "preview": "I want to have a timeout of 300 seconds so that long-running requests can complete successfully\nIncreased ALB timeout to 180sec\nIssue related to ALB timeout was resolved.\nQA: Staging: Agent: Account Recommendation Using Web Search\nThe chat API is currently behind the Kepler NGINX, which has a hard timeout of 60 seconds",
+            "preview_truncated": false,
+            "title_origin": "unverified graph decision labels",
+            "score": 0.02331157,
+            "routes": [
+              "lexical",
+              "node_association"
+            ],
+            "association": null,
+            "why": "lexical; node_association"
+          }
+        ],
+        "trace": {
+          "mode": "offline BM25 + cue-anchored node similarity; not direct semantic query encoding",
+          "anchor_nodes": [
+            {
+              "node_id": "decision_689ff4ca",
+              "label": "increase processing timeout from 10 to 12 hours",
+              "lexical_score": 29.936970605639424
+            },
+            {
+              "node_id": "outcome_ab39ce9c",
+              "label": "Argonaut network went 10+ days without narrative updates",
+              "lexical_score": 12.782564589214308
+            },
+            {
+              "node_id": "outcome_a01351c7",
+              "label": "Argonaut tenant created on Government Argus Social",
+              "lexical_score": 12.05799127187012
+            }
+          ],
+          "seed_item_ids": [
+            "fact_1d79bf4d32849728",
+            "episode_69c0485386f1acbe",
+            "fact_63b5b3661229a85b",
+            "fact_f497899a338689f5",
+            "fact_5acca7ca833d4087",
+            "fact_817da17071907823",
+            "episode_32359916bec8e876",
+            "episode_e378e07b34a258c6"
+          ],
+          "discarded": [
+            {
+              "item_id": "fact_6a8a6ac62a266aee",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_4c95ebe34466af37",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_e378e07b34a258c6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_6dcf9c800fdc652a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_79ef5db564f05930",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ae9651b71b785f3c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0b5eac8998a40268",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_864f92d5f225ebb0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_484060f883095c29",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_5be12155cbcc2e70",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3dbdaf7dd5174618",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_f0b4b3e8998d28f0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_7a3bcb96603880ec",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ddea597564daeb05",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3c29338ee31eae5c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_8dcf066b888996ea",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_98dfcfa6e2409383",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_dc9e97485efcbdb9",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0dd10a9c9fc9348f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_c95bb61f7157f093",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_0277ccdf2bc25888",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_8ce3a9dc4475169b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_32c384c9bb4c9bb2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_a4f83cebed7cfffc",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_74cc68cb3cee95e4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_84aaa11fce815c97",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_11931fa03d55ba16",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0bcbcf4f8baa513b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_e1df026e607f0fc0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_2d3faea450a5c588",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_ae928d907c017a9c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ccf919fbe0456b77",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_100748ce22baebc7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_91535f0a442e8459",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_24f6c23aa6b3d697",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_7a17c9a491e97972",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_072441c90b081c74",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_40e3a011fd80096e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_22103952c62f14b7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_0b33a3e79def6bd1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_1584da97d86e8e76",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_17ef17f1e42d664f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_3c1d77d75cf616dc",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_801d756ea6643edf",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0099b4eefc7521d8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_e20ef85133bfabd7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_3a0372d319646e1f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_535ad492c5929232",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_dc97455610588117",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_4624fbf123ca4e18",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_a1665b6ced1f35a6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5f55e76d674d34de",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_a47e727ca58c7fd3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_416599dd4c073b2b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_a0c2b66631731d2a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3b052dfb1b6b1da1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1fc088ededabc3f8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_9df556c4c2c40498",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_d4be8f30fbe80ecc",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_d173fc800e025f02",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_5582be41f0a4ca48",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_a99f7dd89ca155eb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_d34f4ac119b5952b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_71056a36f9e95a78",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_72c450c2dae3cc22",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_9b30cfc47ff59426",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_08e043ffb73a8109",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_6dcaa9d440fd1ec6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_c817b596bb7666ab",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_e37522a93914a80e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_3c42b46ec4137e6c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_954b89f06ceb7465",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_fbe300c8e60a4f05",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0fd10ad5394b8777",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_267960220d41afb8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_97ecd80688d92bc6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_27681f4be0cfbd93",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_4589288308d7fdf3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_81d62d0f402ae53a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_e2ac3267b2f05f29",
+              "reason": "outside result budget"
+            }
+          ],
+          "max_hops": 2,
+          "score_note": "RRF k=60; support multipliers 1/.85/.65; association decay .6 per hop. Heuristics, not probabilities."
+        },
+        "limitation": "Aliases expand vocabulary, not identity. Scores and memory judgments are fallible."
+      },
+      "latency_seconds": 0.006933333002962172,
+      "error": false,
+      "new_ids": [
+        "fact_1d79bf4d32849728",
+        "fact_5acca7ca833d4087",
+        "fact_63b5b3661229a85b",
+        "fact_817da17071907823",
+        "fact_f497899a338689f5",
+        "pattern_97db9685af5cd155"
+      ]
+    },
+    {
+      "sequence": 145,
+      "kind": "retrieval_discard",
+      "item_id": "fact_6a8a6ac62a266aee",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 146,
+      "kind": "retrieval_discard",
+      "item_id": "fact_4c95ebe34466af37",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 147,
+      "kind": "retrieval_discard",
+      "item_id": "episode_e378e07b34a258c6",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 148,
+      "kind": "retrieval_discard",
+      "item_id": "episode_6dcf9c800fdc652a",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 149,
+      "kind": "retrieval_discard",
+      "item_id": "episode_79ef5db564f05930",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 150,
+      "kind": "retrieval_discard",
+      "item_id": "episode_ae9651b71b785f3c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 151,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0b5eac8998a40268",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 152,
+      "kind": "retrieval_discard",
+      "item_id": "episode_864f92d5f225ebb0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 153,
+      "kind": "retrieval_discard",
+      "item_id": "episode_484060f883095c29",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 154,
+      "kind": "retrieval_discard",
+      "item_id": "episode_5be12155cbcc2e70",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 155,
+      "kind": "retrieval_discard",
+      "item_id": "episode_3dbdaf7dd5174618",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 156,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_f0b4b3e8998d28f0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 157,
+      "kind": "retrieval_discard",
+      "item_id": "fact_7a3bcb96603880ec",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 158,
+      "kind": "retrieval_discard",
+      "item_id": "episode_ddea597564daeb05",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 159,
+      "kind": "retrieval_discard",
+      "item_id": "episode_3c29338ee31eae5c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 160,
+      "kind": "retrieval_discard",
+      "item_id": "episode_8dcf066b888996ea",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 161,
+      "kind": "retrieval_discard",
+      "item_id": "episode_98dfcfa6e2409383",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 162,
+      "kind": "retrieval_discard",
+      "item_id": "fact_dc9e97485efcbdb9",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 163,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0dd10a9c9fc9348f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 164,
+      "kind": "retrieval_discard",
+      "item_id": "fact_c95bb61f7157f093",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 165,
+      "kind": "retrieval_discard",
+      "item_id": "fact_0277ccdf2bc25888",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 166,
+      "kind": "retrieval_discard",
+      "item_id": "episode_8ce3a9dc4475169b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 167,
+      "kind": "retrieval_discard",
+      "item_id": "episode_32c384c9bb4c9bb2",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 168,
+      "kind": "retrieval_discard",
+      "item_id": "episode_a4f83cebed7cfffc",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 169,
+      "kind": "retrieval_discard",
+      "item_id": "episode_74cc68cb3cee95e4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 170,
+      "kind": "retrieval_discard",
+      "item_id": "fact_84aaa11fce815c97",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 171,
+      "kind": "retrieval_discard",
+      "item_id": "episode_11931fa03d55ba16",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 172,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0bcbcf4f8baa513b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 173,
+      "kind": "retrieval_discard",
+      "item_id": "episode_e1df026e607f0fc0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 174,
+      "kind": "retrieval_discard",
+      "item_id": "episode_2d3faea450a5c588",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 175,
+      "kind": "retrieval_discard",
+      "item_id": "fact_ae928d907c017a9c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 176,
+      "kind": "retrieval_discard",
+      "item_id": "episode_ccf919fbe0456b77",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 177,
+      "kind": "retrieval_discard",
+      "item_id": "episode_100748ce22baebc7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 178,
+      "kind": "retrieval_discard",
+      "item_id": "episode_91535f0a442e8459",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 179,
+      "kind": "retrieval_discard",
+      "item_id": "episode_24f6c23aa6b3d697",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 180,
+      "kind": "retrieval_discard",
+      "item_id": "episode_7a17c9a491e97972",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 181,
+      "kind": "retrieval_discard",
+      "item_id": "fact_072441c90b081c74",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 182,
+      "kind": "retrieval_discard",
+      "item_id": "episode_40e3a011fd80096e",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 183,
+      "kind": "retrieval_discard",
+      "item_id": "episode_22103952c62f14b7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 184,
+      "kind": "retrieval_discard",
+      "item_id": "fact_0b33a3e79def6bd1",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 185,
+      "kind": "retrieval_discard",
+      "item_id": "episode_1584da97d86e8e76",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 186,
+      "kind": "retrieval_discard",
+      "item_id": "fact_17ef17f1e42d664f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 187,
+      "kind": "retrieval_discard",
+      "item_id": "fact_3c1d77d75cf616dc",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 188,
+      "kind": "retrieval_discard",
+      "item_id": "episode_801d756ea6643edf",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 189,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0099b4eefc7521d8",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 190,
+      "kind": "retrieval_discard",
+      "item_id": "episode_e20ef85133bfabd7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 191,
+      "kind": "retrieval_discard",
+      "item_id": "fact_3a0372d319646e1f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 192,
+      "kind": "retrieval_discard",
+      "item_id": "episode_535ad492c5929232",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 193,
+      "kind": "retrieval_discard",
+      "item_id": "episode_dc97455610588117",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 194,
+      "kind": "retrieval_discard",
+      "item_id": "fact_4624fbf123ca4e18",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 195,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_a1665b6ced1f35a6",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 196,
+      "kind": "retrieval_discard",
+      "item_id": "fact_5f55e76d674d34de",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 197,
+      "kind": "retrieval_discard",
+      "item_id": "episode_a47e727ca58c7fd3",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 198,
+      "kind": "retrieval_discard",
+      "item_id": "episode_416599dd4c073b2b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 199,
+      "kind": "retrieval_discard",
+      "item_id": "episode_a0c2b66631731d2a",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 200,
+      "kind": "retrieval_discard",
+      "item_id": "episode_3b052dfb1b6b1da1",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 201,
+      "kind": "retrieval_discard",
+      "item_id": "fact_1fc088ededabc3f8",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 202,
+      "kind": "retrieval_discard",
+      "item_id": "fact_9df556c4c2c40498",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 203,
+      "kind": "retrieval_discard",
+      "item_id": "fact_d4be8f30fbe80ecc",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 204,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_d173fc800e025f02",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 205,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_5582be41f0a4ca48",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 206,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_a99f7dd89ca155eb",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 207,
+      "kind": "retrieval_discard",
+      "item_id": "fact_d34f4ac119b5952b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 208,
+      "kind": "retrieval_discard",
+      "item_id": "episode_71056a36f9e95a78",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 209,
+      "kind": "retrieval_discard",
+      "item_id": "episode_72c450c2dae3cc22",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 210,
+      "kind": "retrieval_discard",
+      "item_id": "episode_9b30cfc47ff59426",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 211,
+      "kind": "retrieval_discard",
+      "item_id": "fact_08e043ffb73a8109",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 212,
+      "kind": "retrieval_discard",
+      "item_id": "fact_6dcaa9d440fd1ec6",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 213,
+      "kind": "retrieval_discard",
+      "item_id": "fact_c817b596bb7666ab",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 214,
+      "kind": "retrieval_discard",
+      "item_id": "fact_e37522a93914a80e",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 215,
+      "kind": "retrieval_discard",
+      "item_id": "fact_3c42b46ec4137e6c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 216,
+      "kind": "retrieval_discard",
+      "item_id": "fact_954b89f06ceb7465",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 217,
+      "kind": "retrieval_discard",
+      "item_id": "fact_fbe300c8e60a4f05",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 218,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0fd10ad5394b8777",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 219,
+      "kind": "retrieval_discard",
+      "item_id": "episode_267960220d41afb8",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 220,
+      "kind": "retrieval_discard",
+      "item_id": "episode_97ecd80688d92bc6",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 221,
+      "kind": "retrieval_discard",
+      "item_id": "fact_27681f4be0cfbd93",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 222,
+      "kind": "retrieval_discard",
+      "item_id": "fact_4589288308d7fdf3",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 223,
+      "kind": "retrieval_discard",
+      "item_id": "fact_81d62d0f402ae53a",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 224,
+      "kind": "retrieval_discard",
+      "item_id": "fact_e2ac3267b2f05f29",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 225,
+      "kind": "context_item_eviction",
+      "call_id": "action_7_request_49d8fdceb470e57f",
+      "item_id": "episode_32359916bec8e876",
+      "reason": "Concerns a different Chat API timeout."
+    },
+    {
+      "sequence": 226,
+      "kind": "context_item_eviction",
+      "call_id": "action_7_request_49d8fdceb470e57f",
+      "item_id": "pattern_58a2e1d22c555eac",
+      "reason": "Concerns request-path timeouts, not this narrative outage."
+    },
+    {
+      "sequence": 227,
+      "kind": "context",
+      "model_call": 8,
+      "serialized_chars": 67309,
+      "message_count": 16,
+      "pinned_evidence_ids": [
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_5f2b2e2ded8842f5",
+        "ev_9b4317c218937e4f",
+        "ev_ad26bffaa983949e"
+      ],
+      "visible_item_ids": [
+        "episode_69c0485386f1acbe",
+        "fact_1d79bf4d32849728",
+        "fact_5acca7ca833d4087",
+        "fact_63b5b3661229a85b",
+        "fact_817da17071907823",
+        "fact_f497899a338689f5",
+        "pattern_0ea1482690a38207",
+        "pattern_97db9685af5cd155"
+      ],
+      "visible_evidence_ids": [
+        "ev_0b0616b5f616d98f",
+        "ev_0efca8b5653af727",
+        "ev_14bd758070f0b2f4",
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_356e74daad388f22",
+        "ev_41d9d38efa271479",
+        "ev_4386d80195ef6b5a",
+        "ev_48a5ba5b1d05e25e",
+        "ev_55072d8eb14344fd",
+        "ev_5f2b2e2ded8842f5",
+        "ev_666d3e8a2e634e44",
+        "ev_78b67c045ef5dda3",
+        "ev_84c5dad01abf5e69",
+        "ev_88f8c130b3fbc69f",
+        "ev_8dbefba93926cffd",
+        "ev_97e1108c88fc5ff2",
+        "ev_9b4317c218937e4f",
+        "ev_ad26bffaa983949e",
+        "ev_b9d7ff7539c9310f",
+        "ev_c1def412fc35259e",
+        "ev_cf5e4d779decaab0",
+        "ev_d752b5edf2b80f5b",
+        "ev_dadd703beef1aaba",
+        "ev_df401db3241cba63",
+        "ev_e6182b83201c1764",
+        "ev_ee8cc82b4eb239f5",
+        "ev_f3dba2eba43e2de5",
+        "ev_f89008c1a2802c2c"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_4abed8c3e42fe11e",
+        "action_2_request_6d6071a2c3e516c5",
+        "action_3_request_43a9622705a2dae7",
+        "action_4_request_c325a223e0a89e25",
+        "action_5_request_b9ad1a8548a2631a",
+        "action_6_request_8c75cb92f5f65b23",
+        "action_7_request_49d8fdceb470e57f"
+      ]
+    },
+    {
+      "sequence": 228,
+      "kind": "model_started",
+      "call_number": 8,
+      "status": "pending",
+      "serialized_chars": 67309,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 229,
+      "kind": "item_discard",
+      "item_id": "pattern_0ea1482690a38207",
+      "reason": "Cross-incident monitoring comparison does not measure the timeout change’s effectiveness.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 230,
+      "kind": "item_discard",
+      "item_id": "pattern_97db9685af5cd155",
+      "reason": "Other narrative-pipeline failures do not establish this outage’s recovery.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 231,
+      "kind": "model",
+      "call_number": 8,
+      "status": "completed",
+      "serialized_chars": 67309,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_4a1df5f3f264f4af",
+      "action": {
+        "tool_name": "DraftAnswer",
+        "arguments_json": "{\"claims\":[{\"statement\":\"The Argonaut government network stopped receiving narrative updates from approximately April 19, 2026.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_1c1739cdda90321d\",\"quote\":\"A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026\",\"start\":0}],\"memory_ids\":[\"episode_69c0485386f1acbe\"],\"confidence\":\"high\",\"confidence_reason\":\"The outage record states this directly.\",\"verification_note\":\"The original KEP-6969 excerpt identifies the affected tenant, network, and approximate start.\"},{\"statement\":\"The reported failure was that narrative-generation jobs exceeded the 10-hour processing threshold and were killed before completion; requeued jobs were killed again, leaving no output.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_5f2b2e2ded8842f5\",\"quote\":\"Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing\",\"start\":0},{\"evidence_id\":\"ev_1b68761b66cc3cc3\",\"quote\":\"The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert\",\"start\":0}],\"memory_ids\":[\"episode_69c0485386f1acbe\"],\"confidence\":\"high\",\"confidence_reason\":\"The record explicitly reports the failure mechanism and retry loop.\",\"verification_note\":\"Both cited excerpts are original graph evidence from KEP-6969.\"},{\"statement\":\"The processing timeout was increased from 10 to 12 hours—two additional hours, not a documented percentage of the outage resolved.\",\"kind\":\"synthesis\",\"citations\":[{\"evidence_id\":\"ev_ad26bffaa983949e\",\"quote\":\"the processing timeout was increased from 10 hours to 12 hours\",\"start\":0}],\"memory_ids\":[\"episode_69c0485386f1acbe\"],\"confidence\":\"high\",\"confidence_reason\":\"The configuration change is explicit; the two-hour difference is arithmetic.\",\"verification_note\":\"The cited record describes the timeout increase but gives no measured resolution fraction.\"}],\"unanswered\":[\"The reviewed outage evidence does not establish how much the timeout increase resolved, whether narrative updates resumed, or whether the retry-loop problem was fully fixed.\"],\"limitations\":[\"A timeout change alone is not evidence of recovery or a quantified fix.\"]}",
+        "purpose": "Answer what failed and distinguish the two-hour timeout increase from any unverified recovery.",
+        "discarded_items": [
+          {
+            "item_id": "pattern_0ea1482690a38207",
+            "reason": "Cross-incident monitoring comparison does not measure the timeout change’s effectiveness."
+          },
+          {
+            "item_id": "pattern_97db9685af5cd155",
+            "reason": "Other narrative-pipeline failures do not establish this outage’s recovery."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_1c1739cdda90321d",
+          "ev_5f2b2e2ded8842f5",
+          "ev_1b68761b66cc3cc3",
+          "ev_ad26bffaa983949e"
+        ]
+      },
+      "latency_seconds": 11.677432750002481,
+      "provider": {
+        "request_id": "request_4a1df5f3f264f4af",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__paraphrase__memory_graph/cache/codex/request_4a1df5f3f264f4af.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 20267,
+          "output_tokens": 852,
+          "reasoning_output_tokens": 118,
+          "total_tokens": 21119
+        },
+        "thread_id": "01a114b9-b381-78f2-87f4-bdde040a980f",
+        "turn_id": "01a114b9-b3a0-7093-9de8-86648aa2164a",
+        "status": "completed",
+        "latency_seconds": 11.6567
+      }
+    },
+    {
+      "sequence": 232,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "memory_ids": [
+        "episode_69c0485386f1acbe"
+      ],
+      "evidence_ids": [
+        "ev_1c1739cdda90321d"
+      ],
+      "source_mode": "memory_confirmed_by_graph",
+      "verification_note": "The original KEP-6969 excerpt identifies the affected tenant, network, and approximate start."
+    },
+    {
+      "sequence": 233,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "memory_ids": [
+        "episode_69c0485386f1acbe"
+      ],
+      "evidence_ids": [
+        "ev_5f2b2e2ded8842f5",
+        "ev_1b68761b66cc3cc3"
+      ],
+      "source_mode": "memory_confirmed_by_graph",
+      "verification_note": "Both cited excerpts are original graph evidence from KEP-6969."
+    },
+    {
+      "sequence": 234,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "memory_ids": [
+        "episode_69c0485386f1acbe"
+      ],
+      "evidence_ids": [
+        "ev_ad26bffaa983949e"
+      ],
+      "source_mode": "memory_confirmed_by_graph",
+      "verification_note": "The cited record describes the timeout increase but gives no measured resolution fraction."
+    }
+  ],
+  "usage": {
+    "model_calls": 8,
+    "data_tool_calls": 7,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 116533,
+      "output_tokens": 2185,
+      "cached_input_tokens": 33664,
+      "reasoning_output_tokens": 414
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 48.678814333019545,
+    "provider_elapsed_seconds": 48.5022,
+    "tool_elapsed_seconds": 0.036004082998260856,
+    "total_elapsed_seconds": 48.789893082983326,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "agent_version": "task2-agent-v1",
+    "graph_hash": "graph_461ec66cd6c65256",
+    "memory_fingerprint": "memory_e4d06d4e2b5f1072",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "schema_version": "3.1",
+    "abstraction_run_id": "abstraction_b28471cf51a91b7f",
+    "execution_scope": "production",
+    "preview_notice": null,
+    "coverage": {
+      "base_status": "complete",
+      "reviewed_candidates": 816,
+      "selected_candidates": 816,
+      "processed_abstraction_packets": 23,
+      "planned_abstraction_packets": 23
+    },
+    "tool_profile": "full",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/government__paraphrase__memory_graph/cache",
+      "timeout": 300.0
+    },
+    "created_at": "2026-10-07T04:58:08.546030+00:00",
+    "dependencies": {
+      "langchain": "1.4.0",
+      "langchain-core": "1.6.1",
+      "langgraph": "1.2.11",
+      "pydantic": "2.13.5"
+    },
+    "client_injected": true,
+    "context_policy": "200000 canonical serialized application characters; exact excerpts, pinned evidence, whole-exchange eviction; fresh state per question",
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "government__paraphrase__memory_graph",
+      "question_id": "government",
+      "variant": "paraphrase",
+      "approach": "memory_graph",
+      "question": "For the April 2026 government-network narrative outage, what failed and how much of the problem did increasing the timeout resolve?"
+    }
+  }
+}

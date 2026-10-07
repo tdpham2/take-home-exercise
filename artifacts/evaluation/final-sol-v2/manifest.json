@@ -1,0 +1,422 @@
+{
+  "version": "evaluation-run-v1",
+  "source_identity": {
+    "graph_hash": "graph_461ec66cd6c65256",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "execution_scope": "source_only"
+  },
+  "memory_identity": {
+    "graph_hash": "graph_461ec66cd6c65256",
+    "memory_fingerprint": "memory_e4d06d4e2b5f1072",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "schema_version": "3.1",
+    "abstraction_run_id": "abstraction_b28471cf51a91b7f",
+    "execution_scope": "production",
+    "preview_notice": null,
+    "coverage": {
+      "base_status": "complete",
+      "reviewed_candidates": 816,
+      "selected_candidates": 816,
+      "processed_abstraction_packets": 23,
+      "planned_abstraction_packets": 23
+    }
+  },
+  "corpus_fingerprint": "sha_a36c560065c5dd52",
+  "benchmark_fingerprint": "sha_af3224453a7be016",
+  "code_fingerprint": "sha_43e244fd01e85be1",
+  "answer_configuration": {
+    "provider": "codex",
+    "model": "gpt-6-sol",
+    "reasoning_effort": "medium",
+    "max_model_calls": 12,
+    "max_tool_calls": 10,
+    "max_request_chars": 200000,
+    "no_gain_limit": 3,
+    "timeout": 300.0
+  },
+  "split": "final",
+  "seed": 20261006,
+  "schedule": [
+    {
+      "run_id": "pruning__original__graph_only",
+      "question_id": "pruning",
+      "variant": "original",
+      "approach": "graph_only",
+      "question": "What changes in narrative pruning behavior and remediation are documented, and how confidently can they be ordered?"
+    },
+    {
+      "run_id": "pruning__original__text_rag",
+      "question_id": "pruning",
+      "variant": "original",
+      "approach": "text_rag",
+      "question": "What changes in narrative pruning behavior and remediation are documented, and how confidently can they be ordered?"
+    },
+    {
+      "run_id": "pruning__original__memory_graph",
+      "question_id": "pruning",
+      "variant": "original",
+      "approach": "memory_graph",
+      "question": "What changes in narrative pruning behavior and remediation are documented, and how confidently can they be ordered?"
+    },
+    {
+      "run_id": "routines__original__graph_only",
+      "question_id": "routines",
+      "variant": "original",
+      "approach": "graph_only",
+      "question": "Which monitoring and QA activities are documented routines, and what evidence shows they were performed or effective?"
+    },
+    {
+      "run_id": "routines__original__text_rag",
+      "question_id": "routines",
+      "variant": "original",
+      "approach": "text_rag",
+      "question": "Which monitoring and QA activities are documented routines, and what evidence shows they were performed or effective?"
+    },
+    {
+      "run_id": "routines__original__memory_graph",
+      "question_id": "routines",
+      "variant": "original",
+      "approach": "memory_graph",
+      "question": "Which monitoring and QA activities are documented routines, and what evidence shows they were performed or effective?"
+    },
+    {
+      "run_id": "government__original__graph_only",
+      "question_id": "government",
+      "variant": "original",
+      "approach": "graph_only",
+      "question": "Why did the government tenant stop receiving narrative updates in April 2026, and what did the timeout change actually address?"
+    },
+    {
+      "run_id": "government__original__memory_graph",
+      "question_id": "government",
+      "variant": "original",
+      "approach": "memory_graph",
+      "question": "Why did the government tenant stop receiving narrative updates in April 2026, and what did the timeout change actually address?"
+    },
+    {
+      "run_id": "government__original__text_rag",
+      "question_id": "government",
+      "variant": "original",
+      "approach": "text_rag",
+      "question": "Why did the government tenant stop receiving narrative updates in April 2026, and what did the timeout change actually address?"
+    },
+    {
+      "run_id": "data_gaps__original__graph_only",
+      "question_id": "data_gaps",
+      "variant": "original",
+      "approach": "graph_only",
+      "question": "What explanations do the records support for DocDB/Elasticsearch data gaps, and what remains unresolved?"
+    },
+    {
+      "run_id": "data_gaps__original__memory_graph",
+      "question_id": "data_gaps",
+      "variant": "original",
+      "approach": "memory_graph",
+      "question": "What explanations do the records support for DocDB/Elasticsearch data gaps, and what remains unresolved?"
+    },
+    {
+      "run_id": "data_gaps__original__text_rag",
+      "question_id": "data_gaps",
+      "variant": "original",
+      "approach": "text_rag",
+      "question": "What explanations do the records support for DocDB/Elasticsearch data gaps, and what remains unresolved?"
+    },
+    {
+      "run_id": "patterns__original__memory_graph",
+      "question_id": "patterns",
+      "variant": "original",
+      "approach": "memory_graph",
+      "question": "Which processing failure modes recur across narrative generation and collection, and where do the mechanisms differ?"
+    },
+    {
+      "run_id": "patterns__original__graph_only",
+      "question_id": "patterns",
+      "variant": "original",
+      "approach": "graph_only",
+      "question": "Which processing failure modes recur across narrative generation and collection, and where do the mechanisms differ?"
+    },
+    {
+      "run_id": "patterns__original__text_rag",
+      "question_id": "patterns",
+      "variant": "original",
+      "approach": "text_rag",
+      "question": "Which processing failure modes recur across narrative generation and collection, and where do the mechanisms differ?"
+    },
+    {
+      "run_id": "collection_timeline__original__text_rag",
+      "question_id": "collection_timeline",
+      "variant": "original",
+      "approach": "text_rag",
+      "question": "How did the April collection incident progress from reported failures through remediation and backfill, and what recovery is verified?"
+    },
+    {
+      "run_id": "collection_timeline__original__memory_graph",
+      "question_id": "collection_timeline",
+      "variant": "original",
+      "approach": "memory_graph",
+      "question": "How did the April collection incident progress from reported failures through remediation and backfill, and what recovery is verified?"
+    },
+    {
+      "run_id": "collection_timeline__original__graph_only",
+      "question_id": "collection_timeline",
+      "variant": "original",
+      "approach": "graph_only",
+      "question": "How did the April collection incident progress from reported failures through remediation and backfill, and what recovery is verified?"
+    },
+    {
+      "run_id": "routines__repeat__memory_graph",
+      "question_id": "routines",
+      "variant": "repeat",
+      "approach": "memory_graph",
+      "question": "Which monitoring and QA activities are documented routines, and what evidence shows they were performed or effective?"
+    },
+    {
+      "run_id": "routines__repeat__text_rag",
+      "question_id": "routines",
+      "variant": "repeat",
+      "approach": "text_rag",
+      "question": "Which monitoring and QA activities are documented routines, and what evidence shows they were performed or effective?"
+    },
+    {
+      "run_id": "routines__repeat__graph_only",
+      "question_id": "routines",
+      "variant": "repeat",
+      "approach": "graph_only",
+      "question": "Which monitoring and QA activities are documented routines, and what evidence shows they were performed or effective?"
+    },
+    {
+      "run_id": "pruning__repeat__graph_only",
+      "question_id": "pruning",
+      "variant": "repeat",
+      "approach": "graph_only",
+      "question": "What changes in narrative pruning behavior and remediation are documented, and how confidently can they be ordered?"
+    },
+    {
+      "run_id": "pruning__repeat__memory_graph",
+      "question_id": "pruning",
+      "variant": "repeat",
+      "approach": "memory_graph",
+      "question": "What changes in narrative pruning behavior and remediation are documented, and how confidently can they be ordered?"
+    },
+    {
+      "run_id": "pruning__repeat__text_rag",
+      "question_id": "pruning",
+      "variant": "repeat",
+      "approach": "text_rag",
+      "question": "What changes in narrative pruning behavior and remediation are documented, and how confidently can they be ordered?"
+    },
+    {
+      "run_id": "collection_timeline__repeat__memory_graph",
+      "question_id": "collection_timeline",
+      "variant": "repeat",
+      "approach": "memory_graph",
+      "question": "How did the April collection incident progress from reported failures through remediation and backfill, and what recovery is verified?"
+    },
+    {
+      "run_id": "collection_timeline__repeat__graph_only",
+      "question_id": "collection_timeline",
+      "variant": "repeat",
+      "approach": "graph_only",
+      "question": "How did the April collection incident progress from reported failures through remediation and backfill, and what recovery is verified?"
+    },
+    {
+      "run_id": "collection_timeline__repeat__text_rag",
+      "question_id": "collection_timeline",
+      "variant": "repeat",
+      "approach": "text_rag",
+      "question": "How did the April collection incident progress from reported failures through remediation and backfill, and what recovery is verified?"
+    },
+    {
+      "run_id": "patterns__repeat__graph_only",
+      "question_id": "patterns",
+      "variant": "repeat",
+      "approach": "graph_only",
+      "question": "Which processing failure modes recur across narrative generation and collection, and where do the mechanisms differ?"
+    },
+    {
+      "run_id": "patterns__repeat__memory_graph",
+      "question_id": "patterns",
+      "variant": "repeat",
+      "approach": "memory_graph",
+      "question": "Which processing failure modes recur across narrative generation and collection, and where do the mechanisms differ?"
+    },
+    {
+      "run_id": "patterns__repeat__text_rag",
+      "question_id": "patterns",
+      "variant": "repeat",
+      "approach": "text_rag",
+      "question": "Which processing failure modes recur across narrative generation and collection, and where do the mechanisms differ?"
+    },
+    {
+      "run_id": "government__repeat__graph_only",
+      "question_id": "government",
+      "variant": "repeat",
+      "approach": "graph_only",
+      "question": "Why did the government tenant stop receiving narrative updates in April 2026, and what did the timeout change actually address?"
+    },
+    {
+      "run_id": "government__repeat__text_rag",
+      "question_id": "government",
+      "variant": "repeat",
+      "approach": "text_rag",
+      "question": "Why did the government tenant stop receiving narrative updates in April 2026, and what did the timeout change actually address?"
+    },
+    {
+      "run_id": "government__repeat__memory_graph",
+      "question_id": "government",
+      "variant": "repeat",
+      "approach": "memory_graph",
+      "question": "Why did the government tenant stop receiving narrative updates in April 2026, and what did the timeout change actually address?"
+    },
+    {
+      "run_id": "data_gaps__repeat__text_rag",
+      "question_id": "data_gaps",
+      "variant": "repeat",
+      "approach": "text_rag",
+      "question": "What explanations do the records support for DocDB/Elasticsearch data gaps, and what remains unresolved?"
+    },
+    {
+      "run_id": "data_gaps__repeat__graph_only",
+      "question_id": "data_gaps",
+      "variant": "repeat",
+      "approach": "graph_only",
+      "question": "What explanations do the records support for DocDB/Elasticsearch data gaps, and what remains unresolved?"
+    },
+    {
+      "run_id": "data_gaps__repeat__memory_graph",
+      "question_id": "data_gaps",
+      "variant": "repeat",
+      "approach": "memory_graph",
+      "question": "What explanations do the records support for DocDB/Elasticsearch data gaps, and what remains unresolved?"
+    },
+    {
+      "run_id": "collection_timeline__paraphrase__memory_graph",
+      "question_id": "collection_timeline",
+      "variant": "paraphrase",
+      "approach": "memory_graph",
+      "question": "Trace the reported April collection failures, subsequent technical changes and backfill actions; what evidence confirms recovery?"
+    },
+    {
+      "run_id": "collection_timeline__paraphrase__text_rag",
+      "question_id": "collection_timeline",
+      "variant": "paraphrase",
+      "approach": "text_rag",
+      "question": "Trace the reported April collection failures, subsequent technical changes and backfill actions; what evidence confirms recovery?"
+    },
+    {
+      "run_id": "collection_timeline__paraphrase__graph_only",
+      "question_id": "collection_timeline",
+      "variant": "paraphrase",
+      "approach": "graph_only",
+      "question": "Trace the reported April collection failures, subsequent technical changes and backfill actions; what evidence confirms recovery?"
+    },
+    {
+      "run_id": "routines__paraphrase__memory_graph",
+      "question_id": "routines",
+      "variant": "paraphrase",
+      "approach": "memory_graph",
+      "question": "What does the history say teams should routinely do for monitoring and QA, and what establishes actual execution or effectiveness?"
+    },
+    {
+      "run_id": "routines__paraphrase__graph_only",
+      "question_id": "routines",
+      "variant": "paraphrase",
+      "approach": "graph_only",
+      "question": "What does the history say teams should routinely do for monitoring and QA, and what establishes actual execution or effectiveness?"
+    },
+    {
+      "run_id": "routines__paraphrase__text_rag",
+      "question_id": "routines",
+      "variant": "paraphrase",
+      "approach": "text_rag",
+      "question": "What does the history say teams should routinely do for monitoring and QA, and what establishes actual execution or effectiveness?"
+    },
+    {
+      "run_id": "pruning__paraphrase__graph_only",
+      "question_id": "pruning",
+      "variant": "paraphrase",
+      "approach": "graph_only",
+      "question": "Which pruning behaviors and follow-up actions are reported, and what evidence supports their temporal order?"
+    },
+    {
+      "run_id": "pruning__paraphrase__memory_graph",
+      "question_id": "pruning",
+      "variant": "paraphrase",
+      "approach": "memory_graph",
+      "question": "Which pruning behaviors and follow-up actions are reported, and what evidence supports their temporal order?"
+    },
+    {
+      "run_id": "pruning__paraphrase__text_rag",
+      "question_id": "pruning",
+      "variant": "paraphrase",
+      "approach": "text_rag",
+      "question": "Which pruning behaviors and follow-up actions are reported, and what evidence supports their temporal order?"
+    },
+    {
+      "run_id": "data_gaps__paraphrase__text_rag",
+      "question_id": "data_gaps",
+      "variant": "paraphrase",
+      "approach": "text_rag",
+      "question": "What can we infer from the DocDB and Elasticsearch gap reports about their explanations, and which explanations remain uncertain?"
+    },
+    {
+      "run_id": "data_gaps__paraphrase__graph_only",
+      "question_id": "data_gaps",
+      "variant": "paraphrase",
+      "approach": "graph_only",
+      "question": "What can we infer from the DocDB and Elasticsearch gap reports about their explanations, and which explanations remain uncertain?"
+    },
+    {
+      "run_id": "data_gaps__paraphrase__memory_graph",
+      "question_id": "data_gaps",
+      "variant": "paraphrase",
+      "approach": "memory_graph",
+      "question": "What can we infer from the DocDB and Elasticsearch gap reports about their explanations, and which explanations remain uncertain?"
+    },
+    {
+      "run_id": "government__paraphrase__graph_only",
+      "question_id": "government",
+      "variant": "paraphrase",
+      "approach": "graph_only",
+      "question": "For the April 2026 government-network narrative outage, what failed and how much of the problem did increasing the timeout resolve?"
+    },
+    {
+      "run_id": "government__paraphrase__memory_graph",
+      "question_id": "government",
+      "variant": "paraphrase",
+      "approach": "memory_graph",
+      "question": "For the April 2026 government-network narrative outage, what failed and how much of the problem did increasing the timeout resolve?"
+    },
+    {
+      "run_id": "government__paraphrase__text_rag",
+      "question_id": "government",
+      "variant": "paraphrase",
+      "approach": "text_rag",
+      "question": "For the April 2026 government-network narrative outage, what failed and how much of the problem did increasing the timeout resolve?"
+    },
+    {
+      "run_id": "patterns__paraphrase__graph_only",
+      "question_id": "patterns",
+      "variant": "paraphrase",
+      "approach": "graph_only",
+      "question": "Across narrative and collection processing, what reported failure mechanisms recur, and which differences prevent treating them as one cause?"
+    },
+    {
+      "run_id": "patterns__paraphrase__text_rag",
+      "question_id": "patterns",
+      "variant": "paraphrase",
+      "approach": "text_rag",
+      "question": "Across narrative and collection processing, what reported failure mechanisms recur, and which differences prevent treating them as one cause?"
+    },
+    {
+      "run_id": "patterns__paraphrase__memory_graph",
+      "question_id": "patterns",
+      "variant": "paraphrase",
+      "approach": "memory_graph",
+      "question": "Across narrative and collection processing, what reported failure mechanisms recur, and which differences prevent treating them as one cause?"
+    }
+  ],
+  "baseline_top_k": 20,
+  "synthetic_provider": false,
+  "fingerprint": "sha_e28d543ed0614083"
+}

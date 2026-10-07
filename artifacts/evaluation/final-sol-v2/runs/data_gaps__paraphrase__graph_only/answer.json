@@ -1,0 +1,149 @@
+{
+  "question": "What can we infer from the DocDB and Elasticsearch gap reports about their explanations, and which explanations remain uncertain?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [],
+  "unanswered": [
+    "The original DocDB and Elasticsearch gap reports were not supplied, so their reported explanations and remaining uncertainties cannot be assessed from source evidence."
+  ],
+  "limitations": [
+    "No original passages or citation offsets were available; no substantive inference is supported.",
+    "Citation validation checks source access and exact provenance, not semantic entailment or real-world truth."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "execution_scope": "source_only"
+    },
+    {
+      "sequence": 2,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 6428,
+      "message_count": 2,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [],
+      "included_tool_call_ids": []
+    },
+    {
+      "sequence": 3,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "pending",
+      "serialized_chars": 6428,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model",
+      "call_number": 1,
+      "status": "completed",
+      "serialized_chars": 6428,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_b41e53ced939ef5d",
+      "action": {
+        "tool_name": "DraftAnswer",
+        "arguments_json": "{\"claims\":[],\"unanswered\":[\"The original DocDB and Elasticsearch gap reports were not supplied, so their reported explanations and remaining uncertainties cannot be assessed from source evidence.\"],\"limitations\":[\"No original passages or citation offsets were available; no substantive inference is supported.\"]}",
+        "purpose": "Record that the requested comparison cannot be supported without the original reports.",
+        "discarded_items": [],
+        "pin_evidence_ids": []
+      },
+      "latency_seconds": 5.782954624999547,
+      "provider": {
+        "request_id": "request_b41e53ced939ef5d",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/data_gaps__paraphrase__graph_only/cache/codex/request_b41e53ced939ef5d.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 4544,
+          "output_tokens": 149,
+          "reasoning_output_tokens": 41,
+          "total_tokens": 4693
+        },
+        "thread_id": "01a114b6-ee92-7073-bdc4-4dafd07734d0",
+        "turn_id": "01a114b6-eebb-7a22-a231-2f7607c47659",
+        "status": "completed",
+        "latency_seconds": 5.7625
+      }
+    }
+  ],
+  "usage": {
+    "model_calls": 1,
+    "data_tool_calls": 0,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 4544,
+      "output_tokens": 149,
+      "cached_input_tokens": 2560,
+      "reasoning_output_tokens": 41
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 5.782954624999547,
+    "provider_elapsed_seconds": 5.7625,
+    "tool_elapsed_seconds": 0,
+    "total_elapsed_seconds": 5.812946582998848,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "agent_version": "task2-agent-v1",
+    "graph_hash": "graph_461ec66cd6c65256",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "execution_scope": "source_only",
+    "tool_profile": "graph_only",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/data_gaps__paraphrase__graph_only/cache",
+      "timeout": 300.0
+    },
+    "created_at": "2026-10-07T04:55:00.770253+00:00",
+    "dependencies": {
+      "langchain": "1.4.0",
+      "langchain-core": "1.6.1",
+      "langgraph": "1.2.11",
+      "pydantic": "2.13.5"
+    },
+    "client_injected": true,
+    "context_policy": "200000 canonical serialized application characters; exact excerpts, pinned evidence, whole-exchange eviction; fresh state per question",
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "data_gaps__paraphrase__graph_only",
+      "question_id": "data_gaps",
+      "variant": "paraphrase",
+      "approach": "graph_only",
+      "question": "What can we infer from the DocDB and Elasticsearch gap reports about their explanations, and which explanations remain uncertain?"
+    }
+  }
+}

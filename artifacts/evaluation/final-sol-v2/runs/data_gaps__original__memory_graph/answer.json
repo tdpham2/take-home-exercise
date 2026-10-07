@@ -1,0 +1,3922 @@
+{
+  "question": "What explanations do the records support for DocDB/Elasticsearch data gaps, and what remains unresolved?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "A record reports major gaps and inconsistencies between DocDB and Elasticsearch, without identifying their cause.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_6c9707c22f4b3e34",
+          "quote": "Major data gaps and inconsistencies between DocDB and Elasticsearch",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_15bb262c5efbbe09"
+      ],
+      "confidence": "high",
+      "confidence_reason": "Direct extracted wording reports the condition, not a mechanism.",
+      "verification_note": "The source excerpt names the stores and the reported gap.",
+      "id": "C1",
+      "record_ids": [
+        "Community_141"
+      ],
+      "source_mode": "memory_confirmed_by_graph"
+    },
+    {
+      "statement": "A separate record attributes DocDB/Elasticsearch drift to partial de-duplication updates, but does not describe the failure mechanism.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_98651123bedd9e11",
+          "quote": "DocDB/ES drift from partial de-duplication updates",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_0099b4eefc7521d8"
+      ],
+      "confidence": "medium",
+      "confidence_reason": "The attribution is explicit but appears only in a brief extracted description.",
+      "verification_note": "The excerpt names partial de-duplication updates as the reported explanation.",
+      "id": "C2",
+      "record_ids": [
+        "KEP-6664"
+      ],
+      "source_mode": "memory_confirmed_by_graph"
+    },
+    {
+      "statement": "Another record reports uneven or incomplete DocDB data; completeness within DocDB and agreement between DocDB and Elasticsearch are distinct questions.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_d12f9a9f4427477b",
+          "quote": "Data stored in DocDB is uneven/incomplete",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_6c9707c22f4b3e34",
+          "quote": "Major data gaps and inconsistencies between DocDB and Elasticsearch",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_2ea1ec7fc40462d2",
+        "episode_15bb262c5efbbe09"
+      ],
+      "confidence": "medium",
+      "confidence_reason": "The excerpts describe different checks, without establishing whether the same data was affected.",
+      "verification_note": "One excerpt concerns DocDB completeness; the other concerns gaps between stores.",
+      "id": "C3",
+      "record_ids": [
+        "Community_141",
+        "KEP-6611"
+      ],
+      "source_mode": "memory"
+    },
+    {
+      "statement": "Incorrect cursor handling is a possible explanation for inconsistent DocDB storage, but the causal connection appears in an inferred graph rationale, not a directly extracted source passage.",
+      "kind": "hypothesis",
+      "citations": [
+        {
+          "evidence_id": "ev_1c518266822509e0",
+          "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on fixing inconsistent DocDB storage due to incorrect cursor handling (decision_02d55676). The cursor handling issue directly impacts data ingestion; the ingestion failure cannot be properly diagnosed without first resolving the cursor inconsistency. Both decisions share DocDB as a target resource and the same participants.",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_d12f9a9f4427477b",
+          "quote": "Data stored in DocDB is uneven/incomplete",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_2ea1ec7fc40462d2"
+      ],
+      "confidence": "low",
+      "confidence_reason": "Only the inferred rationale supplies the cursor-related causal claim.",
+      "verification_note": "The extracted passage confirms incomplete DocDB data; the inferred passage proposes cursor handling.",
+      "id": "C4",
+      "record_ids": [
+        "KEP-6611"
+      ],
+      "source_mode": "memory"
+    },
+    {
+      "statement": "For Weibo data, valid Tikhub HTTP 200 responses were reported alongside missing ingestion into DocDB/Elasticsearch. This places the observed gap after retrieval but does not identify the failing step.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_afaa76709f32a0cf",
+          "quote": "Tikhub for Weibo data are returning HTTP 200 responses with valid video post data",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_08a24f67b8645adb",
+          "quote": "data is not being ingested into docDb/ES",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_855ed0b570fdb824",
+          "quote": "Tikhub → processing → DB/ES",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_19ddb6901beff02b"
+      ],
+      "confidence": "medium",
+      "confidence_reason": "The observations bracket the gap but do not isolate a technical cause.",
+      "verification_note": "The excerpts report successful retrieval, the processing-to-store path, and missing ingestion.",
+      "id": "C5",
+      "record_ids": [
+        "KEP-6610",
+        "gdrive:1mXMcKxPJDNpoazNcmy5zt3j_2Sg9S258XJt_xwrq5xg"
+      ],
+      "source_mode": "memory"
+    }
+  ],
+  "unanswered": [
+    "Which processing or persistence step failed in the Weibo ingestion path?",
+    "What cursor-handling error occurred, and did it contribute to the reported gaps?",
+    "Were de-duplication drift, incomplete DocDB storage, and Weibo non-ingestion one incident or separate issues?",
+    "Were fixes deployed and validated through source-to-store completeness and DocDB-to-Elasticsearch reconciliation checks?"
+  ],
+  "limitations": [
+    "Inferred graph dependencies and supersession claims are not direct source reports of causality or chronology.",
+    "The available extracted passages do not quantify the gaps, describe repairs, or establish post-fix recovery. An administrative Done status is not substantive validation.",
+    "Citation validation checks source access and exact provenance, not semantic entailment or real-world truth."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "memory_fingerprint": "memory_e4d06d4e2b5f1072",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "schema_version": "3.1",
+      "abstraction_run_id": "abstraction_b28471cf51a91b7f",
+      "execution_scope": "production",
+      "preview_notice": null,
+      "coverage": {
+        "base_status": "complete",
+        "reviewed_candidates": 816,
+        "selected_candidates": 816,
+        "processed_abstraction_packets": 23,
+        "planned_abstraction_packets": 23
+      }
+    },
+    {
+      "sequence": 2,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 11217,
+      "message_count": 2,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [],
+      "included_tool_call_ids": []
+    },
+    {
+      "sequence": 3,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "pending",
+      "serialized_chars": 11217,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model",
+      "call_number": 1,
+      "status": "completed",
+      "serialized_chars": 11217,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_80e7d5da0e7b6fee",
+      "action": {
+        "tool_name": "recall_memory",
+        "arguments_json": "{\"cue\":\"DocDB Elasticsearch data gaps missing data causes explanations unresolved\",\"limit\":8}",
+        "purpose": "Find records and memory entries about DocDB/Elasticsearch data gaps.",
+        "discarded_items": [],
+        "pin_evidence_ids": []
+      },
+      "latency_seconds": 4.104747416015016,
+      "provider": {
+        "request_id": "request_80e7d5da0e7b6fee",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/data_gaps__original__memory_graph/cache/codex/request_80e7d5da0e7b6fee.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 5642,
+          "output_tokens": 100,
+          "reasoning_output_tokens": 31,
+          "total_tokens": 5742
+        },
+        "thread_id": "01a1149c-4412-78c3-83dd-3ddbc1f1952e",
+        "turn_id": "01a1149c-4438-7c62-ae6e-ccac3784b639",
+        "status": "completed",
+        "latency_seconds": 4.0932
+      }
+    },
+    {
+      "sequence": 5,
+      "kind": "tool_started",
+      "call_id": "action_1_request_80e7d5da0e7b6fee",
+      "name": "recall_memory",
+      "arguments": {
+        "cue": "DocDB Elasticsearch data gaps missing data causes explanations unresolved",
+        "limit": 8
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "tool",
+      "name": "recall_memory",
+      "arguments": {
+        "cue": "DocDB Elasticsearch data gaps missing data causes explanations unresolved",
+        "limit": 8
+      },
+      "call_id": "action_1_request_80e7d5da0e7b6fee",
+      "result": {
+        "cue": "DocDB Elasticsearch data gaps missing data causes explanations unresolved",
+        "expanded_cue": "DocDB Elasticsearch data gaps missing data causes explanations unresolved ES docdb documentdb elasticsearch",
+        "results": [
+          {
+            "id": "episode_15bb262c5efbbe09",
+            "type": "episode",
+            "kind": "fixed_evidence_bundle",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_4fba4d02599cd039",
+              "ev_6c9707c22f4b3e34",
+              "ev_7ff8d46b306d3990",
+              "ev_c632629d4ba3f581",
+              "ev_cf7e8db808eff8fb",
+              "ev_ddb4054fc3bd14d2",
+              "ev_f8ee94f9d64ea930",
+              "ev_ff476944d92d1cd3"
+            ],
+            "record_ids": [
+              "Community_141",
+              "KEP-6230"
+            ],
+            "entity_ids": [
+              "resource_3a20d645"
+            ],
+            "item_id": "episode_15bb262c5efbbe09",
+            "title": "Resolve major data gaps and inconsistencies between DocDB and Elasticsearch",
+            "preview": "Major data gaps and inconsistencies between DocDB and Elasticsearch\nstatus: Done",
+            "preview_truncated": false,
+            "title_origin": "unverified graph decision labels",
+            "score": 0.03751764,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_0099b4eefc7521d8",
+                "pattern_04c3d74eaa9b6cbf",
+                "episode_15bb262c5efbbe09"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern",
+                "episode supplies evidence for this pattern"
+              ],
+              "score": 0.009873536299765806
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-episode pattern → episode supplies evidence for this pattern"
+          },
+          {
+            "id": "episode_0099b4eefc7521d8",
+            "type": "episode",
+            "kind": "fixed_evidence_bundle",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_4073b31643ace022",
+              "ev_7c5a3b55cf2ad1d4",
+              "ev_98651123bedd9e11",
+              "ev_c632629d4ba3f581",
+              "ev_cf7e8db808eff8fb"
+            ],
+            "record_ids": [
+              "KEP-6230",
+              "KEP-6664"
+            ],
+            "entity_ids": [
+              "resource_3a20d645"
+            ],
+            "item_id": "episode_0099b4eefc7521d8",
+            "title": "Fix DocDB and Elasticsearch drift from partial de-duplication updates",
+            "preview": "DocDB/ES drift from partial de-duplication updates\nstatus: Done",
+            "preview_truncated": false,
+            "title_origin": "unverified graph decision labels",
+            "score": 0.03737837,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_15bb262c5efbbe09",
+                "pattern_04c3d74eaa9b6cbf",
+                "episode_0099b4eefc7521d8"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern",
+                "episode supplies evidence for this pattern"
+              ],
+              "score": 0.009951877313590693
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-episode pattern → episode supplies evidence for this pattern"
+          },
+          {
+            "id": "pattern_04c3d74eaa9b6cbf",
+            "type": "pattern",
+            "kind": "reported_recurrence",
+            "retention": "retained",
+            "confidence": "low",
+            "evidence_ids": [
+              "ev_6c9707c22f4b3e34",
+              "ev_98651123bedd9e11",
+              "ev_d12f9a9f4427477b"
+            ],
+            "record_ids": [
+              "Community_141",
+              "KEP-6611",
+              "KEP-6664"
+            ],
+            "entity_ids": [
+              "resource_3a20d645"
+            ],
+            "independent_support_count": 3,
+            "supporting_episode_ids": [
+              "episode_0099b4eefc7521d8",
+              "episode_15bb262c5efbbe09",
+              "episode_2ea1ec7fc40462d2"
+            ],
+            "supporting_fact_ids": [
+              "fact_292c77c44050f9e4",
+              "fact_3c1d77d75cf616dc"
+            ],
+            "item_id": "pattern_04c3d74eaa9b6cbf",
+            "title": "Storage failures span both incomplete persistence and divergence between stores; these are distinct consistency checks.",
+            "preview": "Storage failures span both incomplete persistence and divergence between stores; these are distinct consistency checks.\nThe de-duplication record reports DocDB/ES drift, whereas another reports uneven or incomplete DocDB data. Store agreement alone would not establish completeness, and completeness in one store would not establish agreement.\nSeparate source-to-store completeness checks from DocDB-to-Elasticsearch reconciliation, including checks after de-duplication updates.",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.03660542,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_15bb262c5efbbe09",
+                "pattern_04c3d74eaa9b6cbf"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern"
+              ],
+              "score": 0.01658646218931782
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-episode pattern"
+          },
+          {
+            "id": "fact_3c1d77d75cf616dc",
+            "type": "fact",
+            "kind": "historical_statement",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_98651123bedd9e11"
+            ],
+            "record_ids": [
+              "KEP-6664"
+            ],
+            "entity_ids": [
+              "resource_3a20d645"
+            ],
+            "item_id": "fact_3c1d77d75cf616dc",
+            "title": "DocDB/ES drift from partial de-duplication updates",
+            "preview": "DocDB/ES drift from partial de-duplication updates",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.0355288,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_15bb262c5efbbe09",
+                "pattern_04c3d74eaa9b6cbf",
+                "fact_3c1d77d75cf616dc"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern",
+                "fact supplies evidence for this pattern"
+              ],
+              "score": 0.009951877313590693
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-episode pattern → fact supplies evidence for this pattern"
+          },
+          {
+            "id": "episode_2ea1ec7fc40462d2",
+            "type": "episode",
+            "kind": "fixed_evidence_bundle",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_1c518266822509e0",
+              "ev_4463da650d3701f7",
+              "ev_7ff8d46b306d3990",
+              "ev_d12f9a9f4427477b",
+              "ev_ff476944d92d1cd3"
+            ],
+            "record_ids": [
+              "KEP-6230",
+              "KEP-6611"
+            ],
+            "entity_ids": [
+              "resource_3a20d645"
+            ],
+            "item_id": "episode_2ea1ec7fc40462d2",
+            "title": "Fix inconsistent DocDB storage due to incorrect cursor handling",
+            "preview": "Data stored in DocDB is uneven/incomplete\nstatus: Done",
+            "preview_truncated": false,
+            "title_origin": "unverified graph decision labels",
+            "score": 0.03347409,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_15bb262c5efbbe09",
+                "pattern_04c3d74eaa9b6cbf",
+                "episode_2ea1ec7fc40462d2"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern",
+                "episode supplies evidence for this pattern"
+              ],
+              "score": 0.009951877313590693
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-episode pattern → episode supplies evidence for this pattern"
+          },
+          {
+            "id": "fact_292c77c44050f9e4",
+            "type": "fact",
+            "kind": "historical_statement",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_d12f9a9f4427477b"
+            ],
+            "record_ids": [
+              "KEP-6611"
+            ],
+            "entity_ids": [
+              "resource_3a20d645"
+            ],
+            "item_id": "fact_292c77c44050f9e4",
+            "title": "Data stored in DocDB is uneven/incomplete",
+            "preview": "Data stored in DocDB is uneven/incomplete",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.02966431,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_15bb262c5efbbe09",
+                "pattern_04c3d74eaa9b6cbf",
+                "fact_292c77c44050f9e4"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern",
+                "fact supplies evidence for this pattern"
+              ],
+              "score": 0.009951877313590693
+            },
+            "why": "lexical; node_association; memory_association; supports this cross-episode pattern → fact supplies evidence for this pattern"
+          },
+          {
+            "id": "episode_19ddb6901beff02b",
+            "type": "episode",
+            "kind": "fixed_evidence_bundle",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_08a24f67b8645adb",
+              "ev_1c518266822509e0",
+              "ev_1fdb531d22617990",
+              "ev_4073b31643ace022",
+              "ev_4fba4d02599cd039",
+              "ev_6ab384de30e6b7d5",
+              "ev_855ed0b570fdb824",
+              "ev_afaa76709f32a0cf",
+              "ev_f8ee94f9d64ea930"
+            ],
+            "record_ids": [
+              "KEP-6230",
+              "KEP-6610",
+              "gdrive:1mXMcKxPJDNpoazNcmy5zt3j_2Sg9S258XJt_xwrq5xg"
+            ],
+            "entity_ids": [
+              "resource_3a20d645",
+              "resource_4c5ce84a"
+            ],
+            "item_id": "episode_19ddb6901beff02b",
+            "title": "Resolve data ingestion failure despite successful Tikhub API response",
+            "preview": "Tikhub for Weibo data are returning HTTP 200 responses with valid video post data\nTikhub → processing → DB/ES\ndata is not being ingested into docDb/ES\nstatus: Done",
+            "preview_truncated": false,
+            "title_origin": "unverified graph decision labels",
+            "score": 0.02787458,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_15bb262c5efbbe09",
+                "episode_19ddb6901beff02b"
+              ],
+              "reasons": [
+                "shares scoped entity DocDB (resource_3a20d645)"
+              ],
+              "score": 0.0019188729920031323
+            },
+            "why": "lexical; node_association; memory_association; shares scoped entity DocDB (resource_3a20d645)"
+          },
+          {
+            "id": "pattern_1a142deb5722d186",
+            "type": "pattern",
+            "kind": "reported_recurrence",
+            "retention": "retained",
+            "confidence": "low",
+            "evidence_ids": [
+              "ev_08a24f67b8645adb",
+              "ev_2f1a50513438fa45",
+              "ev_afaa76709f32a0cf"
+            ],
+            "record_ids": [
+              "Community_465",
+              "KEP-6610",
+              "gdrive:1mXMcKxPJDNpoazNcmy5zt3j_2Sg9S258XJt_xwrq5xg"
+            ],
+            "entity_ids": [
+              "resource_3a20d645"
+            ],
+            "independent_support_count": 2,
+            "supporting_episode_ids": [
+              "episode_19ddb6901beff02b",
+              "episode_991ef89639e19daa"
+            ],
+            "supporting_fact_ids": [],
+            "item_id": "pattern_1a142deb5722d186",
+            "title": "Successful upstream retrieval does not establish successful persistence, and persisted data can still be irrelevant.",
+            "preview": "Successful upstream retrieval does not establish successful persistence, and persisted data can still be irrelevant.\nThe supplied Weibo context juxtaposes HTTP 200 responses containing valid video data with missing ingestion. Separately, the irrelevant-post record reports unnecessary writes. Together these distinguish retrieval success, persistence success, and content suitability.\nTrack retrieval validity, persistence completion, and relevance separately rather than treating HTTP success or write counts as overall ingestion health.",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.02527492,
+            "routes": [
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_19ddb6901beff02b",
+                "pattern_1a142deb5722d186"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern"
+              ],
+              "score": 0.015573426573426571
+            },
+            "why": "node_association; memory_association; supports this cross-episode pattern"
+          }
+        ],
+        "trace": {
+          "mode": "offline BM25 + cue-anchored node similarity; not direct semantic query encoding",
+          "anchor_nodes": [
+            {
+              "node_id": "decision_4593fbfe",
+              "label": "Resolve major data gaps and inconsistencies between DocDB and Elasticsearch",
+              "lexical_score": 16.31687638095906
+            },
+            {
+              "node_id": "outcome_dafe64bf",
+              "label": "Major data gaps and inconsistencies resolved",
+              "lexical_score": 10.749807497864909
+            },
+            {
+              "node_id": "risk_0917bdb2",
+              "label": "Irrelevant Reddit posts stored in DocumentDB and Elasticsearch",
+              "lexical_score": 9.679489584118372
+            }
+          ],
+          "seed_item_ids": [
+            "episode_15bb262c5efbbe09",
+            "episode_0099b4eefc7521d8",
+            "episode_19ddb6901beff02b",
+            "fact_3c1d77d75cf616dc",
+            "episode_2ea1ec7fc40462d2",
+            "episode_0cc91f580dd26295",
+            "episode_db7eb5890f7303e4",
+            "episode_ddea597564daeb05"
+          ],
+          "discarded": [
+            {
+              "item_id": "episode_0cc91f580dd26295",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_db7eb5890f7303e4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_991ef89639e19daa",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ddea597564daeb05",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_7562560ad5d6d3c4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_5a43c0c7499c72fe",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_c8cdadfb6200876b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_2a3fce94090a0534",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_a6ee00f82e45d423",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_8a74a98bf9455cf4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_37e3b7dbf62fbdd1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_4afa41c4adeeb74f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_f1ba0cd18b6b8810",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_58efb81ec70719f5",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_e20ef85133bfabd7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_85576d197733bc8f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3c29338ee31eae5c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_a33c212c5e639eee",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_97372f58745a345d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_f0b2237ab5b215ce",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_5f18d150d3cdedd6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_57249451ae9d8e09",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_74cc68cb3cee95e4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f8952cbb71f703ea",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_54d697d17a3f2e71",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_03386e48d485a17d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_42f26067f0254b58",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f4aa2c01b5a4d802",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_dcbbaf86b598f27d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_8b16a506cee8ba7c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_8c70c637d30fc381",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_52708d9c26e2f37b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_a419048f84073359",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0c935c1f899e037e",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_42a76e669eeef5fa",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_681773976443a718",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_982f103782a3ec74",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_98dfcfa6e2409383",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_49c88c49c2d05698",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0bcf67d7735a67e7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3e1f920b3dba52de",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_fc00e2d6d08f50b8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_a1188121e0c8ef3d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ed29d4981cc46bc0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_bc86e705233128b6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_d05e8dfe7f42aa26",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_876d624a2352030c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_7a17c9a491e97972",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0b2b511d2913a3ba",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_0f06a270eeb7cb26",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_acb139a189dcc5a2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_5343c5adb77cab0c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_13ac0a6e56f67675",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_65f5050eefa5c83c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_3942ed50713e00f9",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_ce16e9b79c13f2cc",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_268175d230e5fff6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_97f176ebd803488b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_864f92d5f225ebb0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_d5d17161b858e728",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_fc22eed65f0ccd71",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_42e311296376ce1b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_f12bb0a480ff298a",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_9897aacaea938f81",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_adf17d103dcae5bd",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_c1bf6131e7c9655d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_ce22b55f1b3fdee4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_4723ef2c2d4eeff4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_6c6e14e8d25a73ba",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_7522aee4e8e1474b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_cacd3a0abc16008f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_25bd0e018cee5c34",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_76c4c6db2645bc1d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_91ce1cd670716c39",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_6651b7d201fdccff",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_9bc4ca53480c28c4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_a05202b3caf27fd7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1cf0cd9ebbcad34d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_c5307395388783bd",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_f3f8860eda97a1e7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_7509d9eb03098ae1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_697ef0c2f3bc8d19",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_74757fbe8d5c3046",
+              "reason": "outside result budget"
+            }
+          ],
+          "max_hops": 2,
+          "score_note": "RRF k=60; support multipliers 1/.85/.65; association decay .6 per hop. Heuristics, not probabilities."
+        },
+        "limitation": "Aliases expand vocabulary, not identity. Scores and memory judgments are fallible."
+      },
+      "latency_seconds": 0.011288042005617172,
+      "error": false,
+      "new_ids": [
+        "episode_0099b4eefc7521d8",
+        "episode_15bb262c5efbbe09",
+        "episode_19ddb6901beff02b",
+        "episode_2ea1ec7fc40462d2",
+        "fact_292c77c44050f9e4",
+        "fact_3c1d77d75cf616dc",
+        "pattern_04c3d74eaa9b6cbf",
+        "pattern_1a142deb5722d186"
+      ]
+    },
+    {
+      "sequence": 7,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0cc91f580dd26295",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 8,
+      "kind": "retrieval_discard",
+      "item_id": "episode_db7eb5890f7303e4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 9,
+      "kind": "retrieval_discard",
+      "item_id": "episode_991ef89639e19daa",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 10,
+      "kind": "retrieval_discard",
+      "item_id": "episode_ddea597564daeb05",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 11,
+      "kind": "retrieval_discard",
+      "item_id": "fact_7562560ad5d6d3c4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 12,
+      "kind": "retrieval_discard",
+      "item_id": "fact_5a43c0c7499c72fe",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 13,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_c8cdadfb6200876b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 14,
+      "kind": "retrieval_discard",
+      "item_id": "episode_2a3fce94090a0534",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 15,
+      "kind": "retrieval_discard",
+      "item_id": "episode_a6ee00f82e45d423",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 16,
+      "kind": "retrieval_discard",
+      "item_id": "fact_8a74a98bf9455cf4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 17,
+      "kind": "retrieval_discard",
+      "item_id": "episode_37e3b7dbf62fbdd1",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 18,
+      "kind": "retrieval_discard",
+      "item_id": "fact_4afa41c4adeeb74f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 19,
+      "kind": "retrieval_discard",
+      "item_id": "fact_f1ba0cd18b6b8810",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 20,
+      "kind": "retrieval_discard",
+      "item_id": "fact_58efb81ec70719f5",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 21,
+      "kind": "retrieval_discard",
+      "item_id": "episode_e20ef85133bfabd7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 22,
+      "kind": "retrieval_discard",
+      "item_id": "episode_85576d197733bc8f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 23,
+      "kind": "retrieval_discard",
+      "item_id": "episode_3c29338ee31eae5c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 24,
+      "kind": "retrieval_discard",
+      "item_id": "episode_a33c212c5e639eee",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 25,
+      "kind": "retrieval_discard",
+      "item_id": "fact_97372f58745a345d",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 26,
+      "kind": "retrieval_discard",
+      "item_id": "fact_f0b2237ab5b215ce",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 27,
+      "kind": "retrieval_discard",
+      "item_id": "episode_5f18d150d3cdedd6",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 28,
+      "kind": "retrieval_discard",
+      "item_id": "episode_57249451ae9d8e09",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 29,
+      "kind": "retrieval_discard",
+      "item_id": "episode_74cc68cb3cee95e4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 30,
+      "kind": "retrieval_discard",
+      "item_id": "episode_f8952cbb71f703ea",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 31,
+      "kind": "retrieval_discard",
+      "item_id": "episode_54d697d17a3f2e71",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 32,
+      "kind": "retrieval_discard",
+      "item_id": "fact_03386e48d485a17d",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 33,
+      "kind": "retrieval_discard",
+      "item_id": "episode_42f26067f0254b58",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 34,
+      "kind": "retrieval_discard",
+      "item_id": "episode_f4aa2c01b5a4d802",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 35,
+      "kind": "retrieval_discard",
+      "item_id": "episode_dcbbaf86b598f27d",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 36,
+      "kind": "retrieval_discard",
+      "item_id": "episode_8b16a506cee8ba7c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 37,
+      "kind": "retrieval_discard",
+      "item_id": "episode_8c70c637d30fc381",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 38,
+      "kind": "retrieval_discard",
+      "item_id": "episode_52708d9c26e2f37b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 39,
+      "kind": "retrieval_discard",
+      "item_id": "episode_a419048f84073359",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 40,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0c935c1f899e037e",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 41,
+      "kind": "retrieval_discard",
+      "item_id": "episode_42a76e669eeef5fa",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 42,
+      "kind": "retrieval_discard",
+      "item_id": "episode_681773976443a718",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 43,
+      "kind": "retrieval_discard",
+      "item_id": "fact_982f103782a3ec74",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 44,
+      "kind": "retrieval_discard",
+      "item_id": "episode_98dfcfa6e2409383",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 45,
+      "kind": "retrieval_discard",
+      "item_id": "fact_49c88c49c2d05698",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 46,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0bcf67d7735a67e7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 47,
+      "kind": "retrieval_discard",
+      "item_id": "episode_3e1f920b3dba52de",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 48,
+      "kind": "retrieval_discard",
+      "item_id": "episode_fc00e2d6d08f50b8",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 49,
+      "kind": "retrieval_discard",
+      "item_id": "episode_a1188121e0c8ef3d",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 50,
+      "kind": "retrieval_discard",
+      "item_id": "episode_ed29d4981cc46bc0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 51,
+      "kind": "retrieval_discard",
+      "item_id": "fact_bc86e705233128b6",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 52,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_d05e8dfe7f42aa26",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 53,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_876d624a2352030c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 54,
+      "kind": "retrieval_discard",
+      "item_id": "episode_7a17c9a491e97972",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 55,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0b2b511d2913a3ba",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 56,
+      "kind": "retrieval_discard",
+      "item_id": "fact_0f06a270eeb7cb26",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 57,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_acb139a189dcc5a2",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 58,
+      "kind": "retrieval_discard",
+      "item_id": "episode_5343c5adb77cab0c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 59,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_13ac0a6e56f67675",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 60,
+      "kind": "retrieval_discard",
+      "item_id": "episode_65f5050eefa5c83c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 61,
+      "kind": "retrieval_discard",
+      "item_id": "fact_3942ed50713e00f9",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 62,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_ce16e9b79c13f2cc",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 63,
+      "kind": "retrieval_discard",
+      "item_id": "fact_268175d230e5fff6",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 64,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_97f176ebd803488b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 65,
+      "kind": "retrieval_discard",
+      "item_id": "episode_864f92d5f225ebb0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 66,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_d5d17161b858e728",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 67,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_fc22eed65f0ccd71",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 68,
+      "kind": "retrieval_discard",
+      "item_id": "fact_42e311296376ce1b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 69,
+      "kind": "retrieval_discard",
+      "item_id": "fact_f12bb0a480ff298a",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 70,
+      "kind": "retrieval_discard",
+      "item_id": "episode_9897aacaea938f81",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 71,
+      "kind": "retrieval_discard",
+      "item_id": "episode_adf17d103dcae5bd",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 72,
+      "kind": "retrieval_discard",
+      "item_id": "episode_c1bf6131e7c9655d",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 73,
+      "kind": "retrieval_discard",
+      "item_id": "fact_ce22b55f1b3fdee4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 74,
+      "kind": "retrieval_discard",
+      "item_id": "episode_4723ef2c2d4eeff4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 75,
+      "kind": "retrieval_discard",
+      "item_id": "episode_6c6e14e8d25a73ba",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 76,
+      "kind": "retrieval_discard",
+      "item_id": "episode_7522aee4e8e1474b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 77,
+      "kind": "retrieval_discard",
+      "item_id": "episode_cacd3a0abc16008f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 78,
+      "kind": "retrieval_discard",
+      "item_id": "fact_25bd0e018cee5c34",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 79,
+      "kind": "retrieval_discard",
+      "item_id": "fact_76c4c6db2645bc1d",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 80,
+      "kind": "retrieval_discard",
+      "item_id": "fact_91ce1cd670716c39",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 81,
+      "kind": "retrieval_discard",
+      "item_id": "episode_6651b7d201fdccff",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 82,
+      "kind": "retrieval_discard",
+      "item_id": "episode_9bc4ca53480c28c4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 83,
+      "kind": "retrieval_discard",
+      "item_id": "episode_a05202b3caf27fd7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 84,
+      "kind": "retrieval_discard",
+      "item_id": "fact_1cf0cd9ebbcad34d",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 85,
+      "kind": "retrieval_discard",
+      "item_id": "fact_c5307395388783bd",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 86,
+      "kind": "retrieval_discard",
+      "item_id": "fact_f3f8860eda97a1e7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 87,
+      "kind": "retrieval_discard",
+      "item_id": "episode_7509d9eb03098ae1",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 88,
+      "kind": "retrieval_discard",
+      "item_id": "fact_697ef0c2f3bc8d19",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 89,
+      "kind": "retrieval_discard",
+      "item_id": "fact_74757fbe8d5c3046",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 90,
+      "kind": "context",
+      "model_call": 2,
+      "serialized_chars": 24542,
+      "message_count": 4,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [
+        "episode_0099b4eefc7521d8",
+        "episode_15bb262c5efbbe09",
+        "episode_19ddb6901beff02b",
+        "episode_2ea1ec7fc40462d2",
+        "fact_292c77c44050f9e4",
+        "fact_3c1d77d75cf616dc",
+        "pattern_04c3d74eaa9b6cbf",
+        "pattern_1a142deb5722d186"
+      ],
+      "visible_evidence_ids": [],
+      "included_tool_call_ids": [
+        "action_1_request_80e7d5da0e7b6fee"
+      ]
+    },
+    {
+      "sequence": 91,
+      "kind": "model_started",
+      "call_number": 2,
+      "status": "pending",
+      "serialized_chars": 24542,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 92,
+      "kind": "item_discard",
+      "item_id": "pattern_1a142deb5722d186",
+      "reason": "Retrieval-versus-relevance comparison is peripheral to the reported DocDB/Elasticsearch gaps.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 93,
+      "kind": "model",
+      "call_number": 2,
+      "status": "completed",
+      "serialized_chars": 24542,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_494afb41168ba21a",
+      "action": {
+        "tool_name": "inspect_memory",
+        "arguments_json": "{\"item_id\":\"episode_0099b4eefc7521d8\",\"offset\":0,\"limit\":10}",
+        "purpose": "Examine the de-duplication drift report and its source evidence.",
+        "discarded_items": [
+          {
+            "item_id": "pattern_1a142deb5722d186",
+            "reason": "Retrieval-versus-relevance comparison is peripheral to the reported DocDB/Elasticsearch gaps."
+          }
+        ],
+        "pin_evidence_ids": []
+      },
+      "latency_seconds": 3.824358874990139,
+      "provider": {
+        "request_id": "request_494afb41168ba21a",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/data_gaps__original__memory_graph/cache/codex/request_494afb41168ba21a.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 0,
+          "input_tokens": 9494,
+          "output_tokens": 128,
+          "reasoning_output_tokens": 16,
+          "total_tokens": 9622
+        },
+        "thread_id": "01a1149c-52d4-7530-9cc1-bb6c16f18e32",
+        "turn_id": "01a1149c-52f6-7bf0-a8bf-8c4e17134371",
+        "status": "completed",
+        "latency_seconds": 3.8126
+      }
+    },
+    {
+      "sequence": 94,
+      "kind": "tool_started",
+      "call_id": "action_2_request_494afb41168ba21a",
+      "name": "inspect_memory",
+      "arguments": {
+        "item_id": "episode_0099b4eefc7521d8",
+        "offset": 0,
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 95,
+      "kind": "tool",
+      "name": "inspect_memory",
+      "arguments": {
+        "item_id": "episode_0099b4eefc7521d8",
+        "offset": 0,
+        "limit": 10
+      },
+      "call_id": "action_2_request_494afb41168ba21a",
+      "result": {
+        "id": "episode_0099b4eefc7521d8",
+        "type": "episode",
+        "kind": "fixed_evidence_bundle",
+        "retention": "retained",
+        "confidence": "medium",
+        "evidence_ids": [
+          "ev_4073b31643ace022",
+          "ev_7c5a3b55cf2ad1d4",
+          "ev_98651123bedd9e11",
+          "ev_c632629d4ba3f581",
+          "ev_cf7e8db808eff8fb"
+        ],
+        "record_ids": [
+          "KEP-6230",
+          "KEP-6664"
+        ],
+        "entity_ids": [
+          "resource_3a20d645"
+        ],
+        "item_id": "episode_0099b4eefc7521d8",
+        "title": "Fix DocDB and Elasticsearch drift from partial de-duplication updates",
+        "preview": "DocDB/ES drift from partial de-duplication updates\nstatus: Done",
+        "preview_truncated": false,
+        "title_origin": "unverified graph decision labels",
+        "retention_reason": "The evidence coherently centers on the decision to fix DocDB/Elasticsearch drift, though relationships and supersession are inferred and execution details are limited. The consistency fix is a useful incident/decision.",
+        "uncertainties": [
+          "Accepted grouping does not verify every excerpt, graph label or causal claim.",
+          "Fixed boundaries can conflate occurrences or omit related context; no automatic repair.",
+          "Compression reduces default recall prominence; all source excerpts remain available."
+        ],
+        "counterevidence_count": 0,
+        "evidence": [
+          {
+            "evidence_id": "ev_4073b31643ace022",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_80b5b8e1",
+            "target_id": "decision_a9fe511c",
+            "relation": "DEPENDS_ON",
+            "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on fixing DocDB and Elasticsearch drift from partial de-duplication updates (decision_a9fe511c). Both decisions share 2 common targets (DocDB and Elasticsearch). The drift issue must be resolved before the ingestion failure can be fully addressed, as the drift contributes to the data gaps.",
+            "start": 0,
+            "end": 351,
+            "total_chars": 351,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_7c5a3b55cf2ad1d4",
+            "record_id": "KEP-6230",
+            "provenance_kind": "extracted",
+            "source_id": "decision_a9fe511c",
+            "target_id": "outcome_9033d797",
+            "relation": "PRODUCES",
+            "quote": "status: Done",
+            "start": 0,
+            "end": 12,
+            "total_chars": 12,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_98651123bedd9e11",
+            "record_id": "KEP-6664",
+            "provenance_kind": "extracted",
+            "source_id": "decision_a9fe511c",
+            "target_id": "resource_3a20d645",
+            "relation": "AFFECTS",
+            "quote": "DocDB/ES drift from partial de-duplication updates",
+            "start": 0,
+            "end": 50,
+            "total_chars": 50,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_c632629d4ba3f581",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_4593fbfe",
+            "target_id": "decision_a9fe511c",
+            "relation": "SUPERSEDES_DECISION",
+            "quote": "Both decisions address DocDB and Elasticsearch synchronization issues. decision_4593fbfe (Resolve major data gaps and inconsistencies) is a tactical-level decision addressing multiple data consistency problems, while decision_a9fe511c (Fix DocDB and Elasticsearch drift from partial de-duplication updates) is a later decision (2026-03-31T06:35:16) that supersedes it by addressing a specific manifestation of the same drift problem that emerged after the initial fix. The later decision replaces the earlier one's approach with a more targeted solution for the de-duplication-specific drift. Both share initiative and affected resources.",
+            "start": 0,
+            "end": 638,
+            "total_chars": 638,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_cf7e8db808eff8fb",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_4593fbfe",
+            "target_id": "decision_a9fe511c",
+            "relation": "DEPENDS_ON",
+            "quote": "Resolving major data gaps and inconsistencies (decision_4593fbfe) depends on fixing DocDB and Elasticsearch drift from partial de-duplication updates (decision_a9fe511c). The de-duplication drift is a specific instance of the broader data gaps; resolving the drift is necessary to fully resolve the gaps. Both decisions share 2 common targets (DocDB and Elasticsearch) and Rohit Kumar and Gaurav Kapdekar as participants.",
+            "start": 0,
+            "end": 421,
+            "total_chars": 421,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          }
+        ],
+        "next_offset": null,
+        "total_evidence": 5,
+        "limitation": "Grouping and fact classification are Task 1 judgments, not independent verification. Inspect source wording."
+      },
+      "latency_seconds": 0.001810082991141826,
+      "error": false,
+      "new_ids": [
+        "ev_4073b31643ace022",
+        "ev_7c5a3b55cf2ad1d4",
+        "ev_98651123bedd9e11",
+        "ev_c632629d4ba3f581",
+        "ev_cf7e8db808eff8fb",
+        "span:ev_4073b31643ace022:0:351",
+        "span:ev_7c5a3b55cf2ad1d4:0:12",
+        "span:ev_98651123bedd9e11:0:50",
+        "span:ev_c632629d4ba3f581:0:638",
+        "span:ev_cf7e8db808eff8fb:0:421"
+      ]
+    },
+    {
+      "sequence": 96,
+      "kind": "context_item_eviction",
+      "call_id": "action_1_request_80e7d5da0e7b6fee",
+      "item_id": "pattern_1a142deb5722d186",
+      "reason": "Retrieval-versus-relevance comparison is peripheral to the reported DocDB/Elasticsearch gaps."
+    },
+    {
+      "sequence": 97,
+      "kind": "context",
+      "model_call": 3,
+      "serialized_chars": 28483,
+      "message_count": 6,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [
+        "episode_0099b4eefc7521d8",
+        "episode_15bb262c5efbbe09",
+        "episode_19ddb6901beff02b",
+        "episode_2ea1ec7fc40462d2",
+        "fact_292c77c44050f9e4",
+        "fact_3c1d77d75cf616dc",
+        "pattern_04c3d74eaa9b6cbf"
+      ],
+      "visible_evidence_ids": [
+        "ev_4073b31643ace022",
+        "ev_7c5a3b55cf2ad1d4",
+        "ev_98651123bedd9e11",
+        "ev_c632629d4ba3f581",
+        "ev_cf7e8db808eff8fb"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_80e7d5da0e7b6fee",
+        "action_2_request_494afb41168ba21a"
+      ]
+    },
+    {
+      "sequence": 98,
+      "kind": "model_started",
+      "call_number": 3,
+      "status": "pending",
+      "serialized_chars": 28483,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 99,
+      "kind": "model",
+      "call_number": 3,
+      "status": "completed",
+      "serialized_chars": 28483,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_c59ba388b1b62560",
+      "action": {
+        "tool_name": "inspect_memory",
+        "arguments_json": "{\"item_id\":\"episode_15bb262c5efbbe09\",\"offset\":0,\"limit\":10}",
+        "purpose": "Check the broad DocDB/Elasticsearch gap record for reported causes and unresolved details.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_98651123bedd9e11"
+        ]
+      },
+      "latency_seconds": 4.262796042021364,
+      "provider": {
+        "request_id": "request_c59ba388b1b62560",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/data_gaps__original__memory_graph/cache/codex/request_c59ba388b1b62560.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 12800,
+          "input_tokens": 20946,
+          "output_tokens": 141,
+          "reasoning_output_tokens": 38,
+          "total_tokens": 21087
+        },
+        "thread_id": "01a1149c-61cf-70c0-aa84-60e08324f7c8",
+        "turn_id": "01a1149c-61f0-7431-8a64-fac3656de0cf",
+        "status": "completed",
+        "latency_seconds": 4.254
+      }
+    },
+    {
+      "sequence": 100,
+      "kind": "tool_started",
+      "call_id": "action_3_request_c59ba388b1b62560",
+      "name": "inspect_memory",
+      "arguments": {
+        "item_id": "episode_15bb262c5efbbe09",
+        "offset": 0,
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 101,
+      "kind": "tool",
+      "name": "inspect_memory",
+      "arguments": {
+        "item_id": "episode_15bb262c5efbbe09",
+        "offset": 0,
+        "limit": 10
+      },
+      "call_id": "action_3_request_c59ba388b1b62560",
+      "result": {
+        "id": "episode_15bb262c5efbbe09",
+        "type": "episode",
+        "kind": "fixed_evidence_bundle",
+        "retention": "retained",
+        "confidence": "medium",
+        "evidence_ids": [
+          "ev_4fba4d02599cd039",
+          "ev_6c9707c22f4b3e34",
+          "ev_7ff8d46b306d3990",
+          "ev_c632629d4ba3f581",
+          "ev_cf7e8db808eff8fb",
+          "ev_ddb4054fc3bd14d2",
+          "ev_f8ee94f9d64ea930",
+          "ev_ff476944d92d1cd3"
+        ],
+        "record_ids": [
+          "Community_141",
+          "KEP-6230"
+        ],
+        "entity_ids": [
+          "resource_3a20d645"
+        ],
+        "item_id": "episode_15bb262c5efbbe09",
+        "title": "Resolve major data gaps and inconsistencies between DocDB and Elasticsearch",
+        "preview": "Major data gaps and inconsistencies between DocDB and Elasticsearch\nstatus: Done",
+        "preview_truncated": false,
+        "title_origin": "unverified graph decision labels",
+        "retention_reason": "The evidence supports a coherent decision concerning major DocDB–Elasticsearch data inconsistencies. Its broader resolution is potentially significant, though completion is supported only by a Done status.",
+        "uncertainties": [
+          "Accepted grouping does not verify every excerpt, graph label or causal claim.",
+          "Fixed boundaries can conflate occurrences or omit related context; no automatic repair.",
+          "Compression reduces default recall prominence; all source excerpts remain available."
+        ],
+        "counterevidence_count": 0,
+        "evidence": [
+          {
+            "evidence_id": "ev_4fba4d02599cd039",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_80b5b8e1",
+            "target_id": "decision_4593fbfe",
+            "relation": "SUPERSEDES_DECISION",
+            "quote": "Both decisions address the same subject matter: data gaps and inconsistencies in the Weibo data pipeline. decision_80b5b8e1 (Resolve data ingestion failure) identifies a specific root cause (Tikhub API returning 200 OK but data not ingested), while decision_4593fbfe (Resolve major data gaps and inconsistencies) addresses the broader manifestation of the same problem. The later decision (4593fbfe, decided 2026-03-31T03:49:22) supersedes the earlier one (80b5b8e1, decided 2026-03-31T03:47:52) by providing a more comprehensive resolution that encompasses the ingestion failure within a larger data consistency fix. Both share the same initiative and affected resources (DocDB, Elasticsearch).",
+            "start": 0,
+            "end": 695,
+            "total_chars": 695,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_6c9707c22f4b3e34",
+            "record_id": "Community_141",
+            "provenance_kind": "extracted",
+            "source_id": "decision_4593fbfe",
+            "target_id": "resource_3a20d645",
+            "relation": "AFFECTS",
+            "quote": "Major data gaps and inconsistencies between DocDB and Elasticsearch",
+            "start": 0,
+            "end": 67,
+            "total_chars": 67,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_7ff8d46b306d3990",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_02d55676",
+            "target_id": "decision_4593fbfe",
+            "relation": "DEPENDS_ON",
+            "quote": "Fixing inconsistent DocDB storage (decision_02d55676) depends on resolving major data gaps and inconsistencies between DocDB and Elasticsearch (decision_4593fbfe). The cursor handling fix must be coordinated with the broader data gap resolution. Both decisions share DocDB as a target and the same participants (Rohit Kumar and Gaurav Kapdekar).",
+            "start": 0,
+            "end": 345,
+            "total_chars": 345,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_c632629d4ba3f581",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_4593fbfe",
+            "target_id": "decision_a9fe511c",
+            "relation": "SUPERSEDES_DECISION",
+            "quote": "Both decisions address DocDB and Elasticsearch synchronization issues. decision_4593fbfe (Resolve major data gaps and inconsistencies) is a tactical-level decision addressing multiple data consistency problems, while decision_a9fe511c (Fix DocDB and Elasticsearch drift from partial de-duplication updates) is a later decision (2026-03-31T06:35:16) that supersedes it by addressing a specific manifestation of the same drift problem that emerged after the initial fix. The later decision replaces the earlier one's approach with a more targeted solution for the de-duplication-specific drift. Both share initiative and affected resources.",
+            "start": 0,
+            "end": 638,
+            "total_chars": 638,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_cf7e8db808eff8fb",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_4593fbfe",
+            "target_id": "decision_a9fe511c",
+            "relation": "DEPENDS_ON",
+            "quote": "Resolving major data gaps and inconsistencies (decision_4593fbfe) depends on fixing DocDB and Elasticsearch drift from partial de-duplication updates (decision_a9fe511c). The de-duplication drift is a specific instance of the broader data gaps; resolving the drift is necessary to fully resolve the gaps. Both decisions share 2 common targets (DocDB and Elasticsearch) and Rohit Kumar and Gaurav Kapdekar as participants.",
+            "start": 0,
+            "end": 421,
+            "total_chars": 421,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_ddb4054fc3bd14d2",
+            "record_id": "KEP-6230",
+            "provenance_kind": "extracted",
+            "source_id": "decision_4593fbfe",
+            "target_id": "outcome_dafe64bf",
+            "relation": "PRODUCES",
+            "quote": "status: Done",
+            "start": 0,
+            "end": 12,
+            "total_chars": 12,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_f8ee94f9d64ea930",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_80b5b8e1",
+            "target_id": "decision_4593fbfe",
+            "relation": "DEPENDS_ON",
+            "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on resolving major data gaps and inconsistencies between DocDB and Elasticsearch (decision_4593fbfe). Both decisions share 2 common targets (DocDB and Elasticsearch resources) and 2 common sources (Rohit Kumar and Gaurav Kapdekar). The data gaps identified in decision_4593fbfe are prerequisites to understanding and fixing the ingestion failure in decision_80b5b8e1.",
+            "start": 0,
+            "end": 428,
+            "total_chars": 428,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_ff476944d92d1cd3",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_02d55676",
+            "target_id": "decision_4593fbfe",
+            "relation": "SUPERSEDES_DECISION",
+            "quote": "Both decisions target data consistency issues between DocDB and Elasticsearch. decision_02d55676 (Fix inconsistent DocDB storage due to incorrect cursor handling) addresses a specific technical cause (cursor handling), while decision_4593fbfe (Resolve major data gaps and inconsistencies) provides a comprehensive resolution that includes cursor handling as one of multiple fixes. The later decision (4593fbfe, 2026-03-31T03:49:22) supersedes the earlier one (02d55676, 2026-03-31T03:48:18) by replacing the narrower fix with a broader, more complete solution. Both affect the same resources and initiative.",
+            "start": 0,
+            "end": 607,
+            "total_chars": 607,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          }
+        ],
+        "next_offset": null,
+        "total_evidence": 8,
+        "limitation": "Grouping and fact classification are Task 1 judgments, not independent verification. Inspect source wording."
+      },
+      "latency_seconds": 0.0007778330182190984,
+      "error": false,
+      "new_ids": [
+        "ev_4fba4d02599cd039",
+        "ev_6c9707c22f4b3e34",
+        "ev_7ff8d46b306d3990",
+        "ev_ddb4054fc3bd14d2",
+        "ev_f8ee94f9d64ea930",
+        "ev_ff476944d92d1cd3",
+        "span:ev_4fba4d02599cd039:0:695",
+        "span:ev_6c9707c22f4b3e34:0:67",
+        "span:ev_7ff8d46b306d3990:0:345",
+        "span:ev_ddb4054fc3bd14d2:0:12",
+        "span:ev_f8ee94f9d64ea930:0:428",
+        "span:ev_ff476944d92d1cd3:0:607"
+      ]
+    },
+    {
+      "sequence": 102,
+      "kind": "context",
+      "model_call": 4,
+      "serialized_chars": 37257,
+      "message_count": 8,
+      "pinned_evidence_ids": [
+        "ev_98651123bedd9e11"
+      ],
+      "visible_item_ids": [
+        "episode_0099b4eefc7521d8",
+        "episode_15bb262c5efbbe09",
+        "episode_19ddb6901beff02b",
+        "episode_2ea1ec7fc40462d2",
+        "fact_292c77c44050f9e4",
+        "fact_3c1d77d75cf616dc",
+        "pattern_04c3d74eaa9b6cbf"
+      ],
+      "visible_evidence_ids": [
+        "ev_4073b31643ace022",
+        "ev_4fba4d02599cd039",
+        "ev_6c9707c22f4b3e34",
+        "ev_7c5a3b55cf2ad1d4",
+        "ev_7ff8d46b306d3990",
+        "ev_98651123bedd9e11",
+        "ev_c632629d4ba3f581",
+        "ev_cf7e8db808eff8fb",
+        "ev_ddb4054fc3bd14d2",
+        "ev_f8ee94f9d64ea930",
+        "ev_ff476944d92d1cd3"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_80e7d5da0e7b6fee",
+        "action_2_request_494afb41168ba21a",
+        "action_3_request_c59ba388b1b62560"
+      ]
+    },
+    {
+      "sequence": 103,
+      "kind": "model_started",
+      "call_number": 4,
+      "status": "pending",
+      "serialized_chars": 37257,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 104,
+      "kind": "model",
+      "call_number": 4,
+      "status": "completed",
+      "serialized_chars": 37257,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_170c9f81623b034b",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"DocDB Elasticsearch data gaps cursor de-duplication ingestion\",\"mode\":\"records\",\"limit\":10}",
+        "purpose": "Find original records describing possible mechanisms behind the DocDB/Elasticsearch gaps.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_6c9707c22f4b3e34",
+          "ev_98651123bedd9e11",
+          "ev_ddb4054fc3bd14d2"
+        ]
+      },
+      "latency_seconds": 5.973024374980014,
+      "provider": {
+        "request_id": "request_170c9f81623b034b",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/data_gaps__original__memory_graph/cache/codex/request_170c9f81623b034b.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 12572,
+          "output_tokens": 142,
+          "reasoning_output_tokens": 30,
+          "total_tokens": 12714
+        },
+        "thread_id": "01a1149c-727b-7820-91e6-3ed551965d1d",
+        "turn_id": "01a1149c-729f-7131-a26c-49b4dabcd91f",
+        "status": "completed",
+        "latency_seconds": 5.96
+      }
+    },
+    {
+      "sequence": 105,
+      "kind": "tool_started",
+      "call_id": "action_4_request_170c9f81623b034b",
+      "name": "search_graph",
+      "arguments": {
+        "query": "DocDB Elasticsearch data gaps cursor de-duplication ingestion",
+        "mode": "records",
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 106,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "DocDB Elasticsearch data gaps cursor de-duplication ingestion",
+        "mode": "records",
+        "limit": 10
+      },
+      "call_id": "action_4_request_170c9f81623b034b",
+      "result": {
+        "expanded_query": "DocDB Elasticsearch data gaps cursor de-duplication ingestion ES docdb documentdb elasticsearch",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_cf7e8db808eff8fb",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_4593fbfe",
+              "target_id": "decision_a9fe511c",
+              "relation": "DEPENDS_ON",
+              "quote": "Resolving major data gaps and inconsistencies (decision_4593fbfe) depends on fixing DocDB and Elasticsearch drift from partial de-duplication updates (decision_a9fe511c). The de-duplication drift is a specific instance of the broader data gaps; resolving the drift is necessary to fully resolve the gaps. Both decisions share 2 common targets (DocDB and Elasticsearch) and Rohit Kumar and Gaurav Kapdekar as participants.",
+              "start": 0,
+              "end": 421,
+              "total_chars": 421,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4073b31643ace022",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_80b5b8e1",
+              "target_id": "decision_a9fe511c",
+              "relation": "DEPENDS_ON",
+              "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on fixing DocDB and Elasticsearch drift from partial de-duplication updates (decision_a9fe511c). Both decisions share 2 common targets (DocDB and Elasticsearch). The drift issue must be resolved before the ingestion failure can be fully addressed, as the drift contributes to the data gaps.",
+              "start": 0,
+              "end": 351,
+              "total_chars": 351,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_98651123bedd9e11",
+              "record_id": "KEP-6664",
+              "provenance_kind": "extracted",
+              "source_id": "decision_a9fe511c",
+              "target_id": "resource_3a20d645",
+              "relation": "AFFECTS",
+              "quote": "DocDB/ES drift from partial de-duplication updates",
+              "start": 0,
+              "end": 50,
+              "total_chars": 50,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_6c9707c22f4b3e34",
+              "record_id": "Community_141",
+              "provenance_kind": "extracted",
+              "source_id": "decision_4593fbfe",
+              "target_id": "resource_3a20d645",
+              "relation": "AFFECTS",
+              "quote": "Major data gaps and inconsistencies between DocDB and Elasticsearch",
+              "start": 0,
+              "end": 67,
+              "total_chars": 67,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f8ee94f9d64ea930",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_80b5b8e1",
+              "target_id": "decision_4593fbfe",
+              "relation": "DEPENDS_ON",
+              "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on resolving major data gaps and inconsistencies between DocDB and Elasticsearch (decision_4593fbfe). Both decisions share 2 common targets (DocDB and Elasticsearch resources) and 2 common sources (Rohit Kumar and Gaurav Kapdekar). The data gaps identified in decision_4593fbfe are prerequisites to understanding and fixing the ingestion failure in decision_80b5b8e1.",
+              "start": 0,
+              "end": 428,
+              "total_chars": 428,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_c632629d4ba3f581",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_4593fbfe",
+              "target_id": "decision_a9fe511c",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "Both decisions address DocDB and Elasticsearch synchronization issues. decision_4593fbfe (Resolve major data gaps and inconsistencies) is a tactical-level decision addressing multiple data consistency problems, while decision_a9fe511c (Fix DocDB and Elasticsearch drift from partial de-duplication updates) is a later decision (2026-03-31T06:35:16) that supersedes it by addressing a specific manifestation of the same drift problem that emerged after the initial fix. The later decision replaces the earlier one's approach with a more targeted solution for the de-duplication-specific drift. Both share initiative and affected resources.",
+              "start": 0,
+              "end": 638,
+              "total_chars": 638,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_1c518266822509e0",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_80b5b8e1",
+              "target_id": "decision_02d55676",
+              "relation": "DEPENDS_ON",
+              "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on fixing inconsistent DocDB storage due to incorrect cursor handling (decision_02d55676). The cursor handling issue directly impacts data ingestion; the ingestion failure cannot be properly diagnosed without first resolving the cursor inconsistency. Both decisions share DocDB as a target resource and the same participants.",
+              "start": 0,
+              "end": 386,
+              "total_chars": 386,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_7ff8d46b306d3990",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_02d55676",
+              "target_id": "decision_4593fbfe",
+              "relation": "DEPENDS_ON",
+              "quote": "Fixing inconsistent DocDB storage (decision_02d55676) depends on resolving major data gaps and inconsistencies between DocDB and Elasticsearch (decision_4593fbfe). The cursor handling fix must be coordinated with the broader data gap resolution. Both decisions share DocDB as a target and the same participants (Rohit Kumar and Gaurav Kapdekar).",
+              "start": 0,
+              "end": 345,
+              "total_chars": 345,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ff476944d92d1cd3",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_02d55676",
+              "target_id": "decision_4593fbfe",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "Both decisions target data consistency issues between DocDB and Elasticsearch. decision_02d55676 (Fix inconsistent DocDB storage due to incorrect cursor handling) addresses a specific technical cause (cursor handling), while decision_4593fbfe (Resolve major data gaps and inconsistencies) provides a comprehensive resolution that includes cursor handling as one of multiple fixes. The later decision (4593fbfe, 2026-03-31T03:49:22) supersedes the earlier one (02d55676, 2026-03-31T03:48:18) by replacing the narrower fix with a broader, more complete solution. Both affect the same resources and initiative.",
+              "start": 0,
+              "end": 607,
+              "total_chars": 607,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_08a24f67b8645adb",
+              "record_id": "gdrive:1mXMcKxPJDNpoazNcmy5zt3j_2Sg9S258XJt_xwrq5xg",
+              "provenance_kind": "extracted",
+              "source_id": "decision_80b5b8e1",
+              "target_id": "resource_3a20d645",
+              "relation": "AFFECTS",
+              "quote": "data is not being ingested into docDb/ES",
+              "start": 0,
+              "end": 40,
+              "total_chars": 40,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 465,
+          "next_offset": 10
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.012176084012025967,
+      "error": false,
+      "new_ids": [
+        "ev_08a24f67b8645adb",
+        "ev_1c518266822509e0",
+        "span:ev_08a24f67b8645adb:0:40",
+        "span:ev_1c518266822509e0:0:386"
+      ]
+    },
+    {
+      "sequence": 107,
+      "kind": "context",
+      "model_call": 5,
+      "serialized_chars": 45518,
+      "message_count": 10,
+      "pinned_evidence_ids": [
+        "ev_6c9707c22f4b3e34",
+        "ev_98651123bedd9e11",
+        "ev_ddb4054fc3bd14d2"
+      ],
+      "visible_item_ids": [
+        "episode_0099b4eefc7521d8",
+        "episode_15bb262c5efbbe09",
+        "episode_19ddb6901beff02b",
+        "episode_2ea1ec7fc40462d2",
+        "fact_292c77c44050f9e4",
+        "fact_3c1d77d75cf616dc",
+        "pattern_04c3d74eaa9b6cbf"
+      ],
+      "visible_evidence_ids": [
+        "ev_08a24f67b8645adb",
+        "ev_1c518266822509e0",
+        "ev_4073b31643ace022",
+        "ev_4fba4d02599cd039",
+        "ev_6c9707c22f4b3e34",
+        "ev_7c5a3b55cf2ad1d4",
+        "ev_7ff8d46b306d3990",
+        "ev_98651123bedd9e11",
+        "ev_c632629d4ba3f581",
+        "ev_cf7e8db808eff8fb",
+        "ev_ddb4054fc3bd14d2",
+        "ev_f8ee94f9d64ea930",
+        "ev_ff476944d92d1cd3"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_80e7d5da0e7b6fee",
+        "action_2_request_494afb41168ba21a",
+        "action_3_request_c59ba388b1b62560",
+        "action_4_request_170c9f81623b034b"
+      ]
+    },
+    {
+      "sequence": 108,
+      "kind": "model_started",
+      "call_number": 5,
+      "status": "pending",
+      "serialized_chars": 45518,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 109,
+      "kind": "item_discard",
+      "item_id": "pattern_04c3d74eaa9b6cbf",
+      "reason": "Comparison is interpretive; underlying records are more relevant.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 110,
+      "kind": "model",
+      "call_number": 5,
+      "status": "completed",
+      "serialized_chars": 45518,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_0eb95bcb278e149e",
+      "action": {
+        "tool_name": "inspect_memory",
+        "arguments_json": "{\"item_id\":\"episode_2ea1ec7fc40462d2\",\"offset\":0,\"limit\":10}",
+        "purpose": "Check the DocDB incompleteness record for a directly reported cursor-handling explanation.",
+        "discarded_items": [
+          {
+            "item_id": "pattern_04c3d74eaa9b6cbf",
+            "reason": "Comparison is interpretive; underlying records are more relevant."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_6c9707c22f4b3e34",
+          "ev_98651123bedd9e11",
+          "ev_08a24f67b8645adb"
+        ]
+      },
+      "latency_seconds": 4.256095041986555,
+      "provider": {
+        "request_id": "request_0eb95bcb278e149e",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/data_gaps__original__memory_graph/cache/codex/request_0eb95bcb278e149e.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 14570,
+          "output_tokens": 171,
+          "reasoning_output_tokens": 22,
+          "total_tokens": 14741
+        },
+        "thread_id": "01a1149c-89e7-7292-89b0-568b7a348a6c",
+        "turn_id": "01a1149c-8a0a-7651-86c9-dd20cbf5735c",
+        "status": "completed",
+        "latency_seconds": 4.2415
+      }
+    },
+    {
+      "sequence": 111,
+      "kind": "tool_started",
+      "call_id": "action_5_request_0eb95bcb278e149e",
+      "name": "inspect_memory",
+      "arguments": {
+        "item_id": "episode_2ea1ec7fc40462d2",
+        "offset": 0,
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 112,
+      "kind": "tool",
+      "name": "inspect_memory",
+      "arguments": {
+        "item_id": "episode_2ea1ec7fc40462d2",
+        "offset": 0,
+        "limit": 10
+      },
+      "call_id": "action_5_request_0eb95bcb278e149e",
+      "result": {
+        "id": "episode_2ea1ec7fc40462d2",
+        "type": "episode",
+        "kind": "fixed_evidence_bundle",
+        "retention": "retained",
+        "confidence": "medium",
+        "evidence_ids": [
+          "ev_1c518266822509e0",
+          "ev_4463da650d3701f7",
+          "ev_7ff8d46b306d3990",
+          "ev_d12f9a9f4427477b",
+          "ev_ff476944d92d1cd3"
+        ],
+        "record_ids": [
+          "KEP-6230",
+          "KEP-6611"
+        ],
+        "entity_ids": [
+          "resource_3a20d645"
+        ],
+        "item_id": "episode_2ea1ec7fc40462d2",
+        "title": "Fix inconsistent DocDB storage due to incorrect cursor handling",
+        "preview": "Data stored in DocDB is uneven/incomplete\nstatus: Done",
+        "preview_truncated": false,
+        "title_origin": "unverified graph decision labels",
+        "retention_reason": "The evidence coherently describes a specific DocDB cursor-handling issue and associated fix; the technical data-consistency issue is useful to remember, though some dependency and supersession details are inferred.",
+        "uncertainties": [
+          "Accepted grouping does not verify every excerpt, graph label or causal claim.",
+          "Fixed boundaries can conflate occurrences or omit related context; no automatic repair.",
+          "Compression reduces default recall prominence; all source excerpts remain available."
+        ],
+        "counterevidence_count": 0,
+        "evidence": [
+          {
+            "evidence_id": "ev_1c518266822509e0",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_80b5b8e1",
+            "target_id": "decision_02d55676",
+            "relation": "DEPENDS_ON",
+            "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on fixing inconsistent DocDB storage due to incorrect cursor handling (decision_02d55676). The cursor handling issue directly impacts data ingestion; the ingestion failure cannot be properly diagnosed without first resolving the cursor inconsistency. Both decisions share DocDB as a target resource and the same participants.",
+            "start": 0,
+            "end": 386,
+            "total_chars": 386,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_4463da650d3701f7",
+            "record_id": "KEP-6230",
+            "provenance_kind": "extracted",
+            "source_id": "decision_02d55676",
+            "target_id": "outcome_86f4e4d4",
+            "relation": "PRODUCES",
+            "quote": "status: Done",
+            "start": 0,
+            "end": 12,
+            "total_chars": 12,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_7ff8d46b306d3990",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_02d55676",
+            "target_id": "decision_4593fbfe",
+            "relation": "DEPENDS_ON",
+            "quote": "Fixing inconsistent DocDB storage (decision_02d55676) depends on resolving major data gaps and inconsistencies between DocDB and Elasticsearch (decision_4593fbfe). The cursor handling fix must be coordinated with the broader data gap resolution. Both decisions share DocDB as a target and the same participants (Rohit Kumar and Gaurav Kapdekar).",
+            "start": 0,
+            "end": 345,
+            "total_chars": 345,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_d12f9a9f4427477b",
+            "record_id": "KEP-6611",
+            "provenance_kind": "extracted",
+            "source_id": "decision_02d55676",
+            "target_id": "resource_3a20d645",
+            "relation": "AFFECTS",
+            "quote": "Data stored in DocDB is uneven/incomplete",
+            "start": 0,
+            "end": 41,
+            "total_chars": 41,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_ff476944d92d1cd3",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_02d55676",
+            "target_id": "decision_4593fbfe",
+            "relation": "SUPERSEDES_DECISION",
+            "quote": "Both decisions target data consistency issues between DocDB and Elasticsearch. decision_02d55676 (Fix inconsistent DocDB storage due to incorrect cursor handling) addresses a specific technical cause (cursor handling), while decision_4593fbfe (Resolve major data gaps and inconsistencies) provides a comprehensive resolution that includes cursor handling as one of multiple fixes. The later decision (4593fbfe, 2026-03-31T03:49:22) supersedes the earlier one (02d55676, 2026-03-31T03:48:18) by replacing the narrower fix with a broader, more complete solution. Both affect the same resources and initiative.",
+            "start": 0,
+            "end": 607,
+            "total_chars": 607,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          }
+        ],
+        "next_offset": null,
+        "total_evidence": 5,
+        "limitation": "Grouping and fact classification are Task 1 judgments, not independent verification. Inspect source wording."
+      },
+      "latency_seconds": 0.001964833994861692,
+      "error": false,
+      "new_ids": [
+        "ev_4463da650d3701f7",
+        "ev_d12f9a9f4427477b",
+        "span:ev_4463da650d3701f7:0:12",
+        "span:ev_d12f9a9f4427477b:0:41"
+      ]
+    },
+    {
+      "sequence": 113,
+      "kind": "context",
+      "model_call": 6,
+      "serialized_chars": 52561,
+      "message_count": 12,
+      "pinned_evidence_ids": [
+        "ev_08a24f67b8645adb",
+        "ev_6c9707c22f4b3e34",
+        "ev_98651123bedd9e11",
+        "ev_ddb4054fc3bd14d2"
+      ],
+      "visible_item_ids": [
+        "episode_0099b4eefc7521d8",
+        "episode_15bb262c5efbbe09",
+        "episode_19ddb6901beff02b",
+        "episode_2ea1ec7fc40462d2",
+        "fact_292c77c44050f9e4",
+        "fact_3c1d77d75cf616dc",
+        "pattern_04c3d74eaa9b6cbf",
+        "pattern_1a142deb5722d186"
+      ],
+      "visible_evidence_ids": [
+        "ev_08a24f67b8645adb",
+        "ev_1c518266822509e0",
+        "ev_4073b31643ace022",
+        "ev_4463da650d3701f7",
+        "ev_4fba4d02599cd039",
+        "ev_6c9707c22f4b3e34",
+        "ev_7c5a3b55cf2ad1d4",
+        "ev_7ff8d46b306d3990",
+        "ev_98651123bedd9e11",
+        "ev_c632629d4ba3f581",
+        "ev_cf7e8db808eff8fb",
+        "ev_d12f9a9f4427477b",
+        "ev_ddb4054fc3bd14d2",
+        "ev_f8ee94f9d64ea930",
+        "ev_ff476944d92d1cd3"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_80e7d5da0e7b6fee",
+        "action_2_request_494afb41168ba21a",
+        "action_3_request_c59ba388b1b62560",
+        "action_4_request_170c9f81623b034b",
+        "action_5_request_0eb95bcb278e149e"
+      ]
+    },
+    {
+      "sequence": 114,
+      "kind": "model_started",
+      "call_number": 6,
+      "status": "pending",
+      "serialized_chars": 52561,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 115,
+      "kind": "item_discard",
+      "item_id": "pattern_1a142deb5722d186",
+      "reason": "Comparison includes content relevance, which does not directly explain the data gaps.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 116,
+      "kind": "model",
+      "call_number": 6,
+      "status": "completed",
+      "serialized_chars": 52561,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_aa04bf372006e774",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"incorrect cursor handling DocDB KEP-6611\",\"mode\":\"records\",\"limit\":10}",
+        "purpose": "Find source wording that connects cursor handling to incomplete DocDB storage.",
+        "discarded_items": [
+          {
+            "item_id": "pattern_1a142deb5722d186",
+            "reason": "Comparison includes content relevance, which does not directly explain the data gaps."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_6c9707c22f4b3e34",
+          "ev_98651123bedd9e11",
+          "ev_d12f9a9f4427477b",
+          "ev_08a24f67b8645adb"
+        ]
+      },
+      "latency_seconds": 5.314314292016206,
+      "provider": {
+        "request_id": "request_aa04bf372006e774",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/data_gaps__original__memory_graph/cache/codex/request_aa04bf372006e774.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 16321,
+          "output_tokens": 171,
+          "reasoning_output_tokens": 17,
+          "total_tokens": 16492
+        },
+        "thread_id": "01a1149c-9a95-7030-be97-04749bab9129",
+        "turn_id": "01a1149c-9ab8-7de0-bdd0-4ccb3adfe058",
+        "status": "completed",
+        "latency_seconds": 5.3018
+      }
+    },
+    {
+      "sequence": 117,
+      "kind": "tool_started",
+      "call_id": "action_6_request_aa04bf372006e774",
+      "name": "search_graph",
+      "arguments": {
+        "query": "incorrect cursor handling DocDB KEP-6611",
+        "mode": "records",
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 118,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "incorrect cursor handling DocDB KEP-6611",
+        "mode": "records",
+        "limit": 10
+      },
+      "call_id": "action_6_request_aa04bf372006e774",
+      "result": {
+        "expanded_query": "incorrect cursor handling DocDB KEP-6611 docdb documentdb",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_1c518266822509e0",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_80b5b8e1",
+              "target_id": "decision_02d55676",
+              "relation": "DEPENDS_ON",
+              "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on fixing inconsistent DocDB storage due to incorrect cursor handling (decision_02d55676). The cursor handling issue directly impacts data ingestion; the ingestion failure cannot be properly diagnosed without first resolving the cursor inconsistency. Both decisions share DocDB as a target resource and the same participants.",
+              "start": 0,
+              "end": 386,
+              "total_chars": 386,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ff476944d92d1cd3",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_02d55676",
+              "target_id": "decision_4593fbfe",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "Both decisions target data consistency issues between DocDB and Elasticsearch. decision_02d55676 (Fix inconsistent DocDB storage due to incorrect cursor handling) addresses a specific technical cause (cursor handling), while decision_4593fbfe (Resolve major data gaps and inconsistencies) provides a comprehensive resolution that includes cursor handling as one of multiple fixes. The later decision (4593fbfe, 2026-03-31T03:49:22) supersedes the earlier one (02d55676, 2026-03-31T03:48:18) by replacing the narrower fix with a broader, more complete solution. Both affect the same resources and initiative.",
+              "start": 0,
+              "end": 607,
+              "total_chars": 607,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_7ff8d46b306d3990",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_02d55676",
+              "target_id": "decision_4593fbfe",
+              "relation": "DEPENDS_ON",
+              "quote": "Fixing inconsistent DocDB storage (decision_02d55676) depends on resolving major data gaps and inconsistencies between DocDB and Elasticsearch (decision_4593fbfe). The cursor handling fix must be coordinated with the broader data gap resolution. Both decisions share DocDB as a target and the same participants (Rohit Kumar and Gaurav Kapdekar).",
+              "start": 0,
+              "end": 345,
+              "total_chars": 345,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_fd776b44a8ed836a",
+              "record_id": "Community_465",
+              "provenance_kind": "extracted",
+              "source_id": "decision_23436de7",
+              "target_id": "resource_ae23d709",
+              "relation": "AFFECTS",
+              "quote": "Upgrade DocDB version handling in Instagram from 3.6 to 5.0",
+              "start": 0,
+              "end": 59,
+              "total_chars": 59,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_3618aba27ba320a7",
+              "record_id": "Community_465",
+              "provenance_kind": "extracted",
+              "source_id": "decision_cde0a226",
+              "target_id": "resource_3ee634d3",
+              "relation": "AFFECTS",
+              "quote": "Upgrade DocDB version handling in Youtube Service from 3.6 to 5.0",
+              "start": 0,
+              "end": 65,
+              "total_chars": 65,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_a8db2a98d43a39bf",
+              "record_id": "Community_465",
+              "provenance_kind": "extracted",
+              "source_id": "decision_1ca2fe73",
+              "target_id": "resource_8fa28ef8",
+              "relation": "AFFECTS",
+              "quote": "Upgrade DocDB version handling in Telegram Service from 3.6 to 5.0",
+              "start": 0,
+              "end": 66,
+              "total_chars": 66,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_c33228c2143a6e68",
+              "record_id": "Community_465",
+              "provenance_kind": "extracted",
+              "source_id": "decision_dad3e720",
+              "target_id": "resource_83aea315",
+              "relation": "AFFECTS",
+              "quote": "Upgrade DocDB version handling in Facebook Service from 3.6 to 5.0",
+              "start": 0,
+              "end": 66,
+              "total_chars": 66,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_786299dd8bdfd518",
+              "record_id": "Community_465",
+              "provenance_kind": "extracted",
+              "source_id": "decision_6ad5df1c",
+              "target_id": "resource_f3ee4a85",
+              "relation": "AFFECTS",
+              "quote": "Upgrade DocDB version handling in Video-Summary Service from 3.6 to 5.0",
+              "start": 0,
+              "end": 71,
+              "total_chars": 71,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_bc95d0874a7f7e51",
+              "record_id": "Community_465",
+              "provenance_kind": "extracted",
+              "source_id": "decision_3c851d3f",
+              "target_id": "resource_872586d5",
+              "relation": "AFFECTS",
+              "quote": "Upgrade DocDB version handling in Comment Stance Service from 3.6 to 5.0",
+              "start": 0,
+              "end": 72,
+              "total_chars": 72,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_317e602a008f4331",
+              "record_id": "Community_465",
+              "provenance_kind": "extracted",
+              "source_id": "decision_3a031789",
+              "target_id": "resource_b4fb6b8c",
+              "relation": "AFFECTS",
+              "quote": "Upgrade DocDB version handling in Get-Data-API service from 3.6 to 5.0",
+              "start": 0,
+              "end": 70,
+              "total_chars": 70,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 457,
+          "next_offset": 10
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.016138457984197885,
+      "error": false,
+      "new_ids": [
+        "ev_317e602a008f4331",
+        "ev_3618aba27ba320a7",
+        "ev_786299dd8bdfd518",
+        "ev_a8db2a98d43a39bf",
+        "ev_bc95d0874a7f7e51",
+        "ev_c33228c2143a6e68",
+        "ev_fd776b44a8ed836a",
+        "span:ev_317e602a008f4331:0:70",
+        "span:ev_3618aba27ba320a7:0:65",
+        "span:ev_786299dd8bdfd518:0:71",
+        "span:ev_a8db2a98d43a39bf:0:66",
+        "span:ev_bc95d0874a7f7e51:0:72",
+        "span:ev_c33228c2143a6e68:0:66",
+        "span:ev_fd776b44a8ed836a:0:59"
+      ]
+    },
+    {
+      "sequence": 119,
+      "kind": "context",
+      "model_call": 7,
+      "serialized_chars": 59220,
+      "message_count": 14,
+      "pinned_evidence_ids": [
+        "ev_08a24f67b8645adb",
+        "ev_6c9707c22f4b3e34",
+        "ev_98651123bedd9e11",
+        "ev_d12f9a9f4427477b",
+        "ev_ddb4054fc3bd14d2"
+      ],
+      "visible_item_ids": [
+        "episode_0099b4eefc7521d8",
+        "episode_15bb262c5efbbe09",
+        "episode_19ddb6901beff02b",
+        "episode_2ea1ec7fc40462d2",
+        "fact_292c77c44050f9e4",
+        "fact_3c1d77d75cf616dc",
+        "pattern_04c3d74eaa9b6cbf",
+        "pattern_1a142deb5722d186"
+      ],
+      "visible_evidence_ids": [
+        "ev_08a24f67b8645adb",
+        "ev_1c518266822509e0",
+        "ev_317e602a008f4331",
+        "ev_3618aba27ba320a7",
+        "ev_4073b31643ace022",
+        "ev_4463da650d3701f7",
+        "ev_4fba4d02599cd039",
+        "ev_6c9707c22f4b3e34",
+        "ev_786299dd8bdfd518",
+        "ev_7c5a3b55cf2ad1d4",
+        "ev_7ff8d46b306d3990",
+        "ev_98651123bedd9e11",
+        "ev_a8db2a98d43a39bf",
+        "ev_bc95d0874a7f7e51",
+        "ev_c33228c2143a6e68",
+        "ev_c632629d4ba3f581",
+        "ev_cf7e8db808eff8fb",
+        "ev_d12f9a9f4427477b",
+        "ev_ddb4054fc3bd14d2",
+        "ev_f8ee94f9d64ea930",
+        "ev_fd776b44a8ed836a",
+        "ev_ff476944d92d1cd3"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_80e7d5da0e7b6fee",
+        "action_2_request_494afb41168ba21a",
+        "action_3_request_c59ba388b1b62560",
+        "action_4_request_170c9f81623b034b",
+        "action_5_request_0eb95bcb278e149e",
+        "action_6_request_aa04bf372006e774"
+      ]
+    },
+    {
+      "sequence": 120,
+      "kind": "model_started",
+      "call_number": 7,
+      "status": "pending",
+      "serialized_chars": 59220,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 121,
+      "kind": "item_discard",
+      "item_id": "pattern_1a142deb5722d186",
+      "reason": "A broad comparison, not needed to establish the specific ingestion failure.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 122,
+      "kind": "item_discard",
+      "item_id": "pattern_04c3d74eaa9b6cbf",
+      "reason": "Its distinction between completeness and drift is useful but its support is already available in inspected episodes.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 123,
+      "kind": "model",
+      "call_number": 7,
+      "status": "completed",
+      "serialized_chars": 59220,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_7fdcb6f380383e19",
+      "action": {
+        "tool_name": "inspect_memory",
+        "arguments_json": "{\"item_id\":\"episode_19ddb6901beff02b\",\"offset\":0,\"limit\":10}",
+        "purpose": "Check whether the upstream-success and missing-ingestion observations identify a cause or only locate the gap.",
+        "discarded_items": [
+          {
+            "item_id": "pattern_1a142deb5722d186",
+            "reason": "A broad comparison, not needed to establish the specific ingestion failure."
+          },
+          {
+            "item_id": "pattern_04c3d74eaa9b6cbf",
+            "reason": "Its distinction between completeness and drift is useful but its support is already available in inspected episodes."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_6c9707c22f4b3e34",
+          "ev_98651123bedd9e11",
+          "ev_d12f9a9f4427477b",
+          "ev_08a24f67b8645adb",
+          "ev_ddb4054fc3bd14d2"
+        ]
+      },
+      "latency_seconds": 6.56900729201152,
+      "provider": {
+        "request_id": "request_7fdcb6f380383e19",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/data_gaps__original__memory_graph/cache/codex/request_7fdcb6f380383e19.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 17980,
+          "output_tokens": 235,
+          "reasoning_output_tokens": 24,
+          "total_tokens": 18215
+        },
+        "thread_id": "01a1149c-af70-78f1-a5c6-65274362e6d5",
+        "turn_id": "01a1149c-af93-7902-a768-2866685752c5",
+        "status": "completed",
+        "latency_seconds": 6.5605
+      }
+    },
+    {
+      "sequence": 124,
+      "kind": "tool_started",
+      "call_id": "action_7_request_7fdcb6f380383e19",
+      "name": "inspect_memory",
+      "arguments": {
+        "item_id": "episode_19ddb6901beff02b",
+        "offset": 0,
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 125,
+      "kind": "tool",
+      "name": "inspect_memory",
+      "arguments": {
+        "item_id": "episode_19ddb6901beff02b",
+        "offset": 0,
+        "limit": 10
+      },
+      "call_id": "action_7_request_7fdcb6f380383e19",
+      "result": {
+        "id": "episode_19ddb6901beff02b",
+        "type": "episode",
+        "kind": "fixed_evidence_bundle",
+        "retention": "retained",
+        "confidence": "medium",
+        "evidence_ids": [
+          "ev_08a24f67b8645adb",
+          "ev_1c518266822509e0",
+          "ev_1fdb531d22617990",
+          "ev_4073b31643ace022",
+          "ev_4fba4d02599cd039",
+          "ev_6ab384de30e6b7d5",
+          "ev_855ed0b570fdb824",
+          "ev_afaa76709f32a0cf",
+          "ev_f8ee94f9d64ea930"
+        ],
+        "record_ids": [
+          "KEP-6230",
+          "KEP-6610",
+          "gdrive:1mXMcKxPJDNpoazNcmy5zt3j_2Sg9S258XJt_xwrq5xg"
+        ],
+        "entity_ids": [
+          "resource_3a20d645",
+          "resource_4c5ce84a"
+        ],
+        "item_id": "episode_19ddb6901beff02b",
+        "title": "Resolve data ingestion failure despite successful Tikhub API response",
+        "preview": "Tikhub for Weibo data are returning HTTP 200 responses with valid video post data\nTikhub → processing → DB/ES\ndata is not being ingested into docDb/ES\nstatus: Done",
+        "preview_truncated": false,
+        "title_origin": "unverified graph decision labels",
+        "retention_reason": "The evidence supports one coherent ingestion-failure incident and response; it is a useful data-pipeline issue despite inferred dependency details.",
+        "uncertainties": [
+          "Accepted grouping does not verify every excerpt, graph label or causal claim.",
+          "Fixed boundaries can conflate occurrences or omit related context; no automatic repair.",
+          "Compression reduces default recall prominence; all source excerpts remain available."
+        ],
+        "counterevidence_count": 0,
+        "evidence": [
+          {
+            "evidence_id": "ev_08a24f67b8645adb",
+            "record_id": "gdrive:1mXMcKxPJDNpoazNcmy5zt3j_2Sg9S258XJt_xwrq5xg",
+            "provenance_kind": "extracted",
+            "source_id": "decision_80b5b8e1",
+            "target_id": "resource_3a20d645",
+            "relation": "AFFECTS",
+            "quote": "data is not being ingested into docDb/ES",
+            "start": 0,
+            "end": 40,
+            "total_chars": 40,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_1c518266822509e0",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_80b5b8e1",
+            "target_id": "decision_02d55676",
+            "relation": "DEPENDS_ON",
+            "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on fixing inconsistent DocDB storage due to incorrect cursor handling (decision_02d55676). The cursor handling issue directly impacts data ingestion; the ingestion failure cannot be properly diagnosed without first resolving the cursor inconsistency. Both decisions share DocDB as a target resource and the same participants.",
+            "start": 0,
+            "end": 386,
+            "total_chars": 386,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_1fdb531d22617990",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "event_00b1fe20",
+            "target_id": "decision_80b5b8e1",
+            "relation": "CAUSES",
+            "quote": "Direct edge extracted: decision_80b5b8e1 REFERENCES event_00b1fe20. The event 'Tikhub API returning 200 OK responses with valid video posts' (occurred 2026-03-25) directly triggered the decision to resolve the data ingestion failure. Source passage confirms: 'During recent runs, requests made to Tikhub for Weibo data are returning HTTP 200 responses with valid video post data within the expected time window. However, this data is not being ingested into DocDB or Elasticsearch, leading to data gaps.' The event is the concrete cause; the decision is the response.",
+            "start": 0,
+            "end": 567,
+            "total_chars": 567,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "2026-03-25",
+                "date": "2026-03-25",
+                "evidence_id": "ev_1fdb531d22617990",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_4073b31643ace022",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_80b5b8e1",
+            "target_id": "decision_a9fe511c",
+            "relation": "DEPENDS_ON",
+            "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on fixing DocDB and Elasticsearch drift from partial de-duplication updates (decision_a9fe511c). Both decisions share 2 common targets (DocDB and Elasticsearch). The drift issue must be resolved before the ingestion failure can be fully addressed, as the drift contributes to the data gaps.",
+            "start": 0,
+            "end": 351,
+            "total_chars": 351,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_4fba4d02599cd039",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_80b5b8e1",
+            "target_id": "decision_4593fbfe",
+            "relation": "SUPERSEDES_DECISION",
+            "quote": "Both decisions address the same subject matter: data gaps and inconsistencies in the Weibo data pipeline. decision_80b5b8e1 (Resolve data ingestion failure) identifies a specific root cause (Tikhub API returning 200 OK but data not ingested), while decision_4593fbfe (Resolve major data gaps and inconsistencies) addresses the broader manifestation of the same problem. The later decision (4593fbfe, decided 2026-03-31T03:49:22) supersedes the earlier one (80b5b8e1, decided 2026-03-31T03:47:52) by providing a more comprehensive resolution that encompasses the ingestion failure within a larger data consistency fix. Both share the same initiative and affected resources (DocDB, Elasticsearch).",
+            "start": 0,
+            "end": 695,
+            "total_chars": 695,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_6ab384de30e6b7d5",
+            "record_id": "KEP-6230",
+            "provenance_kind": "extracted",
+            "source_id": "decision_80b5b8e1",
+            "target_id": "outcome_a0436c47",
+            "relation": "PRODUCES",
+            "quote": "status: Done",
+            "start": 0,
+            "end": 12,
+            "total_chars": 12,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_855ed0b570fdb824",
+            "record_id": "KEP-6610",
+            "provenance_kind": "extracted",
+            "source_id": "decision_80b5b8e1",
+            "target_id": "resource_4c5ce84a",
+            "relation": "AFFECTS",
+            "quote": "Tikhub → processing → DB/ES",
+            "start": 0,
+            "end": 27,
+            "total_chars": 27,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_afaa76709f32a0cf",
+            "record_id": "KEP-6610",
+            "provenance_kind": "extracted",
+            "source_id": "decision_80b5b8e1",
+            "target_id": "event_00b1fe20",
+            "relation": "REFERENCES",
+            "quote": "Tikhub for Weibo data are returning HTTP 200 responses with valid video post data",
+            "start": 0,
+            "end": 81,
+            "total_chars": 81,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_f8ee94f9d64ea930",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_80b5b8e1",
+            "target_id": "decision_4593fbfe",
+            "relation": "DEPENDS_ON",
+            "quote": "Resolving data ingestion failure (decision_80b5b8e1) depends on resolving major data gaps and inconsistencies between DocDB and Elasticsearch (decision_4593fbfe). Both decisions share 2 common targets (DocDB and Elasticsearch resources) and 2 common sources (Rohit Kumar and Gaurav Kapdekar). The data gaps identified in decision_4593fbfe are prerequisites to understanding and fixing the ingestion failure in decision_80b5b8e1.",
+            "start": 0,
+            "end": 428,
+            "total_chars": 428,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          }
+        ],
+        "next_offset": null,
+        "total_evidence": 9,
+        "limitation": "Grouping and fact classification are Task 1 judgments, not independent verification. Inspect source wording."
+      },
+      "latency_seconds": 0.0005782500084023923,
+      "error": false,
+      "new_ids": [
+        "ev_1fdb531d22617990",
+        "ev_6ab384de30e6b7d5",
+        "ev_855ed0b570fdb824",
+        "ev_afaa76709f32a0cf",
+        "span:ev_1fdb531d22617990:0:567",
+        "span:ev_6ab384de30e6b7d5:0:12",
+        "span:ev_855ed0b570fdb824:0:27",
+        "span:ev_afaa76709f32a0cf:0:81"
+      ]
+    },
+    {
+      "sequence": 126,
+      "kind": "context",
+      "model_call": 8,
+      "serialized_chars": 68211,
+      "message_count": 16,
+      "pinned_evidence_ids": [
+        "ev_08a24f67b8645adb",
+        "ev_6c9707c22f4b3e34",
+        "ev_98651123bedd9e11",
+        "ev_d12f9a9f4427477b",
+        "ev_ddb4054fc3bd14d2"
+      ],
+      "visible_item_ids": [
+        "episode_0099b4eefc7521d8",
+        "episode_15bb262c5efbbe09",
+        "episode_19ddb6901beff02b",
+        "episode_2ea1ec7fc40462d2",
+        "fact_292c77c44050f9e4",
+        "fact_3c1d77d75cf616dc",
+        "pattern_04c3d74eaa9b6cbf",
+        "pattern_1a142deb5722d186"
+      ],
+      "visible_evidence_ids": [
+        "ev_08a24f67b8645adb",
+        "ev_1c518266822509e0",
+        "ev_1fdb531d22617990",
+        "ev_317e602a008f4331",
+        "ev_3618aba27ba320a7",
+        "ev_4073b31643ace022",
+        "ev_4463da650d3701f7",
+        "ev_4fba4d02599cd039",
+        "ev_6ab384de30e6b7d5",
+        "ev_6c9707c22f4b3e34",
+        "ev_786299dd8bdfd518",
+        "ev_7c5a3b55cf2ad1d4",
+        "ev_7ff8d46b306d3990",
+        "ev_855ed0b570fdb824",
+        "ev_98651123bedd9e11",
+        "ev_a8db2a98d43a39bf",
+        "ev_afaa76709f32a0cf",
+        "ev_bc95d0874a7f7e51",
+        "ev_c33228c2143a6e68",
+        "ev_c632629d4ba3f581",
+        "ev_cf7e8db808eff8fb",
+        "ev_d12f9a9f4427477b",
+        "ev_ddb4054fc3bd14d2",
+        "ev_f8ee94f9d64ea930",
+        "ev_fd776b44a8ed836a",
+        "ev_ff476944d92d1cd3"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_80e7d5da0e7b6fee",
+        "action_2_request_494afb41168ba21a",
+        "action_3_request_c59ba388b1b62560",
+        "action_4_request_170c9f81623b034b",
+        "action_5_request_0eb95bcb278e149e",
+        "action_6_request_aa04bf372006e774",
+        "action_7_request_7fdcb6f380383e19"
+      ]
+    },
+    {
+      "sequence": 127,
+      "kind": "model_started",
+      "call_number": 8,
+      "status": "pending",
+      "serialized_chars": 68211,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 128,
+      "kind": "item_discard",
+      "item_id": "pattern_04c3d74eaa9b6cbf",
+      "reason": "Low-confidence comparison; direct episode evidence suffices.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 129,
+      "kind": "item_discard",
+      "item_id": "fact_3c1d77d75cf616dc",
+      "reason": "Duplicates the inspected de-duplication excerpt.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 130,
+      "kind": "item_discard",
+      "item_id": "fact_292c77c44050f9e4",
+      "reason": "Duplicates the inspected DocDB incompleteness excerpt.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 131,
+      "kind": "item_discard",
+      "item_id": "pattern_1a142deb5722d186",
+      "reason": "Broader retrieval-versus-persistence comparison not needed for the scoped answer.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 132,
+      "kind": "model",
+      "call_number": 8,
+      "status": "completed",
+      "serialized_chars": 68211,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_ba81dba37b935ebc",
+      "action": {
+        "tool_name": "DraftAnswer",
+        "arguments_json": "{\"claims\":[{\"statement\":\"A record reports major gaps and inconsistencies between DocDB and Elasticsearch, but does not itself explain their cause.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_6c9707c22f4b3e34\",\"quote\":\"Major data gaps and inconsistencies between DocDB and Elasticsearch\",\"start\":0}],\"memory_ids\":[\"episode_15bb262c5efbbe09\"],\"confidence\":\"high\",\"confidence_reason\":\"Direct extracted wording reports the gap, not a mechanism.\",\"verification_note\":\"The cited passage names the affected stores and condition.\"},{\"statement\":\"A separate record attributes DocDB/Elasticsearch drift to partial de-duplication updates; the available excerpt does not show how the updates caused drift.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_98651123bedd9e11\",\"quote\":\"DocDB/ES drift from partial de-duplication updates\",\"start\":0}],\"memory_ids\":[\"episode_0099b4eefc7521d8\"],\"confidence\":\"medium\",\"confidence_reason\":\"The attribution is explicit, but appears only as a brief extracted description.\",\"verification_note\":\"The citation directly names partial de-duplication updates as the reported explanation.\"},{\"statement\":\"Another record reports uneven or incomplete data in DocDB, a completeness problem distinct from disagreement between DocDB and Elasticsearch.\",\"kind\":\"synthesis\",\"citations\":[{\"evidence_id\":\"ev_d12f9a9f4427477b\",\"quote\":\"Data stored in DocDB is uneven/incomplete\",\"start\":0},{\"evidence_id\":\"ev_6c9707c22f4b3e34\",\"quote\":\"Major data gaps and inconsistencies between DocDB and Elasticsearch\",\"start\":0}],\"memory_ids\":[\"episode_2ea1ec7fc40462d2\",\"episode_15bb262c5efbbe09\"],\"confidence\":\"medium\",\"confidence_reason\":\"The records describe different consistency questions; they do not establish whether the same data was affected.\",\"verification_note\":\"One passage concerns DocDB completeness, while the other concerns gaps between stores.\"},{\"statement\":\"Incorrect cursor handling is suggested as an explanation for inconsistent DocDB storage, but that connection appears in an inferred graph rationale rather than a directly extracted source passage.\",\"kind\":\"hypothesis\",\"citations\":[{\"evidence_id\":\"ev_1c518266822509e0\",\"quote\":\"Resolving data ingestion failure (decision_80b5b8e1) depends on fixing inconsistent DocDB storage due to incorrect cursor handling (decision_02d55676). The cursor handling issue directly impacts data ingestion; the ingestion failure cannot be properly diagnosed without first resolving the cursor inconsistency. Both decisions share DocDB as a target resource and the same participants.\",\"start\":0},{\"evidence_id\":\"ev_d12f9a9f4427477b\",\"quote\":\"Data stored in DocDB is uneven/incomplete\",\"start\":0}],\"memory_ids\":[\"episode_2ea1ec7fc40462d2\"],\"confidence\":\"low\",\"confidence_reason\":\"The causal link is inferred, not directly reported in the extracted source wording.\",\"verification_note\":\"The inferred rationale mentions cursor handling; the extracted passage confirms only incomplete DocDB data.\"},{\"statement\":\"For Weibo data, the records juxtapose valid HTTP 200 responses from Tikhub with data not being ingested into DocDB/Elasticsearch. This locates a gap after upstream retrieval but does not identify the failing processing or persistence step.\",\"kind\":\"synthesis\",\"citations\":[{\"evidence_id\":\"ev_afaa76709f32a0cf\",\"quote\":\"Tikhub for Weibo data are returning HTTP 200 responses with valid video post data\",\"start\":0},{\"evidence_id\":\"ev_08a24f67b8645adb\",\"quote\":\"data is not being ingested into docDb/ES\",\"start\":0},{\"evidence_id\":\"ev_855ed0b570fdb824\",\"quote\":\"Tikhub → processing → DB/ES\",\"start\":0}],\"memory_ids\":[\"episode_19ddb6901beff02b\"],\"confidence\":\"medium\",\"confidence_reason\":\"The observations bracket the gap but do not isolate its technical cause.\",\"verification_note\":\"The citations show successful retrieval, the processing-to-store path, and missing ingestion.\"},{\"statement\":\"A Done status is recorded, but it does not verify that the gaps were repaired, reconciled, or remained resolved.\",\"kind\":\"synthesis\",\"citations\":[{\"evidence_id\":\"ev_ddb4054fc3bd14d2\",\"quote\":\"status: Done\",\"start\":0}],\"memory_ids\":[\"episode_15bb262c5efbbe09\"],\"confidence\":\"high\",\"confidence_reason\":\"The cited text establishes administrative status only.\",\"verification_note\":\"No repair or post-fix validation is stated in the cited status passage.\"}],\"unanswered\":[\"Which specific processing or persistence step failed in the Weibo ingestion path?\",\"What cursor-handling error occurred, and was it responsible for the reported DocDB/Elasticsearch gaps?\",\"Were de-duplication drift, incomplete DocDB storage, and Weibo non-ingestion manifestations of one incident or separate issues?\",\"Were fixes deployed and validated by source-to-store completeness and DocDB-to-Elasticsearch reconciliation checks?\"],\"limitations\":[\"Several proposed dependencies, supersession links, and cursor-related causal statements are inferred graph rationales rather than source reports.\",\"The short extracted passages provide no quantified gap size, affected data range, repair procedure, or post-fix verification.\"]}",
+        "purpose": "Summarize supported gap explanations and clearly identify unresolved causes and verification gaps.",
+        "discarded_items": [
+          {
+            "item_id": "pattern_04c3d74eaa9b6cbf",
+            "reason": "Low-confidence comparison; direct episode evidence suffices."
+          },
+          {
+            "item_id": "fact_3c1d77d75cf616dc",
+            "reason": "Duplicates the inspected de-duplication excerpt."
+          },
+          {
+            "item_id": "fact_292c77c44050f9e4",
+            "reason": "Duplicates the inspected DocDB incompleteness excerpt."
+          },
+          {
+            "item_id": "pattern_1a142deb5722d186",
+            "reason": "Broader retrieval-versus-persistence comparison not needed for the scoped answer."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_6c9707c22f4b3e34",
+          "ev_98651123bedd9e11",
+          "ev_d12f9a9f4427477b",
+          "ev_1c518266822509e0",
+          "ev_afaa76709f32a0cf",
+          "ev_08a24f67b8645adb",
+          "ev_855ed0b570fdb824",
+          "ev_ddb4054fc3bd14d2"
+        ]
+      },
+      "latency_seconds": 18.493471458001295,
+      "provider": {
+        "request_id": "request_ba81dba37b935ebc",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/data_gaps__original__memory_graph/cache/codex/request_ba81dba37b935ebc.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 20286,
+          "output_tokens": 1623,
+          "reasoning_output_tokens": 153,
+          "total_tokens": 21909
+        },
+        "thread_id": "01a1149c-c91e-77a2-851b-97d7ad882c03",
+        "turn_id": "01a1149c-c941-76a3-8612-b9df8a5f484f",
+        "status": "completed",
+        "latency_seconds": 18.484
+      }
+    },
+    {
+      "sequence": 133,
+      "kind": "citation_repair",
+      "errors": [
+        "Claim 6: claim needs substantive extracted source support; labels, inference, and administrative closure are insufficient"
+      ]
+    },
+    {
+      "sequence": 134,
+      "kind": "context",
+      "model_call": 9,
+      "serialized_chars": 75411,
+      "message_count": 20,
+      "pinned_evidence_ids": [
+        "ev_08a24f67b8645adb",
+        "ev_1c518266822509e0",
+        "ev_6c9707c22f4b3e34",
+        "ev_855ed0b570fdb824",
+        "ev_98651123bedd9e11",
+        "ev_afaa76709f32a0cf",
+        "ev_d12f9a9f4427477b",
+        "ev_ddb4054fc3bd14d2"
+      ],
+      "visible_item_ids": [
+        "episode_0099b4eefc7521d8",
+        "episode_15bb262c5efbbe09",
+        "episode_19ddb6901beff02b",
+        "episode_2ea1ec7fc40462d2",
+        "fact_292c77c44050f9e4",
+        "fact_3c1d77d75cf616dc",
+        "pattern_04c3d74eaa9b6cbf",
+        "pattern_1a142deb5722d186"
+      ],
+      "visible_evidence_ids": [
+        "ev_08a24f67b8645adb",
+        "ev_1c518266822509e0",
+        "ev_1fdb531d22617990",
+        "ev_317e602a008f4331",
+        "ev_3618aba27ba320a7",
+        "ev_4073b31643ace022",
+        "ev_4463da650d3701f7",
+        "ev_4fba4d02599cd039",
+        "ev_6ab384de30e6b7d5",
+        "ev_6c9707c22f4b3e34",
+        "ev_786299dd8bdfd518",
+        "ev_7c5a3b55cf2ad1d4",
+        "ev_7ff8d46b306d3990",
+        "ev_855ed0b570fdb824",
+        "ev_98651123bedd9e11",
+        "ev_a8db2a98d43a39bf",
+        "ev_afaa76709f32a0cf",
+        "ev_bc95d0874a7f7e51",
+        "ev_c33228c2143a6e68",
+        "ev_c632629d4ba3f581",
+        "ev_cf7e8db808eff8fb",
+        "ev_d12f9a9f4427477b",
+        "ev_ddb4054fc3bd14d2",
+        "ev_f8ee94f9d64ea930",
+        "ev_fd776b44a8ed836a",
+        "ev_ff476944d92d1cd3"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_80e7d5da0e7b6fee",
+        "action_2_request_494afb41168ba21a",
+        "action_3_request_c59ba388b1b62560",
+        "action_4_request_170c9f81623b034b",
+        "action_5_request_0eb95bcb278e149e",
+        "action_6_request_aa04bf372006e774",
+        "action_7_request_7fdcb6f380383e19",
+        "action_8_request_ba81dba37b935ebc"
+      ]
+    },
+    {
+      "sequence": 135,
+      "kind": "model_started",
+      "call_number": 9,
+      "status": "pending",
+      "serialized_chars": 75411,
+      "available_tools": [
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 136,
+      "kind": "item_discard",
+      "item_id": "pattern_04c3d74eaa9b6cbf",
+      "reason": "Uninspected comparison; the underlying excerpts support the distinction directly.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 137,
+      "kind": "item_discard",
+      "item_id": "pattern_1a142deb5722d186",
+      "reason": "Uninspected comparison not needed for the Weibo observation.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 138,
+      "kind": "item_discard",
+      "item_id": "fact_3c1d77d75cf616dc",
+      "reason": "Duplicates the inspected de-duplication excerpt.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 139,
+      "kind": "item_discard",
+      "item_id": "fact_292c77c44050f9e4",
+      "reason": "Duplicates the inspected DocDB incompleteness excerpt.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 140,
+      "kind": "model",
+      "call_number": 9,
+      "status": "completed",
+      "serialized_chars": 75411,
+      "available_tools": [
+        "DraftAnswer"
+      ],
+      "request_id": "request_0a7d17d9971b1b9f",
+      "action": {
+        "tool_name": "DraftAnswer",
+        "arguments_json": "{\"claims\":[{\"statement\":\"A record reports major gaps and inconsistencies between DocDB and Elasticsearch, without identifying their cause.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_6c9707c22f4b3e34\",\"quote\":\"Major data gaps and inconsistencies between DocDB and Elasticsearch\",\"start\":0}],\"memory_ids\":[\"episode_15bb262c5efbbe09\"],\"confidence\":\"high\",\"confidence_reason\":\"Direct extracted wording reports the condition, not a mechanism.\",\"verification_note\":\"The source excerpt names the stores and the reported gap.\"},{\"statement\":\"A separate record attributes DocDB/Elasticsearch drift to partial de-duplication updates, but does not describe the failure mechanism.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_98651123bedd9e11\",\"quote\":\"DocDB/ES drift from partial de-duplication updates\",\"start\":0}],\"memory_ids\":[\"episode_0099b4eefc7521d8\"],\"confidence\":\"medium\",\"confidence_reason\":\"The attribution is explicit but appears only in a brief extracted description.\",\"verification_note\":\"The excerpt names partial de-duplication updates as the reported explanation.\"},{\"statement\":\"Another record reports uneven or incomplete DocDB data; completeness within DocDB and agreement between DocDB and Elasticsearch are distinct questions.\",\"kind\":\"synthesis\",\"citations\":[{\"evidence_id\":\"ev_d12f9a9f4427477b\",\"quote\":\"Data stored in DocDB is uneven/incomplete\",\"start\":0},{\"evidence_id\":\"ev_6c9707c22f4b3e34\",\"quote\":\"Major data gaps and inconsistencies between DocDB and Elasticsearch\",\"start\":0}],\"memory_ids\":[\"episode_2ea1ec7fc40462d2\",\"episode_15bb262c5efbbe09\"],\"confidence\":\"medium\",\"confidence_reason\":\"The excerpts describe different checks, without establishing whether the same data was affected.\",\"verification_note\":\"One excerpt concerns DocDB completeness; the other concerns gaps between stores.\"},{\"statement\":\"Incorrect cursor handling is a possible explanation for inconsistent DocDB storage, but the causal connection appears in an inferred graph rationale, not a directly extracted source passage.\",\"kind\":\"hypothesis\",\"citations\":[{\"evidence_id\":\"ev_1c518266822509e0\",\"quote\":\"Resolving data ingestion failure (decision_80b5b8e1) depends on fixing inconsistent DocDB storage due to incorrect cursor handling (decision_02d55676). The cursor handling issue directly impacts data ingestion; the ingestion failure cannot be properly diagnosed without first resolving the cursor inconsistency. Both decisions share DocDB as a target resource and the same participants.\",\"start\":0},{\"evidence_id\":\"ev_d12f9a9f4427477b\",\"quote\":\"Data stored in DocDB is uneven/incomplete\",\"start\":0}],\"memory_ids\":[\"episode_2ea1ec7fc40462d2\"],\"confidence\":\"low\",\"confidence_reason\":\"Only the inferred rationale supplies the cursor-related causal claim.\",\"verification_note\":\"The extracted passage confirms incomplete DocDB data; the inferred passage proposes cursor handling.\"},{\"statement\":\"For Weibo data, valid Tikhub HTTP 200 responses were reported alongside missing ingestion into DocDB/Elasticsearch. This places the observed gap after retrieval but does not identify the failing step.\",\"kind\":\"synthesis\",\"citations\":[{\"evidence_id\":\"ev_afaa76709f32a0cf\",\"quote\":\"Tikhub for Weibo data are returning HTTP 200 responses with valid video post data\",\"start\":0},{\"evidence_id\":\"ev_08a24f67b8645adb\",\"quote\":\"data is not being ingested into docDb/ES\",\"start\":0},{\"evidence_id\":\"ev_855ed0b570fdb824\",\"quote\":\"Tikhub → processing → DB/ES\",\"start\":0}],\"memory_ids\":[\"episode_19ddb6901beff02b\"],\"confidence\":\"medium\",\"confidence_reason\":\"The observations bracket the gap but do not isolate a technical cause.\",\"verification_note\":\"The excerpts report successful retrieval, the processing-to-store path, and missing ingestion.\"}],\"unanswered\":[\"Which processing or persistence step failed in the Weibo ingestion path?\",\"What cursor-handling error occurred, and did it contribute to the reported gaps?\",\"Were de-duplication drift, incomplete DocDB storage, and Weibo non-ingestion one incident or separate issues?\",\"Were fixes deployed and validated through source-to-store completeness and DocDB-to-Elasticsearch reconciliation checks?\"],\"limitations\":[\"Inferred graph dependencies and supersession claims are not direct source reports of causality or chronology.\",\"The available extracted passages do not quantify the gaps, describe repairs, or establish post-fix recovery. An administrative Done status is not substantive validation.\"]}",
+        "purpose": "Correct the unsupported closure claim and retain only qualified, cited explanations and unresolved questions.",
+        "discarded_items": [
+          {
+            "item_id": "pattern_04c3d74eaa9b6cbf",
+            "reason": "Uninspected comparison; the underlying excerpts support the distinction directly."
+          },
+          {
+            "item_id": "pattern_1a142deb5722d186",
+            "reason": "Uninspected comparison not needed for the Weibo observation."
+          },
+          {
+            "item_id": "fact_3c1d77d75cf616dc",
+            "reason": "Duplicates the inspected de-duplication excerpt."
+          },
+          {
+            "item_id": "fact_292c77c44050f9e4",
+            "reason": "Duplicates the inspected DocDB incompleteness excerpt."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_6c9707c22f4b3e34",
+          "ev_98651123bedd9e11",
+          "ev_d12f9a9f4427477b",
+          "ev_1c518266822509e0",
+          "ev_afaa76709f32a0cf",
+          "ev_08a24f67b8645adb",
+          "ev_855ed0b570fdb824"
+        ]
+      },
+      "latency_seconds": 27.242728292010725,
+      "provider": {
+        "request_id": "request_0a7d17d9971b1b9f",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/data_gaps__original__memory_graph/cache/codex/request_0a7d17d9971b1b9f.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 0,
+          "input_tokens": 21779,
+          "output_tokens": 1394,
+          "reasoning_output_tokens": 86,
+          "total_tokens": 23173
+        },
+        "thread_id": "01a1149d-1169-7b20-ae85-45228a71ed9e",
+        "turn_id": "01a1149d-1193-7873-99a0-058b95ca574e",
+        "status": "completed",
+        "latency_seconds": 27.2355
+      }
+    },
+    {
+      "sequence": 141,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "Community_141"
+      ],
+      "memory_ids": [
+        "episode_15bb262c5efbbe09"
+      ],
+      "evidence_ids": [
+        "ev_6c9707c22f4b3e34"
+      ],
+      "source_mode": "memory_confirmed_by_graph",
+      "verification_note": "The source excerpt names the stores and the reported gap."
+    },
+    {
+      "sequence": 142,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "KEP-6664"
+      ],
+      "memory_ids": [
+        "episode_0099b4eefc7521d8"
+      ],
+      "evidence_ids": [
+        "ev_98651123bedd9e11"
+      ],
+      "source_mode": "memory_confirmed_by_graph",
+      "verification_note": "The excerpt names partial de-duplication updates as the reported explanation."
+    },
+    {
+      "sequence": 143,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "Community_141",
+        "KEP-6611"
+      ],
+      "memory_ids": [
+        "episode_2ea1ec7fc40462d2",
+        "episode_15bb262c5efbbe09"
+      ],
+      "evidence_ids": [
+        "ev_d12f9a9f4427477b",
+        "ev_6c9707c22f4b3e34"
+      ],
+      "source_mode": "memory",
+      "verification_note": "One excerpt concerns DocDB completeness; the other concerns gaps between stores."
+    },
+    {
+      "sequence": 144,
+      "kind": "claim_support",
+      "claim_id": "C4",
+      "record_ids": [
+        "KEP-6611"
+      ],
+      "memory_ids": [
+        "episode_2ea1ec7fc40462d2"
+      ],
+      "evidence_ids": [
+        "ev_1c518266822509e0",
+        "ev_d12f9a9f4427477b"
+      ],
+      "source_mode": "memory",
+      "verification_note": "The extracted passage confirms incomplete DocDB data; the inferred passage proposes cursor handling."
+    },
+    {
+      "sequence": 145,
+      "kind": "claim_support",
+      "claim_id": "C5",
+      "record_ids": [
+        "KEP-6610",
+        "gdrive:1mXMcKxPJDNpoazNcmy5zt3j_2Sg9S258XJt_xwrq5xg"
+      ],
+      "memory_ids": [
+        "episode_19ddb6901beff02b"
+      ],
+      "evidence_ids": [
+        "ev_afaa76709f32a0cf",
+        "ev_08a24f67b8645adb",
+        "ev_855ed0b570fdb824"
+      ],
+      "source_mode": "memory",
+      "verification_note": "The excerpts report successful retrieval, the processing-to-store path, and missing ingestion."
+    }
+  ],
+  "usage": {
+    "model_calls": 9,
+    "data_tool_calls": 7,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 139590,
+      "output_tokens": 4105,
+      "cached_input_tokens": 28160,
+      "reasoning_output_tokens": 417
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 80.04054308403283,
+    "provider_elapsed_seconds": 79.9431,
+    "tool_elapsed_seconds": 0.04473358401446603,
+    "total_elapsed_seconds": 80.19800704202498,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "agent_version": "task2-agent-v1",
+    "graph_hash": "graph_461ec66cd6c65256",
+    "memory_fingerprint": "memory_e4d06d4e2b5f1072",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "schema_version": "3.1",
+    "abstraction_run_id": "abstraction_b28471cf51a91b7f",
+    "execution_scope": "production",
+    "preview_notice": null,
+    "coverage": {
+      "base_status": "complete",
+      "reviewed_candidates": 816,
+      "selected_candidates": 816,
+      "processed_abstraction_packets": 23,
+      "planned_abstraction_packets": 23
+    },
+    "tool_profile": "full",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/data_gaps__original__memory_graph/cache",
+      "timeout": 300.0
+    },
+    "created_at": "2026-10-07T04:27:07.603740+00:00",
+    "dependencies": {
+      "langchain": "1.4.0",
+      "langchain-core": "1.6.1",
+      "langgraph": "1.2.11",
+      "pydantic": "2.13.5"
+    },
+    "client_injected": true,
+    "context_policy": "200000 canonical serialized application characters; exact excerpts, pinned evidence, whole-exchange eviction; fresh state per question",
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "data_gaps__original__memory_graph",
+      "question_id": "data_gaps",
+      "variant": "original",
+      "approach": "memory_graph",
+      "question": "What explanations do the records support for DocDB/Elasticsearch data gaps, and what remains unresolved?"
+    }
+  }
+}

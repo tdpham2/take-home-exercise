@@ -1,0 +1,1875 @@
+{
+  "question": "Why did the government tenant stop receiving narrative updates in April 2026, and what did the timeout change actually address?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "The incident record says one Argonaut government-tenant network stopped generating narrative updates around April 19, 2026; it does not establish a tenant-wide outage.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_1c1739cdda90321d",
+          "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The record directly identifies one affected network and an approximate start date.",
+      "verification_note": "",
+      "id": "C1",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "The reported cause was that narrative-generation jobs exceeded the 10-hour processing limit and were killed before completion; re-queued jobs were killed again, producing no output.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_5f2b2e2ded8842f5",
+          "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_1b68761b66cc3cc3",
+          "quote": "The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The incident record explicitly reports the timeout and retry mechanism.",
+      "verification_note": "",
+      "id": "C2",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "The timeout change raised the processing limit from 10 to 12 hours to give long-running narrative jobs more time before application termination; it does not itself demonstrate that updates resumed.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_ad26bffaa983949e",
+          "quote": "the processing timeout was increased from 10 hours to 12 hours",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_f3dba2eba43e2de5",
+          "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The change and targeted failure mechanism are directly reported, but recovery is not verified by these passages.",
+      "verification_note": "",
+      "id": "C3",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "source_mode": "graph"
+    }
+  ],
+  "unanswered": [
+    "Whether and when narrative updates resumed after the timeout increase.",
+    "Why the jobs ran longer than 10 hours.",
+    "Whether alerting or response procedures were changed."
+  ],
+  "limitations": [
+    "KEP-6969 is an incident report, not independent verification of deployment or recovery.",
+    "Citation validation checks source access and exact provenance, not semantic entailment or real-world truth."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "execution_scope": "source_only"
+    },
+    {
+      "sequence": 2,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 6426,
+      "message_count": 2,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [],
+      "included_tool_call_ids": []
+    },
+    {
+      "sequence": 3,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "pending",
+      "serialized_chars": 6426,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model",
+      "call_number": 1,
+      "status": "completed",
+      "serialized_chars": 6426,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_a5ac7f443b770a49",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"government tenant narrative updates April 2026 timeout\",\"mode\":\"both\",\"limit\":10}",
+        "purpose": "Locate original records about the April 2026 narrative-update interruption and the timeout change.",
+        "discarded_items": [],
+        "pin_evidence_ids": []
+      },
+      "latency_seconds": 4.320176916982746,
+      "provider": {
+        "request_id": "request_a5ac7f443b770a49",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__original__graph_only/cache/codex/request_a5ac7f443b770a49.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 4548,
+          "output_tokens": 91,
+          "reasoning_output_tokens": 17,
+          "total_tokens": 4639
+        },
+        "thread_id": "01a11499-75b8-74f0-be41-586c117178fe",
+        "turn_id": "01a11499-75df-7ed2-9728-2ddf7a36fd52",
+        "status": "completed",
+        "latency_seconds": 4.3168
+      }
+    },
+    {
+      "sequence": 5,
+      "kind": "tool_started",
+      "call_id": "action_1_request_a5ac7f443b770a49",
+      "name": "search_graph",
+      "arguments": {
+        "query": "government tenant narrative updates April 2026 timeout",
+        "mode": "both",
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "government tenant narrative updates April 2026 timeout",
+        "mode": "both",
+        "limit": 10
+      },
+      "call_id": "action_1_request_a5ac7f443b770a49",
+      "result": {
+        "expanded_query": "government tenant narrative updates April 2026 timeout",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_1c1739cdda90321d",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "event_0fb2fd55",
+              "relation": "REFERENCES",
+              "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026",
+              "start": 0,
+              "end": 174,
+              "total_chars": 174,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "April 19, 2026",
+                  "date": "2026-04-19",
+                  "end_date": null,
+                  "evidence_id": "ev_1c1739cdda90321d",
+                  "status": "explicit_date_mention",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4386d80195ef6b5a",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "outcome_ab39ce9c",
+              "relation": "PRODUCES",
+              "quote": "Government customer (Argonaut tenant) went 10+ days (Apr 19–29) without narrative updates for at least one network",
+              "start": 0,
+              "end": 114,
+              "total_chars": 114,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 19–29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_4386d80195ef6b5a",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_9b4317c218937e4f",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "event_0fb2fd55",
+              "target_id": "decision_689ff4ca",
+              "relation": "CAUSES",
+              "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing.",
+              "start": 0,
+              "end": 557,
+              "total_chars": 557,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "April 19, 2026",
+                  "date": "2026-04-19",
+                  "end_date": null,
+                  "evidence_id": "ev_9b4317c218937e4f",
+                  "status": "explicit_date_mention",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_c7cc9fb3a33b9eab",
+              "record_id": "KEP-3532",
+              "provenance_kind": "extracted",
+              "source_id": "decision_a30b8f2e",
+              "target_id": "resource_94e6b29e",
+              "relation": "AFFECTS",
+              "quote": "Purge Invalid Twitter and Reddit Posts from Government Tenant Networks",
+              "start": 0,
+              "end": 70,
+              "total_chars": 70,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_e756cd2fe5c563b7",
+              "record_id": "KEP-6926",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7ab6c811",
+              "target_id": "resource_831eb833",
+              "relation": "AFFECTS",
+              "quote": "create a new tenant in Argus Social (GOVERNMENT) called Nambulite",
+              "start": 0,
+              "end": 65,
+              "total_chars": 65,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_05dfc144fe42c9a5",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_bcaeafa7",
+              "target_id": "decision_e6acfe3d",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "decision_bcaeafa7 (2026-03-13) creates tenant Ruby, superseding decision_e6acfe3d (2026-03-04) which created tenant Argonaut. Both are operational decisions to create specific tenants on Government Argus Social within the same initiative. The later decision represents an additional or replacement tenant creation action.",
+              "start": 0,
+              "end": 321,
+              "total_chars": 321,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-03-13",
+                  "date": "2026-03-13",
+                  "evidence_id": "ev_05dfc144fe42c9a5",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-03-04",
+                  "date": "2026-03-04",
+                  "evidence_id": "ev_05dfc144fe42c9a5",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_271d3602bd369d83",
+              "record_id": "KEP-4802",
+              "provenance_kind": "extracted",
+              "source_id": "decision_a9f30524",
+              "target_id": "risk_3b218ed9",
+              "relation": "REFERENCES",
+              "quote": "For government tenant users, this is a compliance and privacy concern — email addresses should never be transmitted to a third-party analytics tool.",
+              "start": 0,
+              "end": 148,
+              "total_chars": 148,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_d97482ecb4ab2384",
+              "record_id": "KEP-4802",
+              "provenance_kind": "extracted",
+              "source_id": "decision_a9f30524",
+              "target_id": "rule_f5dbba0c",
+              "relation": "REFERENCES",
+              "quote": "For government tenant users, this is a compliance and privacy concern — email addresses should never be transmitted to a third-party analytics tool.",
+              "start": 0,
+              "end": 148,
+              "total_chars": 148,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_477c9de5cda34331",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_91e6819f",
+              "target_id": "event_e5062eca",
+              "relation": "REFERENCES",
+              "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing",
+              "start": 0,
+              "end": 136,
+              "total_chars": 136,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_477c9de5cda34331",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29, 2026",
+                  "date": "2026-04-29",
+                  "end_date": null,
+                  "evidence_id": "ev_477c9de5cda34331",
+                  "status": "explicit_date_mention",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_791bfd88744cdd7f",
+              "record_id": "KEP-4802",
+              "provenance_kind": "extracted",
+              "source_id": "decision_a9f30524",
+              "target_id": "resource_80ef0927",
+              "relation": "AFFECTS",
+              "quote": "This ticket updates the Pendo initialization snippet to conditionally send a Pendo ID instead of email when the user is on a government login space.",
+              "start": 0,
+              "end": 148,
+              "total_chars": 148,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 1007,
+          "next_offset": 10
+        },
+        "entities": {
+          "results": [
+            {
+              "id": "resource_831eb833",
+              "label": "Argus Social government tenant",
+              "type": "resource",
+              "community": [
+                880
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "outcome_a01351c7",
+              "label": "Argonaut tenant created on Government Argus Social",
+              "type": "outcome",
+              "community": [
+                271
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "decision_e6acfe3d",
+              "label": "Create new tenant Argonaut on Government Argus Social",
+              "type": "decision",
+              "community": [
+                271
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "decision_7ab6c811",
+              "label": "Create new tenant Nambulite in Argus Social government section",
+              "type": "decision",
+              "community": [
+                880
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "decision_a30b8f2e",
+              "label": "Purge invalid Twitter and Reddit posts from government tenant networks",
+              "type": "decision",
+              "community": [
+                899
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "decision_bcaeafa7",
+              "label": "Create tenant Ruby on Government Argus Social with 10 tokens",
+              "type": "decision",
+              "community": [
+                271
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "outcome_2c9f59e5",
+              "label": "New tenant Nambulite created in Argus Social government section",
+              "type": "outcome",
+              "community": [
+                880
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "outcome_6fb0c47f",
+              "label": "Invalid Twitter and Reddit posts purged from 16 government tenant networks",
+              "type": "outcome",
+              "community": [
+                899
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "risk_3b218ed9",
+              "label": "Government tenant user email addresses transmitted to third-party analytics tool",
+              "type": "risk",
+              "community": [
+                1986
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "outcome_99bbc87c",
+              "label": "backfill from April 21 restored full data integrity",
+              "type": "outcome",
+              "community": [
+                1126
+              ],
+              "label_status": "unverified graph label"
+            }
+          ],
+          "total": 471,
+          "next_offset": 10
+        }
+      },
+      "latency_seconds": 0.011235624988330528,
+      "error": false,
+      "new_ids": [
+        "decision_7ab6c811",
+        "decision_a30b8f2e",
+        "decision_bcaeafa7",
+        "decision_e6acfe3d",
+        "ev_05dfc144fe42c9a5",
+        "ev_1c1739cdda90321d",
+        "ev_271d3602bd369d83",
+        "ev_4386d80195ef6b5a",
+        "ev_477c9de5cda34331",
+        "ev_791bfd88744cdd7f",
+        "ev_9b4317c218937e4f",
+        "ev_c7cc9fb3a33b9eab",
+        "ev_d97482ecb4ab2384",
+        "ev_e756cd2fe5c563b7",
+        "outcome_2c9f59e5",
+        "outcome_6fb0c47f",
+        "outcome_99bbc87c",
+        "outcome_a01351c7",
+        "resource_831eb833",
+        "risk_3b218ed9",
+        "span:ev_05dfc144fe42c9a5:0:321",
+        "span:ev_1c1739cdda90321d:0:174",
+        "span:ev_271d3602bd369d83:0:148",
+        "span:ev_4386d80195ef6b5a:0:114",
+        "span:ev_477c9de5cda34331:0:136",
+        "span:ev_791bfd88744cdd7f:0:148",
+        "span:ev_9b4317c218937e4f:0:557",
+        "span:ev_c7cc9fb3a33b9eab:0:70",
+        "span:ev_d97482ecb4ab2384:0:148",
+        "span:ev_e756cd2fe5c563b7:0:65"
+      ]
+    },
+    {
+      "sequence": 7,
+      "kind": "context",
+      "model_call": 2,
+      "serialized_chars": 16736,
+      "message_count": 4,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_05dfc144fe42c9a5",
+        "ev_1c1739cdda90321d",
+        "ev_271d3602bd369d83",
+        "ev_4386d80195ef6b5a",
+        "ev_477c9de5cda34331",
+        "ev_791bfd88744cdd7f",
+        "ev_9b4317c218937e4f",
+        "ev_c7cc9fb3a33b9eab",
+        "ev_d97482ecb4ab2384",
+        "ev_e756cd2fe5c563b7"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a5ac7f443b770a49"
+      ]
+    },
+    {
+      "sequence": 8,
+      "kind": "model_started",
+      "call_number": 2,
+      "status": "pending",
+      "serialized_chars": 16736,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 9,
+      "kind": "model",
+      "call_number": 2,
+      "status": "completed",
+      "serialized_chars": 16736,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_f4e9f794e0175ba6",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"KEP-6969 timeout threshold narrative generation 10 hours change\",\"mode\":\"records\",\"limit\":20}",
+        "purpose": "Find the original incident record describing the timeout change and its scope.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_9b4317c218937e4f"
+        ]
+      },
+      "latency_seconds": 3.6072782079863828,
+      "provider": {
+        "request_id": "request_f4e9f794e0175ba6",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__original__graph_only/cache/codex/request_f4e9f794e0175ba6.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 0,
+          "input_tokens": 7129,
+          "output_tokens": 95,
+          "reasoning_output_tokens": 8,
+          "total_tokens": 7224
+        },
+        "thread_id": "01a11499-8509-7ca2-9cf1-652675fe3830",
+        "turn_id": "01a11499-852a-7fe0-87dd-ffb8cd5e74d3",
+        "status": "completed",
+        "latency_seconds": 3.5989
+      }
+    },
+    {
+      "sequence": 10,
+      "kind": "tool_started",
+      "call_id": "action_2_request_f4e9f794e0175ba6",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-6969 timeout threshold narrative generation 10 hours change",
+        "mode": "records",
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 11,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-6969 timeout threshold narrative generation 10 hours change",
+        "mode": "records",
+        "limit": 20
+      },
+      "call_id": "action_2_request_f4e9f794e0175ba6",
+      "result": {
+        "expanded_query": "KEP-6969 timeout threshold narrative generation 10 hours change",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_ad26bffaa983949e",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "resource_c0cb2fb8",
+              "relation": "AFFECTS",
+              "quote": "the processing timeout was increased from 10 hours to 12 hours",
+              "start": 0,
+              "end": 62,
+              "total_chars": 62,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f3dba2eba43e2de5",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "resource_2a19226a",
+              "relation": "AFFECTS",
+              "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+              "start": 0,
+              "end": 180,
+              "total_chars": 180,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5f2b2e2ded8842f5",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "decision_689ff4ca",
+              "target_id": "risk_c09e361e",
+              "relation": "REFERENCES",
+              "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+              "start": 0,
+              "end": 196,
+              "total_chars": 196,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_155ca8494f2f3a69",
+              "record_id": "KEP-4883",
+              "provenance_kind": "extracted",
+              "source_id": "decision_463073ca",
+              "target_id": "rule_11dede03",
+              "relation": "REFERENCES",
+              "quote": "Weekly growth threshold: > +10.0% → Growing",
+              "start": 0,
+              "end": 43,
+              "total_chars": 43,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_20194ba35e5e201b",
+              "record_id": "KEP-4119",
+              "provenance_kind": "extracted",
+              "source_id": "decision_463073ca",
+              "target_id": "rule_82086b42",
+              "relation": "REFERENCES",
+              "quote": "Weekly decline threshold: < -10.0% → Declining",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_2aeb7045f01e5475",
+              "record_id": "KEP-4119",
+              "provenance_kind": "extracted",
+              "source_id": "decision_463073ca",
+              "target_id": "rule_11dede03",
+              "relation": "REFERENCES",
+              "quote": "Weekly growth threshold: > +10.0% → Growing",
+              "start": 0,
+              "end": 43,
+              "total_chars": 43,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5a677a3131eda4aa",
+              "record_id": "KT-377",
+              "provenance_kind": "extracted",
+              "source_id": "decision_463073ca",
+              "target_id": "rule_82086b42",
+              "relation": "REFERENCES",
+              "quote": "Weekly decline threshold: < -10.0% → Declining",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5f26408f6ff18994",
+              "record_id": "KEP-5056",
+              "provenance_kind": "extracted",
+              "source_id": "decision_463073ca",
+              "target_id": "rule_11dede03",
+              "relation": "REFERENCES",
+              "quote": "Weekly growth threshold: > +10.0% → Growing",
+              "start": 0,
+              "end": 43,
+              "total_chars": 43,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_617c99b8969a37fb",
+              "record_id": "KEP-4913",
+              "provenance_kind": "extracted",
+              "source_id": "decision_463073ca",
+              "target_id": "rule_82086b42",
+              "relation": "REFERENCES",
+              "quote": "Weekly decline threshold: < -10.0% → Declining",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_72a256aed85b42cb",
+              "record_id": "KT-377",
+              "provenance_kind": "extracted",
+              "source_id": "decision_463073ca",
+              "target_id": "rule_11dede03",
+              "relation": "REFERENCES",
+              "quote": "Weekly growth threshold: > +10.0% → Growing",
+              "start": 0,
+              "end": 43,
+              "total_chars": 43,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_9ee337e33a72fafe",
+              "record_id": "KEP-4883",
+              "provenance_kind": "extracted",
+              "source_id": "decision_463073ca",
+              "target_id": "rule_82086b42",
+              "relation": "REFERENCES",
+              "quote": "Weekly decline threshold: < -10.0% → Declining",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_aa9ca58698cb19fd",
+              "record_id": "KEP-4913",
+              "provenance_kind": "extracted",
+              "source_id": "decision_463073ca",
+              "target_id": "rule_11dede03",
+              "relation": "REFERENCES",
+              "quote": "Weekly growth threshold: > +10.0% → Growing",
+              "start": 0,
+              "end": 43,
+              "total_chars": 43,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ca4c5b6665fd8f59",
+              "record_id": "KEP-5056",
+              "provenance_kind": "extracted",
+              "source_id": "decision_463073ca",
+              "target_id": "rule_82086b42",
+              "relation": "REFERENCES",
+              "quote": "Weekly decline threshold: < -10.0% → Declining",
+              "start": 0,
+              "end": 46,
+              "total_chars": 46,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_9b4317c218937e4f",
+              "record_id": "KEP-6969",
+              "provenance_kind": "extracted",
+              "source_id": "event_0fb2fd55",
+              "target_id": "decision_689ff4ca",
+              "relation": "CAUSES",
+              "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing.",
+              "start": 0,
+              "end": 557,
+              "total_chars": 557,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "April 19, 2026",
+                  "date": "2026-04-19",
+                  "end_date": null,
+                  "evidence_id": "ev_9b4317c218937e4f",
+                  "status": "explicit_date_mention",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_306b9889339783e8",
+              "record_id": "KEP-4190",
+              "provenance_kind": "extracted",
+              "source_id": "event_b5850d79",
+              "target_id": "decision_78c54a83",
+              "relation": "CAUSES",
+              "quote": "Current issue: The MLE team currently takes a maximum of 10 hours to respond to comments in the topic clustering section.",
+              "start": 0,
+              "end": 121,
+              "total_chars": 121,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_eebd5c530b13d224",
+              "record_id": "KEP-4190",
+              "provenance_kind": "extracted",
+              "source_id": "decision_78c54a83",
+              "target_id": "event_b5850d79",
+              "relation": "REFERENCES",
+              "quote": "Current issue: The MLE team currently takes a maximum of 10 hours to respond to comments in the topic clustering section.",
+              "start": 0,
+              "end": 121,
+              "total_chars": 121,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_78b67c045ef5dda3",
+              "record_id": "KEP-6189",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d1a6cc32",
+              "target_id": "event_85d17d5a",
+              "relation": "REFERENCES",
+              "quote": "UI data for micro‑ and macro‑narratives appears hours late.",
+              "start": 0,
+              "end": 59,
+              "total_chars": 59,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_d752b5edf2b80f5b",
+              "record_id": "KEP-6189",
+              "provenance_kind": "extracted",
+              "source_id": "event_85d17d5a",
+              "target_id": "decision_d1a6cc32",
+              "relation": "CAUSES",
+              "quote": "UI data for micro‑ and macro‑narratives appears hours late.",
+              "start": 0,
+              "end": 59,
+              "total_chars": 59,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_88f8c130b3fbc69f",
+              "record_id": "KEP-6815",
+              "provenance_kind": "extracted",
+              "source_id": "decision_30c0bc39",
+              "target_id": "rule_78b361d9",
+              "relation": "REFERENCES",
+              "quote": "the client timeout is set from config key es_connection_timeout (default 30)",
+              "start": 0,
+              "end": 76,
+              "total_chars": 76,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0efca8b5653af727",
+              "record_id": "Community_114",
+              "provenance_kind": "extracted",
+              "source_id": "event_c37d996b",
+              "target_id": "decision_8b6603a6",
+              "relation": "CAUSES",
+              "quote": "Pruning rules sent from backend service for narrative generation runs",
+              "start": 0,
+              "end": 69,
+              "total_chars": 69,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 863,
+          "next_offset": 20
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.01565983399632387,
+      "error": false,
+      "new_ids": [
+        "ev_0efca8b5653af727",
+        "ev_155ca8494f2f3a69",
+        "ev_20194ba35e5e201b",
+        "ev_2aeb7045f01e5475",
+        "ev_306b9889339783e8",
+        "ev_5a677a3131eda4aa",
+        "ev_5f26408f6ff18994",
+        "ev_5f2b2e2ded8842f5",
+        "ev_617c99b8969a37fb",
+        "ev_72a256aed85b42cb",
+        "ev_78b67c045ef5dda3",
+        "ev_88f8c130b3fbc69f",
+        "ev_9ee337e33a72fafe",
+        "ev_aa9ca58698cb19fd",
+        "ev_ad26bffaa983949e",
+        "ev_ca4c5b6665fd8f59",
+        "ev_d752b5edf2b80f5b",
+        "ev_eebd5c530b13d224",
+        "ev_f3dba2eba43e2de5",
+        "span:ev_0efca8b5653af727:0:69",
+        "span:ev_155ca8494f2f3a69:0:43",
+        "span:ev_20194ba35e5e201b:0:46",
+        "span:ev_2aeb7045f01e5475:0:43",
+        "span:ev_306b9889339783e8:0:121",
+        "span:ev_5a677a3131eda4aa:0:46",
+        "span:ev_5f26408f6ff18994:0:43",
+        "span:ev_5f2b2e2ded8842f5:0:196",
+        "span:ev_617c99b8969a37fb:0:46",
+        "span:ev_72a256aed85b42cb:0:43",
+        "span:ev_78b67c045ef5dda3:0:59",
+        "span:ev_88f8c130b3fbc69f:0:76",
+        "span:ev_9ee337e33a72fafe:0:46",
+        "span:ev_aa9ca58698cb19fd:0:43",
+        "span:ev_ad26bffaa983949e:0:62",
+        "span:ev_ca4c5b6665fd8f59:0:46",
+        "span:ev_d752b5edf2b80f5b:0:59",
+        "span:ev_eebd5c530b13d224:0:121",
+        "span:ev_f3dba2eba43e2de5:0:180"
+      ]
+    },
+    {
+      "sequence": 12,
+      "kind": "context",
+      "model_call": 3,
+      "serialized_chars": 27982,
+      "message_count": 6,
+      "pinned_evidence_ids": [
+        "ev_9b4317c218937e4f"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_05dfc144fe42c9a5",
+        "ev_0efca8b5653af727",
+        "ev_155ca8494f2f3a69",
+        "ev_1c1739cdda90321d",
+        "ev_20194ba35e5e201b",
+        "ev_271d3602bd369d83",
+        "ev_2aeb7045f01e5475",
+        "ev_306b9889339783e8",
+        "ev_4386d80195ef6b5a",
+        "ev_477c9de5cda34331",
+        "ev_5a677a3131eda4aa",
+        "ev_5f26408f6ff18994",
+        "ev_5f2b2e2ded8842f5",
+        "ev_617c99b8969a37fb",
+        "ev_72a256aed85b42cb",
+        "ev_78b67c045ef5dda3",
+        "ev_791bfd88744cdd7f",
+        "ev_88f8c130b3fbc69f",
+        "ev_9b4317c218937e4f",
+        "ev_9ee337e33a72fafe",
+        "ev_aa9ca58698cb19fd",
+        "ev_ad26bffaa983949e",
+        "ev_c7cc9fb3a33b9eab",
+        "ev_ca4c5b6665fd8f59",
+        "ev_d752b5edf2b80f5b",
+        "ev_d97482ecb4ab2384",
+        "ev_e756cd2fe5c563b7",
+        "ev_eebd5c530b13d224",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a5ac7f443b770a49",
+        "action_2_request_f4e9f794e0175ba6"
+      ]
+    },
+    {
+      "sequence": 13,
+      "kind": "model_started",
+      "call_number": 3,
+      "status": "pending",
+      "serialized_chars": 27982,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 14,
+      "kind": "model",
+      "call_number": 3,
+      "status": "completed",
+      "serialized_chars": 27982,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_8ebb64f20e7e208d",
+      "action": {
+        "tool_name": "graph_neighborhood",
+        "arguments_json": "{\"node_id\":\"decision_689ff4ca\",\"limit\":40}",
+        "purpose": "Find original KEP-6969 passages explaining what the timeout change addressed.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_9b4317c218937e4f",
+          "ev_ad26bffaa983949e",
+          "ev_f3dba2eba43e2de5"
+        ]
+      },
+      "latency_seconds": 3.1232057090091985,
+      "provider": {
+        "request_id": "request_8ebb64f20e7e208d",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__original__graph_only/cache/codex/request_8ebb64f20e7e208d.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 0,
+          "input_tokens": 9964,
+          "output_tokens": 122,
+          "reasoning_output_tokens": 20,
+          "total_tokens": 10086
+        },
+        "thread_id": "01a11499-933b-76b2-8424-ab1374adab73",
+        "turn_id": "01a11499-935d-7610-a7ee-7278e41922eb",
+        "status": "completed",
+        "latency_seconds": 3.1163
+      }
+    },
+    {
+      "sequence": 15,
+      "kind": "tool_started",
+      "call_id": "action_3_request_8ebb64f20e7e208d",
+      "name": "graph_neighborhood",
+      "arguments": {
+        "node_id": "decision_689ff4ca",
+        "limit": 40
+      }
+    },
+    {
+      "sequence": 16,
+      "kind": "tool",
+      "name": "graph_neighborhood",
+      "arguments": {
+        "node_id": "decision_689ff4ca",
+        "limit": 40
+      },
+      "call_id": "action_3_request_8ebb64f20e7e208d",
+      "result": {
+        "node": {
+          "id": "decision_689ff4ca",
+          "label": "increase processing timeout from 10 to 12 hours",
+          "type": "decision",
+          "community": [
+            1126
+          ]
+        },
+        "results": [
+          {
+            "evidence_id": "ev_1b68761b66cc3cc3",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "risk_02492576",
+            "relation": "REFERENCES",
+            "quote": "The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert",
+            "start": 0,
+            "end": 110,
+            "total_chars": 110,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_1c1739cdda90321d",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "event_0fb2fd55",
+            "relation": "REFERENCES",
+            "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026",
+            "start": 0,
+            "end": 174,
+            "total_chars": 174,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "April 19, 2026",
+                "date": "2026-04-19",
+                "end_date": null,
+                "evidence_id": "ev_1c1739cdda90321d",
+                "status": "explicit_date_mention",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_4386d80195ef6b5a",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "outcome_ab39ce9c",
+            "relation": "PRODUCES",
+            "quote": "Government customer (Argonaut tenant) went 10+ days (Apr 19–29) without narrative updates for at least one network",
+            "start": 0,
+            "end": 114,
+            "total_chars": 114,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "Apr 19–29",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_4386d80195ef6b5a",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_5f2b2e2ded8842f5",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "risk_c09e361e",
+            "relation": "REFERENCES",
+            "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+            "start": 0,
+            "end": 196,
+            "total_chars": 196,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_9b4317c218937e4f",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "event_0fb2fd55",
+            "target_id": "decision_689ff4ca",
+            "relation": "CAUSES",
+            "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs fo",
+            "start": 0,
+            "end": 400,
+            "total_chars": 557,
+            "next_start": 400,
+            "dates": [
+              {
+                "raw": "April 19, 2026",
+                "date": "2026-04-19",
+                "end_date": null,
+                "evidence_id": "ev_9b4317c218937e4f",
+                "status": "explicit_date_mention",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_ad26bffaa983949e",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "resource_c0cb2fb8",
+            "relation": "AFFECTS",
+            "quote": "the processing timeout was increased from 10 hours to 12 hours",
+            "start": 0,
+            "end": 62,
+            "total_chars": 62,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_f3dba2eba43e2de5",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "resource_2a19226a",
+            "relation": "AFFECTS",
+            "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+            "start": 0,
+            "end": 180,
+            "total_chars": 180,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          }
+        ],
+        "total": 7,
+        "next_offset": null
+      },
+      "latency_seconds": 0.0010187919833697379,
+      "error": false,
+      "new_ids": [
+        "decision_689ff4ca",
+        "ev_1b68761b66cc3cc3",
+        "span:ev_1b68761b66cc3cc3:0:110",
+        "span:ev_9b4317c218937e4f:0:400"
+      ]
+    },
+    {
+      "sequence": 17,
+      "kind": "context",
+      "model_call": 4,
+      "serialized_chars": 33470,
+      "message_count": 8,
+      "pinned_evidence_ids": [
+        "ev_9b4317c218937e4f",
+        "ev_ad26bffaa983949e",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_05dfc144fe42c9a5",
+        "ev_0efca8b5653af727",
+        "ev_155ca8494f2f3a69",
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_20194ba35e5e201b",
+        "ev_271d3602bd369d83",
+        "ev_2aeb7045f01e5475",
+        "ev_306b9889339783e8",
+        "ev_4386d80195ef6b5a",
+        "ev_477c9de5cda34331",
+        "ev_5a677a3131eda4aa",
+        "ev_5f26408f6ff18994",
+        "ev_5f2b2e2ded8842f5",
+        "ev_617c99b8969a37fb",
+        "ev_72a256aed85b42cb",
+        "ev_78b67c045ef5dda3",
+        "ev_791bfd88744cdd7f",
+        "ev_88f8c130b3fbc69f",
+        "ev_9b4317c218937e4f",
+        "ev_9ee337e33a72fafe",
+        "ev_aa9ca58698cb19fd",
+        "ev_ad26bffaa983949e",
+        "ev_c7cc9fb3a33b9eab",
+        "ev_ca4c5b6665fd8f59",
+        "ev_d752b5edf2b80f5b",
+        "ev_d97482ecb4ab2384",
+        "ev_e756cd2fe5c563b7",
+        "ev_eebd5c530b13d224",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a5ac7f443b770a49",
+        "action_2_request_f4e9f794e0175ba6",
+        "action_3_request_8ebb64f20e7e208d"
+      ]
+    },
+    {
+      "sequence": 18,
+      "kind": "model_started",
+      "call_number": 4,
+      "status": "pending",
+      "serialized_chars": 33470,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 19,
+      "kind": "model",
+      "call_number": 4,
+      "status": "completed",
+      "serialized_chars": 33470,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_f8e5fe7b6993be33",
+      "action": {
+        "tool_name": "get_evidence",
+        "arguments_json": "{\"evidence_ids\":[\"ev_9b4317c218937e4f\",\"ev_ad26bffaa983949e\",\"ev_1b68761b66cc3cc3\",\"ev_f3dba2eba43e2de5\"],\"start\":0,\"chars\":4000}",
+        "purpose": "Verify the incident’s reported cause, retry behavior, and what the timeout increase changed.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_9b4317c218937e4f",
+          "ev_ad26bffaa983949e",
+          "ev_1b68761b66cc3cc3",
+          "ev_f3dba2eba43e2de5"
+        ]
+      },
+      "latency_seconds": 6.170863749983255,
+      "provider": {
+        "request_id": "request_f8e5fe7b6993be33",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__original__graph_only/cache/codex/request_f8e5fe7b6993be33.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 11373,
+          "output_tokens": 202,
+          "reasoning_output_tokens": 34,
+          "total_tokens": 11575
+        },
+        "thread_id": "01a11499-9f73-7d61-a882-9820e746f36f",
+        "turn_id": "01a11499-9f95-7040-b8f0-da1666fc69ef",
+        "status": "completed",
+        "latency_seconds": 6.1642
+      }
+    },
+    {
+      "sequence": 20,
+      "kind": "tool_started",
+      "call_id": "action_4_request_f8e5fe7b6993be33",
+      "name": "get_evidence",
+      "arguments": {
+        "evidence_ids": [
+          "ev_9b4317c218937e4f",
+          "ev_ad26bffaa983949e",
+          "ev_1b68761b66cc3cc3",
+          "ev_f3dba2eba43e2de5"
+        ],
+        "start": 0,
+        "chars": 4000
+      }
+    },
+    {
+      "sequence": 21,
+      "kind": "tool",
+      "name": "get_evidence",
+      "arguments": {
+        "evidence_ids": [
+          "ev_9b4317c218937e4f",
+          "ev_ad26bffaa983949e",
+          "ev_1b68761b66cc3cc3",
+          "ev_f3dba2eba43e2de5"
+        ],
+        "start": 0,
+        "chars": 4000
+      },
+      "call_id": "action_4_request_f8e5fe7b6993be33",
+      "result": {
+        "results": [
+          {
+            "evidence_id": "ev_9b4317c218937e4f",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "event_0fb2fd55",
+            "target_id": "decision_689ff4ca",
+            "relation": "CAUSES",
+            "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing.",
+            "start": 0,
+            "end": 557,
+            "total_chars": 557,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "April 19, 2026",
+                "date": "2026-04-19",
+                "end_date": null,
+                "evidence_id": "ev_9b4317c218937e4f",
+                "status": "explicit_date_mention",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_ad26bffaa983949e",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "resource_c0cb2fb8",
+            "relation": "AFFECTS",
+            "quote": "the processing timeout was increased from 10 hours to 12 hours",
+            "start": 0,
+            "end": 62,
+            "total_chars": 62,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_1b68761b66cc3cc3",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "risk_02492576",
+            "relation": "REFERENCES",
+            "quote": "The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert",
+            "start": 0,
+            "end": 110,
+            "total_chars": 110,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          },
+          {
+            "evidence_id": "ev_f3dba2eba43e2de5",
+            "record_id": "KEP-6969",
+            "provenance_kind": "extracted",
+            "source_id": "decision_689ff4ca",
+            "target_id": "resource_2a19226a",
+            "relation": "AFFECTS",
+            "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+            "start": 0,
+            "end": 180,
+            "total_chars": 180,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+          }
+        ]
+      },
+      "latency_seconds": 0.0008120830170810223,
+      "error": false,
+      "new_ids": []
+    },
+    {
+      "sequence": 22,
+      "kind": "context",
+      "model_call": 5,
+      "serialized_chars": 36789,
+      "message_count": 10,
+      "pinned_evidence_ids": [
+        "ev_1b68761b66cc3cc3",
+        "ev_9b4317c218937e4f",
+        "ev_ad26bffaa983949e",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_05dfc144fe42c9a5",
+        "ev_0efca8b5653af727",
+        "ev_155ca8494f2f3a69",
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_20194ba35e5e201b",
+        "ev_271d3602bd369d83",
+        "ev_2aeb7045f01e5475",
+        "ev_306b9889339783e8",
+        "ev_4386d80195ef6b5a",
+        "ev_477c9de5cda34331",
+        "ev_5a677a3131eda4aa",
+        "ev_5f26408f6ff18994",
+        "ev_5f2b2e2ded8842f5",
+        "ev_617c99b8969a37fb",
+        "ev_72a256aed85b42cb",
+        "ev_78b67c045ef5dda3",
+        "ev_791bfd88744cdd7f",
+        "ev_88f8c130b3fbc69f",
+        "ev_9b4317c218937e4f",
+        "ev_9ee337e33a72fafe",
+        "ev_aa9ca58698cb19fd",
+        "ev_ad26bffaa983949e",
+        "ev_c7cc9fb3a33b9eab",
+        "ev_ca4c5b6665fd8f59",
+        "ev_d752b5edf2b80f5b",
+        "ev_d97482ecb4ab2384",
+        "ev_e756cd2fe5c563b7",
+        "ev_eebd5c530b13d224",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a5ac7f443b770a49",
+        "action_2_request_f4e9f794e0175ba6",
+        "action_3_request_8ebb64f20e7e208d",
+        "action_4_request_f8e5fe7b6993be33"
+      ]
+    },
+    {
+      "sequence": 23,
+      "kind": "model_started",
+      "call_number": 5,
+      "status": "pending",
+      "serialized_chars": 36789,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 24,
+      "kind": "model",
+      "call_number": 5,
+      "status": "completed",
+      "serialized_chars": 36789,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_62bd4574c0f044bc",
+      "action": {
+        "tool_name": "DraftAnswer",
+        "arguments_json": "{\"claims\":[{\"statement\":\"The interruption affected at least one Argonaut government-tenant network, which stopped generating narrative updates around April 19, 2026; the record does not establish that every network in the tenant stopped.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_9b4317c218937e4f\",\"quote\":\"A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026.\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The incident record directly identifies the network and approximate start date.\"},{\"statement\":\"The reported cause was that narrative-generation jobs exceeded the then-10-hour processing limit and the application killed them before completion; re-queued jobs were killed again, yielding no output.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_5f2b2e2ded8842f5\",\"quote\":\"Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing\",\"start\":0},{\"evidence_id\":\"ev_1b68761b66cc3cc3\",\"quote\":\"The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The incident record explicitly reports the failure mechanism and retry behavior.\"},{\"statement\":\"Detection and response compounded the interruption: the customer discovered it before internal alarms did, and no action was taken when those alarms later caught it.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_9b4317c218937e4f\",\"quote\":\"The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken.\",\"start\":175}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The incident record directly describes the alerting and response sequence.\"},{\"statement\":\"The timeout change increased the processing allowance from 10 to 12 hours, addressing application termination of long-running, large-volume narrative jobs—not the underlying runtime or the detection and response gap. The cited passages do not verify that updates resumed after the change.\",\"kind\":\"synthesis\",\"citations\":[{\"evidence_id\":\"ev_ad26bffaa983949e\",\"quote\":\"the processing timeout was increased from 10 hours to 12 hours\",\"start\":0},{\"evidence_id\":\"ev_f3dba2eba43e2de5\",\"quote\":\"Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)\",\"start\":0},{\"evidence_id\":\"ev_9b4317c218937e4f\",\"quote\":\"The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken.\",\"start\":175}],\"memory_ids\":[],\"confidence\":\"medium\",\"confidence_reason\":\"The scope of the change follows from the reported timeout mechanism; the passages do not demonstrate recovery or a monitoring fix.\"}],\"unanswered\":[\"Whether and when narrative updates resumed after the timeout increase.\",\"Why the affected jobs took more than 10 hours, and whether any monitoring or response changes were made.\"],\"limitations\":[\"These are statements from the KEP-6969 incident record, not independent verification of deployment or recovery.\"]}",
+        "purpose": "Answer the incident cause and distinguish the timeout adjustment from unverified recovery or monitoring fixes.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_9b4317c218937e4f",
+          "ev_5f2b2e2ded8842f5",
+          "ev_1b68761b66cc3cc3",
+          "ev_ad26bffaa983949e",
+          "ev_f3dba2eba43e2de5"
+        ]
+      },
+      "latency_seconds": 20.29573366700788,
+      "provider": {
+        "request_id": "request_62bd4574c0f044bc",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__original__graph_only/cache/codex/request_62bd4574c0f044bc.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 0,
+          "input_tokens": 12249,
+          "output_tokens": 997,
+          "reasoning_output_tokens": 83,
+          "total_tokens": 13246
+        },
+        "thread_id": "01a11499-b796-7bf3-bed2-4995c9cdc5fa",
+        "turn_id": "01a11499-b7ba-7891-9b33-88abf1fbdd6a",
+        "status": "completed",
+        "latency_seconds": 20.2912
+      }
+    },
+    {
+      "sequence": 25,
+      "kind": "citation_repair",
+      "errors": [
+        "Claim 3: quotation/offset mismatch for ev_9b4317c218937e4f",
+        "Claim 3: cited text was not shown to the model: ev_9b4317c218937e4f",
+        "Claim 3: memory-only citation requires a linked memory ID: ev_9b4317c218937e4f",
+        "Claim 4: quotation/offset mismatch for ev_9b4317c218937e4f",
+        "Claim 4: cited text was not shown to the model: ev_9b4317c218937e4f",
+        "Claim 4: memory-only citation requires a linked memory ID: ev_9b4317c218937e4f"
+      ]
+    },
+    {
+      "sequence": 26,
+      "kind": "context",
+      "model_call": 6,
+      "serialized_chars": 43223,
+      "message_count": 14,
+      "pinned_evidence_ids": [
+        "ev_1b68761b66cc3cc3",
+        "ev_5f2b2e2ded8842f5",
+        "ev_9b4317c218937e4f",
+        "ev_ad26bffaa983949e",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_05dfc144fe42c9a5",
+        "ev_0efca8b5653af727",
+        "ev_155ca8494f2f3a69",
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_20194ba35e5e201b",
+        "ev_271d3602bd369d83",
+        "ev_2aeb7045f01e5475",
+        "ev_306b9889339783e8",
+        "ev_4386d80195ef6b5a",
+        "ev_477c9de5cda34331",
+        "ev_5a677a3131eda4aa",
+        "ev_5f26408f6ff18994",
+        "ev_5f2b2e2ded8842f5",
+        "ev_617c99b8969a37fb",
+        "ev_72a256aed85b42cb",
+        "ev_78b67c045ef5dda3",
+        "ev_791bfd88744cdd7f",
+        "ev_88f8c130b3fbc69f",
+        "ev_9b4317c218937e4f",
+        "ev_9ee337e33a72fafe",
+        "ev_aa9ca58698cb19fd",
+        "ev_ad26bffaa983949e",
+        "ev_c7cc9fb3a33b9eab",
+        "ev_ca4c5b6665fd8f59",
+        "ev_d752b5edf2b80f5b",
+        "ev_d97482ecb4ab2384",
+        "ev_e756cd2fe5c563b7",
+        "ev_eebd5c530b13d224",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_a5ac7f443b770a49",
+        "action_2_request_f4e9f794e0175ba6",
+        "action_3_request_8ebb64f20e7e208d",
+        "action_4_request_f8e5fe7b6993be33",
+        "action_5_request_62bd4574c0f044bc"
+      ]
+    },
+    {
+      "sequence": 27,
+      "kind": "model_started",
+      "call_number": 6,
+      "status": "pending",
+      "serialized_chars": 43223,
+      "available_tools": [
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 28,
+      "kind": "model",
+      "call_number": 6,
+      "status": "completed",
+      "serialized_chars": 43223,
+      "available_tools": [
+        "DraftAnswer"
+      ],
+      "request_id": "request_c553b28a4ee57ec1",
+      "action": {
+        "tool_name": "DraftAnswer",
+        "arguments_json": "{\"claims\":[{\"statement\":\"The incident record says one Argonaut government-tenant network stopped generating narrative updates around April 19, 2026; it does not establish a tenant-wide outage.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_1c1739cdda90321d\",\"quote\":\"A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The record directly identifies one affected network and an approximate start date.\"},{\"statement\":\"The reported cause was that narrative-generation jobs exceeded the 10-hour processing limit and were killed before completion; re-queued jobs were killed again, producing no output.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_5f2b2e2ded8842f5\",\"quote\":\"Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing\",\"start\":0},{\"evidence_id\":\"ev_1b68761b66cc3cc3\",\"quote\":\"The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The incident record explicitly reports the timeout and retry mechanism.\"},{\"statement\":\"The timeout change raised the processing limit from 10 to 12 hours to give long-running narrative jobs more time before application termination; it does not itself demonstrate that updates resumed.\",\"kind\":\"synthesis\",\"citations\":[{\"evidence_id\":\"ev_ad26bffaa983949e\",\"quote\":\"the processing timeout was increased from 10 hours to 12 hours\",\"start\":0},{\"evidence_id\":\"ev_f3dba2eba43e2de5\",\"quote\":\"Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"medium\",\"confidence_reason\":\"The change and targeted failure mechanism are directly reported, but recovery is not verified by these passages.\"}],\"unanswered\":[\"Whether and when narrative updates resumed after the timeout increase.\",\"Why the jobs ran longer than 10 hours.\",\"Whether alerting or response procedures were changed.\"],\"limitations\":[\"KEP-6969 is an incident report, not independent verification of deployment or recovery.\"]}",
+        "purpose": "Correct the citations and distinguish the reported timeout mechanism from unverified recovery.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_1c1739cdda90321d",
+          "ev_5f2b2e2ded8842f5",
+          "ev_1b68761b66cc3cc3",
+          "ev_ad26bffaa983949e",
+          "ev_f3dba2eba43e2de5"
+        ]
+      },
+      "latency_seconds": 17.308573832997354,
+      "provider": {
+        "request_id": "request_c553b28a4ee57ec1",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__original__graph_only/cache/codex/request_c553b28a4ee57ec1.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 0,
+          "input_tokens": 13657,
+          "output_tokens": 839,
+          "reasoning_output_tokens": 158,
+          "total_tokens": 14496
+        },
+        "thread_id": "01a1149a-06e1-7d62-ac7b-74881f07f1c7",
+        "turn_id": "01a1149a-0702-7771-b4d5-3fb019bb69f0",
+        "status": "completed",
+        "latency_seconds": 17.3022
+      }
+    },
+    {
+      "sequence": 29,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_1c1739cdda90321d"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 30,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_5f2b2e2ded8842f5",
+        "ev_1b68761b66cc3cc3"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    },
+    {
+      "sequence": 31,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_ad26bffaa983949e",
+        "ev_f3dba2eba43e2de5"
+      ],
+      "source_mode": "graph",
+      "verification_note": ""
+    }
+  ],
+  "usage": {
+    "model_calls": 6,
+    "data_tool_calls": 4,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 58920,
+      "output_tokens": 2346,
+      "cached_input_tokens": 5120,
+      "reasoning_output_tokens": 320
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 54.825832083966816,
+    "provider_elapsed_seconds": 54.7896,
+    "tool_elapsed_seconds": 0.028726333985105157,
+    "total_elapsed_seconds": 54.91916862499784,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "agent_version": "task2-agent-v1",
+    "graph_hash": "graph_461ec66cd6c65256",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "execution_scope": "source_only",
+    "tool_profile": "graph_only",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/government__original__graph_only/cache",
+      "timeout": 300.0
+    },
+    "created_at": "2026-10-07T04:23:38.381422+00:00",
+    "dependencies": {
+      "langchain": "1.4.0",
+      "langchain-core": "1.6.1",
+      "langgraph": "1.2.11",
+      "pydantic": "2.13.5"
+    },
+    "client_injected": true,
+    "context_policy": "200000 canonical serialized application characters; exact excerpts, pinned evidence, whole-exchange eviction; fresh state per question",
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "government__original__graph_only",
+      "question_id": "government",
+      "variant": "original",
+      "approach": "graph_only",
+      "question": "Why did the government tenant stop receiving narrative updates in April 2026, and what did the timeout change actually address?"
+    }
+  }
+}

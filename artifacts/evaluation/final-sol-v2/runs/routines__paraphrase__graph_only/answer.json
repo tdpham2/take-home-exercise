@@ -1,0 +1,1772 @@
+{
+  "question": "What does the history say teams should routinely do for monitoring and QA, and what establishes actual execution or effectiveness?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "For vendor monitoring, the checklist calls for twice-weekly review of usage, billing, traffic drivers and anomalies, with alerts and documented observations.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_03e71e671753e994",
+          "quote": "Checklist: [ ] Gather usage and billing statistics from both platforms. [ ] Review any changes in download patterns or target domain lists. [ ] Track top 10 domains or endpoints contributing to traffic/spend. [ ] Check for any abnormal spikes or cost anomalies. [ ] Raise an alert or tag stakeholders in case of any deviation from expected usage. [ ] Document observations in the vendor monitoring sheet or dashboard. This task should be completed every Monday and Thursday for proactive tracking and early detection of unexpected billing patterns.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The source explicitly states the checklist and cadence.",
+      "verification_note": "This is a prescribed routine, not evidence that each check occurred.",
+      "id": "C1",
+      "record_ids": [
+        "KEP-4256"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "Another monitoring rule specifies a daily Active Network Stats validation check after the enrichment check.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_4d594d265b46ec88",
+          "quote": "Check Frequency: Once daily (after the enrichment check, ideally after 5pm IST)",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The cadence is explicit; its subject comes from the associated rule label, which is unverified.",
+      "verification_note": "No completed daily-check log is shown.",
+      "id": "C2",
+      "record_ids": [
+        "KEP-4172"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "A batch-lifecycle plan calls for status and age metrics, dashboards and alerts; this establishes an observability requirement, not implementation.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_d55e5ad81b4d1b98",
+          "quote": "Observability & Dashboards Expose metrics such as: Number of active batches Count of batches per status ( sent , completed , failed , etc.) Age distribution of sent batches Create dashboards and alerts based on these metrics.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passage directly lists the proposed metrics and alerting.",
+      "verification_note": "No dashboard output or alert history is shown.",
+      "id": "C3",
+      "record_ids": [
+        "KEP-5668"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "QA guidance includes unit tests for video-analysis upload validation, including file limits, MIME types, concurrency and ownership checks.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_4b28b4f82761e395",
+          "quote": "Unit tests ( tests/unit/test_video_analysis_*.py ) Validation: file size cap, MIME allowlist, per-chat concurrency, ownership of chat_id / network_id .",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The test scope is stated directly.",
+      "verification_note": "This does not itself show that the tests ran or passed.",
+      "id": "C4",
+      "record_ids": [
+        "KEP-6913"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "Recorded QA summaries provide stronger evidence of execution: one staging sanity run reports 33 queries, 24 passed and 9 failed; a production API suite summary reports 215 tests, 208 passed and 7 failed.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_84c5dad01abf5e69",
+          "quote": "Sanity Test Results – Big Agent Kepler Staging Environment | 13.01.26 Queries Run: 33 Queries Passed: 24 Queries Failed: 9 Pass Percentage: 72.73%",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_4a2fbd0945ff738e",
+          "quote": "Prod API Suite Execution Result: QA-API-Suite — Production Execution Summary (2026-05-13) Total Tests: 215 | ✅ Passed: 208 | ❌ Failed: 7",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "Both passages explicitly report environment-specific run totals and failures.",
+      "verification_note": "They document reported runs, not sustained effectiveness or resolution of failures.",
+      "id": "C5",
+      "record_ids": [
+        "KEP-2809",
+        "KEP-7078"
+      ],
+      "source_mode": "graph"
+    }
+  ],
+  "unanswered": [
+    "Were the prescribed monitoring checks performed consistently, and what anomalies, alerts or responses were recorded?",
+    "Were the cited QA failures fixed and verified by reruns or post-release monitoring?"
+  ],
+  "limitations": [
+    "Checklists, test plans, ticket titles and administrative completion do not prove execution or effectiveness.",
+    "The shown QA summaries concern distinct staging and production test suites and should not be combined into one trend.",
+    "Citation validation checks source access and exact provenance, not semantic entailment or real-world truth."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "execution_scope": "source_only"
+    },
+    {
+      "sequence": 2,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 6429,
+      "message_count": 2,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [],
+      "included_tool_call_ids": []
+    },
+    {
+      "sequence": 3,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "pending",
+      "serialized_chars": 6429,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model",
+      "call_number": 1,
+      "status": "completed",
+      "serialized_chars": 6429,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_ce848f553fe3db2c",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"routine monitoring QA regularly check alerts dashboards tests\"}",
+        "purpose": "Find original passages on routine monitoring and QA practices.",
+        "discarded_items": [],
+        "pin_evidence_ids": []
+      },
+      "latency_seconds": 4.356818125001155,
+      "provider": {
+        "request_id": "request_ce848f553fe3db2c",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/routines__paraphrase__graph_only/cache/codex/request_ce848f553fe3db2c.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 4548,
+          "output_tokens": 75,
+          "reasoning_output_tokens": 16,
+          "total_tokens": 4623
+        },
+        "thread_id": "01a114b2-fb4a-7991-8635-7ddca9bfbaed",
+        "turn_id": "01a114b2-fb70-7733-85fc-61675aa0ca8c",
+        "status": "completed",
+        "latency_seconds": 4.3369
+      }
+    },
+    {
+      "sequence": 5,
+      "kind": "tool_started",
+      "call_id": "action_1_request_ce848f553fe3db2c",
+      "name": "search_graph",
+      "arguments": {
+        "query": "routine monitoring QA regularly check alerts dashboards tests"
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "routine monitoring QA regularly check alerts dashboards tests"
+      },
+      "call_id": "action_1_request_ce848f553fe3db2c",
+      "result": {
+        "expanded_query": "routine monitoring QA regularly check alerts dashboards tests",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_d55e5ad81b4d1b98",
+              "record_id": "KEP-5668",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ab98cf6d",
+              "target_id": "resource_c80fde63",
+              "relation": "AFFECTS",
+              "quote": "Observability & Dashboards Expose metrics such as: Number of active batches Count of batches per status ( sent , completed , failed , etc.) Age distribution of sent batches Create dashboards and alerts based on these metrics.",
+              "start": 0,
+              "end": 225,
+              "total_chars": 225,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_7541aac8f48ff309",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_4a16372d",
+              "target_id": "decision_0933457d",
+              "relation": "SUPERSEDES_DECISION",
+              "quote": "Both are QA testing decisions on the same date (2026-02-10) for Agent Builder UI changes. decision_4a16372d tests Page 3 prompt setup changes, while decision_0933457d tests Page 1 welcome text changes. These are parallel QA efforts, but decision_4a16372d supersedes decision_0933457d as a follow-up QA validation.",
+              "start": 0,
+              "end": 313,
+              "total_chars": 313,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-02-10",
+                  "date": "2026-02-10",
+                  "evidence_id": "ev_7541aac8f48ff309",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_950b07fa1a233c51",
+              "record_id": "KEP-5668",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7347f335",
+              "target_id": "decision_0914e475",
+              "relation": "DECOMPOSES_TO",
+              "quote": "Correct Batch Lifecycle Handling Ensure robust status transitions from sent → completed (and any other relevant states), including: Handling of retries / callbacks from Bright Data. Idempotent updates to avoid inconsistent states. Stale Batch Detection & Recovery Add logic to detect batches stuck in sent beyond a configurable time window. Implement automated remediation (e.g., reconcile state with Bright Data API, or safely mark as completed/failed). Active Batch Limit Safeguards Add guardrails and logging when the active batch count approaches 70 (e.g., at 60, 65, 70). Integrate with monitoring/alerting (e.g., Datadog) so on‑call engineers are notified before ingestion is impacted. Observability & Dashboards Expose metrics such as: Number of active batches Count of batches per status ( se",
+              "start": 0,
+              "end": 800,
+              "total_chars": 1035,
+              "next_start": 800,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4a2fbd0945ff738e",
+              "record_id": "KEP-7078",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d1e0d5da",
+              "target_id": "event_40ae5f43",
+              "relation": "REFERENCES",
+              "quote": "Prod API Suite Execution Result: QA-API-Suite — Production Execution Summary (2026-05-13) Total Tests: 215 | ✅ Passed: 208 | ❌ Failed: 7",
+              "start": 0,
+              "end": 136,
+              "total_chars": 136,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-05-13",
+                  "date": "2026-05-13",
+                  "evidence_id": "ev_4a2fbd0945ff738e",
+                  "status": "explicit_date_mention",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_12a71d32dc0dce15",
+              "record_id": "KEP-6559",
+              "provenance_kind": "extracted",
+              "source_id": "decision_0a3d8d21",
+              "target_id": "resource_97b53c38",
+              "relation": "AFFECTS",
+              "quote": "using Network Summary V1 and ES Data Collection Stats V1 dashboards",
+              "start": 0,
+              "end": 67,
+              "total_chars": 67,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_448724bd8986b893",
+              "record_id": "KEP-6736",
+              "provenance_kind": "extracted",
+              "source_id": "decision_86f5dc84",
+              "target_id": "resource_e1f8efa8",
+              "relation": "AFFECTS",
+              "quote": "using Network Summary V1 and ES Data Collection Stats V1 dashboards",
+              "start": 0,
+              "end": 67,
+              "total_chars": 67,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_62f07e27742f10ee",
+              "record_id": "KEP-6559",
+              "provenance_kind": "extracted",
+              "source_id": "decision_0a3d8d21",
+              "target_id": "resource_e1f8efa8",
+              "relation": "AFFECTS",
+              "quote": "using Network Summary V1 and ES Data Collection Stats V1 dashboards",
+              "start": 0,
+              "end": 67,
+              "total_chars": 67,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4d594d265b46ec88",
+              "record_id": "KEP-4172",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7b495d0a",
+              "target_id": "rule_42a1228e",
+              "relation": "REFERENCES",
+              "quote": "Check Frequency: Once daily (after the enrichment check, ideally after 5pm IST)",
+              "start": 0,
+              "end": 79,
+              "total_chars": 79,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4b28b4f82761e395",
+              "record_id": "KEP-6913",
+              "provenance_kind": "extracted",
+              "source_id": "decision_76dac516",
+              "target_id": "resource_f22c32ef",
+              "relation": "AFFECTS",
+              "quote": "Unit tests ( tests/unit/test_video_analysis_*.py ) Validation: file size cap, MIME allowlist, per-chat concurrency, ownership of chat_id / network_id .",
+              "start": 0,
+              "end": 151,
+              "total_chars": 151,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_d30ea55342b38b3d",
+              "record_id": "KEP-6968",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d3c5a68f",
+              "target_id": "resource_7675e6a4",
+              "relation": "AFFECTS",
+              "quote": "Set up automated GPU cost alerts when spend exceeds baseline by >20% week-over-week.",
+              "start": 0,
+              "end": 84,
+              "total_chars": 84,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 363,
+          "next_offset": 10
+        },
+        "entities": {
+          "results": [
+            {
+              "id": "resource_f22c32ef",
+              "label": "video analysis upload tests",
+              "type": "resource",
+              "community": [
+                34
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "decision_ab98cf6d",
+              "label": "expose batch lifecycle metrics and create dashboards",
+              "type": "decision",
+              "community": [
+                1554
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "rule_42a1228e",
+              "label": "Active Network Stats validation check frequency once daily after enrichment check",
+              "type": "rule",
+              "community": [
+                1590
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "decision_2f71aeaf",
+              "label": "Raise alerts and tag stakeholders in case of deviation from expected usage",
+              "type": "decision",
+              "community": [
+                931
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "decision_76dac516",
+              "label": "Implement unit and e2e tests for video analysis upload backend",
+              "type": "decision",
+              "community": [
+                34
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "outcome_12b9537c",
+              "label": "Function to check output file from MLE implemented",
+              "type": "outcome",
+              "community": [
+                923
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "resource_7831c8b5",
+              "label": "Kepler monitoring dashboard",
+              "type": "resource",
+              "community": [
+                832
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "rule_637950d7",
+              "label": "Vendor monitoring checklist",
+              "type": "rule",
+              "community": [
+                960
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "decision_4343a12e",
+              "label": "Check for abnormal spikes or cost anomalies in vendor billing",
+              "type": "decision",
+              "community": [
+                931
+              ],
+              "label_status": "unverified graph label"
+            },
+            {
+              "id": "event_2033ff76",
+              "label": "Agent test status check in Kepler Production environment",
+              "type": "event",
+              "community": [
+                499
+              ],
+              "label_status": "unverified graph label"
+            }
+          ],
+          "total": 182,
+          "next_offset": 10
+        }
+      },
+      "latency_seconds": 0.012164541985839605,
+      "error": false,
+      "new_ids": [
+        "decision_2f71aeaf",
+        "decision_4343a12e",
+        "decision_76dac516",
+        "decision_ab98cf6d",
+        "ev_12a71d32dc0dce15",
+        "ev_448724bd8986b893",
+        "ev_4a2fbd0945ff738e",
+        "ev_4b28b4f82761e395",
+        "ev_4d594d265b46ec88",
+        "ev_62f07e27742f10ee",
+        "ev_7541aac8f48ff309",
+        "ev_950b07fa1a233c51",
+        "ev_d30ea55342b38b3d",
+        "ev_d55e5ad81b4d1b98",
+        "event_2033ff76",
+        "outcome_12b9537c",
+        "resource_7831c8b5",
+        "resource_f22c32ef",
+        "rule_42a1228e",
+        "rule_637950d7",
+        "span:ev_12a71d32dc0dce15:0:67",
+        "span:ev_448724bd8986b893:0:67",
+        "span:ev_4a2fbd0945ff738e:0:136",
+        "span:ev_4b28b4f82761e395:0:151",
+        "span:ev_4d594d265b46ec88:0:79",
+        "span:ev_62f07e27742f10ee:0:67",
+        "span:ev_7541aac8f48ff309:0:313",
+        "span:ev_950b07fa1a233c51:0:800",
+        "span:ev_d30ea55342b38b3d:0:84",
+        "span:ev_d55e5ad81b4d1b98:0:225"
+      ]
+    },
+    {
+      "sequence": 7,
+      "kind": "context",
+      "model_call": 2,
+      "serialized_chars": 15503,
+      "message_count": 4,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_12a71d32dc0dce15",
+        "ev_448724bd8986b893",
+        "ev_4a2fbd0945ff738e",
+        "ev_4b28b4f82761e395",
+        "ev_4d594d265b46ec88",
+        "ev_62f07e27742f10ee",
+        "ev_7541aac8f48ff309",
+        "ev_950b07fa1a233c51",
+        "ev_d30ea55342b38b3d",
+        "ev_d55e5ad81b4d1b98"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_ce848f553fe3db2c"
+      ]
+    },
+    {
+      "sequence": 8,
+      "kind": "model_started",
+      "call_number": 2,
+      "status": "pending",
+      "serialized_chars": 15503,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 9,
+      "kind": "invalid_selection",
+      "item_id": "ev_7541aac8f48ff309",
+      "reason": "Cannot discard an unseen item"
+    },
+    {
+      "sequence": 10,
+      "kind": "model",
+      "call_number": 2,
+      "status": "completed",
+      "serialized_chars": 15503,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_5c91a3ee6c11717f",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"monitoring QA checklist daily weekly review dashboards anomalies test execution results\",\"mode\":\"records\",\"limit\":10}",
+        "purpose": "Find original passages distinguishing prescribed monitoring and QA routines from recorded execution and results.",
+        "discarded_items": [
+          {
+            "item_id": "ev_7541aac8f48ff309",
+            "reason": "Inferred graph rationale, not original evidence of QA execution."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_4d594d265b46ec88",
+          "ev_4a2fbd0945ff738e",
+          "ev_d55e5ad81b4d1b98"
+        ]
+      },
+      "latency_seconds": 5.5815600419882685,
+      "provider": {
+        "request_id": "request_5c91a3ee6c11717f",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/routines__paraphrase__graph_only/cache/codex/request_5c91a3ee6c11717f.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 6783,
+          "output_tokens": 191,
+          "reasoning_output_tokens": 47,
+          "total_tokens": 6974
+        },
+        "thread_id": "01a114b3-0aba-7652-811d-67c60ef53b3c",
+        "turn_id": "01a114b3-0ada-7853-803f-100d762f20cc",
+        "status": "completed",
+        "latency_seconds": 5.5611
+      }
+    },
+    {
+      "sequence": 11,
+      "kind": "tool_started",
+      "call_id": "action_2_request_5c91a3ee6c11717f",
+      "name": "search_graph",
+      "arguments": {
+        "query": "monitoring QA checklist daily weekly review dashboards anomalies test execution results",
+        "mode": "records",
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 12,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "monitoring QA checklist daily weekly review dashboards anomalies test execution results",
+        "mode": "records",
+        "limit": 10
+      },
+      "call_id": "action_2_request_5c91a3ee6c11717f",
+      "result": {
+        "expanded_query": "monitoring QA checklist daily weekly review dashboards anomalies test execution results",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_35c43c7d62cdc33b",
+              "record_id": "Community_931",
+              "provenance_kind": "extracted",
+              "source_id": "decision_fba4b5de",
+              "target_id": "decision_4343a12e",
+              "relation": "DECOMPOSES_TO",
+              "quote": "Checklist: [ ] Check for any abnormal spikes or cost anomalies",
+              "start": 0,
+              "end": 62,
+              "total_chars": 62,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5e7895fa9e5aca04",
+              "record_id": "Community_931",
+              "provenance_kind": "extracted",
+              "source_id": "decision_fba4b5de",
+              "target_id": "decision_a7e37465",
+              "relation": "DECOMPOSES_TO",
+              "quote": "Checklist: [ ] Review any changes in download patterns or target domain lists",
+              "start": 0,
+              "end": 77,
+              "total_chars": 77,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ced0f2f1ad6fa26e",
+              "record_id": "Community_931",
+              "provenance_kind": "extracted",
+              "source_id": "decision_fba4b5de",
+              "target_id": "decision_4cf376d1",
+              "relation": "DECOMPOSES_TO",
+              "quote": "Checklist: [ ] Document observations in the vendor monitoring sheet or dashboard",
+              "start": 0,
+              "end": 80,
+              "total_chars": 80,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5ecd7cc69fadc4b2",
+              "record_id": "KEP-6974",
+              "provenance_kind": "extracted",
+              "source_id": "decision_ac5ad517",
+              "target_id": "rule_637950d7",
+              "relation": "REFERENCES",
+              "quote": "Checklist: [ ] Gather usage and billing statistics from both platforms. [ ] Review any changes in download patterns or target domain lists. [ ] Track top 10 domains or endpoints contributing to traffic/spend. [ ] Check for any abnormal spikes or cost anomalies. [ ] Raise an alert or tag stakeholders in case of any deviation from expected usage. [ ] Document observations in the vendor monitoring sheet or dashboard.",
+              "start": 0,
+              "end": 417,
+              "total_chars": 417,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_a3f4b431b8c6c92c",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "event_397f3b56",
+              "target_id": "decision_d37d88b7",
+              "relation": "CAUSES",
+              "quote": "The event 'BrightData API token expired during Postman collection execution' (occurred_at: 2026-05-04) directly triggered the decision to 'Implement manual Postman collection execution twice daily for API monitoring' (decided_at: 2026-05-04). The source passage explicitly references this event in the decision's neighborhood, and the temporal alignment (same date) combined with the direct causal relationship (token expiration necessitating manual monitoring) supports this edge. The event is the concrete trigger for the monitoring decision.",
+              "start": 0,
+              "end": 544,
+              "total_chars": 544,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-05-04",
+                  "date": "2026-05-04",
+                  "evidence_id": "ev_a3f4b431b8c6c92c",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-05-04",
+                  "date": "2026-05-04",
+                  "evidence_id": "ev_a3f4b431b8c6c92c",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_2fdbe4a5f37454f4",
+              "record_id": "KEP-2809",
+              "provenance_kind": "extracted",
+              "source_id": "decision_171897a5",
+              "target_id": "resource_1d695aa9",
+              "relation": "AFFECTS",
+              "quote": "Sanity Test Results – Big Agent Kepler Staging Environment",
+              "start": 0,
+              "end": 58,
+              "total_chars": 58,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_3323e75490946067",
+              "record_id": "KEP-6968",
+              "provenance_kind": "extracted",
+              "source_id": "decision_22bc11db",
+              "target_id": "resource_7675e6a4",
+              "relation": "AFFECTS",
+              "quote": "Set up GPU-specific Grafana monitoring dashboard with daily cost tracking.",
+              "start": 0,
+              "end": 74,
+              "total_chars": 74,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4a2fbd0945ff738e",
+              "record_id": "KEP-7078",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d1e0d5da",
+              "target_id": "event_40ae5f43",
+              "relation": "REFERENCES",
+              "quote": "Prod API Suite Execution Result: QA-API-Suite — Production Execution Summary (2026-05-13) Total Tests: 215 | ✅ Passed: 208 | ❌ Failed: 7",
+              "start": 0,
+              "end": 136,
+              "total_chars": 136,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-05-13",
+                  "date": "2026-05-13",
+                  "evidence_id": "ev_4a2fbd0945ff738e",
+                  "status": "explicit_date_mention",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_03e71e671753e994",
+              "record_id": "KEP-4256",
+              "provenance_kind": "extracted",
+              "source_id": "decision_93b61398",
+              "target_id": "rule_739e83c3",
+              "relation": "REFERENCES",
+              "quote": "Checklist: [ ] Gather usage and billing statistics from both platforms. [ ] Review any changes in download patterns or target domain lists. [ ] Track top 10 domains or endpoints contributing to traffic/spend. [ ] Check for any abnormal spikes or cost anomalies. [ ] Raise an alert or tag stakeholders in case of any deviation from expected usage. [ ] Document observations in the vendor monitoring sheet or dashboard. This task should be completed every Monday and Thursday for proactive tracking and early detection of unexpected billing patterns.",
+              "start": 0,
+              "end": 548,
+              "total_chars": 548,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4025618ab953387f",
+              "record_id": "KEP-4313",
+              "provenance_kind": "extracted",
+              "source_id": "decision_93b61398",
+              "target_id": "rule_739e83c3",
+              "relation": "REFERENCES",
+              "quote": "Checklist: [ ] Gather usage and billing statistics from both platforms. [ ] Review any changes in download patterns or target domain lists. [ ] Track top 10 domains or endpoints contributing to traffic/spend. [ ] Check for any abnormal spikes or cost anomalies. [ ] Raise an alert or tag stakeholders in case of any deviation from expected usage. [ ] Document observations in the vendor monitoring sheet or dashboard. This task should be completed every Monday and Thursday for proactive tracking and early detection of unexpected billing patterns.",
+              "start": 0,
+              "end": 548,
+              "total_chars": 548,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 517,
+          "next_offset": 10
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.008744209015276283,
+      "error": false,
+      "new_ids": [
+        "ev_03e71e671753e994",
+        "ev_2fdbe4a5f37454f4",
+        "ev_3323e75490946067",
+        "ev_35c43c7d62cdc33b",
+        "ev_4025618ab953387f",
+        "ev_5e7895fa9e5aca04",
+        "ev_5ecd7cc69fadc4b2",
+        "ev_a3f4b431b8c6c92c",
+        "ev_ced0f2f1ad6fa26e",
+        "span:ev_03e71e671753e994:0:548",
+        "span:ev_2fdbe4a5f37454f4:0:58",
+        "span:ev_3323e75490946067:0:74",
+        "span:ev_35c43c7d62cdc33b:0:62",
+        "span:ev_4025618ab953387f:0:548",
+        "span:ev_5e7895fa9e5aca04:0:77",
+        "span:ev_5ecd7cc69fadc4b2:0:417",
+        "span:ev_a3f4b431b8c6c92c:0:544",
+        "span:ev_ced0f2f1ad6fa26e:0:80"
+      ]
+    },
+    {
+      "sequence": 13,
+      "kind": "context",
+      "model_call": 3,
+      "serialized_chars": 23686,
+      "message_count": 6,
+      "pinned_evidence_ids": [
+        "ev_4a2fbd0945ff738e",
+        "ev_4d594d265b46ec88",
+        "ev_d55e5ad81b4d1b98"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_03e71e671753e994",
+        "ev_12a71d32dc0dce15",
+        "ev_2fdbe4a5f37454f4",
+        "ev_3323e75490946067",
+        "ev_35c43c7d62cdc33b",
+        "ev_4025618ab953387f",
+        "ev_448724bd8986b893",
+        "ev_4a2fbd0945ff738e",
+        "ev_4b28b4f82761e395",
+        "ev_4d594d265b46ec88",
+        "ev_5e7895fa9e5aca04",
+        "ev_5ecd7cc69fadc4b2",
+        "ev_62f07e27742f10ee",
+        "ev_7541aac8f48ff309",
+        "ev_950b07fa1a233c51",
+        "ev_a3f4b431b8c6c92c",
+        "ev_ced0f2f1ad6fa26e",
+        "ev_d30ea55342b38b3d",
+        "ev_d55e5ad81b4d1b98"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_ce848f553fe3db2c",
+        "action_2_request_5c91a3ee6c11717f"
+      ]
+    },
+    {
+      "sequence": 14,
+      "kind": "model_started",
+      "call_number": 3,
+      "status": "pending",
+      "serialized_chars": 23686,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 15,
+      "kind": "model",
+      "call_number": 3,
+      "status": "completed",
+      "serialized_chars": 23686,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_c18d817b1048c698",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"QA regression smoke sanity routine checklist test results production monitoring cadence\",\"mode\":\"records\",\"limit\":10}",
+        "purpose": "Find source passages on recurring QA practices and recorded test outcomes.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_03e71e671753e994",
+          "ev_4d594d265b46ec88",
+          "ev_4a2fbd0945ff738e"
+        ]
+      },
+      "latency_seconds": 3.6231382499972824,
+      "provider": {
+        "request_id": "request_c18d817b1048c698",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/routines__paraphrase__graph_only/cache/codex/request_c18d817b1048c698.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 8758,
+          "output_tokens": 135,
+          "reasoning_output_tokens": 28,
+          "total_tokens": 8893
+        },
+        "thread_id": "01a114b3-2094-7de1-9168-a86de6f5baee",
+        "turn_id": "01a114b3-20b4-7912-80c5-7b05853b5c0c",
+        "status": "completed",
+        "latency_seconds": 3.6082
+      }
+    },
+    {
+      "sequence": 16,
+      "kind": "tool_started",
+      "call_id": "action_3_request_c18d817b1048c698",
+      "name": "search_graph",
+      "arguments": {
+        "query": "QA regression smoke sanity routine checklist test results production monitoring cadence",
+        "mode": "records",
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 17,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "QA regression smoke sanity routine checklist test results production monitoring cadence",
+        "mode": "records",
+        "limit": 10
+      },
+      "call_id": "action_3_request_c18d817b1048c698",
+      "result": {
+        "expanded_query": "QA regression smoke sanity routine checklist test results production monitoring cadence",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_2fdbe4a5f37454f4",
+              "record_id": "KEP-2809",
+              "provenance_kind": "extracted",
+              "source_id": "decision_171897a5",
+              "target_id": "resource_1d695aa9",
+              "relation": "AFFECTS",
+              "quote": "Sanity Test Results – Big Agent Kepler Staging Environment",
+              "start": 0,
+              "end": 58,
+              "total_chars": 58,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_e7020039a7845c03",
+              "record_id": "KEP-6774",
+              "provenance_kind": "extracted",
+              "source_id": "decision_f6f87107",
+              "target_id": "resource_78225347",
+              "relation": "AFFECTS",
+              "quote": "QA Regression Testing Card : Release 19.1.0",
+              "start": 0,
+              "end": 43,
+              "total_chars": 43,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_ced0f2f1ad6fa26e",
+              "record_id": "Community_931",
+              "provenance_kind": "extracted",
+              "source_id": "decision_fba4b5de",
+              "target_id": "decision_4cf376d1",
+              "relation": "DECOMPOSES_TO",
+              "quote": "Checklist: [ ] Document observations in the vendor monitoring sheet or dashboard",
+              "start": 0,
+              "end": 80,
+              "total_chars": 80,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_84c5dad01abf5e69",
+              "record_id": "KEP-2809",
+              "provenance_kind": "extracted",
+              "source_id": "decision_171897a5",
+              "target_id": "outcome_4fe9060c",
+              "relation": "PRODUCES",
+              "quote": "Sanity Test Results – Big Agent Kepler Staging Environment | 13.01.26 Queries Run: 33 Queries Passed: 24 Queries Failed: 9 Pass Percentage: 72.73%",
+              "start": 0,
+              "end": 146,
+              "total_chars": 146,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_59722d42e9c7827f",
+              "record_id": "KEP-7078",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d1e0d5da",
+              "target_id": "resource_3aaff691",
+              "relation": "AFFECTS",
+              "quote": "QA: PROD : Sanity Testing 19.3.0",
+              "start": 0,
+              "end": 32,
+              "total_chars": 32,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_3cced185b167aef1",
+              "record_id": "KEP-2284",
+              "provenance_kind": "extracted",
+              "source_id": "decision_8f880742",
+              "target_id": "resource_62a4f6fa",
+              "relation": "AFFECTS",
+              "quote": "Production Reliability Monitoring",
+              "start": 0,
+              "end": 33,
+              "total_chars": 33,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_6d9af4e41e518e44",
+              "record_id": "KEP-4325",
+              "provenance_kind": "extracted",
+              "source_id": "decision_47fa0410",
+              "target_id": "resource_a5584ae8",
+              "relation": "AFFECTS",
+              "quote": "QA: Agent: Sanity for Prod Release 17.0.3",
+              "start": 0,
+              "end": 41,
+              "total_chars": 41,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_9f545aebb28bc94e",
+              "record_id": "KEP-6945",
+              "provenance_kind": "extracted",
+              "source_id": "decision_14929dd8",
+              "target_id": "resource_25a71ecb",
+              "relation": "AFFECTS",
+              "quote": "QA: Prod : Sanity Testing for release 19.2.0",
+              "start": 0,
+              "end": 44,
+              "total_chars": 44,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_cb5f21cfdb4c5de5",
+              "record_id": "KEP-4325",
+              "provenance_kind": "extracted",
+              "source_id": "decision_47fa0410",
+              "target_id": "risk_1aae49d0",
+              "relation": "REFERENCES",
+              "quote": "QA: Agent: Sanity for Prod Release 17.0.3",
+              "start": 0,
+              "end": 41,
+              "total_chars": 41,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_202f2a527a68fc12",
+              "record_id": "KEP-2735",
+              "provenance_kind": "extracted",
+              "source_id": "decision_f73fec63",
+              "target_id": "outcome_3d3b14a4",
+              "relation": "PRODUCES",
+              "quote": "Sanity Test Results – Big Agent Kepler Staging Environment | 08.01.26 Queries Run: 20 Queries Passed: 15 Queries Failed: 5 Majority failures observed in comment stance queries Pass Percentage:75%",
+              "start": 0,
+              "end": 195,
+              "total_chars": 195,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 537,
+          "next_offset": 10
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.008739417011383921,
+      "error": false,
+      "new_ids": [
+        "ev_202f2a527a68fc12",
+        "ev_3cced185b167aef1",
+        "ev_59722d42e9c7827f",
+        "ev_6d9af4e41e518e44",
+        "ev_84c5dad01abf5e69",
+        "ev_9f545aebb28bc94e",
+        "ev_cb5f21cfdb4c5de5",
+        "ev_e7020039a7845c03",
+        "span:ev_202f2a527a68fc12:0:195",
+        "span:ev_3cced185b167aef1:0:33",
+        "span:ev_59722d42e9c7827f:0:32",
+        "span:ev_6d9af4e41e518e44:0:41",
+        "span:ev_84c5dad01abf5e69:0:146",
+        "span:ev_9f545aebb28bc94e:0:44",
+        "span:ev_cb5f21cfdb4c5de5:0:41",
+        "span:ev_e7020039a7845c03:0:43"
+      ]
+    },
+    {
+      "sequence": 18,
+      "kind": "context",
+      "model_call": 4,
+      "serialized_chars": 29306,
+      "message_count": 8,
+      "pinned_evidence_ids": [
+        "ev_03e71e671753e994",
+        "ev_4a2fbd0945ff738e",
+        "ev_4d594d265b46ec88",
+        "ev_d55e5ad81b4d1b98"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_03e71e671753e994",
+        "ev_12a71d32dc0dce15",
+        "ev_202f2a527a68fc12",
+        "ev_2fdbe4a5f37454f4",
+        "ev_3323e75490946067",
+        "ev_35c43c7d62cdc33b",
+        "ev_3cced185b167aef1",
+        "ev_4025618ab953387f",
+        "ev_448724bd8986b893",
+        "ev_4a2fbd0945ff738e",
+        "ev_4b28b4f82761e395",
+        "ev_4d594d265b46ec88",
+        "ev_59722d42e9c7827f",
+        "ev_5e7895fa9e5aca04",
+        "ev_5ecd7cc69fadc4b2",
+        "ev_62f07e27742f10ee",
+        "ev_6d9af4e41e518e44",
+        "ev_7541aac8f48ff309",
+        "ev_84c5dad01abf5e69",
+        "ev_950b07fa1a233c51",
+        "ev_9f545aebb28bc94e",
+        "ev_a3f4b431b8c6c92c",
+        "ev_cb5f21cfdb4c5de5",
+        "ev_ced0f2f1ad6fa26e",
+        "ev_d30ea55342b38b3d",
+        "ev_d55e5ad81b4d1b98",
+        "ev_e7020039a7845c03"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_ce848f553fe3db2c",
+        "action_2_request_5c91a3ee6c11717f",
+        "action_3_request_c18d817b1048c698"
+      ]
+    },
+    {
+      "sequence": 19,
+      "kind": "model_started",
+      "call_number": 4,
+      "status": "pending",
+      "serialized_chars": 29306,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 20,
+      "kind": "model",
+      "call_number": 4,
+      "status": "completed",
+      "serialized_chars": 29306,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_28b4c94fc0fbc3c1",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"QA test plan execute regression smoke sanity record pass fail defects release monitoring evidence logs alerts metrics\",\"mode\":\"records\",\"limit\":10}",
+        "purpose": "Find original passages on QA routines and documented execution or outcomes.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_03e71e671753e994",
+          "ev_4d594d265b46ec88",
+          "ev_d55e5ad81b4d1b98",
+          "ev_4a2fbd0945ff738e",
+          "ev_84c5dad01abf5e69",
+          "ev_202f2a527a68fc12"
+        ]
+      },
+      "latency_seconds": 5.635276041983161,
+      "provider": {
+        "request_id": "request_28b4c94fc0fbc3c1",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/routines__paraphrase__graph_only/cache/codex/request_28b4c94fc0fbc3c1.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 10218,
+          "output_tokens": 198,
+          "reasoning_output_tokens": 46,
+          "total_tokens": 10416
+        },
+        "thread_id": "01a114b3-2ec8-7383-915f-81a619eabe4e",
+        "turn_id": "01a114b3-2eeb-7d00-9ad7-fd6127f41a68",
+        "status": "completed",
+        "latency_seconds": 5.6159
+      }
+    },
+    {
+      "sequence": 21,
+      "kind": "tool_started",
+      "call_id": "action_4_request_28b4c94fc0fbc3c1",
+      "name": "search_graph",
+      "arguments": {
+        "query": "QA test plan execute regression smoke sanity record pass fail defects release monitoring evidence logs alerts metrics",
+        "mode": "records",
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 22,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "QA test plan execute regression smoke sanity record pass fail defects release monitoring evidence logs alerts metrics",
+        "mode": "records",
+        "limit": 10
+      },
+      "call_id": "action_4_request_28b4c94fc0fbc3c1",
+      "result": {
+        "expanded_query": "QA test plan execute regression smoke sanity record pass fail defects release monitoring evidence logs alerts metrics",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_84a32112342d490b",
+              "record_id": "KEP-3037",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d0228313",
+              "target_id": "outcome_b6bce569",
+              "relation": "PRODUCES",
+              "quote": "Production Release & Monitoring Includes Deployment plan Rollback plan Release notes Configuration changes documented",
+              "start": 0,
+              "end": 117,
+              "total_chars": 117,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_91bf0680ec96dbf4",
+              "record_id": "KEP-3037",
+              "provenance_kind": "extracted",
+              "source_id": "decision_d0228313",
+              "target_id": "resource_d4f27f62",
+              "relation": "AFFECTS",
+              "quote": "Production Release & Monitoring Includes Deployment plan Rollback plan Release notes Configuration changes documented",
+              "start": 0,
+              "end": 117,
+              "total_chars": 117,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_e7020039a7845c03",
+              "record_id": "KEP-6774",
+              "provenance_kind": "extracted",
+              "source_id": "decision_f6f87107",
+              "target_id": "resource_78225347",
+              "relation": "AFFECTS",
+              "quote": "QA Regression Testing Card : Release 19.1.0",
+              "start": 0,
+              "end": 43,
+              "total_chars": 43,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_6d9af4e41e518e44",
+              "record_id": "KEP-4325",
+              "provenance_kind": "extracted",
+              "source_id": "decision_47fa0410",
+              "target_id": "resource_a5584ae8",
+              "relation": "AFFECTS",
+              "quote": "QA: Agent: Sanity for Prod Release 17.0.3",
+              "start": 0,
+              "end": 41,
+              "total_chars": 41,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_9f545aebb28bc94e",
+              "record_id": "KEP-6945",
+              "provenance_kind": "extracted",
+              "source_id": "decision_14929dd8",
+              "target_id": "resource_25a71ecb",
+              "relation": "AFFECTS",
+              "quote": "QA: Prod : Sanity Testing for release 19.2.0",
+              "start": 0,
+              "end": 44,
+              "total_chars": 44,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_cb5f21cfdb4c5de5",
+              "record_id": "KEP-4325",
+              "provenance_kind": "extracted",
+              "source_id": "decision_47fa0410",
+              "target_id": "risk_1aae49d0",
+              "relation": "REFERENCES",
+              "quote": "QA: Agent: Sanity for Prod Release 17.0.3",
+              "start": 0,
+              "end": 41,
+              "total_chars": 41,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_6308001f140b1b0c",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_ddc0083e",
+              "target_id": "decision_127e318f",
+              "relation": "DEPENDS_ON",
+              "quote": "Execute QA testing (2026-02-10) depends on Plan DocDB upgrade (2026-01-21). QA testing must occur after the upgrade plan is finalized, as the plan defines the scope and approach for testing. Both affect the DocumentDB cluster and share the initiative.",
+              "start": 0,
+              "end": 251,
+              "total_chars": 251,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-02-10",
+                  "date": "2026-02-10",
+                  "evidence_id": "ev_6308001f140b1b0c",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-01-21",
+                  "date": "2026-01-21",
+                  "evidence_id": "ev_6308001f140b1b0c",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_3e630bc25af63968",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_ddc0083e",
+              "target_id": "decision_63f4e9b6",
+              "relation": "DEPENDS_ON",
+              "quote": "Execute QA testing (2026-02-10) depends on Plan DocDB upgrade for services (2026-01-23). The services upgrade plan must be completed before QA testing can validate the changes. Both affect the DocumentDB cluster and share the initiative.",
+              "start": 0,
+              "end": 237,
+              "total_chars": 237,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-02-10",
+                  "date": "2026-02-10",
+                  "evidence_id": "ev_3e630bc25af63968",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-01-23",
+                  "date": "2026-01-23",
+                  "evidence_id": "ev_3e630bc25af63968",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_84c5dad01abf5e69",
+              "record_id": "KEP-2809",
+              "provenance_kind": "extracted",
+              "source_id": "decision_171897a5",
+              "target_id": "outcome_4fe9060c",
+              "relation": "PRODUCES",
+              "quote": "Sanity Test Results – Big Agent Kepler Staging Environment | 13.01.26 Queries Run: 33 Queries Passed: 24 Queries Failed: 9 Pass Percentage: 72.73%",
+              "start": 0,
+              "end": 146,
+              "total_chars": 146,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_e95257be666a85b4",
+              "record_id": "KEP-7035",
+              "provenance_kind": "extracted",
+              "source_id": "decision_09810eec",
+              "target_id": "outcome_a95b3994",
+              "relation": "PRODUCES",
+              "quote": "Root cause identified by — the ExportComments plan had expired, which caused all export creation requests to fail with a 403 Forbidden response.",
+              "start": 0,
+              "end": 144,
+              "total_chars": 144,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 493,
+          "next_offset": 10
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.009799375024158508,
+      "error": false,
+      "new_ids": [
+        "ev_3e630bc25af63968",
+        "ev_6308001f140b1b0c",
+        "ev_84a32112342d490b",
+        "ev_91bf0680ec96dbf4",
+        "ev_e95257be666a85b4",
+        "span:ev_3e630bc25af63968:0:237",
+        "span:ev_6308001f140b1b0c:0:251",
+        "span:ev_84a32112342d490b:0:117",
+        "span:ev_91bf0680ec96dbf4:0:117",
+        "span:ev_e95257be666a85b4:0:144"
+      ]
+    },
+    {
+      "sequence": 23,
+      "kind": "context",
+      "model_call": 5,
+      "serialized_chars": 36346,
+      "message_count": 10,
+      "pinned_evidence_ids": [
+        "ev_03e71e671753e994",
+        "ev_202f2a527a68fc12",
+        "ev_4a2fbd0945ff738e",
+        "ev_4d594d265b46ec88",
+        "ev_84c5dad01abf5e69",
+        "ev_d55e5ad81b4d1b98"
+      ],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [
+        "ev_03e71e671753e994",
+        "ev_12a71d32dc0dce15",
+        "ev_202f2a527a68fc12",
+        "ev_2fdbe4a5f37454f4",
+        "ev_3323e75490946067",
+        "ev_35c43c7d62cdc33b",
+        "ev_3cced185b167aef1",
+        "ev_3e630bc25af63968",
+        "ev_4025618ab953387f",
+        "ev_448724bd8986b893",
+        "ev_4a2fbd0945ff738e",
+        "ev_4b28b4f82761e395",
+        "ev_4d594d265b46ec88",
+        "ev_59722d42e9c7827f",
+        "ev_5e7895fa9e5aca04",
+        "ev_5ecd7cc69fadc4b2",
+        "ev_62f07e27742f10ee",
+        "ev_6308001f140b1b0c",
+        "ev_6d9af4e41e518e44",
+        "ev_7541aac8f48ff309",
+        "ev_84a32112342d490b",
+        "ev_84c5dad01abf5e69",
+        "ev_91bf0680ec96dbf4",
+        "ev_950b07fa1a233c51",
+        "ev_9f545aebb28bc94e",
+        "ev_a3f4b431b8c6c92c",
+        "ev_cb5f21cfdb4c5de5",
+        "ev_ced0f2f1ad6fa26e",
+        "ev_d30ea55342b38b3d",
+        "ev_d55e5ad81b4d1b98",
+        "ev_e7020039a7845c03",
+        "ev_e95257be666a85b4"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_ce848f553fe3db2c",
+        "action_2_request_5c91a3ee6c11717f",
+        "action_3_request_c18d817b1048c698",
+        "action_4_request_28b4c94fc0fbc3c1"
+      ]
+    },
+    {
+      "sequence": 24,
+      "kind": "model_started",
+      "call_number": 5,
+      "status": "pending",
+      "serialized_chars": 36346,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 25,
+      "kind": "model",
+      "call_number": 5,
+      "status": "completed",
+      "serialized_chars": 36346,
+      "available_tools": [
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_ceafcbea6917fe62",
+      "action": {
+        "tool_name": "DraftAnswer",
+        "arguments_json": "{\"claims\":[{\"statement\":\"For vendor monitoring, the checklist calls for twice-weekly review of usage, billing, traffic drivers and anomalies, with alerts and documented observations.\",\"kind\":\"prescription\",\"citations\":[{\"evidence_id\":\"ev_03e71e671753e994\",\"quote\":\"Checklist: [ ] Gather usage and billing statistics from both platforms. [ ] Review any changes in download patterns or target domain lists. [ ] Track top 10 domains or endpoints contributing to traffic/spend. [ ] Check for any abnormal spikes or cost anomalies. [ ] Raise an alert or tag stakeholders in case of any deviation from expected usage. [ ] Document observations in the vendor monitoring sheet or dashboard. This task should be completed every Monday and Thursday for proactive tracking and early detection of unexpected billing patterns.\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The source explicitly states the checklist and cadence.\",\"verification_note\":\"This is a prescribed routine, not evidence that each check occurred.\"},{\"statement\":\"Another monitoring rule specifies a daily Active Network Stats validation check after the enrichment check.\",\"kind\":\"prescription\",\"citations\":[{\"evidence_id\":\"ev_4d594d265b46ec88\",\"quote\":\"Check Frequency: Once daily (after the enrichment check, ideally after 5pm IST)\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"medium\",\"confidence_reason\":\"The cadence is explicit; its subject comes from the associated rule label, which is unverified.\",\"verification_note\":\"No completed daily-check log is shown.\"},{\"statement\":\"A batch-lifecycle plan calls for status and age metrics, dashboards and alerts; this establishes an observability requirement, not implementation.\",\"kind\":\"prescription\",\"citations\":[{\"evidence_id\":\"ev_d55e5ad81b4d1b98\",\"quote\":\"Observability & Dashboards Expose metrics such as: Number of active batches Count of batches per status ( sent , completed , failed , etc.) Age distribution of sent batches Create dashboards and alerts based on these metrics.\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The passage directly lists the proposed metrics and alerting.\",\"verification_note\":\"No dashboard output or alert history is shown.\"},{\"statement\":\"QA guidance includes unit tests for video-analysis upload validation, including file limits, MIME types, concurrency and ownership checks.\",\"kind\":\"prescription\",\"citations\":[{\"evidence_id\":\"ev_4b28b4f82761e395\",\"quote\":\"Unit tests ( tests/unit/test_video_analysis_*.py ) Validation: file size cap, MIME allowlist, per-chat concurrency, ownership of chat_id / network_id .\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The test scope is stated directly.\",\"verification_note\":\"This does not itself show that the tests ran or passed.\"},{\"statement\":\"Recorded QA summaries provide stronger evidence of execution: one staging sanity run reports 33 queries, 24 passed and 9 failed; a production API suite summary reports 215 tests, 208 passed and 7 failed.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_84c5dad01abf5e69\",\"quote\":\"Sanity Test Results – Big Agent Kepler Staging Environment | 13.01.26 Queries Run: 33 Queries Passed: 24 Queries Failed: 9 Pass Percentage: 72.73%\",\"start\":0},{\"evidence_id\":\"ev_4a2fbd0945ff738e\",\"quote\":\"Prod API Suite Execution Result: QA-API-Suite — Production Execution Summary (2026-05-13) Total Tests: 215 | ✅ Passed: 208 | ❌ Failed: 7\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"Both passages explicitly report environment-specific run totals and failures.\",\"verification_note\":\"They document reported runs, not sustained effectiveness or resolution of failures.\"}],\"unanswered\":[\"Were the prescribed monitoring checks performed consistently, and what anomalies, alerts or responses were recorded?\",\"Were the cited QA failures fixed and verified by reruns or post-release monitoring?\"],\"limitations\":[\"Checklists, test plans, ticket titles and administrative completion do not prove execution or effectiveness.\",\"The shown QA summaries concern distinct staging and production test suites and should not be combined into one trend.\"]}",
+        "purpose": "Separate prescribed monitoring and QA routines from documented test execution and unresolved effectiveness.",
+        "discarded_items": [],
+        "pin_evidence_ids": [
+          "ev_03e71e671753e994",
+          "ev_4d594d265b46ec88",
+          "ev_d55e5ad81b4d1b98",
+          "ev_4b28b4f82761e395",
+          "ev_84c5dad01abf5e69",
+          "ev_4a2fbd0945ff738e"
+        ]
+      },
+      "latency_seconds": 23.03051900002174,
+      "provider": {
+        "request_id": "request_ceafcbea6917fe62",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/routines__paraphrase__graph_only/cache/codex/request_ceafcbea6917fe62.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 12015,
+          "output_tokens": 1173,
+          "reasoning_output_tokens": 109,
+          "total_tokens": 13188
+        },
+        "thread_id": "01a114b3-44da-79c3-8fcb-2ff63d05c27b",
+        "turn_id": "01a114b3-44f9-7950-81de-dd7cd2c821fd",
+        "status": "completed",
+        "latency_seconds": 23.013
+      }
+    },
+    {
+      "sequence": 26,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "KEP-4256"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_03e71e671753e994"
+      ],
+      "source_mode": "graph",
+      "verification_note": "This is a prescribed routine, not evidence that each check occurred."
+    },
+    {
+      "sequence": 27,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "KEP-4172"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_4d594d265b46ec88"
+      ],
+      "source_mode": "graph",
+      "verification_note": "No completed daily-check log is shown."
+    },
+    {
+      "sequence": 28,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "KEP-5668"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_d55e5ad81b4d1b98"
+      ],
+      "source_mode": "graph",
+      "verification_note": "No dashboard output or alert history is shown."
+    },
+    {
+      "sequence": 29,
+      "kind": "claim_support",
+      "claim_id": "C4",
+      "record_ids": [
+        "KEP-6913"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_4b28b4f82761e395"
+      ],
+      "source_mode": "graph",
+      "verification_note": "This does not itself show that the tests ran or passed."
+    },
+    {
+      "sequence": 30,
+      "kind": "claim_support",
+      "claim_id": "C5",
+      "record_ids": [
+        "KEP-2809",
+        "KEP-7078"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_84c5dad01abf5e69",
+        "ev_4a2fbd0945ff738e"
+      ],
+      "source_mode": "graph",
+      "verification_note": "They document reported runs, not sustained effectiveness or resolution of failures."
+    }
+  ],
+  "usage": {
+    "model_calls": 5,
+    "data_tool_calls": 4,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 42322,
+      "output_tokens": 1772,
+      "cached_input_tokens": 12800,
+      "reasoning_output_tokens": 246
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 42.22731145899161,
+    "provider_elapsed_seconds": 42.1351,
+    "tool_elapsed_seconds": 0.03944754303665832,
+    "total_elapsed_seconds": 42.309989166999,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "agent_version": "task2-agent-v1",
+    "graph_hash": "graph_461ec66cd6c65256",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "execution_scope": "source_only",
+    "tool_profile": "graph_only",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/routines__paraphrase__graph_only/cache",
+      "timeout": 300.0
+    },
+    "created_at": "2026-10-07T04:51:18.358468+00:00",
+    "dependencies": {
+      "langchain": "1.4.0",
+      "langchain-core": "1.6.1",
+      "langgraph": "1.2.11",
+      "pydantic": "2.13.5"
+    },
+    "client_injected": true,
+    "context_policy": "200000 canonical serialized application characters; exact excerpts, pinned evidence, whole-exchange eviction; fresh state per question",
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "routines__paraphrase__graph_only",
+      "question_id": "routines",
+      "variant": "paraphrase",
+      "approach": "graph_only",
+      "question": "What does the history say teams should routinely do for monitoring and QA, and what establishes actual execution or effectiveness?"
+    }
+  }
+}

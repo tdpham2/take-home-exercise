@@ -1,0 +1,1421 @@
+{
+  "question": "Which pruning behaviors and follow-up actions are reported, and what evidence supports their temporal order?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "The pruning design was reported complete.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_04fcaa0002d7d7b3",
+          "quote": "Narrative Pruning TRD completed",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passage directly reports completion.",
+      "verification_note": "It does not date completion or establish when implementation began.",
+      "id": "C1",
+      "record_ids": [
+        "Community_114"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "Pruning was specified to apply to Narratives, not Comment Conversations.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_87879ee4d1969114",
+          "quote": "Pruning should only be applicable to Narratives, not Comment Conversations",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passage states the intended scope.",
+      "verification_note": "A requirement is not evidence that the restriction worked.",
+      "id": "C2",
+      "record_ids": [
+        "Community_114"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "A staging QA retest reported that Comment Narratives were allowed for pruning despite the specified restriction.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_8032f99cb1184961",
+          "quote": "Retest:🪲QA: Staging : Comment Narratives Are Allowed for Pruning Though PRD Specifies Only Narratives",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passage directly labels the observation as a staging retest.",
+      "verification_note": "“Retest” implies an earlier test but supplies no date, fix, or verified outcome.",
+      "id": "C3",
+      "record_ids": [
+        "KEP-5757"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The stated expected behavior was for pruned narratives to appear in Hidden Narratives in real time.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_c16cd8a81b99410d",
+          "quote": "Pruned narratives must appear in Hidden Narratives section in real-time",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passage explicitly states a requirement.",
+      "verification_note": "It does not verify real-time behavior.",
+      "id": "C4",
+      "record_ids": [
+        "Community_114"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The planned data handoff was for MLE to send pruning_flag: true and a pruning_id, with topic_narratives updated to carry those details.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_5fe9ae2fbae6ba91",
+          "quote": "MLE team will be sending a pruning_flag : true with the pruning_id :'' , we need to update topic_narratives entity with the same details",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "Future-tense wording directly describes the planned handoff and update.",
+      "verification_note": "The passage alone does not prove that MLE sent the fields.",
+      "id": "C5",
+      "record_ids": [
+        "KEP-4255"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The retrieved summary reports that pruning rules were sent from the backend service for narrative-generation runs.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_0efca8b5653af727",
+          "quote": "Pruning rules sent from backend service for narrative generation runs",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The wording reports the action, but it is a brief summary without run-level evidence.",
+      "verification_note": "It supplies no date or verified downstream pruning result.",
+      "id": "C6",
+      "record_ids": [
+        "Community_114"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The retrieved summary reports completed code changes for pruning input-data creation and topic_narratives output-data updates, followed by a report of completed local testing.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_daf242ee923d0264",
+          "quote": "Code changes completed for narrative pruning input data creation",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_530274020d30e7a8",
+          "quote": "Code changes completed for topic_narratives output data update",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_bf1bbd5f170a12a9",
+          "quote": "Local testing completed for narrative pruning",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "Each completion is reported, but the passages do not directly date or sequence them.",
+      "verification_note": "“Followed by” describes the report here, not a proven chronological order of the work.",
+      "id": "C7",
+      "record_ids": [
+        "Community_114"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "Narrative Pruning API integration was reported complete and deployed to the Dev environment.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_1891e24034dc3a2f",
+          "quote": "API integration for Narrative Pruning has been completed. The changes have been deployed to the Dev environment",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passage directly reports both completion and a Dev deployment.",
+      "verification_note": "It does not establish production deployment or ordering relative to staging work.",
+      "id": "C8",
+      "record_ids": [
+        "KEP-4238"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "Deleting a pruning rule was expected to unhide its related narratives or return them to the Main narrative tab.",
+      "kind": "prescription",
+      "citations": [
+        {
+          "evidence_id": "ev_2c6bc75694fac331",
+          "quote": "When deleting a pruning rule, related narratives which are in hidden must get un-hidden or appear in Main narrative tab again",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passage directly states the expected behavior.",
+      "verification_note": "It does not establish that the behavior was observed.",
+      "id": "C9",
+      "record_ids": [
+        "KEP-4019"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "A follow-up report says a feature reflecting pruning-rule deletion in topic narratives was implemented and its merge request merged in the staging environment.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_f2d83729fd1a8334",
+          "quote": "Implemented Feature to reflect narrative pruning rule deletion in topic narratives. MR , we have merged in staging ENV",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The passage directly reports implementation and a staging merge.",
+      "verification_note": "A staging merge does not verify that unhide behavior worked.",
+      "id": "C10",
+      "record_ids": [
+        "KEP-4019"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The passages establish a requirement-to-reported-implementation relationship for rule deletion, but provide no dated cross-ticket sequence for the TRD, code changes, local testing, Dev deployment, staging merge, and staging retest.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_2c6bc75694fac331",
+          "quote": "When deleting a pruning rule, related narratives which are in hidden must get un-hidden or appear in Main narrative tab again",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_f2d83729fd1a8334",
+          "quote": "Implemented Feature to reflect narrative pruning rule deletion in topic narratives. MR , we have merged in staging ENV",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_1891e24034dc3a2f",
+          "quote": "API integration for Narrative Pruning has been completed. The changes have been deployed to the Dev environment",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_8032f99cb1184961",
+          "quote": "Retest:🪲QA: Staging : Comment Narratives Are Allowed for Pruning Though PRD Specifies Only Narratives",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The reports distinguish intended behavior, implementation, environments, and retest, but contain no dates tying those separate records together.",
+      "verification_note": "Ticket numbers and the order in which passages were retrieved are not chronology.",
+      "id": "C11",
+      "record_ids": [
+        "KEP-4019",
+        "KEP-4238",
+        "KEP-5757"
+      ],
+      "source_mode": "text"
+    }
+  ],
+  "unanswered": [
+    "What dates, if any, establish the order among TRD completion, code changes, local testing, Dev deployment, staging merge, and the staging QA retest?",
+    "Was the Comment Narratives staging defect fixed and successfully retested?",
+    "Did deleting a pruning rule actually unhide affected narratives, and was pruning deployed to or verified in production?"
+  ],
+  "limitations": [
+    "The Community_114 passages are brief summaries, not independent run logs or deployment verification.",
+    "No cited passage establishes customer impact or a complete end-to-end chronology.",
+    "BM25 over extracted record text; exact citations do not establish semantic correctness."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "execution_scope": "source_only"
+    },
+    {
+      "sequence": 2,
+      "kind": "tool",
+      "name": "retrieve_text",
+      "arguments": {
+        "query": "Which pruning behaviors and follow-up actions are reported, and what evidence supports their temporal order?",
+        "top_k": 20
+      },
+      "call_id": "text_1",
+      "result": {
+        "records": [
+          {
+            "record_id": "KEP-2302",
+            "passages": [
+              {
+                "evidence_id": "ev_152b218ec13d1455",
+                "record_id": "KEP-2302",
+                "quote": "Narrative Pruning TRD finalization and coming up with WBS estimates",
+                "start": 0,
+                "end": 67
+              }
+            ],
+            "score": 10.164102110969964
+          },
+          {
+            "record_id": "KEP-5551",
+            "passages": [
+              {
+                "evidence_id": "ev_27cfef7da134c150",
+                "record_id": "KEP-5551",
+                "quote": "For library document uploaded file summarize will not work.",
+                "start": 0,
+                "end": 59
+              },
+              {
+                "evidence_id": "ev_bcf0a312de884bf9",
+                "record_id": "KEP-5551",
+                "quote": "Library : Big Agent summarizes network instead of uploaded PDF file on follow-up query",
+                "start": 0,
+                "end": 86
+              }
+            ],
+            "score": 9.402466007788812
+          },
+          {
+            "record_id": "KEP-7071",
+            "passages": [
+              {
+                "evidence_id": "ev_0c10432bddfece7c",
+                "record_id": "KEP-7071",
+                "quote": "Added the policy for chat for SQS : With all actions on PROD enc",
+                "start": 0,
+                "end": 64
+              },
+              {
+                "evidence_id": "ev_aa1ad434f2b6803e",
+                "record_id": "KEP-7071",
+                "quote": "Added the policy for chat for SQS",
+                "start": 0,
+                "end": 33
+              },
+              {
+                "evidence_id": "ev_e0730fdfa437760d",
+                "record_id": "KEP-7071",
+                "quote": "policy for chat for SQS : With all actions on PROD",
+                "start": 0,
+                "end": 50
+              }
+            ],
+            "score": 8.509613796957245
+          },
+          {
+            "record_id": "KEP-5956",
+            "passages": [
+              {
+                "evidence_id": "ev_fbe3119c277c5bbf",
+                "record_id": "KEP-5956",
+                "quote": "The Narrative list does not refresh automatically after certain user actions",
+                "start": 0,
+                "end": 76
+              }
+            ],
+            "score": 7.286305079773496
+          },
+          {
+            "record_id": "KEP-4255",
+            "passages": [
+              {
+                "evidence_id": "ev_5fe9ae2fbae6ba91",
+                "record_id": "KEP-4255",
+                "quote": "MLE team will be sending a pruning_flag : true with the pruning_id :'' , we need to update topic_narratives entity with the same details",
+                "start": 0,
+                "end": 136
+              },
+              {
+                "evidence_id": "ev_b53b1eef8255dfaf",
+                "record_id": "KEP-4255",
+                "quote": "MLE team will be sending a pruning_flag : true with the pruning_id",
+                "start": 0,
+                "end": 66
+              }
+            ],
+            "score": 6.52001575459027
+          },
+          {
+            "record_id": "KEP-6668",
+            "passages": [
+              {
+                "evidence_id": "ev_8e62458b0e5f6103",
+                "record_id": "KEP-6668",
+                "quote": "The reported issue appears to be intermittent and non-deterministic in nature, as multiple attempts to reproduce it under similar conditions have been unsuccessful.",
+                "start": 0,
+                "end": 164
+              }
+            ],
+            "score": 6.483257812539565
+          },
+          {
+            "record_id": "KEP-5632",
+            "passages": [
+              {
+                "evidence_id": "ev_44cdea03a3d43e18",
+                "record_id": "KEP-5632",
+                "quote": "No Posts Collected for Client-Owned Account in Network",
+                "start": 0,
+                "end": 54
+              },
+              {
+                "evidence_id": "ev_e5fee8d4ab289338",
+                "record_id": "KEP-5632",
+                "quote": "Client has reported a missing post from this specific account that is seeded in their network.",
+                "start": 0,
+                "end": 94
+              }
+            ],
+            "score": 6.363619059517157
+          },
+          {
+            "record_id": "KEP-7047",
+            "passages": [
+              {
+                "evidence_id": "ev_0ed690ba410b26ab",
+                "record_id": "KEP-7047",
+                "quote": "parent_key: KEP-6332",
+                "start": 0,
+                "end": 20
+              },
+              {
+                "evidence_id": "ev_16dbbd44ecf2a860",
+                "record_id": "KEP-7047",
+                "quote": "kepler chat pods can connect to the queue",
+                "start": 0,
+                "end": 41
+              },
+              {
+                "evidence_id": "ev_233d7c721c907965",
+                "record_id": "KEP-7047",
+                "quote": "kepler chat pods",
+                "start": 0,
+                "end": 16
+              },
+              {
+                "evidence_id": "ev_6aaa89245c41d3ea",
+                "record_id": "KEP-7047",
+                "quote": "custom policy for SQS - with all actions on stg env",
+                "start": 0,
+                "end": 51
+              },
+              {
+                "evidence_id": "ev_711ddf59ed10e007",
+                "record_id": "KEP-7047",
+                "quote": "Update the IAM policy to allow access to the SQS queue for video summary",
+                "start": 0,
+                "end": 72
+              },
+              {
+                "evidence_id": "ev_b9c74b26bcb869ee",
+                "record_id": "KEP-7047",
+                "quote": "Added a custom policy for SQS - with all actions on stg env for chat",
+                "start": 0,
+                "end": 68
+              },
+              {
+                "evidence_id": "ev_f717f84b7a7729db",
+                "record_id": "KEP-7047",
+                "quote": "when I need to access the SQS queue for video summary",
+                "start": 0,
+                "end": 53
+              },
+              {
+                "evidence_id": "ev_fded30393e40e588",
+                "record_id": "KEP-7047",
+                "quote": "Added a custom policy for SQS",
+                "start": 0,
+                "end": 29
+              }
+            ],
+            "score": 6.330316016837274
+          },
+          {
+            "record_id": "KEP-4366",
+            "passages": [
+              {
+                "evidence_id": "ev_f19d74f6ba596733",
+                "record_id": "KEP-4366",
+                "quote": "Build Crud Operations for narrative pruning in application backend Collection Name: narrative_pruning_rules",
+                "start": 0,
+                "end": 107
+              }
+            ],
+            "score": 6.097385790856257
+          },
+          {
+            "record_id": "KEP-4238",
+            "passages": [
+              {
+                "evidence_id": "ev_1891e24034dc3a2f",
+                "record_id": "KEP-4238",
+                "quote": "API integration for Narrative Pruning has been completed. The changes have been deployed to the Dev environment",
+                "start": 0,
+                "end": 111
+              },
+              {
+                "evidence_id": "ev_d071431bf98c79f3",
+                "record_id": "KEP-4238",
+                "quote": "API integration for Narrative Pruning has been completed",
+                "start": 0,
+                "end": 56
+              }
+            ],
+            "score": 5.945402840388252
+          },
+          {
+            "record_id": "KEP-2235",
+            "passages": [
+              {
+                "evidence_id": "ev_4b2ea5aa09c11e9b",
+                "record_id": "KEP-2235",
+                "quote": "Pushed to staging. Marking this as done",
+                "start": 0,
+                "end": 39
+              },
+              {
+                "evidence_id": "ev_94d123e31a634298",
+                "record_id": "KEP-2235",
+                "quote": "Posts shown with narrative on feed page seem to be coming in random order. The posts will now come in Latest posts.",
+                "start": 0,
+                "end": 115
+              }
+            ],
+            "score": 5.926183886714558
+          },
+          {
+            "record_id": "KEP-6899",
+            "passages": [
+              {
+                "evidence_id": "ev_088723e7d449731a",
+                "record_id": "KEP-6899",
+                "quote": "status: Done",
+                "start": 0,
+                "end": 12
+              },
+              {
+                "evidence_id": "ev_9fd0e670c5a1dfa7",
+                "record_id": "KEP-6899",
+                "quote": "Let's use the logic from the feed page to sort (descending order of narratives with recent post activity), and then use the date label to show the narrative's full life span.",
+                "start": 0,
+                "end": 174
+              }
+            ],
+            "score": 5.635638542549184
+          },
+          {
+            "record_id": "KEP-6436",
+            "passages": [
+              {
+                "evidence_id": "ev_5be9ed04e2cdaea0",
+                "record_id": "KEP-6436",
+                "quote": "Addition of validation layer on raw data ( post/comments/usermetadata/follow",
+                "start": 0,
+                "end": 76
+              },
+              {
+                "evidence_id": "ev_ddfb9b7d5252eb6c",
+                "record_id": "KEP-6436",
+                "quote": "Data service Issues Parent Child Collections Mappings - Identification of task to and fro (success / failure) for each task",
+                "start": 0,
+                "end": 123
+              },
+              {
+                "evidence_id": "ev_e01a25ddb3df522a",
+                "record_id": "KEP-6436",
+                "quote": "Data service Issues Parent Child Collections Mappings - Identification of task to and fro (success / failure) for each task Addition of validation layer on raw data ( post/comments/usermetadata/follow",
+                "start": 0,
+                "end": 200
+              }
+            ],
+            "score": 5.620402126434868
+          },
+          {
+            "record_id": "KEP-6901",
+            "passages": [
+              {
+                "evidence_id": "ev_0cc48fbd05a15430",
+                "record_id": "KEP-6901",
+                "quote": "File / upload area (top): dark container with file icon, filename (e.g. Video.extension ), Size label, and a progress bar showing upload progress",
+                "start": 0,
+                "end": 145
+              },
+              {
+                "evidence_id": "ev_62ae53178aeaa894",
+                "record_id": "KEP-6901",
+                "quote": "Upload to network: label \"Upload to network\" ; a pill control with icon (e.g. outward arrows) and agent name placeholder",
+                "start": 0,
+                "end": 120
+              },
+              {
+                "evidence_id": "ev_7bc916080aa16db8",
+                "record_id": "KEP-6901",
+                "quote": "KEP-6901 is the follow-up screen after the step-1 Video Analysis upload modal (KEP-6900).",
+                "start": 0,
+                "end": 89
+              },
+              {
+                "evidence_id": "ev_cd5fa7f125c16ec8",
+                "record_id": "KEP-6901",
+                "quote": "Context Design is complete — this story is the next step in the video flow after the user has chosen a video in the Video Analysis upload modal .",
+                "start": 0,
+                "end": 145
+              }
+            ],
+            "score": 5.610777636681313
+          },
+          {
+            "record_id": "Community_114",
+            "passages": [
+              {
+                "evidence_id": "ev_021e1e631338c835",
+                "record_id": "Community_114",
+                "quote": "epic_link_key: KEP-6216 | parent_key: KEP-6216",
+                "start": 0,
+                "end": 46
+              },
+              {
+                "evidence_id": "ev_04fcaa0002d7d7b3",
+                "record_id": "Community_114",
+                "quote": "Narrative Pruning TRD completed",
+                "start": 0,
+                "end": 31
+              },
+              {
+                "evidence_id": "ev_0efca8b5653af727",
+                "record_id": "Community_114",
+                "quote": "Pruning rules sent from backend service for narrative generation runs",
+                "start": 0,
+                "end": 69
+              },
+              {
+                "evidence_id": "ev_16b024ef7c385a05",
+                "record_id": "Community_114",
+                "quote": "Search functionality must work correctly for hidden narratives",
+                "start": 0,
+                "end": 62
+              },
+              {
+                "evidence_id": "ev_50498cada512ae70",
+                "record_id": "Community_114",
+                "quote": "New test network created for pruning testing",
+                "start": 0,
+                "end": 44
+              },
+              {
+                "evidence_id": "ev_530274020d30e7a8",
+                "record_id": "Community_114",
+                "quote": "Code changes completed for topic_narratives output data update",
+                "start": 0,
+                "end": 62
+              },
+              {
+                "evidence_id": "ev_5ff42648eea81b00",
+                "record_id": "Community_114",
+                "quote": "Narrative Hiding Rules UI must match approved Figma design",
+                "start": 0,
+                "end": 58
+              },
+              {
+                "evidence_id": "ev_87879ee4d1969114",
+                "record_id": "Community_114",
+                "quote": "Pruning should only be applicable to Narratives, not Comment Conversations",
+                "start": 0,
+                "end": 74
+              },
+              {
+                "evidence_id": "ev_bf1bbd5f170a12a9",
+                "record_id": "Community_114",
+                "quote": "Local testing completed for narrative pruning",
+                "start": 0,
+                "end": 45
+              },
+              {
+                "evidence_id": "ev_c16cd8a81b99410d",
+                "record_id": "Community_114",
+                "quote": "Pruned narratives must appear in Hidden Narratives section in real-time",
+                "start": 0,
+                "end": 71
+              },
+              {
+                "evidence_id": "ev_daf242ee923d0264",
+                "record_id": "Community_114",
+                "quote": "Code changes completed for narrative pruning input data creation",
+                "start": 0,
+                "end": 64
+              }
+            ],
+            "score": 5.602906729796653
+          },
+          {
+            "record_id": "KEP-5757",
+            "passages": [
+              {
+                "evidence_id": "ev_8032f99cb1184961",
+                "record_id": "KEP-5757",
+                "quote": "Retest:🪲QA: Staging : Comment Narratives Are Allowed for Pruning Though PRD Specifies Only Narratives",
+                "start": 0,
+                "end": 101
+              },
+              {
+                "evidence_id": "ev_9972d78a7ed96453",
+                "record_id": "KEP-5757",
+                "quote": "pruning should only be applicable to Narratives (formerly Micro Narratives)",
+                "start": 0,
+                "end": 75
+              }
+            ],
+            "score": 5.531750899172224
+          },
+          {
+            "record_id": "KEP-4019",
+            "passages": [
+              {
+                "evidence_id": "ev_2c6bc75694fac331",
+                "record_id": "KEP-4019",
+                "quote": "When deleting a pruning rule, related narratives which are in hidden must get un-hidden or appear in Main narrative tab again",
+                "start": 0,
+                "end": 125
+              },
+              {
+                "evidence_id": "ev_9acb82c64c1792e3",
+                "record_id": "KEP-4019",
+                "quote": "Implemented Feature to reflect narrative pruning rule deletion in topic narratives",
+                "start": 0,
+                "end": 82
+              },
+              {
+                "evidence_id": "ev_e4baf97996b93349",
+                "record_id": "KEP-4019",
+                "quote": "resolution: Done",
+                "start": 0,
+                "end": 16
+              },
+              {
+                "evidence_id": "ev_f2d83729fd1a8334",
+                "record_id": "KEP-4019",
+                "quote": "Implemented Feature to reflect narrative pruning rule deletion in topic narratives. MR , we have merged in staging ENV",
+                "start": 0,
+                "end": 118
+              }
+            ],
+            "score": 5.368701900370465
+          },
+          {
+            "record_id": "KEP-4154",
+            "passages": [
+              {
+                "evidence_id": "ev_0bc25055936e1092",
+                "record_id": "KEP-4154",
+                "quote": "Updated Documentation: 1. Added CRUD for Narrative Pruning Rules. 2. UPdated response for micro-narratives,comment-narratives and narrative detail API.",
+                "start": 0,
+                "end": 151
+              },
+              {
+                "evidence_id": "ev_95c03985870188db",
+                "record_id": "KEP-4154",
+                "quote": "New API to be added in Documentation for Narrative Pruning Feature.",
+                "start": 0,
+                "end": 67
+              }
+            ],
+            "score": 5.3457841895404075
+          },
+          {
+            "record_id": "KEP-2605",
+            "passages": [
+              {
+                "evidence_id": "ev_55541502d6537ae9",
+                "record_id": "KEP-2605",
+                "quote": "Create the Narrative Pruning TRD PRD Link",
+                "start": 0,
+                "end": 41
+              }
+            ],
+            "score": 5.278190176086287
+          },
+          {
+            "record_id": "KEP-2956",
+            "passages": [
+              {
+                "evidence_id": "ev_265ea4b49d68aa61",
+                "record_id": "KEP-2956",
+                "quote": "While testing Kepler in the staging environment, an issue is observed in the QA Automation Network where the agent is unable to generate a report",
+                "start": 0,
+                "end": 145
+              },
+              {
+                "evidence_id": "ev_b5170ffc5729235d",
+                "record_id": "KEP-2956",
+                "quote": "After a fix push things started working and no issues reported in production. Hence closing this ticket.",
+                "start": 0,
+                "end": 104
+              }
+            ],
+            "score": 5.132383755601702
+          }
+        ],
+        "omitted_record_ids": []
+      },
+      "latency_seconds": 0.0026704579940997064,
+      "error": false,
+      "new_ids": [
+        "ev_021e1e631338c835",
+        "ev_04fcaa0002d7d7b3",
+        "ev_088723e7d449731a",
+        "ev_0bc25055936e1092",
+        "ev_0c10432bddfece7c",
+        "ev_0cc48fbd05a15430",
+        "ev_0ed690ba410b26ab",
+        "ev_0efca8b5653af727",
+        "ev_152b218ec13d1455",
+        "ev_16b024ef7c385a05",
+        "ev_16dbbd44ecf2a860",
+        "ev_1891e24034dc3a2f",
+        "ev_233d7c721c907965",
+        "ev_265ea4b49d68aa61",
+        "ev_27cfef7da134c150",
+        "ev_2c6bc75694fac331",
+        "ev_44cdea03a3d43e18",
+        "ev_4b2ea5aa09c11e9b",
+        "ev_50498cada512ae70",
+        "ev_530274020d30e7a8",
+        "ev_55541502d6537ae9",
+        "ev_5be9ed04e2cdaea0",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_5ff42648eea81b00",
+        "ev_62ae53178aeaa894",
+        "ev_6aaa89245c41d3ea",
+        "ev_711ddf59ed10e007",
+        "ev_7bc916080aa16db8",
+        "ev_8032f99cb1184961",
+        "ev_87879ee4d1969114",
+        "ev_8e62458b0e5f6103",
+        "ev_94d123e31a634298",
+        "ev_95c03985870188db",
+        "ev_9972d78a7ed96453",
+        "ev_9acb82c64c1792e3",
+        "ev_9fd0e670c5a1dfa7",
+        "ev_aa1ad434f2b6803e",
+        "ev_b5170ffc5729235d",
+        "ev_b53b1eef8255dfaf",
+        "ev_b9c74b26bcb869ee",
+        "ev_bcf0a312de884bf9",
+        "ev_bf1bbd5f170a12a9",
+        "ev_c16cd8a81b99410d",
+        "ev_cd5fa7f125c16ec8",
+        "ev_d071431bf98c79f3",
+        "ev_daf242ee923d0264",
+        "ev_ddfb9b7d5252eb6c",
+        "ev_e01a25ddb3df522a",
+        "ev_e0730fdfa437760d",
+        "ev_e4baf97996b93349",
+        "ev_e5fee8d4ab289338",
+        "ev_f19d74f6ba596733",
+        "ev_f2d83729fd1a8334",
+        "ev_f717f84b7a7729db",
+        "ev_fbe3119c277c5bbf",
+        "ev_fded30393e40e588",
+        "span:ev_021e1e631338c835:0:46",
+        "span:ev_04fcaa0002d7d7b3:0:31",
+        "span:ev_088723e7d449731a:0:12",
+        "span:ev_0bc25055936e1092:0:151",
+        "span:ev_0c10432bddfece7c:0:64",
+        "span:ev_0cc48fbd05a15430:0:145",
+        "span:ev_0ed690ba410b26ab:0:20",
+        "span:ev_0efca8b5653af727:0:69",
+        "span:ev_152b218ec13d1455:0:67",
+        "span:ev_16b024ef7c385a05:0:62",
+        "span:ev_16dbbd44ecf2a860:0:41",
+        "span:ev_1891e24034dc3a2f:0:111",
+        "span:ev_233d7c721c907965:0:16",
+        "span:ev_265ea4b49d68aa61:0:145",
+        "span:ev_27cfef7da134c150:0:59",
+        "span:ev_2c6bc75694fac331:0:125",
+        "span:ev_44cdea03a3d43e18:0:54",
+        "span:ev_4b2ea5aa09c11e9b:0:39",
+        "span:ev_50498cada512ae70:0:44",
+        "span:ev_530274020d30e7a8:0:62",
+        "span:ev_55541502d6537ae9:0:41",
+        "span:ev_5be9ed04e2cdaea0:0:76",
+        "span:ev_5fe9ae2fbae6ba91:0:136",
+        "span:ev_5ff42648eea81b00:0:58",
+        "span:ev_62ae53178aeaa894:0:120",
+        "span:ev_6aaa89245c41d3ea:0:51",
+        "span:ev_711ddf59ed10e007:0:72",
+        "span:ev_7bc916080aa16db8:0:89",
+        "span:ev_8032f99cb1184961:0:101",
+        "span:ev_87879ee4d1969114:0:74",
+        "span:ev_8e62458b0e5f6103:0:164",
+        "span:ev_94d123e31a634298:0:115",
+        "span:ev_95c03985870188db:0:67",
+        "span:ev_9972d78a7ed96453:0:75",
+        "span:ev_9acb82c64c1792e3:0:82",
+        "span:ev_9fd0e670c5a1dfa7:0:174",
+        "span:ev_aa1ad434f2b6803e:0:33",
+        "span:ev_b5170ffc5729235d:0:104",
+        "span:ev_b53b1eef8255dfaf:0:66",
+        "span:ev_b9c74b26bcb869ee:0:68",
+        "span:ev_bcf0a312de884bf9:0:86",
+        "span:ev_bf1bbd5f170a12a9:0:45",
+        "span:ev_c16cd8a81b99410d:0:71",
+        "span:ev_cd5fa7f125c16ec8:0:145",
+        "span:ev_d071431bf98c79f3:0:56",
+        "span:ev_daf242ee923d0264:0:64",
+        "span:ev_ddfb9b7d5252eb6c:0:123",
+        "span:ev_e01a25ddb3df522a:0:200",
+        "span:ev_e0730fdfa437760d:0:50",
+        "span:ev_e4baf97996b93349:0:16",
+        "span:ev_e5fee8d4ab289338:0:94",
+        "span:ev_f19d74f6ba596733:0:107",
+        "span:ev_f2d83729fd1a8334:0:118",
+        "span:ev_f717f84b7a7729db:0:53",
+        "span:ev_fbe3119c277c5bbf:0:76",
+        "span:ev_fded30393e40e588:0:29"
+      ]
+    },
+    {
+      "sequence": 3,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 14501,
+      "visible_evidence_ids": [
+        "ev_021e1e631338c835",
+        "ev_04fcaa0002d7d7b3",
+        "ev_088723e7d449731a",
+        "ev_0bc25055936e1092",
+        "ev_0c10432bddfece7c",
+        "ev_0cc48fbd05a15430",
+        "ev_0ed690ba410b26ab",
+        "ev_0efca8b5653af727",
+        "ev_152b218ec13d1455",
+        "ev_16b024ef7c385a05",
+        "ev_16dbbd44ecf2a860",
+        "ev_1891e24034dc3a2f",
+        "ev_233d7c721c907965",
+        "ev_265ea4b49d68aa61",
+        "ev_27cfef7da134c150",
+        "ev_2c6bc75694fac331",
+        "ev_44cdea03a3d43e18",
+        "ev_4b2ea5aa09c11e9b",
+        "ev_50498cada512ae70",
+        "ev_530274020d30e7a8",
+        "ev_55541502d6537ae9",
+        "ev_5be9ed04e2cdaea0",
+        "ev_5fe9ae2fbae6ba91",
+        "ev_5ff42648eea81b00",
+        "ev_62ae53178aeaa894",
+        "ev_6aaa89245c41d3ea",
+        "ev_711ddf59ed10e007",
+        "ev_7bc916080aa16db8",
+        "ev_8032f99cb1184961",
+        "ev_87879ee4d1969114",
+        "ev_8e62458b0e5f6103",
+        "ev_94d123e31a634298",
+        "ev_95c03985870188db",
+        "ev_9972d78a7ed96453",
+        "ev_9acb82c64c1792e3",
+        "ev_9fd0e670c5a1dfa7",
+        "ev_aa1ad434f2b6803e",
+        "ev_b5170ffc5729235d",
+        "ev_b53b1eef8255dfaf",
+        "ev_b9c74b26bcb869ee",
+        "ev_bcf0a312de884bf9",
+        "ev_bf1bbd5f170a12a9",
+        "ev_c16cd8a81b99410d",
+        "ev_cd5fa7f125c16ec8",
+        "ev_d071431bf98c79f3",
+        "ev_daf242ee923d0264",
+        "ev_ddfb9b7d5252eb6c",
+        "ev_e01a25ddb3df522a",
+        "ev_e0730fdfa437760d",
+        "ev_e4baf97996b93349",
+        "ev_e5fee8d4ab289338",
+        "ev_f19d74f6ba596733",
+        "ev_f2d83729fd1a8334",
+        "ev_f717f84b7a7729db",
+        "ev_fbe3119c277c5bbf",
+        "ev_fded30393e40e588"
+      ],
+      "included_tool_call_ids": [
+        "text_1"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "started"
+    },
+    {
+      "sequence": 5,
+      "kind": "model",
+      "call_number": 1,
+      "status": "complete",
+      "request_id": "request_fe487001e563dace",
+      "draft": {
+        "claims": [
+          {
+            "statement": "The pruning design was reported complete.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_04fcaa0002d7d7b3",
+                "quote": "Narrative Pruning TRD completed",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The passage directly reports completion.",
+            "verification_note": "It does not date completion or establish when implementation began."
+          },
+          {
+            "statement": "Pruning was specified to apply to Narratives, not Comment Conversations.",
+            "kind": "prescription",
+            "citations": [
+              {
+                "evidence_id": "ev_87879ee4d1969114",
+                "quote": "Pruning should only be applicable to Narratives, not Comment Conversations",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The passage states the intended scope.",
+            "verification_note": "A requirement is not evidence that the restriction worked."
+          },
+          {
+            "statement": "A staging QA retest reported that Comment Narratives were allowed for pruning despite the specified restriction.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_8032f99cb1184961",
+                "quote": "Retest:🪲QA: Staging : Comment Narratives Are Allowed for Pruning Though PRD Specifies Only Narratives",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The passage directly labels the observation as a staging retest.",
+            "verification_note": "“Retest” implies an earlier test but supplies no date, fix, or verified outcome."
+          },
+          {
+            "statement": "The stated expected behavior was for pruned narratives to appear in Hidden Narratives in real time.",
+            "kind": "prescription",
+            "citations": [
+              {
+                "evidence_id": "ev_c16cd8a81b99410d",
+                "quote": "Pruned narratives must appear in Hidden Narratives section in real-time",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The passage explicitly states a requirement.",
+            "verification_note": "It does not verify real-time behavior."
+          },
+          {
+            "statement": "The planned data handoff was for MLE to send pruning_flag: true and a pruning_id, with topic_narratives updated to carry those details.",
+            "kind": "prescription",
+            "citations": [
+              {
+                "evidence_id": "ev_5fe9ae2fbae6ba91",
+                "quote": "MLE team will be sending a pruning_flag : true with the pruning_id :'' , we need to update topic_narratives entity with the same details",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "Future-tense wording directly describes the planned handoff and update.",
+            "verification_note": "The passage alone does not prove that MLE sent the fields."
+          },
+          {
+            "statement": "The retrieved summary reports that pruning rules were sent from the backend service for narrative-generation runs.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_0efca8b5653af727",
+                "quote": "Pruning rules sent from backend service for narrative generation runs",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "medium",
+            "confidence_reason": "The wording reports the action, but it is a brief summary without run-level evidence.",
+            "verification_note": "It supplies no date or verified downstream pruning result."
+          },
+          {
+            "statement": "The retrieved summary reports completed code changes for pruning input-data creation and topic_narratives output-data updates, followed by a report of completed local testing.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_daf242ee923d0264",
+                "quote": "Code changes completed for narrative pruning input data creation",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_530274020d30e7a8",
+                "quote": "Code changes completed for topic_narratives output data update",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_bf1bbd5f170a12a9",
+                "quote": "Local testing completed for narrative pruning",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "medium",
+            "confidence_reason": "Each completion is reported, but the passages do not directly date or sequence them.",
+            "verification_note": "“Followed by” describes the report here, not a proven chronological order of the work."
+          },
+          {
+            "statement": "Narrative Pruning API integration was reported complete and deployed to the Dev environment.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_1891e24034dc3a2f",
+                "quote": "API integration for Narrative Pruning has been completed. The changes have been deployed to the Dev environment",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The passage directly reports both completion and a Dev deployment.",
+            "verification_note": "It does not establish production deployment or ordering relative to staging work."
+          },
+          {
+            "statement": "Deleting a pruning rule was expected to unhide its related narratives or return them to the Main narrative tab.",
+            "kind": "prescription",
+            "citations": [
+              {
+                "evidence_id": "ev_2c6bc75694fac331",
+                "quote": "When deleting a pruning rule, related narratives which are in hidden must get un-hidden or appear in Main narrative tab again",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The passage directly states the expected behavior.",
+            "verification_note": "It does not establish that the behavior was observed."
+          },
+          {
+            "statement": "A follow-up report says a feature reflecting pruning-rule deletion in topic narratives was implemented and its merge request merged in the staging environment.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_f2d83729fd1a8334",
+                "quote": "Implemented Feature to reflect narrative pruning rule deletion in topic narratives. MR , we have merged in staging ENV",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The passage directly reports implementation and a staging merge.",
+            "verification_note": "A staging merge does not verify that unhide behavior worked."
+          },
+          {
+            "statement": "The passages establish a requirement-to-reported-implementation relationship for rule deletion, but provide no dated cross-ticket sequence for the TRD, code changes, local testing, Dev deployment, staging merge, and staging retest.",
+            "kind": "synthesis",
+            "citations": [
+              {
+                "evidence_id": "ev_2c6bc75694fac331",
+                "quote": "When deleting a pruning rule, related narratives which are in hidden must get un-hidden or appear in Main narrative tab again",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_f2d83729fd1a8334",
+                "quote": "Implemented Feature to reflect narrative pruning rule deletion in topic narratives. MR , we have merged in staging ENV",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_1891e24034dc3a2f",
+                "quote": "API integration for Narrative Pruning has been completed. The changes have been deployed to the Dev environment",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_8032f99cb1184961",
+                "quote": "Retest:🪲QA: Staging : Comment Narratives Are Allowed for Pruning Though PRD Specifies Only Narratives",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "medium",
+            "confidence_reason": "The reports distinguish intended behavior, implementation, environments, and retest, but contain no dates tying those separate records together.",
+            "verification_note": "Ticket numbers and the order in which passages were retrieved are not chronology."
+          }
+        ],
+        "unanswered": [
+          "What dates, if any, establish the order among TRD completion, code changes, local testing, Dev deployment, staging merge, and the staging QA retest?",
+          "Was the Comment Narratives staging defect fixed and successfully retested?",
+          "Did deleting a pruning rule actually unhide affected narratives, and was pruning deployed to or verified in production?"
+        ],
+        "limitations": [
+          "The Community_114 passages are brief summaries, not independent run logs or deployment verification.",
+          "No cited passage establishes customer impact or a complete end-to-end chronology."
+        ]
+      },
+      "latency_seconds": 27.130813916010084,
+      "provider": {
+        "request_id": "request_fe487001e563dace",
+        "purpose": "evaluation_text_rag",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__text_rag/cache/codex/request_fe487001e563dace.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2688,
+          "input_tokens": 7587,
+          "output_tokens": 2217,
+          "reasoning_output_tokens": 156,
+          "total_tokens": 9804
+        },
+        "thread_id": "01a114b6-53b1-71b0-a54c-23ab0bfcb61b",
+        "turn_id": "01a114b6-53d9-7e01-abcb-0ca6de70e5bd",
+        "status": "completed",
+        "latency_seconds": 27.1126
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "Community_114"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_04fcaa0002d7d7b3"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 7,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "Community_114"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_87879ee4d1969114"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 8,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "KEP-5757"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_8032f99cb1184961"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 9,
+      "kind": "claim_support",
+      "claim_id": "C4",
+      "record_ids": [
+        "Community_114"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_c16cd8a81b99410d"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 10,
+      "kind": "claim_support",
+      "claim_id": "C5",
+      "record_ids": [
+        "KEP-4255"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_5fe9ae2fbae6ba91"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 11,
+      "kind": "claim_support",
+      "claim_id": "C6",
+      "record_ids": [
+        "Community_114"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_0efca8b5653af727"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 12,
+      "kind": "claim_support",
+      "claim_id": "C7",
+      "record_ids": [
+        "Community_114"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_daf242ee923d0264",
+        "ev_530274020d30e7a8",
+        "ev_bf1bbd5f170a12a9"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 13,
+      "kind": "claim_support",
+      "claim_id": "C8",
+      "record_ids": [
+        "KEP-4238"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_1891e24034dc3a2f"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 14,
+      "kind": "claim_support",
+      "claim_id": "C9",
+      "record_ids": [
+        "KEP-4019"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_2c6bc75694fac331"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 15,
+      "kind": "claim_support",
+      "claim_id": "C10",
+      "record_ids": [
+        "KEP-4019"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_f2d83729fd1a8334"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 16,
+      "kind": "claim_support",
+      "claim_id": "C11",
+      "record_ids": [
+        "KEP-4019",
+        "KEP-4238",
+        "KEP-5757"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_2c6bc75694fac331",
+        "ev_f2d83729fd1a8334",
+        "ev_1891e24034dc3a2f",
+        "ev_8032f99cb1184961"
+      ],
+      "source_mode": "text"
+    }
+  ],
+  "usage": {
+    "model_calls": 1,
+    "data_tool_calls": 1,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 7587,
+      "output_tokens": 2217,
+      "cached_input_tokens": 2688,
+      "reasoning_output_tokens": 156
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 27.130813916010084,
+    "provider_elapsed_seconds": 27.1126,
+    "tool_elapsed_seconds": 0.0026704579940997064,
+    "total_elapsed_seconds": 27.146729500003858,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "graph_hash": "graph_461ec66cd6c65256",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "execution_scope": "source_only",
+    "approach": "text_rag",
+    "top_k": 20,
+    "corpus_fingerprint": "sha_a36c560065c5dd52",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/pruning__paraphrase__text_rag/cache",
+      "timeout": 300.0
+    },
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "pruning__paraphrase__text_rag",
+      "question_id": "pruning",
+      "variant": "paraphrase",
+      "approach": "text_rag",
+      "question": "Which pruning behaviors and follow-up actions are reported, and what evidence supports their temporal order?"
+    }
+  }
+}

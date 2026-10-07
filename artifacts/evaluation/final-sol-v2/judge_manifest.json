@@ -1,0 +1,16 @@
+{
+  "configuration": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "medium",
+    "max_model_calls": 100,
+    "max_tool_calls": 10,
+    "max_request_chars": 200000,
+    "no_gain_limit": 3,
+    "timeout": 300.0
+  },
+  "rubric_fingerprint": "sha_45c039807a36cf35",
+  "benchmark_fingerprint": "sha_af3224453a7be016",
+  "code_fingerprint": "sha_a73874688d17b276",
+  "synthetic_provider": false
+}

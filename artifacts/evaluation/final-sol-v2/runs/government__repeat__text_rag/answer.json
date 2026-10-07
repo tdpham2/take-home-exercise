@@ -1,0 +1,1153 @@
+{
+  "question": "Why did the government tenant stop receiving narrative updates in April 2026, and what did the timeout change actually address?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "The Argonaut government tenant’s cited network stopped generating narrative updates around April 19, 2026.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_1c1739cdda90321d",
+          "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The incident report directly identifies the tenant, network, and approximate onset.",
+      "verification_note": "This is a reported observation, not an independently verified recovery timeline.",
+      "id": "C1",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The reported cause was that this network’s narrative-generation jobs repeatedly exceeded the then-10-hour processing threshold and were killed before completion.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_5f2b2e2ded8842f5",
+          "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The incident report explicitly states this mechanism as its root cause.",
+      "verification_note": "The citation supports the reported cause, not independent proof of the runtime measurements.",
+      "id": "C2",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The report says killed jobs re-queued and were killed again, producing a silent loop without output or an alert.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_1b68761b66cc3cc3",
+          "quote": "The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The cited passage directly describes the retry behavior.",
+      "verification_note": "This explains persistence of the reported failure; it does not establish the performance reason jobs ran so long.",
+      "id": "C3",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "statement": "The reported timeout change raised the processing limit from 10 to 12 hours, addressing termination at the 10-hour threshold rather than establishing that jobs became faster or that narrative updates resumed.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_ad26bffaa983949e",
+          "quote": "the processing timeout was increased from 10 hours to 12 hours",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_5f2b2e2ded8842f5",
+          "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "medium",
+      "confidence_reason": "The change and prior failure threshold are explicit; its limited scope follows from comparing them.",
+      "verification_note": "The supplied passages contain no post-change completion or recovery result.",
+      "id": "C4",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "source_mode": "text"
+    }
+  ],
+  "unanswered": [
+    "Why did this network’s narrative-generation jobs take longer than 10 hours?",
+    "Did the 12-hour threshold allow jobs to finish and narrative updates to resume, and when?"
+  ],
+  "limitations": [
+    "The separate April data-collection incident in KEP-6970 is not evidence that it caused this Argonaut network’s narrative-generation failure.",
+    "BM25 over extracted record text; exact citations do not establish semantic correctness."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "execution_scope": "source_only"
+    },
+    {
+      "sequence": 2,
+      "kind": "tool",
+      "name": "retrieve_text",
+      "arguments": {
+        "query": "Why did the government tenant stop receiving narrative updates in April 2026, and what did the timeout change actually address?",
+        "top_k": 20
+      },
+      "call_id": "text_1",
+      "result": {
+        "records": [
+          {
+            "record_id": "KEP-6969",
+            "passages": [
+              {
+                "evidence_id": "ev_1b68761b66cc3cc3",
+                "record_id": "KEP-6969",
+                "quote": "The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert",
+                "start": 0,
+                "end": 110
+              },
+              {
+                "evidence_id": "ev_1c1739cdda90321d",
+                "record_id": "KEP-6969",
+                "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026",
+                "start": 0,
+                "end": 174
+              },
+              {
+                "evidence_id": "ev_4386d80195ef6b5a",
+                "record_id": "KEP-6969",
+                "quote": "Government customer (Argonaut tenant) went 10+ days (Apr 19–29) without narrative updates for at least one network",
+                "start": 0,
+                "end": 114
+              },
+              {
+                "evidence_id": "ev_5f2b2e2ded8842f5",
+                "record_id": "KEP-6969",
+                "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+                "start": 0,
+                "end": 196
+              },
+              {
+                "evidence_id": "ev_9b4317c218937e4f",
+                "record_id": "KEP-6969",
+                "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026. The issue was not caught by any internal alarm — it was discovered by the government customer's own team, then, when the issue continued, our alarms caught it but no action was taken. Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing.",
+                "start": 0,
+                "end": 557
+              },
+              {
+                "evidence_id": "ev_ad26bffaa983949e",
+                "record_id": "KEP-6969",
+                "quote": "the processing timeout was increased from 10 hours to 12 hours",
+                "start": 0,
+                "end": 62
+              },
+              {
+                "evidence_id": "ev_f3dba2eba43e2de5",
+                "record_id": "KEP-6969",
+                "quote": "Narrative generation jobs for networks with large data volumes (long-running networks) were being terminated by the application upon exceeding the processing SLA timeout (10 hours)",
+                "start": 0,
+                "end": 180
+              }
+            ],
+            "score": 20.344210086235414
+          },
+          {
+            "record_id": "KEP-6926",
+            "passages": [
+              {
+                "evidence_id": "ev_854c9dc7219a5000",
+                "record_id": "KEP-6926",
+                "quote": "The tenant has been created. Please verify",
+                "start": 0,
+                "end": 42
+              },
+              {
+                "evidence_id": "ev_e756cd2fe5c563b7",
+                "record_id": "KEP-6926",
+                "quote": "create a new tenant in Argus Social (GOVERNMENT) called Nambulite",
+                "start": 0,
+                "end": 65
+              }
+            ],
+            "score": 12.789116636865437
+          },
+          {
+            "record_id": "KEP-3532",
+            "passages": [
+              {
+                "evidence_id": "ev_c7cc9fb3a33b9eab",
+                "record_id": "KEP-3532",
+                "quote": "Purge Invalid Twitter and Reddit Posts from Government Tenant Networks",
+                "start": 0,
+                "end": 70
+              }
+            ],
+            "score": 12.177809705466444
+          },
+          {
+            "record_id": "KEP-5506",
+            "passages": [
+              {
+                "evidence_id": "ev_976b4e2f6ea6ea39",
+                "record_id": "KEP-5506",
+                "quote": "Staging: Feed Page \"Narrative Start Date\" Doesn't Actually Show the Narrative Start Date",
+                "start": 0,
+                "end": 88
+              }
+            ],
+            "score": 10.87144875042122
+          },
+          {
+            "record_id": "KEP-6062",
+            "passages": [
+              {
+                "evidence_id": "ev_0a0e0cce4f2568c1",
+                "record_id": "KEP-6062",
+                "quote": "Investigate why the Twitter accounts appear to be blocked and analyze the reason for the significant cost increase starting from February 9, 2026.",
+                "start": 0,
+                "end": 146
+              }
+            ],
+            "score": 10.457236628542542
+          },
+          {
+            "record_id": "KEP-6437",
+            "passages": [
+              {
+                "evidence_id": "ev_121fcadeebb2c65d",
+                "record_id": "KEP-6437",
+                "quote": "we cloned over several networks from the SOCOM tenant to the Argonaut tenant. When we did so, there was a significant number of changes to the network when we copied → migrated the networks.",
+                "start": 0,
+                "end": 190
+              },
+              {
+                "evidence_id": "ev_df17bf9971c9b9e9",
+                "record_id": "KEP-6437",
+                "quote": "Cloned Networks have completely different accounts and missing platforms",
+                "start": 0,
+                "end": 72
+              }
+            ],
+            "score": 10.454418863289266
+          },
+          {
+            "record_id": "KEP-4802",
+            "passages": [
+              {
+                "evidence_id": "ev_20b00319fa9087b8",
+                "record_id": "KEP-4802",
+                "quote": "Wrap the existing Pendo init call in a conditional based on the login_space parameter, readable from local storage at nebulasocial.accrete.ai",
+                "start": 0,
+                "end": 141
+              },
+              {
+                "evidence_id": "ev_271d3602bd369d83",
+                "record_id": "KEP-4802",
+                "quote": "For government tenant users, this is a compliance and privacy concern — email addresses should never be transmitted to a third-party analytics tool.",
+                "start": 0,
+                "end": 148
+              },
+              {
+                "evidence_id": "ev_34f5779940796022",
+                "record_id": "KEP-4802",
+                "quote": "Reference: Pendo conditional initialization docs",
+                "start": 0,
+                "end": 48
+              },
+              {
+                "evidence_id": "ev_791bfd88744cdd7f",
+                "record_id": "KEP-4802",
+                "quote": "This ticket updates the Pendo initialization snippet to conditionally send a Pendo ID instead of email when the user is on a government login space.",
+                "start": 0,
+                "end": 148
+              }
+            ],
+            "score": 10.431538601113363
+          },
+          {
+            "record_id": "KEP-6970",
+            "passages": [
+              {
+                "evidence_id": "ev_06eee086b8cf9d93",
+                "record_id": "KEP-6970",
+                "quote": "No automated alarm fired during this period",
+                "start": 0,
+                "end": 43
+              },
+              {
+                "evidence_id": "ev_14acd247410dce00",
+                "record_id": "KEP-6970",
+                "quote": "Apr 30, 7:25 AM EDT — 19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags, with a linked change document",
+                "start": 0,
+                "end": 150
+              },
+              {
+                "evidence_id": "ev_1faf97ee0458fc4b",
+                "record_id": "KEP-6970",
+                "quote": "Host PID fix applied prior to 19.2.0 deployment",
+                "start": 0,
+                "end": 47
+              },
+              {
+                "evidence_id": "ev_2aaa51b05f284118",
+                "record_id": "KEP-6970",
+                "quote": "Apr 30, 7:00 AM EDT — TikTok MR bypass requested in #kepler-dev-all-pods (data-source-tiktok MR 501)",
+                "start": 0,
+                "end": 100
+              },
+              {
+                "evidence_id": "ev_4700e329357c7762",
+                "record_id": "KEP-6970",
+                "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered (per Apr 28 standup: Magna coordinating with Abhik Roy to stop cron before triggering backfill)",
+                "start": 0,
+                "end": 196
+              },
+              {
+                "evidence_id": "ev_477c9de5cda34331",
+                "record_id": "KEP-6970",
+                "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing",
+                "start": 0,
+                "end": 136
+              },
+              {
+                "evidence_id": "ev_48b827cfe137a976",
+                "record_id": "KEP-6970",
+                "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied",
+                "start": 0,
+                "end": 205
+              },
+              {
+                "evidence_id": "ev_66f837dba0b6f0bf",
+                "record_id": "KEP-6970",
+                "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting",
+                "start": 0,
+                "end": 167
+              },
+              {
+                "evidence_id": "ev_75b67275157f9120",
+                "record_id": "KEP-6970",
+                "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.",
+                "start": 0,
+                "end": 324
+              },
+              {
+                "evidence_id": "ev_780b5d8df3586459",
+                "record_id": "KEP-6970",
+                "quote": "TikTok MR bypass requested in #kepler-dev-all-pods (data-source-tiktok MR 501)",
+                "start": 0,
+                "end": 78
+              },
+              {
+                "evidence_id": "ev_798015aecf48cc37",
+                "record_id": "KEP-6970",
+                "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered",
+                "start": 0,
+                "end": 100
+              },
+              {
+                "evidence_id": "ev_840978102672098c",
+                "record_id": "KEP-6970",
+                "quote": "Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April",
+                "start": 0,
+                "end": 77
+              },
+              {
+                "evidence_id": "ev_9488fa8cc6db3d39",
+                "record_id": "KEP-6970",
+                "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied. Apr 29, 6:42 AM EDT — Kiran Sabbani in #kepler-dev-all-pods: \"Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April.\"",
+                "start": 0,
+                "end": 348
+              },
+              {
+                "evidence_id": "ev_97a309f4cce85c3a",
+                "record_id": "KEP-6970",
+                "quote": "Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21",
+                "start": 0,
+                "end": 92
+              },
+              {
+                "evidence_id": "ev_cdf54cd1ff4aa620",
+                "record_id": "KEP-6970",
+                "quote": "Backfill from Apr 21 required to restore full data integrity",
+                "start": 0,
+                "end": 60
+              },
+              {
+                "evidence_id": "ev_d84bc6bf2ffd4954",
+                "record_id": "KEP-6970",
+                "quote": "19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags",
+                "start": 0,
+                "end": 97
+              },
+              {
+                "evidence_id": "ev_f3c24bea244e9385",
+                "record_id": "KEP-6970",
+                "quote": "~8 days (Apr 21–29) of missing or degraded data for Facebook, Instagram, and TikTok across all customer networks",
+                "start": 0,
+                "end": 112
+              }
+            ],
+            "score": 10.175193743291036
+          },
+          {
+            "record_id": "KEP-5834",
+            "passages": [
+              {
+                "evidence_id": "ev_10279fb62c61c21b",
+                "record_id": "KEP-5834",
+                "quote": "The kicked-off network lost most configured sources. Unclear why activation did not carry over the configured accounts from the draft.",
+                "start": 0,
+                "end": 134
+              },
+              {
+                "evidence_id": "ev_2832be4743c5fe30",
+                "record_id": "KEP-5834",
+                "quote": "PHL Media network — configuration mismatch. We kicked off the PHL Media network Friday (created by Peridot admin — me). The agent details shown are the ones I configured, but the sources do not match what was seeded.",
+                "start": 0,
+                "end": 216
+              },
+              {
+                "evidence_id": "ev_b7663e1297e6193c",
+                "record_id": "KEP-5834",
+                "quote": "PHL Media network — configuration mismatch.",
+                "start": 0,
+                "end": 43
+              },
+              {
+                "evidence_id": "ev_f8d38431edaf2566",
+                "record_id": "KEP-5834",
+                "quote": "For now we have manually did it from DB.",
+                "start": 0,
+                "end": 40
+              }
+            ],
+            "score": 9.050471255687087
+          },
+          {
+            "record_id": "Community_923",
+            "passages": [
+              {
+                "evidence_id": "ev_9c6c8e7d3eceee85",
+                "record_id": "Community_923",
+                "quote": "APIs to Update /summary/narrative-stats",
+                "start": 0,
+                "end": 39
+              },
+              {
+                "evidence_id": "ev_b3c441fd398894d0",
+                "record_id": "Community_923",
+                "quote": "Since we are fetching it from two different sources, there can be discrepancies",
+                "start": 0,
+                "end": 79
+              },
+              {
+                "evidence_id": "ev_b68e16ee76c03885",
+                "record_id": "Community_923",
+                "quote": "APIs to Update /summary/comment-narratives/list",
+                "start": 0,
+                "end": 47
+              },
+              {
+                "evidence_id": "ev_c95b39ebbddb0c6e",
+                "record_id": "Community_923",
+                "quote": "APIs to Update /network/post-count",
+                "start": 0,
+                "end": 34
+              },
+              {
+                "evidence_id": "ev_fa8dc9993cbb6e4e",
+                "record_id": "Community_923",
+                "quote": "APIs to Update /summary/narrative-post-count",
+                "start": 0,
+                "end": 44
+              }
+            ],
+            "score": 8.652591032522452
+          },
+          {
+            "record_id": "KEP-3912",
+            "passages": [
+              {
+                "evidence_id": "ev_8377265b8fad614c",
+                "record_id": "KEP-3912",
+                "quote": "Investigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state",
+                "start": 0,
+                "end": 100
+              },
+              {
+                "evidence_id": "ev_996046a98ac70ec7",
+                "record_id": "KEP-3912",
+                "quote": "Investigate the failure of the comment narratives (Algorithm Error)",
+                "start": 0,
+                "end": 67
+              },
+              {
+                "evidence_id": "ev_d9db300b6974ef3b",
+                "record_id": "KEP-3912",
+                "quote": "Investigate the tasks where we did not receive SQS Notifications making the tasks stay in hang state (i.e. RUNNING) Investigate the failure of the comment narratives (Algorithm Error)",
+                "start": 0,
+                "end": 183
+              }
+            ],
+            "score": 8.621418345505473
+          },
+          {
+            "record_id": "KEP-6460",
+            "passages": [
+              {
+                "evidence_id": "ev_4808624dac3da9b4",
+                "record_id": "KEP-6460",
+                "quote": "Expected behavior: The Hidden tab should only contain narratives that are actually hidden. This includes narratives hidden automatically by rules and any narratives newly hidden by the user. No additional narratives should appear there, and nothing should be duplicated.",
+                "start": 0,
+                "end": 270
+              },
+              {
+                "evidence_id": "ev_556016c4f8f9dfec",
+                "record_id": "KEP-6460",
+                "quote": "This issue is resolved, moving the status to done. Please check the video attached below",
+                "start": 0,
+                "end": 88
+              },
+              {
+                "evidence_id": "ev_8f9034d5d62be1cd",
+                "record_id": "KEP-6460",
+                "quote": "If the UI section for \"hidden narratives\" already contains a hidden narrative (for example, if I created a pruning rule yesterday and the system hid a narrative automatically), and I hide another narrative, the new narrative correctly moves to the Hidden tab. However, several other narratives also appear in the Hidden tab even though they were not hidden.",
+                "start": 0,
+                "end": 357
+              },
+              {
+                "evidence_id": "ev_c0433f80384278e7",
+                "record_id": "KEP-6460",
+                "quote": "The Hidden tab should only contain narratives that are actually hidden.",
+                "start": 0,
+                "end": 71
+              },
+              {
+                "evidence_id": "ev_cf2741770e934a49",
+                "record_id": "KEP-6460",
+                "quote": "When Pruning a Narrative, Non-Pruned Narratives Get Duplicated in the Hidden Tab",
+                "start": 0,
+                "end": 80
+              }
+            ],
+            "score": 8.578372849429684
+          },
+          {
+            "record_id": "KEP-2670",
+            "passages": [
+              {
+                "evidence_id": "ev_19f1bbf2f02a200d",
+                "record_id": "KEP-2670",
+                "quote": "Mihir Chouhan (2026-02-06T06:02:13.853-0500): This is live in prod and completed and working fine.",
+                "start": 0,
+                "end": 98
+              },
+              {
+                "evidence_id": "ev_22d745595a028310",
+                "record_id": "KEP-2670",
+                "quote": "Change in the way the task is distributed from stats_initiator.",
+                "start": 0,
+                "end": 63
+              }
+            ],
+            "score": 8.332999929585725
+          },
+          {
+            "record_id": "KEP-4324",
+            "passages": [
+              {
+                "evidence_id": "ev_356e74daad388f22",
+                "record_id": "KEP-4324",
+                "quote": "The chat API is currently behind the Kepler NGINX, which has a hard timeout of 60 seconds",
+                "start": 0,
+                "end": 89
+              },
+              {
+                "evidence_id": "ev_41d9d38efa271479",
+                "record_id": "KEP-4324",
+                "quote": "I want to have a timeout of 300 seconds so that long-running requests can complete successfully",
+                "start": 0,
+                "end": 95
+              },
+              {
+                "evidence_id": "ev_48a5ba5b1d05e25e",
+                "record_id": "KEP-4324",
+                "quote": "Increased ALB timeout to 180sec",
+                "start": 0,
+                "end": 31
+              }
+            ],
+            "score": 8.067784427807732
+          },
+          {
+            "record_id": "KEP-4130",
+            "passages": [
+              {
+                "evidence_id": "ev_4e000788edcd5cc7",
+                "record_id": "KEP-4130",
+                "quote": "status: Done",
+                "start": 0,
+                "end": 12
+              },
+              {
+                "evidence_id": "ev_565c4a295856c6b4",
+                "record_id": "KEP-4130",
+                "quote": "Apply to: Network Member Mapping, Network Master, Topic Narrative (micro/comment narratives)",
+                "start": 0,
+                "end": 92
+              },
+              {
+                "evidence_id": "ev_8a4dfd9f5411516b",
+                "record_id": "KEP-4130",
+                "quote": "Implement event-based invalidation alongside existing TTL using two cache key strategies",
+                "start": 0,
+                "end": 88
+              },
+              {
+                "evidence_id": "ev_9a3bb5487acdff5a",
+                "record_id": "KEP-4130",
+                "quote": "No change to API response contracts.",
+                "start": 0,
+                "end": 36
+              },
+              {
+                "evidence_id": "ev_c1def412fc35259e",
+                "record_id": "KEP-4130",
+                "quote": "Current caching relies solely on TTL/timeout with no event-based invalidation. As a result, API responses refresh only after the cache expires rather than when underlying data changes.",
+                "start": 0,
+                "end": 184
+              },
+              {
+                "evidence_id": "ev_c1ed1c7e869e88f1",
+                "record_id": "KEP-4130",
+                "quote": "We need event-driven cache reset so responses stay consistent at all times.",
+                "start": 0,
+                "end": 75
+              }
+            ],
+            "score": 7.733139069815988
+          },
+          {
+            "record_id": "Community_880",
+            "passages": [
+              {
+                "evidence_id": "ev_d03294192981952b",
+                "record_id": "Community_880",
+                "quote": "Tenant created. Please close ticket if all good. Tenant is moved to commercial tenant",
+                "start": 0,
+                "end": 85
+              }
+            ],
+            "score": 7.387463100361786
+          },
+          {
+            "record_id": "KEP-3568",
+            "passages": [
+              {
+                "evidence_id": "ev_b1aa9f1bbe9413ff",
+                "record_id": "KEP-3568",
+                "quote": "Move network from SOCOM tenant to Peridot Tenant",
+                "start": 0,
+                "end": 48
+              }
+            ],
+            "score": 7.178063197807898
+          },
+          {
+            "record_id": "KEP-2669",
+            "passages": [
+              {
+                "evidence_id": "ev_8db0a55ebf084039",
+                "record_id": "KEP-2669",
+                "quote": "Update the API logic - to get the values for a Narrative Stats Collection",
+                "start": 0,
+                "end": 73
+              }
+            ],
+            "score": 7.091917939628267
+          },
+          {
+            "record_id": "KEP-4072",
+            "passages": [
+              {
+                "evidence_id": "ev_9e36bd97f8c61197",
+                "record_id": "KEP-4072",
+                "quote": "Update in narrative-accounts API related to platform breakdown changes",
+                "start": 0,
+                "end": 70
+              }
+            ],
+            "score": 7.091917939628267
+          },
+          {
+            "record_id": "KEP-379",
+            "passages": [
+              {
+                "evidence_id": "ev_a416d792fd3aadb3",
+                "record_id": "KEP-379",
+                "quote": "Update the API logic - to get the values for a Comment Narrative Stats Collection",
+                "start": 0,
+                "end": 81
+              }
+            ],
+            "score": 6.944753042763203
+          }
+        ],
+        "omitted_record_ids": []
+      },
+      "latency_seconds": 0.00321033300133422,
+      "error": false,
+      "new_ids": [
+        "ev_06eee086b8cf9d93",
+        "ev_0a0e0cce4f2568c1",
+        "ev_10279fb62c61c21b",
+        "ev_121fcadeebb2c65d",
+        "ev_14acd247410dce00",
+        "ev_19f1bbf2f02a200d",
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_1faf97ee0458fc4b",
+        "ev_20b00319fa9087b8",
+        "ev_22d745595a028310",
+        "ev_271d3602bd369d83",
+        "ev_2832be4743c5fe30",
+        "ev_2aaa51b05f284118",
+        "ev_34f5779940796022",
+        "ev_356e74daad388f22",
+        "ev_41d9d38efa271479",
+        "ev_4386d80195ef6b5a",
+        "ev_4700e329357c7762",
+        "ev_477c9de5cda34331",
+        "ev_4808624dac3da9b4",
+        "ev_48a5ba5b1d05e25e",
+        "ev_48b827cfe137a976",
+        "ev_4e000788edcd5cc7",
+        "ev_556016c4f8f9dfec",
+        "ev_565c4a295856c6b4",
+        "ev_5f2b2e2ded8842f5",
+        "ev_66f837dba0b6f0bf",
+        "ev_75b67275157f9120",
+        "ev_780b5d8df3586459",
+        "ev_791bfd88744cdd7f",
+        "ev_798015aecf48cc37",
+        "ev_8377265b8fad614c",
+        "ev_840978102672098c",
+        "ev_854c9dc7219a5000",
+        "ev_8a4dfd9f5411516b",
+        "ev_8db0a55ebf084039",
+        "ev_8f9034d5d62be1cd",
+        "ev_9488fa8cc6db3d39",
+        "ev_976b4e2f6ea6ea39",
+        "ev_97a309f4cce85c3a",
+        "ev_996046a98ac70ec7",
+        "ev_9a3bb5487acdff5a",
+        "ev_9b4317c218937e4f",
+        "ev_9c6c8e7d3eceee85",
+        "ev_9e36bd97f8c61197",
+        "ev_a416d792fd3aadb3",
+        "ev_ad26bffaa983949e",
+        "ev_b1aa9f1bbe9413ff",
+        "ev_b3c441fd398894d0",
+        "ev_b68e16ee76c03885",
+        "ev_b7663e1297e6193c",
+        "ev_c0433f80384278e7",
+        "ev_c1def412fc35259e",
+        "ev_c1ed1c7e869e88f1",
+        "ev_c7cc9fb3a33b9eab",
+        "ev_c95b39ebbddb0c6e",
+        "ev_cdf54cd1ff4aa620",
+        "ev_cf2741770e934a49",
+        "ev_d03294192981952b",
+        "ev_d84bc6bf2ffd4954",
+        "ev_d9db300b6974ef3b",
+        "ev_df17bf9971c9b9e9",
+        "ev_e756cd2fe5c563b7",
+        "ev_f3c24bea244e9385",
+        "ev_f3dba2eba43e2de5",
+        "ev_f8d38431edaf2566",
+        "ev_fa8dc9993cbb6e4e",
+        "span:ev_06eee086b8cf9d93:0:43",
+        "span:ev_0a0e0cce4f2568c1:0:146",
+        "span:ev_10279fb62c61c21b:0:134",
+        "span:ev_121fcadeebb2c65d:0:190",
+        "span:ev_14acd247410dce00:0:150",
+        "span:ev_19f1bbf2f02a200d:0:98",
+        "span:ev_1b68761b66cc3cc3:0:110",
+        "span:ev_1c1739cdda90321d:0:174",
+        "span:ev_1faf97ee0458fc4b:0:47",
+        "span:ev_20b00319fa9087b8:0:141",
+        "span:ev_22d745595a028310:0:63",
+        "span:ev_271d3602bd369d83:0:148",
+        "span:ev_2832be4743c5fe30:0:216",
+        "span:ev_2aaa51b05f284118:0:100",
+        "span:ev_34f5779940796022:0:48",
+        "span:ev_356e74daad388f22:0:89",
+        "span:ev_41d9d38efa271479:0:95",
+        "span:ev_4386d80195ef6b5a:0:114",
+        "span:ev_4700e329357c7762:0:196",
+        "span:ev_477c9de5cda34331:0:136",
+        "span:ev_4808624dac3da9b4:0:270",
+        "span:ev_48a5ba5b1d05e25e:0:31",
+        "span:ev_48b827cfe137a976:0:205",
+        "span:ev_4e000788edcd5cc7:0:12",
+        "span:ev_556016c4f8f9dfec:0:88",
+        "span:ev_565c4a295856c6b4:0:92",
+        "span:ev_5f2b2e2ded8842f5:0:196",
+        "span:ev_66f837dba0b6f0bf:0:167",
+        "span:ev_75b67275157f9120:0:324",
+        "span:ev_780b5d8df3586459:0:78",
+        "span:ev_791bfd88744cdd7f:0:148",
+        "span:ev_798015aecf48cc37:0:100",
+        "span:ev_8377265b8fad614c:0:100",
+        "span:ev_840978102672098c:0:77",
+        "span:ev_854c9dc7219a5000:0:42",
+        "span:ev_8a4dfd9f5411516b:0:88",
+        "span:ev_8db0a55ebf084039:0:73",
+        "span:ev_8f9034d5d62be1cd:0:357",
+        "span:ev_9488fa8cc6db3d39:0:348",
+        "span:ev_976b4e2f6ea6ea39:0:88",
+        "span:ev_97a309f4cce85c3a:0:92",
+        "span:ev_996046a98ac70ec7:0:67",
+        "span:ev_9a3bb5487acdff5a:0:36",
+        "span:ev_9b4317c218937e4f:0:557",
+        "span:ev_9c6c8e7d3eceee85:0:39",
+        "span:ev_9e36bd97f8c61197:0:70",
+        "span:ev_a416d792fd3aadb3:0:81",
+        "span:ev_ad26bffaa983949e:0:62",
+        "span:ev_b1aa9f1bbe9413ff:0:48",
+        "span:ev_b3c441fd398894d0:0:79",
+        "span:ev_b68e16ee76c03885:0:47",
+        "span:ev_b7663e1297e6193c:0:43",
+        "span:ev_c0433f80384278e7:0:71",
+        "span:ev_c1def412fc35259e:0:184",
+        "span:ev_c1ed1c7e869e88f1:0:75",
+        "span:ev_c7cc9fb3a33b9eab:0:70",
+        "span:ev_c95b39ebbddb0c6e:0:34",
+        "span:ev_cdf54cd1ff4aa620:0:60",
+        "span:ev_cf2741770e934a49:0:80",
+        "span:ev_d03294192981952b:0:85",
+        "span:ev_d84bc6bf2ffd4954:0:97",
+        "span:ev_d9db300b6974ef3b:0:183",
+        "span:ev_df17bf9971c9b9e9:0:72",
+        "span:ev_e756cd2fe5c563b7:0:65",
+        "span:ev_f3c24bea244e9385:0:112",
+        "span:ev_f3dba2eba43e2de5:0:180",
+        "span:ev_f8d38431edaf2566:0:40",
+        "span:ev_fa8dc9993cbb6e4e:0:44"
+      ]
+    },
+    {
+      "sequence": 3,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 19144,
+      "visible_evidence_ids": [
+        "ev_06eee086b8cf9d93",
+        "ev_0a0e0cce4f2568c1",
+        "ev_10279fb62c61c21b",
+        "ev_121fcadeebb2c65d",
+        "ev_14acd247410dce00",
+        "ev_19f1bbf2f02a200d",
+        "ev_1b68761b66cc3cc3",
+        "ev_1c1739cdda90321d",
+        "ev_1faf97ee0458fc4b",
+        "ev_20b00319fa9087b8",
+        "ev_22d745595a028310",
+        "ev_271d3602bd369d83",
+        "ev_2832be4743c5fe30",
+        "ev_2aaa51b05f284118",
+        "ev_34f5779940796022",
+        "ev_356e74daad388f22",
+        "ev_41d9d38efa271479",
+        "ev_4386d80195ef6b5a",
+        "ev_4700e329357c7762",
+        "ev_477c9de5cda34331",
+        "ev_4808624dac3da9b4",
+        "ev_48a5ba5b1d05e25e",
+        "ev_48b827cfe137a976",
+        "ev_4e000788edcd5cc7",
+        "ev_556016c4f8f9dfec",
+        "ev_565c4a295856c6b4",
+        "ev_5f2b2e2ded8842f5",
+        "ev_66f837dba0b6f0bf",
+        "ev_75b67275157f9120",
+        "ev_780b5d8df3586459",
+        "ev_791bfd88744cdd7f",
+        "ev_798015aecf48cc37",
+        "ev_8377265b8fad614c",
+        "ev_840978102672098c",
+        "ev_854c9dc7219a5000",
+        "ev_8a4dfd9f5411516b",
+        "ev_8db0a55ebf084039",
+        "ev_8f9034d5d62be1cd",
+        "ev_9488fa8cc6db3d39",
+        "ev_976b4e2f6ea6ea39",
+        "ev_97a309f4cce85c3a",
+        "ev_996046a98ac70ec7",
+        "ev_9a3bb5487acdff5a",
+        "ev_9b4317c218937e4f",
+        "ev_9c6c8e7d3eceee85",
+        "ev_9e36bd97f8c61197",
+        "ev_a416d792fd3aadb3",
+        "ev_ad26bffaa983949e",
+        "ev_b1aa9f1bbe9413ff",
+        "ev_b3c441fd398894d0",
+        "ev_b68e16ee76c03885",
+        "ev_b7663e1297e6193c",
+        "ev_c0433f80384278e7",
+        "ev_c1def412fc35259e",
+        "ev_c1ed1c7e869e88f1",
+        "ev_c7cc9fb3a33b9eab",
+        "ev_c95b39ebbddb0c6e",
+        "ev_cdf54cd1ff4aa620",
+        "ev_cf2741770e934a49",
+        "ev_d03294192981952b",
+        "ev_d84bc6bf2ffd4954",
+        "ev_d9db300b6974ef3b",
+        "ev_df17bf9971c9b9e9",
+        "ev_e756cd2fe5c563b7",
+        "ev_f3c24bea244e9385",
+        "ev_f3dba2eba43e2de5",
+        "ev_f8d38431edaf2566",
+        "ev_fa8dc9993cbb6e4e"
+      ],
+      "included_tool_call_ids": [
+        "text_1"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "started"
+    },
+    {
+      "sequence": 5,
+      "kind": "model",
+      "call_number": 1,
+      "status": "complete",
+      "request_id": "request_38f7cff499d7da9e",
+      "draft": {
+        "claims": [
+          {
+            "statement": "The Argonaut government tenant’s cited network stopped generating narrative updates around April 19, 2026.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_1c1739cdda90321d",
+                "quote": "A government customer network in the Argonaut tenant (network_id: ca95298f-cb34-5119-b8f9-e447607dfab7) stopped generating narrative updates from approximately April 19, 2026",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The incident report directly identifies the tenant, network, and approximate onset.",
+            "verification_note": "This is a reported observation, not an independently verified recovery timeline."
+          },
+          {
+            "statement": "The reported cause was that this network’s narrative-generation jobs repeatedly exceeded the then-10-hour processing threshold and were killed before completion.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_5f2b2e2ded8842f5",
+                "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The incident report explicitly states this mechanism as its root cause.",
+            "verification_note": "The citation supports the reported cause, not independent proof of the runtime measurements."
+          },
+          {
+            "statement": "The report says killed jobs re-queued and were killed again, producing a silent loop without output or an alert.",
+            "kind": "source_report",
+            "citations": [
+              {
+                "evidence_id": "ev_1b68761b66cc3cc3",
+                "quote": "The same job would then re-queue and be killed again, creating a silent retry loop with no output and no alert",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "high",
+            "confidence_reason": "The cited passage directly describes the retry behavior.",
+            "verification_note": "This explains persistence of the reported failure; it does not establish the performance reason jobs ran so long."
+          },
+          {
+            "statement": "The reported timeout change raised the processing limit from 10 to 12 hours, addressing termination at the 10-hour threshold rather than establishing that jobs became faster or that narrative updates resumed.",
+            "kind": "synthesis",
+            "citations": [
+              {
+                "evidence_id": "ev_ad26bffaa983949e",
+                "quote": "the processing timeout was increased from 10 hours to 12 hours",
+                "start": 0
+              },
+              {
+                "evidence_id": "ev_5f2b2e2ded8842f5",
+                "quote": "Root cause: narrative generation jobs for this network were repeatedly running beyond the processing time SLA threshold (10 hours at the time) and being killed by the application before completing",
+                "start": 0
+              }
+            ],
+            "memory_ids": [],
+            "confidence": "medium",
+            "confidence_reason": "The change and prior failure threshold are explicit; its limited scope follows from comparing them.",
+            "verification_note": "The supplied passages contain no post-change completion or recovery result."
+          }
+        ],
+        "unanswered": [
+          "Why did this network’s narrative-generation jobs take longer than 10 hours?",
+          "Did the 12-hour threshold allow jobs to finish and narrative updates to resume, and when?"
+        ],
+        "limitations": [
+          "The separate April data-collection incident in KEP-6970 is not evidence that it caused this Argonaut network’s narrative-generation failure."
+        ]
+      },
+      "latency_seconds": 12.052343292016303,
+      "provider": {
+        "request_id": "request_38f7cff499d7da9e",
+        "purpose": "evaluation_text_rag",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/government__repeat__text_rag/cache/codex/request_38f7cff499d7da9e.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2688,
+          "input_tokens": 8934,
+          "output_tokens": 904,
+          "reasoning_output_tokens": 47,
+          "total_tokens": 9838
+        },
+        "thread_id": "01a114ac-da42-7080-9e6a-cae00e82249a",
+        "turn_id": "01a114ac-da6c-7a12-9795-ad77540fe9eb",
+        "status": "completed",
+        "latency_seconds": 12.0425
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_1c1739cdda90321d"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 7,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_5f2b2e2ded8842f5"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 8,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_1b68761b66cc3cc3"
+      ],
+      "source_mode": "text"
+    },
+    {
+      "sequence": 9,
+      "kind": "claim_support",
+      "claim_id": "C4",
+      "record_ids": [
+        "KEP-6969"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_ad26bffaa983949e",
+        "ev_5f2b2e2ded8842f5"
+      ],
+      "source_mode": "text"
+    }
+  ],
+  "usage": {
+    "model_calls": 1,
+    "data_tool_calls": 1,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 8934,
+      "output_tokens": 904,
+      "cached_input_tokens": 2688,
+      "reasoning_output_tokens": 47
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 12.052343292016303,
+    "provider_elapsed_seconds": 12.0425,
+    "tool_elapsed_seconds": 0.00321033300133422,
+    "total_elapsed_seconds": 12.069849666993832,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "graph_hash": "graph_461ec66cd6c65256",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "execution_scope": "source_only",
+    "approach": "text_rag",
+    "top_k": 20,
+    "corpus_fingerprint": "sha_a36c560065c5dd52",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/government__repeat__text_rag/cache",
+      "timeout": 300.0
+    },
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "government__repeat__text_rag",
+      "question_id": "government",
+      "variant": "repeat",
+      "approach": "text_rag",
+      "question": "Why did the government tenant stop receiving narrative updates in April 2026, and what did the timeout change actually address?"
+    }
+  }
+}

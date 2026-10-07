@@ -1,0 +1,4331 @@
+{
+  "question": "How did the April collection incident progress from reported failures through remediation and backfill, and what recovery is verified?",
+  "status": "partial",
+  "provisional": false,
+  "claims": [
+    {
+      "statement": "The incident record reports severely degraded or failing Facebook, Instagram, and TikTok collection from approximately April 21 through April 29, 2026.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_477c9de5cda34331",
+          "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_79ef5db564f05930"
+      ],
+      "confidence": "high",
+      "confidence_reason": "The incident passage states the approximate window and affected platforms directly.",
+      "verification_note": "The cited KEP-6970 passage explicitly reports the degradation; the start of the window is approximate.",
+      "id": "C1",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "memory_confirmed_by_graph"
+    },
+    {
+      "statement": "The incident record says no automated alarm detected the problem during that eight-day window.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_75b67275157f9120",
+          "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_79ef5db564f05930"
+      ],
+      "confidence": "high",
+      "confidence_reason": "The absence of an automated alarm is stated directly in the incident passage.",
+      "verification_note": "The quote reports a monitoring failure, not how the incident was first discovered.",
+      "id": "C2",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "memory_confirmed_by_graph"
+    },
+    {
+      "statement": "The reported technical cause was video-vision jobs failing to close their final steps, backing up the queue and preventing new jobs from starting; the record says a host-PID setting change was applied as the fix.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_48b827cfe137a976",
+          "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_79ef5db564f05930"
+      ],
+      "confidence": "high",
+      "confidence_reason": "The passage directly reports the cause and applied change, though it does not independently demonstrate sustained recovery.",
+      "verification_note": "This is the source-reported cause and fix, not a causal inference from graph links.",
+      "id": "C3",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "memory"
+    },
+    {
+      "statement": "An April 28 standup note said the cron job sending failure callbacks needed to be stopped before backfill could be triggered; it described coordination to do so, not confirmed completion.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_4700e329357c7762",
+          "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered (per Apr 28 standup: Magna coordinating with Abhik Roy to stop cron before triggering backfill)",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_79ef5db564f05930"
+      ],
+      "confidence": "high",
+      "confidence_reason": "The prerequisite and coordination are explicit, but disabling the job is not confirmed by this wording.",
+      "verification_note": "The citation supports a planned prerequisite rather than an executed step.",
+      "id": "C4",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "memory_confirmed_by_graph"
+    },
+    {
+      "statement": "After Kepler 19.2.0 was deployed on April 29, Kiran Sabbani ordered backfill from April 21 for TikTok, Instagram, YouTube, and Facebook.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_97a309f4cce85c3a",
+          "quote": "Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_840978102672098c",
+          "quote": "Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_79ef5db564f05930"
+      ],
+      "confidence": "high",
+      "confidence_reason": "The passages directly establish the order, target start date, and platforms; they do not establish completion.",
+      "verification_note": "YouTube is in the backfill scope, while the cited principal failure report names Facebook, Instagram, and TikTok.",
+      "id": "C5",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "memory_confirmed_by_graph"
+    },
+    {
+      "statement": "By the April 30 update, 19.2.1 hotfix merge requests for brightdata-batching-service and data-source-facebook were deploying to staging; this does not establish production deployment.",
+      "kind": "source_report",
+      "citations": [
+        {
+          "evidence_id": "ev_14acd247410dce00",
+          "quote": "Apr 30, 7:25 AM EDT — 19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags, with a linked change document",
+          "start": 0
+        }
+      ],
+      "memory_ids": [],
+      "confidence": "high",
+      "confidence_reason": "The original passage specifies staging, not production.",
+      "verification_note": "The environment qualifier limits the recovery claim.",
+      "id": "C6",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "graph"
+    },
+    {
+      "statement": "Full data integrity was described as requiring backfill from April 21; the cited evidence does not verify that backfill finished or that collection and historical data fully recovered.",
+      "kind": "synthesis",
+      "citations": [
+        {
+          "evidence_id": "ev_cdf54cd1ff4aa620",
+          "quote": "Backfill from Apr 21 required to restore full data integrity",
+          "start": 0
+        },
+        {
+          "evidence_id": "ev_840978102672098c",
+          "quote": "Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April",
+          "start": 0
+        }
+      ],
+      "memory_ids": [
+        "episode_79ef5db564f05930"
+      ],
+      "confidence": "medium",
+      "confidence_reason": "The source states a requirement and a future-oriented plan, not a completed backfill or validated recovery.",
+      "verification_note": "Recovery is limited to the reported fix and 19.2.0 deployment; the quoted backfill evidence does not prove restored data integrity.",
+      "id": "C7",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "source_mode": "memory_confirmed_by_graph"
+    }
+  ],
+  "unanswered": [
+    "Whether the failure-callback cron was actually disabled and the backfill triggered or completed.",
+    "Whether collection returned to normal across all affected platforms and customer networks, and whether historical data integrity was validated.",
+    "Whether the 19.2.1 hotfix reached production or improved recovery."
+  ],
+  "limitations": [
+    "The April 21 start is approximate; do not treat it as an exact failure timestamp.",
+    "The incident passages are source reports, not independent operational telemetry or proof of sustained recovery.",
+    "Citation validation checks source access and exact provenance, not semantic entailment or real-world truth."
+  ],
+  "validation_errors": [],
+  "stop_reason": null,
+  "trace": [
+    {
+      "sequence": 1,
+      "kind": "input_scope",
+      "graph_hash": "graph_461ec66cd6c65256",
+      "memory_fingerprint": "memory_e4d06d4e2b5f1072",
+      "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+      "schema_version": "3.1",
+      "abstraction_run_id": "abstraction_b28471cf51a91b7f",
+      "execution_scope": "production",
+      "preview_notice": null,
+      "coverage": {
+        "base_status": "complete",
+        "reviewed_candidates": 816,
+        "selected_candidates": 816,
+        "processed_abstraction_packets": 23,
+        "planned_abstraction_packets": 23
+      }
+    },
+    {
+      "sequence": 2,
+      "kind": "context",
+      "model_call": 1,
+      "serialized_chars": 11247,
+      "message_count": 2,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [],
+      "visible_evidence_ids": [],
+      "included_tool_call_ids": []
+    },
+    {
+      "sequence": 3,
+      "kind": "model_started",
+      "call_number": 1,
+      "status": "pending",
+      "serialized_chars": 11247,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 4,
+      "kind": "model",
+      "call_number": 1,
+      "status": "completed",
+      "serialized_chars": 11247,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_e4542102b7eecf96",
+      "action": {
+        "tool_name": "recall_memory",
+        "arguments_json": "{\"cue\":\"April collection incident reported failures remediation backfill verified recovery\",\"limit\":6}",
+        "purpose": "Find the April collection incident’s memory entry points for source verification.",
+        "discarded_items": [],
+        "pin_evidence_ids": []
+      },
+      "latency_seconds": 4.228902875009226,
+      "provider": {
+        "request_id": "request_e4542102b7eecf96",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/collection_timeline__original__memory_graph/cache/codex/request_e4542102b7eecf96.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 5646,
+          "output_tokens": 111,
+          "reasoning_output_tokens": 43,
+          "total_tokens": 5757
+        },
+        "thread_id": "01a114a1-0dd0-7e52-8595-bbd799feec3b",
+        "turn_id": "01a114a1-0df5-7051-8edc-7473e3a9461c",
+        "status": "completed",
+        "latency_seconds": 4.2137
+      }
+    },
+    {
+      "sequence": 5,
+      "kind": "tool_started",
+      "call_id": "action_1_request_e4542102b7eecf96",
+      "name": "recall_memory",
+      "arguments": {
+        "cue": "April collection incident reported failures remediation backfill verified recovery",
+        "limit": 6
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "tool",
+      "name": "recall_memory",
+      "arguments": {
+        "cue": "April collection incident reported failures remediation backfill verified recovery",
+        "limit": 6
+      },
+      "call_id": "action_1_request_e4542102b7eecf96",
+      "result": {
+        "cue": "April collection incident reported failures remediation backfill verified recovery",
+        "expanded_cue": "April collection incident reported failures remediation backfill verified recovery",
+        "results": [
+          {
+            "id": "episode_79ef5db564f05930",
+            "type": "episode",
+            "kind": "fixed_evidence_bundle",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_06eee086b8cf9d93",
+              "ev_1faf97ee0458fc4b",
+              "ev_4700e329357c7762",
+              "ev_477c9de5cda34331",
+              "ev_48b827cfe137a976",
+              "ev_5bae6c7471a558ea",
+              "ev_66f837dba0b6f0bf",
+              "ev_75b67275157f9120",
+              "ev_798015aecf48cc37",
+              "ev_840978102672098c",
+              "ev_86db7d7d4c40c62d",
+              "ev_9488fa8cc6db3d39",
+              "ev_97a309f4cce85c3a",
+              "ev_cdf54cd1ff4aa620",
+              "ev_d281345d3aae0fef",
+              "ev_e0f628219171d557",
+              "ev_f3c24bea244e9385"
+            ],
+            "record_ids": [
+              "KEP-6970"
+            ],
+            "entity_ids": [
+              "resource_77b58f7b",
+              "resource_b3eb4b29",
+              "resource_de33c8fa"
+            ],
+            "item_id": "episode_79ef5db564f05930",
+            "title": "disable cron job sending failure callbacks before backfill / order backfill for TikTok, Instagram, YouTube and Facebook from April 21",
+            "preview": "Backfill from Apr 21 required to restore full data integrity\nBackfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April\nFrom approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing\nFrom approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.\nHost PID fix applied prior to 19.2.0 deployment\nNo automated alarm fired during this period\nRoot cause identified and fixed: video vision processing jobs were not closing their final steps properly, ",
+            "preview_truncated": true,
+            "title_origin": "unverified graph decision labels",
+            "score": 0.03198176,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_4eef9123ddbe65db",
+                "episode_79ef5db564f05930"
+              ],
+              "reasons": [
+                "shares scoped entity Facebook / Instagram / TikTok data collection (resource_b3eb4b29)"
+              ],
+              "score": 0.004112903225806451
+            },
+            "why": "lexical; node_association; memory_association; shares scoped entity Facebook / Instagram / TikTok data collection (resource_b3eb4b29)"
+          },
+          {
+            "id": "fact_4eef9123ddbe65db",
+            "type": "fact",
+            "kind": "historical_statement",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_840978102672098c"
+            ],
+            "record_ids": [
+              "KEP-6970"
+            ],
+            "entity_ids": [
+              "resource_b3eb4b29"
+            ],
+            "item_id": "fact_4eef9123ddbe65db",
+            "title": "Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April",
+            "preview": "Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.03159968,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_79ef5db564f05930",
+                "fact_4eef9123ddbe65db"
+              ],
+              "reasons": [
+                "shares scoped entity Facebook / Instagram / TikTok data collection (resource_b3eb4b29)"
+              ],
+              "score": 0.004180327868852459
+            },
+            "why": "lexical; node_association; memory_association; shares scoped entity Facebook / Instagram / TikTok data collection (resource_b3eb4b29)"
+          },
+          {
+            "id": "fact_72943bbeb02af342",
+            "type": "fact",
+            "kind": "requirement",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_798015aecf48cc37"
+            ],
+            "record_ids": [
+              "KEP-6970"
+            ],
+            "entity_ids": [
+              "resource_77b58f7b"
+            ],
+            "item_id": "fact_72943bbeb02af342",
+            "title": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered",
+            "preview": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.03013604,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_79ef5db564f05930",
+                "fact_72943bbeb02af342"
+              ],
+              "reasons": [
+                "shares scoped entity job queue (resource_77b58f7b)"
+              ],
+              "score": 0.004180327868852459
+            },
+            "why": "lexical; node_association; memory_association; shares scoped entity job queue (resource_77b58f7b)"
+          },
+          {
+            "id": "fact_3fa0a9452bdd91df",
+            "type": "fact",
+            "kind": "historical_statement",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_477c9de5cda34331"
+            ],
+            "record_ids": [
+              "KEP-6970"
+            ],
+            "entity_ids": [
+              "event_e5062eca"
+            ],
+            "item_id": "fact_3fa0a9452bdd91df",
+            "title": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing",
+            "preview": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.02677331,
+            "routes": [
+              "lexical",
+              "node_association"
+            ],
+            "association": null,
+            "why": "lexical; node_association"
+          },
+          {
+            "id": "pattern_0ea1482690a38207",
+            "type": "pattern",
+            "kind": "reported_recurrence",
+            "retention": "retained",
+            "confidence": "low",
+            "evidence_ids": [
+              "ev_75b67275157f9120",
+              "ev_9b4317c218937e4f"
+            ],
+            "record_ids": [
+              "KEP-6969",
+              "KEP-6970"
+            ],
+            "entity_ids": [],
+            "independent_support_count": 2,
+            "supporting_episode_ids": [
+              "episode_69c0485386f1acbe",
+              "episode_79ef5db564f05930"
+            ],
+            "supporting_fact_ids": [],
+            "item_id": "pattern_0ea1482690a38207",
+            "title": "Detection and response failed at different stages: some prolonged outages produced no alarm, while another eventually alerted without prompting action.",
+            "preview": "Detection and response failed at different stages: some prolonged outages produced no alarm, while another eventually alerted without prompting action.\nThe collection outage reportedly escaped automated detection for eight days; the narrative outage was first discovered by the customer, with later alarms receiving no action. Alert coverage and alert ownership are therefore separate reliability concerns.\nAssess output-freshness monitoring separately from acknowledgement, escalation, and accountable response.",
+            "preview_truncated": false,
+            "title_origin": "memory item",
+            "score": 0.02628014,
+            "routes": [
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "episode_79ef5db564f05930",
+                "pattern_0ea1482690a38207"
+              ],
+              "reasons": [
+                "supports this cross-episode pattern"
+              ],
+              "score": 0.016721311475409836
+            },
+            "why": "node_association; memory_association; supports this cross-episode pattern"
+          },
+          {
+            "id": "episode_ab0b44680e258fb8",
+            "type": "episode",
+            "kind": "fixed_evidence_bundle",
+            "retention": "retained",
+            "confidence": "medium",
+            "evidence_ids": [
+              "ev_08796154208edf12",
+              "ev_b890e0d6eaf4269b"
+            ],
+            "record_ids": [
+              "KEP-6481",
+              "KEP-6491"
+            ],
+            "entity_ids": [
+              "resource_e24de007"
+            ],
+            "item_id": "episode_ab0b44680e258fb8",
+            "title": "Backfill Twitter comments for selected networks",
+            "preview": "For the Twitter comments backfill, we want to get comments stretching back to the original outage (Feb 27th, 2025) for a select set of networks\nstatus: Done",
+            "preview_truncated": false,
+            "title_origin": "unverified graph decision labels",
+            "score": 0.02564511,
+            "routes": [
+              "lexical",
+              "node_association",
+              "memory_association"
+            ],
+            "association": {
+              "path": [
+                "fact_53eaa24317600d33",
+                "episode_ab0b44680e258fb8"
+              ],
+              "reasons": [
+                "shares scoped entity Twitter comments backfill data (resource_e24de007)"
+              ],
+              "score": 0.0032612918892666342
+            },
+            "why": "lexical; node_association; memory_association; shares scoped entity Twitter comments backfill data (resource_e24de007)"
+          }
+        ],
+        "trace": {
+          "mode": "offline BM25 + cue-anchored node similarity; not direct semantic query encoding",
+          "anchor_nodes": [
+            {
+              "node_id": "outcome_99bbc87c",
+              "label": "backfill from April 21 restored full data integrity",
+              "lexical_score": 12.762314092752316
+            },
+            {
+              "node_id": "decision_91e6819f",
+              "label": "order backfill for TikTok, Instagram, YouTube and Facebook from April 21",
+              "lexical_score": 11.981311495106656
+            },
+            {
+              "node_id": "decision_69fb7d3f",
+              "label": "disable cron job sending failure callbacks before backfill",
+              "lexical_score": 8.882226504711479
+            }
+          ],
+          "seed_item_ids": [
+            "episode_79ef5db564f05930",
+            "fact_4eef9123ddbe65db",
+            "fact_3fa0a9452bdd91df",
+            "fact_72943bbeb02af342",
+            "episode_ab0b44680e258fb8",
+            "fact_53eaa24317600d33",
+            "fact_63b5b3661229a85b",
+            "pattern_f0b4b3e8998d28f0"
+          ],
+          "discarded": [
+            {
+              "item_id": "fact_53eaa24317600d33",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ba26437b6806dfe4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_69c0485386f1acbe",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_63b5b3661229a85b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_f0b4b3e8998d28f0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_97db9685af5cd155",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_141ce4ec17f23e0b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_db587beee0f9cabb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_a1665b6ced1f35a6",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_62ee60cab3141aa7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_7f76af5dd3456ebd",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_9c5eab9039e06b6b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_3c29338ee31eae5c",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_98dfcfa6e2409383",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_695acbc2b8779bc1",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_6babf7d3dd9a9dc5",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_52708d9c26e2f37b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_ef0650685a35d87d",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_bcb5b989b22df257",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_b539b2b4cbe85407",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_2ceba8e47b2db45b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_48f17c3b3eadfb48",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f429fb73546880b3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_3dea9a2069bcdfda",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_47691ef6a5ffc707",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_d1a057abeb2936c4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_1584da97d86e8e76",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_eee389c256ad5f01",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_bb83e76e1419c5ff",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_f6ee0d80d03691fb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_13ac0a6e56f67675",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_cc51873c0031cf3f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_7a17c9a491e97972",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f0a8d55a306c176b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_40bdc4a2e39337bb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_74cc68cb3cee95e4",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_823cb0b02dc44b50",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1c75e8f78db0a001",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_01eb72db11585f79",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_e1df026e607f0fc0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0099b4eefc7521d8",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_87b3207a225fc7dc",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_0c87fa5f643ee1fd",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_19ddb6901beff02b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_d941d5617fb08695",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_afccf5607cf9e196",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_784154b5299e7f2f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_864f92d5f225ebb0",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_9c058e5c4e9ef853",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_f9c472064fa8648b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_5582be41f0a4ca48",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_fc22eed65f0ccd71",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_0e9c369dbf01c1a7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_cf3dcea1dc04f036",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_c8cdadfb6200876b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_100748ce22baebc7",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_101c6c15e1ded334",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_15bb262c5efbbe09",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_5b00447aca4e767b",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_1f200b86b6240fbc",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_8af495de8d8dd82f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_a99f7dd89ca155eb",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_fffb236ec6a52b6f",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_58a2e1d22c555eac",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_acb139a189dcc5a2",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_93da330a4952ff51",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "pattern_c8346949a2ba4ee3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_964bb5802e573a01",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_1a52453f95d0b5db",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "episode_17847383f03284f3",
+              "reason": "outside result budget"
+            },
+            {
+              "item_id": "fact_0fe723572ec976de",
+              "reason": "outside result budget"
+            }
+          ],
+          "max_hops": 2,
+          "score_note": "RRF k=60; support multipliers 1/.85/.65; association decay .6 per hop. Heuristics, not probabilities."
+        },
+        "limitation": "Aliases expand vocabulary, not identity. Scores and memory judgments are fallible."
+      },
+      "latency_seconds": 0.009793834004085511,
+      "error": false,
+      "new_ids": [
+        "episode_79ef5db564f05930",
+        "episode_ab0b44680e258fb8",
+        "fact_3fa0a9452bdd91df",
+        "fact_4eef9123ddbe65db",
+        "fact_72943bbeb02af342",
+        "pattern_0ea1482690a38207"
+      ]
+    },
+    {
+      "sequence": 7,
+      "kind": "retrieval_discard",
+      "item_id": "fact_53eaa24317600d33",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 8,
+      "kind": "retrieval_discard",
+      "item_id": "episode_ba26437b6806dfe4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 9,
+      "kind": "retrieval_discard",
+      "item_id": "episode_69c0485386f1acbe",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 10,
+      "kind": "retrieval_discard",
+      "item_id": "fact_63b5b3661229a85b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 11,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_f0b4b3e8998d28f0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 12,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_97db9685af5cd155",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 13,
+      "kind": "retrieval_discard",
+      "item_id": "episode_141ce4ec17f23e0b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 14,
+      "kind": "retrieval_discard",
+      "item_id": "episode_db587beee0f9cabb",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 15,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_a1665b6ced1f35a6",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 16,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_62ee60cab3141aa7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 17,
+      "kind": "retrieval_discard",
+      "item_id": "fact_7f76af5dd3456ebd",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 18,
+      "kind": "retrieval_discard",
+      "item_id": "fact_9c5eab9039e06b6b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 19,
+      "kind": "retrieval_discard",
+      "item_id": "episode_3c29338ee31eae5c",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 20,
+      "kind": "retrieval_discard",
+      "item_id": "episode_98dfcfa6e2409383",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 21,
+      "kind": "retrieval_discard",
+      "item_id": "episode_695acbc2b8779bc1",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 22,
+      "kind": "retrieval_discard",
+      "item_id": "episode_6babf7d3dd9a9dc5",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 23,
+      "kind": "retrieval_discard",
+      "item_id": "episode_52708d9c26e2f37b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 24,
+      "kind": "retrieval_discard",
+      "item_id": "episode_ef0650685a35d87d",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 25,
+      "kind": "retrieval_discard",
+      "item_id": "episode_bcb5b989b22df257",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 26,
+      "kind": "retrieval_discard",
+      "item_id": "fact_b539b2b4cbe85407",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 27,
+      "kind": "retrieval_discard",
+      "item_id": "fact_2ceba8e47b2db45b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 28,
+      "kind": "retrieval_discard",
+      "item_id": "episode_48f17c3b3eadfb48",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 29,
+      "kind": "retrieval_discard",
+      "item_id": "episode_f429fb73546880b3",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 30,
+      "kind": "retrieval_discard",
+      "item_id": "fact_3dea9a2069bcdfda",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 31,
+      "kind": "retrieval_discard",
+      "item_id": "episode_47691ef6a5ffc707",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 32,
+      "kind": "retrieval_discard",
+      "item_id": "episode_d1a057abeb2936c4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 33,
+      "kind": "retrieval_discard",
+      "item_id": "episode_1584da97d86e8e76",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 34,
+      "kind": "retrieval_discard",
+      "item_id": "fact_eee389c256ad5f01",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 35,
+      "kind": "retrieval_discard",
+      "item_id": "episode_bb83e76e1419c5ff",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 36,
+      "kind": "retrieval_discard",
+      "item_id": "fact_f6ee0d80d03691fb",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 37,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_13ac0a6e56f67675",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 38,
+      "kind": "retrieval_discard",
+      "item_id": "fact_cc51873c0031cf3f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 39,
+      "kind": "retrieval_discard",
+      "item_id": "episode_7a17c9a491e97972",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 40,
+      "kind": "retrieval_discard",
+      "item_id": "episode_f0a8d55a306c176b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 41,
+      "kind": "retrieval_discard",
+      "item_id": "episode_40bdc4a2e39337bb",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 42,
+      "kind": "retrieval_discard",
+      "item_id": "episode_74cc68cb3cee95e4",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 43,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_823cb0b02dc44b50",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 44,
+      "kind": "retrieval_discard",
+      "item_id": "fact_1c75e8f78db0a001",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 45,
+      "kind": "retrieval_discard",
+      "item_id": "fact_01eb72db11585f79",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 46,
+      "kind": "retrieval_discard",
+      "item_id": "episode_e1df026e607f0fc0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 47,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0099b4eefc7521d8",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 48,
+      "kind": "retrieval_discard",
+      "item_id": "fact_87b3207a225fc7dc",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 49,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_0c87fa5f643ee1fd",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 50,
+      "kind": "retrieval_discard",
+      "item_id": "episode_19ddb6901beff02b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 51,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_d941d5617fb08695",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 52,
+      "kind": "retrieval_discard",
+      "item_id": "episode_afccf5607cf9e196",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 53,
+      "kind": "retrieval_discard",
+      "item_id": "episode_784154b5299e7f2f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 54,
+      "kind": "retrieval_discard",
+      "item_id": "episode_864f92d5f225ebb0",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 55,
+      "kind": "retrieval_discard",
+      "item_id": "episode_9c058e5c4e9ef853",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 56,
+      "kind": "retrieval_discard",
+      "item_id": "episode_f9c472064fa8648b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 57,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_5582be41f0a4ca48",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 58,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_fc22eed65f0ccd71",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 59,
+      "kind": "retrieval_discard",
+      "item_id": "episode_0e9c369dbf01c1a7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 60,
+      "kind": "retrieval_discard",
+      "item_id": "fact_cf3dcea1dc04f036",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 61,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_c8cdadfb6200876b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 62,
+      "kind": "retrieval_discard",
+      "item_id": "episode_100748ce22baebc7",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 63,
+      "kind": "retrieval_discard",
+      "item_id": "episode_101c6c15e1ded334",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 64,
+      "kind": "retrieval_discard",
+      "item_id": "episode_15bb262c5efbbe09",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 65,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_5b00447aca4e767b",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 66,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_1f200b86b6240fbc",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 67,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_8af495de8d8dd82f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 68,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_a99f7dd89ca155eb",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 69,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_fffb236ec6a52b6f",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 70,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_58a2e1d22c555eac",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 71,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_acb139a189dcc5a2",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 72,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_93da330a4952ff51",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 73,
+      "kind": "retrieval_discard",
+      "item_id": "pattern_c8346949a2ba4ee3",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 74,
+      "kind": "retrieval_discard",
+      "item_id": "fact_964bb5802e573a01",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 75,
+      "kind": "retrieval_discard",
+      "item_id": "fact_1a52453f95d0b5db",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 76,
+      "kind": "retrieval_discard",
+      "item_id": "episode_17847383f03284f3",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 77,
+      "kind": "retrieval_discard",
+      "item_id": "fact_0fe723572ec976de",
+      "reason": "outside result budget"
+    },
+    {
+      "sequence": 78,
+      "kind": "context",
+      "model_call": 2,
+      "serialized_chars": 22196,
+      "message_count": 4,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [
+        "episode_79ef5db564f05930",
+        "episode_ab0b44680e258fb8",
+        "fact_3fa0a9452bdd91df",
+        "fact_4eef9123ddbe65db",
+        "fact_72943bbeb02af342",
+        "pattern_0ea1482690a38207"
+      ],
+      "visible_evidence_ids": [],
+      "included_tool_call_ids": [
+        "action_1_request_e4542102b7eecf96"
+      ]
+    },
+    {
+      "sequence": 79,
+      "kind": "model_started",
+      "call_number": 2,
+      "status": "pending",
+      "serialized_chars": 22196,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 80,
+      "kind": "item_discard",
+      "item_id": "episode_ab0b44680e258fb8",
+      "reason": "Separate Twitter comments backfill from a different outage.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 81,
+      "kind": "item_discard",
+      "item_id": "pattern_0ea1482690a38207",
+      "reason": "Cross-incident detection comparison is not needed for this incident’s chronology.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 82,
+      "kind": "model",
+      "call_number": 2,
+      "status": "completed",
+      "serialized_chars": 22196,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_4887e9fc834ffaa4",
+      "action": {
+        "tool_name": "inspect_memory",
+        "arguments_json": "{\"item_id\":\"episode_79ef5db564f05930\",\"offset\":0,\"limit\":20}",
+        "purpose": "Inspect the April collection episode’s source passages, chronology, remediation, and recovery limits.",
+        "discarded_items": [
+          {
+            "item_id": "episode_ab0b44680e258fb8",
+            "reason": "Separate Twitter comments backfill from a different outage."
+          },
+          {
+            "item_id": "pattern_0ea1482690a38207",
+            "reason": "Cross-incident detection comparison is not needed for this incident’s chronology."
+          }
+        ],
+        "pin_evidence_ids": []
+      },
+      "latency_seconds": 3.9470841249858495,
+      "provider": {
+        "request_id": "request_4887e9fc834ffaa4",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/collection_timeline__original__memory_graph/cache/codex/request_4887e9fc834ffaa4.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 8692,
+          "output_tokens": 145,
+          "reasoning_output_tokens": 10,
+          "total_tokens": 8837
+        },
+        "thread_id": "01a114a1-1c80-72b2-be7f-546533dfffb1",
+        "turn_id": "01a114a1-1ca2-7082-80b6-80fb6b0d6070",
+        "status": "completed",
+        "latency_seconds": 3.9328
+      }
+    },
+    {
+      "sequence": 83,
+      "kind": "tool_started",
+      "call_id": "action_2_request_4887e9fc834ffaa4",
+      "name": "inspect_memory",
+      "arguments": {
+        "item_id": "episode_79ef5db564f05930",
+        "offset": 0,
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 84,
+      "kind": "tool",
+      "name": "inspect_memory",
+      "arguments": {
+        "item_id": "episode_79ef5db564f05930",
+        "offset": 0,
+        "limit": 20
+      },
+      "call_id": "action_2_request_4887e9fc834ffaa4",
+      "result": {
+        "id": "episode_79ef5db564f05930",
+        "type": "episode",
+        "kind": "fixed_evidence_bundle",
+        "retention": "retained",
+        "confidence": "medium",
+        "evidence_ids": [
+          "ev_06eee086b8cf9d93",
+          "ev_1faf97ee0458fc4b",
+          "ev_4700e329357c7762",
+          "ev_477c9de5cda34331",
+          "ev_48b827cfe137a976",
+          "ev_5bae6c7471a558ea",
+          "ev_66f837dba0b6f0bf",
+          "ev_75b67275157f9120",
+          "ev_798015aecf48cc37",
+          "ev_840978102672098c",
+          "ev_86db7d7d4c40c62d",
+          "ev_9488fa8cc6db3d39",
+          "ev_97a309f4cce85c3a",
+          "ev_cdf54cd1ff4aa620",
+          "ev_d281345d3aae0fef",
+          "ev_e0f628219171d557",
+          "ev_f3c24bea244e9385"
+        ],
+        "record_ids": [
+          "KEP-6970"
+        ],
+        "entity_ids": [
+          "resource_77b58f7b",
+          "resource_b3eb4b29",
+          "resource_de33c8fa"
+        ],
+        "item_id": "episode_79ef5db564f05930",
+        "title": "disable cron job sending failure callbacks before backfill / order backfill for TikTok, Instagram, YouTube and Facebook from April 21",
+        "preview": "Backfill from Apr 21 required to restore full data integrity\nBackfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April\nFrom approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing\nFrom approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.\nHost PID fix applied prior to 19.2.0 deployment\nNo automated alarm fired during this period\nRoot cause identified and fixed: video vision processing jobs were not closing their final steps properly, ",
+        "preview_truncated": true,
+        "title_origin": "unverified graph decision labels",
+        "retention_reason": "Evidence supports one connected outage-recovery sequence linking deployment, disabling callbacks, and ordering a backfill; it records a significant data incident and resolution.",
+        "uncertainties": [
+          "Accepted grouping does not verify every excerpt, graph label or causal claim.",
+          "Fixed boundaries can conflate occurrences or omit related context; no automatic repair.",
+          "Compression reduces default recall prominence; all source excerpts remain available."
+        ],
+        "counterevidence_count": 0,
+        "evidence": [
+          {
+            "evidence_id": "ev_06eee086b8cf9d93",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "decision_c34288c5",
+            "target_id": "outcome_6bc14ca8",
+            "relation": "PRODUCES",
+            "quote": "No automated alarm fired during this period",
+            "start": 0,
+            "end": 43,
+            "total_chars": 43,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_1faf97ee0458fc4b",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "decision_c34288c5",
+            "target_id": "resource_de33c8fa",
+            "relation": "AFFECTS",
+            "quote": "Host PID fix applied prior to 19.2.0 deployment",
+            "start": 0,
+            "end": 47,
+            "total_chars": 47,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_4700e329357c7762",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "decision_91e6819f",
+            "target_id": "decision_69fb7d3f",
+            "relation": "DEPENDS_ON",
+            "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered (per Apr 28 standup: Magna coordinating with Abhik Roy to stop cron before triggering backfill)",
+            "start": 0,
+            "end": 196,
+            "total_chars": 196,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "Apr 28",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_4700e329357c7762",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_477c9de5cda34331",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "decision_91e6819f",
+            "target_id": "event_e5062eca",
+            "relation": "REFERENCES",
+            "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing",
+            "start": 0,
+            "end": 136,
+            "total_chars": 136,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "April 21",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_477c9de5cda34331",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              },
+              {
+                "raw": "April 29, 2026",
+                "date": "2026-04-29",
+                "end_date": null,
+                "evidence_id": "ev_477c9de5cda34331",
+                "status": "explicit_date_mention",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_48b827cfe137a976",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "decision_c34288c5",
+            "target_id": "event_682f97dc",
+            "relation": "REFERENCES",
+            "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied",
+            "start": 0,
+            "end": 205,
+            "total_chars": 205,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_5bae6c7471a558ea",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_91e6819f",
+            "target_id": "decision_64577ee4",
+            "relation": "DECOMPOSES_TO",
+            "quote": "decision_91e6819f (order backfill, tactical level, Apr 29) decomposes to decision_64577ee4 (deploy 19.2.1 hotfix, operational level, Apr 30). The backfill decision is a broader tactical commitment to restore data integrity across multiple platforms; the 19.2.1 hotfix deployment is a concrete operational step that operationalizes part of the recovery strategy. Both share the same initiative and actor (Kiran Sabbani). The level_hierarchy signal confirms tactical >= operational. The source text states 'Fixes continued into 19.2.1 hotfix (brightdata-batching-service, data-source-facebook, data-source-tiktok)', indicating the hotfix is a subordinate operationalization of the broader backfill and recovery effort.",
+            "start": 0,
+            "end": 716,
+            "total_chars": 716,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "Apr 29",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_5bae6c7471a558ea",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              },
+              {
+                "raw": "Apr 30",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_5bae6c7471a558ea",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_66f837dba0b6f0bf",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "decision_91e6819f",
+            "target_id": "event_682f97dc",
+            "relation": "REFERENCES",
+            "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting",
+            "start": 0,
+            "end": 167,
+            "total_chars": 167,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_75b67275157f9120",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "event_e5062eca",
+            "target_id": "decision_c34288c5",
+            "relation": "CAUSES",
+            "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.",
+            "start": 0,
+            "end": 324,
+            "total_chars": 324,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "April 21",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_75b67275157f9120",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              },
+              {
+                "raw": "April 29, 2026",
+                "date": "2026-04-29",
+                "end_date": null,
+                "evidence_id": "ev_75b67275157f9120",
+                "status": "explicit_date_mention",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              },
+              {
+                "raw": "April 29",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_75b67275157f9120",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              },
+              {
+                "raw": "April 21",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_75b67275157f9120",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_798015aecf48cc37",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "decision_69fb7d3f",
+            "target_id": "resource_77b58f7b",
+            "relation": "AFFECTS",
+            "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered",
+            "start": 0,
+            "end": 100,
+            "total_chars": 100,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_840978102672098c",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "decision_91e6819f",
+            "target_id": "resource_b3eb4b29",
+            "relation": "AFFECTS",
+            "quote": "Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April",
+            "start": 0,
+            "end": 77,
+            "total_chars": 77,
+            "next_start": null,
+            "dates": [],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_86db7d7d4c40c62d",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "event_e5062eca",
+            "target_id": "decision_91e6819f",
+            "relation": "CAUSES",
+            "quote": "The event 'Facebook / Instagram / TikTok data collection degraded or failing' (occurred_at: 2026-04-21) directly caused the decision to order backfill. The source passage states: 'From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window.' The backfill decision (2026-04-29) is a direct response to the degradation event. The extracted edge event_e5062eca -[CAUSES]-> decision_c34288c5 confirms this causal pattern. Temporal ordering is valid: event precedes decision (Apr 21 → Apr 29).",
+            "start": 0,
+            "end": 689,
+            "total_chars": 689,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "2026-04-21",
+                "date": "2026-04-21",
+                "evidence_id": "ev_86db7d7d4c40c62d",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              },
+              {
+                "raw": "2026-04-29",
+                "date": "2026-04-29",
+                "evidence_id": "ev_86db7d7d4c40c62d",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              },
+              {
+                "raw": "April 21",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_86db7d7d4c40c62d",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              },
+              {
+                "raw": "April 29, 2026",
+                "date": "2026-04-29",
+                "end_date": null,
+                "evidence_id": "ev_86db7d7d4c40c62d",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              },
+              {
+                "raw": "April 29",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_86db7d7d4c40c62d",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              },
+              {
+                "raw": "April 21",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_86db7d7d4c40c62d",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              },
+              {
+                "raw": "Apr 21",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_86db7d7d4c40c62d",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              },
+              {
+                "raw": "Apr 29",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_86db7d7d4c40c62d",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_9488fa8cc6db3d39",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "event_682f97dc",
+            "target_id": "decision_91e6819f",
+            "relation": "CAUSES",
+            "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied. Apr 29, 6:42 AM EDT — Kiran Sabbani in #kepler-dev-all-pods: \"Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April.\"",
+            "start": 0,
+            "end": 348,
+            "total_chars": 348,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "Apr 29",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_9488fa8cc6db3d39",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_97a309f4cce85c3a",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "decision_91e6819f",
+            "target_id": "decision_c34288c5",
+            "relation": "DEPENDS_ON",
+            "quote": "Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21",
+            "start": 0,
+            "end": 92,
+            "total_chars": 92,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "April 29",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_97a309f4cce85c3a",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              },
+              {
+                "raw": "April 21",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_97a309f4cce85c3a",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_cdf54cd1ff4aa620",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "decision_91e6819f",
+            "target_id": "outcome_99bbc87c",
+            "relation": "PRODUCES",
+            "quote": "Backfill from Apr 21 required to restore full data integrity",
+            "start": 0,
+            "end": 60,
+            "total_chars": 60,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "Apr 21",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_cdf54cd1ff4aa620",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_d281345d3aae0fef",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "decision_c34288c5",
+            "target_id": "resource_b3eb4b29",
+            "relation": "AFFECTS",
+            "quote": "Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21",
+            "start": 0,
+            "end": 92,
+            "total_chars": 92,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "April 29",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_d281345d3aae0fef",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              },
+              {
+                "raw": "April 21",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_d281345d3aae0fef",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_e0f628219171d557",
+            "record_id": "",
+            "provenance_kind": "inferred",
+            "source_id": "decision_91e6819f",
+            "target_id": "decision_d82d905d",
+            "relation": "DECOMPOSES_TO",
+            "quote": "decision_91e6819f (order backfill, tactical level, Apr 29) decomposes to decision_d82d905d (request TikTok MR bypass, operational level, Apr 30). The backfill is a tactical commitment to restore data across platforms; the TikTok MR bypass request is an operational step addressing a specific platform-level fix. Both share the same initiative and actor (Kiran Sabbani). The level_hierarchy signal confirms tactical >= operational. The source text indicates TikTok fixes were ongoing post-19.2.0 ('TikTok MR bypass requested in #kepler-dev-all-pods'), representing a concrete operational action within the broader backfill recovery strategy.",
+            "start": 0,
+            "end": 640,
+            "total_chars": 640,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "Apr 29",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_e0f628219171d557",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              },
+              {
+                "raw": "Apr 30",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_e0f628219171d557",
+                "status": "tentative_inference",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": false
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          },
+          {
+            "evidence_id": "ev_f3c24bea244e9385",
+            "record_id": "KEP-6970",
+            "provenance_kind": "extracted",
+            "source_id": "decision_c34288c5",
+            "target_id": "outcome_2a8acefa",
+            "relation": "PRODUCES",
+            "quote": "~8 days (Apr 21–29) of missing or degraded data for Facebook, Instagram, and TikTok across all customer networks",
+            "start": 0,
+            "end": 112,
+            "total_chars": 112,
+            "next_start": null,
+            "dates": [
+              {
+                "raw": "Apr 21–29",
+                "date": null,
+                "end_date": null,
+                "evidence_id": "ev_f3c24bea244e9385",
+                "status": "unplaced_without_year",
+                "event_role": "unspecified; a date mention is not a verified event timestamp",
+                "approximate": true
+              }
+            ],
+            "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony.",
+            "memory_role": "source_or_support"
+          }
+        ],
+        "next_offset": null,
+        "total_evidence": 17,
+        "limitation": "Grouping and fact classification are Task 1 judgments, not independent verification. Inspect source wording."
+      },
+      "latency_seconds": 0.0014968329924158752,
+      "error": false,
+      "new_ids": [
+        "ev_06eee086b8cf9d93",
+        "ev_1faf97ee0458fc4b",
+        "ev_4700e329357c7762",
+        "ev_477c9de5cda34331",
+        "ev_48b827cfe137a976",
+        "ev_5bae6c7471a558ea",
+        "ev_66f837dba0b6f0bf",
+        "ev_75b67275157f9120",
+        "ev_798015aecf48cc37",
+        "ev_840978102672098c",
+        "ev_86db7d7d4c40c62d",
+        "ev_9488fa8cc6db3d39",
+        "ev_97a309f4cce85c3a",
+        "ev_cdf54cd1ff4aa620",
+        "ev_d281345d3aae0fef",
+        "ev_e0f628219171d557",
+        "ev_f3c24bea244e9385",
+        "span:ev_06eee086b8cf9d93:0:43",
+        "span:ev_1faf97ee0458fc4b:0:47",
+        "span:ev_4700e329357c7762:0:196",
+        "span:ev_477c9de5cda34331:0:136",
+        "span:ev_48b827cfe137a976:0:205",
+        "span:ev_5bae6c7471a558ea:0:716",
+        "span:ev_66f837dba0b6f0bf:0:167",
+        "span:ev_75b67275157f9120:0:324",
+        "span:ev_798015aecf48cc37:0:100",
+        "span:ev_840978102672098c:0:77",
+        "span:ev_86db7d7d4c40c62d:0:689",
+        "span:ev_9488fa8cc6db3d39:0:348",
+        "span:ev_97a309f4cce85c3a:0:92",
+        "span:ev_cdf54cd1ff4aa620:0:60",
+        "span:ev_d281345d3aae0fef:0:92",
+        "span:ev_e0f628219171d557:0:640",
+        "span:ev_f3c24bea244e9385:0:112"
+      ]
+    },
+    {
+      "sequence": 85,
+      "kind": "context_item_eviction",
+      "call_id": "action_1_request_e4542102b7eecf96",
+      "item_id": "pattern_0ea1482690a38207",
+      "reason": "Cross-incident detection comparison is not needed for this incident’s chronology."
+    },
+    {
+      "sequence": 86,
+      "kind": "context_item_eviction",
+      "call_id": "action_1_request_e4542102b7eecf96",
+      "item_id": "episode_ab0b44680e258fb8",
+      "reason": "Separate Twitter comments backfill from a different outage."
+    },
+    {
+      "sequence": 87,
+      "kind": "context",
+      "model_call": 3,
+      "serialized_chars": 40487,
+      "message_count": 6,
+      "pinned_evidence_ids": [],
+      "visible_item_ids": [
+        "episode_79ef5db564f05930",
+        "fact_3fa0a9452bdd91df",
+        "fact_4eef9123ddbe65db",
+        "fact_72943bbeb02af342"
+      ],
+      "visible_evidence_ids": [
+        "ev_06eee086b8cf9d93",
+        "ev_1faf97ee0458fc4b",
+        "ev_4700e329357c7762",
+        "ev_477c9de5cda34331",
+        "ev_48b827cfe137a976",
+        "ev_5bae6c7471a558ea",
+        "ev_66f837dba0b6f0bf",
+        "ev_75b67275157f9120",
+        "ev_798015aecf48cc37",
+        "ev_840978102672098c",
+        "ev_86db7d7d4c40c62d",
+        "ev_9488fa8cc6db3d39",
+        "ev_97a309f4cce85c3a",
+        "ev_cdf54cd1ff4aa620",
+        "ev_d281345d3aae0fef",
+        "ev_e0f628219171d557",
+        "ev_f3c24bea244e9385"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_e4542102b7eecf96",
+        "action_2_request_4887e9fc834ffaa4"
+      ]
+    },
+    {
+      "sequence": 88,
+      "kind": "model_started",
+      "call_number": 3,
+      "status": "pending",
+      "serialized_chars": 40487,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 89,
+      "kind": "item_discard",
+      "item_id": "fact_4eef9123ddbe65db",
+      "reason": "Duplicates the inspected episode’s backfill excerpt.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 90,
+      "kind": "item_discard",
+      "item_id": "fact_72943bbeb02af342",
+      "reason": "Duplicates the inspected episode’s callback prerequisite excerpt.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 91,
+      "kind": "item_discard",
+      "item_id": "fact_3fa0a9452bdd91df",
+      "reason": "Duplicates the inspected episode’s outage-window excerpt.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 92,
+      "kind": "model",
+      "call_number": 3,
+      "status": "completed",
+      "serialized_chars": 40487,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_713c749f923afa2c",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"KEP-6970 collection failure April remediation backfill\",\"mode\":\"records\",\"limit\":10}",
+        "purpose": "Locate the original incident record and verify the reported failure-to-backfill sequence.",
+        "discarded_items": [
+          {
+            "item_id": "fact_4eef9123ddbe65db",
+            "reason": "Duplicates the inspected episode’s backfill excerpt."
+          },
+          {
+            "item_id": "fact_72943bbeb02af342",
+            "reason": "Duplicates the inspected episode’s callback prerequisite excerpt."
+          },
+          {
+            "item_id": "fact_3fa0a9452bdd91df",
+            "reason": "Duplicates the inspected episode’s outage-window excerpt."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_75b67275157f9120",
+          "ev_48b827cfe137a976",
+          "ev_4700e329357c7762",
+          "ev_840978102672098c",
+          "ev_cdf54cd1ff4aa620"
+        ]
+      },
+      "latency_seconds": 6.082787708990509,
+      "provider": {
+        "request_id": "request_713c749f923afa2c",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/collection_timeline__original__memory_graph/cache/codex/request_713c749f923afa2c.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 13365,
+          "output_tokens": 226,
+          "reasoning_output_tokens": 20,
+          "total_tokens": 13591
+        },
+        "thread_id": "01a114a1-2bf4-7ff0-b152-c55d8ef78012",
+        "turn_id": "01a114a1-2c17-71f2-9d51-9fdb99e74c0c",
+        "status": "completed",
+        "latency_seconds": 6.0692
+      }
+    },
+    {
+      "sequence": 93,
+      "kind": "tool_started",
+      "call_id": "action_3_request_713c749f923afa2c",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-6970 collection failure April remediation backfill",
+        "mode": "records",
+        "limit": 10
+      }
+    },
+    {
+      "sequence": 94,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-6970 collection failure April remediation backfill",
+        "mode": "records",
+        "limit": 10
+      },
+      "call_id": "action_3_request_713c749f923afa2c",
+      "result": {
+        "expanded_query": "KEP-6970 collection failure April remediation backfill",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_97a309f4cce85c3a",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_91e6819f",
+              "target_id": "decision_c34288c5",
+              "relation": "DEPENDS_ON",
+              "quote": "Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21",
+              "start": 0,
+              "end": 92,
+              "total_chars": 92,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "April 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_97a309f4cce85c3a",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_97a309f4cce85c3a",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_d281345d3aae0fef",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_c34288c5",
+              "target_id": "resource_b3eb4b29",
+              "relation": "AFFECTS",
+              "quote": "Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21",
+              "start": 0,
+              "end": 92,
+              "total_chars": 92,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "April 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_d281345d3aae0fef",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_d281345d3aae0fef",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_75b67275157f9120",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "event_e5062eca",
+              "target_id": "decision_c34288c5",
+              "relation": "CAUSES",
+              "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.",
+              "start": 0,
+              "end": 324,
+              "total_chars": 324,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_75b67275157f9120",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29, 2026",
+                  "date": "2026-04-29",
+                  "end_date": null,
+                  "evidence_id": "ev_75b67275157f9120",
+                  "status": "explicit_date_mention",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_75b67275157f9120",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_75b67275157f9120",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_840978102672098c",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_91e6819f",
+              "target_id": "resource_b3eb4b29",
+              "relation": "AFFECTS",
+              "quote": "Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April",
+              "start": 0,
+              "end": 77,
+              "total_chars": 77,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_86db7d7d4c40c62d",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "event_e5062eca",
+              "target_id": "decision_91e6819f",
+              "relation": "CAUSES",
+              "quote": "The event 'Facebook / Instagram / TikTok data collection degraded or failing' (occurred_at: 2026-04-21) directly caused the decision to order backfill. The source passage states: 'From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window.' The backfill decision (2026-04-29) is a direct response to the degradation event. The extracted edge event_e5062eca -[CAUSES]-> decision_c34288c5 confirms this causal pattern. Temporal ordering is valid: event precedes decision (Apr 21 → Apr 29).",
+              "start": 0,
+              "end": 689,
+              "total_chars": 689,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-04-21",
+                  "date": "2026-04-21",
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "2026-04-29",
+                  "date": "2026-04-29",
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29, 2026",
+                  "date": "2026-04-29",
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "Apr 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "Apr 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_477c9de5cda34331",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_91e6819f",
+              "target_id": "event_e5062eca",
+              "relation": "REFERENCES",
+              "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing",
+              "start": 0,
+              "end": 136,
+              "total_chars": 136,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_477c9de5cda34331",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29, 2026",
+                  "date": "2026-04-29",
+                  "end_date": null,
+                  "evidence_id": "ev_477c9de5cda34331",
+                  "status": "explicit_date_mention",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_798015aecf48cc37",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_69fb7d3f",
+              "target_id": "resource_77b58f7b",
+              "relation": "AFFECTS",
+              "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered",
+              "start": 0,
+              "end": 100,
+              "total_chars": 100,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4700e329357c7762",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_91e6819f",
+              "target_id": "decision_69fb7d3f",
+              "relation": "DEPENDS_ON",
+              "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered (per Apr 28 standup: Magna coordinating with Abhik Roy to stop cron before triggering backfill)",
+              "start": 0,
+              "end": 196,
+              "total_chars": 196,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 28",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_4700e329357c7762",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_72bcaf2a50c998b3",
+              "record_id": "KT-292",
+              "provenance_kind": "extracted",
+              "source_id": "decision_543399bc",
+              "target_id": "resource_4169dfd2",
+              "relation": "AFFECTS",
+              "quote": "This is a manual QA activity to execute the Postman collection twice daily (morning and evening) throughout the month. The purpose is to monitor API health, validate responses, and identify any failures early.",
+              "start": 0,
+              "end": 209,
+              "total_chars": 209,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_c154a46d3b71e4f7",
+              "record_id": "KEP-7018",
+              "provenance_kind": "extracted",
+              "source_id": "decision_7fc40ea0",
+              "target_id": "event_ae0560e4",
+              "relation": "REFERENCES",
+              "quote": "April 13 – Present: Sustained over 1,000/day, frequently ~1,500+",
+              "start": 0,
+              "end": 64,
+              "total_chars": 64,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "April 13",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_c154a46d3b71e4f7",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 533,
+          "next_offset": 10
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.015797499974723905,
+      "error": false,
+      "new_ids": [
+        "ev_72bcaf2a50c998b3",
+        "ev_c154a46d3b71e4f7",
+        "span:ev_72bcaf2a50c998b3:0:209",
+        "span:ev_c154a46d3b71e4f7:0:64"
+      ]
+    },
+    {
+      "sequence": 95,
+      "kind": "context_item_eviction",
+      "call_id": "action_1_request_e4542102b7eecf96",
+      "item_id": "fact_3fa0a9452bdd91df",
+      "reason": "Duplicates the inspected episode’s outage-window excerpt."
+    },
+    {
+      "sequence": 96,
+      "kind": "context_item_eviction",
+      "call_id": "action_1_request_e4542102b7eecf96",
+      "item_id": "fact_72943bbeb02af342",
+      "reason": "Duplicates the inspected episode’s callback prerequisite excerpt."
+    },
+    {
+      "sequence": 97,
+      "kind": "context",
+      "model_call": 4,
+      "serialized_chars": 51839,
+      "message_count": 8,
+      "pinned_evidence_ids": [
+        "ev_4700e329357c7762",
+        "ev_48b827cfe137a976",
+        "ev_75b67275157f9120",
+        "ev_840978102672098c",
+        "ev_cdf54cd1ff4aa620"
+      ],
+      "visible_item_ids": [
+        "episode_79ef5db564f05930",
+        "fact_4eef9123ddbe65db",
+        "pattern_0ea1482690a38207"
+      ],
+      "visible_evidence_ids": [
+        "ev_06eee086b8cf9d93",
+        "ev_1faf97ee0458fc4b",
+        "ev_4700e329357c7762",
+        "ev_477c9de5cda34331",
+        "ev_48b827cfe137a976",
+        "ev_5bae6c7471a558ea",
+        "ev_66f837dba0b6f0bf",
+        "ev_72bcaf2a50c998b3",
+        "ev_75b67275157f9120",
+        "ev_798015aecf48cc37",
+        "ev_840978102672098c",
+        "ev_86db7d7d4c40c62d",
+        "ev_9488fa8cc6db3d39",
+        "ev_97a309f4cce85c3a",
+        "ev_c154a46d3b71e4f7",
+        "ev_cdf54cd1ff4aa620",
+        "ev_d281345d3aae0fef",
+        "ev_e0f628219171d557",
+        "ev_f3c24bea244e9385"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_e4542102b7eecf96",
+        "action_2_request_4887e9fc834ffaa4",
+        "action_3_request_713c749f923afa2c"
+      ]
+    },
+    {
+      "sequence": 98,
+      "kind": "model_started",
+      "call_number": 4,
+      "status": "pending",
+      "serialized_chars": 51839,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 99,
+      "kind": "item_discard",
+      "item_id": "pattern_0ea1482690a38207",
+      "reason": "Cross-incident alerting comparison is not needed for this incident chronology.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 100,
+      "kind": "model",
+      "call_number": 4,
+      "status": "completed",
+      "serialized_chars": 51839,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_8bc4b25ff75a6b29",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"KEP-6970 Facebook Instagram TikTok failure reports 19.2.1 hotfix recovered collection resumed\",\"mode\":\"records\",\"limit\":20}",
+        "purpose": "Check reported failures, subsequent fixes, and any directly verified collection recovery.",
+        "discarded_items": [
+          {
+            "item_id": "pattern_0ea1482690a38207",
+            "reason": "Cross-incident alerting comparison is not needed for this incident chronology."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_75b67275157f9120",
+          "ev_48b827cfe137a976",
+          "ev_4700e329357c7762",
+          "ev_840978102672098c",
+          "ev_cdf54cd1ff4aa620"
+        ]
+      },
+      "latency_seconds": 6.268263125006342,
+      "provider": {
+        "request_id": "request_8bc4b25ff75a6b29",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/collection_timeline__original__memory_graph/cache/codex/request_8bc4b25ff75a6b29.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 16284,
+          "output_tokens": 234,
+          "reasoning_output_tokens": 65,
+          "total_tokens": 16518
+        },
+        "thread_id": "01a114a1-43d0-74d3-b0cb-ffa335000776",
+        "turn_id": "01a114a1-43f2-7342-a264-3f2bba8d93cb",
+        "status": "completed",
+        "latency_seconds": 6.2529
+      }
+    },
+    {
+      "sequence": 101,
+      "kind": "tool_started",
+      "call_id": "action_4_request_8bc4b25ff75a6b29",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-6970 Facebook Instagram TikTok failure reports 19.2.1 hotfix recovered collection resumed",
+        "mode": "records",
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 102,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-6970 Facebook Instagram TikTok failure reports 19.2.1 hotfix recovered collection resumed",
+        "mode": "records",
+        "limit": 20
+      },
+      "call_id": "action_4_request_8bc4b25ff75a6b29",
+      "result": {
+        "expanded_query": "KEP-6970 Facebook Instagram TikTok failure reports 19.2.1 hotfix recovered collection resumed",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_477c9de5cda34331",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_91e6819f",
+              "target_id": "event_e5062eca",
+              "relation": "REFERENCES",
+              "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing",
+              "start": 0,
+              "end": 136,
+              "total_chars": 136,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_477c9de5cda34331",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29, 2026",
+                  "date": "2026-04-29",
+                  "end_date": null,
+                  "evidence_id": "ev_477c9de5cda34331",
+                  "status": "explicit_date_mention",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_840978102672098c",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_91e6819f",
+              "target_id": "resource_b3eb4b29",
+              "relation": "AFFECTS",
+              "quote": "Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April",
+              "start": 0,
+              "end": 77,
+              "total_chars": 77,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_d84bc6bf2ffd4954",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_64577ee4",
+              "target_id": "resource_de33c8fa",
+              "relation": "AFFECTS",
+              "quote": "19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags",
+              "start": 0,
+              "end": 97,
+              "total_chars": 97,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f3c24bea244e9385",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_c34288c5",
+              "target_id": "outcome_2a8acefa",
+              "relation": "PRODUCES",
+              "quote": "~8 days (Apr 21–29) of missing or degraded data for Facebook, Instagram, and TikTok across all customer networks",
+              "start": 0,
+              "end": 112,
+              "total_chars": 112,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 21–29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_f3c24bea244e9385",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_75b67275157f9120",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "event_e5062eca",
+              "target_id": "decision_c34288c5",
+              "relation": "CAUSES",
+              "quote": "From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.",
+              "start": 0,
+              "end": 324,
+              "total_chars": 324,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_75b67275157f9120",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29, 2026",
+                  "date": "2026-04-29",
+                  "end_date": null,
+                  "evidence_id": "ev_75b67275157f9120",
+                  "status": "explicit_date_mention",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_75b67275157f9120",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_75b67275157f9120",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_86db7d7d4c40c62d",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "event_e5062eca",
+              "target_id": "decision_91e6819f",
+              "relation": "CAUSES",
+              "quote": "The event 'Facebook / Instagram / TikTok data collection degraded or failing' (occurred_at: 2026-04-21) directly caused the decision to order backfill. The source passage states: 'From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window.' The backfill decision (2026-04-29) is a direct response to the degradation event. The extracted edge event_e5062eca -[CAUSES]-> decision_c34288c5 confirms this causal pattern. Temporal ordering is valid: event precedes decision (Apr 21 → Apr 29).",
+              "start": 0,
+              "end": 689,
+              "total_chars": 689,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-04-21",
+                  "date": "2026-04-21",
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "2026-04-29",
+                  "date": "2026-04-29",
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29, 2026",
+                  "date": "2026-04-29",
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "Apr 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "Apr 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_14acd247410dce00",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_64577ee4",
+              "target_id": "event_c3dd88f5",
+              "relation": "REFERENCES",
+              "quote": "Apr 30, 7:25 AM EDT — 19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags, with a linked change document",
+              "start": 0,
+              "end": 150,
+              "total_chars": 150,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 30",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_14acd247410dce00",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5bae6c7471a558ea",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_91e6819f",
+              "target_id": "decision_64577ee4",
+              "relation": "DECOMPOSES_TO",
+              "quote": "decision_91e6819f (order backfill, tactical level, Apr 29) decomposes to decision_64577ee4 (deploy 19.2.1 hotfix, operational level, Apr 30). The backfill decision is a broader tactical commitment to restore data integrity across multiple platforms; the 19.2.1 hotfix deployment is a concrete operational step that operationalizes part of the recovery strategy. Both share the same initiative and actor (Kiran Sabbani). The level_hierarchy signal confirms tactical >= operational. The source text states 'Fixes continued into 19.2.1 hotfix (brightdata-batching-service, data-source-facebook, data-source-tiktok)', indicating the hotfix is a subordinate operationalization of the broader backfill and recovery effort.",
+              "start": 0,
+              "end": 716,
+              "total_chars": 716,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_5bae6c7471a558ea",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "Apr 30",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_5bae6c7471a558ea",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_06878c01d8e65767",
+              "record_id": "KEP-4181",
+              "provenance_kind": "extracted",
+              "source_id": "decision_21be5d22",
+              "target_id": "resource_fcb627b6",
+              "relation": "AFFECTS",
+              "quote": "INSTAGRAM / FACEBOOK | Integrate Gunicorn Prometheus Metrics Middleware",
+              "start": 0,
+              "end": 71,
+              "total_chars": 71,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_a328537b8316c859",
+              "record_id": "KEP-4199",
+              "provenance_kind": "extracted",
+              "source_id": "decision_899c76f6",
+              "target_id": "resource_9d738fd3",
+              "relation": "AFFECTS",
+              "quote": "Bugs: app config error in telegram , facebook , instagram",
+              "start": 0,
+              "end": 57,
+              "total_chars": 57,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_abb037372247e041",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "event_c3dd88f5",
+              "target_id": "decision_64577ee4",
+              "relation": "CAUSES",
+              "quote": "The event '19.2.1 hotfix MRs deploying to staging' (occurred_at: 2026-04-30T07:25:00) is the direct realization of the decision to deploy the 19.2.1 hotfix. The source passage states: 'Apr 30, 7:25 AM EDT — 19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags.' The decision and event share the same timestamp and the event is the outcome of the decision being executed. The extracted edge decision_64577ee4 -[REFERENCES]-> event_c3dd88f5 confirms the relationship. This is a direct causal consequence: the decision to deploy caused the deployment event to occur.",
+              "start": 0,
+              "end": 608,
+              "total_chars": 608,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 30",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_abb037372247e041",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_c4241a7de6cfa6fc",
+              "record_id": "KEP-4065",
+              "provenance_kind": "extracted",
+              "source_id": "decision_9ce093ed",
+              "target_id": "resource_4df6ca6a",
+              "relation": "AFFECTS",
+              "quote": "Implement collection logic that pulls the top N posts from a TikTok hashtag page",
+              "start": 0,
+              "end": 80,
+              "total_chars": 80,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_dd824506d09578e7",
+              "record_id": "KEP-6647",
+              "provenance_kind": "extracted",
+              "source_id": "decision_64683c4d",
+              "target_id": "resource_44cd83cf",
+              "relation": "AFFECTS",
+              "quote": "Implement collection logic that pulls the top N posts from a TikTok username/profile",
+              "start": 0,
+              "end": 84,
+              "total_chars": 84,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_fb88ba1b590fa633",
+              "record_id": "KEP-3443",
+              "provenance_kind": "extracted",
+              "source_id": "decision_0fd83bb5",
+              "target_id": "rule_9b6133d9",
+              "relation": "REFERENCES",
+              "quote": "ALL accounts—regardless of platform (Twitter, Weibo, Facebook, Instagram, etc.)—belong in the Accounts tab",
+              "start": 0,
+              "end": 106,
+              "total_chars": 106,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_0e9d664c797ba0e3",
+              "record_id": "KEP-7072",
+              "provenance_kind": "extracted",
+              "source_id": "decision_b78d88d3",
+              "target_id": "outcome_d128b7d1",
+              "relation": "PRODUCES",
+              "quote": "Removed Veracode and Image Scan from GitLab for : 1) data-source-facebook : DONE 2) data-source-tiktok : DONE",
+              "start": 0,
+              "end": 109,
+              "total_chars": 109,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_3e9a0e09ea0952c5",
+              "record_id": "KEP-7085",
+              "provenance_kind": "extracted",
+              "source_id": "decision_34ca5dfb",
+              "target_id": "rule_f7bd35f7",
+              "relation": "REFERENCES",
+              "quote": "As part of the Kepler 19.4.0 release, the web account discovery agent needs to be expanded to support Facebook Groups",
+              "start": 0,
+              "end": 117,
+              "total_chars": 117,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f194bdba7c7d5381",
+              "record_id": "KEP-7076",
+              "provenance_kind": "extracted",
+              "source_id": "decision_26aef6f2",
+              "target_id": "resource_6be4b5f3",
+              "relation": "AFFECTS",
+              "quote": "Platform casing: Change from all uppercase to this: Reddit , TikTok , YouTube , Facebook , Twitter (or Twitter/X if preferred product-wide).",
+              "start": 0,
+              "end": 140,
+              "total_chars": 140,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_6e5be02bd55ba491",
+              "record_id": "KEP-7085",
+              "provenance_kind": "extracted",
+              "source_id": "decision_34ca5dfb",
+              "target_id": "decision_39e5b1cf",
+              "relation": "DEPENDS_ON",
+              "quote": "Must release simultaneously with UI-side Facebook Groups ticket (KEP-6684)",
+              "start": 0,
+              "end": 74,
+              "total_chars": 74,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_dfc9fbda8fe48cc2",
+              "record_id": "KEP-6475",
+              "provenance_kind": "extracted",
+              "source_id": "decision_e5810b46",
+              "target_id": "outcome_37078329",
+              "relation": "PRODUCES",
+              "quote": "MR has been raised for this hotfix",
+              "start": 0,
+              "end": 34,
+              "total_chars": 34,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_660e3b56fb896f70",
+              "record_id": "KEP-7004",
+              "provenance_kind": "extracted",
+              "source_id": "decision_64e059f4",
+              "target_id": "decision_e934b0f5",
+              "relation": "REFERENCES",
+              "quote": "Context The current TikTok data source implementation (ref: KEP-6922)",
+              "start": 0,
+              "end": 69,
+              "total_chars": 69,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 679,
+          "next_offset": 20
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.017683083016891032,
+      "error": false,
+      "new_ids": [
+        "ev_06878c01d8e65767",
+        "ev_0e9d664c797ba0e3",
+        "ev_14acd247410dce00",
+        "ev_3e9a0e09ea0952c5",
+        "ev_660e3b56fb896f70",
+        "ev_6e5be02bd55ba491",
+        "ev_a328537b8316c859",
+        "ev_abb037372247e041",
+        "ev_c4241a7de6cfa6fc",
+        "ev_d84bc6bf2ffd4954",
+        "ev_dd824506d09578e7",
+        "ev_dfc9fbda8fe48cc2",
+        "ev_f194bdba7c7d5381",
+        "ev_fb88ba1b590fa633",
+        "span:ev_06878c01d8e65767:0:71",
+        "span:ev_0e9d664c797ba0e3:0:109",
+        "span:ev_14acd247410dce00:0:150",
+        "span:ev_3e9a0e09ea0952c5:0:117",
+        "span:ev_660e3b56fb896f70:0:69",
+        "span:ev_6e5be02bd55ba491:0:74",
+        "span:ev_a328537b8316c859:0:57",
+        "span:ev_abb037372247e041:0:608",
+        "span:ev_c4241a7de6cfa6fc:0:80",
+        "span:ev_d84bc6bf2ffd4954:0:97",
+        "span:ev_dd824506d09578e7:0:84",
+        "span:ev_dfc9fbda8fe48cc2:0:34",
+        "span:ev_f194bdba7c7d5381:0:140",
+        "span:ev_fb88ba1b590fa633:0:106"
+      ]
+    },
+    {
+      "sequence": 103,
+      "kind": "context",
+      "model_call": 5,
+      "serialized_chars": 69268,
+      "message_count": 10,
+      "pinned_evidence_ids": [
+        "ev_4700e329357c7762",
+        "ev_48b827cfe137a976",
+        "ev_75b67275157f9120",
+        "ev_840978102672098c",
+        "ev_cdf54cd1ff4aa620"
+      ],
+      "visible_item_ids": [
+        "episode_79ef5db564f05930",
+        "fact_4eef9123ddbe65db",
+        "pattern_0ea1482690a38207"
+      ],
+      "visible_evidence_ids": [
+        "ev_06878c01d8e65767",
+        "ev_06eee086b8cf9d93",
+        "ev_0e9d664c797ba0e3",
+        "ev_14acd247410dce00",
+        "ev_1faf97ee0458fc4b",
+        "ev_3e9a0e09ea0952c5",
+        "ev_4700e329357c7762",
+        "ev_477c9de5cda34331",
+        "ev_48b827cfe137a976",
+        "ev_5bae6c7471a558ea",
+        "ev_660e3b56fb896f70",
+        "ev_66f837dba0b6f0bf",
+        "ev_6e5be02bd55ba491",
+        "ev_72bcaf2a50c998b3",
+        "ev_75b67275157f9120",
+        "ev_798015aecf48cc37",
+        "ev_840978102672098c",
+        "ev_86db7d7d4c40c62d",
+        "ev_9488fa8cc6db3d39",
+        "ev_97a309f4cce85c3a",
+        "ev_a328537b8316c859",
+        "ev_abb037372247e041",
+        "ev_c154a46d3b71e4f7",
+        "ev_c4241a7de6cfa6fc",
+        "ev_cdf54cd1ff4aa620",
+        "ev_d281345d3aae0fef",
+        "ev_d84bc6bf2ffd4954",
+        "ev_dd824506d09578e7",
+        "ev_dfc9fbda8fe48cc2",
+        "ev_e0f628219171d557",
+        "ev_f194bdba7c7d5381",
+        "ev_f3c24bea244e9385",
+        "ev_fb88ba1b590fa633"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_e4542102b7eecf96",
+        "action_2_request_4887e9fc834ffaa4",
+        "action_3_request_713c749f923afa2c",
+        "action_4_request_8bc4b25ff75a6b29"
+      ]
+    },
+    {
+      "sequence": 104,
+      "kind": "model_started",
+      "call_number": 5,
+      "status": "pending",
+      "serialized_chars": 69268,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 105,
+      "kind": "item_discard",
+      "item_id": "pattern_0ea1482690a38207",
+      "reason": "Cross-incident comparison is unnecessary to reconstruct this incident.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 106,
+      "kind": "model",
+      "call_number": 5,
+      "status": "completed",
+      "serialized_chars": 69268,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_f9b84f97dba210bc",
+      "action": {
+        "tool_name": "search_graph",
+        "arguments_json": "{\"query\":\"KEP-6970 Apr 24 Apr 25 Apr 26 failures collection fixed backfill complete\",\"mode\":\"records\",\"limit\":20}",
+        "purpose": "Find dated failure reports and evidence of completed backfill or restored collection.",
+        "discarded_items": [
+          {
+            "item_id": "pattern_0ea1482690a38207",
+            "reason": "Cross-incident comparison is unnecessary to reconstruct this incident."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_75b67275157f9120",
+          "ev_48b827cfe137a976",
+          "ev_4700e329357c7762",
+          "ev_840978102672098c",
+          "ev_cdf54cd1ff4aa620",
+          "ev_14acd247410dce00"
+        ]
+      },
+      "latency_seconds": 6.1491054159996565,
+      "provider": {
+        "request_id": "request_f9b84f97dba210bc",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/collection_timeline__original__memory_graph/cache/codex/request_f9b84f97dba210bc.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 20776,
+          "output_tokens": 193,
+          "reasoning_output_tokens": 19,
+          "total_tokens": 20969
+        },
+        "thread_id": "01a114a1-5c69-79c2-a8bd-de19f5566865",
+        "turn_id": "01a114a1-5c89-7932-82d1-14d913077648",
+        "status": "completed",
+        "latency_seconds": 6.1328
+      }
+    },
+    {
+      "sequence": 107,
+      "kind": "tool_started",
+      "call_id": "action_5_request_f9b84f97dba210bc",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-6970 Apr 24 Apr 25 Apr 26 failures collection fixed backfill complete",
+        "mode": "records",
+        "limit": 20
+      }
+    },
+    {
+      "sequence": 108,
+      "kind": "tool",
+      "name": "search_graph",
+      "arguments": {
+        "query": "KEP-6970 Apr 24 Apr 25 Apr 26 failures collection fixed backfill complete",
+        "mode": "records",
+        "limit": 20
+      },
+      "call_id": "action_5_request_f9b84f97dba210bc",
+      "result": {
+        "expanded_query": "KEP-6970 Apr 24 Apr 25 Apr 26 failures collection fixed backfill complete",
+        "records": {
+          "results": [
+            {
+              "evidence_id": "ev_4700e329357c7762",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_91e6819f",
+              "target_id": "decision_69fb7d3f",
+              "relation": "DEPENDS_ON",
+              "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered (per Apr 28 standup: Magna coordinating with Abhik Roy to stop cron before triggering backfill)",
+              "start": 0,
+              "end": 196,
+              "total_chars": 196,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 28",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_4700e329357c7762",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_cdf54cd1ff4aa620",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_91e6819f",
+              "target_id": "outcome_99bbc87c",
+              "relation": "PRODUCES",
+              "quote": "Backfill from Apr 21 required to restore full data integrity",
+              "start": 0,
+              "end": 60,
+              "total_chars": 60,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_cdf54cd1ff4aa620",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_966dbf6e0186fd0b",
+              "record_id": "KEP-6971",
+              "provenance_kind": "extracted",
+              "source_id": "decision_8b4344da",
+              "target_id": "resource_c86f3e72",
+              "relation": "AFFECTS",
+              "quote": "YouTube data collection degraded for ~8 days (Apr 21–29)",
+              "start": 0,
+              "end": 56,
+              "total_chars": 56,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 21–29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_966dbf6e0186fd0b",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_86db7d7d4c40c62d",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "event_e5062eca",
+              "target_id": "decision_91e6819f",
+              "relation": "CAUSES",
+              "quote": "The event 'Facebook / Instagram / TikTok data collection degraded or failing' (occurred_at: 2026-04-21) directly caused the decision to order backfill. The source passage states: 'From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window.' The backfill decision (2026-04-29) is a direct response to the degradation event. The extracted edge event_e5062eca -[CAUSES]-> decision_c34288c5 confirms this causal pattern. Temporal ordering is valid: event precedes decision (Apr 21 → Apr 29).",
+              "start": 0,
+              "end": 689,
+              "total_chars": 689,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-04-21",
+                  "date": "2026-04-21",
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "2026-04-29",
+                  "date": "2026-04-29",
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29, 2026",
+                  "date": "2026-04-29",
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "April 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "Apr 21",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                },
+                {
+                  "raw": "Apr 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_86db7d7d4c40c62d",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": true
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_14acd247410dce00",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_64577ee4",
+              "target_id": "event_c3dd88f5",
+              "relation": "REFERENCES",
+              "quote": "Apr 30, 7:25 AM EDT — 19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags, with a linked change document",
+              "start": 0,
+              "end": 150,
+              "total_chars": 150,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 30",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_14acd247410dce00",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_798015aecf48cc37",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "decision_69fb7d3f",
+              "target_id": "resource_77b58f7b",
+              "relation": "AFFECTS",
+              "quote": "The cron job sending failure callbacks also needed to be disabled before backfill could be triggered",
+              "start": 0,
+              "end": 100,
+              "total_chars": 100,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_9488fa8cc6db3d39",
+              "record_id": "KEP-6970",
+              "provenance_kind": "extracted",
+              "source_id": "event_682f97dc",
+              "target_id": "decision_91e6819f",
+              "relation": "CAUSES",
+              "quote": "Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied. Apr 29, 6:42 AM EDT — Kiran Sabbani in #kepler-dev-all-pods: \"Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April.\"",
+              "start": 0,
+              "end": 348,
+              "total_chars": 348,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_9488fa8cc6db3d39",
+                  "status": "unplaced_without_year",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_e0f628219171d557",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_91e6819f",
+              "target_id": "decision_d82d905d",
+              "relation": "DECOMPOSES_TO",
+              "quote": "decision_91e6819f (order backfill, tactical level, Apr 29) decomposes to decision_d82d905d (request TikTok MR bypass, operational level, Apr 30). The backfill is a tactical commitment to restore data across platforms; the TikTok MR bypass request is an operational step addressing a specific platform-level fix. Both share the same initiative and actor (Kiran Sabbani). The level_hierarchy signal confirms tactical >= operational. The source text indicates TikTok fixes were ongoing post-19.2.0 ('TikTok MR bypass requested in #kepler-dev-all-pods'), representing a concrete operational action within the broader backfill recovery strategy.",
+              "start": 0,
+              "end": 640,
+              "total_chars": 640,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_e0f628219171d557",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "Apr 30",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_e0f628219171d557",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5bae6c7471a558ea",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "decision_91e6819f",
+              "target_id": "decision_64577ee4",
+              "relation": "DECOMPOSES_TO",
+              "quote": "decision_91e6819f (order backfill, tactical level, Apr 29) decomposes to decision_64577ee4 (deploy 19.2.1 hotfix, operational level, Apr 30). The backfill decision is a broader tactical commitment to restore data integrity across multiple platforms; the 19.2.1 hotfix deployment is a concrete operational step that operationalizes part of the recovery strategy. Both share the same initiative and actor (Kiran Sabbani). The level_hierarchy signal confirms tactical >= operational. The source text states 'Fixes continued into 19.2.1 hotfix (brightdata-batching-service, data-source-facebook, data-source-tiktok)', indicating the hotfix is a subordinate operationalization of the broader backfill and recovery effort.",
+              "start": 0,
+              "end": 716,
+              "total_chars": 716,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "Apr 29",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_5bae6c7471a558ea",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "Apr 30",
+                  "date": null,
+                  "end_date": null,
+                  "evidence_id": "ev_5bae6c7471a558ea",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_c1c1bf0abb13b4f9",
+              "record_id": "KEP-6815",
+              "provenance_kind": "extracted",
+              "source_id": "decision_30c0bc39",
+              "target_id": "risk_28633e24",
+              "relation": "REFERENCES",
+              "quote": "Requests to Elasticsearch do not complete within the configured read window, causing failures in any code path that depends on ES",
+              "start": 0,
+              "end": 129,
+              "total_chars": 129,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_8fce8f6df2c49181",
+              "record_id": "KEP-6839",
+              "provenance_kind": "extracted",
+              "source_id": "decision_2454ef7b",
+              "target_id": "decision_e75d8cfa",
+              "relation": "DEPENDS_ON",
+              "quote": "One‑time backfill Use the ES query above to fetch the ~47.5k affected documents. For each: Either re‑derive the correct downloaded_media_s3_path and update via the fixed update_es_by_query",
+              "start": 0,
+              "end": 188,
+              "total_chars": 188,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_dfbd56775de0b19f",
+              "record_id": "KEP-6839",
+              "provenance_kind": "extracted",
+              "source_id": "decision_2454ef7b",
+              "target_id": "resource_c740a427",
+              "relation": "AFFECTS",
+              "quote": "One‑time backfill Use the ES query above to fetch the ~47.5k affected documents. For each: Either re‑derive the correct downloaded_media_s3_path and update via the fixed update_es_by_query",
+              "start": 0,
+              "end": 188,
+              "total_chars": 188,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_edcfb982e2fe17f6",
+              "record_id": "KEP-6839",
+              "provenance_kind": "extracted",
+              "source_id": "decision_2454ef7b",
+              "target_id": "resource_2e00b2c4",
+              "relation": "AFFECTS",
+              "quote": "One‑time backfill Use the ES query above to fetch the ~47.5k affected documents. For each: Either re‑derive the correct downloaded_media_s3_path and update via the fixed update_es_by_query",
+              "start": 0,
+              "end": 188,
+              "total_chars": 188,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_84c5dad01abf5e69",
+              "record_id": "KEP-2809",
+              "provenance_kind": "extracted",
+              "source_id": "decision_171897a5",
+              "target_id": "outcome_4fe9060c",
+              "relation": "PRODUCES",
+              "quote": "Sanity Test Results – Big Agent Kepler Staging Environment | 13.01.26 Queries Run: 33 Queries Passed: 24 Queries Failed: 9 Pass Percentage: 72.73%",
+              "start": 0,
+              "end": 146,
+              "total_chars": 146,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_4695de3a022bb818",
+              "record_id": "KEP-6585",
+              "provenance_kind": "extracted",
+              "source_id": "decision_320db0bc",
+              "target_id": "decision_da6f1ae6",
+              "relation": "DEPENDS_ON",
+              "quote": "Fixed it and pushed on dev",
+              "start": 0,
+              "end": 26,
+              "total_chars": 26,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_a0f6bb39342676c7",
+              "record_id": "KEP-5817",
+              "provenance_kind": "extracted",
+              "source_id": "decision_fb50cc65",
+              "target_id": "outcome_619436d0",
+              "relation": "PRODUCES",
+              "quote": "Fixed this issue. cc:",
+              "start": 0,
+              "end": 21,
+              "total_chars": 21,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_a489ba9827151fbb",
+              "record_id": "KEP-6585",
+              "provenance_kind": "extracted",
+              "source_id": "decision_da6f1ae6",
+              "target_id": "outcome_f98c4147",
+              "relation": "PRODUCES",
+              "quote": "Fixed it and pushed on dev",
+              "start": 0,
+              "end": 26,
+              "total_chars": 26,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_c8ebf678355171a8",
+              "record_id": "KEP-5817",
+              "provenance_kind": "extracted",
+              "source_id": "decision_fb50cc65",
+              "target_id": "resource_26aafbfb",
+              "relation": "AFFECTS",
+              "quote": "Fixed this issue. cc:",
+              "start": 0,
+              "end": 21,
+              "total_chars": 21,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_f6349f53956221d3",
+              "record_id": "KEP-5817",
+              "provenance_kind": "extracted",
+              "source_id": "decision_fb50cc65",
+              "target_id": "resource_236d69ec",
+              "relation": "AFFECTS",
+              "quote": "Fixed this issue. cc:",
+              "start": 0,
+              "end": 21,
+              "total_chars": 21,
+              "next_start": null,
+              "dates": [],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            },
+            {
+              "evidence_id": "ev_5d0a9268742f998f",
+              "record_id": "",
+              "provenance_kind": "inferred",
+              "source_id": "event_42c826a9",
+              "target_id": "decision_944c5373",
+              "relation": "CAUSES",
+              "quote": "The event 'Big Agent becomes unresponsive and throws Failed to send message error' (occurred_at: 2026-02-26) is directly referenced by decision_944c5373 via a REFERENCES edge. The decision to close KEP-6668 as intermittent and non-deterministic is a direct response to this observed failure event. The event precedes the decision (2026-02-26 to 2026-03-30), establishing temporal ordering. This is a concrete consequence of the error event.",
+              "start": 0,
+              "end": 440,
+              "total_chars": 440,
+              "next_start": null,
+              "dates": [
+                {
+                  "raw": "2026-02-26",
+                  "date": "2026-02-26",
+                  "evidence_id": "ev_5d0a9268742f998f",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-02-26",
+                  "date": "2026-02-26",
+                  "evidence_id": "ev_5d0a9268742f998f",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                },
+                {
+                  "raw": "2026-03-30",
+                  "date": "2026-03-30",
+                  "evidence_id": "ev_5d0a9268742f998f",
+                  "status": "tentative_inference",
+                  "event_role": "unspecified; a date mention is not a verified event timestamp",
+                  "approximate": false
+                }
+              ],
+              "limitation": "Extracted text can contain plans or administrative closure; inferred rationale is not original source testimony."
+            }
+          ],
+          "total": 683,
+          "next_offset": 20
+        },
+        "entities": {
+          "results": [],
+          "total": 0,
+          "next_offset": null
+        }
+      },
+      "latency_seconds": 0.01641900002141483,
+      "error": false,
+      "new_ids": [
+        "ev_4695de3a022bb818",
+        "ev_5d0a9268742f998f",
+        "ev_84c5dad01abf5e69",
+        "ev_8fce8f6df2c49181",
+        "ev_966dbf6e0186fd0b",
+        "ev_a0f6bb39342676c7",
+        "ev_a489ba9827151fbb",
+        "ev_c1c1bf0abb13b4f9",
+        "ev_c8ebf678355171a8",
+        "ev_dfbd56775de0b19f",
+        "ev_edcfb982e2fe17f6",
+        "ev_f6349f53956221d3",
+        "span:ev_4695de3a022bb818:0:26",
+        "span:ev_5d0a9268742f998f:0:440",
+        "span:ev_84c5dad01abf5e69:0:146",
+        "span:ev_8fce8f6df2c49181:0:188",
+        "span:ev_966dbf6e0186fd0b:0:56",
+        "span:ev_a0f6bb39342676c7:0:21",
+        "span:ev_a489ba9827151fbb:0:26",
+        "span:ev_c1c1bf0abb13b4f9:0:129",
+        "span:ev_c8ebf678355171a8:0:21",
+        "span:ev_dfbd56775de0b19f:0:188",
+        "span:ev_edcfb982e2fe17f6:0:188",
+        "span:ev_f6349f53956221d3:0:21"
+      ]
+    },
+    {
+      "sequence": 109,
+      "kind": "context",
+      "model_call": 6,
+      "serialized_chars": 87336,
+      "message_count": 12,
+      "pinned_evidence_ids": [
+        "ev_14acd247410dce00",
+        "ev_4700e329357c7762",
+        "ev_48b827cfe137a976",
+        "ev_75b67275157f9120",
+        "ev_840978102672098c",
+        "ev_cdf54cd1ff4aa620"
+      ],
+      "visible_item_ids": [
+        "episode_79ef5db564f05930",
+        "fact_4eef9123ddbe65db",
+        "pattern_0ea1482690a38207"
+      ],
+      "visible_evidence_ids": [
+        "ev_06878c01d8e65767",
+        "ev_06eee086b8cf9d93",
+        "ev_0e9d664c797ba0e3",
+        "ev_14acd247410dce00",
+        "ev_1faf97ee0458fc4b",
+        "ev_3e9a0e09ea0952c5",
+        "ev_4695de3a022bb818",
+        "ev_4700e329357c7762",
+        "ev_477c9de5cda34331",
+        "ev_48b827cfe137a976",
+        "ev_5bae6c7471a558ea",
+        "ev_5d0a9268742f998f",
+        "ev_660e3b56fb896f70",
+        "ev_66f837dba0b6f0bf",
+        "ev_6e5be02bd55ba491",
+        "ev_72bcaf2a50c998b3",
+        "ev_75b67275157f9120",
+        "ev_798015aecf48cc37",
+        "ev_840978102672098c",
+        "ev_84c5dad01abf5e69",
+        "ev_86db7d7d4c40c62d",
+        "ev_8fce8f6df2c49181",
+        "ev_9488fa8cc6db3d39",
+        "ev_966dbf6e0186fd0b",
+        "ev_97a309f4cce85c3a",
+        "ev_a0f6bb39342676c7",
+        "ev_a328537b8316c859",
+        "ev_a489ba9827151fbb",
+        "ev_abb037372247e041",
+        "ev_c154a46d3b71e4f7",
+        "ev_c1c1bf0abb13b4f9",
+        "ev_c4241a7de6cfa6fc",
+        "ev_c8ebf678355171a8",
+        "ev_cdf54cd1ff4aa620",
+        "ev_d281345d3aae0fef",
+        "ev_d84bc6bf2ffd4954",
+        "ev_dd824506d09578e7",
+        "ev_dfbd56775de0b19f",
+        "ev_dfc9fbda8fe48cc2",
+        "ev_e0f628219171d557",
+        "ev_edcfb982e2fe17f6",
+        "ev_f194bdba7c7d5381",
+        "ev_f3c24bea244e9385",
+        "ev_f6349f53956221d3",
+        "ev_fb88ba1b590fa633"
+      ],
+      "included_tool_call_ids": [
+        "action_1_request_e4542102b7eecf96",
+        "action_2_request_4887e9fc834ffaa4",
+        "action_3_request_713c749f923afa2c",
+        "action_4_request_8bc4b25ff75a6b29",
+        "action_5_request_f9b84f97dba210bc"
+      ]
+    },
+    {
+      "sequence": 110,
+      "kind": "model_started",
+      "call_number": 6,
+      "status": "pending",
+      "serialized_chars": 87336,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ]
+    },
+    {
+      "sequence": 111,
+      "kind": "item_discard",
+      "item_id": "pattern_0ea1482690a38207",
+      "reason": "Cross-incident comparison is unnecessary for this incident chronology.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 112,
+      "kind": "item_discard",
+      "item_id": "fact_4eef9123ddbe65db",
+      "reason": "Its backfill-plan text is already covered by the inspected incident episode and original passage.",
+      "origin": "model relevance decision"
+    },
+    {
+      "sequence": 113,
+      "kind": "model",
+      "call_number": 6,
+      "status": "completed",
+      "serialized_chars": 87336,
+      "available_tools": [
+        "recall_memory",
+        "inspect_memory",
+        "list_patterns",
+        "list_outcomes",
+        "memory_timeline",
+        "search_graph",
+        "graph_neighborhood",
+        "graph_paths",
+        "get_evidence",
+        "DraftAnswer"
+      ],
+      "request_id": "request_4ce38eaf9f5516fb",
+      "action": {
+        "tool_name": "DraftAnswer",
+        "arguments_json": "{\"claims\":[{\"statement\":\"The incident record reports severely degraded or failing Facebook, Instagram, and TikTok collection from approximately April 21 through April 29, 2026.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_477c9de5cda34331\",\"quote\":\"From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing\",\"start\":0}],\"memory_ids\":[\"episode_79ef5db564f05930\"],\"confidence\":\"high\",\"confidence_reason\":\"The incident passage states the approximate window and affected platforms directly.\",\"verification_note\":\"The cited KEP-6970 passage explicitly reports the degradation; the start of the window is approximate.\"},{\"statement\":\"The incident record says no automated alarm detected the problem during that eight-day window.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_75b67275157f9120\",\"quote\":\"From approximately April 21 through April 29, 2026, data collection for Facebook, Instagram, and TikTok was severely degraded or failing. Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21, confirming the outage window. No automated alarm detected the issue during the 8-day window.\",\"start\":0}],\"memory_ids\":[\"episode_79ef5db564f05930\"],\"confidence\":\"high\",\"confidence_reason\":\"The absence of an automated alarm is stated directly in the incident passage.\",\"verification_note\":\"The quote reports a monitoring failure, not how the incident was first discovered.\"},{\"statement\":\"The reported technical cause was video-vision jobs failing to close their final steps, backing up the queue and preventing new jobs from starting; the record says a host-PID setting change was applied as the fix.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_48b827cfe137a976\",\"quote\":\"Root cause identified and fixed: video vision processing jobs were not closing their final steps properly, causing a queue backup that prevented new jobs from starting. Fix: host PID setting change applied\",\"start\":0}],\"memory_ids\":[\"episode_79ef5db564f05930\"],\"confidence\":\"high\",\"confidence_reason\":\"The passage directly reports the cause and applied change, though it does not independently demonstrate sustained recovery.\",\"verification_note\":\"This is the source-reported cause and fix, not a causal inference from graph links.\"},{\"statement\":\"An April 28 standup note said the cron job sending failure callbacks needed to be stopped before backfill could be triggered; it described coordination to do so, not confirmed completion.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_4700e329357c7762\",\"quote\":\"The cron job sending failure callbacks also needed to be disabled before backfill could be triggered (per Apr 28 standup: Magna coordinating with Abhik Roy to stop cron before triggering backfill)\",\"start\":0}],\"memory_ids\":[\"episode_79ef5db564f05930\"],\"confidence\":\"high\",\"confidence_reason\":\"The prerequisite and coordination are explicit, but disabling the job is not confirmed by this wording.\",\"verification_note\":\"The citation supports a planned prerequisite rather than an executed step.\"},{\"statement\":\"After Kepler 19.2.0 was deployed on April 29, Kiran Sabbani ordered backfill from April 21 for TikTok, Instagram, YouTube, and Facebook.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_97a309f4cce85c3a\",\"quote\":\"Upon deployment of Kepler 19.2.0 on April 29, Kiran Sabbani ordered a backfill from April 21\",\"start\":0},{\"evidence_id\":\"ev_840978102672098c\",\"quote\":\"Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April\",\"start\":0}],\"memory_ids\":[\"episode_79ef5db564f05930\"],\"confidence\":\"high\",\"confidence_reason\":\"The passages directly establish the order, target start date, and platforms; they do not establish completion.\",\"verification_note\":\"YouTube is in the backfill scope, while the cited principal failure report names Facebook, Instagram, and TikTok.\"},{\"statement\":\"By the April 30 update, 19.2.1 hotfix merge requests for brightdata-batching-service and data-source-facebook were deploying to staging; this does not establish production deployment.\",\"kind\":\"source_report\",\"citations\":[{\"evidence_id\":\"ev_14acd247410dce00\",\"quote\":\"Apr 30, 7:25 AM EDT — 19.2.1 hotfix MRs deploying to staging: brightdata-batching-service and data-source-facebook tags, with a linked change document\",\"start\":0}],\"memory_ids\":[],\"confidence\":\"high\",\"confidence_reason\":\"The original passage specifies staging, not production.\",\"verification_note\":\"The environment qualifier limits the recovery claim.\"},{\"statement\":\"Full data integrity was described as requiring backfill from April 21; the cited evidence does not verify that backfill finished or that collection and historical data fully recovered.\",\"kind\":\"synthesis\",\"citations\":[{\"evidence_id\":\"ev_cdf54cd1ff4aa620\",\"quote\":\"Backfill from Apr 21 required to restore full data integrity\",\"start\":0},{\"evidence_id\":\"ev_840978102672098c\",\"quote\":\"Backfill to be done for TikTok, Instagram, YouTube and Facebook from 21 April\",\"start\":0}],\"memory_ids\":[\"episode_79ef5db564f05930\"],\"confidence\":\"medium\",\"confidence_reason\":\"The source states a requirement and a future-oriented plan, not a completed backfill or validated recovery.\",\"verification_note\":\"Recovery is limited to the reported fix and 19.2.0 deployment; the quoted backfill evidence does not prove restored data integrity.\"}],\"unanswered\":[\"Whether the failure-callback cron was actually disabled and the backfill triggered or completed.\",\"Whether collection returned to normal across all affected platforms and customer networks, and whether historical data integrity was validated.\",\"Whether the 19.2.1 hotfix reached production or improved recovery.\"],\"limitations\":[\"The April 21 start is approximate; do not treat it as an exact failure timestamp.\",\"The incident passages are source reports, not independent operational telemetry or proof of sustained recovery.\"]}",
+        "purpose": "Deliver the source-supported incident sequence while distinguishing fixes and backfill plans from verified recovery.",
+        "discarded_items": [
+          {
+            "item_id": "pattern_0ea1482690a38207",
+            "reason": "Cross-incident comparison is unnecessary for this incident chronology."
+          },
+          {
+            "item_id": "fact_4eef9123ddbe65db",
+            "reason": "Its backfill-plan text is already covered by the inspected incident episode and original passage."
+          }
+        ],
+        "pin_evidence_ids": [
+          "ev_477c9de5cda34331",
+          "ev_75b67275157f9120",
+          "ev_48b827cfe137a976",
+          "ev_4700e329357c7762",
+          "ev_97a309f4cce85c3a",
+          "ev_840978102672098c",
+          "ev_14acd247410dce00",
+          "ev_cdf54cd1ff4aa620"
+        ]
+      },
+      "latency_seconds": 33.94934249998187,
+      "provider": {
+        "request_id": "request_4ce38eaf9f5516fb",
+        "purpose": "task2_agent",
+        "provider": "codex",
+        "endpoint": "codex/turn",
+        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "cached": false,
+        "estimated_original_cost_usd": null,
+        "estimated_this_run_cost_usd": null,
+        "cache_file": "artifacts/evaluation/final-sol-v2/runs/collection_timeline__original__memory_graph/cache/codex/request_4ce38eaf9f5516fb.json",
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 2560,
+          "input_tokens": 25421,
+          "output_tokens": 1694,
+          "reasoning_output_tokens": 86,
+          "total_tokens": 27115
+        },
+        "thread_id": "01a114a1-7488-7191-8e17-3b655ba3fe9e",
+        "turn_id": "01a114a1-7605-7581-9a6d-f06d520c883f",
+        "status": "completed",
+        "latency_seconds": 33.9332
+      }
+    },
+    {
+      "sequence": 114,
+      "kind": "claim_support",
+      "claim_id": "C1",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [
+        "episode_79ef5db564f05930"
+      ],
+      "evidence_ids": [
+        "ev_477c9de5cda34331"
+      ],
+      "source_mode": "memory_confirmed_by_graph",
+      "verification_note": "The cited KEP-6970 passage explicitly reports the degradation; the start of the window is approximate."
+    },
+    {
+      "sequence": 115,
+      "kind": "claim_support",
+      "claim_id": "C2",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [
+        "episode_79ef5db564f05930"
+      ],
+      "evidence_ids": [
+        "ev_75b67275157f9120"
+      ],
+      "source_mode": "memory_confirmed_by_graph",
+      "verification_note": "The quote reports a monitoring failure, not how the incident was first discovered."
+    },
+    {
+      "sequence": 116,
+      "kind": "claim_support",
+      "claim_id": "C3",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [
+        "episode_79ef5db564f05930"
+      ],
+      "evidence_ids": [
+        "ev_48b827cfe137a976"
+      ],
+      "source_mode": "memory",
+      "verification_note": "This is the source-reported cause and fix, not a causal inference from graph links."
+    },
+    {
+      "sequence": 117,
+      "kind": "claim_support",
+      "claim_id": "C4",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [
+        "episode_79ef5db564f05930"
+      ],
+      "evidence_ids": [
+        "ev_4700e329357c7762"
+      ],
+      "source_mode": "memory_confirmed_by_graph",
+      "verification_note": "The citation supports a planned prerequisite rather than an executed step."
+    },
+    {
+      "sequence": 118,
+      "kind": "claim_support",
+      "claim_id": "C5",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [
+        "episode_79ef5db564f05930"
+      ],
+      "evidence_ids": [
+        "ev_97a309f4cce85c3a",
+        "ev_840978102672098c"
+      ],
+      "source_mode": "memory_confirmed_by_graph",
+      "verification_note": "YouTube is in the backfill scope, while the cited principal failure report names Facebook, Instagram, and TikTok."
+    },
+    {
+      "sequence": 119,
+      "kind": "claim_support",
+      "claim_id": "C6",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [],
+      "evidence_ids": [
+        "ev_14acd247410dce00"
+      ],
+      "source_mode": "graph",
+      "verification_note": "The environment qualifier limits the recovery claim."
+    },
+    {
+      "sequence": 120,
+      "kind": "claim_support",
+      "claim_id": "C7",
+      "record_ids": [
+        "KEP-6970"
+      ],
+      "memory_ids": [
+        "episode_79ef5db564f05930"
+      ],
+      "evidence_ids": [
+        "ev_cdf54cd1ff4aa620",
+        "ev_840978102672098c"
+      ],
+      "source_mode": "memory_confirmed_by_graph",
+      "verification_note": "Recovery is limited to the reported fix and 19.2.0 deployment; the quoted backfill evidence does not prove restored data integrity."
+    }
+  ],
+  "usage": {
+    "model_calls": 6,
+    "data_tool_calls": 5,
+    "cache_replays": 0,
+    "reported_new_call_tokens": {
+      "input_tokens": 90184,
+      "output_tokens": 2603,
+      "cached_input_tokens": 15360,
+      "reasoning_output_tokens": 243
+    },
+    "calls_without_usage": 0,
+    "model_elapsed_seconds": 60.62548574997345,
+    "provider_elapsed_seconds": 60.5346,
+    "tool_elapsed_seconds": 0.061190250009531155,
+    "total_elapsed_seconds": 60.78712616697885,
+    "estimated_cost_usd": null,
+    "limitation": "Cached-input and reasoning tokens are subsets; do not add them to input/output totals. Subscription dollars unknown."
+  },
+  "manifest": {
+    "agent_version": "task2-agent-v1",
+    "graph_hash": "graph_461ec66cd6c65256",
+    "memory_fingerprint": "memory_e4d06d4e2b5f1072",
+    "embedding_fingerprint": "embeddings_d98b62c7874aeb32",
+    "schema_version": "3.1",
+    "abstraction_run_id": "abstraction_b28471cf51a91b7f",
+    "execution_scope": "production",
+    "preview_notice": null,
+    "coverage": {
+      "base_status": "complete",
+      "reviewed_candidates": 816,
+      "selected_candidates": 816,
+      "processed_abstraction_packets": 23,
+      "planned_abstraction_packets": 23
+    },
+    "tool_profile": "full",
+    "configuration": {
+      "provider": "codex",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "medium",
+      "max_model_calls": 12,
+      "max_tool_calls": 10,
+      "max_request_chars": 200000,
+      "no_gain_limit": 3,
+      "cache_dir": "artifacts/evaluation/final-sol-v2/runs/collection_timeline__original__memory_graph/cache",
+      "timeout": 300.0
+    },
+    "created_at": "2026-10-07T04:32:01.845054+00:00",
+    "dependencies": {
+      "langchain": "1.4.0",
+      "langchain-core": "1.6.1",
+      "langgraph": "1.2.11",
+      "pydantic": "2.13.5"
+    },
+    "client_injected": true,
+    "context_policy": "200000 canonical serialized application characters; exact excerpts, pinned evidence, whole-exchange eviction; fresh state per question",
+    "evaluation_fingerprint": "sha_e28d543ed0614083",
+    "run": {
+      "run_id": "collection_timeline__original__memory_graph",
+      "question_id": "collection_timeline",
+      "variant": "original",
+      "approach": "memory_graph",
+      "question": "How did the April collection incident progress from reported failures through remediation and backfill, and what recovery is verified?"
+    }
+  }
+}
