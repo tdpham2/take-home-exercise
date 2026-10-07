@@ -10,6 +10,8 @@ then evaluates an agent that uses that memory alongside the original evidence.
 
 Read [METHODOLOGY.md](METHODOLOGY.md) for design choices and limitations, and
 [DATA_UNDERSTANDING.md](DATA_UNDERSTANDING.md) for the source-data findings.
+Open [task1_results.ipynb](task1_results.ipynb) for the executed Task 1 walkthrough
+of the completed CLI outputs, including the generation commands and model provenance.
 
 ## Setup
 
@@ -114,6 +116,11 @@ calls and 200,000 serialized application characters, configurable through `--hel
 
 ## Rebuild hosted memory
 
+The submitted memory was generated with `run_task1.py` (Luna base judgments), then
+`run_abstraction.py` (Astra patterns). The [Task 1 notebook](task1_results.ipynb)
+documents the historical output paths and commands reconstructed from saved settings,
+including the resumed base build. Its cells inspect saved artifacts without model calls.
+
 Rebuilding is optional and makes live calls. Use new output directories to preserve
 selected results. The base and pattern stages are separate:
 
@@ -158,17 +165,25 @@ and report stages. See the Task 2 notebook for complete experiment commands.
 
 | Notebook | Purpose | Requirements |
 | --- | --- | --- |
-| `task1_hosted.ipynb` | Hosted construction walkthrough | Graph and provider access; executing it makes live calls |
-| `task1_offline.ipynb` | Offline baseline walkthrough | Graph; no provider calls |
-| `task2_evaluation.ipynb` | Read saved answers, traces and evaluation results | Graph, selected memory and benchmark; no provider calls |
+| [task1_results.ipynb](task1_results.ipynb) | Main Task 1 submission: inspect completed memory, patterns, retention and recall | Included memory; no graph file, credentials or model calls |
+| `task1_hosted.ipynb` | Optional hosted construction pilot | Graph and provider access; executing it makes live calls |
+| `task1_offline.ipynb` | Optional locally generated baseline walkthrough | Graph; regenerate the legacy local notebook before running |
+| `task2_evaluation.ipynb` | Local Task 2 reader; generate its source with the command below | Graph, selected memory and benchmark; no provider calls |
 
-The Task 2 notebook reads saved results and leaves missing results missing. To regenerate
-the notebook source (clearing that notebook's outputs):
+The results notebooks read saved artifacts. The Task 2 notebook leaves missing results
+missing. To regenerate notebook source (clearing that notebook's outputs):
 
 ```bash
+python scripts/create_task1_results_notebook.py
 python scripts/create_notebook.py --mode hosted --output task1_hosted.ipynb
 python scripts/create_notebook.py --mode offline --output task1_offline.ipynb
 python scripts/create_evaluation_notebook.py
+```
+
+Execute the main Task 1 notebook without rebuilding memory:
+
+```bash
+python scripts/execute_notebook.py --notebook task1_results.ipynb --in-process
 ```
 
 ## Repository layout
