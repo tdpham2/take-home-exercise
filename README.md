@@ -53,9 +53,9 @@ The offline baseline writes to `artifacts/offline/`. It uses deterministic rules
 is separate from the selected hosted result. Tests and synthetic smoke checks verify
 implementation behavior; they do not measure model quality.
 
-## Selected memory: Astra patterns
+## Selected memory
 
-The selected result is `artifacts/abstraction-gpt-6-astra/memory.json`:
+The selected result is `artifacts/memory/memory.json`:
 
 | Contents | Count |
 | --- | ---: |
@@ -64,12 +64,13 @@ The selected result is `artifacts/abstraction-gpt-6-astra/memory.json`:
 | Patterns | 46 |
 | Outcome assessments | 791 |
 
-The base episodes and facts were built with Luna; **Astra generated the pattern
-layer**. All 46 patterns are already in `memory.json["patterns"]`. The enriched
-memory preserves source evidence and the original base judgments. Both build stages
+Luna (`gpt-5.6-luna`) judged the base episodes, facts and outcomes;
+**Astra (`gpt-6-astra`) generated only the pattern layer**. All 46 patterns are
+already in `memory.json["patterns"]`. The enriched memory preserves source evidence
+and the original base judgments. Both build stages
 are complete; structural validation does not establish semantic correctness.
 
-The repository includes the selected Astra memory and its inspection reports. The
+The repository includes the selected memory and its inspection reports. The
 raw `KEP_2026.json` dataset and all other generated runs remain outside Git; obtain
 the supplied graph separately for real-data commands and the full test suite. The
 memory includes source quotations. Historical runs and provider caches are not
@@ -79,7 +80,7 @@ Validate the selected memory against the graph without contacting a provider:
 
 ```bash
 python run_task2.py \
-  --memory artifacts/abstraction-gpt-6-astra/memory.json --validate-only
+  --memory artifacts/memory/memory.json --validate-only
 ```
 
 Inspect patterns directly:
@@ -88,7 +89,7 @@ Inspect patterns directly:
 import json
 from pathlib import Path
 
-memory = json.loads(Path("artifacts/abstraction-gpt-6-astra/memory.json").read_text())
+memory = json.loads(Path("artifacts/memory/memory.json").read_text())
 patterns = memory["patterns"]
 ```
 
@@ -99,7 +100,7 @@ provider first. It explicitly selects the answering model used for the evaluatio
 
 ```bash
 python run_task2.py \
-  --memory artifacts/abstraction-gpt-6-astra/memory.json \
+  --memory artifacts/memory/memory.json \
   --provider codex --model gpt-6-sol \
   --question "Which recurring reliability problems appear in the records?" \
   --output artifacts/task2/example
@@ -147,7 +148,7 @@ With the graph, selected memory and frozen benchmark bundle available:
 
 ```bash
 python run_evaluation.py preflight \
-  --memory artifacts/abstraction-gpt-6-astra/memory.json \
+  --memory artifacts/memory/memory.json \
   --output artifacts/evaluation/preflight
 ```
 
@@ -182,4 +183,5 @@ python scripts/create_evaluation_notebook.py
 | `examples/reference_cases.json` | Development inspection cases; not held-out evaluation labels |
 | `scripts/` | Notebook generation/execution, data audit and smoke checks |
 | `tests/` | Regression tests, including tests against the supplied graph |
-| `artifacts/` | Local generated results; select deliverables explicitly for publication |
+| `artifacts/memory/` | Selected memory: Luna-built base and Astra-generated patterns |
+| `artifacts/` | Other generated runs and caches remain local |

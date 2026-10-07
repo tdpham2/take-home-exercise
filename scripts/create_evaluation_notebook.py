@@ -60,7 +60,7 @@ def build_notebook():
         from org_eval.runner import preflight, read_answer
 
         GRAPH = Path('KEP_2026.json')
-        MEMORY = Path('artifacts/abstraction-gpt-6-astra/memory.json')
+        MEMORY = Path('artifacts/memory/memory.json')
         BENCHMARK_DIR = Path('artifacts/evaluation/benchmark')
         BENCHMARK = BENCHMARK_DIR / 'benchmark.frozen.json'
         RESULTS = Path('artifacts/evaluation/final-sol-v2')
@@ -115,7 +115,7 @@ def build_notebook():
         I freeze the completed memory before comparing answers so that the input cannot change
         in response to final scores. All 816 eligible base candidates and 23 abstraction packets
         were processed; this does not mean every candidate was accepted or every outcome observed.
-        I selected the unchanged Astra enrichment after the
+        I selected the unchanged Astra pattern layer over the Luna-built base after the
         [qualitative comparison](artifacts/reviews/abstraction-model-comparison.json) favored its
         distinctions and counterevidence while recording overstatements. That inspection assessed
         abstractions, not downstream QA performance.
@@ -367,14 +367,14 @@ def build_notebook():
 
         ```bash
         python run_task2.py \\
-          --graph KEP_2026.json --memory artifacts/abstraction-gpt-6-astra/memory.json \\
+          --graph KEP_2026.json --memory artifacts/memory/memory.json \\
           --model gpt-6-sol --question "What do the Weibo hashtag validation and retest records establish about the defect and its resolution?" \\
           --output artifacts/task2/sol-pilot-check-v2 --cache-dir artifacts/task2/sol-pilot-check-v2/cache
         python run_evaluation.py preflight \\
-          --memory artifacts/abstraction-gpt-6-astra/memory.json --check-provider \\
+          --memory artifacts/memory/memory.json --check-provider \\
           --judge-model gpt-6.1-sol --output artifacts/evaluation/preflight-sol-v2
         python run_evaluation.py run --split pilot \\
-          --memory artifacts/abstraction-gpt-6-astra/memory.json --model gpt-6-sol --max-request-chars 200000 \\
+          --memory artifacts/memory/memory.json --model gpt-6-sol --max-request-chars 200000 \\
           --output artifacts/evaluation/pilot-sol-v2 --max-calls 100
         python run_evaluation.py judge --judge-model gpt-6.1-sol \\
           --output artifacts/evaluation/pilot-sol-v2 --max-calls 30
@@ -386,7 +386,7 @@ def build_notebook():
 
         ```bash
         python run_evaluation.py run \\
-          --memory artifacts/abstraction-gpt-6-astra/memory.json --model gpt-6-sol --max-request-chars 200000 \\
+          --memory artifacts/memory/memory.json --model gpt-6-sol --max-request-chars 200000 \\
           --output artifacts/evaluation/final-sol-v2 --max-calls 600
         python run_evaluation.py judge --judge-model gpt-6.1-sol \\
           --output artifacts/evaluation/final-sol-v2 --max-calls 200

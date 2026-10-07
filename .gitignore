@@ -27,14 +27,14 @@ htmlcov/
 /COMMIT_PLAN.md
 /take-home-exercise.bundle
 
-# Keep generated runs local except for the selected Astra memory and evidence.
+# Keep generated runs local except for the selected memory and pattern evidence.
 /artifacts/*
-!/artifacts/abstraction-gpt-6-astra/
-/artifacts/abstraction-gpt-6-astra/*
-!/artifacts/abstraction-gpt-6-astra/memory.json
-!/artifacts/abstraction-gpt-6-astra/validation.json
-!/artifacts/abstraction-gpt-6-astra/coverage.json
-!/artifacts/abstraction-gpt-6-astra/inspection_examples.json
-!/artifacts/abstraction-gpt-6-astra/rejected_proposals.json
-!/artifacts/abstraction-gpt-6-astra/recall_comparison.json
-!/artifacts/abstraction-gpt-6-astra/packets.json
+!/artifacts/memory/
+/artifacts/memory/*
+!/artifacts/memory/memory.json
+!/artifacts/memory/validation.json
+!/artifacts/memory/coverage.json
+!/artifacts/memory/inspection_examples.json
+!/artifacts/memory/rejected_proposals.json
+!/artifacts/memory/recall_comparison.json
+!/artifacts/memory/packets.json

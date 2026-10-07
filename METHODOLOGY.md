@@ -1,8 +1,9 @@
 # An Organizational Memory and the Agent That Uses It
 
 Artifact paths below refer to the local evaluation workspace. The selected submission
-memory is the Astra-enriched run; historical pilots, comparisons and unfinished
-evaluation outputs are not part of the initial source-code commit.
+memory combines a Luna-built base with an Astra-generated pattern layer, saved
+in `artifacts/memory/`. Historical pilots, comparisons and unfinished evaluation
+outputs are not part of the initial source-code commit.
 
 Author: Thang Pham.
 
@@ -44,7 +45,7 @@ Recall combines BM25 lexical matching, supplied node-vector associations and sha
 
 Each packet contains up to 18 primary bundles and two related retained-episode bundles for context. Context bundles can contribute qualifications or counterexamples even when they do not match the question's cues. A 100,000-character limit bounds serialized packet size; oversized packets lose context first and are split if necessary. A single bundle that still exceeds the limit is reported rather than silently truncated.
 
-The completed run selected 293 distinct bundles as primary evidence across 23 packets. A bundle can appear in more than one question area, and context can reuse evidence. The 697 prepared bundles therefore do not represent 697 reviewed or independent occurrences. The [coverage report](artifacts/abstraction-gpt-6-astra/coverage.json) records selected, processed, contextual and omitted evidence. Lexical selection can miss relevant passages that use different vocabulary.
+The completed run selected 293 distinct bundles as primary evidence across 23 packets. A bundle can appear in more than one question area, and context can reuse evidence. The 697 prepared bundles therefore do not represent 697 reviewed or independent occurrences. The [coverage report](artifacts/memory/coverage.json) records selected, processed, contextual and omitted evidence. Lexical selection can miss relevant passages that use different vocabulary.
 
 **Use the LLM to compare occurrences.** Each packet receives one independent synthesis call to `gpt-6-astra`. The model may propose zero to three abstractions: a reported recurrence, a hypothesized mechanism, or a prescribed routine. Each proposal must cite supplied passage IDs, classify its support, explain what comparison adds, describe differences or counterevidence, state uncertainty, and explain its practical usefulness. Instructions distinguish requirements from execution and tentative explanations from established causality. The model can abstain when comparison adds no useful insight. Selected evidence cannot establish prevalence or the absence of counterexamples.
 
@@ -52,11 +53,11 @@ The completed run selected 293 distinct bundles as primary evidence across 23 pa
 
 Each proposal must have at least two conservatively independent support groups. Shared records, decisions, events or repeated passages connect overlapping evidence so that multiple excerpts from one occurrence do not automatically count as recurrence. All references retained during deduplication participate in this check; a shared generic resource alone does not connect support groups. This is a structural proxy for independent occurrences, not proof that the boundaries are correct.
 
-Code removes exact duplicate statements within the same category, flags substantial wording overlap, and constructs admitted patterns with stable IDs, exact quotations and links to supporting episodes and facts. All pattern claims remain marked inferred with low heuristic confidence. That confidence is not a calibrated probability. The [completed schema 3.1 memory](artifacts/abstraction-gpt-6-astra/memory.json) adds the pattern layer while preserving the schema 3.0 base items and judgments.
+Code removes exact duplicate statements within the same category, flags substantial wording overlap, and constructs admitted patterns with stable IDs, exact quotations and links to supporting episodes and facts. All pattern claims remain marked inferred with low heuristic confidence. That confidence is not a calibrated probability. The [completed schema 3.1 memory](artifacts/memory/memory.json) adds the pattern layer while preserving the schema 3.0 base items and judgments.
 
-**Preserve rejected proposals and inspect usefulness.** The Astra run produced 68 proposals across 23 calls: 46 passed admission and 22 were rejected. Rejected proposals retain their text, references and reasons in the [rejection report](artifacts/abstraction-gpt-6-astra/rejected_proposals.json). The [inspection examples](artifacts/abstraction-gpt-6-astra/inspection_examples.json) pair proposals with supplied passages, and the [validation report](artifacts/abstraction-gpt-6-astra/validation.json) records structural consistency.
+**Preserve rejected proposals and inspect usefulness.** The Astra run produced 68 proposals across 23 calls: 46 passed admission and 22 were rejected. Rejected proposals retain their text, references and reasons in the [rejection report](artifacts/memory/rejected_proposals.json). The [inspection examples](artifacts/memory/inspection_examples.json) pair proposals with supplied passages, and the [validation report](artifacts/memory/validation.json) records structural consistency.
 
-Caching and checkpoints support recovery, while one limited correction request can repair a malformed response. Structurally invalid proposals are rejected without another semantic judgment pass. The [recall comparison](artifacts/abstraction-gpt-6-astra/recall_comparison.json) provides additional inspection questions using the same base with and without patterns. Its questions have no independently labeled relevance judgments, so this is an inspection aid. Admission counts, valid citations and retrieval changes do not establish semantic accuracy or downstream usefulness.
+Caching and checkpoints support recovery, while one limited correction request can repair a malformed response. Structurally invalid proposals are rejected without another semantic judgment pass. The [recall comparison](artifacts/memory/recall_comparison.json) provides additional inspection questions using the same base with and without patterns. Its questions have no independently labeled relevance judgments, so this is an inspection aid. Admission counts, valid citations and retrieval changes do not establish semantic accuracy or downstream usefulness.
 
 ### 2.3. Explanation of design choices
 
@@ -88,16 +89,16 @@ time. A useful answer should make those distinctions inspectable, including what
 records cannot establish. I freeze the memory before evaluating answers so that later
 results cannot silently alter the evidence or abstractions being tested.
 
-The selected [schema 3.1 memory](artifacts/abstraction-gpt-6-astra/memory.json) contains
+The selected [schema 3.1 memory](artifacts/memory/memory.json) contains
 653 episodes, 1,086 facts, 46 patterns, and 791 outcome assessments. All 816 eligible
 base candidates and 23 abstraction packets were processed; completion does not mean
 that every candidate was accepted or every outcome was observed. The source-only
 corpus contains 901 records and 2,322 distinct passages after deduplication within each
 record. These are extracted passages preserved in the supplied graph, not complete
 external tickets. Input validation checks memory, graph, and embedding identities and
-rejects incomplete production inputs. I use the completed Astra memory unchanged;
-its structural validation does not establish semantic accuracy or downstream QA
-performance.
+rejects incomplete production inputs. I use the completed memory (Luna base, Astra
+patterns) unchanged; its structural validation does not establish semantic accuracy
+or downstream QA performance.
 
 ### Division of labor and tool selection
 
